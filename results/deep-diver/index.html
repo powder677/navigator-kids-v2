@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your child is a Deep Diver. Learn why they hyperfocus on interests but resist other tasks, and get tools that channel their intensity.">
+    <title>The Deep Diver Profile | Navigator Kids AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        .result-hero { background: linear-gradient(135deg, #FFF8E7 0%, #FFFBF0 100%); padding: var(--space-16) 0 var(--space-12); text-align: center; }
+        .result-hero-badge { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; color: #B8860B; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
+        .result-hero-icon { font-size: 5rem; margin-bottom: var(--space-4); }
+        .result-hero h1 { font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); margin-bottom: var(--space-4); }
+        .child-name { color: #B8860B; }
+        .result-hero-subtitle { font-size: var(--text-lg); color: var(--color-text); max-width: 600px; margin: 0 auto; }
+        .secondary-badge { display: inline-block; margin-top: var(--space-6); padding: var(--space-2) var(--space-4); background: var(--color-white); border-radius: var(--radius-full); font-size: var(--text-sm); color: var(--color-text-light); }
+        .secondary-badge strong { color: var(--color-navy); }
+
+        .validation-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
+        @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+        .validation-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+        .validation-content p { color: var(--color-text); margin-bottom: var(--space-4); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+        .validation-list { margin-top: var(--space-6); }
+        .validation-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-base); }
+        .validation-list li::before { content: '✓'; color: var(--color-gold); font-weight: 700; flex-shrink: 0; }
+        .validation-visual { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .symptom-card { background: var(--color-white); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-4); box-shadow: var(--shadow-xs); }
+        .symptom-card:last-child { margin-bottom: 0; }
+        .symptom-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .symptom-card p { margin: 0; font-size: var(--text-sm); color: var(--color-text); }
+
+        .explanation-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .explanation-content { max-width: 720px; margin: 0 auto; }
+        .explanation-content h2 { text-align: center; margin-bottom: var(--space-8); }
+        .explanation-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); }
+        .explanation-callout { background: var(--color-white); border-left: 4px solid var(--color-gold); padding: var(--space-6); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: var(--space-8) 0; }
+        .explanation-callout p { margin: 0; font-style: italic; color: var(--color-text); }
+
+        .products-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .products-section h2 { text-align: center; margin-bottom: var(--space-3); }
+        .products-section-subtitle { text-align: center; color: var(--color-text-light); margin-bottom: var(--space-12); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 900px; margin: 0 auto; }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+        .product-card-featured { background: linear-gradient(135deg, #FFF8E7 0%, #FFFBF0 100%); border: 2px solid var(--color-gold); border-radius: var(--radius-xl); padding: var(--space-8); position: relative; }
+        .product-card-basic { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .product-featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--color-gold); color: var(--color-navy); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); }
+        .product-card-icon { font-size: 3rem; margin-bottom: var(--space-4); }
+        .product-card-featured h3, .product-card-basic h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+        .product-card-featured p, .product-card-basic p { font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-4); }
+        .product-includes { margin-bottom: var(--space-6); }
+        .product-includes li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: var(--space-2); }
+        .product-includes li:last-child { border-bottom: none; }
+        .product-includes li::before { content: '✓'; color: var(--color-gold); font-weight: 700; }
+        .product-price-row { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-4); }
+        .product-price { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--color-navy); }
+        .product-price-note { font-size: var(--text-sm); color: var(--color-text-muted); }
+        .product-card-featured .btn, .product-card-basic .btn { width: 100%; }
+
+        .quickwin-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .quickwin-card { max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #FFF8E7 0%, #FFFBF0 100%); border-radius: var(--radius-xl); padding: var(--space-10); border: 2px solid var(--color-gold-light); }
+        .quickwin-header { text-align: center; margin-bottom: var(--space-6); }
+        .quickwin-badge { display: inline-block; background: var(--color-gold); color: var(--color-navy); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
+        .quickwin-card h2 { font-size: var(--text-xl); }
+        .quickwin-content { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-6); }
+        .quickwin-content h3 { font-size: var(--text-lg); margin-bottom: var(--space-4); }
+        .quickwin-content p { color: var(--color-text); margin-bottom: var(--space-4); }
+        .quickwin-steps { margin-top: var(--space-4); }
+        .quickwin-steps li { display: flex; gap: var(--space-3); margin-bottom: var(--space-3); }
+        .quickwin-step-num { width: 24px; height: 24px; background: var(--color-gold); color: var(--color-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0; }
+
+        .faq-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .faq-section h2 { text-align: center; margin-bottom: var(--space-10); }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { background: var(--color-cream); border-radius: var(--radius-md); margin-bottom: var(--space-4); overflow: hidden; }
+        .faq-question { width: 100%; padding: var(--space-5) var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-base); font-weight: 600; color: var(--color-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: var(--text-xl); color: var(--color-text-muted); }
+        .faq-item.open .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 var(--space-6) var(--space-5); display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer p { color: var(--color-text-light); margin: 0; }
+
+        .final-cta { padding: var(--section-padding) 0; background: var(--color-navy); text-align: center; }
+        .final-cta h2 { color: var(--color-cream); margin-bottom: var(--space-4); }
+        .final-cta p { color: rgba(249, 247, 242, 0.8); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto; }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="result-hero">
+        <div class="container">
+            <span class="result-hero-badge"><span>🎯</span> Primary Profile Identified</span>
+            <div class="result-hero-icon">🦉</div>
+            <h1><span class="child-name" id="heroChildName">Your child</span> is a Deep Diver</h1>
+            <p class="result-hero-subtitle">
+                They can talk about dinosaurs for 3 hours but won't do 5 minutes of math. 
+                Their brain runs on interest like a car runs on fuel.
+            </p>
+            <div class="secondary-badge">With strong <strong id="secondaryName">Intense Feeler</strong> tendencies</div>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item"><span class="trust-icon">✓</span> No diagnosis required</div>
+                <div class="trust-item"><span class="trust-icon">✓</span> Backed by neurodiversity research</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="validation-section">
+        <div class="container">
+            <div class="validation-grid">
+                <div class="validation-content">
+                    <h2>What You're Probably Experiencing</h2>
+                    <p>If your child is a Deep Diver, you've seen them absorb encyclopedias worth of information on their favorite topics while simultaneously "forgetting" to do basic tasks.</p>
+                    <p>This isn't selective attention — it's how their brain is literally wired to learn.</p>
+                    <ul class="validation-list">
+                        <li>Expert-level knowledge on 2-3 very specific topics</li>
+                        <li>Can hyperfocus for hours on something they love</li>
+                        <li>Homework becomes torture when the subject is "boring"</li>
+                        <li>They correct adults — and are usually right</li>
+                        <li>Perfectionism prevents them from starting sometimes</li>
+                    </ul>
+                </div>
+                <div class="validation-visual">
+                    <div class="symptom-card"><span class="symptom-icon">🦖</span><p><strong>Expert syndrome:</strong> Knows more about their interest than most adults</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">⚡</span><p><strong>Hyperfocus:</strong> Can concentrate for hours — on the right thing</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">🙄</span><p><strong>Boredom intolerance:</strong> Physically pained by uninteresting tasks</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">✨</span><p><strong>Perfectionism:</strong> Won't try if they might not be good at it</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-content">
+                <h2>Why This Happens</h2>
+                <p>Deep Divers often have what researchers call an "interest-based nervous system." Their brain literally works differently when they're engaged versus when they're not.</p>
+                <p>This isn't a motivation problem — it's neurology. Interest activates their executive function. Without interest, it's like trying to start a car with no battery.</p>
+                <div class="explanation-callout">
+                    <p>"Many parents describe their Deep Diver as 'the little professor' — they've been asking complex questions since age 3 and their vocabulary is years ahead. The challenge is channeling that intensity."</p>
+                </div>
+                <p>The key isn't to fight their nature. It's to find ways to inject interest into necessary tasks, connect topics to their passions, and honor their need to go deep rather than wide.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="tools">
+        <div class="container">
+            <span class="section-label">Matched Tools</span>
+            <h2>Tools Built for Deep Divers</h2>
+            <p class="products-section-subtitle">These resources help channel their intensity and connect their interests to everyday challenges.</p>
+            <div class="products-grid">
+                <div class="product-card-featured">
+                    <span class="product-featured-badge">Recommended</span>
+                    <div class="product-card-icon">🦉</div>
+                    <h3>AI Prompts: Deep Diver</h3>
+                    <p>50 ready-to-paste prompts that turn their interests into learning tools.</p>
+                    <ul class="product-includes">
+                        <li>Interest-injection homework help</li>
+                        <li>Passion-project connectors</li>
+                        <li>Perfectionism de-escalation</li>
+                        <li>"Make it interesting" translators</li>
+                        <li>Expert-level conversation starters</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$18</span>
+                        <span class="product-price-note">Instant PDF download</span>
+                    </div>
+                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-deep-diver">Add to Cart</button>
+                </div>
+                <div class="product-card-basic">
+                    <div class="product-card-icon">🦉</div>
+                    <h3>Sketch the Owl</h3>
+                    <p>Interactive activities that challenge their minds and reward deep thinking.</p>
+                    <ul class="product-includes">
+                        <li>Knowledge quest games</li>
+                        <li>Topic deep-dive tracker</li>
+                        <li>Expert badge challenges</li>
+                        <li>Creative connection puzzles</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$9</span>
+                        <span class="product-price-note">Interactive HTML</span>
+                    </div>
+                    <button class="btn btn-secondary" data-add-to-cart="packet-sketch-owl">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quickwin-section">
+        <div class="container">
+            <div class="quickwin-card">
+                <div class="quickwin-header">
+                    <span class="quickwin-badge">Free Quick Win</span>
+                    <h2>Try This Tonight</h2>
+                </div>
+                <div class="quickwin-content">
+                    <h3>The "Interest Bridge" Technique</h3>
+                    <p>When your Deep Diver refuses to engage with a required task, connect it to something they already love.</p>
+                    <ul class="quickwin-steps">
+                        <li><span class="quickwin-step-num">1</span><span><strong>Name their interest.</strong> "I know you love dinosaurs..."</span></li>
+                        <li><span class="quickwin-step-num">2</span><span><strong>Build the bridge.</strong> "...and this math problem is actually about how paleontologists measure fossil bones."</span></li>
+                        <li><span class="quickwin-step-num">3</span><span><strong>Let them drive.</strong> "What if you pretended you were calculating how many T-Rex teeth fit in this equation?"</span></li>
+                    </ul>
+                    <p style="margin-top: var(--space-4); font-style: italic;">Sounds silly? Deep Diver brains literally work better when interest is activated. This isn't bribery — it's using their neurology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Is my child gifted?</button>
+                    <div class="faq-answer"><p>Deep Divers often show characteristics associated with giftedness — intense curiosity, advanced vocabulary, and deep knowledge. However, "gifted" is a formal identification that requires assessment. What we can say is that Deep Divers have remarkable capacity for learning when engaged.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">How do I get them interested in things they don't care about?</button>
+                    <div class="faq-answer"><p>You can't force interest, but you can build bridges. Connect required tasks to their passions, find the "interesting angle" in boring subjects, or negotiate — finish this, then deep-dive time.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Should I limit their special interest time?</button>
+                    <div class="faq-answer"><p>Balance is important, but their intense interests are also how they develop expertise and build confidence. Instead of limiting, try connecting — use their interest as a reward or a bridge to other learning.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Support Your Deep Diver?</h2>
+            <p>Get tools that work with their intensity, not against it.</p>
+            <a href="#tools" class="btn btn-primary btn-lg">Get the Toolkit →</a>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        function loadProfileData() {
+            try {
+                const data = JSON.parse(localStorage.getItem('quizProfile'));
+                if (data && data.childName) document.getElementById('heroChildName').textContent = data.childName;
+                if (data && data.secondary) {
+                    const profiles = {'intense-feeler':'Intense Feeler','reluctant-starter':'Reluctant Starter','deep-diver':'Deep Diver','sensitive-observer':'Sensitive Observer','bold-explorer':'Bold Explorer','big-picture-thinker':'Big Picture Thinker'};
+                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Intense Feeler';
+                }
+            } catch (e) {}
+        }
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+        document.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+</body>
+</html>

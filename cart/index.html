@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your cart and checkout. Navigator Kids AI - Tools for 2e kids.">
+    <title>Your Cart | Navigator Kids AI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        .cart-page {
+            padding: var(--space-12) 0;
+            min-height: 60vh;
+        }
+
+        .cart-page h1 {
+            margin-bottom: var(--space-8);
+        }
+
+        /* Continue Shopping Link */
+        .continue-shopping {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--color-sage);
+            font-weight: 500;
+            margin-bottom: var(--space-6);
+        }
+
+        .continue-shopping:hover {
+            color: var(--color-sage-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (injected by components.js) -->
+    <div id="header"></div>
+
+    <main class="cart-page">
+        <div class="container">
+            
+            <a href="/products/" class="continue-shopping">
+                ← Continue Shopping
+            </a>
+
+            <h1>Your Cart</h1>
+
+            <!-- Cart content rendered by cart.js -->
+            <div id="cartContainer">
+                <!-- Loading state -->
+                <p>Loading cart...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer (injected by components.js) -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
+
+</body>
+
+</html>

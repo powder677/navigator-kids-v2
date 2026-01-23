@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your child is a Big Picture Thinker. Learn why they see the whole universe but lose their shoes, and get tools for executive function support.">
+    <title>The Big Picture Thinker Profile | Navigator Kids AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        .result-hero { background: linear-gradient(135deg, #FAE8E0 0%, #FDF0EB 100%); padding: var(--space-16) 0 var(--space-12); text-align: center; }
+        .result-hero-badge { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; color: #E8A87C; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
+        .result-hero-icon { font-size: 5rem; margin-bottom: var(--space-4); }
+        .result-hero h1 { font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); margin-bottom: var(--space-4); }
+        .child-name { color: #D4896A; }
+        .result-hero-subtitle { font-size: var(--text-lg); color: var(--color-text); max-width: 600px; margin: 0 auto; }
+        .secondary-badge { display: inline-block; margin-top: var(--space-6); padding: var(--space-2) var(--space-4); background: var(--color-white); border-radius: var(--radius-full); font-size: var(--text-sm); color: var(--color-text-light); }
+        .secondary-badge strong { color: var(--color-navy); }
+
+        .validation-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
+        @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+        .validation-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+        .validation-content p { color: var(--color-text); margin-bottom: var(--space-4); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+        .validation-list { margin-top: var(--space-6); }
+        .validation-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-base); }
+        .validation-list li::before { content: '✓'; color: #E8A87C; font-weight: 700; flex-shrink: 0; }
+        .validation-visual { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .symptom-card { background: var(--color-white); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-4); box-shadow: var(--shadow-xs); }
+        .symptom-card:last-child { margin-bottom: 0; }
+        .symptom-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .symptom-card p { margin: 0; font-size: var(--text-sm); color: var(--color-text); }
+
+        .explanation-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .explanation-content { max-width: 720px; margin: 0 auto; }
+        .explanation-content h2 { text-align: center; margin-bottom: var(--space-8); }
+        .explanation-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); }
+        .explanation-callout { background: var(--color-white); border-left: 4px solid #E8A87C; padding: var(--space-6); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: var(--space-8) 0; }
+        .explanation-callout p { margin: 0; font-style: italic; color: var(--color-text); }
+
+        .products-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .products-section h2 { text-align: center; margin-bottom: var(--space-3); }
+        .products-section-subtitle { text-align: center; color: var(--color-text-light); margin-bottom: var(--space-12); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 900px; margin: 0 auto; }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+        .product-card-featured { background: linear-gradient(135deg, #FAE8E0 0%, #FDF0EB 100%); border: 2px solid #E8A87C; border-radius: var(--radius-xl); padding: var(--space-8); position: relative; }
+        .product-card-basic { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .product-featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #E8A87C; color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); }
+        .product-card-icon { font-size: 3rem; margin-bottom: var(--space-4); }
+        .product-card-featured h3, .product-card-basic h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+        .product-card-featured p, .product-card-basic p { font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-4); }
+        .product-includes { margin-bottom: var(--space-6); }
+        .product-includes li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: var(--space-2); }
+        .product-includes li:last-child { border-bottom: none; }
+        .product-includes li::before { content: '✓'; color: #E8A87C; font-weight: 700; }
+        .product-price-row { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-4); }
+        .product-price { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--color-navy); }
+        .product-price-note { font-size: var(--text-sm); color: var(--color-text-muted); }
+        .product-card-featured .btn, .product-card-basic .btn { width: 100%; }
+
+        .quickwin-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .quickwin-card { max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #FAE8E0 0%, #FDF0EB 100%); border-radius: var(--radius-xl); padding: var(--space-10); border: 2px solid rgba(232, 168, 124, 0.3); }
+        .quickwin-header { text-align: center; margin-bottom: var(--space-6); }
+        .quickwin-badge { display: inline-block; background: #E8A87C; color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
+        .quickwin-card h2 { font-size: var(--text-xl); }
+        .quickwin-content { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-6); }
+        .quickwin-content h3 { font-size: var(--text-lg); margin-bottom: var(--space-4); }
+        .quickwin-content p { color: var(--color-text); margin-bottom: var(--space-4); }
+        .quickwin-steps { margin-top: var(--space-4); }
+        .quickwin-steps li { display: flex; gap: var(--space-3); margin-bottom: var(--space-3); }
+        .quickwin-step-num { width: 24px; height: 24px; background: #E8A87C; color: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0; }
+
+        .faq-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .faq-section h2 { text-align: center; margin-bottom: var(--space-10); }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { background: var(--color-cream); border-radius: var(--radius-md); margin-bottom: var(--space-4); overflow: hidden; }
+        .faq-question { width: 100%; padding: var(--space-5) var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-base); font-weight: 600; color: var(--color-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: var(--text-xl); color: var(--color-text-muted); }
+        .faq-item.open .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 var(--space-6) var(--space-5); display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer p { color: var(--color-text-light); margin: 0; }
+
+        .final-cta { padding: var(--section-padding) 0; background: var(--color-navy); text-align: center; }
+        .final-cta h2 { color: var(--color-cream); margin-bottom: var(--space-4); }
+        .final-cta p { color: rgba(249, 247, 242, 0.8); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto; }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="result-hero">
+        <div class="container">
+            <span class="result-hero-badge"><span>🎯</span> Primary Profile Identified</span>
+            <div class="result-hero-icon">🚀</div>
+            <h1><span class="child-name" id="heroChildName">Your child</span> is a Big Picture Thinker</h1>
+            <p class="result-hero-subtitle">
+                They see the whole universe but lose their shoes. Great ideas, terrible follow-through. 
+                Transitions are their nemesis.
+            </p>
+            <div class="secondary-badge">With strong <strong id="secondaryName">Deep Diver</strong> tendencies</div>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item"><span class="trust-icon">✓</span> No diagnosis required</div>
+                <div class="trust-item"><span class="trust-icon">✓</span> Backed by neurodiversity research</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="validation-section">
+        <div class="container">
+            <div class="validation-grid">
+                <div class="validation-content">
+                    <h2>What You're Probably Experiencing</h2>
+                    <p>If your child is a Big Picture Thinker, they probably have grand visions and creative ideas — but the details fall through the cracks. Their room is a disaster, they forget to turn in homework they actually did, and every transition feels like pulling teeth.</p>
+                    <p>This isn't carelessness. Their brain is wired for concepts, not logistics.</p>
+                    <ul class="validation-list">
+                        <li>Loses things constantly — even things in their hand</li>
+                        <li>Can explain black holes but forgets to brush teeth</li>
+                        <li>Every transition requires a 10-minute warning (minimum)</li>
+                        <li>Starts a million projects, finishes almost none</li>
+                        <li>Time is a mystery — "5 minutes ago" could mean an hour</li>
+                    </ul>
+                </div>
+                <div class="validation-visual">
+                    <div class="symptom-card"><span class="symptom-icon">🌌</span><p><strong>Visionary mind:</strong> Thinks in concepts and systems, not details</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">🧦</span><p><strong>Lost in space:</strong> Can't find things that are right in front of them</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">⏱️</span><p><strong>Time blind:</strong> Has no internal sense of how long things take</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">🔄</span><p><strong>Transition trouble:</strong> Switching activities is genuinely painful</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-content">
+                <h2>Why This Happens</h2>
+                <p>Big Picture Thinkers often have executive function differences — the brain's "air traffic control" system that manages organization, time, transitions, and follow-through. They see the forest brilliantly but literally cannot see the trees.</p>
+                <p>Research suggests their working memory and cognitive flexibility work differently. They can hold complex abstract concepts but lose track of simple sequential steps.</p>
+                <div class="explanation-callout">
+                    <p>"Many parents describe their Big Picture Thinker as 'the absent-minded professor.' Brilliant ideas, zero practical execution. The gap between their vision and their ability to make it happen can be incredibly frustrating — for everyone."</p>
+                </div>
+                <p>The key isn't to demand they "just pay attention." It's to externalize the executive function their brain doesn't provide automatically — visual systems, timers, checklists, and environmental scaffolding.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="tools">
+        <div class="container">
+            <span class="section-label">Matched Tools</span>
+            <h2>Tools Built for Big Picture Thinkers</h2>
+            <p class="products-section-subtitle">These resources provide the external structure their brain needs to turn big ideas into reality.</p>
+            <div class="products-grid">
+                <div class="product-card-featured">
+                    <span class="product-featured-badge">Recommended</span>
+                    <div class="product-card-icon">🚀</div>
+                    <h3>AI Prompts: Big Picture Thinker</h3>
+                    <p>50 ready-to-paste prompts for organization, transitions, and executive function support.</p>
+                    <ul class="product-includes">
+                        <li>Transition warning scripts</li>
+                        <li>Visual schedule creators</li>
+                        <li>Task breakdown helpers</li>
+                        <li>"Where did I put it" finders</li>
+                        <li>Time estimation trainers</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$18</span>
+                        <span class="product-price-note">Instant PDF download</span>
+                    </div>
+                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-big-picture-thinker">Add to Cart</button>
+                </div>
+                <div class="product-card-basic">
+                    <div class="product-card-icon">🚀</div>
+                    <h3>Cosmo Space Pup</h3>
+                    <p>Interactive activities that make organization and transitions feel like a space mission.</p>
+                    <ul class="product-includes">
+                        <li>Mission control checklists</li>
+                        <li>Launch sequence timers</li>
+                        <li>Lost item radar games</li>
+                        <li>Transition countdown activities</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$9</span>
+                        <span class="product-price-note">Interactive HTML</span>
+                    </div>
+                    <button class="btn btn-secondary" data-add-to-cart="packet-cosmo-pup">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quickwin-section">
+        <div class="container">
+            <div class="quickwin-card">
+                <div class="quickwin-header">
+                    <span class="quickwin-badge">Free Quick Win</span>
+                    <h2>Try This Tonight</h2>
+                </div>
+                <div class="quickwin-content">
+                    <h3>The "Launch Sequence" Transition</h3>
+                    <p>Big Picture Thinkers need transitions externalized and made concrete. Here's how to make them less painful:</p>
+                    <ul class="quickwin-steps">
+                        <li><span class="quickwin-step-num">1</span><span><strong>Give a 10-5-2-1 countdown.</strong> "In 10 minutes, we're leaving." Then 5. Then 2. Then 1. Every time.</span></li>
+                        <li><span class="quickwin-step-num">2</span><span><strong>Make it visual.</strong> Use a timer they can see — a sand timer, visual countdown, or even the oven timer. Abstract "5 minutes" means nothing to them.</span></li>
+                        <li><span class="quickwin-step-num">3</span><span><strong>Name the next activity.</strong> "When the timer beeps, we're switching to dinner." Knowing what's coming reduces the pain of leaving what they're doing.</span></li>
+                    </ul>
+                    <p style="margin-top: var(--space-4); font-style: italic;">Transitions won't become easy, but they'll become predictable — and predictable is manageable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Is this ADHD?</button>
+                    <div class="faq-answer"><p>Many Big Picture Thinkers have ADHD, but not all. The traits overlap significantly — executive function differences, time blindness, transition difficulties. If you're concerned, an evaluation can help. Either way, the strategies are similar.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Will they outgrow this?</button>
+                    <div class="faq-answer"><p>Executive function develops into the mid-20s, so improvement happens. But many Big Picture Thinkers remain big picture thinkers for life — they just develop systems and tools to compensate. The earlier they learn these, the better.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">How do I stop nagging about the same things?</button>
+                    <div class="faq-answer"><p>Externalize everything. Checklists on the wall, not in your voice. Timers, not reminders. Visual systems, not verbal ones. The goal is to move the executive function from your brain to their environment.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Support Your Big Picture Thinker?</h2>
+            <p>Get tools that provide the structure their brain needs to shine.</p>
+            <a href="#tools" class="btn btn-primary btn-lg">Get the Toolkit →</a>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        function loadProfileData() {
+            try {
+                const data = JSON.parse(localStorage.getItem('quizProfile'));
+                if (data && data.childName) document.getElementById('heroChildName').textContent = data.childName;
+                if (data && data.secondary) {
+                    const profiles = {'intense-feeler':'Intense Feeler','reluctant-starter':'Reluctant Starter','deep-diver':'Deep Diver','sensitive-observer':'Sensitive Observer','bold-explorer':'Bold Explorer','big-picture-thinker':'Big Picture Thinker'};
+                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Deep Diver';
+                }
+            } catch (e) {}
+        }
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+        document.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+</body>
+</html>

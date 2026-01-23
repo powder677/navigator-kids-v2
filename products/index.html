@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Tools for parents of twice-exceptional kids. AI prompt packs and interactive activity packets matched to your child's brain profile.">
+   <title>Products | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .products-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .products-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .products-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .products-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* Category Sections */
+      .product-category {
+         margin-bottom: var(--space-16);
+      }
+
+      .category-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-end;
+         margin-bottom: var(--space-8);
+         padding-bottom: var(--space-4);
+         border-bottom: 2px solid var(--color-border);
+      }
+
+      .category-header h2 {
+         margin-bottom: 0;
+      }
+
+      .category-header p {
+         color: var(--color-text-muted);
+         margin: 0;
+      }
+
+      /* Product Grid */
+      .products-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-6);
+      }
+
+      @media (max-width: 900px) {
+         .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+      }
+
+      @media (max-width: 600px) {
+         .products-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      /* Product Card */
+      .product-card {
+         background: var(--color-white);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         box-shadow: var(--shadow-sm);
+         transition: all var(--transition-bounce);
+         display: flex;
+         flex-direction: column;
+      }
+
+      .product-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-md);
+      }
+
+      .product-card-icon {
+         font-size: 2.5rem;
+         margin-bottom: var(--space-4);
+      }
+
+      .product-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-2);
+      }
+
+      .product-card-profile {
+         display: inline-block;
+         font-size: var(--text-xs);
+         font-weight: 600;
+         color: var(--color-sage);
+         background: var(--color-sage-light);
+         padding: var(--space-1) var(--space-2);
+         border-radius: var(--radius-sm);
+         margin-bottom: var(--space-3);
+      }
+
+      .product-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         flex-grow: 1;
+         margin-bottom: var(--space-4);
+      }
+
+      .product-card-footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding-top: var(--space-4);
+         border-top: 1px solid var(--color-border);
+      }
+
+      .product-card-price {
+         font-family: var(--font-heading);
+         font-size: var(--text-xl);
+         font-weight: 700;
+         color: var(--color-navy);
+      }
+
+      .product-card .btn {
+         padding: var(--space-2) var(--space-4);
+         font-size: var(--text-sm);
+      }
+
+      /* Bundle Card */
+      .bundle-card {
+         grid-column: span 3;
+         background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+         border: 2px solid var(--color-sage);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         display: flex;
+         align-items: center;
+         gap: var(--space-8);
+      }
+
+      @media (max-width: 900px) {
+         .bundle-card {
+            grid-column: span 2;
+            flex-direction: column;
+            text-align: center;
+         }
+      }
+
+      @media (max-width: 600px) {
+         .bundle-card {
+            grid-column: span 1;
+         }
+      }
+
+      .bundle-icons {
+         display: flex;
+         gap: var(--space-2);
+         font-size: 2rem;
+      }
+
+      .bundle-content {
+         flex: 1;
+      }
+
+      .bundle-badge {
+         display: inline-block;
+         background: var(--color-terracotta);
+         color: var(--color-white);
+         font-size: var(--text-xs);
+         font-weight: 700;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         padding: var(--space-1) var(--space-3);
+         border-radius: var(--radius-full);
+         margin-bottom: var(--space-2);
+      }
+
+      .bundle-content h3 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-2);
+      }
+
+      .bundle-content p {
+         color: var(--color-text-light);
+         margin-bottom: 0;
+      }
+
+      .bundle-pricing {
+         text-align: center;
+      }
+
+      .bundle-price {
+         font-family: var(--font-heading);
+         font-size: var(--text-3xl);
+         font-weight: 700;
+         color: var(--color-navy);
+      }
+
+      .bundle-original {
+         font-size: var(--text-base);
+         color: var(--color-text-muted);
+         text-decoration: line-through;
+         margin-left: var(--space-2);
+      }
+
+      .bundle-savings {
+         display: block;
+         font-size: var(--text-sm);
+         color: var(--color-sage-dark);
+         font-weight: 600;
+         margin-bottom: var(--space-3);
+      }
+
+      /* Quiz CTA */
+      .quiz-cta {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         text-align: center;
+         margin-top: var(--space-12);
+      }
+
+      .quiz-cta h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-3);
+      }
+
+      .quiz-cta p {
+         color: rgba(249, 247, 242, 0.8);
+         margin-bottom: var(--space-6);
+         max-width: 500px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="products-page">
+      <div class="container">
+
+         <div class="products-header">
+            <h1>Tools for 2e Kids</h1>
+            <p>AI prompt packs and interactive activities designed for specific brain profiles. Not sure which to get? Take the quiz first.</p>
+         </div>
+
+         <!-- AI Prompt Packs -->
+         <section class="product-category">
+            <div class="category-header">
+               <div>
+                  <h2>AI Prompt Packs</h2>
+                  <p>50 ready-to-paste prompts for ChatGPT or Claude</p>
+               </div>
+               <span class="section-label">$18 each</span>
+            </div>
+
+            <div class="products-grid">
+               <div class="product-card">
+                  <div class="product-card-icon">🔥</div>
+                  <span class="product-card-profile">Intense Feeler</span>
+                  <h3>Emotional Regulation Pack</h3>
+                  <p>Meltdown scripts, sensory support, transition warnings, and emotional intensity management.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-intense-feeler">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🐢</div>
+                  <span class="product-card-profile">Reluctant Starter</span>
+                  <h3>Task Initiation Pack</h3>
+                  <p>Homework kickstarts, morning routine help, task breakdown scripts, and motivation boosters.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-reluctant-starter">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🦉</div>
+                  <span class="product-card-profile">Deep Diver</span>
+                  <h3>Interest-Based Learning Pack</h3>
+                  <p>Passion-project connectors, boredom busters, perfectionism help, and interest bridges.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-deep-diver">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🐰</div>
+                  <span class="product-card-profile">Sensitive Observer</span>
+                  <h3>Sensory & Social Pack</h3>
+                  <p>Sensory break planners, social battery management, anxiety reduction, and calm-down scripts.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-sensitive-observer">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🦁</div>
+                  <span class="product-card-profile">Bold Explorer</span>
+                  <h3>Resilience Building Pack</h3>
+                  <p>Frustration tolerance, growth mindset, trying again after failure, and confidence repair.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-bold-explorer">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🚀</div>
+                  <span class="product-card-profile">Big Picture Thinker</span>
+                  <h3>Executive Function Pack</h3>
+                  <p>Transition warnings, visual schedule creators, organization help, and time estimation.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$18</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-big-picture-thinker">Add to Cart</button>
+                  </div>
+               </div>
+
+               <!-- Bundle -->
+               <div class="bundle-card">
+                  <div class="bundle-icons">📚</div>
+                  <div class="bundle-content">
+                     <span class="bundle-badge">Best Value</span>
+                     <h3>Complete AI Prompt Library</h3>
+                     <p>All 300 prompts across all 6 profiles. One purchase, every tool you'll ever need.</p>
+                  </div>
+                  <div class="bundle-pricing">
+                     <div>
+                        <span class="bundle-price">$67</span>
+                        <span class="bundle-original">$108</span>
+                     </div>
+                     <span class="bundle-savings">Save $41</span>
+                     <button class="btn btn-primary" data-add-to-cart="ai-prompts-complete">Add to Cart</button>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Activity Packets -->
+         <section class="product-category">
+            <div class="category-header">
+               <div>
+                  <h2>Activity Packets</h2>
+                  <p>Interactive browser-based activities with character guides</p>
+               </div>
+               <span class="section-label">$9 each</span>
+            </div>
+
+            <div class="products-grid">
+               <div class="product-card">
+                  <div class="product-card-icon">🐉</div>
+                  <span class="product-card-profile">Intense Feeler</span>
+                  <h3>Ember the Dragon</h3>
+                  <p>Feelings thermometer, calm-down breathing, emotion cards, and sensory break activities.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-ember-dragon">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🐢</div>
+                  <span class="product-card-profile">Reluctant Starter</span>
+                  <h3>Shelly the Turtle</h3>
+                  <p>Task chunking games, start button visualizer, 5-minute sprint challenges, and progress tracker.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-shelly-turtle">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🦉</div>
+                  <span class="product-card-profile">Deep Diver</span>
+                  <h3>Sketch the Owl</h3>
+                  <p>Knowledge quest games, topic deep-dive tracker, expert badge challenges, and creative puzzles.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-sketch-owl">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🐰</div>
+                  <span class="product-card-profile">Sensitive Observer</span>
+                  <h3>Whisper Bunny</h3>
+                  <p>Quiet zone activities, feeling-safe exercises, sensory comfort tools, and one-friend scripts.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-whisper-bunny">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🦁</div>
+                  <span class="product-card-profile">Bold Explorer</span>
+                  <h3>Bravely the Lion</h3>
+                  <p>Courage challenge cards, try-again adventures, brave moment collector, and mistake celebrations.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-bravely-lion">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🚀</div>
+                  <span class="product-card-profile">Big Picture Thinker</span>
+                  <h3>Cosmo Space Pup</h3>
+                  <p>Mission control checklists, launch sequence timers, lost item radar, and transition countdowns.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-cosmo-pup">Add to Cart</button>
+                  </div>
+               </div>
+
+               <div class="product-card">
+                  <div class="product-card-icon">🦸</div>
+                  <span class="product-card-profile">Autonomy</span>
+                  <h3>Captain Choosy</h3>
+                  <p>Decision-making games, choice practice, autonomy builders, and independent thinking activities.</p>
+                  <div class="product-card-footer">
+                     <span class="product-card-price">$9</span>
+                     <button class="btn btn-secondary" data-add-to-cart="packet-captain-choosy">Add to Cart</button>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Quiz CTA -->
+         <div class="quiz-cta">
+            <h2>Not Sure Which Profile Fits?</h2>
+            <p>Take our free 3-minute quiz to discover your child's primary and secondary brain profiles. Then you'll know exactly which tools to get.</p>
+            <a href="/quiz/" class="btn btn-primary btn-lg">Take the Free Quiz →</a>
+         </div>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+
+   <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+
+</body>
+
+</html>

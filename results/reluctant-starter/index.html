@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your child is a Reluctant Starter. Learn why task initiation is so hard and get tools that help them get moving without meltdowns.">
+    <title>The Reluctant Starter Profile | Navigator Kids AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        .result-hero {
+            background: linear-gradient(135deg, #E8F0E8 0%, #F0F7F0 100%);
+            padding: var(--space-16) 0 var(--space-12);
+            text-align: center;
+        }
+        .result-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--color-white);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-sage);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-sm);
+        }
+        .result-hero-icon { font-size: 5rem; margin-bottom: var(--space-4); }
+        .result-hero h1 { font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); margin-bottom: var(--space-4); }
+        .child-name { color: var(--color-sage-dark); }
+        .result-hero-subtitle { font-size: var(--text-lg); color: var(--color-text); max-width: 600px; margin: 0 auto; }
+        .secondary-badge { display: inline-block; margin-top: var(--space-6); padding: var(--space-2) var(--space-4); background: var(--color-white); border-radius: var(--radius-full); font-size: var(--text-sm); color: var(--color-text-light); }
+        .secondary-badge strong { color: var(--color-navy); }
+
+        .validation-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
+        @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+        .validation-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+        .validation-content p { color: var(--color-text); margin-bottom: var(--space-4); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+        .validation-list { margin-top: var(--space-6); }
+        .validation-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-base); }
+        .validation-list li::before { content: '✓'; color: var(--color-sage); font-weight: 700; flex-shrink: 0; }
+        .validation-visual { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .symptom-card { background: var(--color-white); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-4); box-shadow: var(--shadow-xs); }
+        .symptom-card:last-child { margin-bottom: 0; }
+        .symptom-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .symptom-card p { margin: 0; font-size: var(--text-sm); color: var(--color-text); }
+
+        .explanation-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .explanation-content { max-width: 720px; margin: 0 auto; }
+        .explanation-content h2 { text-align: center; margin-bottom: var(--space-8); }
+        .explanation-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); }
+        .explanation-callout { background: var(--color-white); border-left: 4px solid var(--color-sage); padding: var(--space-6); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: var(--space-8) 0; }
+        .explanation-callout p { margin: 0; font-style: italic; color: var(--color-text); }
+
+        .products-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .products-section h2 { text-align: center; margin-bottom: var(--space-3); }
+        .products-section-subtitle { text-align: center; color: var(--color-text-light); margin-bottom: var(--space-12); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 900px; margin: 0 auto; }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+        .product-card-featured { background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%); border: 2px solid var(--color-sage); border-radius: var(--radius-xl); padding: var(--space-8); position: relative; }
+        .product-card-basic { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
+        .product-featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--color-sage); color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); }
+        .product-card-icon { font-size: 3rem; margin-bottom: var(--space-4); }
+        .product-card-featured h3, .product-card-basic h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+        .product-card-featured p, .product-card-basic p { font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-4); }
+        .product-includes { margin-bottom: var(--space-6); }
+        .product-includes li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: var(--space-2); }
+        .product-includes li:last-child { border-bottom: none; }
+        .product-includes li::before { content: '✓'; color: var(--color-sage); font-weight: 700; }
+        .product-price-row { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-4); }
+        .product-price { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--color-navy); }
+        .product-price-note { font-size: var(--text-sm); color: var(--color-text-muted); }
+        .product-card-featured .btn, .product-card-basic .btn { width: 100%; }
+
+        .quickwin-section { padding: var(--section-padding) 0; background: var(--color-cream); }
+        .quickwin-card { max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #E8F5F0 0%, #F0FAF6 100%); border-radius: var(--radius-xl); padding: var(--space-10); border: 2px solid var(--color-sage-light); }
+        .quickwin-header { text-align: center; margin-bottom: var(--space-6); }
+        .quickwin-badge { display: inline-block; background: var(--color-sage); color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
+        .quickwin-card h2 { font-size: var(--text-xl); }
+        .quickwin-content { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-6); }
+        .quickwin-content h3 { font-size: var(--text-lg); margin-bottom: var(--space-4); }
+        .quickwin-content p { color: var(--color-text); margin-bottom: var(--space-4); }
+        .quickwin-steps { margin-top: var(--space-4); }
+        .quickwin-steps li { display: flex; gap: var(--space-3); margin-bottom: var(--space-3); }
+        .quickwin-step-num { width: 24px; height: 24px; background: var(--color-sage); color: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0; }
+
+        .faq-section { padding: var(--section-padding) 0; background: var(--color-white); }
+        .faq-section h2 { text-align: center; margin-bottom: var(--space-10); }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { background: var(--color-cream); border-radius: var(--radius-md); margin-bottom: var(--space-4); overflow: hidden; }
+        .faq-question { width: 100%; padding: var(--space-5) var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-base); font-weight: 600; color: var(--color-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: var(--text-xl); color: var(--color-text-muted); transition: transform 0.3s ease; }
+        .faq-item.open .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 var(--space-6) var(--space-5); display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-answer p { color: var(--color-text-light); margin: 0; }
+
+        .final-cta { padding: var(--section-padding) 0; background: var(--color-navy); text-align: center; }
+        .final-cta h2 { color: var(--color-cream); margin-bottom: var(--space-4); }
+        .final-cta p { color: rgba(249, 247, 242, 0.8); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto; }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="result-hero">
+        <div class="container">
+            <span class="result-hero-badge"><span>🎯</span> Primary Profile Identified</span>
+            <div class="result-hero-icon">🐢</div>
+            <h1><span class="child-name" id="heroChildName">Your child</span> is a Reluctant Starter</h1>
+            <p class="result-hero-subtitle">
+                They know what to do — they just can't seem to begin. This isn't laziness or defiance. 
+                It's a real neurological challenge with task initiation.
+            </p>
+            <div class="secondary-badge">With strong <strong id="secondaryName">Deep Diver</strong> tendencies</div>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item"><span class="trust-icon">✓</span> No diagnosis required</div>
+                <div class="trust-item"><span class="trust-icon">✓</span> Backed by neurodiversity research</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="validation-section">
+        <div class="container">
+            <div class="validation-grid">
+                <div class="validation-content">
+                    <h2>What You're Probably Experiencing</h2>
+                    <p>If your child is a Reluctant Starter, you've likely spent countless hours coaxing, bribing, and eventually yelling just to get them to begin simple tasks.</p>
+                    <p>The frustrating part? Once they start, they're often fine. It's the starting that's the mountain.</p>
+                    <ul class="validation-list">
+                        <li>Homework that should take 20 minutes takes 2 hours</li>
+                        <li>Getting dressed in the morning is a daily battle</li>
+                        <li>They say "I'll do it in a minute" and never do</li>
+                        <li>They seem to freeze when facing simple tasks</li>
+                        <li>Nagging and reminders don't seem to help</li>
+                    </ul>
+                </div>
+                <div class="validation-visual">
+                    <div class="symptom-card"><span class="symptom-icon">⏰</span><p><strong>Time blindness:</strong> "5 more minutes" turns into an hour</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">🧊</span><p><strong>Task paralysis:</strong> Knows what to do but can't begin</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">🎮</span><p><strong>Interest-based:</strong> Can start fun things instantly</p></div>
+                    <div class="symptom-card"><span class="symptom-icon">😤</span><p><strong>Shutdown mode:</strong> Pressure makes it worse, not better</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-content">
+                <h2>Why This Happens</h2>
+                <p>Reluctant Starters often have differences in executive function — the brain's "command center" that helps us plan, prioritize, and initiate action.</p>
+                <p>Research suggests their brains may need more activation energy to start non-preferred tasks. It's like needing a bigger spark to light the same fire.</p>
+                <div class="explanation-callout">
+                    <p>"Many parents notice their Reluctant Starter can hyperfocus on video games for hours but can't start a 5-minute chore. This isn't laziness — interest literally provides the activation energy their brain needs."</p>
+                </div>
+                <p>The solution isn't more nagging or punishment. It's reducing the activation energy needed — breaking tasks down, adding interest, and creating external scaffolding for their internal struggles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="tools">
+        <div class="container">
+            <span class="section-label">Matched Tools</span>
+            <h2>Tools Built for Reluctant Starters</h2>
+            <p class="products-section-subtitle">These resources help reduce task initiation friction and get them moving without meltdowns.</p>
+            <div class="products-grid">
+                <div class="product-card-featured">
+                    <span class="product-featured-badge">Recommended</span>
+                    <div class="product-card-icon">🐢</div>
+                    <h3>AI Prompts: Reluctant Starter</h3>
+                    <p>50 ready-to-paste prompts for ChatGPT or Claude, tailored for task initiation challenges.</p>
+                    <ul class="product-includes">
+                        <li>Task breakdown scripts</li>
+                        <li>Homework kickstart prompts</li>
+                        <li>Morning routine helpers</li>
+                        <li>"Body doubling" alternatives</li>
+                        <li>Interest-injection strategies</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$18</span>
+                        <span class="product-price-note">Instant PDF download</span>
+                    </div>
+                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-reluctant-starter">Add to Cart</button>
+                </div>
+                <div class="product-card-basic">
+                    <div class="product-card-icon">🐢</div>
+                    <h3>Shelly the Turtle</h3>
+                    <p>Interactive activities that make starting tasks feel like a game instead of a chore.</p>
+                    <ul class="product-includes">
+                        <li>Task chunking games</li>
+                        <li>Start button visualizer</li>
+                        <li>5-minute sprint challenges</li>
+                        <li>Reward progress tracker</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$9</span>
+                        <span class="product-price-note">Interactive HTML</span>
+                    </div>
+                    <button class="btn btn-secondary" data-add-to-cart="packet-shelly-turtle">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quickwin-section">
+        <div class="container">
+            <div class="quickwin-card">
+                <div class="quickwin-header">
+                    <span class="quickwin-badge">Free Quick Win</span>
+                    <h2>Try This Tonight</h2>
+                </div>
+                <div class="quickwin-content">
+                    <h3>The "Just the First Step" Technique</h3>
+                    <p>When your Reluctant Starter is stuck, don't ask them to do the whole task. Ask them to do just the first tiny step.</p>
+                    <ul class="quickwin-steps">
+                        <li><span class="quickwin-step-num">1</span><span><strong>Make it microscopic.</strong> Instead of "Do your homework," try "Just open your backpack." That's it.</span></li>
+                        <li><span class="quickwin-step-num">2</span><span><strong>Stay present but quiet.</strong> Sit nearby without talking. Your presence provides "body doubling" that helps their brain activate.</span></li>
+                        <li><span class="quickwin-step-num">3</span><span><strong>Celebrate the start, not the finish.</strong> "You started! That was the hard part." Often, once they begin, momentum takes over.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Is this a diagnosis?</button>
+                    <div class="faq-answer"><p>No. This quiz identifies patterns based on how your child approaches tasks. It's not a medical diagnosis. If you have concerns, consult a professional who understands twice-exceptional children.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Is my child just lazy?</button>
+                    <div class="faq-answer"><p>No. Research shows task initiation difficulties are neurological, not character flaws. Your child likely wants to start — their brain just struggles to generate the activation energy for non-preferred tasks.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Will they grow out of this?</button>
+                    <div class="faq-answer"><p>Executive function develops into the mid-20s, so many kids do improve. However, learning strategies now helps them build scaffolding they'll use for life.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Support Your Reluctant Starter?</h2>
+            <p>Get tools that reduce task friction — not add to it.</p>
+            <a href="#tools" class="btn btn-primary btn-lg">Get the Toolkit →</a>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        function loadProfileData() {
+            try {
+                const data = JSON.parse(localStorage.getItem('quizProfile'));
+                if (data && data.childName) document.getElementById('heroChildName').textContent = data.childName;
+                if (data && data.secondary) {
+                    const profiles = {'intense-feeler':'Intense Feeler','reluctant-starter':'Reluctant Starter','deep-diver':'Deep Diver','sensitive-observer':'Sensitive Observer','bold-explorer':'Bold Explorer','big-picture-thinker':'Big Picture Thinker'};
+                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Deep Diver';
+                }
+            } catch (e) {}
+        }
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+        document.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+</body>
+</html>

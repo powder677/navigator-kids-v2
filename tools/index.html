@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Free tools for parents of 2e kids. IEP generators, advocacy letter templates, and school communication helpers.">
+   <title>Free Tools | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .tools-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .tools-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .tools-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .tools-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* Tools Grid */
+      .tools-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: var(--space-6);
+         max-width: 900px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 700px) {
+         .tools-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .tool-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         box-shadow: var(--shadow-sm);
+         transition: all var(--transition-bounce);
+         display: flex;
+         flex-direction: column;
+      }
+
+      .tool-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-md);
+      }
+
+      .tool-card-icon {
+         width: 64px;
+         height: 64px;
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 2rem;
+         margin-bottom: var(--space-5);
+      }
+
+      .tool-card-badge {
+         display: inline-block;
+         font-size: var(--text-xs);
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         padding: var(--space-1) var(--space-2);
+         border-radius: var(--radius-sm);
+         margin-bottom: var(--space-3);
+         background: var(--color-sage-light);
+         color: var(--color-sage-dark);
+      }
+
+      .tool-card-badge.coming-soon {
+         background: var(--color-gold-light);
+         color: #9A7B4F;
+      }
+
+      .tool-card h3 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-2);
+      }
+
+      .tool-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         flex-grow: 1;
+         margin-bottom: var(--space-6);
+      }
+
+      .tool-card .btn {
+         width: 100%;
+      }
+
+      .tool-card .btn:disabled {
+         opacity: 0.5;
+         cursor: not-allowed;
+      }
+
+      /* Featured Tool */
+      .featured-tool {
+         grid-column: span 2;
+         background: linear-gradient(135deg, #E8F5F0 0%, #F0FAF6 100%);
+         border: 2px solid var(--color-sage);
+      }
+
+      @media (max-width: 700px) {
+         .featured-tool {
+            grid-column: span 1;
+         }
+      }
+
+      .featured-tool .tool-card-icon {
+         background: var(--color-sage);
+         color: var(--color-white);
+      }
+
+      /* Divider */
+      .tools-divider {
+         text-align: center;
+         margin: var(--space-12) 0;
+         position: relative;
+      }
+
+      .tools-divider::before {
+         content: '';
+         position: absolute;
+         top: 50%;
+         left: 0;
+         right: 0;
+         height: 1px;
+         background: var(--color-border);
+      }
+
+      .tools-divider span {
+         position: relative;
+         background: var(--color-cream);
+         padding: 0 var(--space-4);
+         color: var(--color-text-muted);
+         font-size: var(--text-sm);
+      }
+
+      /* Premium Tools CTA */
+      .premium-cta {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         text-align: center;
+         max-width: 700px;
+         margin: var(--space-12) auto 0;
+      }
+
+      .premium-cta h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-3);
+      }
+
+      .premium-cta p {
+         color: rgba(249, 247, 242, 0.8);
+         margin-bottom: var(--space-6);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="tools-page">
+      <div class="container">
+
+         <div class="tools-header">
+            <h1>Free Parent Tools</h1>
+            <p>Advocacy templates, communication helpers, and resources to support your 2e child at school and home.</p>
+         </div>
+
+         <div class="tools-grid">
+
+            <!-- Featured: De-Escalation Kit -->
+            <div class="tool-card featured-tool">
+               <div class="tool-card-icon">🧘</div>
+               <span class="tool-card-badge">Most Popular</span>
+               <h3>Emergency Regulation Kit</h3>
+               <p>Rapid response protocols, co-regulation scripts, and calming exercises for when meltdowns hit. What to say (and not say) when your child's thinking brain goes offline.</p>
+               <a href="/free/de-escalation-kit/" class="btn btn-primary">Get Free Kit →</a>
+            </div>
+
+            <!-- IEP Goal Generator -->
+            <div class="tool-card">
+               <div class="tool-card-icon">📋</div>
+               <span class="tool-card-badge">Free Tool</span>
+               <h3>IEP Goal Generator</h3>
+               <p>Generate measurable, 2e-appropriate IEP goals based on your child's profile. Paste-ready language for your next IEP meeting.</p>
+               <a href="/tools/iep-generator/" class="btn btn-secondary">Use Tool →</a>
+            </div>
+
+            <!-- Teacher Email Templates -->
+            <div class="tool-card">
+               <div class="tool-card-icon">✉️</div>
+               <span class="tool-card-badge">Free Tool</span>
+               <h3>Teacher Email Templates</h3>
+               <p>Pre-written emails for common situations: requesting accommodations, explaining 2e, following up on concerns, and more.</p>
+               <a href="/tools/email-templates/" class="btn btn-secondary">Get Templates →</a>
+            </div>
+
+            <!-- Accommodation Request Builder -->
+            <div class="tool-card">
+               <div class="tool-card-icon">📝</div>
+               <span class="tool-card-badge">Free Tool</span>
+               <h3>Accommodation Checklist</h3>
+               <p>Common accommodations for 2e learners organized by need type. Check what applies and generate a summary to share with school.</p>
+               <a href="/tools/accommodations/" class="btn btn-secondary">Build List →</a>
+            </div>
+
+            <!-- Meltdown Log -->
+            <div class="tool-card">
+               <div class="tool-card-icon">📊</div>
+               <span class="tool-card-badge coming-soon">Coming Soon</span>
+               <h3>Pattern Tracker</h3>
+               <p>Log meltdowns, triggers, and what helped. Over time, patterns emerge that help you predict and prevent episodes.</p>
+               <button class="btn btn-secondary" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Strengths Profile -->
+            <div class="tool-card">
+               <div class="tool-card-icon">⭐</div>
+               <span class="tool-card-badge coming-soon">Coming Soon</span>
+               <h3>Strengths Profile Builder</h3>
+               <p>Document your child's strengths, interests, and successful strategies. Create a one-page profile to share with teachers and providers.</p>
+               <button class="btn btn-secondary" disabled>Coming Soon</button>
+            </div>
+
+         </div>
+
+         <div class="tools-divider">
+            <span>Want more?</span>
+         </div>
+
+         <!-- Premium CTA -->
+         <div class="premium-cta">
+            <h2>AI-Powered Tools for Every Situation</h2>
+            <p>Our AI Prompt Packs give you 50 ready-to-use prompts for ChatGPT or Claude — homework help, meltdown scripts, IEP language, and more. Matched to your child's brain profile.</p>
+            <a href="/products/" class="btn btn-primary btn-lg">See All Products →</a>
+         </div>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+
+   <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+
+</body>
+
+</html>

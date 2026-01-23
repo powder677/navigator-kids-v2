@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your child is an Intense Feeler. Learn what this means for their emotional regulation and get tools that help manage big feelings.">
+    <title>The Intense Feeler Profile | Navigator Kids AI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        /* =========================================
+           RESULT PAGE STYLES
+           ========================================= */
+        
+        .result-hero {
+            background: linear-gradient(135deg, #FDE8E4 0%, #FCF0EE 100%);
+            padding: var(--space-16) 0 var(--space-12);
+            text-align: center;
+        }
+
+        .result-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--color-white);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-terracotta);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .result-hero-icon {
+            font-size: 5rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .result-hero h1 {
+            font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+            margin-bottom: var(--space-4);
+        }
+
+        .child-name {
+            color: var(--color-terracotta);
+        }
+
+        .result-hero-subtitle {
+            font-size: var(--text-lg);
+            color: var(--color-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .secondary-badge {
+            display: inline-block;
+            margin-top: var(--space-6);
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-white);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            color: var(--color-text-light);
+        }
+
+        .secondary-badge strong {
+            color: var(--color-navy);
+        }
+
+        /* Validation Section */
+        .validation-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+
+        .validation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .validation-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+        }
+
+        .validation-content h2 {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .validation-content p {
+            color: var(--color-text);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+        }
+
+        .validation-list {
+            margin-top: var(--space-6);
+        }
+
+        .validation-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-base);
+        }
+
+        .validation-list li::before {
+            content: '✓';
+            color: var(--color-sage);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .validation-visual {
+            background: var(--color-cream);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+        }
+
+        .symptom-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .symptom-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .symptom-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .symptom-card p {
+            margin: 0;
+            font-size: var(--text-sm);
+            color: var(--color-text);
+        }
+
+        /* Explanation Section */
+        .explanation-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-cream);
+        }
+
+        .explanation-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .explanation-content h2 {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .explanation-content p {
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-6);
+        }
+
+        .explanation-callout {
+            background: var(--color-white);
+            border-left: 4px solid var(--color-terracotta);
+            padding: var(--space-6);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: var(--space-8) 0;
+        }
+
+        .explanation-callout p {
+            margin: 0;
+            font-style: italic;
+            color: var(--color-text);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+
+        .products-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-3);
+        }
+
+        .products-section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: var(--space-12);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-6);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-card-featured {
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+            border: 2px solid var(--color-sage);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            position: relative;
+        }
+
+        .product-card-basic {
+            background: var(--color-cream);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+        }
+
+        .product-featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-sage);
+            color: var(--color-white);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+        }
+
+        .product-card-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .product-card-featured h3,
+        .product-card-basic h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+        }
+
+        .product-card-featured p,
+        .product-card-basic p {
+            font-size: var(--text-sm);
+            color: var(--color-text-light);
+            margin-bottom: var(--space-4);
+        }
+
+        .product-includes {
+            margin-bottom: var(--space-6);
+        }
+
+        .product-includes li {
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .product-includes li:last-child {
+            border-bottom: none;
+        }
+
+        .product-includes li::before {
+            content: '✓';
+            color: var(--color-sage);
+            font-weight: 700;
+        }
+
+        .product-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+
+        .product-price {
+            font-family: var(--font-heading);
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+
+        .product-price-note {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        .product-card-featured .btn,
+        .product-card-basic .btn {
+            width: 100%;
+        }
+
+        /* Bundle Section */
+        .bundle-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-cream);
+        }
+
+        .bundle-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-10);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .bundle-badge {
+            display: inline-block;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            font-size: var(--text-sm);
+            font-weight: 700;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-4);
+        }
+
+        .bundle-card h2 {
+            margin-bottom: var(--space-2);
+        }
+
+        .bundle-card > p {
+            color: var(--color-text-light);
+            margin-bottom: var(--space-6);
+        }
+
+        .bundle-items {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .bundle-item {
+            text-align: center;
+        }
+
+        .bundle-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .bundle-item-name {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-navy);
+        }
+
+        .bundle-pricing {
+            margin-bottom: var(--space-6);
+        }
+
+        .bundle-price {
+            font-family: var(--font-heading);
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+
+        .bundle-original {
+            font-size: var(--text-lg);
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            margin-left: var(--space-2);
+        }
+
+        .bundle-savings {
+            display: inline-block;
+            background: var(--color-success-light);
+            color: var(--color-success);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            margin-top: var(--space-2);
+        }
+
+        /* Quick Win Section */
+        .quickwin-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+
+        .quickwin-card {
+            max-width: 720px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #E8F5F0 0%, #F0FAF6 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-10);
+            border: 2px solid var(--color-sage-light);
+        }
+
+        .quickwin-header {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .quickwin-badge {
+            display: inline-block;
+            background: var(--color-sage);
+            color: var(--color-white);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-4);
+        }
+
+        .quickwin-card h2 {
+            font-size: var(--text-xl);
+        }
+
+        .quickwin-content {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+        }
+
+        .quickwin-content h3 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-4);
+        }
+
+        .quickwin-content p {
+            color: var(--color-text);
+            margin-bottom: var(--space-4);
+        }
+
+        .quickwin-steps {
+            margin-top: var(--space-4);
+        }
+
+        .quickwin-steps li {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .quickwin-step-num {
+            width: 24px;
+            height: 24px;
+            background: var(--color-sage);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xs);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--section-padding) 0;
+            background: var(--color-cream);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-10);
+        }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: var(--space-5) var(--space-6);
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--color-navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: var(--text-xl);
+            color: var(--color-text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 var(--space-6) var(--space-5);
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-answer p {
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: var(--section-padding) 0;
+            background: var(--color-navy);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            color: var(--color-cream);
+            margin-bottom: var(--space-4);
+        }
+
+        .final-cta p {
+            color: rgba(249, 247, 242, 0.8);
+            margin-bottom: var(--space-8);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .btn-primary {
+            background: var(--color-terracotta);
+        }
+
+        .final-cta .btn-primary:hover {
+            background: var(--color-terracotta-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="result-hero">
+        <div class="container">
+            <span class="result-hero-badge">
+                <span>🎯</span>
+                Primary Profile Identified
+            </span>
+            <div class="result-hero-icon">🔥</div>
+            <h1><span class="child-name" id="heroChildName">Your child</span> is an Intense Feeler</h1>
+            <p class="result-hero-subtitle">
+                Big emotions, sensory sensitivity, and a need for everything to feel "right." 
+                This isn't a flaw — it's how their nervous system is wired.
+            </p>
+            <div class="secondary-badge" id="secondaryBadge">
+                With strong <strong id="secondaryName">Deep Diver</strong> tendencies
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    No diagnosis required
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Backed by neurodiversity research
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation Section -->
+    <section class="validation-section">
+        <div class="container">
+            <div class="validation-grid">
+                <div class="validation-content">
+                    <h2>What You're Probably Experiencing</h2>
+                    <p>
+                        If your child is an Intense Feeler, you're likely dealing with more than your fair share of meltdowns, 
+                        emotional explosions, and what feels like overreactions to small things.
+                    </p>
+                    <p>
+                        The good news? There's nothing "wrong" with your child. Their brain just processes emotions more deeply than most.
+                    </p>
+                    <ul class="validation-list">
+                        <li>They hold it together at school, then fall apart at home</li>
+                        <li>Transitions are emotional landmines</li>
+                        <li>Small frustrations lead to big reactions</li>
+                        <li>They feel other people's emotions intensely too</li>
+                        <li>"It's not fair" is a phrase you hear constantly</li>
+                    </ul>
+                </div>
+                <div class="validation-visual">
+                    <div class="symptom-card">
+                        <span class="symptom-icon">😤</span>
+                        <p><strong>Restraint collapse:</strong> Perfect at school, chaos at home</p>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🏷️</span>
+                        <p><strong>Sensory triggers:</strong> Tags, socks, food textures</p>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">⏰</span>
+                        <p><strong>Transition trouble:</strong> Every switch is a struggle</p>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">❤️</span>
+                        <p><strong>Deep empathy:</strong> Feels everyone else's feelings too</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explanation Section -->
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-content">
+                <h2>Why This Happens</h2>
+                <p>
+                    Intense Feelers have a nervous system that's tuned to high sensitivity. They pick up on 
+                    everything — sounds, textures, emotions, injustice — and feel it all more deeply than neurotypical kids.
+                </p>
+                <p>
+                    Research suggests this may be linked to differences in how their brain processes sensory input 
+                    and regulates emotional responses. It's not about being "dramatic" or "too sensitive" — 
+                    it's neurology, not character.
+                </p>
+                <div class="explanation-callout">
+                    <p>
+                        "Many parents notice that their Intense Feelers are the most empathetic, creative, 
+                        and passionate kids in the room — when they're not overwhelmed."
+                    </p>
+                </div>
+                <p>
+                    The key to supporting an Intense Feeler isn't to toughen them up. It's to give them tools 
+                    to manage their big feelings before they boil over — and to recognize the warning signs 
+                    before meltdowns happen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="tools">
+        <div class="container">
+            <span class="section-label">Matched Tools</span>
+            <h2>Tools Built for Intense Feelers</h2>
+            <p class="products-section-subtitle">
+                These resources are specifically designed for the emotional intensity 
+                and sensory sensitivity your child experiences.
+            </p>
+
+            <div class="products-grid">
+                <!-- Featured Product: AI Prompts -->
+                <div class="product-card-featured">
+                    <span class="product-featured-badge">Recommended</span>
+                    <div class="product-card-icon">🔥</div>
+                    <h3>AI Prompts: Intense Feeler</h3>
+                    <p>50 ready-to-paste prompts for ChatGPT or Claude, tailored for emotional regulation.</p>
+                    <ul class="product-includes">
+                        <li>Meltdown de-escalation scripts</li>
+                        <li>Sensory overwhelm support</li>
+                        <li>Transition warnings that work</li>
+                        <li>IEP emotion support language</li>
+                        <li>Bedtime calm-down prompts</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$18</span>
+                        <span class="product-price-note">Instant PDF download</span>
+                    </div>
+                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-intense-feeler">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Activity Packet -->
+                <div class="product-card-basic">
+                    <div class="product-card-icon">🐉</div>
+                    <h3>Ember the Dragon</h3>
+                    <p>Interactive browser-based activities for emotional regulation and sensory calming.</p>
+                    <ul class="product-includes">
+                        <li>Feelings thermometer game</li>
+                        <li>Calm-down breathing exercises</li>
+                        <li>Emotion identification cards</li>
+                        <li>Sensory break activities</li>
+                    </ul>
+                    <div class="product-price-row">
+                        <span class="product-price">$9</span>
+                        <span class="product-price-note">Interactive HTML</span>
+                    </div>
+                    <button class="btn btn-secondary" data-add-to-cart="packet-ember-dragon">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundle Section -->
+    <section class="bundle-section">
+        <div class="container">
+            <div class="bundle-card">
+                <span class="bundle-badge">Save $9</span>
+                <h2>Complete Intense Feeler Kit</h2>
+                <p>Everything you need to support your Intense Feeler, in one bundle.</p>
+                
+                <div class="bundle-items">
+                    <div class="bundle-item">
+                        <div class="bundle-item-icon">🔥</div>
+                        <div class="bundle-item-name">AI Prompts Pack</div>
+                    </div>
+                    <div class="bundle-item">
+                        <div class="bundle-item-icon">🐉</div>
+                        <div class="bundle-item-name">Ember Activity Packet</div>
+                    </div>
+                    <div class="bundle-item">
+                        <div class="bundle-item-icon">🧘</div>
+                        <div class="bundle-item-name">De-Escalation Kit</div>
+                    </div>
+                </div>
+
+                <div class="bundle-pricing">
+                    <span class="bundle-price">$27</span>
+                    <span class="bundle-original">$36</span>
+                    <div>
+                        <span class="bundle-savings">You save $9</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-lg" data-add-to-cart="bundle-intense-feeler">
+                    Get the Complete Kit →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Win Section -->
+    <section class="quickwin-section">
+        <div class="container">
+            <div class="quickwin-card">
+                <div class="quickwin-header">
+                    <span class="quickwin-badge">Free Quick Win</span>
+                    <h2>Try This Tonight</h2>
+                </div>
+                <div class="quickwin-content">
+                    <h3>The "Soft Landing" After-School Routine</h3>
+                    <p>
+                        Intense Feelers hold it together all day at school, then explode the moment they get home. 
+                        This happens because they've used up all their regulation energy. Here's how to help:
+                    </p>
+                    <ul class="quickwin-steps">
+                        <li>
+                            <span class="quickwin-step-num">1</span>
+                            <span>
+                                <strong>No questions for 15 minutes.</strong> Don't ask "How was school?" right away. 
+                                Their brain needs time to decompress.
+                            </span>
+                        </li>
+                        <li>
+                            <span class="quickwin-step-num">2</span>
+                            <span>
+                                <strong>Offer a sensory reset.</strong> Crunchy snack, soft blanket, quiet space, 
+                                or physical movement — whatever soothes their system.
+                            </span>
+                        </li>
+                        <li>
+                            <span class="quickwin-step-num">3</span>
+                            <span>
+                                <strong>Expect some release.</strong> Tears or grumpiness may happen and that's okay. 
+                                Better out than bottled up.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is this a diagnosis?
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            No. This quiz identifies patterns based on how your child processes the world. 
+                            It's not a medical or psychological diagnosis. If you have concerns about your child's 
+                            development, we always recommend consulting with a qualified professional who understands 
+                            twice-exceptional children.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What ages is this for?
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Our profiles and tools are designed for children ages 6-9 (roughly 1st-3rd grade). 
+                            This is when many 2e patterns become most visible and when early support can make 
+                            the biggest difference.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can my child be more than one type?
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Absolutely! Most 2e kids show a primary profile with strong secondary traits. 
+                            That's why we identify both. Your child's secondary profile (shown at the top of this page) 
+                            also influences how they experience the world.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What if the profile doesn't feel quite right?
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            You know your child best. If another profile resonates more, trust your instincts. 
+                            You can explore all six profiles and choose tools that feel like the best fit for 
+                            your child's unique combination of traits.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Support Your Intense Feeler?</h2>
+            <p>Get tools built for their brain — not against it.</p>
+            <a href="#tools" class="btn btn-primary btn-lg">
+                Get the Toolkit →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
+
+    <script>
+        // =========================================
+        // PERSONALIZATION
+        // =========================================
+        
+        function loadProfileData() {
+            try {
+                const data = JSON.parse(localStorage.getItem('quizProfile'));
+                if (data && data.childName) {
+                    document.getElementById('heroChildName').textContent = data.childName;
+                }
+                if (data && data.secondary) {
+                    const profiles = {
+                        'intense-feeler': 'Intense Feeler',
+                        'reluctant-starter': 'Reluctant Starter',
+                        'deep-diver': 'Deep Diver',
+                        'sensitive-observer': 'Sensitive Observer',
+                        'bold-explorer': 'Bold Explorer',
+                        'big-picture-thinker': 'Big Picture Thinker'
+                    };
+                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Deep Diver';
+                }
+            } catch (e) {
+                // Use defaults
+            }
+        }
+
+        // =========================================
+        // FAQ TOGGLE
+        // =========================================
+        
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            
+            // Toggle this one
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // =========================================
+        // INIT
+        // =========================================
+        
+        document.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+
+</body>
+
+</html>
