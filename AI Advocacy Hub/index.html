@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The AI Advocacy Hub | Navigator Kids AI™</title>
+   <meta name="description" content="The AI Toolkit for Exceptional Parents. Translate observations into advocacy, create custom scripts, and simplify IEPs in minutes.">
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* Page Specific Styles */
+      .hub-hero {
+         background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+         color: white;
+         padding: 140px 24px 80px;
+         text-align: center;
+         border-bottom: 4px solid var(--color-highlight);
+      }
+
+      .hub-hero h1 {
+         color: white;
+         font-size: clamp(2.2rem, 5vw, 3.5rem);
+         margin-bottom: 24px;
+         line-height: 1.1;
+      }
+
+      .hub-hero p {
+         color: #cbd5e1;
+         font-size: 1.25rem;
+         max-width: 700px;
+         margin: 0 auto 32px;
+         line-height: 1.6;
+      }
+
+      .philosophy-banner {
+         background: var(--color-background-warm);
+         border-bottom: 1px solid #e2e8f0;
+         padding: 40px 24px;
+         text-align: center;
+      }
+
+      .philosophy-content {
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      .philosophy-quote {
+         font-size: 1.4rem;
+         font-family: var(--font-header);
+         font-weight: 700;
+         color: var(--color-primary);
+         margin-bottom: 16px;
+         font-style: italic;
+      }
+
+      .problem-solution-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 40px;
+         max-width: 1000px;
+         margin: 60px auto;
+         padding: 0 24px;
+      }
+
+      @media (max-width: 768px) {
+         .problem-solution-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .ps-card {
+         background: white;
+         padding: 32px;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+      }
+
+      .ps-card.problem {
+         border-top: 4px solid #ef4444;
+      }
+
+      .ps-card.solution {
+         border-top: 4px solid #22c55e;
+      }
+
+      .pillars-section {
+         background: #f8fafc;
+         padding: 80px 24px;
+      }
+
+      .pillars-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 32px;
+         max-width: 1200px;
+         margin: 0 auto;
+      }
+
+      .pillar-card {
+         background: white;
+         border-radius: 16px;
+         padding: 32px;
+         transition: var(--transition);
+         box-shadow: var(--shadow-sm);
+         display: flex;
+         flex-direction: column;
+      }
+
+      .pillar-card:hover {
+         transform: translateY(-5px);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .pillar-icon {
+         width: 60px;
+         height: 60px;
+         background: var(--color-highlight-light);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 1.5rem;
+         color: var(--color-highlight);
+         margin-bottom: 24px;
+      }
+
+      .pillar-card h3 {
+         font-size: 1.5rem;
+         margin-bottom: 8px;
+      }
+
+      .pillar-tagline {
+         color: var(--color-highlight);
+         font-weight: 700;
+         text-transform: uppercase;
+         font-size: 0.85rem;
+         letter-spacing: 0.05em;
+         margin-bottom: 16px;
+         display: block;
+      }
+
+      .pillar-card ul {
+         margin: 0;
+         padding-left: 20px;
+         margin-top: auto;
+      }
+
+      .pillar-card li {
+         margin-bottom: 12px;
+         font-size: 0.95rem;
+      }
+
+      /* Reuse Example Styles from IEP page for consistency */
+      .example-section {
+         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+         border-radius: 16px;
+         padding: 40px;
+         margin: 60px auto;
+         max-width: 900px;
+         border-left: 4px solid #22c55e;
+      }
+
+      .example-input,
+      .example-output {
+         background: white;
+         border-radius: 12px;
+         padding: 24px;
+         margin-bottom: 0;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      .arrow-down {
+         text-align: center;
+         font-size: 2rem;
+         color: #22c55e;
+         margin: 16px 0;
+      }
+
+      .cta-section {
+         text-align: center;
+         padding: 80px 24px;
+         background: var(--color-primary);
+         color: white;
+      }
+
+      .btn-hero {
+         background-color: var(--color-accent);
+         color: var(--color-primary);
+         padding: 18px 36px;
+         border-radius: var(--border-radius);
+         font-weight: 700;
+         font-size: 1.2rem;
+         transition: var(--transition);
+         display: inline-block;
+         margin-top: 24px;
+      }
+
+      .btn-hero:hover {
+         background-color: white;
+         color: var(--color-primary);
+         transform: translateY(-2px);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="global-header"></div>
+
+   <section class="hub-hero">
+      <div class="container">
+         <h1>The AI Toolkit for Exceptional Parents</h1>
+         <p>Stop starting from scratch. Use AI to translate your daily observations into powerful advocacy, calm-down scripts, and IEP strategies—in minutes, not hours.</p>
+         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="#starter-pack" class="btn-hero">Get Free Prompt Starter Pack</a>
+            <a href="#how-it-works" style="display: inline-flex; align-items: center; color: white; text-decoration: underline; font-weight: 600; margin-top: 36px;">See How It Works ↓</a>
+         </div>
+      </div>
+   </section>
+
+   <section class="philosophy-banner">
+      <div class="philosophy-content">
+         <p class="philosophy-quote">"AI isn't here to replace you as a parent—it's here to amplify your voice when you're too exhausted to find the words."</p>
+         <p>You are the expert on your child. You have the data, the observations, and the gut instincts. The Advocacy Hub turns your raw notes into professional emails, your observations into clinical insights, and your exhausted thoughts into actionable plans.</p>
+      </div>
+   </section>
+
+   <div class="container">
+      <div class="problem-solution-grid">
+         <div class="ps-card problem">
+            <h3>The Problem: The Translation Gap</h3>
+            <p><strong>You speak "Kid." The school speaks "System."</strong></p>
+            <p>You know your child isn't "acting out"—they are dysregulated. You know they aren't "lazy"—they are overwhelmed. But bridging that gap requires perfectly worded emails, data logs, and professional communication that takes hours you don't have.</p>
+         </div>
+         <div class="ps-card solution">
+            <h3>The Solution: The AI Bridge</h3>
+            <p><strong>We built the bridge for you.</strong></p>
+            <p>This Hub provides the exact AI prompts and frameworks to turn your late-night notes into:</p>
+            <ul>
+               <li>IEP/504 Request Letters that get read.</li>
+               <li>De-escalation Scripts that actually lower the volume.</li>
+               <li>Teacher Emails that build bridges, not walls.</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <section class="pillars-section">
+      <div class="container">
+         <h2 style="text-align: center; margin-bottom: 48px; font-size: 2.2rem;">Choose Your Toolset</h2>
+         <div class="pillars-grid">
+            <div class="pillar-card">
+               <div class="pillar-icon"><i class="fas fa-gavel"></i></div>
+               <span class="pillar-tagline">Make Them Listen</span>
+               <h3>The Advocate</h3>
+               <p>Tools for dealing with schools, medical professionals, and insurance.</p>
+               <ul>
+                  <li><strong>IEP Goal Refiner:</strong> Make vague goals S.M.A.R.T.</li>
+                  <li><strong>"Paper Trail" Generator:</strong> Formalize incident logs.</li>
+                  <li><strong>Professional Pushback:</strong> How to politely say "No."</li>
+               </ul>
+               <a href="iep-advocate-prompt.html" class="btn" style="margin-top: 24px; text-align: center;">View Advocate Tools</a>
+            </div>
+
+            <div class="pillar-card">
+               <div class="pillar-icon"><i class="fas fa-heart"></i></div>
+               <span class="pillar-tagline">Restore The Calm</span>
+               <h3>The Peacemaker</h3>
+               <p>Tools for home life, sensory regulation, and emotional safety.</p>
+               <ul>
+                  <li><strong>Sensory Detective:</strong> Find hidden trigger patterns.</li>
+                  <li><strong>"Sock Wars" Script:</strong> Routines for daily battles.</li>
+                  <li><strong>Meltdown Autopsy:</strong> Analyze what went wrong without blame.</li>
+               </ul>
+               <a href="sock-war.html" class="btn" style="margin-top: 24px; text-align: center;">View Peacemaker Tools</a>
+            </div>
+
+            <div class="pillar-card">
+               <div class="pillar-icon"><i class="fas fa-brain"></i></div>
+               <span class="pillar-tagline">Understand The Brain</span>
+               <h3>The Translator</h3>
+               <p>Tools for decoding clinical reports and explaining your child to others.</p>
+               <ul>
+                  <li><strong>Grandparent Guide:</strong> Simple explanations for family.</li>
+                  <li><strong>Jargon Buster:</strong> Decode clinical reports.</li>
+                  <li><strong>Strength Finder:</strong> Highlight their superpowers.</li>
+               </ul>
+               <a href="gifted-assessment-tool.html" class="btn" style="margin-top: 24px; text-align: center;">View Translator Tools</a>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <div class="container" id="how-it-works">
+      <h2 style="text-align: center; margin-top: 40px;">See It In Action</h2>
+      <div class="example-section">
+         <h3 style="color: #22c55e; margin-bottom: 24px;">The "Math Worksheet" Meltdown</h3>
+
+         <div class="example-input">
+            <h4 style="color: #1B365D; margin-bottom: 16px;">Input (What you type):</h4>
+            <p style="font-style: italic; color: #666;">"My kid keeps flipping out when the math worksheet has too many problems on it. He rips the paper. The teacher says he's defiant. I know he's just overwhelmed visually. Help me write an email."</p>
+         </div>
+
+         <div class="arrow-down">↓</div>
+
+         <div class="example-output">
+            <h4 style="color: #22c55e; margin-bottom: 16px;">AI Output (The Result):</h4>
+            <p style="margin-bottom: 12px;"><strong>Subject: Adjustment for Math Worksheets - [Child's Name]</strong></p>
+            <p>"Dear [Teacher],</p>
+            <p>We've noticed a consistent pattern regarding [Child]'s math work. The behavior viewed as defiance appears to be a stress response to visual overcrowding. When presented with 20 problems at once, his processing shuts down.</p>
+            <p><strong>Proposed Accommodation:</strong> Could we try cutting the worksheet in half or using a 'window' tool to show only one problem at a time? This aligns with his documented need for 'reduced visual clutter' and may help him demonstrate his actual math ability without the anxiety spike."</p>
+         </div>
+      </div>
+   </div>
+
+   <section class="cta-section">
+      <div class="container">
+         <h2>You don't have to do this alone.</h2>
+         <p style="font-size: 1.2rem; opacity: 0.9; margin-top: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">Join the parents using technology to reclaim their time, their sanity, and their voice.</p>
+         <a href="join-club.html" class="btn-hero" style="background: white; color: var(--color-primary);">Join the Navigator Club</a>
+      </div>
+   </section>
+
+   <div id="global-footer"></div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

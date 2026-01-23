@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Beige Diet: Sensory Picky Eating | Navigator Kids AI™</title>
+   <meta name="description" content="When your child only eats beige foods, it's often sensory—not stubbornness. Understand picky eating in gifted kids and expand their diet gently.">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* === PAGE SPECIFIC STYLES === */
+
+      /* Article Layout */
+      .article-layout {
+         display: grid;
+         grid-template-columns: 1fr 300px;
+         gap: 60px;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 40px 24px 80px;
+      }
+
+      @media (max-width: 1024px) {
+         .article-layout {
+            grid-template-columns: 1fr;
+         }
+
+         .article-sidebar {
+            order: -1;
+         }
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+         color: var(--color-text-muted);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-highlight);
+         transition: var(--transition);
+      }
+
+      .breadcrumbs a:hover {
+         color: var(--color-highlight-dark);
+      }
+
+      .breadcrumbs span {
+         margin: 0 8px;
+         color: var(--color-text-muted);
+      }
+
+      /* Article Header */
+      .article-header {
+         margin-bottom: 40px;
+      }
+
+      .article-header h1 {
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         margin-bottom: 24px;
+         line-height: 1.2;
+         color: var(--color-primary);
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+      }
+
+      .author-photo {
+         width: 56px;
+         height: 56px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: 700;
+         font-size: 1.1rem;
+      }
+
+      .author-info {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
+
+      .author-name {
+         font-weight: 700;
+         color: var(--color-primary);
+      }
+
+      .author-role {
+         font-size: 0.85rem;
+         color: var(--color-highlight);
+      }
+
+      .publish-date {
+         font-size: 0.9rem;
+         color: var(--color-text-muted);
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         margin-bottom: 40px;
+         border-left: 4px solid var(--color-highlight);
+      }
+
+      .key-takeaways h2 {
+         font-size: 1.1rem;
+         color: var(--color-highlight);
+         margin-bottom: 16px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .key-takeaways ul {
+         margin: 0;
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 10px;
+         color: var(--color-text);
+      }
+
+      /* Article Body */
+      .article-body {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 48px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      @media (max-width: 600px) {
+         .article-body {
+            padding: 32px 24px;
+         }
+      }
+
+      .article-body p {
+         margin-bottom: 24px;
+         font-size: 1.05rem;
+         line-height: 1.8;
+      }
+
+      .article-body h2 {
+         font-size: 1.6rem;
+         margin: 48px 0 24px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid var(--color-highlight-light);
+         color: var(--color-primary);
+      }
+
+      .article-body h3 {
+         font-size: 1.25rem;
+         margin: 32px 0 16px;
+         color: var(--color-primary);
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin-bottom: 24px;
+         padding-left: 24px;
+      }
+
+      .article-body li {
+         margin-bottom: 12px;
+         line-height: 1.7;
+      }
+
+      .article-body li strong {
+         color: var(--color-primary);
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background: var(--color-background-warm);
+         border-left: 4px solid var(--color-accent);
+         border-radius: 0 var(--border-radius) var(--border-radius) 0;
+         padding: 28px 32px;
+         margin: 32px 0;
+      }
+
+      .highlight-box h3 {
+         font-size: 1.1rem;
+         color: var(--color-accent);
+         margin-bottom: 12px;
+      }
+
+      .highlight-box p {
+         margin: 0;
+         font-size: 1rem;
+      }
+
+      /* Sidebar Widget */
+      .sidebar-widget {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         position: sticky;
+         top: 100px;
+         text-align: center;
+         border-top: 4px solid var(--color-highlight);
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.2rem;
+         margin-bottom: 12px;
+      }
+
+      .sidebar-widget p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin-bottom: 20px;
+      }
+
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 14px 24px;
+         background: var(--color-highlight);
+         color: white;
+         border-radius: var(--border-radius);
+         font-weight: 600;
+         font-size: 0.95rem;
+         transition: var(--transition);
+         width: 100%;
+      }
+
+      .btn:hover {
+         background: var(--color-highlight-dark);
+         transform: translateY(-2px);
+         color: white;
+      }
+
+      /* Read Next */
+      .read-next {
+         background: var(--color-primary);
+         padding: 80px 24px;
+         margin-top: 60px;
+      }
+
+      .read-next h2 {
+         color: white;
+         text-align: center;
+         margin-bottom: 40px;
+         font-size: 1.8rem;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 24px;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+         .read-next-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .read-next-card {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 32px;
+         transition: var(--transition);
+         cursor: pointer;
+         text-decoration: none;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.2rem;
+         margin-bottom: 8px;
+         transition: var(--transition);
+         color: var(--color-primary);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-highlight);
+      }
+
+      .read-next-card p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin: 0;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="global-header"></div>
+
+   <div class="article-layout">
+      <article class="article-content">
+         <div class="breadcrumbs">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calm-down-kit.html">Resources</a> <span>/</span>
+            <span>The Beige Diet</span>
+         </div>
+
+         <header class="article-header">
+            <h1>The "Beige Diet": When Predictability Tastes Like Safety</h1>
+            <div class="author-byline">
+               <div class="author-photo">AS</div>
+               <div class="author-info">
+                  <div class="author-name">Avery Sage</div>
+                  <div class="author-role">Navigator Parent & Guide</div>
+                  <div class="publish-date">Updated February 2026</div>
+               </div>
+            </div>
+         </header>
+
+         <div class="key-takeaways">
+            <h2>Our Experience in a Nutshell</h2>
+            <ul>
+               <li>The "Beige Diet" wasn't about stubbornness—it was about <strong>data processing</strong>.</li>
+               <li>Our child's "Ferrari brain" perceived inconsistent textures (like blueberries) as risky errors.</li>
+               <li>Forcing "just one bite" usually triggered a fight-or-flight response, killing their appetite.</li>
+               <li>We found success by respecting the "safe" texture and slowly bridging to new flavors.</li>
+            </ul>
+         </div>
+
+         <div class="article-body">
+            <p>If you opened my pantry a few years ago, it looked like a monochromatic shrine to the color beige. Chicken nuggets. Goldfish crackers. Plain pasta. White bread. French fries.</p>
+
+            <p>I spent months trying to hide spinach in brownies (they always knew) or negotiating for a single carrot stick. I felt like I was failing. I worried I was raising a "spoiled" eater. I worried about scurvy.</p>
+
+            <p>Then I had a realization that changed our entire dinner table dynamic: <strong>My child wasn't refusing the <em>taste</em>. They were refusing the <em>surprise</em>.</strong></p>
+
+            <div class="highlight-box">
+               <h3>The Goldfish vs. The Blueberry</h3>
+               <p>Think about a Goldfish cracker. Every single one is identical. The crunch is the same. The salt is the same. It is 100% predictable data. Now think about a blueberry. One is sweet and firm. The next is sour and mushy. To a high-sensing brain that processes input at 100mph, a blueberry is a game of Russian Roulette.</p>
+            </div>
+
+            <h2>It’s Not Picky, It’s Protective</h2>
+            <p>For our kids, eating isn't just fueling up—it's a high-stakes data processing event. Their brains are analyzing texture, temperature, and taste at a speed that would make a supercomputer dizzy. "Beige foods" are factory-made to be consistent. They are safe because the data is known.</p>
+
+            <p>Once we realized this, we stopped viewing dinner as a battle of wills and started seeing it as a sensory management challenge.</p>
+
+            <h3>Why Pressure Backfired on Us</h3>
+            <p>In our house, the "Just take one bite" rule caused absolute chaos. We realized that when a child is in a state of sensory defense (anxiety), their appetite shuts down physically. By forcing the bite, we were accidentally training their brain to associate vegetables with adrenaline and fear. We were making the "unsafe" food even scarier.</p>
+
+            <h2>The Frameworks That Finally Worked</h2>
+            <p>We stopped fighting the beige and started building bridges. Here is the framework we used to bring peace back to the table:</p>
+
+            <h3>1. The "Safety Net" Promise</h3>
+            <p>We made a deal: There will always be one "safe" food on the plate, and they could eat as much of it as they wanted. No surprises. This lowered their guard immediately. When the threat of going hungry vanished, their curiosity actually had room to come back.</p>
+
+            <h3>2. Building Bridges (Food Chaining)</h3>
+            <p>We stopped trying to jump from Nuggets to Broccoli. That gap is too wide. We built small bridges based on texture:</p>
+            <ul>
+               <li><strong>Start:</strong> French Fries (Safe, salty, crunchy/soft).</li>
+               <li><strong>Step 1:</strong> Sweet Potato Fries (Same shape, same texture, different color).</li>
+               <li><strong>Step 2:</strong> Roasted Carrot Sticks (Same shape, sweet like the potato, but a vegetable).</li>
+            </ul>
+            <p>We changed one variable at a time. If we changed the flavor, we kept the texture identical.</p>
+
+            <h3>3. The "Polite Napkin" Loophole</h3>
+            <p>We introduced a new rule: <em>"You don't have to eat it. You just have to be a scientist."</em></p>
+            <p>We encouraged them to poke it, smell it, lick it, or even chew it and spit it out into a "polite napkin." Removing the pressure to swallow meant they were willing to put it in their mouths. And honestly? After 10 or 20 "experiments," they often decided it wasn't so bad.</p>
+
+            <div class="highlight-box">
+               <h3>How we used AI to find bridges</h3>
+               <p>This is a great use for our AI tools. Try this prompt: <em>"My child only eats chicken nuggets and plain toast. Can you suggest a 5-step 'food chain' to get us closer to eating a mild fish taco, changing only one texture or flavor variable at a time?"</em></p>
+            </div>
+
+            <h2>The Takeaway</h2>
+            <p>Your child isn't broken because they won't eat casserole. They are highly attuned to their environment. By respecting their need for predictability, you can slowly—very slowly—expand their world from beige to a few more colors.</p>
+
+            <p>And if they have nuggets for dinner tonight? It's okay. You're feeding them safety, and that matters just as much as the vitamins.</p>
+         </div>
+      </article>
+
+      <aside class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Understand Your Child's Sensory Profile</h3>
+            <p>Our free quiz identifies sensory processing patterns and provides personalized strategies.</p>
+            <a href="learning-style-quiz.html" class="btn">
+               <i class="fas fa-clipboard-list"></i> Start Free Quiz
+            </a>
+         </div>
+      </aside>
+   </div>
+
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="sock-war.html" class="read-next-card">
+               <h3>The Sock War</h3>
+               <p>Why seams feel like razor blades to sensitive children.</p>
+            </a>
+            <a href="seekers-vs-avoiders.html" class="read-next-card">
+               <h3>Seekers vs. Avoiders</h3>
+               <p>Understanding your child's sensory processing style.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+
+   <div id="global-footer"></div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

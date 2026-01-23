@@ -1,71 +1,32 @@
-<!-- 
-    NAVIGATOR KIDS AI - HEADER COMPONENT
-    header.html
-    
-    This file is for reference only.
-    The actual header is injected by components.js
-    Copy this HTML if you need to use it in a build system.
--->
-
-<nav class="navbar" id="navbar">
-   <div class="container nav-content">
-      <!-- Logo -->
-      <a href="/" class="logo">
-         <span class="logo-icon">🧒</span>
-         Navigator Kids AI
-      </a>
-
-      <!-- Desktop Navigation -->
-      <div class="nav-links" id="navLinks">
-         <a href="/quiz/">Free Quiz</a>
-         <a href="/resources/">Resources</a>
-         <a href="/products/">Products</a>
-         <a href="/tools/">Free Tools</a>
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart">
-            🛒
-            <span class="nav-cart-count" id="navCartCount"></span>
+<nav class="navbar">
+   <div class="container">
+      <div class="navbar__inner">
+         <a href="index.html" class="navbar__logo">
+            <i class="fas fa-compass"></i>
+            Navigator <span>Kids AI</span>™
          </a>
-         <a href="/quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
+
+         <div class="navbar__nav">
+            <ul class="navbar__links">
+               <li><a href="index.html">Home</a></li>
+               <li><a href="about.html">About</a></li>
+               <li><a href="learning-style-quiz.html">Free Quiz</a></li>
+               <li><a href="resources.html">Resources</a></li>
+            </ul>
+            <a href="join-club.html" class="navbar__cta">Get Started</a>
+         </div>
+
+         <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+         </button>
       </div>
-
-      <!-- Mobile Toggle -->
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-         <span></span>
-         <span></span>
-         <span></span>
-      </button>
    </div>
 
-   <!-- Mobile Menu -->
-   <div class="mobile-menu" id="mobileMenu">
-      <a href="/quiz/">Free Quiz</a>
-      <a href="/resources/">Resources</a>
-      <a href="/products/">Products</a>
-      <a href="/tools/">Free Tools</a>
-      <a href="/about/">About</a>
-      <a href="/cart/">Cart (<span class="mobile-cart-count">0</span>)</a>
-      <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
-   </div>
+   <nav class="mobile-nav" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="learning-style-quiz.html">Free Quiz</a>
+      <a href="resources.html">Resources</a>
+      <a href="join-club.html">Get Started</a>
+   </nav>
 </nav>
-
-<!-- 
-    NAVIGATION STRUCTURE:
-    
-    / .................... Homepage
-    /quiz/ ............... Brain Profile Quiz
-    /resources/ .......... Blog Articles
-    /products/ ........... All Products (AI Prompts + Activity Packets)
-    /tools/ .............. Free Tools (IEP Generator, Email Templates, etc.)
-    /cart/ ............... Shopping Cart
-    /checkout/ ........... Checkout
-    /about/ .............. About Us
-    /contact/ ............ Contact Form
-    
-    RESULTS PAGES:
-    /results/intense-feeler/
-    /results/reluctant-starter/
-    /results/deep-diver/
-    /results/sensitive-observer/
-    /results/bold-explorer/
-    /results/big-picture-thinker/
--->

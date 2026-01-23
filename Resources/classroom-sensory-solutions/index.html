@@ -4,8 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Meltdown or Manipulation? | Navigator Kids AI™</title>
-   <meta name="description" content="That outburst isn't manipulation—it's overwhelm. Learn the key differences between meltdowns and strategic behavior, and how to respond to each.">
+   <title>Classroom Sensory Accommodations | Navigator Kids AI™</title>
+   <meta name="description" content="Get your child the classroom accommodations they need. Learn how to advocate for sensory supports like fidgets, headphones, and flexible seating.">
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -117,9 +117,6 @@
          margin-bottom: 16px;
          text-transform: uppercase;
          letter-spacing: 0.05em;
-         display: flex;
-         align-items: center;
-         gap: 10px;
       }
 
       .key-takeaways ul {
@@ -164,7 +161,8 @@
          color: var(--color-primary);
       }
 
-      .article-body ul {
+      .article-body ul,
+      .article-body ol {
          margin-bottom: 24px;
       }
 
@@ -196,56 +194,53 @@
          font-size: 1rem;
       }
 
-      .script-box {
+      .accommodation-category {
          background: var(--color-highlight-light);
          border-radius: var(--border-radius-lg);
-         padding: 28px 32px;
+         padding: 32px;
          margin: 32px 0;
-         border-left: 4px solid var(--color-highlight);
       }
 
-      .script-box h4 {
-         font-size: 1rem;
-         color: var(--color-highlight);
-         margin-bottom: 12px;
-         text-transform: uppercase;
-         letter-spacing: 0.05em;
-      }
-
-      .script-text {
-         font-style: italic;
-         font-family: 'Inter', sans-serif;
-         font-size: 1.15rem;
-         line-height: 1.7;
+      .accommodation-category h3 {
+         font-size: 1.3rem;
+         margin-bottom: 24px;
+         text-align: center;
          color: var(--color-primary);
-         margin: 0;
       }
 
-      .comparison-table {
-         width: 100%;
-         border-collapse: collapse;
-         margin: 32px 0;
+      .accommodation-list {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 20px;
+      }
+
+      .accommodation-item {
          background: white;
          border-radius: var(--border-radius);
-         overflow: hidden;
+         padding: 24px;
          box-shadow: var(--shadow-sm);
       }
 
-      .comparison-table th {
-         background: var(--color-primary);
-         color: white;
-         padding: 16px;
-         text-align: left;
+      .accommodation-item h4 {
+         font-size: 1rem;
+         margin-bottom: 8px;
+         color: var(--color-primary);
+         display: flex;
+         align-items: center;
+         gap: 8px;
       }
 
-      .comparison-table td {
-         padding: 16px;
-         border-bottom: 1px solid #eee;
-         vertical-align: top;
+      .accommodation-item h4::before {
+         content: "✓";
+         color: var(--color-highlight);
+         font-weight: bold;
       }
 
-      .comparison-table tr:nth-child(even) {
-         background: var(--color-background);
+      .accommodation-item p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin: 0;
+         line-height: 1.5;
       }
 
       .sidebar-widget {
@@ -270,11 +265,10 @@
          margin-bottom: 20px;
       }
 
-      .btn-full {
-         width: 100%;
-         display: flex;
-         justify-content: center;
+      .btn {
+         display: inline-flex;
          align-items: center;
+         justify-content: center;
          gap: 8px;
          padding: 14px 24px;
          background: var(--color-highlight);
@@ -283,9 +277,10 @@
          font-weight: 600;
          font-size: 0.95rem;
          transition: var(--transition);
+         width: 100%;
       }
 
-      .btn-full:hover {
+      .btn:hover {
          background: var(--color-highlight-dark);
          transform: translateY(-2px);
       }
@@ -352,20 +347,20 @@
    <div class="article-layout">
       <article class="article-content">
          <div class="breadcrumbs">
-            <a href="/">Home</a> <span>/</span>
+            <a href="index.html">Home</a> <span>/</span>
             <a href="resources.html">Resources</a> <span>/</span>
-            <a href="resources.html">Emotional Regulation</a> <span>/</span>
-            <span>Meltdown or Manipulation</span>
+            <a href="resources.html">Sensory & Physical</a> <span>/</span>
+            <span>Classroom Solutions</span>
          </div>
 
          <header class="article-header">
-            <h1>Meltdown or Manipulation? How to Tell the Difference</h1>
+            <h1>The Sensory Survival Guide: Turning Down the Volume at School</h1>
             <div class="author-byline">
-               <div class="author-photo">AS</div>
+               <div class="author-photo">RW</div>
                <div class="author-info">
-                  <div class="author-name">Avery Sage</div>
-                  <div class="author-role">Emotional Intelligence Guide</div>
-                  <div class="publish-date">Updated October 2025</div>
+                  <div class="author-name">Rachel Whitcomb</div>
+                  <div class="author-role">Founder & Parent Advocate</div>
+                  <div class="publish-date">Updated January 2026</div>
                </div>
             </div>
          </header>
@@ -373,91 +368,92 @@
          <div class="key-takeaways">
             <h2>Our Experience in a Nutshell</h2>
             <ul>
-               <li>The biggest mistake we made was trying to "discipline" a meltdown—it was like punishing a seizure.</li>
-               <li>Strategic behavior ("The Screaming App") works because they are checking for a connection. Meltdowns happen when the connection is lost.</li>
-               <li>When in doubt, we always assume Meltdown first. It builds trust, whereas assuming Manipulation breaks it.</li>
-               <li>The "Audience Test" became our #1 tool for telling them apart.</li>
+               <li>The "After School Explosion" (Restraint Collapse) was our biggest clue that the classroom environment was draining them.</li>
+               <li>We stopped asking for "special treatment" and started asking for "tools to help them focus."</li>
+               <li>Small tweaks—like wearing a hat or sitting on a wiggle cushion—made a massive difference in energy levels.</li>
+               <li>The goal isn't to fix the child; it's to reduce the friction in the environment.</li>
             </ul>
          </div>
 
          <div class="article-body">
-            <p>I used to feel like a detective at a crime scene every time my child screamed. I’d be standing in the grocery store aisle, watching them thrash on the floor, thinking: <em>"Are they doing this on purpose? Or are they genuinely losing it?"</em></p>
+            <p>For the longest time, I was baffled. The teacher would tell me, "Oh, your child is an angel! They are so quiet and focused." Then, the second the car door closed at pickup, my "angel" would explode. Screaming, crying, kicking the seat, or just dissolving into a puddle of tears.</p>
 
-            <p>It’s the question that haunts every parent of an intense child. If you comfort a "manipulative" tantrum, you feel like you're being played. If you punish a genuine meltdown, you feel like a monster.</p>
+            <p>It’s called <strong>Restraint Collapse</strong>. My child was spending every ounce of energy just <em>keeping it together</em> in a sensory nightmare. The flickering fluorescent lights, the scraping of chairs, the 25 other breathing bodies—it was like trying to do algebra in the middle of a Las Vegas casino.</p>
 
-            <p>We eventually realized that the difference isn't about their <em>intent</em>—it's about their <em>neurology</em>.</p>
-
-            <div class="highlight-box">
-               <h3>The Wi-Fi Analogy</h3>
-               <p>Think of your child's brain like a computer connected to Wi-Fi. In <strong>Strategic Behavior</strong> (Manipulation), the Wi-Fi signal is strong. They are online, rational, and just using a loud "app" to get what they want. In a <strong>Meltdown</strong>, the Wi-Fi is down. The router has crashed. They literally cannot access their coping skills because the connection is broken.</p>
-            </div>
-
-            <h2>The Side-by-Side Comparison</h2>
-            <p>We built this cheat sheet to help us decide in the moment whether to be a "Coach" or a "Safety Net."</p>
-
-            <table class="comparison-table">
-               <tr>
-                  <th>Indicator</th>
-                  <th>True Meltdown (Wi-Fi Down)</th>
-                  <th>Strategic Behavior (Wi-Fi On)</th>
-               </tr>
-               <tr>
-                  <td><strong>The Audience Test</strong></td>
-                  <td>They don't care who is watching. They would do it in an empty room.</td>
-                  <td>They check to see if you are looking. If you leave, they get louder or follow you.</td>
-               </tr>
-               <tr>
-                  <td><strong>Language</strong></td>
-                  <td>Garbled, repetitive, or non-existent ("I HATE YOU" on repeat).</td>
-                  <td>Clear demands ("I want the iPad!"). They can negotiate.</td>
-               </tr>
-               <tr>
-                  <td><strong>The Bribe Test</strong></td>
-                  <td>If you offer them ice cream, they can't stop screaming to eat it.</td>
-                  <td>If you offer ice cream, they stop instantly.</td>
-               </tr>
-               <tr>
-                  <td><strong>Physical Signs</strong></td>
-                  <td>Red face, sweating, pupils dilated. It is a biological event.</td>
-                  <td>They can turn the tears on and off like a faucet.</td>
-               </tr>
-            </table>
-
-            <h2>How We Handle It (The Two Paths)</h2>
-
-            <h3>Path A: It's a Meltdown (Safety First)</h3>
-            <p>If the Wi-Fi is down, logic won't upload. We stop talking. We sit on the floor. We become a <strong>Safety Anchor</strong>.</p>
-            <ul>
-               <li><strong>Goal:</strong> Co-regulation.</li>
-               <li><strong>Action:</strong> Reduce noise. Get low. "I am here. You are safe."</li>
-               <li><strong>Mistake to Avoid:</strong> Asking questions or threatening consequences. You cannot reason with a crashed router.</li>
-            </ul>
-
-            <h3>Path B: It's Strategic (The Bored Wall)</h3>
-            <p>If they are just testing a button to see if it works, we make sure the button is broken. We become <strong>The Bored Wall</strong>.</p>
-            <ul>
-               <li><strong>Goal:</strong> Extinction of behavior.</li>
-               <li><strong>Action:</strong> We state the boundary once ("No iPad until dinner") and then we disengage physically. We don't get angry; we get boring. We start folding laundry.</li>
-               <li><strong>Why it works:</strong> Strategic behavior needs fuel (your reaction). When you cut the fuel, the fire goes out.</li>
-            </ul>
+            <p>We realized that if we wanted to stop the after-school meltdown, we had to lower the sensory load during the school day.</p>
 
             <div class="highlight-box">
-               <h3>The Golden Rule</h3>
-               <p>If you aren't sure, <strong>assume it's a Meltdown</strong>. If you comfort a manipulative child, you just wasted 10 minutes. If you punish a child in a meltdown, you add trauma to their panic. Err on the side of safety.</p>
+               <h3>The "Battery" Concept</h3>
+               <p>Imagine your child starts the day with 100% battery. In a typical classroom, the lights drain 10%. The noise drains 20%. The itchy chair drains 10%. By lunch, they are at 15%. Accommodations aren't about "coddling"—they are about plugging the leaks so your child has enough battery left to actually learn math.</p>
             </div>
+
+            <h2>The Toolkit That Saved Our School Year</h2>
+            <p>We stopped using the word "Accommodations" because it sounded like legal trouble to the school. We started calling them "Focus Tools." Here is what actually worked for us:</p>
+
+            <div class="accommodation-category">
+               <h3>For the Eyes (Visual Overload)</h3>
+               <div class="accommodation-list">
+                  <div class="accommodation-item">
+                     <h4>The "Vampire" Rule</h4>
+                     <p>We got permission for them to wear a baseball cap or slightly tinted glasses indoors. It blocks the overhead fluorescent flicker that makes their brain tired.</p>
+                  </div>
+                  <div class="accommodation-item">
+                     <h4>Natural Light Seating</h4>
+                     <p>We asked for a seat near the window (natural light) but <em>facing away</em> from the busy hallway. Less visual chaos = more focus.</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="accommodation-category">
+               <h3>For the Ears (Auditory Overload)</h3>
+               <div class="accommodation-list">
+                  <div class="accommodation-item">
+                     <h4>The "Focus Mode" Headset</h4>
+                     <p>They keep noise-canceling headphones in their desk. They don't wear them during lessons, only during independent work time. It signals "I am working" and blocks the hum.</p>
+                  </div>
+                  <div class="accommodation-item">
+                     <h4>The Exit Pass</h4>
+                     <p>A simple laminated card on the desk. If the noise gets too loud, they can flash the card and go to the water fountain for 2 minutes of silence—no questions asked.</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="accommodation-category">
+               <h3>For the Body (The Need to Move)</h3>
+               <div class="accommodation-list">
+                  <div class="accommodation-item">
+                     <h4>"Heavy Work" Errands</h4>
+                     <p>We asked the teacher to make my child the "Runner." Carrying a heavy stack of books to the library is actually calming for a regulated nervous system.</p>
+                  </div>
+                  <div class="accommodation-item">
+                     <h4>Strategic Seating</h4>
+                     <p>A seat at the back or edge of the row. This lets them stand up behind their desk to work without blocking anyone's view.</p>
+                  </div>
+               </div>
+            </div>
+
+            <h2>How to Ask Without Being "That" Parent</h2>
+            <p>I used to go into meetings armed with laws and demands. It made the teachers defensive. Then I shifted my approach to being a partner.</p>
+
+            <h3>The Script We Used</h3>
+            <p>Instead of saying: <em>"My child needs to wear headphones because they have sensory processing disorder."</em></p>
+            <p>Try saying: <em>"I've noticed that when the room gets loud, he shuts down and stops working. We've found at home that if he puts on headphones for 10 minutes, he gets his work done twice as fast. Can we try that here so he doesn't fall behind?"</em></p>
+
+            <p>See the difference? You are solving the teacher's problem (an unengaged student) rather than demanding special treatment.</p>
 
             <h2>The Bottom Line</h2>
-            <p>Even "strategic" behavior is communication. It usually means: <em>"I don't have the skills to ask for what I need, so I am using volume."</em></p>
-            <p>But by knowing the difference, you stop feeling like a victim of your child's emotions and start feeling like their guide.</p>
+            <p>Accommodations are just tools to level the playing field. If a child needed glasses to see the board, we wouldn't say they were "cheating." If your child needs a wiggle cushion to listen to the story, it's the exact same thing.</p>
+
+            <p>Don't be afraid to experiment. When you find the right tool, it doesn't just help your child—it brings peace to the whole classroom.</p>
          </div>
       </article>
 
       <aside class="article-sidebar">
          <div class="sidebar-widget">
-            <h3>Understand Your Child's Profile</h3>
-            <p>Take our free 2-minute quiz to understand their unique emotional patterns.</p>
-            <a href="learning-style-quiz.html" class="btn-full">
-               <i class="fas fa-microchip"></i> Start Free Quiz
+            <h3>Map Your Child's Sensory Profile</h3>
+            <p>Is your child a "Seeker" or an "Avoider"? Our free quiz helps you explain their needs to teachers.</p>
+            <a href="learning-style-quiz.html" class="btn">
+               <i class="fas fa-microchip"></i> Start Free Assessment
             </a>
          </div>
       </aside>
@@ -467,13 +463,13 @@
       <div class="container">
          <h2>Read Next</h2>
          <div class="read-next-grid">
-            <a href="de-escalation-script.html" class="read-next-card">
-               <h3>The De-Escalation Script</h3>
-               <p>Exactly what to say during a meltdown.</p>
+            <a href="seekers-vs-avoiders.html" class="read-next-card">
+               <h3>Seekers vs. Avoiders</h3>
+               <p>Does your child crash into walls or hide under tables?</p>
             </a>
-            <a href="restraint-collapse.html" class="read-next-card">
-               <h3>Restraint Collapse</h3>
-               <p>Why they are angels at school and overwhelmed at home.</p>
+            <a href="when-noise-hurts.html" class="read-next-card">
+               <h3>When Noise Hurts</h3>
+               <p>Managing auditory sensitivity in overwhelming environments.</p>
             </a>
          </div>
       </div>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>My Amazing Brain Journey - Kids Quiz | Navigator Kids AI™</title>
+
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* Specific Styles for React App Container */
+      .main-content {
+         padding-top: 80px;
+      }
+
+      .bounce-in {
+         animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      @keyframes bounceIn {
+         0% {
+            transform: scale(0.8);
+            opacity: 0;
+         }
+
+         100% {
+            transform: scale(1);
+            opacity: 1;
+         }
+      }
+
+      .premium-text-gradient {
+         background: linear-gradient(to right, var(--color-primary), var(--color-highlight));
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+      }
+
+      .burst-effect {
+         position: fixed;
+         animation: subtle-pulse 0.5s ease-out forwards;
+         pointer-events: none;
+         z-index: 9999;
+      }
+
+      @keyframes subtle-pulse {
+         0% {
+            transform: scale(0.5);
+            opacity: 0.8;
+         }
+
+         100% {
+            transform: scale(1.5);
+            opacity: 0;
+         }
+      }
+
+      /* React Button Overrides to match Site Theme */
+      .btn-primary {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         background: var(--color-highlight);
+         color: white;
+         padding: 16px 32px;
+         border-radius: var(--border-radius);
+         font-weight: 700;
+         font-size: 1rem;
+         transition: var(--transition);
+         border: none;
+         cursor: pointer;
+         font-family: 'Inter', sans-serif;
+      }
+
+      .btn-primary:hover {
+         background: var(--color-highlight-dark);
+         transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+         background: var(--color-accent);
+         color: var(--color-primary);
+      }
+
+      .btn-secondary:hover {
+         background: var(--color-accent-light);
+      }
+   </style>
+</head>
+
+<body>
+   <header class="navbar">
+      <div class="navbar-container">
+         <div class="logo">
+            <a href="/">
+               <i class="fas fa-compass"></i>
+               Navigator <span>Kids AI</span>
+            </a>
+         </div>
+
+         <nav class="desktop-nav">
+            <ul class="nav-links">
+               <li><a href="/">Home</a></li>
+               <li><a href="about.html">About</a></li>
+               <li><a href="learning-style-quiz.html">Free Quiz</a></li>
+               <li><a href="resources.html">Resources</a></li>
+               <li><a href="join-club.html" class="nav-btn-primary">Join the Club</a></li>
+            </ul>
+         </nav>
+
+         <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+         </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobileMenu">
+         <a href="/">Home</a>
+         <a href="about.html">About</a>
+         <a href="learning-style-quiz.html">Free Quiz</a>
+         <a href="resources.html">Resources</a>
+         <a href="join-club.html">Join the Club</a>
+      </nav>
+   </header>
+
+   <div class="main-content">
+      <div id="root"></div>
+   </div>
+
+   <footer class="footer">
+      <div class="footer__grid">
+         <div class="footer__brand">
+            <h4>Navigator Kids AI™</h4>
+            <p>Your child's brain didn't come with a manual. Until now. We provide AI-powered tools and coaching for raising exceptional children.</p>
+         </div>
+         <div class="footer__links">
+            <h4>Quick Links</h4>
+            <ul>
+               <li><a href="/">Home</a></li>
+               <li><a href="about.html">About Us</a></li>
+               <li><a href="learning-style-quiz.html">Free Quiz</a></li>
+               <li><a href="resources.html">Resources</a></li>
+               <li><a href="calm-down-kit.html">Calm-Down Kit</a></li>
+            </ul>
+         </div>
+         <div class="footer__links">
+            <h4>Support</h4>
+            <ul>
+               <li><a href="contact.html">Contact Us</a></li>
+               <li><a href="privacy.html">Privacy Policy</a></li>
+               <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+         </div>
+      </div>
+      <div class="footer__bottom">
+         <p>© 2025 Navigator Kids AI™. All Rights Reserved.</p>
+      </div>
+   </footer>
+
+   <script>
+      function toggleMenu() {
+         const menu = document.getElementById('mobileMenu');
+         menu.classList.toggle('active');
+      }
+   </script>
+
+   <script type="text/babel">
+      const { useState, useRef, useEffect } = React;
+        
+        const SECTIONS = [
+            {
+                id: 'emotional',
+                title: 'Feelings & Heart',
+                emoji: '💖',
+                questions: [
+                    "I can usually tell what I'm feeling inside.",
+                    "Sometimes my feelings get big fast and I don't know why.",
+                    "I can explain my feelings to someone if they ask.",
+                    "When I'm upset, I know what helps me feel better.",
+                    "I get overwhelmed by feelings I don't expect.",
+                    "I feel emotions stronger than most kids I know."
+                ]
+            },
+            {
+                id: 'confidence',
+                title: 'Being Me',
+                emoji: '👑',
+                questions: [
+                    "I feel confident doing things I'm good at.",
+                    "Sometimes I pretend to be less smart or less silly to fit in.",
+                    "I feel proud of who I am as a person.",
+                    "I worry what other people think of me.",
+                    "I feel different from most kids — in a good way.",
+                    "When something is hard, I believe I can learn it eventually."
+                ]
+            },
+            {
+                id: 'friendship',
+                title: 'Friends & Fun',
+                emoji: '🤝',
+                questions: [
+                    "I can tell when someone is safe to be around.",
+                    "I get nervous meeting new kids.",
+                    "I like friends who are gentle and kind.",
+                    "Loud or bossy kids make me uncomfortable.",
+                    "I sometimes worry people will laugh at me.",
+                    "I have at least one person who makes me feel totally myself."
+                ]
+            },
+            {
+                id: 'sensory',
+                title: 'Senses & World',
+                emoji: '👂',
+                questions: [
+                    "Loud noises bother me a lot.",
+                    "Bright lights or busy places make me uncomfortable.",
+                    "I don't like certain textures in clothes.",
+                    "I get overwhelmed if too much is happening at once.",
+                    "I need quiet time to calm my brain.",
+                    "Strong smells (like perfume or cleaners) bother me."
+                ]
+            },
+            {
+                id: 'motivation',
+                title: 'Doing Things',
+                emoji: '💡',
+                questions: [
+                    "I get excited when I'm working on something I love.",
+                    "If something doesn't make sense to me, I don't want to do it.",
+                    "I need a reason for things — not just 'because.'",
+                    "I try really hard when I care about something.",
+                    "It's hard to start tasks that feel boring.",
+                    "Praise or rewards make me want to keep going."
+                ]
+            },
+            {
+                id: 'overthinking',
+                title: 'Thinking & Worrying',
+                emoji: '🧠',
+                questions: [
+                    "I think a lot about 'what if' things.",
+                    "I get stuck worrying even when I don't want to.",
+                    "I freeze when I don't know what to do next.",
+                    "I get frustrated with myself easily.",
+                    "I replay things in my head after they happen.",
+                    "I avoid things that feel too hard or scary."
+                ]
+            },
+            {
+                id: 'executive',
+                title: 'Focus & Plans',
+                emoji: '🧭',
+                questions: [
+                    "I forget things even when I try not to.",
+                    "It's hard to switch tasks when my brain is focused.",
+                    "I lose things like pencils, shoes, or homework.",
+                    "I get distracted even when I want to pay attention.",
+                    "I need help staying organized.",
+                    "I have trouble finishing things I start."
+                ]
+            },
+            {
+                id: 'learning',
+                title: 'Learning Style',
+                emoji: '📚',
+                questions: [
+                    "I learn best when I can see pictures or diagrams.",
+                    "I learn best by doing things, not just talking.",
+                    "I like learning alone (not in big groups).",
+                    "I learn better when things are explained clearly.",
+                    "I need examples before I understand assignments.",
+                    "I learn better in quiet places than noisy ones."
+                ]
+            }
+        ];
+
+        const SCALE = [
+            { value: 0, label: 'Not like me', emoji: '😐' },
+            { value: 1, label: 'A little like me', emoji: '🤔' },
+            { value: 2, label: 'Mostly like me', emoji: '🙂' },
+            { value: 3, label: 'Exactly like me', emoji: '⭐' }
+        ];
+
+        function BurstEffect({ x, y }) {
+            return (
+                <div 
+                    className="burst-effect text-2xl"
+                    style={{ left: x, top: y, color: '#E9C46A' }}
+                >
+                    ✦
+                </div>
+            );
+        }
+
+        function ChildAssessmentApp() {
+            const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+            const [answers, setAnswers] = useState({});
+            const [showResults, setShowResults] = useState(false);
+            const [stars, setStars] = useState([]);
+            const [showIntro, setShowIntro] = useState(true);
+            const [email, setEmail] = useState("");
+
+            const currentSection = SECTIONS[currentSectionIndex];
+
+            useEffect(() => {
+                const timer = setTimeout(() => setStars([]), 500);
+                return () => clearTimeout(timer);
+            }, [stars]);
+
+            const getQuestionId = (sectionIndex, questionIndex) => 
+                `${SECTIONS[sectionIndex].id}-${questionIndex}`;
+
+            const handleOptionSelect = (sectionIndex, questionIndex, value, event) => {
+                const rect = event.target.getBoundingClientRect();
+                const newStar = {
+                    id: Date.now(),
+                    x: rect.left + rect.width / 2 - 12,
+                    y: rect.top + rect.height / 2 - 12
+                };
+                setStars([...stars, newStar]);
+
+                setAnswers(prev => ({
+                    ...prev,
+                    [getQuestionId(sectionIndex, questionIndex)]: value
+                }));
+            };
+
+            const isSectionComplete = (sectionIndex) => {
+                return SECTIONS[sectionIndex].questions.every((_, qIdx) => 
+                    answers[getQuestionId(sectionIndex, qIdx)] !== undefined
+                );
+            };
+
+            const calculateSectionScore = (sectionIndex) => {
+                const section = SECTIONS[sectionIndex];
+                let score = 0;
+                let maxScore = section.questions.length * 3;
+
+                section.questions.forEach((_, qIdx) => {
+                    const val = answers[getQuestionId(sectionIndex, qIdx)];
+                    if (val !== undefined) score += val;
+                });
+
+                return {
+                    score,
+                    maxScore,
+                    percentage: Math.round((score / maxScore) * 100)
+                };
+            };
+
+            const handleNext = () => {
+                if (currentSectionIndex < SECTIONS.length - 1) {
+                    setCurrentSectionIndex(prev => prev + 1);
+                } else {
+                    setShowResults(true);
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            const generateReport = () => {
+                let report = "NAVIGATOR KIDS AI - CHILD SELF-QUIZ RESULTS\n";
+                report += "================================================\n\n";
+                report += `Account Email: ${email}\n\n`;
+                
+                SECTIONS.forEach((section, idx) => {
+                    const stats = calculateSectionScore(idx);
+                    report += `${section.emoji} ${section.title}\n`;
+                    report += `Score: ${stats.score} / ${stats.maxScore} (${stats.percentage}%)\n`;
+                    report += `Intensity: ${stats.percentage > 66 ? 'High' : stats.percentage > 33 ? 'Moderate' : 'Low'}\n\n`;
+                });
+
+                report += "RAW DATA FOR AI ANALYSIS:\n";
+                report += JSON.stringify({ email, answers });
+                
+                return report;
+            };
+
+            const startAssessment = (e) => {
+                e.preventDefault();
+                if (!email || !email.includes('@')) {
+                    alert("Please enter a valid email address so we can keep your assessments together!");
+                    return;
+                }
+                setShowIntro(false);
+            };
+
+            // Intro Screen
+            if (showIntro) {
+                return (
+                    <div className="min-h-screen flex items-center justify-center p-8">
+                        <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full bounce-in" style={{ border: '4px solid #2A9D8F' }}>
+                            <div className="text-center">
+                                <h1 className="text-4xl font-bold mb-4 premium-text-gradient" style={{ fontFamily: 'Inter, sans-serif' }}>
+                                    My Amazing Brain Journey
+                                </h1>
+                                <div className="text-5xl mb-6">🧠✨</div>
+                                <p className="text-xl mb-8" style={{ color: '#2F2F2F', fontFamily: 'Lato, sans-serif' }}>
+                                    Hi there! This is a simple quiz to learn about how your unique brain works. There are no right or wrong answers!
+                                </p>
+
+                                <div className="max-w-md mx-auto mb-8">
+                                    <label className="block text-sm font-bold text-navy mb-2 text-left px-2">Account Email</label>
+                                    <input 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter parent email address"
+                                        className="w-full p-4 border-2 border-slate-200 rounded-xl focus:border-teal outline-none transition-all"
+                                        required
+                                    />
+                                    <p className="text-xs text-slate-500 mt-2 text-left px-2">Use the same email as your parent's account.</p>
+                                </div>
+
+                                <button
+                                    onClick={startAssessment}
+                                    className="btn-primary"
+                                >
+                                    Let's Begin! <i className="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Results Screen
+            if (showResults) {
+                return (
+                    <div className="min-h-screen p-8">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8" style={{ border: '4px solid #2A9D8F' }}>
+                                <h1 className="text-3xl font-bold text-center mb-2 premium-text-gradient" style={{ fontFamily: 'Inter, sans-serif' }}>
+                                    Your Brain Map
+                                </h1>
+                                <p className="text-center mb-8" style={{ color: '#666666' }}>
+                                    You successfully completed the journey! 🎉
+                                </p>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    {SECTIONS.map((section, idx) => {
+                                        const stats = calculateSectionScore(idx);
+                                        const intensity = stats.percentage > 66 ? 'High' : 
+                                                          stats.percentage > 33 ? 'Moderate' : 'Low';
+                                        
+                                        const barColor = stats.percentage > 66 ? '#E07A5F' : 
+                                                         stats.percentage > 33 ? '#E9C46A' : '#2A9D8F';
+                                        const textColor = stats.percentage > 66 ? '#E07A5F' : 
+                                                          stats.percentage > 33 ? '#D4A017' : '#2A9D8F';
+
+                                        return (
+                                            <div 
+                                                key={section.id} 
+                                                className="rounded-2xl p-6 bg-white shadow-sm"
+                                                style={{ border: '1px solid #F4F6F8' }}
+                                            >
+                                                <div className="flex items-center justify-between mb-3">
+                                                    <h3 className="text-lg font-bold flex items-center" style={{ color: '#1B365D', fontFamily: 'Inter, sans-serif' }}>
+                                                        <span className="text-xl mr-2">{section.emoji}</span>
+                                                        {section.title}
+                                                    </h3>
+                                                    <span className="text-lg font-bold" style={{ color: textColor }}>
+                                                        {stats.percentage}%
+                                                    </span>
+                                                </div>
+                                                
+                                                <div className="rounded-full h-3 overflow-hidden" style={{ backgroundColor: '#F4F6F8' }}>
+                                                    <div 
+                                                        className="h-full rounded-full transition-all duration-1000"
+                                                        style={{ 
+                                                            width: `${stats.percentage}%`,
+                                                            backgroundColor: barColor
+                                                        }}
+                                                    />
+                                                </div>
+                                                
+                                                <p className="mt-3 text-xs font-medium" style={{ color: '#666666' }}>
+                                                    Intensity: {intensity}
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <div className="rounded-2xl p-6 mb-6" style={{ backgroundColor: '#E8F4F2' }}>
+                                    <h3 className="text-xl font-bold mb-3" style={{ color: '#1B365D', fontFamily: 'Inter, sans-serif' }}>
+                                        <i className="fas fa-compass"></i> Next Steps
+                                    </h3>
+                                    <p style={{ color: '#2F2F2F' }}>
+                                        Your brain is unique and special! Now, share these results with your grown-up so they can find the best strategies for your learning and growth.
+                                    </p>
+                                </div>
+
+                                <div className="text-center">
+                                    <button
+                                        onClick={() => {
+                                            const report = generateReport();
+                                            navigator.clipboard.writeText(report);
+                                            alert('Results copied! Share them with a grown-up who can help! 📋');
+                                        }}
+                                        className="btn-primary btn-secondary"
+                                    >
+                                        Copy My Results 📋
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Question Screen
+            return (
+                <div className="min-h-screen p-4 md:p-8">
+                    {stars.map(star => (
+                        <BurstEffect key={star.id} x={star.x} y={star.y} />
+                    ))}
+                    
+                    <div className="max-w-3xl mx-auto">
+                        {/* Progress Stars */}
+                        <div className="flex justify-center mb-6 space-x-2">
+                            {SECTIONS.map((section, idx) => (
+                                <div
+                                    key={section.id}
+                                    className="text-xl transition-all duration-300"
+                                    style={{ 
+                                        color: idx < currentSectionIndex ? '#E9C46A' : 
+                                               idx === currentSectionIndex ? '#1B365D' : '#666666'
+                                    }}
+                                    title={section.title}
+                                >
+                                    {idx < currentSectionIndex ? '✦' : 
+                                     idx === currentSectionIndex ? section.emoji : '○'}
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Main Card */}
+                        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden" style={{ border: '1px solid #F4F6F8' }}>
+                            {/* Section Header */}
+                            <div className="p-6 text-white" style={{ backgroundColor: '#1B365D' }}>
+                                <div className="flex items-center justify-between">
+                                    <h2 className="text-xl font-bold flex items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+                                        <span className="text-3xl mr-3">{currentSection.emoji}</span>
+                                        {currentSection.title}
+                                    </h2>
+                                    <span className="text-lg" style={{ color: '#E9C46A' }}>
+                                        {currentSectionIndex + 1} / {SECTIONS.length}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Questions */}
+                            <div className="p-6 md:p-8 space-y-8">
+                                {currentSection.questions.map((question, qIdx) => {
+                                    const questionId = getQuestionId(currentSectionIndex, qIdx);
+                                    const currentValue = answers[questionId];
+
+                                    return (
+                                        <div key={qIdx} className="space-y-4">
+                                            <p className="text-lg font-medium" style={{ color: '#1B365D', fontFamily: 'Inter, sans-serif' }}>
+                                                {qIdx + 1}. {question}
+                                            </p>
+
+                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                                {SCALE.map((option) => (
+                                                    <button
+                                                        key={option.value}
+                                                        onClick={(e) => handleOptionSelect(
+                                                            currentSectionIndex, qIdx, option.value, e
+                                                        )}
+                                                        className="p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105"
+                                                        style={{ 
+                                                            borderColor: currentValue === option.value ? '#E9C46A' : '#F4F6F8',
+                                                            backgroundColor: currentValue === option.value ? '#FFFBF5' : '#F4F6F8',
+                                                            color: '#2F2F2F',
+                                                            boxShadow: currentValue === option.value ? '0 4px 12px rgba(233,196,106,0.3)' : 'none'
+                                                        }}
+                                                    >
+                                                        <div className="text-3xl mb-1">{option.emoji}</div>
+                                                        <div className="text-xs font-medium">{option.label}</div>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Navigation */}
+                            <div className="p-6 flex justify-between items-center" style={{ backgroundColor: '#F4F6F8', borderTop: '1px solid #eee' }}>
+                                <button
+                                    onClick={() => setCurrentSectionIndex(Math.max(0, currentSectionIndex - 1))}
+                                    disabled={currentSectionIndex === 0}
+                                    className="px-6 py-3 rounded-full font-bold transition-all"
+                                    style={{ 
+                                        backgroundColor: currentSectionIndex === 0 ? '#ddd' : '#666',
+                                        color: currentSectionIndex === 0 ? '#999' : 'white',
+                                        cursor: currentSectionIndex === 0 ? 'not-allowed' : 'pointer'
+                                    }}
+                                >
+                                    <i className="fas fa-chevron-left"></i> Back
+                                </button>
+
+                                <button
+                                    onClick={handleNext}
+                                    disabled={!isSectionComplete(currentSectionIndex)}
+                                    className="px-8 py-3 rounded-full font-bold transition-all transform"
+                                    style={{ 
+                                        backgroundColor: isSectionComplete(currentSectionIndex) ? '#2A9D8F' : '#ddd',
+                                        color: isSectionComplete(currentSectionIndex) ? 'white' : '#999',
+                                        cursor: isSectionComplete(currentSectionIndex) ? 'pointer' : 'not-allowed',
+                                        boxShadow: isSectionComplete(currentSectionIndex) ? '0 4px 12px rgba(42,157,143,0.3)' : 'none'
+                                    }}
+                                >
+                                    {currentSectionIndex === SECTIONS.length - 1 ? 'Finish! 🎉' : 'Next Section →'}
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Encouragement */}
+                        <div className="text-center mt-6">
+                            <p className="text-sm font-medium" style={{ color: '#666666' }}>
+                                {isSectionComplete(currentSectionIndex) 
+                                    ? "Great job! Click 'Next Section' to keep going! ⭐"
+                                    : "Take your time and pick what feels right 💡"}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<ChildAssessmentApp />);
+    </script>
+</body>
+
+</html>

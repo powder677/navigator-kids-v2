@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Sensory De-Escalator: AI Scripts for Meltdowns | Navigator Kids AI™</title>
+   <meta name="description" content="You don't need a PhD to stop a meltdown—you need the exact words that work. Learn how to use AI to create custom de-escalation scripts for your child.">
+
+   <meta property="og:title" content="The Sensory De-Escalator">
+   <meta property="og:description" content="Turn your observations into a game plan using our AI Prompt Framework.">
+   <meta property="og:type" content="article">
+   <meta property="og:image" content="https://www.navigatorkidsai.com/images/de-escalator-cover.png">
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* === PAGE SPECIFIC STYLES === */
+
+      /* Article Layout */
+      .article-layout {
+         display: grid;
+         grid-template-columns: 1fr 300px;
+         gap: 60px;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 40px 24px 80px;
+      }
+
+      @media (max-width: 1024px) {
+         .article-layout {
+            grid-template-columns: 1fr;
+         }
+
+         .article-sidebar {
+            order: -1;
+         }
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+         color: var(--color-text-muted);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-highlight);
+         transition: var(--transition);
+      }
+
+      .breadcrumbs a:hover {
+         color: var(--color-highlight-dark);
+      }
+
+      .breadcrumbs span {
+         margin: 0 8px;
+         color: var(--color-text-muted);
+      }
+
+      /* Article Header */
+      .article-header {
+         margin-bottom: 40px;
+      }
+
+      .article-tag {
+         display: inline-block;
+         background: var(--color-highlight-light);
+         color: var(--color-highlight-dark);
+         padding: 6px 14px;
+         border-radius: 20px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         margin-bottom: 16px;
+         font-family: 'Inter', sans-serif;
+      }
+
+      .article-header h1 {
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         margin-bottom: 24px;
+         line-height: 1.2;
+         color: var(--color-primary);
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+      }
+
+      .author-photo {
+         width: 56px;
+         height: 56px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: 700;
+         font-size: 1.1rem;
+      }
+
+      .author-info {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
+
+      .author-name {
+         font-weight: 700;
+         color: var(--color-primary);
+      }
+
+      .author-role {
+         font-size: 0.85rem;
+         color: var(--color-highlight);
+      }
+
+      .publish-date {
+         font-size: 0.9rem;
+         color: var(--color-text-muted);
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         margin-bottom: 40px;
+         border-left: 4px solid var(--color-highlight);
+      }
+
+      .key-takeaways h2 {
+         font-size: 1.1rem;
+         color: var(--color-highlight);
+         margin-bottom: 16px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .key-takeaways ul {
+         margin: 0;
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 10px;
+         color: var(--color-text);
+      }
+
+      /* Article Body */
+      .article-body {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 48px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      @media (max-width: 600px) {
+         .article-body {
+            padding: 32px 24px;
+         }
+      }
+
+      .article-body p {
+         margin-bottom: 24px;
+         font-size: 1.05rem;
+         line-height: 1.8;
+      }
+
+      .article-body h2 {
+         font-size: 1.6rem;
+         margin: 48px 0 24px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid var(--color-highlight-light);
+         color: var(--color-primary);
+      }
+
+      .article-body h3 {
+         font-size: 1.25rem;
+         margin: 32px 0 16px;
+         color: var(--color-primary);
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin-bottom: 24px;
+         padding-left: 24px;
+      }
+
+      .article-body li {
+         margin-bottom: 12px;
+         line-height: 1.7;
+      }
+
+      .article-body li strong {
+         color: var(--color-primary);
+      }
+
+      /* Prompt Box (For AI Scripts) */
+      .prompt-box {
+         background: #f4f6f8;
+         border: 1px solid #d1d5db;
+         border-radius: var(--border-radius);
+         padding: 24px;
+         font-family: 'Courier New', Courier, monospace;
+         color: #333;
+         margin: 32px 0;
+         position: relative;
+      }
+
+      .prompt-box::before {
+         content: 'AI PROMPT TEMPLATE';
+         position: absolute;
+         top: -12px;
+         left: 20px;
+         background: var(--color-highlight);
+         color: white;
+         padding: 4px 12px;
+         font-size: 0.75rem;
+         font-family: 'Inter', sans-serif;
+         font-weight: 700;
+         border-radius: 4px;
+      }
+
+      .prompt-box p {
+         margin-bottom: 12px;
+         font-size: 0.95rem;
+         line-height: 1.6;
+      }
+
+      /* Case Study Box */
+      .case-study {
+         background: var(--color-background-warm);
+         border-left: 4px solid var(--color-accent);
+         border-radius: 0 var(--border-radius) var(--border-radius) 0;
+         padding: 32px;
+         margin: 40px 0;
+      }
+
+      .case-study h3 {
+         color: var(--color-accent);
+         /* Gold color */
+         font-size: 1.1rem;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+         margin-bottom: 16px;
+      }
+
+      /* Sidebar Widget */
+      .sidebar-widget {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         position: sticky;
+         top: 100px;
+         text-align: center;
+         border-top: 4px solid var(--color-highlight);
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.2rem;
+         margin-bottom: 12px;
+         color: var(--color-primary);
+      }
+
+      .sidebar-widget p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin-bottom: 20px;
+      }
+
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 14px 24px;
+         background: var(--color-highlight);
+         color: white;
+         border-radius: var(--border-radius);
+         font-weight: 600;
+         font-size: 0.95rem;
+         transition: var(--transition);
+         width: 100%;
+      }
+
+      .btn:hover {
+         background: var(--color-highlight-dark);
+         transform: translateY(-2px);
+         color: white;
+      }
+
+      /* Read Next */
+      .read-next {
+         background: var(--color-primary);
+         padding: 80px 24px;
+         margin-top: 60px;
+      }
+
+      .read-next h2 {
+         color: white;
+         text-align: center;
+         margin-bottom: 40px;
+         font-size: 1.8rem;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 24px;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+         .read-next-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .read-next-card {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 32px;
+         transition: var(--transition);
+         cursor: pointer;
+         text-decoration: none;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.2rem;
+         margin-bottom: 8px;
+         transition: var(--transition);
+         color: var(--color-primary);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-highlight);
+      }
+
+      .read-next-card p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin: 0;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="global-header"></div>
+
+   <div class="article-layout">
+      <article class="article-content">
+         <div class="breadcrumbs">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="resources.html">Resources</a> <span>/</span>
+            <a href="#">AI Hub</a> <span>/</span>
+            <span>De-Escalation Scripts</span>
+         </div>
+
+         <header class="article-header">
+            <span class="article-tag">AI Hub</span>
+            <h1>The Sensory De-Escalator: How to Use AI to Stop Meltdowns</h1>
+            <div class="author-byline">
+               <div class="author-photo">AS</div>
+               <div class="author-info">
+                  <div class="author-name">Avery Sage</div>
+                  <div class="author-role">Parent & Tech Lead</div>
+                  <div class="publish-date">Updated January 2026</div>
+               </div>
+            </div>
+         </header>
+
+         <div class="key-takeaways">
+            <h2>The Core Concept</h2>
+            <ul>
+               <li>Meltdowns look random, but your brain has been tracking the patterns for years.</li>
+               <li>You are exhausted; AI isn't. We can use AI to process your observations into a strategy.</li>
+               <li>The goal isn't to be a therapist; it's to have a pre-written script so you don't have to think when the screaming starts.</li>
+            </ul>
+         </div>
+
+         <div class="article-body">
+            <p>When your child is melting down, you don't need a PhD in neuroscience—you need the exact words that work. And you need them <em>now</em>.</p>
+
+            <p>As parents, we often feel like we’re living in a chaos machine. One minute everything is fine; the next, a dropped spoon triggers a catastrophic event. But here is the truth that clinical data often misses but parents know in their bones: <strong>Meltdowns are rarely random.</strong></p>
+
+            <p>You are already an expert data collector. You know that the hum of the refrigerator drives them crazy, or that the transition from iPad to dinner table is the danger zone. The problem isn't that you don't have the data; it's that you are too exhausted to process it into a strategy in real-time.</p>
+
+            <p>This is where AI becomes your partner, not your replacement. We can dump that raw, messy observational data into an LLM (like ChatGPT), and it can spot the pattern and hand us a script before the screaming starts.</p>
+
+            <h2>The Prompt Framework</h2>
+            <p>Use this framework to turn your observations into a usable game plan. Copy and paste this directly into your AI tool.</p>
+
+            <div class="prompt-box">
+               <p>My child experiences sensory overload when <strong>[INSERT TRIGGER HERE]</strong>.</p>
+               <p><strong>Current patterns:</strong><br>
+                  - Time of day: [when it usually happens]<br>
+                  - Warning signs: [what you notice first - e.g., covering ears, humming, becoming rigid]<br>
+                  - What doesn't work: [failed attempts - e.g., "calm down," raising voice, logic]<br>
+                  - What sometimes works: [partial successes - e.g., deep pressure, dark rooms, silence]</p>
+               <p><strong>Based on this, create a 3-stage de-escalation script:</strong><br>
+                  1. Prevention (What I say/do when I first notice the warning signs to divert the meltdown)<br>
+                  2. Intervention (Exact short phrases to use during the meltdown when logic is offline)<br>
+                  3. Recovery (How to reconnect after they've calmed without reigniting the shame spiral)</p>
+            </div>
+
+            <div class="case-study">
+               <h3>Case Study: "The Sock Wars"</h3>
+               <p><strong>The Context:</strong> For the Miller family, 7:15 AM was "The Sock Wars." Their 8-year-old, Leo, would collapse in hysterics because his socks "felt like knives." The parents tried buying seamless socks, bribery, and threats. Nothing worked.</p>
+
+               <p><strong>The AI Input:</strong> They plugged the framework into ChatGPT:
+                  <br><em>Trigger:</em> Putting on socks/shoes.
+                  <br><em>Warning Signs:</em> whining about "bumps," taking socks on and off.
+                  <br><em>What doesn't work:</em> "We're going to be late."
+                  <br><em>What works:</em> Massaging feet beforehand.
+               </p>
+
+               <p><strong>The Solution:</strong> The AI suggested a "Sensory Prep" script.
+                  <br><strong>Prevention:</strong> "Let’s wake up your feet." (A quick 30-second deep pressure massage).
+                  <br><strong>Intervention:</strong> "Pause. Check the seam. Line it up." (Robotic, emotionless instructions worked better than pleading).
+                  <br><strong>Recovery:</strong> A high-five at the door. "We did it. Reset complete."
+               </p>
+
+               <p><strong>The Result:</strong> The meltdown wasn't cured instantly, but the duration dropped from 20 minutes to 2 minutes.</p>
+            </div>
+
+            <h2>Template Library</h2>
+            <p>Here are pre-built prompts for the "Big Three" triggers we see most often.</p>
+
+            <h3>1. The "Sonic Boom" (Noise Sensitivity)</h3>
+            <p><em>For the child who falls apart in busy restaurants or loud classrooms.</em></p>
+            <div class="prompt-box">
+               <p>My child experiences sensory overload in loud, chaotic environments (restaurants, parties).<br>
+                  <strong>Current patterns:</strong> Warning signs include hands over ears, hiding under tables, becoming aggressive.<br>
+                  <strong>Create a 3-stage de-escalation script</strong> focused on giving them an "escape hatch" signal they can use before they scream.
+               </p>
+            </div>
+
+            <h3>2. The "Switch-Up" (Transition Trouble)</h3>
+            <p><em>For the child who cannot stop one task to start another.</em></p>
+            <div class="prompt-box">
+               <p>My child experiences sensory overload when transitioning from a preferred activity (screen/LEGOs) to a required one (dinner/bath).<br>
+                  <strong>Current patterns:</strong> Warning signs include ignoring me, growling, physical rigidity.<br>
+                  <strong>Create a 3-stage de-escalation script</strong> that uses "Bridge" language to connect the two tasks rather than stopping one abruptly.
+               </p>
+            </div>
+
+            <h3>3. The "It's Not Right" (Perfectionism)</h3>
+            <p><em>For the child who melts down if the drawing isn't perfect.</em></p>
+            <div class="prompt-box">
+               <p>My child experiences emotional overload when things aren't "perfect" or go differently than expected.<br>
+                  <strong>Current patterns:</strong> Crumpling paper, crying immediately, shouting "You ruined it!"<br>
+                  <strong>Create a 3-stage de-escalation script</strong> that validates the frustration without trying to "fix" the mistake immediately.
+               </p>
+            </div>
+
+            <h2>The Bottom Line</h2>
+            <p>You don't have to carry the mental load of inventing strategies in the heat of the moment. Let the AI handle the strategy, so you can handle the child.</p>
+         </div>
+      </article>
+
+      <aside class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Build Your Own Script</h3>
+            <p>Want to generate a custom profile for your child to use with these prompts?</p>
+            <a href="gifted-assessment-tool.html" class="btn">
+               <i class="fas fa-robot"></i> Use Our AI Tool
+            </a>
+         </div>
+      </aside>
+   </div>
+
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="restraint-collapse.html" class="read-next-card">
+               <h3>Restraint Collapse</h3>
+               <p>Why they are angels at school and monsters at home.</p>
+            </a>
+            <a href="seekers-vs-avoiders.html" class="read-next-card">
+               <h3>Seekers vs. Avoiders</h3>
+               <p>Understanding your child's sensory profile.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+
+   <div id="global-footer"></div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

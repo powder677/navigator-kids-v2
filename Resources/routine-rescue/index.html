@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Routine Rescue for Sensitive Kids | Navigator Kids AI™</title>
+   <meta name="description" content="Predictable routines aren't rigid—they're regulating. Learn how consistent schedules calm your child's sensitive nervous system and reduce big feelings.">
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* === PAGE SPECIFIC STYLES === */
+
+      /* Article Layout */
+      .article-layout {
+         display: grid;
+         grid-template-columns: 1fr 300px;
+         gap: 60px;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 40px 24px 80px;
+      }
+
+      @media (max-width: 1024px) {
+         .article-layout {
+            grid-template-columns: 1fr;
+         }
+
+         .article-sidebar {
+            order: -1;
+         }
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs {
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+         color: var(--color-text-muted);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-highlight);
+         transition: var(--transition);
+      }
+
+      .breadcrumbs a:hover {
+         color: var(--color-highlight-dark);
+      }
+
+      .breadcrumbs span {
+         margin: 0 8px;
+         color: var(--color-text-muted);
+      }
+
+      /* Article Header */
+      .article-header {
+         margin-bottom: 40px;
+      }
+
+      .article-header h1 {
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         margin-bottom: 24px;
+         line-height: 1.2;
+         color: var(--color-primary);
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+      }
+
+      .author-photo {
+         width: 56px;
+         height: 56px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-highlight) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: 700;
+         font-size: 1.1rem;
+      }
+
+      .author-info {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
+
+      .author-name {
+         font-weight: 700;
+         color: var(--color-primary);
+      }
+
+      .author-role {
+         font-size: 0.85rem;
+         color: var(--color-highlight);
+      }
+
+      .publish-date {
+         font-size: 0.9rem;
+         color: var(--color-text-muted);
+      }
+
+      /* Key Takeaways */
+      .key-takeaways {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         margin-bottom: 40px;
+         border-left: 4px solid var(--color-highlight);
+      }
+
+      .key-takeaways h2 {
+         font-size: 1.1rem;
+         color: var(--color-highlight);
+         margin-bottom: 16px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .key-takeaways ul {
+         margin: 0;
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 10px;
+         color: var(--color-text);
+      }
+
+      /* Article Body */
+      .article-body {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 48px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      @media (max-width: 600px) {
+         .article-body {
+            padding: 32px 24px;
+         }
+      }
+
+      .article-body p {
+         margin-bottom: 24px;
+         font-size: 1.05rem;
+         line-height: 1.8;
+      }
+
+      .article-body h2 {
+         font-size: 1.6rem;
+         margin: 48px 0 24px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid var(--color-highlight-light);
+         color: var(--color-primary);
+      }
+
+      .article-body h3 {
+         font-size: 1.25rem;
+         margin: 32px 0 16px;
+         color: var(--color-primary);
+      }
+
+      .article-body ul,
+      .article-body ol {
+         margin-bottom: 24px;
+         padding-left: 24px;
+      }
+
+      .article-body li {
+         margin-bottom: 12px;
+         line-height: 1.7;
+      }
+
+      .article-body li strong {
+         color: var(--color-primary);
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background: var(--color-background-warm);
+         border-left: 4px solid var(--color-accent);
+         border-radius: 0 var(--border-radius) var(--border-radius) 0;
+         padding: 28px 32px;
+         margin: 32px 0;
+      }
+
+      .highlight-box h3 {
+         font-size: 1.1rem;
+         color: var(--color-accent);
+         margin-bottom: 12px;
+      }
+
+      .highlight-box p {
+         margin: 0;
+         font-size: 1rem;
+      }
+
+      /* Routine Chart */
+      .routine-chart {
+         background: var(--color-highlight-light);
+         border-radius: var(--border-radius-lg);
+         padding: 32px;
+         margin: 32px 0;
+      }
+
+      .routine-chart h3 {
+         color: var(--color-primary);
+         text-align: center;
+         margin-bottom: 24px;
+         font-size: 1.3rem;
+      }
+
+      .chart-container {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 16px;
+      }
+
+      @media (max-width: 600px) {
+         .chart-container {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .chart-item {
+         background: white;
+         border-radius: var(--border-radius);
+         padding: 24px;
+         box-shadow: var(--shadow-sm);
+         border-top: 3px solid var(--color-highlight);
+         transition: var(--transition);
+      }
+
+      .chart-item:hover {
+         transform: translateY(-2px);
+         box-shadow: var(--shadow-md);
+      }
+
+      .chart-item h4 {
+         color: var(--color-primary);
+         font-size: 1.1rem;
+         margin-bottom: 8px;
+      }
+
+      .chart-item p {
+         color: var(--color-text-muted);
+         font-size: 0.95rem;
+         margin: 0;
+         line-height: 1.5;
+      }
+
+      /* Sidebar Widget */
+      .sidebar-widget {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         box-shadow: var(--shadow-md);
+         padding: 32px;
+         position: sticky;
+         top: 100px;
+         text-align: center;
+         border-top: 4px solid var(--color-highlight);
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.2rem;
+         margin-bottom: 12px;
+      }
+
+      .sidebar-widget p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin-bottom: 20px;
+      }
+
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 14px 24px;
+         background: var(--color-highlight);
+         color: white;
+         border-radius: var(--border-radius);
+         font-weight: 600;
+         font-size: 0.95rem;
+         transition: var(--transition);
+         width: 100%;
+      }
+
+      .btn:hover {
+         background: var(--color-highlight-dark);
+         transform: translateY(-2px);
+         color: white;
+      }
+
+      /* Read Next */
+      .read-next {
+         background: var(--color-primary);
+         padding: 80px 24px;
+         margin-top: 60px;
+      }
+
+      .read-next h2 {
+         color: white;
+         text-align: center;
+         margin-bottom: 40px;
+         font-size: 1.8rem;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 24px;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+         .read-next-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .read-next-card {
+         background: white;
+         border-radius: var(--border-radius-lg);
+         padding: 32px;
+         transition: var(--transition);
+         cursor: pointer;
+         text-decoration: none;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.2rem;
+         margin-bottom: 8px;
+         transition: var(--transition);
+         color: var(--color-primary);
+      }
+
+      .read-next-card:hover h3 {
+         color: var(--color-highlight);
+      }
+
+      .read-next-card p {
+         font-size: 0.95rem;
+         color: var(--color-text-muted);
+         margin: 0;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="global-header"></div>
+
+   <div class="article-layout">
+      <article class="article-content">
+         <div class="breadcrumbs">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calm-down-kit.html">Resources</a> <span>/</span>
+            <span>Routine Rescue</span>
+         </div>
+
+         <header class="article-header">
+            <h1>Routine Rescue: Using Predictable Schedules to Calm a Sensitive System</h1>
+            <div class="author-byline">
+               <div class="author-photo">AS</div>
+               <div class="author-info">
+                  <div class="author-name">Avery Sage</div>
+                  <div class="author-role">Parent & Coach</div>
+                  <div class="publish-date">Updated October 2025</div>
+               </div>
+            </div>
+         </header>
+
+         <div class="key-takeaways">
+            <h2>Our Experience in a Nutshell</h2>
+            <ul>
+               <li>We realized that what looks like "rigidity" is actually "regulation."</li>
+               <li>We stopped trying to be the "fun, spontaneous family" and embraced the "calm, predictable family."</li>
+               <li>We found that the more boring the morning routine, the more creative they were in the afternoon.</li>
+               <li>Consistency is the safety net that lets their "Ferrari brain" fly.</li>
+            </ul>
+         </div>
+
+         <div class="article-body">
+            <p>For years, our mornings were a battlefield. If the blue bowl was dirty, breakfast was over. If we took a different route to school because of roadwork, the entire day was ruined. I felt held hostage by my child's "rules."</p>
+
+            <p>I thought they were being stubborn. I thought I needed to "toughen them up" by forcing flexibility.</p>
+
+            <p>Then I had a realization that changed everything: <strong>This wasn't a behavior problem. It was a bandwidth problem.</strong></p>
+
+            <p>Understanding this distinction transformed our frustration into strategy. We stopped fighting the current and started building a boat.</p>
+
+            <div class="highlight-box">
+               <h3>The Predictability Principle</h3>
+               <p>Deep Thinkers with sensory needs use routines as anchors. They aren't trying to control you; they are trying to steady themselves in a world that feels chaotic and loud.</p>
+            </div>
+
+            <h2>Why the "Same Old Thing" Saves the Day</h2>
+            <p>Here is how we finally made sense of it:</p>
+
+            <h3>The "RAM" Management Theory</h3>
+            <p>Imagine your child's brain is a high-performance computer running complex software (deep thoughts, intense emotions, sensory processing). That software eats up a lot of RAM (mental energy).</p>
+
+            <ul>
+               <li><strong>Decision Fatigue:</strong> Asking "What do you want for breakfast?" burns valuable RAM.</li>
+               <li><strong>Predictive Processing:</strong> Not knowing what happens next creates a background app called "Anxiety" that slows everything else down.</li>
+               <li><strong>Energy Conservation:</strong> Routines are like "Sleep Mode" for executive function. It saves battery for the important stuff.</li>
+            </ul>
+
+            <h3>Why Our "Just Go With the Flow" Approach Failed</h3>
+            <p>We tried to be spontaneous. We surprised them with trips. We changed plans last minute. It backfired every time.</p>
+
+            <ul>
+               <li><strong>The Spontaneous Trip:</strong> Ended in a meltdown in the driveway because they weren't mentally prepped.</li>
+               <li><strong>The Surprise Dinner:</strong> Resulted in refusal to eat because the sensory input of a new restaurant was too much after a long school day.</li>
+            </ul>
+
+            <h2>The Frameworks That Saved Our Sanity</h2>
+            <p>We realized we didn't need to be rigid robots, but we needed "Anchors." Here is the structure that works for us:</p>
+
+            <div class="routine-chart">
+               <h3>The Daily "Anchor" System</h3>
+               <div class="chart-container">
+                  <div class="chart-item">
+                     <h4>The Launch Sequence</h4>
+                     <p>Morning is identical every day. Same order, same food. It puts the brain on autopilot so they start the day with a full battery.</p>
+                  </div>
+                  <div class="chart-item">
+                     <h4>The Warning Bell</h4>
+                     <p>We never spring transitions on them. We use "5-minute warnings" or visual timers so the change isn't a shock.</p>
+                  </div>
+                  <div class="chart-item">
+                     <h4>The Landing Gear</h4>
+                     <p>Bedtime is a sacred ritual. It signals the nervous system that it is safe to finally power down.</p>
+                  </div>
+                  <div class="chart-item">
+                     <h4>The Quiet Zone</h4>
+                     <p>We schedule "Do Nothing" time immediately after school. No questions, no demands. Just recovery.</p>
+                  </div>
+               </div>
+            </div>
+
+            <h2>How We Handle "But I Want to be Spontaneous!"</h2>
+            <p>We still do fun things, but we prep for them. We treat it like a mission briefing.</p>
+
+            <h3>The "Pre-Flight" Briefing</h3>
+            <ul>
+               <li><strong>Advance Notice:</strong> "On Saturday, we are going to the zoo. It will be loud."</li>
+               <li><strong>Visual Proof:</strong> We look at pictures of the place online so it’s familiar before we arrive.</li>
+               <li><strong>The Escape Plan:</strong> "If it gets too much, we can leave. We have a plan."</li>
+            </ul>
+
+            <h2>What We Finally Accepted</h2>
+            <p>I used to worry that by accommodating their need for routine, I was making them "fragile."</p>
+
+            <p>But the opposite happened. <strong>Because they feel safe in the structure, they are actually braver in the world.</strong></p>
+
+            <p>When their environment is predictable, their mind is free to soar. And that is a trade-off I will take any day.</p>
+         </div>
+      </article>
+
+      <aside class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Identify Their Style</h3>
+            <p>Our Learning Style Quiz identifies sensory patterns and provides targeted strategies.</p>
+            <a href="learning-style-quiz.html" class="btn">
+               <i class="fas fa-clipboard-list"></i> Start Free Quiz
+            </a>
+         </div>
+      </aside>
+   </div>
+
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="restraint-collapse.html" class="read-next-card">
+               <h3>Restraint Collapse</h3>
+               <p>Why they are angels at school and monsters at home.</p>
+            </a>
+            <a href="emotional-intensity.html" class="read-next-card">
+               <h3>Emotional Intensity</h3>
+               <p>Understanding the "Deep Thinker" emotional experience.</p>
+            </a>
+         </div>
+      </div>
+   </section>
+
+   <div id="global-footer"></div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

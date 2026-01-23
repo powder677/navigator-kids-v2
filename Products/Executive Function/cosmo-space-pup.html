@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Navigator Kids: Space Pup Mission</title>
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         --space-dark: #1A237E;
+         --space-purple: #5C6BC0;
+         --space-light: #9FA8DA;
+         --rocket-orange: #FF7043;
+         --rocket-red: #EF5350;
+         --star-yellow: #FFD54F;
+         --moon-gray: #ECEFF1;
+         --success-green: #66BB6A;
+         --white: #FFFFFF;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: 'Nunito', sans-serif;
+         background: linear-gradient(180deg, #0D1B2A 0%, var(--space-dark) 50%, #311B92 100%);
+         color: var(--white);
+         min-height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 20px;
+         position: relative;
+         overflow-x: hidden;
+      }
+
+      /* Stars background */
+      .stars {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         pointer-events: none;
+         z-index: 0;
+      }
+
+      .star {
+         position: absolute;
+         background: white;
+         border-radius: 50%;
+         animation: twinkle 2s ease-in-out infinite;
+      }
+
+      @keyframes twinkle {
+
+         0%,
+         100% {
+            opacity: 0.3;
+         }
+
+         50% {
+            opacity: 1;
+         }
+      }
+
+      .container {
+         width: 100%;
+         max-width: 550px;
+         background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(236, 239, 241, 0.95) 100%);
+         border-radius: 30px;
+         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 100px rgba(92, 107, 192, 0.3);
+         overflow: hidden;
+         position: relative;
+         z-index: 1;
+         color: #333;
+      }
+
+      .page {
+         display: none;
+         padding: 30px 25px;
+         min-height: 500px;
+      }
+
+      .page.active {
+         display: block;
+         animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+         from {
+            opacity: 0;
+            transform: translateY(15px);
+         }
+
+         to {
+            opacity: 1;
+            transform: translateY(0);
+         }
+      }
+
+      @keyframes float {
+
+         0%,
+         100% {
+            transform: translateY(0) rotate(-5deg);
+         }
+
+         50% {
+            transform: translateY(-15px) rotate(5deg);
+         }
+      }
+
+      @keyframes rocket-hover {
+
+         0%,
+         100% {
+            transform: translateY(0);
+         }
+
+         50% {
+            transform: translateY(-8px);
+         }
+      }
+
+      .mascot {
+         font-size: 80px;
+         text-align: center;
+         margin: 15px 0;
+         animation: float 4s ease-in-out infinite;
+      }
+
+      h1 {
+         color: var(--space-dark);
+         font-size: 1.8rem;
+         text-align: center;
+         margin-bottom: 15px;
+         font-weight: 800;
+      }
+
+      h2 {
+         color: var(--space-purple);
+         font-size: 1.4rem;
+         text-align: center;
+         margin-bottom: 10px;
+      }
+
+      p {
+         font-size: 1.2rem;
+         line-height: 1.6;
+         text-align: center;
+         margin-bottom: 15px;
+         color: #444;
+      }
+
+      .child-name {
+         color: var(--rocket-orange);
+         font-weight: 700;
+      }
+
+      input[type="text"] {
+         width: 100%;
+         padding: 15px 20px;
+         font-size: 1.3rem;
+         font-family: 'Nunito', sans-serif;
+         border: 3px solid var(--space-light);
+         border-radius: 20px;
+         text-align: center;
+         margin-bottom: 20px;
+         outline: none;
+         transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus {
+         border-color: var(--space-purple);
+      }
+
+      .btn {
+         display: block;
+         width: 100%;
+         padding: 18px 30px;
+         font-size: 1.3rem;
+         font-family: 'Nunito', sans-serif;
+         font-weight: 700;
+         color: white;
+         background: linear-gradient(135deg, var(--space-purple) 0%, var(--space-dark) 100%);
+         border: none;
+         border-radius: 50px;
+         cursor: pointer;
+         transition: transform 0.2s, box-shadow 0.2s;
+         box-shadow: 0 5px 20px rgba(92, 107, 192, 0.4);
+         margin-top: 10px;
+      }
+
+      .btn:hover {
+         transform: translateY(-3px);
+         box-shadow: 0 8px 25px rgba(92, 107, 192, 0.5);
+      }
+
+      .btn:disabled {
+         background: #ccc;
+         cursor: not-allowed;
+         transform: none;
+         box-shadow: none;
+      }
+
+      .btn-orange {
+         background: linear-gradient(135deg, var(--rocket-orange) 0%, var(--rocket-red) 100%);
+         box-shadow: 0 5px 20px rgba(255, 112, 67, 0.4);
+      }
+
+      .btn-orange:hover {
+         box-shadow: 0 8px 25px rgba(255, 112, 67, 0.5);
+      }
+
+      .btn-green {
+         background: linear-gradient(135deg, var(--success-green) 0%, #4CAF50 100%);
+         box-shadow: 0 5px 20px rgba(102, 187, 106, 0.4);
+      }
+
+      .btn-small {
+         width: auto;
+         display: inline-block;
+         padding: 12px 25px;
+         font-size: 1.1rem;
+         margin: 5px;
+      }
+
+      /* Lesson Box */
+      .lesson-box {
+         background: linear-gradient(135deg, var(--star-yellow) 0%, #FFECB3 100%);
+         border-radius: 20px;
+         padding: 20px;
+         margin: 20px 0;
+         border: 3px solid var(--rocket-orange);
+      }
+
+      .lesson-title {
+         font-size: 1.1rem;
+         font-weight: 800;
+         color: var(--space-dark);
+         margin-bottom: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+      }
+
+      .lesson-content {
+         font-size: 1.15rem;
+         color: #333;
+      }
+
+      /* Takeaway Phrase */
+      .takeaway {
+         background: var(--space-purple);
+         color: white;
+         padding: 15px 20px;
+         border-radius: 15px;
+         font-size: 1.3rem;
+         font-weight: 700;
+         text-align: center;
+         margin: 20px 0;
+         box-shadow: 0 5px 15px rgba(92, 107, 192, 0.3);
+      }
+
+      /* Mission Target */
+      .target-container {
+         margin: 25px 0;
+         text-align: center;
+      }
+
+      .target-visual {
+         width: 180px;
+         height: 180px;
+         margin: 0 auto;
+         border-radius: 50%;
+         background:
+            radial-gradient(circle, var(--rocket-red) 0%, var(--rocket-red) 20%,
+               white 20%, white 30%,
+               var(--rocket-orange) 30%, var(--rocket-orange) 50%,
+               white 50%, white 60%,
+               var(--star-yellow) 60%, var(--star-yellow) 80%,
+               white 80%, white 90%,
+               var(--space-light) 90%);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 2rem;
+         font-weight: 800;
+         color: white;
+         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .target-options {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 10px;
+         margin: 20px 0;
+      }
+
+      .target-option {
+         padding: 15px;
+         background: white;
+         border: 3px solid var(--space-light);
+         border-radius: 15px;
+         cursor: pointer;
+         transition: all 0.2s;
+         font-size: 1.1rem;
+         font-weight: 600;
+         color: #333;
+      }
+
+      .target-option:hover {
+         border-color: var(--rocket-orange);
+         transform: translateY(-2px);
+      }
+
+      .target-option.selected {
+         background: var(--rocket-orange);
+         border-color: var(--rocket-orange);
+         color: white;
+      }
+
+      /* Tiny Step Visualization */
+      .steps-container {
+         margin: 20px 0;
+      }
+
+      .big-task {
+         background: var(--space-light);
+         padding: 20px;
+         border-radius: 15px;
+         margin-bottom: 15px;
+         font-size: 1.2rem;
+         font-weight: 600;
+         color: var(--space-dark);
+      }
+
+      .tiny-steps {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      .tiny-step {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         padding: 12px 15px;
+         background: white;
+         border: 2px solid #ddd;
+         border-radius: 12px;
+         cursor: pointer;
+         transition: all 0.2s;
+      }
+
+      .tiny-step:hover {
+         border-color: var(--success-green);
+      }
+
+      .tiny-step.found {
+         background: #E8F5E9;
+         border-color: var(--success-green);
+      }
+
+      .step-icon {
+         width: 35px;
+         height: 35px;
+         border-radius: 50%;
+         background: #eee;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 1.2rem;
+         flex-shrink: 0;
+      }
+
+      .tiny-step.found .step-icon {
+         background: var(--success-green);
+      }
+
+      .step-text {
+         font-size: 1.1rem;
+         color: #444;
+      }
+
+      /* Countdown */
+      .countdown-container {
+         margin: 25px 0;
+         text-align: center;
+      }
+
+      .countdown-display {
+         font-size: 8rem;
+         font-weight: 800;
+         color: var(--space-dark);
+         text-shadow: 3px 3px 0 var(--space-light);
+         min-height: 150px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .countdown-display.blastoff {
+         font-size: 3rem;
+         color: var(--rocket-orange);
+         animation: pulse 0.5s ease infinite;
+      }
+
+      @keyframes pulse {
+
+         0%,
+         100% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.1);
+         }
+      }
+
+      .rocket-animation {
+         font-size: 80px;
+         transition: transform 1s ease-out;
+      }
+
+      .rocket-animation.launched {
+         transform: translateY(-200px) scale(0.5);
+         opacity: 0;
+      }
+
+      /* Checkpoint Stars */
+      .checkpoint-track {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 25px 0;
+         position: relative;
+      }
+
+      .checkpoint-line {
+         position: absolute;
+         top: 50%;
+         left: 25px;
+         right: 25px;
+         height: 8px;
+         background: #ddd;
+         border-radius: 4px;
+         z-index: 0;
+      }
+
+      .checkpoint-progress {
+         position: absolute;
+         top: 50%;
+         left: 25px;
+         height: 8px;
+         background: var(--success-green);
+         border-radius: 4px;
+         z-index: 1;
+         width: 0%;
+         transition: width 0.5s ease;
+      }
+
+      .checkpoint-star {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         background: #ddd;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 1.5rem;
+         z-index: 2;
+         position: relative;
+         transition: all 0.3s;
+      }
+
+      .checkpoint-star.reached {
+         background: var(--star-yellow);
+         transform: scale(1.2);
+         box-shadow: 0 0 20px rgba(255, 213, 79, 0.5);
+      }
+
+      .task-cards {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         margin: 20px 0;
+      }
+
+      .task-card {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         padding: 15px;
+         background: white;
+         border: 3px solid var(--space-light);
+         border-radius: 15px;
+         cursor: pointer;
+         transition: all 0.2s;
+      }
+
+      .task-card:hover:not(.completed) {
+         border-color: var(--rocket-orange);
+         transform: translateX(5px);
+      }
+
+      .task-card.completed {
+         background: #E8F5E9;
+         border-color: var(--success-green);
+      }
+
+      .task-card.completed .card-check {
+         background: var(--success-green);
+         color: white;
+      }
+
+      .card-check {
+         width: 30px;
+         height: 30px;
+         border-radius: 50%;
+         background: #eee;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 1rem;
+         flex-shrink: 0;
+      }
+
+      .card-text {
+         font-size: 1.1rem;
+         font-weight: 600;
+         color: #333;
+      }
+
+      /* Mission Control Panel */
+      .mission-panel {
+         background: linear-gradient(135deg, var(--space-dark) 0%, #283593 100%);
+         border-radius: 20px;
+         padding: 20px;
+         margin: 20px 0;
+         color: white;
+      }
+
+      .panel-status {
+         font-size: 1.2rem;
+         margin-bottom: 15px;
+      }
+
+      .panel-meter {
+         height: 20px;
+         background: rgba(255, 255, 255, 0.2);
+         border-radius: 10px;
+         overflow: hidden;
+         margin: 10px 0;
+      }
+
+      .panel-fill {
+         height: 100%;
+         background: linear-gradient(90deg, var(--rocket-orange) 0%, var(--success-green) 100%);
+         width: 0%;
+         transition: width 0.5s ease;
+         border-radius: 10px;
+      }
+
+      .tool-buttons {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      .tool-btn {
+         padding: 15px;
+         font-size: 1.1rem;
+         font-family: 'Nunito', sans-serif;
+         font-weight: 600;
+         background: white;
+         border: 3px solid var(--space-light);
+         border-radius: 15px;
+         cursor: pointer;
+         transition: all 0.2s;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         color: #333;
+      }
+
+      .tool-btn:hover:not(:disabled) {
+         background: var(--star-yellow);
+         transform: translateX(5px);
+      }
+
+      .tool-btn:disabled {
+         opacity: 0.5;
+         cursor: not-allowed;
+      }
+
+      .tool-btn.used {
+         background: var(--success-green);
+         border-color: var(--success-green);
+         color: white;
+      }
+
+      /* Recap Card */
+      .recap-card {
+         background: linear-gradient(135deg, #fff 0%, var(--moon-gray) 100%);
+         border: 4px solid var(--space-purple);
+         border-radius: 25px;
+         padding: 25px;
+         margin: 20px 0;
+      }
+
+      .recap-title {
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: var(--space-dark);
+         text-align: center;
+         margin-bottom: 20px;
+      }
+
+      .recap-item {
+         display: flex;
+         align-items: flex-start;
+         gap: 12px;
+         margin-bottom: 18px;
+         padding-bottom: 15px;
+         border-bottom: 2px dashed var(--space-light);
+      }
+
+      .recap-item:last-child {
+         border-bottom: none;
+         margin-bottom: 0;
+         padding-bottom: 0;
+      }
+
+      .recap-icon {
+         font-size: 2rem;
+         flex-shrink: 0;
+      }
+
+      .recap-text {
+         flex: 1;
+      }
+
+      .recap-text strong {
+         display: block;
+         color: var(--space-dark);
+         font-size: 1.1rem;
+         margin-bottom: 3px;
+      }
+
+      .recap-text span {
+         color: var(--space-purple);
+         font-weight: 700;
+         font-size: 1rem;
+      }
+
+      /* Parent Dashboard */
+      .parent-section {
+         background: #f8f9fa;
+         padding: 25px;
+         border-radius: 0 0 30px 30px;
+         margin: -30px -25px -30px -25px;
+         margin-top: 20px;
+      }
+
+      .parent-title {
+         font-size: 1.3rem;
+         font-weight: 700;
+         color: #333;
+         margin-bottom: 15px;
+         padding-bottom: 10px;
+         border-bottom: 2px solid #ddd;
+      }
+
+      .parent-box {
+         background: white;
+         padding: 15px;
+         border-radius: 15px;
+         margin-bottom: 15px;
+         border-left: 4px solid var(--space-purple);
+      }
+
+      .parent-box h4 {
+         color: #333;
+         font-size: 1rem;
+         margin-bottom: 8px;
+      }
+
+      .parent-box p,
+      .parent-box li {
+         font-size: 0.95rem;
+         line-height: 1.5;
+         color: #555;
+      }
+
+      .parent-box ul {
+         padding-left: 20px;
+         margin-top: 8px;
+      }
+
+      .parent-box li {
+         margin-bottom: 5px;
+      }
+
+      /* Progress dots */
+      .progress-dots {
+         display: flex;
+         justify-content: center;
+         gap: 8px;
+         margin-bottom: 20px;
+      }
+
+      .dot {
+         width: 12px;
+         height: 12px;
+         border-radius: 50%;
+         background: #ddd;
+      }
+
+      .dot.active {
+         background: var(--space-purple);
+      }
+
+      .dot.complete {
+         background: var(--success-green);
+      }
+
+      /* Confetti */
+      .confetti-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         pointer-events: none;
+         z-index: 1000;
+      }
+
+      .confetti {
+         position: absolute;
+         width: 10px;
+         height: 10px;
+         animation: fall 3s ease-out forwards;
+      }
+
+      @keyframes fall {
+         0% {
+            transform: translateY(-100px) rotate(0deg);
+            opacity: 1;
+         }
+
+         100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+         }
+      }
+
+      /* Print Styles */
+      @media print {
+         body {
+            background: white;
+            padding: 0;
+         }
+
+         .stars {
+            display: none;
+         }
+
+         .container {
+            box-shadow: none;
+            max-width: 100%;
+         }
+
+         .page {
+            display: none !important;
+         }
+
+         #page9 {
+            display: block !important;
+         }
+
+         .btn,
+         .parent-section {
+            display: none !important;
+         }
+
+         .recap-card {
+            border: 3px solid #333;
+            page-break-inside: avoid;
+         }
+      }
+   </style>
+</head>
+
+<body>
+
+   <div class="stars" id="stars"></div>
+
+   <div class="container">
+      <!-- PAGE 1: Welcome & Name Input -->
+      <div id="page1" class="page active">
+         <div class="mascot">🐕‍🦺🚀</div>
+         <h1>Welcome, Space Cadet!</h1>
+         <p>I'm <strong>Cosmo the Space Pup</strong>! Sometimes my brain feels stuck and I don't know where to start.</p>
+         <p>Today, I'll teach you my <strong>Launch Skills</strong> for when things feel too big or hard to begin!</p>
+         <p style="margin-top: 25px;">First, what's your name?</p>
+         <input type="text" id="nameInput" placeholder="Type your name here..." maxlength="20">
+         <button class="btn" id="startBtn" onclick="startAdventure()" disabled>Begin Mission! 🚀</button>
+      </div>
+
+      <!-- PAGE 2: The Story Begins -->
+      <div id="page2" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+         <div class="mascot">🐕‍🦺😵‍💫</div>
+         <h1>Cosmo's Stuck Brain</h1>
+         <p>Hi <span class="child-name"></span>!</p>
+         <p>Sometimes I have SO MANY THINGS to do that my brain gets <strong>stuck</strong>. I don't know where to start!</p>
+         <p>It feels like my rocket won't take off. Does that ever happen to you?</p>
+         <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="btn btn-small" onclick="goToPage(3)">Yes! My brain gets stuck too!</button>
+            <button class="btn btn-small btn-orange" onclick="goToPage(3)">Sometimes</button>
+         </div>
+      </div>
+
+      <!-- PAGE 3: Lesson 1 - Mission Target -->
+      <div id="page3" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+         <h1>Launch Skill #1</h1>
+         <h2>🎯 Mission Target</h2>
+
+         <div class="lesson-box">
+            <div class="lesson-title">⭐ The Secret</div>
+            <div class="lesson-content">
+               When you have lots to do, pick <strong>just ONE thing</strong> to focus on. That's your Mission Target!
+            </div>
+         </div>
+
+         <div class="target-container">
+            <div class="target-visual">ONE</div>
+         </div>
+
+         <p><span class="child-name"></span>, if you had to clean your room, get dressed, AND do homework - which ONE would you do first?</p>
+
+         <div class="target-options">
+            <div class="target-option" onclick="selectTarget(this)">🛏️ Clean Room</div>
+            <div class="target-option" onclick="selectTarget(this)">👕 Get Dressed</div>
+            <div class="target-option" onclick="selectTarget(this)">📚 Homework</div>
+            <div class="target-option" onclick="selectTarget(this)">🤷 I don't know!</div>
+         </div>
+
+         <p style="font-size: 1rem; color: #888;">There's no wrong answer! The trick is picking ONE.</p>
+
+         <div class="takeaway">
+            "What's my ONE thing?"
+         </div>
+
+         <button class="btn" id="targetNextBtn" onclick="goToPage(4)" disabled>I Picked My Target! →</button>
+      </div>
+
+      <!-- PAGE 4: Lesson 2 - Tiny First Step -->
+      <div id="page4" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+         <h1>Launch Skill #2</h1>
+         <h2>👣 Tiny First Step</h2>
+
+         <div class="lesson-box">
+            <div class="lesson-title">⭐ The Secret</div>
+            <div class="lesson-content">
+               Big tasks are easier when you find the <strong>tiniest</strong> first step. So tiny it's almost silly!
+            </div>
+         </div>
+
+         <p><span class="child-name"></span>, let's find the TINY first step!</p>
+
+         <div class="steps-container">
+            <div class="big-task">
+               🎒 BIG TASK: "Do your homework"
+            </div>
+            <p style="font-size: 1rem; margin-bottom: 10px;">Which is the TINIEST first step? Tap it!</p>
+            <div class="tiny-steps">
+               <div class="tiny-step" onclick="selectTinyStep(this, false)">
+                  <div class="step-icon">📝</div>
+                  <div class="step-text">Do all the math problems</div>
+               </div>
+               <div class="tiny-step" onclick="selectTinyStep(this, true)">
+                  <div class="step-icon">👀</div>
+                  <div class="step-text">Just LOOK at the homework</div>
+               </div>
+               <div class="tiny-step" onclick="selectTinyStep(this, false)">
+                  <div class="step-icon">✍️</div>
+                  <div class="step-text">Write my name on the paper</div>
+               </div>
+            </div>
+         </div>
+
+         <p id="tinyFeedback" style="font-size: 1.1rem; font-weight: 700; color: var(--space-purple); min-height: 30px;"></p>
+
+         <div class="takeaway">
+            "What's my tiny first step?"
+         </div>
+
+         <button class="btn" id="tinyNextBtn" onclick="goToPage(5)" style="display: none;">I Found the Tiniest Step! →</button>
+      </div>
+
+      <!-- PAGE 5: Lesson 3 - 3-2-1 Blastoff -->
+      <div id="page5" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+         <h1>Launch Skill #3</h1>
+         <h2>🚀 3-2-1 Blastoff!</h2>
+
+         <div class="lesson-box">
+            <div class="lesson-title">⭐ The Secret</div>
+            <div class="lesson-content">
+               Counting down gives your brain a <strong>launch signal</strong>. When you say "Blastoff!" - you START!
+            </div>
+         </div>
+
+         <p><span class="child-name"></span>, let's practice a countdown together!</p>
+
+         <div class="countdown-container">
+            <div class="countdown-display" id="countdownDisplay">🚀</div>
+            <div class="rocket-animation" id="rocketAnim">🚀</div>
+         </div>
+
+         <p style="font-size: 1rem; color: #888;">
+            Say the numbers OUT LOUD with Cosmo!<br>
+            When you hear "BLASTOFF!" - clap your hands!
+         </p>
+
+         <button class="btn btn-orange" id="countdownStartBtn" onclick="startCountdown()">Start Countdown! 🚀</button>
+         <button class="btn" id="countdownNextBtn" onclick="goToPage(6)" style="display: none;">I Blasted Off! →</button>
+      </div>
+
+      <!-- PAGE 6: Lesson 4 - Checkpoint Stars -->
+      <div id="page6" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+         <h1>Launch Skill #4</h1>
+         <h2>⭐ Checkpoint Stars</h2>
+
+         <div class="lesson-box">
+            <div class="lesson-title">⭐ The Secret</div>
+            <div class="lesson-content">
+               Big tasks are easier when you break them into <strong>small checkpoints</strong>. Each one is a WIN!
+            </div>
+         </div>
+
+         <p><span class="child-name"></span>, let's turn a big task into checkpoint stars!</p>
+
+         <div class="checkpoint-track">
+            <div class="checkpoint-line"></div>
+            <div class="checkpoint-progress" id="checkpointProgress"></div>
+            <div class="checkpoint-star" id="star1">1</div>
+            <div class="checkpoint-star" id="star2">2</div>
+            <div class="checkpoint-star" id="star3">3</div>
+            <div class="checkpoint-star" id="star4">⭐</div>
+         </div>
+
+         <p style="font-size: 1rem; margin: 15px 0;">BIG TASK: "Clean your room"</p>
+
+         <div class="task-cards">
+            <div class="task-card" id="task1" onclick="completeTask(1)">
+               <div class="card-check">1</div>
+               <div class="card-text">Pick up toys</div>
+            </div>
+            <div class="task-card" id="task2" onclick="completeTask(2)">
+               <div class="card-check">2</div>
+               <div class="card-text">Make the bed</div>
+            </div>
+            <div class="task-card" id="task3" onclick="completeTask(3)">
+               <div class="card-check">3</div>
+               <div class="card-text">Put clothes away</div>
+            </div>
+         </div>
+
+         <div class="takeaway">
+            "One checkpoint at a time!"
+         </div>
+
+         <button class="btn" id="checkpointNextBtn" onclick="goToPage(7)" disabled>I Got All My Stars! →</button>
+      </div>
+
+      <!-- PAGE 7: Practice - Help Cosmo -->
+      <div id="page7" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+         </div>
+         <h1>Help Cosmo Launch! 🐕‍🦺🚀</h1>
+
+         <p>Oh no! Cosmo's brain is stuck and the rocket won't start!</p>
+         <p><span class="child-name"></span>, use your Launch Skills to help!</p>
+
+         <div class="mission-panel">
+            <div class="mascot" style="font-size: 50px; margin: 0;">🐕‍🦺😵‍💫</div>
+            <div class="panel-status" id="panelStatus">Mission Status: STUCK</div>
+            <div class="panel-meter">
+               <div class="panel-fill" id="panelFill"></div>
+            </div>
+         </div>
+
+         <div class="tool-buttons">
+            <button class="tool-btn" id="skill1" onclick="useSkill(1)">
+               <span style="font-size: 1.5rem;">🎯</span>
+               <span>Pick ONE Thing (Mission Target)</span>
+            </button>
+            <button class="tool-btn" id="skill2" onclick="useSkill(2)" disabled>
+               <span style="font-size: 1.5rem;">👣</span>
+               <span>Find Tiny First Step</span>
+            </button>
+            <button class="tool-btn" id="skill3" onclick="useSkill(3)" disabled>
+               <span style="font-size: 1.5rem;">🚀</span>
+               <span>3-2-1 Blastoff!</span>
+            </button>
+            <button class="tool-btn" id="skill4" onclick="useSkill(4)" disabled>
+               <span style="font-size: 1.5rem;">⭐</span>
+               <span>Checkpoint Stars</span>
+            </button>
+         </div>
+
+         <button class="btn" id="helpNextBtn" onclick="goToPage(8)" style="display: none; margin-top: 20px;">Cosmo Launched! 🎉</button>
+      </div>
+
+      <!-- PAGE 8: Celebration -->
+      <div id="page8" class="page">
+         <div class="progress-dots">
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot complete"></div>
+            <div class="dot active"></div>
+         </div>
+
+         <div id="confettiContainer" class="confetti-container"></div>
+
+         <div class="mascot">🎉🐕‍🦺🚀🎉</div>
+         <h1>Mission Complete!</h1>
+
+         <p><span class="child-name"></span>, you are now a <strong>Launch Expert!</strong></p>
+
+         <div style="text-align: left; margin: 20px 0; padding: 0 10px;">
+            <p>✅ <strong>Mission Target</strong> - Pick ONE thing</p>
+            <p>✅ <strong>Tiny First Step</strong> - Find the smallest start</p>
+            <p>✅ <strong>3-2-1 Blastoff</strong> - Countdown to start</p>
+            <p>✅ <strong>Checkpoint Stars</strong> - Break it into pieces</p>
+         </div>
+
+         <p>Use these <strong>anywhere</strong> - homework, chores, getting ready!</p>
+
+         <button class="btn" onclick="goToPage(9)">Get My Launch Skills Card! 🏆</button>
+      </div>
+
+      <!-- PAGE 9: Recap Card -->
+      <div id="page9" class="page">
+         <h1 style="margin-bottom: 5px;">🏆 Your Launch Skills! 🏆</h1>
+
+         <div class="recap-card">
+            <div class="recap-title">
+               <span class="child-name"></span>'s Space Pup Tools
+            </div>
+
+            <div class="recap-item">
+               <div class="recap-icon">🎯</div>
+               <div class="recap-text">
+                  <strong>Mission Target</strong>
+                  <span>"What's my ONE thing?"</span>
+               </div>
+            </div>
+
+            <div class="recap-item">
+               <div class="recap-icon">👣</div>
+               <div class="recap-text">
+                  <strong>Tiny First Step</strong>
+                  <span>"What's the tiniest step I can take?"</span>
+               </div>
+            </div>
+
+            <div class="recap-item">
+               <div class="recap-icon">🚀</div>
+               <div class="recap-text">
+                  <strong>3-2-1 Blastoff</strong>
+                  <span>"Count down, then GO!"</span>
+               </div>
+            </div>
+
+            <div class="recap-item">
+               <div class="recap-icon">⭐</div>
+               <div class="recap-text">
+                  <strong>Checkpoint Stars</strong>
+                  <span>"One checkpoint at a time!"</span>
+               </div>
+            </div>
+         </div>
+
+         <button class="btn" onclick="window.print()">🖨️ Print My Card</button>
+         <button class="btn btn-green" onclick="goToPage(10)" style="margin-top: 10px;">Grown-Up Info →</button>
+      </div>
+
+      <!-- PAGE 10: Parent Dashboard -->
+      <div id="page10" class="page">
+         <h1>Parent Dashboard</h1>
+         <p style="font-size: 1rem; color: #666;">What <span class="child-name"></span> learned today</p>
+
+         <div class="parent-section">
+            <div class="parent-title">🎯 Skills Practiced</div>
+
+            <div class="parent-box">
+               <h4>1. Prioritization (Mission Target)</h4>
+               <p>Children with executive function challenges often feel paralyzed by multiple demands. Asking "What's my ONE thing?" reduces cognitive load and creates a clear starting point. This is the foundation of task initiation.</p>
+            </div>
+
+            <div class="parent-box">
+               <h4>2. Task Initiation (Tiny First Step)</h4>
+               <p>The biggest barrier is often starting. By identifying an absurdly small first step ("just look at the homework"), we bypass the overwhelm. Once started, momentum often carries forward. The phrase "What's the tiniest step?" is a powerful daily tool.</p>
+            </div>
+
+            <div class="parent-box">
+               <h4>3. Activation Energy (3-2-1 Blastoff)</h4>
+               <p>Countdowns create external structure for brains that struggle with internal "start" signals. The countdown provides a clear transition point from "not doing" to "doing." This works for transitions, starting tasks, or ending preferred activities.</p>
+            </div>
+
+            <div class="parent-box">
+               <h4>4. Task Chunking (Checkpoint Stars)</h4>
+               <p>Breaking large tasks into visible checkpoints makes progress concrete and provides dopamine hits along the way. Children with EF challenges often can't see the "middle" of tasks - checkpoints create a roadmap.</p>
+            </div>
+
+            <div class="parent-title" style="margin-top: 20px;">💬 Conversation Starters</div>
+
+            <div class="parent-box">
+               <ul>
+                  <li>"What's your ONE thing right now?"</li>
+                  <li>"What's the tiniest first step for that?"</li>
+                  <li>"Want to do a 3-2-1 Blastoff together?"</li>
+                  <li>"Let's turn this into checkpoint stars - what's first?"</li>
+               </ul>
+            </div>
+
+            <div class="parent-title" style="margin-top: 20px;">🏠 Practice Ideas</div>
+
+            <div class="parent-box">
+               <ul>
+                  <li><strong>Morning routine:</strong> Use checkpoint stars for getting ready</li>
+                  <li><strong>Homework time:</strong> "What's your tiny first step?"</li>
+                  <li><strong>Transitions:</strong> "3-2-1 Blastoff to the car!"</li>
+                  <li><strong>Chores:</strong> Let them create their own checkpoint stars</li>
+                  <li><strong>Visual support:</strong> Print the recap card and reference it</li>
+               </ul>
+            </div>
+
+            <div class="parent-title" style="margin-top: 20px;">⚠️ When They're Still Stuck</div>
+
+            <div class="parent-box">
+               <p>Executive function challenges are neurological, not willfulness. If these tools aren't working in the moment:</p>
+               <ul>
+                  <li><strong>Body double:</strong> Sit with them while they work (your presence helps)</li>
+                  <li><strong>Make it tinier:</strong> "What if the first step was just picking up the pencil?"</li>
+                  <li><strong>Remove decisions:</strong> "Your ONE thing right now is homework"</li>
+                  <li><strong>Add movement:</strong> Sometimes a body break helps reset the brain</li>
+                  <li><strong>Check basics:</strong> Hunger, tiredness, and stress worsen EF</li>
+               </ul>
+            </div>
+
+            <button class="btn" onclick="location.reload()">🔄 Play Again</button>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      let childName = '';
+      let currentPage = 1;
+      let tasksCompleted = 0;
+      let skillsUsed = 0;
+
+      // Create stars background
+      function createStars() {
+         const container = document.getElementById('stars');
+         for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = star.style.height = (1 + Math.random() * 3) + 'px';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(star);
+         }
+      }
+      createStars();
+
+      // Enable start button when name is entered
+      document.getElementById('nameInput').addEventListener('input', function() {
+         document.getElementById('startBtn').disabled = this.value.trim() === '';
+      });
+
+      function startAdventure() {
+         const input = document.getElementById('nameInput').value.trim();
+         if (input) {
+            childName = input;
+            document.querySelectorAll('.child-name').forEach(el => {
+               el.textContent = childName;
+            });
+            goToPage(2);
+         }
+      }
+
+      function goToPage(num) {
+         document.getElementById('page' + currentPage).classList.remove('active');
+         currentPage = num;
+         document.getElementById('page' + currentPage).classList.add('active');
+         window.scrollTo(0, 0);
+
+         if (num === 8) {
+            triggerConfetti();
+         }
+      }
+
+      // Page 3: Mission Target
+      function selectTarget(el) {
+         document.querySelectorAll('.target-option').forEach(o => o.classList.remove('selected'));
+         el.classList.add('selected');
+         document.getElementById('targetNextBtn').disabled = false;
+      }
+
+      // Page 4: Tiny First Step
+      function selectTinyStep(el, isCorrect) {
+         const feedback = document.getElementById('tinyFeedback');
+
+         if (isCorrect) {
+            document.querySelectorAll('.tiny-step').forEach(s => s.classList.remove('found'));
+            el.classList.add('found');
+            feedback.textContent = "Yes! Just LOOKING is the tiniest step! 🎉";
+            feedback.style.color = 'var(--success-green)';
+            document.getElementById('tinyNextBtn').style.display = 'block';
+         } else {
+            feedback.textContent = "That's a good step, but can you find a TINIER one?";
+            feedback.style.color = 'var(--rocket-orange)';
+         }
+      }
+
+      // Page 5: Countdown
+      function startCountdown() {
+         document.getElementById('countdownStartBtn').style.display = 'none';
+         const display = document.getElementById('countdownDisplay');
+         const rocket = document.getElementById('rocketAnim');
+
+         let count = 3;
+         display.textContent = count;
+         display.classList.remove('blastoff');
+
+         const countdown = setInterval(() => {
+            count--;
+            if (count > 0) {
+               display.textContent = count;
+            } else if (count === 0) {
+               display.textContent = "BLASTOFF!";
+               display.classList.add('blastoff');
+               rocket.classList.add('launched');
+            } else {
+               clearInterval(countdown);
+               display.textContent = "🚀 You did it!";
+               display.classList.remove('blastoff');
+               document.getElementById('countdownNextBtn').style.display = 'block';
+            }
+         }, 1000);
+      }
+
+      // Page 6: Checkpoint Stars
+      function completeTask(num) {
+         const task = document.getElementById('task' + num);
+         if (task.classList.contains('completed')) return;
+
+         task.classList.add('completed');
+         task.querySelector('.card-check').textContent = '✓';
+
+         const star = document.getElementById('star' + num);
+         star.classList.add('reached');
+         star.textContent = '⭐';
+
+         tasksCompleted++;
+
+         const progress = document.getElementById('checkpointProgress');
+         progress.style.width = (tasksCompleted * 33) + '%';
+
+         if (tasksCompleted >= 3) {
+            document.getElementById('star4').classList.add('reached');
+            progress.style.width = '100%';
+            document.getElementById('checkpointNextBtn').disabled = false;
+         }
+      }
+
+      // Page 7: Help Cosmo
+      function useSkill(num) {
+         const btn = document.getElementById('skill' + num);
+         const fill = document.getElementById('panelFill');
+         const status = document.getElementById('panelStatus');
+         const mascotEl = document.querySelector('#page7 .mascot');
+
+         btn.classList.add('used');
+         btn.disabled = true;
+         skillsUsed++;
+
+         if (skillsUsed === 1) {
+            fill.style.width = '25%';
+            status.textContent = "Mission Status: TARGET LOCKED";
+            mascotEl.textContent = '🐕‍🦺🎯';
+            document.getElementById('skill2').disabled = false;
+         } else if (skillsUsed === 2) {
+            fill.style.width = '50%';
+            status.textContent = "Mission Status: FIRST STEP FOUND";
+            mascotEl.textContent = '🐕‍🦺👣';
+            document.getElementById('skill3').disabled = false;
+         } else if (skillsUsed === 3) {
+            fill.style.width = '75%';
+            status.textContent = "Mission Status: ENGINES ON!";
+            mascotEl.textContent = '🐕‍🦺🔥';
+            document.getElementById('skill4').disabled = false;
+         } else if (skillsUsed === 4) {
+            fill.style.width = '100%';
+            status.textContent = "Mission Status: LAUNCHED! 🚀";
+            mascotEl.textContent = '🐕‍🦺🚀✨';
+            document.getElementById('helpNextBtn').style.display = 'block';
+         }
+      }
+
+      // Confetti
+      function triggerConfetti() {
+         const container = document.getElementById('confettiContainer');
+         const colors = ['#5C6BC0', '#FF7043', '#FFD54F', '#66BB6A', '#9FA8DA'];
+
+         for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+               const confetti = document.createElement('div');
+               confetti.className = 'confetti';
+               confetti.style.left = Math.random() * 100 + '%';
+               confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+               confetti.style.animationDelay = Math.random() * 0.5 + 's';
+               container.appendChild(confetti);
+
+               setTimeout(() => confetti.remove(), 3000);
+            }, i * 50);
+         }
+      }
+   </script>
+
+</body>
+
+</html>
