@@ -4,135 +4,521 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Is your child lazy or stuck? Learn the difference between defiant 'Won't' and executive function 'Can't' to stop the battles.">
-   <title>Lazy or Locked? The Difference Between "Can't" and "Won't" | Navigator Kids AI</title>
+   <title>They're Not Lazy: Can't vs. Won't | Navigator Kids AI</title>
+   <meta name="description" content="Is it defiance or a neurological gap? Learn the difference between 'Can't' and 'Won't' to stop the battles and start building skills.">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css">
+   <link rel="stylesheet" href="styles.css">
+
+   <style>
+      /* Article Specific Styles */
+      .breadcrumbs {
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+         color: var(--color-text-muted, #666);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-highlight, #E07A5F);
+         text-decoration: none;
+         transition: 0.3s;
+      }
+
+      .breadcrumbs a:hover {
+         color: var(--color-highlight-dark, #c05a3f);
+      }
+
+      .breadcrumbs span {
+         margin: 0 8px;
+         color: var(--color-text-muted, #666);
+      }
+
+      .article-layout {
+         display: grid;
+         grid-template-columns: 1fr 300px;
+         gap: 60px;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 40px 24px 80px;
+      }
+
+      @media (max-width: 1024px) {
+         .article-layout {
+            grid-template-columns: 1fr;
+         }
+         .article-sidebar {
+            order: -1;
+         }
+      }
+
+      .article-header {
+         margin-bottom: 40px;
+      }
+
+      .article-header h1 {
+         font-family: 'Inter', sans-serif;
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         margin-bottom: 24px;
+         line-height: 1.2;
+         color: var(--color-text, #333);
+      }
+
+      .author-byline {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+      }
+
+      .author-photo {
+         width: 56px;
+         height: 56px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, #E07A5F 0%, #3D405B 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: 700;
+         font-size: 1.1rem;
+      }
+
+      .author-info {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
+
+      .author-name {
+         font-weight: 700;
+         color: var(--color-primary, #3D405B);
+      }
+
+      .author-role {
+         font-size: 0.85rem;
+         color: var(--color-highlight, #E07A5F);
+      }
+
+      .publish-date {
+         font-size: 0.9rem;
+         color: #888;
+      }
+
+      /* Key Takeaways Box */
+      .key-takeaways {
+         background: white;
+         border-radius: 16px;
+         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+         padding: 32px;
+         margin-bottom: 40px;
+         border-left: 4px solid #E07A5F;
+      }
+
+      .key-takeaways h2 {
+         font-size: 1.1rem;
+         color: #E07A5F;
+         margin-bottom: 16px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .key-takeaways ul {
+         margin: 0;
+         padding-left: 20px;
+      }
+
+      .key-takeaways li {
+         margin-bottom: 10px;
+         color: #444;
+      }
+
+      .article-body {
+         background: white;
+         border-radius: 16px;
+         padding: 48px;
+         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      @media (max-width: 600px) {
+         .article-body {
+            padding: 32px 24px;
+         }
+      }
+
+      .article-body p {
+         margin-bottom: 24px;
+         font-size: 1.05rem;
+         line-height: 1.8;
+         color: #444;
+      }
+
+      .article-body h2 {
+         font-size: 1.6rem;
+         margin: 48px 0 24px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid #F4F1DE;
+         color: #3D405B;
+      }
+
+      .article-body h3 {
+         font-size: 1.25rem;
+         margin: 32px 0 16px;
+         color: #3D405B;
+      }
+
+      .article-body ul {
+         margin-bottom: 24px;
+         padding-left: 20px;
+      }
+
+      .article-body li {
+         margin-bottom: 12px;
+         line-height: 1.7;
+         color: #444;
+      }
+
+      .article-body li strong {
+         color: #3D405B;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background: #F4F1DE;
+         border-left: 4px solid #3D405B;
+         border-radius: 0 8px 8px 0;
+         padding: 28px 32px;
+         margin: 32px 0;
+      }
+
+      .highlight-box h3 {
+         font-size: 1.1rem;
+         color: #3D405B;
+         margin-bottom: 12px;
+      }
+
+      .highlight-box p {
+         margin: 0;
+         font-size: 1rem;
+      }
+
+      /* Comparison Table Styles */
+      .comparison-table {
+         background: #FDFBF7;
+         border-radius: 16px;
+         padding: 32px;
+         margin: 32px 0;
+         border: 1px solid #eee;
+      }
+
+      .comparison-table h3 {
+         font-size: 1.3rem;
+         margin-bottom: 24px;
+         text-align: center;
+         margin-top: 0;
+      }
+
+      .comparison-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 20px;
+      }
+
+      @media (max-width: 700px) {
+         .comparison-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .comparison-column {
+         background: white;
+         border-radius: 8px;
+         padding: 24px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+
+      .comparison-column h4 {
+         font-size: 1.1rem;
+         margin-bottom: 16px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid;
+         text-align: center;
+      }
+
+      .will-column h4 {
+         color: #E07A5F;
+         border-color: #E07A5F;
+      }
+
+      .cant-column h4 {
+         color: #81B29A;
+         border-color: #81B29A;
+      }
+
+      .comparison-column ul {
+         margin: 0;
+         padding-left: 20px;
+      }
+
+      .comparison-column li {
+         font-size: 0.9rem;
+         margin-bottom: 10px;
+      }
+
+      /* Sidebar & Widgets */
+      .sidebar-widget {
+         background: white;
+         border-radius: 16px;
+         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+         padding: 32px;
+         position: sticky;
+         top: 100px;
+         text-align: center;
+         border-top: 4px solid #E07A5F;
+      }
+
+      .sidebar-widget h3 {
+         font-size: 1.2rem;
+         margin-bottom: 12px;
+         color: #3D405B;
+      }
+
+      .sidebar-widget p {
+         font-size: 0.95rem;
+         color: #666;
+         margin-bottom: 20px;
+      }
+
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 14px 24px;
+         background: #E07A5F;
+         color: white;
+         border-radius: 8px;
+         font-weight: 600;
+         font-size: 0.95rem;
+         transition: 0.3s;
+         width: 100%;
+         text-decoration: none;
+         border: none;
+         cursor: pointer;
+      }
+
+      .btn:hover {
+         background: #c05a3f;
+         transform: translateY(-2px);
+      }
+
+      /* Read Next */
+      .read-next {
+         background: #3D405B;
+         padding: 80px 24px;
+         margin-top: 60px;
+      }
+
+      .read-next h2 {
+         color: white;
+         text-align: center;
+         margin-bottom: 40px;
+         font-size: 1.8rem;
+      }
+
+      .read-next-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 24px;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+         .read-next-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .read-next-card {
+         background: white;
+         border-radius: 16px;
+         padding: 32px;
+         transition: 0.3s;
+         text-decoration: none;
+         display: block;
+      }
+
+      .read-next-card:hover {
+         transform: translateY(-4px);
+         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }
+
+      .read-next-card h3 {
+         font-size: 1.2rem;
+         margin-bottom: 8px;
+         color: #3D405B;
+         transition: 0.3s;
+      }
+
+      .read-next-card:hover h3 {
+         color: #E07A5F;
+      }
+
+      .read-next-card p {
+         font-size: 0.95rem;
+         color: #666;
+         margin: 0;
+      }
+   </style>
 </head>
 
 <body>
-   <div id="header"></div>
+   <div id="global-header"></div>
 
-   <main class="article-page">
-      <div class="container">
-
-         <nav class="breadcrumbs">
-            <a href="/">Home</a>
-            <span>/</span>
-            <a href="/resources/">Resources</a>
-            <span>/</span>
+   <div class="article-layout">
+      <article class="article-content">
+         <div class="breadcrumbs">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="resources.html">Resources</a> <span>/</span>
             <span>Can't vs. Won't</span>
-         </nav>
-
-         <div class="article-layout">
-            <article class="article-content">
-
-               <header class="article-header">
-                  <span class="article-category">Executive Function</span>
-                  <h1>Lazy or Locked? The Difference Between "Can't" and "Won't"</h1>
-                  <p class="article-subtitle">Before you punish the behavior, learn to spot the difference. Your child's brain may be blocking them from tasks they actually want to do.</p>
-               </header>
-
-               <div class="article-trust-bar">
-                  <span>✓ No diagnosis required</span>
-                  <span>✓ Backed by neurodiversity research</span>
-               </div>
-
-               <div class="article-body">
-
-                  <p>Picture this: You are standing in the doorway of your child's room. You have asked them to clean it three times. It looks like a Lego factory explosion. And there they are, sitting on the floor, reading a comic book, holding one single sock.</p>
-
-                  <p>Your brain might scream: <em>They are being lazy. They are ignoring me. They just don't respect me.</em></p>
-
-                  <p>But often, if you look closer, they aren't ignoring you. They are overwhelmed. They are stuck in a neurological traffic jam. To them, the room doesn't look like a series of small tasks; it looks like impossible white noise.</p>
-
-                  <p>We often assume that if a child is smart enough to code a mod for Minecraft, they are smart enough to hang up a towel. But those tasks use different engines in the brain. <strong>"Can't" behaviors happen when the ignition switch is broken.</strong> They are pressing the gas pedal, but the car is in neutral.</p>
-
-                  <h2>The "Can't" vs. "Won't" Cheat Sheet</h2>
-                  <p>In the heat of the moment, it is incredibly hard to tell if a child is being difficult or if they are drowning. Here is a framework many parents use to pause before reacting.</p>
-
-                  <h3>Scenario A: The "Won't" (Defiance)</h3>
-                  <p>This is a behavioral choice. They have the ability, but refuse the action.</p>
-                  <ul>
-                     <li><strong>The Look:</strong> They look you in the eye and say "No" or ignore you intentionally.</li>
-                     <li><strong>The Bribe:</strong> If you offer $20, they can suddenly do it perfectly.</li>
-                     <li><strong>The Context:</strong> They refuse to do it everywhere (school, home, grandma's).</li>
-                     <li><strong>The Emotion:</strong> They seem annoyed, angry, or in control.</li>
-                  </ul>
-
-                  <h3>Scenario B: The "Can't" (The Block)</h3>
-                  <p>This is an executive function gap. They have the desire (or at least the willingness), but lack the initiation skill.</p>
-                  <ul>
-                     <li><strong>The Look:</strong> They look lost, glazed over, or stare at the wall.</li>
-                     <li><strong>The Bribe:</strong> Even for $20, they struggle to start or get distracted immediately.</li>
-                     <li><strong>The Context:</strong> They might hold it together at school but fall apart at home (Restraint Collapse).</li>
-                     <li><strong>The Emotion:</strong> They seem anxious, overwhelmed, or start crying "for no reason."</li>
-                  </ul>
-
-                  <div class="callout-box">
-                     <h4>Why We Mislabel It</h4>
-                     <p>We often label children "lazy" because it feels fixable. If they are lazy, we can use consequences. But if they "Can't"—if their brain is blocking them—punishment often backfires. You can't ground a child into having better working memory. In fact, punishment usually adds shame to the anxiety, making the wall even higher.</p>
-                  </div>
-
-                  <h2>Strategies That Help Unblock the Brain</h2>
-                  <p>Once you stop treating the behavior as a character flaw and start treating it as a mechanical issue, everything changes. Here are three strategies to help lower the wall:</p>
-
-                  <h3>1. The "Body Double"</h3>
-                  <p>This is often magic for 2e kids. Simply sit in the room with them. You don't help. You don't nag. You just sit there and read a book or fold laundry.</p>
-                  <p>Your calm presence acts as an external battery for their executive function. It turns a "Can't" into a "Can" by anchoring them to the present moment.</p>
-
-                  <h3>2. Break the "First Step"</h3>
-                  <p>"Clean your room" is too big. It shuts down the brain. Try this instead: <em>"I need you to pick up the three red shirts on the floor. Just the red shirts."</em></p>
-                  <p>Once they move, the momentum often carries them to the next task. You are essentially manually starting their ignition.</p>
-
-                  <h3>3. Use AI as the "Bad Guy"</h3>
-                  <p>Some families use AI to generate checklists for routine tasks. Instead of a parent nagging "Did you brush your teeth?", the child checks the list made by the "robot." It removes the parent-child power struggle and turns it into a game of beating the system.</p>
-
-                  <div class="article-disclaimer">
-                     <p><strong>Note:</strong> This article provides educational information for parents. It is not medical or psychological advice, diagnosis, or treatment. Always consult qualified professionals for your child's specific needs.</p>
-                  </div>
-
-                  <h2>The Bottom Line</h2>
-                  <p>Your child isn't broken, and they aren't trying to make your life difficult. They are likely just as frustrated by their stuck brain as you are.</p>
-                  <p>The next time you see them staring at a pile of homework, try assuming it's a "Can't." Sit down next to them, take a deep breath, and lend them your executive function for just five minutes. You might be amazed at what happens when the wall comes down.</p>
-
-               </div>
-
-               <div class="article-cta">
-                  <h3>Curious about your child's executive function?</h3>
-                  <p>Take our free 3-minute quiz to understand their unique patterns.</p>
-                  <a href="/quiz/" class="btn btn-primary">Take the Free Quiz →</a>
-               </div>
-
-            </article>
-
-            <aside class="article-sidebar">
-               <div class="sidebar-widget">
-                  <h4>Free Download</h4>
-                  <p>Get the De-Escalation Kit — scripts for when meltdowns hit.</p>
-                  <a href="/free/de-escalation-kit/" class="btn btn-secondary">Get the Free Kit</a>
-               </div>
-
-               <div class="sidebar-widget">
-                  <h4>Related Articles</h4>
-                  <ul class="related-links">
-                     <li><a href="/resources/smart-child-lost-shoes/">Why Smart Kids Lose Shoes</a></li>
-                     <li><a href="/resources/black-hole-backpack/">The Black Hole Backpack</a></li>
-                     <li><a href="/resources/routine-rescue/">Morning Routine Rescue</a></li>
-                  </ul>
-               </div>
-            </aside>
          </div>
 
+         <header class="article-header">
+            <h1>They're Not Lazy: How to Tell the Difference Between "Can't" and "Won't"</h1>
+            <div class="author-byline">
+               <div class="author-photo">JD</div>
+               <div class="author-info">
+                  <div class="author-name">Jane Doe</div>
+                  <div class="author-role">Research Contributor</div>
+                  <div class="publish-date">Updated September 2024</div>
+               </div>
+            </div>
+         </header>
+
+         <div class="key-takeaways">
+            <h2>TL;DR: The Core Difference</h2>
+            <ul>
+               <li>Gifted children's avoidance behaviors often stem from <strong>neurological differences</strong> rather than defiance.</li>
+               <li><strong>"Can't"</strong> patterns involve genuine skill gaps or processing challenges.</li>
+               <li><strong>"Won't"</strong> patterns reflect conscious choice and behavioral control.</li>
+               <li>Punishing a "Can't" (Skill Gap) only increases anxiety and makes the paralysis worse.</li>
+            </ul>
+         </div>
+
+         <div class="article-body">
+            <p>You've said it a thousand times: "If they would just apply themselves." Your brilliant child tackles complex problems with ease yet struggles to complete simple daily tasks. Chores become battles, homework disappears into backpack black holes, and starting anything feels like pulling teeth.</p>
+
+            <p>This isn't laziness or manipulation. This is the manifestation of <strong>asynchronous development</strong>, where intellectual capacity outpaces executive function skills by years.</p>
+
+            <p>Distinguishing between genuine inability and behavioral choice creates pathways to genuine success.</p>
+
+            <div class="highlight-box">
+               <h3>The Fundamental Distinction</h3>
+               <p>"Can't" behaviors reflect neurological processing differences that require skill-building and accommodation. "Won't" behaviors involve conscious choice that responds to behavioral interventions.</p>
+            </div>
+
+            <h2>Understanding the Root Causes</h2>
+            <p>Why do bright children struggle with simple tasks? It often comes down to <strong>Executive Function Lag</strong>. Organization, planning, and task initiation skills can trail intellectual abilities by 2-4 years in gifted children.</p>
+
+            <p>Often, <strong>Perfectionism Paralysis</strong> plays a role. The fear of imperfect execution prevents them from even starting. To the parent, it looks like refusal. To the child, it feels like a wall.</p>
+
+            <div class="highlight-box">
+               <h3>Research Insight</h3>
+               <p>Neuroimaging studies show that gifted children with executive function challenges demonstrate normal activity in intellectual processing regions while showing delayed or atypical activation in executive function networks.</p>
+            </div>
+
+            <h2>The "Can't" vs. "Won't" Diagnostic Framework</h2>
+            <p>Use this framework to identify the root cause before you react:</p>
+
+            <div class="comparison-table">
+               <h3>Behavioral Pattern Analysis</h3>
+               <div class="comparison-grid">
+                  <div class="comparison-column will-column">
+                     <h4>"Won't" (Defiance)</h4>
+                     <ul>
+                        <li>Consistent across all situations and contexts.</li>
+                        <li>Appears when consequences are removed or minimized.</li>
+                        <li>Shows clear understanding of expectations.</li>
+                        <li>Demonstrates ability when motivated by preferred activities.</li>
+                        <li>Appears manipulative or attention-seeking.</li>
+                     </ul>
+                  </div>
+                  <div class="comparison-column cant-column">
+                     <h4>"Can't" (Block)</h4>
+                     <ul>
+                        <li>Inconsistent performance across similar tasks.</li>
+                        <li>Shows genuine distress or confusion about expectations.</li>
+                        <li>Performs well with support but struggles independently.</li>
+                        <li>Shows improvement with environmental modifications.</li>
+                        <li>Appears overwhelmed or frustrated rather than defiant.</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+            <h2>Why Traditional Approaches Fail</h2>
+            <p>Standard interventions often worsen the situation. <strong>Punishment-based methods</strong> increase stress, which raises cortisol levels and further impairs executive function. It addresses the symptom (not doing the task) rather than the underlying neurological need.</p>
+
+            <div class="highlight-box">
+               <h3>Research Evidence</h3>
+               <p>Controlled studies show that children with executive function challenges respond 3x better to environmental modifications and skill-building than to traditional reward/consequence approaches.</p>
+            </div>
+
+            <h2>Effective Intervention Strategies</h2>
+            
+            <h3>For "Can't" Patterns</h3>
+            <ul>
+               <li><strong>Environmental Modifications:</strong> Reduce cognitive load through systematic supports (checklists, bins).</li>
+               <li><strong>Skill-Building:</strong> Explicit instruction in organizational and planning strategies.</li>
+               <li><strong>Stress Reduction:</strong> Creating calm environments that optimize executive function.</li>
+            </ul>
+
+            <h3>For "Won't" Patterns</h3>
+            <ul>
+               <li><strong>Clear Expectations:</strong> Specific, consistent guidelines with predictable consequences.</li>
+               <li><strong>Natural Outcomes:</strong> Logical results that connect to choices and behaviors.</li>
+               <li><strong>Relationship Building:</strong> Strong connections that motivate cooperation.</li>
+            </ul>
+
+            <h2>The Bottom Line</h2>
+            <p>Your child's avoidance behaviors aren't character flaws—they're neurological responses to genuine challenges.</p>
+
+            <p>Distinguishing between "can't" and "won't" transforms parenting from guesswork to precision intervention. Rather than fighting your child's resistance, support their development through understanding and accommodation.</p>
+
+            <p><strong>Remember: The goal isn't to eliminate all support but to create systems where your child can thrive independently.</strong></p>
+         </div>
+      </article>
+
+      <aside class="article-sidebar">
+         <div class="sidebar-widget">
+            <h3>Is your child 2e?</h3>
+            <p>Take our free 2-minute quiz to understand their unique profile (Gifted + Executive Dysfunction).</p>
+            <a href="quiz.html" class="btn">
+               <i class="fas fa-check-circle"></i> Take the Free Quiz
+            </a>
+         </div>
+      </aside>
+   </div>
+
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
+         <div class="read-next-grid">
+            <a href="smart-child-lost-shoes.html" class="read-next-card">
+               <h3>Why Smart Kids Lose Shoes</h3>
+               <p>The surprising link between intelligence and poor executive function.</p>
+            </a>
+            <a href="black-hole-backpack.html" class="read-next-card">
+               <h3>The Black Hole Backpack</h3>
+               <p>A 3-step system to stop losing homework forever.</p>
+            </a>
+         </div>
       </div>
-   </main>
+   </section>
 
-   <div id="footer"></div>
+   <div id="global-footer"></div>
 
-   <script src="/js/components.js"></script>
+   <script src="script.js"></script>
 </body>
 
 </html>
