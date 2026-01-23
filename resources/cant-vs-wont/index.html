@@ -4,146 +4,273 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Is it defiance or a brain block? How to tell the difference between 'can't' and 'won't' in twice-exceptional children.">
    <title>Can't vs. Won't: Decoding Your Child's Refusal | Navigator Kids AI</title>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css">
+   <meta name="description" content="Is it defiance or a brain block? How to tell the difference between 'can't' and 'won't' in twice-exceptional children.">
+   
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+   <link rel="stylesheet" href="styles.css">
+
    <style>
-      /* Page Specific Styles (Keep these if they aren't in your main CSS yet) */
+      /* --- Article Specific Overrides --- */
+      
+      /* Layout & Grid */
       .article-layout {
-         display: flex;
+         display: grid;
+         grid-template-columns: 1fr 300px;
          gap: 60px;
          max-width: 1200px;
          margin: 0 auto;
-         padding: 60px 24px;
+         padding: 40px 24px 80px;
       }
 
-      .article-content {
-         flex: 1;
-         max-width: 800px;
+      @media (max-width: 1024px) {
+         .article-layout {
+            grid-template-columns: 1fr;
+         }
+         .article-sidebar {
+            order: -1; /* Sidebar on top for mobile/tablet if desired, or remove to keep at bottom */
+         }
       }
 
-      .article-sidebar {
-         width: 300px;
-         flex-shrink: 0;
-      }
-
+      /* Breadcrumbs */
       .breadcrumbs {
-         margin-bottom: 30px;
          font-size: 0.9rem;
-         color: var(--color-text-muted);
+         margin-bottom: 24px;
+         color: #666;
       }
-
       .breadcrumbs a {
-         color: var(--color-primary);
+         color: #E07A5F;
          text-decoration: none;
+         transition: 0.3s;
+      }
+      .breadcrumbs a:hover {
+         color: #c05a3f;
+      }
+      .breadcrumbs span {
+         margin: 0 8px;
+         color: #999;
       }
 
+      /* Header */
+      .article-header h1 {
+         font-family: 'Inter', sans-serif;
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         margin-bottom: 16px;
+         line-height: 1.2;
+         color: #3D405B;
+      }
+      .article-meta {
+         display: flex;
+         gap: 12px;
+         align-items: center;
+         color: #888;
+         font-size: 0.9rem;
+         margin-bottom: 32px;
+      }
+
+      /* Key Takeaways Box */
       .key-takeaways {
-         background-color: var(--color-background-alt);
-         border-radius: var(--border-radius-lg);
-         padding: 30px;
-         margin-bottom: 50px;
-         border-left: 4px solid var(--color-secondary);
-      }
-
-      .highlight-box {
-         background-color: #FFF8F0;
-         /* Light cream/orange tint */
-         border-left: 4px solid var(--color-highlight);
-         padding: 25px 30px;
-         margin: 40px 0;
-         border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-      }
-
-      .comparison-table {
          background: white;
-         border: 1px solid rgba(0, 0, 0, 0.1);
-         border-radius: var(--border-radius-lg);
-         padding: 30px;
-         margin: 40px 0;
-         box-shadow: var(--shadow-sm);
+         border-radius: 16px;
+         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+         padding: 32px;
+         margin-bottom: 40px;
+         border-left: 4px solid #E07A5F;
+      }
+      .key-takeaways h2 {
+         font-size: 1.1rem;
+         color: #E07A5F;
+         margin-bottom: 16px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+      .key-takeaways ul {
+         padding-left: 20px;
+         margin: 0;
+      }
+      .key-takeaways li {
+         margin-bottom: 10px;
+         color: #444;
+         line-height: 1.6;
       }
 
+      /* Body Content */
+      .article-body {
+         background: white;
+         border-radius: 16px;
+         padding: 48px;
+         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      @media (max-width: 600px) {
+         .article-body { padding: 32px 24px; }
+      }
+      .article-body p {
+         margin-bottom: 24px;
+         font-size: 1.05rem;
+         line-height: 1.8;
+         color: #444;
+      }
+      .article-body h2 {
+         font-size: 1.6rem;
+         margin: 48px 0 24px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid #F4F1DE;
+         color: #3D405B;
+      }
+      .article-body h3 {
+         font-size: 1.25rem;
+         margin: 32px 0 16px;
+         color: #3D405B;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+         background: #F4F1DE;
+         border-left: 4px solid #3D405B;
+         border-radius: 0 8px 8px 0;
+         padding: 28px 32px;
+         margin: 32px 0;
+      }
+      .highlight-box h3 {
+         font-size: 1.1rem;
+         color: #3D405B;
+         margin-bottom: 12px;
+         margin-top: 0;
+      }
+      .highlight-box p { margin: 0; font-size: 1rem; }
+
+      /* Comparison Table */
+      .comparison-table {
+         background: #FDFBF7;
+         border-radius: 16px;
+         padding: 32px;
+         margin: 32px 0;
+         border: 1px solid #eee;
+      }
+      .comparison-table h3 {
+         text-align: center;
+         margin-bottom: 24px;
+         margin-top: 0;
+      }
       .comparison-grid {
          display: grid;
          grid-template-columns: 1fr 1fr;
          gap: 20px;
       }
-
+      @media (max-width: 700px) {
+         .comparison-grid { grid-template-columns: 1fr; }
+      }
       .comparison-column {
-         background: var(--color-background);
-         border-radius: var(--border-radius-md);
-         padding: 20px;
+         background: white;
+         border-radius: 8px;
+         padding: 24px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       }
-
-      .will-column h4 {
-         color: var(--color-highlight);
+      .comparison-column h4 {
          text-align: center;
-         margin-bottom: 1rem;
+         margin-bottom: 16px;
+         padding-bottom: 12px;
+         border-bottom: 2px solid;
+         font-size: 1.1rem;
       }
+      .comparison-column ul {
+         padding-left: 20px;
+         font-size: 0.95rem;
+         margin: 0;
+      }
+      .comparison-column li { margin-bottom: 10px; }
 
-      .cant-column h4 {
-         color: var(--color-secondary);
+      /* Column Specifics */
+      .cant-column h4 { color: #81B29A; border-color: #81B29A; }
+      .will-column h4 { color: #E07A5F; border-color: #E07A5F; }
+
+      /* Sidebar Widget */
+      .sidebar-widget {
+         background: white;
+         border-radius: 16px;
+         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+         padding: 32px;
+         position: sticky;
+         top: 100px;
          text-align: center;
-         margin-bottom: 1rem;
+         border-top: 4px solid #E07A5F;
       }
+      .btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         padding: 14px 24px;
+         background: #E07A5F;
+         color: white;
+         border-radius: 8px;
+         font-weight: 600;
+         text-decoration: none;
+         width: 100%;
+         transition: 0.3s;
+         box-sizing: border-box;
+      }
+      .btn:hover { background: #c05a3f; transform: translateY(-2px); }
 
+      /* Read Next */
+      .read-next {
+         background: #3D405B;
+         padding: 80px 0;
+         margin-top: 60px;
+      }
+      .read-next h2 {
+         text-align: center;
+         color: white;
+         margin-bottom: 40px;
+         font-size: 1.8rem;
+      }
       .read-next-grid {
          display: grid;
          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
          gap: 24px;
-         margin-top: 40px;
+         max-width: 1000px;
+         margin: 0 auto;
+         padding: 0 24px;
       }
-
       .read-next-card {
          background: white;
-         padding: 24px;
-         border-radius: var(--border-radius-lg);
-         box-shadow: var(--shadow-sm);
+         padding: 32px;
+         border-radius: 16px;
          text-decoration: none;
-         color: inherit;
-         transition: var(--transition);
-         border: 1px solid rgba(0, 0, 0, 0.05);
+         transition: 0.3s;
       }
-
       .read-next-card:hover {
          transform: translateY(-4px);
-         box-shadow: var(--shadow-md);
+         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       }
-
-      /* Mobile Responsive */
-      @media (max-width: 900px) {
-         .article-layout {
-            flex-direction: column;
-         }
-
-         .article-sidebar {
-            width: 100%;
-            margin-top: 40px;
-         }
-
-         .comparison-grid {
-            grid-template-columns: 1fr;
-         }
+      .read-next-card h3 {
+         color: #3D405B;
+         margin-bottom: 8px;
+         font-size: 1.2rem;
       }
+      .read-next-card:hover h3 { color: #E07A5F; }
+      .read-next-card p { color: #666; margin: 0; font-size: 0.95rem; }
+      .read-next-icon { font-size: 2rem; display: block; margin-bottom: 12px; }
+
    </style>
 </head>
 
 <body>
-   <div id="header"></div>
+   <div id="global-header"></div>
 
    <div class="article-layout">
       <div class="article-content">
+         
          <nav class="breadcrumbs">
-            <a href="/">Home</a> <span>/</span>
-            <a href="/resources/">Resources</a> <span>/</span>
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="resources.html">Resources</a> <span>/</span>
             <span>Can't vs. Won't</span>
          </nav>
 
          <header class="article-header">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--color-primary);">They're Not Lazy: How to Tell the Difference Between "Can't" vs. "Won't"</h1>
-            <div style="display: flex; gap: 12px; align-items: center; color: var(--color-text-muted); font-size: 0.9rem;">
+            <h1>They're Not Lazy: How to Tell the Difference Between "Can't" vs. "Won't"</h1>
+            <div class="article-meta">
                <span>By The Navigator Team</span>
                <span>•</span>
                <span>5 min read</span>
@@ -151,16 +278,16 @@
          </header>
 
          <div class="key-takeaways">
-            <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--color-primary);">Key Takeaways</h2>
-            <ul style="padding-left: 20px; line-height: 1.6;">
-               <li style="margin-bottom: 8px;">Avoidance in smart kids is often a <strong>stress response</strong>, not defiance.</li>
-               <li style="margin-bottom: 8px;">"Can't" means they lack the skill or regulation in that moment.</li>
-               <li style="margin-bottom: 8px;">"Won't" is a choice that usually responds to negotiation.</li>
+            <h2>Key Takeaways</h2>
+            <ul>
+               <li>Avoidance in smart kids is often a <strong>stress response</strong>, not defiance.</li>
+               <li><strong>"Can't"</strong> means they lack the skill or regulation in that moment.</li>
+               <li><strong>"Won't"</strong> is a choice that usually responds to negotiation.</li>
                <li>Punishing a "Can't" behavior creates anxiety; supporting it builds independence.</li>
             </ul>
          </div>
 
-         <div class="article-body" style="line-height: 1.8; color: var(--color-text-main);">
+         <div class="article-body">
             <p>You've said it a thousand times: <em>"If they would just apply themselves."</em></p>
 
             <p>Your child tackles complex Lego builds or reads advanced novels with ease, yet struggles to put on their shoes or start a simple worksheet. Chores become battles, and homework disappears into the "backpack black hole."</p>
@@ -170,29 +297,29 @@
             <p>This is often the sign of a "High-Potential" or Twice-Exceptional (2e) brain. In these children, intellectual capacity can outpace executive function skills by years. They have a Ferrari engine (intellect) but bicycle brakes (emotional regulation).</p>
 
             <div class="highlight-box">
-               <h3 style="color: var(--color-highlight); margin-bottom: 10px;">The Core Distinction</h3>
+               <h3>The Core Distinction</h3>
                <p><strong>"Can't"</strong> behaviors are roadblocks. They require tools, patience, and scaffolding.<br>
                   <strong>"Won't"</strong> behaviors are choices. They respond to boundaries and agreements.</p>
             </div>
 
-            <h2 style="margin-top: 40px; margin-bottom: 20px; font-family: var(--font-heading); color: var(--color-primary);">Why Smart Kids Struggle with "Easy" Things</h2>
+            <h2>Why Smart Kids Struggle with "Easy" Things</h2>
             <p>If your child is "wired differently," simple tasks can actually be the hardest. Here is why:</p>
 
-            <ul style="margin-bottom: 30px; padding-left: 20px;">
-               <li style="margin-bottom: 12px;"><strong>Executive Function Lag:</strong> Organization and planning skills often trail behind their intelligence by 2–4 years.</li>
-               <li style="margin-bottom: 12px;"><strong>Working Memory:</strong> They may be thinking about three other inventions while trying to remember where their socks are.</li>
-               <li style="margin-bottom: 12px;"><strong>Perfectionism Paralysis:</strong> The fear of doing it "wrong" creates a freeze response that looks like laziness.</li>
+            <ul>
+               <li><strong>Executive Function Lag:</strong> Organization and planning skills often trail behind their intelligence by 2–4 years.</li>
+               <li><strong>Working Memory:</strong> They may be thinking about three other inventions while trying to remember where their socks are.</li>
+               <li><strong>Perfectionism Paralysis:</strong> The fear of doing it "wrong" creates a freeze response that looks like laziness.</li>
             </ul>
 
-            <h2 style="margin-top: 40px; margin-bottom: 20px; font-family: var(--font-heading); color: var(--color-primary);">The Differentiation Framework</h2>
+            <h2>The Differentiation Framework</h2>
             <p>How do you know which one you are dealing with? Use this checklist to decode the behavior.</p>
 
             <div class="comparison-table">
-               <h3 style="text-align: center; margin-bottom: 20px;">Pattern Recognition</h3>
+               <h3>Pattern Recognition</h3>
                <div class="comparison-grid">
                   <div class="comparison-column cant-column">
                      <h4>It's likely "Can't" if...</h4>
-                     <ul style="font-size: 0.95rem;">
+                     <ul>
                         <li>They are inconsistent (can do it Tuesday, but not Thursday).</li>
                         <li>They look overwhelmed, blank, or tearful.</li>
                         <li>Pressure makes it worse (they shut down).</li>
@@ -202,7 +329,7 @@
                   </div>
                   <div class="comparison-column will-column">
                      <h4>It might be "Won't" if...</h4>
-                     <ul style="font-size: 0.95rem;">
+                     <ul>
                         <li>They are consistent (never want to do it).</li>
                         <li>They look defiant, smirk, or negotiate.</li>
                         <li>They do it instantly if a reward is offered.</li>
@@ -213,25 +340,29 @@
                </div>
             </div>
 
-            <h2 style="margin-top: 40px; margin-bottom: 20px; font-family: var(--font-heading); color: var(--color-primary);">How to Respond (Scripts)</h2>
+            <h2>How to Respond (Scripts)</h2>
 
             <h3>Scenario 1: The "Can't" Crash</h3>
             <p><em>Your child is staring at a worksheet, not moving. You feel the urge to say, "Just get it done!"</em></p>
             <p><strong>Try this instead:</strong></p>
-            <div class="highlight-box" style="background: #F0F7F4; border-left-color: var(--color-secondary);">
+            
+            <div class="highlight-box" style="background: #F0F7F4; border-left-color: #81B29A;">
                <p><em>"I notice you haven't started yet. Is the battery low, or are the instructions confusing? Let's do the first problem together to jumpstart the engine."</em></p>
             </div>
+            
             <p><strong>Why it works:</strong> You are offering a "body double" (presence) to help them overcome the inertia of starting.</p>
 
             <h3>Scenario 2: The "Won't" Wall</h3>
             <p><em>Your child is playing video games and refuses to set the table, arguing it's "unfair."</em></p>
             <p><strong>Try this instead:</strong></p>
+            
             <div class="highlight-box">
                <p><em>"I hear that you want to keep playing. The deal is: tech time pauses until the table is set. You can do it now, or in 5 minutes, but the WiFi stays off until it's done."</em></p>
             </div>
+            
             <p><strong>Why it works:</strong> You aren't arguing. You are stating a pre-agreed boundary (Natural Consequence) without emotional escalation.</p>
 
-            <h2 style="margin-top: 40px; margin-bottom: 20px; font-family: var(--font-heading); color: var(--color-primary);">The Bottom Line</h2>
+            <h2>The Bottom Line</h2>
             <p>Distinguishing between "Can't" and "Won't" transforms parenting from guesswork to strategy.</p>
             <p>When it's <strong>"Can't,"</strong> become the scaffold: offer tools, break steps down, and lower the pressure. When it's <strong>"Won't,"</strong> hold the line: offer choices, maintain boundaries, and keep your cool.</p>
             <p>Most importantly, remember that <strong>executive function is a skill, not a character trait.</strong> Just like reading or math, it can be learned—it just takes these bright minds a little longer to automate the boring stuff.</p>
@@ -239,41 +370,41 @@
          </div>
       </div>
 
-      <div class="article-sidebar">
-         <div style="background: white; padding: 30px; border-radius: var(--border-radius-lg); border: 1px solid var(--color-highlight-light); text-align: center; position: sticky; top: 100px;">
+      <aside class="article-sidebar">
+         <div class="sidebar-widget">
             <span style="font-size: 3rem; display: block; margin-bottom: 10px;">🧠</span>
-            <h3 style="color: var(--color-primary); margin-bottom: 10px;">Free Brain Profile</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 20px;">Is your child a "Deep Diver" or a "Sensitive Observer"? Take the 2-minute quiz to find out.</p>
-            <a href="/quiz/" class="btn" style="background: var(--color-highlight); color: white; display: block; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 600;">Take the Quiz →</a>
+            <h3>Free Brain Profile</h3>
+            <p>Is your child a "Deep Diver" or a "Sensitive Observer"? Take the 2-minute quiz to find out.</p>
+            <a href="quiz.html" class="btn">Take the Quiz →</a>
          </div>
-      </div>
+      </aside>
    </div>
 
-   <section style="background: var(--color-background-alt); padding: 80px 0;">
-      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-         <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 40px;">Read Next</h2>
+   <section class="read-next">
+      <div class="container">
+         <h2>Read Next</h2>
          <div class="read-next-grid">
-            <a href="/resources/smart-kids=lost shoes/" class="read-next-card">
-               <span style="font-size: 2rem; display: block; margin-bottom: 10px;">👟</span>
-               <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Why Smart Kids Lose Shoes</h3>
-               <p style="color: var(--color-text-muted); font-size: 0.9rem;">The paradox of the "Ferrari Brain" with bicycle brakes.</p>
+            <a href="smart-kids-lost-shoes.html" class="read-next-card">
+               <span class="read-next-icon">👟</span>
+               <h3>Why Smart Kids Lose Shoes</h3>
+               <p>The paradox of the "Ferrari Brain" with bicycle brakes.</p>
             </a>
-            <a href="/resources/homeworl-without-tears/" class="read-next-card">
-               <span style="font-size: 2rem; display: block; margin-bottom: 10px;">📝</span>
-               <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Homework Without Tears</h3>
-               <p style="color: var(--color-text-muted); font-size: 0.9rem;">Stop the battles and help them just get started.</p>
+            <a href="homework-without-tears.html" class="read-next-card">
+               <span class="read-next-icon">📝</span>
+               <h3>Homework Without Tears</h3>
+               <p>Stop the battles and help them just get started.</p>
             </a>
-            <a href="/resources/emotional-intensity/" class="read-next-card">
-               <span style="font-size: 2rem; display: block; margin-bottom: 10px;">❤️</span>
-               <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Emotional Intensity</h3>
-               <p style="color: var(--color-text-muted); font-size: 0.9rem;">Why they feel everything at volume 10.</p>
+            <a href="emotional-intensity.html" class="read-next-card">
+               <span class="read-next-icon">❤️</span>
+               <h3>Emotional Intensity</h3>
+               <p>Why they feel everything at volume 10.</p>
             </a>
          </div>
       </div>
    </section>
 
-   <div id="footer"></div>
-   <script src="/js/components.js"></script>
+   <div id="global-footer"></div>
+   <script src="js/components.js"></script>
 </body>
 
 </html>
