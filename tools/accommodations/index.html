@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Free parenting tools for twice-exceptional children. IEP prep, routine builders, sensory scripts, email templates and more.">
+   <title>Free Tools | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .tools-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .tools-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .tools-header .badge {
+         display: inline-block;
+         background: var(--color-sage);
+         color: var(--color-white);
+         font-size: var(--text-sm);
+         font-weight: 600;
+         padding: var(--space-1) var(--space-4);
+         border-radius: var(--radius-full);
+         margin-bottom: var(--space-4);
+      }
+
+      .tools-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .tools-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      .tools-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-6);
+         margin-bottom: var(--space-12);
+      }
+
+      @media (max-width: 900px) {
+         .tools-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+      }
+
+      @media (max-width: 600px) {
+         .tools-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .tool-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-6);
+         box-shadow: var(--shadow-md);
+         transition: all var(--transition-fast);
+         display: flex;
+         flex-direction: column;
+      }
+
+      .tool-card:hover {
+         transform: translateY(-4px);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .tool-icon {
+         width: 64px;
+         height: 64px;
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 2rem;
+         margin-bottom: var(--space-4);
+      }
+
+      .tool-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-2);
+      }
+
+      .tool-card h3 a {
+         color: var(--color-navy);
+      }
+
+      .tool-card h3 a:hover {
+         color: var(--color-terracotta);
+      }
+
+      .tool-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin-bottom: var(--space-4);
+         flex-grow: 1;
+      }
+
+      .tool-features {
+         font-size: var(--text-xs);
+         color: var(--color-text-muted);
+         padding-top: var(--space-4);
+         border-top: 1px solid var(--color-border);
+      }
+
+      .tool-features span {
+         display: inline-block;
+         margin-right: var(--space-3);
+      }
+
+      /* Featured CTA */
+      .featured-cta {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         display: grid;
+         grid-template-columns: 1fr auto;
+         gap: var(--space-8);
+         align-items: center;
+         margin-bottom: var(--space-12);
+      }
+
+      @media (max-width: 700px) {
+         .featured-cta {
+            grid-template-columns: 1fr;
+            text-align: center;
+         }
+      }
+
+      .featured-cta h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-2);
+      }
+
+      .featured-cta p {
+         color: rgba(249, 247, 242, 0.8);
+      }
+
+      /* How It Works */
+      .how-it-works {
+         background: var(--color-cream);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         text-align: center;
+      }
+
+      .how-it-works h2 {
+         margin-bottom: var(--space-8);
+      }
+
+      .steps-grid {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         gap: var(--space-6);
+      }
+
+      @media (max-width: 800px) {
+         .steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+      }
+
+      @media (max-width: 500px) {
+         .steps-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .step {
+         text-align: center;
+      }
+
+      .step-number {
+         width: 48px;
+         height: 48px;
+         background: var(--color-sage);
+         color: white;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: 700;
+         font-size: var(--text-lg);
+         margin: 0 auto var(--space-3);
+      }
+
+      .step h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-2);
+      }
+
+      .step p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="tools-page">
+      <div class="container">
+
+         <div class="tools-header">
+            <span class="badge">100% Free</span>
+            <h1>Free Tools for 2e Parents</h1>
+            <p>Practical resources to help you navigate school, manage daily challenges, and advocate for your child. No signup required.</p>
+         </div>
+
+         <div class="tools-grid">
+            <div class="tool-card">
+               <div class="tool-icon">📋</div>
+               <h3><a href="/tools/iep-advocate/">IEP Advocate</a></h3>
+               <p>Generate talking points, questions, and strategies for your next IEP meeting. Be prepared and confident.</p>
+               <div class="tool-features">
+                  <span>✓ Custom talking points</span>
+                  <span>✓ Rights info</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">📝</div>
+               <h3><a href="/tools/accommodations/">Accommodations List</a></h3>
+               <p>Browse IEP and 504 accommodations organized by brain profile. Check ones you want and export your list.</p>
+               <div class="tool-features">
+                  <span>✓ Profile-matched</span>
+                  <span>✓ Exportable</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">📧</div>
+               <h3><a href="/tools/email-templates/">Email Templates</a></h3>
+               <p>Copy-paste emails for teacher communication, IEP follow-ups, accommodation requests, and more.</p>
+               <div class="tool-features">
+                  <span>✓ 6+ templates</span>
+                  <span>✓ Copy & customize</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">⏰</div>
+               <h3><a href="/tools/routine-builder/">Routine Builder</a></h3>
+               <p>Create morning, homework, and bedtime routines designed for your child's specific brain profile.</p>
+               <div class="tool-features">
+                  <span>✓ Profile-specific</span>
+                  <span>✓ Printable</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">🎯</div>
+               <h3><a href="/tools/sensory-scripts/">Sensory Scripts</a></h3>
+               <p>Ready-to-use calming scripts for sensory overload, clothing battles, noise sensitivity, and more.</p>
+               <div class="tool-features">
+                  <span>✓ 6 situations</span>
+                  <span>✓ Step-by-step</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">📚</div>
+               <h3><a href="/tools/curriculum-compactor/">Curriculum Compactor</a></h3>
+               <p>Generate compacting and enrichment ideas for when your child has already mastered the material.</p>
+               <div class="tool-features">
+                  <span>✓ Subject-specific</span>
+                  <span>✓ Teacher-ready</span>
+               </div>
+            </div>
+
+            <div class="tool-card">
+               <div class="tool-icon">🤖</div>
+               <h3><a href="/tools/ai-guide/">AI Guide for Parents</a></h3>
+               <p>Never used ChatGPT or Claude? This beginner guide will have you getting parenting support in minutes.</p>
+               <div class="tool-features">
+                  <span>✓ Step-by-step</span>
+                  <span>✓ Examples included</span>
+               </div>
+            </div>
+         </div>
+
+         <!-- Featured CTA -->
+         <div class="featured-cta">
+            <div>
+               <h2>Want Personalized AI Prompts?</h2>
+               <p>Our AI Prompt Packs give you 50+ ready-to-use prompts for every parenting situation, customized for your child's brain profile.</p>
+            </div>
+            <a href="/products/ai-prompts/" class="btn btn-primary btn-lg">View Prompt Packs →</a>
+         </div>
+
+         <!-- How It Works -->
+         <section class="how-it-works">
+            <h2>How to Use These Tools</h2>
+            <div class="steps-grid">
+               <div class="step">
+                  <div class="step-number">1</div>
+                  <h3>Choose a Tool</h3>
+                  <p>Pick the tool that matches your current challenge</p>
+               </div>
+               <div class="step">
+                  <div class="step-number">2</div>
+                  <h3>Enter Details</h3>
+                  <p>Add your child's profile and situation info</p>
+               </div>
+               <div class="step">
+                  <div class="step-number">3</div>
+                  <h3>Get Output</h3>
+                  <p>Receive customized scripts, templates, or plans</p>
+               </div>
+               <div class="step">
+                  <div class="step-number">4</div>
+                  <h3>Copy & Use</h3>
+                  <p>Take it to your meeting, email, or home routine</p>
+               </div>
+            </div>
+         </section>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+
+   <script src="/js/components.js"></script>
+</body>
+
+</html>

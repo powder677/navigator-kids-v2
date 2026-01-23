@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Captain Choosy Activity Packet - 20+ printable activities for twice-exceptional children who don't fit just one profile.">
+   <title>Captain Choosy Activity Packet | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .product-detail-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .breadcrumbs {
+         margin-bottom: var(--space-6);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-text-muted);
+         font-size: var(--text-sm);
+      }
+
+      .breadcrumbs span {
+         color: var(--color-text-muted);
+         margin: 0 var(--space-2);
+      }
+
+      .product-layout {
+         display: grid;
+         grid-template-columns: 1fr 380px;
+         gap: var(--space-12);
+      }
+
+      @media (max-width: 900px) {
+         .product-layout {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .product-image {
+         background: linear-gradient(135deg, #FFE5F0 0%, #FFC7DA 100%);
+         border-radius: var(--radius-xl);
+         aspect-ratio: 4/3;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 8rem;
+         margin-bottom: var(--space-6);
+      }
+
+      .character-intro {
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         margin-bottom: var(--space-8);
+      }
+
+      .character-intro h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-3);
+      }
+
+      .character-intro p {
+         line-height: var(--leading-relaxed);
+         margin-bottom: var(--space-3);
+      }
+
+      .character-intro p:last-child {
+         margin-bottom: 0;
+      }
+
+      .character-quote {
+         font-style: italic;
+         color: var(--color-text-light);
+         border-left: 3px solid var(--color-sage);
+         padding-left: var(--space-4);
+         margin: var(--space-4) 0;
+      }
+
+      .activities-section {
+         margin-bottom: var(--space-8);
+      }
+
+      .activities-section h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-6);
+      }
+
+      .activity-category {
+         background: var(--color-white);
+         border: 1px solid var(--color-border);
+         border-radius: var(--radius-lg);
+         padding: var(--space-5);
+         margin-bottom: var(--space-4);
+      }
+
+      .activity-category h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-3);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .activity-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: var(--space-2);
+      }
+
+      .activity-tag {
+         background: var(--color-cream);
+         padding: var(--space-1) var(--space-3);
+         border-radius: var(--radius-full);
+         font-size: var(--text-xs);
+         color: var(--color-text-light);
+      }
+
+      .preview-section {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         margin-bottom: var(--space-8);
+      }
+
+      .preview-section h2 {
+         color: var(--color-cream);
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-4);
+      }
+
+      .preview-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-4);
+      }
+
+      @media (max-width: 600px) {
+         .preview-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .preview-item {
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: var(--radius-md);
+         padding: var(--space-4);
+         text-align: center;
+      }
+
+      .preview-item span {
+         font-size: 2rem;
+         display: block;
+         margin-bottom: var(--space-2);
+      }
+
+      .preview-item p {
+         color: rgba(249, 247, 242, 0.8);
+         font-size: var(--text-sm);
+         margin: 0;
+      }
+
+      .sticky-cart {
+         position: sticky;
+         top: var(--space-6);
+      }
+
+      .cart-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-6);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .cart-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-2);
+      }
+
+      .cart-subtitle {
+         color: var(--color-text-muted);
+         font-size: var(--text-sm);
+         margin-bottom: var(--space-4);
+      }
+
+      .cart-price {
+         font-size: var(--text-2xl);
+         font-weight: 700;
+         color: var(--color-navy);
+         margin-bottom: var(--space-4);
+      }
+
+      .cart-card .btn {
+         width: 100%;
+         margin-bottom: var(--space-3);
+      }
+
+      .cart-features {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+      }
+
+      .cart-features li {
+         padding: var(--space-2) 0;
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .product-meta {
+         background: var(--color-cream);
+         border-radius: var(--radius-md);
+         padding: var(--space-4);
+         margin: var(--space-6) 0;
+      }
+
+      .product-meta-item {
+         display: flex;
+         justify-content: space-between;
+         padding: var(--space-2) 0;
+         font-size: var(--text-sm);
+         border-bottom: 1px solid var(--color-border);
+      }
+
+      .product-meta-item:last-child {
+         border-bottom: none;
+      }
+
+      .product-meta-label {
+         color: var(--color-text-muted);
+      }
+
+      .related-packets {
+         padding-top: var(--space-6);
+         border-top: 1px solid var(--color-border);
+      }
+
+      .related-packets h4 {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+         margin-bottom: var(--space-3);
+      }
+
+      .related-link {
+         display: block;
+         padding: var(--space-2) 0;
+         font-size: var(--text-sm);
+         color: var(--color-text);
+      }
+
+      .related-link:hover {
+         color: var(--color-terracotta);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="product-detail-page">
+      <div class="container">
+
+         <nav class="breadcrumbs">
+            <a href="/">Home</a><span>/</span>
+            <a href="/products/">Products</a><span>/</span>
+            <a href="/products/activity-packets/">Activity Packets</a><span>/</span>
+            <span>Captain Choosy</span>
+         </nav>
+
+         <div class="product-layout">
+            <div class="product-main">
+               <div class="product-image">🦜</div>
+
+               <div class="character-intro">
+                  <h2>Meet Captain Choosy</h2>
+                  <p>Captain Choosy is a colorful parrot who's a little bit of everything! Some days they're bold and adventurous. Other days they're quiet and observant. Sometimes they dive deep into interests, and sometimes they feel everything at once. Sound familiar?</p>
+                  <p class="character-quote">"I'm not confused about who I am—I'm just... ALL of the things!"</p>
+                  <p>If your child scored high in multiple brain profiles or seems to shift between different modes, Captain Choosy is their perfect companion. This packet includes flexible activities that adapt to wherever your child is on any given day.</p>
+               </div>
+
+               <div class="activities-section">
+                  <h2>What's Inside (20+ Activities)</h2>
+
+                  <div class="activity-category">
+                     <h3>🌈 Mood-Flexible Activities</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">How Am I Today? Check-In</span>
+                        <span class="activity-tag">Pick Your Path Adventures</span>
+                        <span class="activity-tag">Choosy's Mood Menu</span>
+                        <span class="activity-tag">Energy Level Matcher</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>🧩 Self-Discovery</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">All My Different Sides</span>
+                        <span class="activity-tag">When I Feel Like... Wheel</span>
+                        <span class="activity-tag">My Superpowers List</span>
+                        <span class="activity-tag">What Makes Me, Me Collage</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>🎨 Creative Expression</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Draw All Your Feelings</span>
+                        <span class="activity-tag">Create Your Own Character</span>
+                        <span class="activity-tag">Story Starter Mix-Up</span>
+                        <span class="activity-tag">Captain Choosy Coloring Pages</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>⚙️ Coping Toolkit</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">My Calm-Down Cards (Multiple Options)</span>
+                        <span class="activity-tag">When Things Get Hard Flowchart</span>
+                        <span class="activity-tag">Energy Release Ideas</span>
+                        <span class="activity-tag">Quiet Space Creator</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>💚 Connection & Friendship</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Explaining My Brain to Others</span>
+                        <span class="activity-tag">Friend Compatibility Quiz</span>
+                        <span class="activity-tag">How to Ask for What I Need</span>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="preview-section">
+                  <h2>Sample Activities</h2>
+                  <div class="preview-grid">
+                     <div class="preview-item">
+                        <span>🎡</span>
+                        <p>When I Feel Like... Wheel</p>
+                     </div>
+                     <div class="preview-item">
+                        <span>🗺️</span>
+                        <p>Pick Your Path Adventures</p>
+                     </div>
+                     <div class="preview-item">
+                        <span>💪</span>
+                        <p>My Superpowers List</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <aside class="sticky-cart">
+               <div class="cart-card">
+                  <h3>Captain Choosy Packet</h3>
+                  <p class="cart-subtitle">For Multi-Profile Kids</p>
+                  <p class="cart-price">$9</p>
+                  <button class="btn btn-primary btn-lg" onclick="addToCart('activity-packet-captain-choosy')">Add to Cart</button>
+
+                  <ul class="cart-features">
+                     <li>✓ 20+ flexible activities</li>
+                     <li>✓ Instant PDF download</li>
+                     <li>✓ Print unlimited copies</li>
+                     <li>✓ Parent guide included</li>
+                  </ul>
+
+                  <div class="product-meta">
+                     <div class="product-meta-item"><span class="product-meta-label">Format</span><span>PDF</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Pages</span><span>25+</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Age range</span><span>6-9 years</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Profile</span><span>Multi-Profile</span></div>
+                  </div>
+
+                  <div class="related-packets">
+                     <h4>Other Character Packets</h4>
+                     <a href="/products/activity-packets/ember-the-dragon/" class="related-link">🐉 Ember the Dragon</a>
+                     <a href="/products/activity-packets/shelly-the-turtle/" class="related-link">🐢 Shelly the Turtle</a>
+                     <a href="/products/activity-packets/sketch-the-owl/" class="related-link">🦉 Sketch the Owl</a>
+                     <a href="/products/activity-packets/whisper-bunny/" class="related-link">🐰 Whisper Bunny</a>
+                     <a href="/products/activity-packets/bravely-the-lion/" class="related-link">🦁 Bravely the Lion</a>
+                     <a href="/products/activity-packets/cosmo-space-pup/" class="related-link">🐕 Cosmo Space Pup</a>
+                  </div>
+               </div>
+            </aside>
+         </div>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+   <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+</body>
+
+</html>

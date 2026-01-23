@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Products for twice-exceptional children - AI Prompt Packs and Activity Packets designed for unique brain profiles.">
+   <title>Products | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .products-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .products-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .products-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .products-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* Product Categories */
+      .product-category {
+         margin-bottom: var(--space-12);
+      }
+
+      .category-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         overflow: hidden;
+         box-shadow: var(--shadow-lg);
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+      }
+
+      @media (max-width: 800px) {
+         .category-card {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .category-image {
+         padding: var(--space-10);
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+      }
+
+      .category-card.ai-prompts .category-image {
+         background: linear-gradient(135deg, #E5F5E8 0%, #C7E8CD 100%);
+      }
+
+      .category-card.activity-packets .category-image {
+         background: linear-gradient(135deg, #FFF5E5 0%, #FFE8C7 100%);
+      }
+
+      .category-icons {
+         display: flex;
+         gap: var(--space-3);
+         font-size: 3rem;
+         margin-bottom: var(--space-4);
+      }
+
+      .category-image h3 {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .category-content {
+         padding: var(--space-10);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+      }
+
+      .category-content h2 {
+         font-size: var(--text-2xl);
+         margin-bottom: var(--space-3);
+      }
+
+      .category-content>p {
+         color: var(--color-text-light);
+         margin-bottom: var(--space-6);
+         line-height: var(--leading-relaxed);
+      }
+
+      .category-features {
+         margin-bottom: var(--space-6);
+      }
+
+      .category-features li {
+         padding: var(--space-2) 0;
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .category-pricing {
+         display: flex;
+         align-items: baseline;
+         gap: var(--space-3);
+         margin-bottom: var(--space-6);
+      }
+
+      .price-range {
+         font-size: var(--text-2xl);
+         font-weight: 700;
+         color: var(--color-navy);
+      }
+
+      .price-note {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+      }
+
+      /* Comparison */
+      .comparison-section {
+         background: var(--color-cream);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         margin-bottom: var(--space-12);
+      }
+
+      .comparison-section h2 {
+         text-align: center;
+         margin-bottom: var(--space-8);
+      }
+
+      .comparison-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: var(--space-8);
+      }
+
+      @media (max-width: 700px) {
+         .comparison-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .comparison-card {
+         background: var(--color-white);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+      }
+
+      .comparison-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-4);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .comparison-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin-bottom: var(--space-4);
+      }
+
+      .best-for {
+         background: var(--color-cream);
+         border-radius: var(--radius-md);
+         padding: var(--space-3);
+         font-size: var(--text-sm);
+      }
+
+      .best-for strong {
+         color: var(--color-sage-dark);
+      }
+
+      /* Bundle CTA */
+      .bundle-cta {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10);
+         text-align: center;
+      }
+
+      .bundle-cta h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-3);
+      }
+
+      .bundle-cta>p {
+         color: rgba(249, 247, 242, 0.8);
+         margin-bottom: var(--space-6);
+         max-width: 600px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      .bundle-price {
+         display: flex;
+         align-items: baseline;
+         justify-content: center;
+         gap: var(--space-3);
+         margin-bottom: var(--space-6);
+      }
+
+      .bundle-price .current {
+         font-size: var(--text-3xl);
+         font-weight: 700;
+         color: var(--color-cream);
+      }
+
+      .bundle-price .original {
+         font-size: var(--text-lg);
+         color: rgba(249, 247, 242, 0.5);
+         text-decoration: line-through;
+      }
+
+      .bundle-savings {
+         background: var(--color-terracotta);
+         color: white;
+         padding: var(--space-1) var(--space-3);
+         border-radius: var(--radius-full);
+         font-size: var(--text-sm);
+         font-weight: 600;
+      }
+
+      .bundle-includes {
+         display: flex;
+         justify-content: center;
+         gap: var(--space-6);
+         flex-wrap: wrap;
+         margin-bottom: var(--space-6);
+         color: rgba(249, 247, 242, 0.8);
+         font-size: var(--text-sm);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="products-page">
+      <div class="container">
+
+         <div class="products-header">
+            <h1>Products for 2e Families</h1>
+            <p>Tools designed specifically for twice-exceptional children ages 6-9, matched to their unique brain profiles.</p>
+         </div>
+
+         <!-- AI Prompts Category -->
+         <div class="product-category">
+            <div class="category-card ai-prompts">
+               <div class="category-image">
+                  <div class="category-icons">🔥 🐢 🔭 🐰 🦁 🚀</div>
+                  <h3>6 Brain Profiles</h3>
+               </div>
+               <div class="category-content">
+                  <h2>AI Prompt Packs</h2>
+                  <p>Copy-paste prompts for ChatGPT or Claude that give you personalized parenting strategies, scripts, and solutions—customized to your child's brain profile.</p>
+                  <ul class="category-features">
+                     <li>✓ 50 prompts per profile pack</li>
+                     <li>✓ Works with any AI (ChatGPT, Claude, etc.)</li>
+                     <li>✓ Crisis moments, daily routines, school support</li>
+                     <li>✓ Instant PDF download</li>
+                  </ul>
+                  <div class="category-pricing">
+                     <span class="price-range">$18</span>
+                     <span class="price-note">per pack • Complete library $67</span>
+                  </div>
+                  <a href="/products/ai-prompts/" class="btn btn-primary">View AI Prompt Packs →</a>
+               </div>
+            </div>
+         </div>
+
+         <!-- Activity Packets Category -->
+         <div class="product-category">
+            <div class="category-card activity-packets">
+               <div class="category-image">
+                  <div class="category-icons">🐉 🐢 🦉 🐰 🦁 🐕</div>
+                  <h3>7 Character Guides</h3>
+               </div>
+               <div class="category-content">
+                  <h2>Activity Packets</h2>
+                  <p>Printable, screen-free activities featuring lovable characters who share your child's brain wiring. Each packet includes 20+ activities for regulation, learning, and fun.</p>
+                  <ul class="category-features">
+                     <li>✓ 20+ activities per character</li>
+                     <li>✓ Print unlimited copies</li>
+                     <li>✓ Coloring pages, worksheets, games</li>
+                     <li>✓ Parent guide included</li>
+                  </ul>
+                  <div class="category-pricing">
+                     <span class="price-range">$9</span>
+                     <span class="price-note">per packet • Complete bundle $47</span>
+                  </div>
+                  <a href="/products/activity-packets/" class="btn btn-primary">View Activity Packets →</a>
+               </div>
+            </div>
+         </div>
+
+         <!-- Comparison -->
+         <section class="comparison-section">
+            <h2>Which Product is Right for You?</h2>
+            <div class="comparison-grid">
+               <div class="comparison-card">
+                  <h3>🤖 AI Prompt Packs</h3>
+                  <p>Prompts you paste into AI tools to get unlimited personalized parenting advice, scripts, and strategies.</p>
+                  <div class="best-for">
+                     <strong>Best for:</strong> Parents who want on-demand support for daily challenges, meltdowns, school issues, and more.
+                  </div>
+               </div>
+               <div class="comparison-card">
+                  <h3>🎨 Activity Packets</h3>
+                  <p>Printable activities your child does independently to build skills in regulation, thinking, and self-understanding.</p>
+                  <div class="best-for">
+                     <strong>Best for:</strong> Parents who want screen-free activities that help kids practice skills while having fun.
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Bundle CTA -->
+         <section class="bundle-cta">
+            <h2>Get Everything</h2>
+            <p>Our complete bundle includes all AI Prompt Packs AND all Activity Packets—the full Navigator Kids toolkit.</p>
+            <div class="bundle-price">
+               <span class="current">$97</span>
+               <span class="original">$130</span>
+               <span class="bundle-savings">Save $33</span>
+            </div>
+            <div class="bundle-includes">
+               <span>✓ All 6 Prompt Packs (300+ prompts)</span>
+               <span>✓ All 7 Activity Packets (140+ activities)</span>
+            </div>
+            <button class="btn btn-primary btn-lg" onclick="addToCart('complete-bundle')">Add Complete Bundle to Cart →</button>
+         </section>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+
+   <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+</body>
+
+</html>

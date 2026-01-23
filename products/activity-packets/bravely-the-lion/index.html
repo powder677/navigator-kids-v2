@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Bravely the Lion Activity Packet - 20+ printable activities for Bold Explorer children who love adventure and challenges.">
+   <title>Bravely the Lion Activity Packet | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .product-detail-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .breadcrumbs {
+         margin-bottom: var(--space-6);
+      }
+
+      .breadcrumbs a {
+         color: var(--color-text-muted);
+         font-size: var(--text-sm);
+      }
+
+      .breadcrumbs span {
+         color: var(--color-text-muted);
+         margin: 0 var(--space-2);
+      }
+
+      .product-layout {
+         display: grid;
+         grid-template-columns: 1fr 380px;
+         gap: var(--space-12);
+      }
+
+      @media (max-width: 900px) {
+         .product-layout {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .product-image {
+         background: linear-gradient(135deg, #FFF5E5 0%, #FFE8C7 100%);
+         border-radius: var(--radius-xl);
+         aspect-ratio: 4/3;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 8rem;
+         margin-bottom: var(--space-6);
+      }
+
+      .character-intro {
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         margin-bottom: var(--space-8);
+      }
+
+      .character-intro h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-3);
+      }
+
+      .character-intro p {
+         line-height: var(--leading-relaxed);
+         margin-bottom: var(--space-3);
+      }
+
+      .character-intro p:last-child {
+         margin-bottom: 0;
+      }
+
+      .character-quote {
+         font-style: italic;
+         color: var(--color-text-light);
+         border-left: 3px solid var(--color-sage);
+         padding-left: var(--space-4);
+         margin: var(--space-4) 0;
+      }
+
+      .activities-section {
+         margin-bottom: var(--space-8);
+      }
+
+      .activities-section h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-6);
+      }
+
+      .activity-category {
+         background: var(--color-white);
+         border: 1px solid var(--color-border);
+         border-radius: var(--radius-lg);
+         padding: var(--space-5);
+         margin-bottom: var(--space-4);
+      }
+
+      .activity-category h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-3);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .activity-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: var(--space-2);
+      }
+
+      .activity-tag {
+         background: var(--color-cream);
+         padding: var(--space-1) var(--space-3);
+         border-radius: var(--radius-full);
+         font-size: var(--text-xs);
+         color: var(--color-text-light);
+      }
+
+      .preview-section {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         margin-bottom: var(--space-8);
+      }
+
+      .preview-section h2 {
+         color: var(--color-cream);
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-4);
+      }
+
+      .preview-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-4);
+      }
+
+      @media (max-width: 600px) {
+         .preview-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .preview-item {
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: var(--radius-md);
+         padding: var(--space-4);
+         text-align: center;
+      }
+
+      .preview-item span {
+         font-size: 2rem;
+         display: block;
+         margin-bottom: var(--space-2);
+      }
+
+      .preview-item p {
+         color: rgba(249, 247, 242, 0.8);
+         font-size: var(--text-sm);
+         margin: 0;
+      }
+
+      .sticky-cart {
+         position: sticky;
+         top: var(--space-6);
+      }
+
+      .cart-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-6);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .cart-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-2);
+      }
+
+      .cart-subtitle {
+         color: var(--color-text-muted);
+         font-size: var(--text-sm);
+         margin-bottom: var(--space-4);
+      }
+
+      .cart-price {
+         font-size: var(--text-2xl);
+         font-weight: 700;
+         color: var(--color-navy);
+         margin-bottom: var(--space-4);
+      }
+
+      .cart-card .btn {
+         width: 100%;
+         margin-bottom: var(--space-3);
+      }
+
+      .cart-features {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+      }
+
+      .cart-features li {
+         padding: var(--space-2) 0;
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .product-meta {
+         background: var(--color-cream);
+         border-radius: var(--radius-md);
+         padding: var(--space-4);
+         margin: var(--space-6) 0;
+      }
+
+      .product-meta-item {
+         display: flex;
+         justify-content: space-between;
+         padding: var(--space-2) 0;
+         font-size: var(--text-sm);
+         border-bottom: 1px solid var(--color-border);
+      }
+
+      .product-meta-item:last-child {
+         border-bottom: none;
+      }
+
+      .product-meta-label {
+         color: var(--color-text-muted);
+      }
+
+      .related-packets {
+         padding-top: var(--space-6);
+         border-top: 1px solid var(--color-border);
+      }
+
+      .related-packets h4 {
+         font-size: var(--text-sm);
+         color: var(--color-text-muted);
+         margin-bottom: var(--space-3);
+      }
+
+      .related-link {
+         display: block;
+         padding: var(--space-2) 0;
+         font-size: var(--text-sm);
+         color: var(--color-text);
+      }
+
+      .related-link:hover {
+         color: var(--color-terracotta);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="product-detail-page">
+      <div class="container">
+
+         <nav class="breadcrumbs">
+            <a href="/">Home</a><span>/</span>
+            <a href="/products/">Products</a><span>/</span>
+            <a href="/products/activity-packets/">Activity Packets</a><span>/</span>
+            <span>Bravely the Lion</span>
+         </nav>
+
+         <div class="product-layout">
+            <div class="product-main">
+               <div class="product-image">🦁</div>
+
+               <div class="character-intro">
+                  <h2>Meet Bravely the Lion</h2>
+                  <p>Bravely isn't afraid of anything—well, almost anything. This fearless lion loves to climb the tallest trees, explore unknown caves, and try things nobody else will try. Sometimes grown-ups get worried, but Bravely knows that adventure is the best teacher!</p>
+                  <p class="character-quote">"I'm not being reckless—I'm being BRAVE! There's a difference... I think."</p>
+                  <p>If your child charges into every situation, says "yes" before thinking, and has the bumps and bruises to prove it, they'll find a kindred spirit in Bravely.</p>
+               </div>
+
+               <div class="activities-section">
+                  <h2>What's Inside (20+ Activities)</h2>
+
+                  <div class="activity-category">
+                     <h3>⚡ Adventure Activities</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Design Your Own Obstacle Course</span>
+                        <span class="activity-tag">Brave Explorer Map</span>
+                        <span class="activity-tag">Challenge Checklist</span>
+                        <span class="activity-tag">Adventure Journal Pages</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>🧠 Think-First Games</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Stop-Think-Act Cards</span>
+                        <span class="activity-tag">Risk vs. Reward Sorting</span>
+                        <span class="activity-tag">What Happens Next? Scenarios</span>
+                        <span class="activity-tag">Safe Choice Maze</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>💪 Energy Channelers</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Movement Break Cards</span>
+                        <span class="activity-tag">Indoor Adventure Ideas</span>
+                        <span class="activity-tag">Build Something Big Project</span>
+                        <span class="activity-tag">Physical Challenge Tracker</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>🎨 Creative Expression</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Draw Your Bravest Moment</span>
+                        <span class="activity-tag">Superhero Self-Portrait</span>
+                        <span class="activity-tag">Comic Strip Creator</span>
+                        <span class="activity-tag">Bravely Coloring Pages</span>
+                     </div>
+                  </div>
+
+                  <div class="activity-category">
+                     <h3>💚 Feelings & Friends</h3>
+                     <div class="activity-list">
+                        <span class="activity-tag">Brave vs. Reckless Worksheet</span>
+                        <span class="activity-tag">Helping Others Be Brave</span>
+                        <span class="activity-tag">When I Went Too Far Story</span>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="preview-section">
+                  <h2>Sample Activities</h2>
+                  <div class="preview-grid">
+                     <div class="preview-item">
+                        <span>🗺️</span>
+                        <p>Brave Explorer Map</p>
+                     </div>
+                     <div class="preview-item">
+                        <span>🛑</span>
+                        <p>Stop-Think-Act Cards</p>
+                     </div>
+                     <div class="preview-item">
+                        <span>🦸</span>
+                        <p>Superhero Self-Portrait</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <aside class="sticky-cart">
+               <div class="cart-card">
+                  <h3>Bravely the Lion Packet</h3>
+                  <p class="cart-subtitle">For Bold Explorers</p>
+                  <p class="cart-price">$9</p>
+                  <button class="btn btn-primary btn-lg" onclick="addToCart('activity-packet-bravely')">Add to Cart</button>
+
+                  <ul class="cart-features">
+                     <li>✓ 20+ printable activities</li>
+                     <li>✓ Instant PDF download</li>
+                     <li>✓ Print unlimited copies</li>
+                     <li>✓ Parent guide included</li>
+                  </ul>
+
+                  <div class="product-meta">
+                     <div class="product-meta-item"><span class="product-meta-label">Format</span><span>PDF</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Pages</span><span>25+</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Age range</span><span>6-9 years</span></div>
+                     <div class="product-meta-item"><span class="product-meta-label">Profile</span><span>Bold Explorer</span></div>
+                  </div>
+
+                  <div class="related-packets">
+                     <h4>Other Character Packets</h4>
+                     <a href="/products/activity-packets/ember-the-dragon/" class="related-link">🐉 Ember the Dragon</a>
+                     <a href="/products/activity-packets/shelly-the-turtle/" class="related-link">🐢 Shelly the Turtle</a>
+                     <a href="/products/activity-packets/sketch-the-owl/" class="related-link">🦉 Sketch the Owl</a>
+                     <a href="/products/activity-packets/whisper-bunny/" class="related-link">🐰 Whisper Bunny</a>
+                     <a href="/products/activity-packets/cosmo-space-pup/" class="related-link">🐕 Cosmo Space Pup</a>
+                  </div>
+               </div>
+            </aside>
+         </div>
+
+      </div>
+   </main>
+
+   <div id="footer"></div>
+   <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+</body>
+
+</html>

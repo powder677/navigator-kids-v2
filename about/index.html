@@ -4,139 +4,308 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Meet the parents behind Navigator Kids AI. We aren't doctors—we're parents who built the tools we wished we had for our high-energy, deep-thinking kids.">
+   <meta name="description" content="Navigator Kids AI helps parents of twice-exceptional (2e) children understand their child's unique brain and find tools that actually work.">
    <title>About Us | Navigator Kids AI</title>
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .about-page {
+         padding: 0;
+      }
+
+      /* Hero */
+      .about-hero {
+         background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+         padding: var(--space-16) 0;
+         text-align: center;
+      }
+
+      .about-hero h1 {
+         margin-bottom: var(--space-4);
+      }
+
+      .about-hero-subtitle {
+         font-size: var(--text-xl);
+         color: var(--color-text);
+         max-width: 700px;
+         margin: 0 auto;
+         line-height: var(--leading-relaxed);
+      }
+
+      /* Mission */
+      .about-mission {
+         padding: var(--section-padding) 0;
+         background: var(--color-white);
+      }
+
+      .mission-content {
+         max-width: 720px;
+         margin: 0 auto;
+      }
+
+      .mission-content h2 {
+         text-align: center;
+         margin-bottom: var(--space-8);
+      }
+
+      .mission-content p {
+         font-size: var(--text-lg);
+         line-height: var(--leading-relaxed);
+         margin-bottom: var(--space-6);
+      }
+
+      .mission-highlight {
+         background: var(--color-cream);
+         border-left: 4px solid var(--color-sage);
+         padding: var(--space-6);
+         border-radius: 0 var(--radius-md) var(--radius-md) 0;
+         margin: var(--space-8) 0;
+      }
+
+      .mission-highlight p {
+         margin: 0;
+         font-style: italic;
+      }
+
+      /* What We Believe */
+      .about-beliefs {
+         padding: var(--section-padding) 0;
+         background: var(--color-cream);
+      }
+
+      .about-beliefs h2 {
+         text-align: center;
+         margin-bottom: var(--space-10);
+      }
+
+      .beliefs-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-6);
+         max-width: 1000px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+         .beliefs-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .belief-card {
+         background: var(--color-white);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         text-align: center;
+      }
+
+      .belief-icon {
+         font-size: 2.5rem;
+         margin-bottom: var(--space-3);
+      }
+
+      .belief-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-2);
+      }
+
+      .belief-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin: 0;
+      }
+
+      /* Approach */
+      .about-approach {
+         padding: var(--section-padding) 0;
+         background: var(--color-white);
+      }
+
+      .approach-content {
+         max-width: 720px;
+         margin: 0 auto;
+      }
+
+      .approach-content h2 {
+         text-align: center;
+         margin-bottom: var(--space-8);
+      }
+
+      .approach-content h3 {
+         font-size: var(--text-lg);
+         margin-top: var(--space-8);
+         margin-bottom: var(--space-3);
+      }
+
+      .approach-content p {
+         color: var(--color-text);
+         line-height: var(--leading-relaxed);
+      }
+
+      /* CTA */
+      .about-cta {
+         padding: var(--section-padding) 0;
+         background: var(--color-navy);
+         text-align: center;
+      }
+
+      .about-cta h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-4);
+      }
+
+      .about-cta p {
+         color: rgba(249, 247, 242, 0.8);
+         margin-bottom: var(--space-6);
+         max-width: 500px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+   </style>
 </head>
 
 <body>
    <div id="header"></div>
 
-   <main class="article-page">
-      <div class="container">
+   <main class="about-page">
 
-         <nav class="breadcrumbs">
-            <a href="/">Home</a>
-            <span>/</span>
-            <span>About Us</span>
-         </nav>
-
-         <div class="article-layout">
-            <article class="article-content">
-
-               <header class="article-header">
-                  <span class="article-category">Our Story</span>
-                  <h1>We Are Not "Experts." We Are Parents Who Were Tired.</h1>
-                  <p class="article-subtitle">We aren't doctors, therapists, or educational consultants. We are parents who got tired of being told our brilliant kids were "too much."</p>
-               </header>
-
-               <div class="article-trust-bar">
-                  <span>✓ Parent-led strategies</span>
-                  <span>✓ Real-world tested</span>
-               </div>
-
-               <div class="article-body">
-
-                  <p>It didn't start with a business plan. It started in a second-grade classroom with a parent-teacher conference that many of you know too well.</p>
-
-                  <p>Our founder, Rachel, sat across from a kind but overwhelmed teacher. Her daughter—brilliant, high-energy, and intensely wired—was dimming. The school saw a child who was "disruptive" and "unfocused." Rachel saw a bored mind that was spinning its wheels looking for traction.</p>
-
-                  <div class="callout-box">
-                     <h4>The Realization</h4>
-                     <p>"She doesn't need less work," Rachel realized in that moment. "She needs different work."</p>
-                  </div>
-
-                  <p>When professional advice failed ("Have you tried a sticker chart?"), we started building our own solutions. We discovered that by combining our parental intuition with modern AI tools, we could turn our raw observations into professional advocacy scripts, calm-down plans, and educational hacks.</p>
-
-                  <p>We built this platform because we needed it in our own homes. And we knew we weren't the only ones.</p>
-
-                  <h2>Meet the Parents Behind the Screens</h2>
-                  <p>We are a small team of parents living in the trenches of neurodiversity. We don't quote textbooks; we share what actually worked in our living rooms.</p>
-
-                  <h3>Rachel Whitcomb</h3>
-                  <p><strong>The Founder Mom</strong></p>
-                  <ul>
-                     <li><strong>The Struggle:</strong> My daughter was reading at a 5th-grade level in 1st grade but couldn't tie her shoes without a meltdown.</li>
-                     <li><strong>The "Expert" Advice:</strong> "She just needs more discipline."</li>
-                     <li><strong>The Realization:</strong> I stopped seeing it as "behavior" and started seeing it as boredom and sensory overload.</li>
-                     <li><strong>My Philosophy:</strong> "I share what survived the stress test of real life."</li>
-                  </ul>
-
-                  <hr>
-
-                  <h3>Evan Calder</h3>
-                  <p><strong>The Logic Translator (Dad)</strong></p>
-                  <ul>
-                     <li><strong>The Struggle:</strong> Homework battles that lasted 3 hours for 15 minutes of work.</li>
-                     <li><strong>The "Expert" Advice:</strong> "Just make him sit there until it's done."</li>
-                     <li><strong>The Realization:</strong> "Curriculum Compacting"—proving mastery to skip the busy work.</li>
-                     <li><strong>My Philosophy:</strong> "I help parents turn 'kid logic' into 'school logic' so everyone wins."</li>
-                  </ul>
-
-                  <hr>
-
-                  <h3>Avery Sage</h3>
-                  <p><strong>The Sensory Guide</strong></p>
-                  <ul>
-                     <li><strong>The Struggle:</strong> Daily meltdowns over socks, tags, and loud noises.</li>
-                     <li><strong>The "Expert" Advice:</strong> "They are just being picky."</li>
-                     <li><strong>The Realization:</strong> We learned to treat it like biology, not behavior. When we respected the sensory need, the behavior changed.</li>
-                     <li><strong>My Philosophy:</strong> "I help families build a home where sensitivity is a strength, not a symptom."</li>
-                  </ul>
-
-                  <h2>Why We Are Different</h2>
-
-                  <h3><span style="color:#E07A5F">♥</span> Parent-Led</h3>
-                  <p>We don't quote clinical studies at you; we share battle-tested strategies from the trenches of parenting.</p>
-
-                  <h3><span style="color:#E07A5F">♦</span> AI-Powered</h3>
-                  <p>We use technology to do the heavy lifting—like writing emails to teachers or planning schedules—so you can spend less time managing and more time parenting.</p>
-
-                  <h3><span style="color:#E07A5F">♣</span> Neuro-Affirming</h3>
-                  <p>We don't try to "fix" your child. We try to fix the environment to fit your child's unique brain.</p>
-
-                  <div class="article-disclaimer">
-                     <p><strong>Note:</strong> This website provides educational information based on our personal experiences as parents. We are not medical professionals. This content is not medical or psychological advice, diagnosis, or treatment. Always consult qualified professionals for your child's specific needs.</p>
-                  </div>
-
-               </div>
-
-               <div class="article-cta">
-                  <h3>Join our parent community</h3>
-                  <p>Get our latest strategies and scripts delivered to your inbox.</p>
-                  <a href="/quiz/" class="btn btn-primary">Take the Free Quiz →</a>
-               </div>
-
-            </article>
-
-            <aside class="article-sidebar">
-               <div class="sidebar-widget">
-                  <h4>Free Download</h4>
-                  <p>Get the De-Escalation Kit — scripts we use when meltdowns hit.</p>
-                  <a href="/free/de-escalation-kit/" class="btn btn-secondary">Get the Free Kit</a>
-               </div>
-
-               <div class="sidebar-widget">
-                  <h4>Popular Articles</h4>
-                  <ul class="related-links">
-                     <li><a href="/resources/de-escalation-script/">The Meltdown Script</a></li>
-                     <li><a href="/resources/ferrari-brain/">The Ferrari Brain Paradox</a></li>
-                     <li><a href="/resources/sensory-solutions/">Sensory Solutions</a></li>
-                  </ul>
-               </div>
-            </aside>
+      <!-- Hero -->
+      <section class="about-hero">
+         <div class="container">
+            <h1>Your Child's Brain Didn't Come With a Manual</h1>
+            <p class="about-hero-subtitle">
+               Navigator Kids AI helps parents of twice-exceptional children understand their child's
+               unique brain wiring — and find tools that actually work for how they think.
+            </p>
          </div>
+      </section>
 
-      </div>
+      <!-- Mission -->
+      <section class="about-mission">
+         <div class="container">
+            <div class="mission-content">
+               <h2>Why We Built This</h2>
+               <p>
+                  If you have a child who's clearly bright but struggles in ways that don't make sense,
+                  you know how isolating it can be. The teachers say they're "just not trying."
+                  The parenting books don't work. The advice that helps other kids backfires with yours.
+               </p>
+               <p>
+                  Twice-exceptional (2e) children — kids who are gifted AND have learning differences,
+                  ADHD, autism, sensory processing differences, or other challenges — need a different approach.
+                  Their brains are wired differently, and they need tools that work WITH that wiring, not against it.
+               </p>
+               <div class="mission-highlight">
+                  <p>
+                     We believe every parent deserves practical, research-backed tools that match their
+                     child's actual brain — not generic advice that assumes all kids work the same way.
+                  </p>
+               </div>
+               <p>
+                  Navigator Kids AI exists to give you those tools. Through our brain profile quiz,
+                  you can identify how your child processes the world. Then we match you with
+                  strategies, scripts, and activities designed specifically for their type of mind.
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <!-- Beliefs -->
+      <section class="about-beliefs">
+         <div class="container">
+            <h2>What We Believe</h2>
+            <div class="beliefs-grid">
+               <div class="belief-card">
+                  <div class="belief-icon">🧠</div>
+                  <h3>Different, Not Deficient</h3>
+                  <p>2e brains aren't broken — they're wired differently. Our tools work with that wiring, not against it.</p>
+               </div>
+               <div class="belief-card">
+                  <div class="belief-icon">🎯</div>
+                  <h3>One Size Doesn't Fit</h3>
+                  <p>Generic parenting advice fails 2e kids. Tools must be matched to how each child actually thinks.</p>
+               </div>
+               <div class="belief-card">
+                  <div class="belief-icon">👨‍👩‍👧</div>
+                  <h3>Parents Know Their Kids</h3>
+                  <p>You're the expert on your child. We give you frameworks and language to advocate for what they need.</p>
+               </div>
+               <div class="belief-card">
+                  <div class="belief-icon">🔬</div>
+                  <h3>Research Matters</h3>
+                  <p>Our profiles and strategies are grounded in neurodiversity research, not pop psychology or guesswork.</p>
+               </div>
+               <div class="belief-card">
+                  <div class="belief-icon">🚫</div>
+                  <h3>No Diagnosis Required</h3>
+                  <p>You don't need a formal diagnosis to understand your child's brain and find tools that help.</p>
+               </div>
+               <div class="belief-card">
+                  <div class="belief-icon">💪</div>
+                  <h3>Practical Over Perfect</h3>
+                  <p>We focus on what actually works in real life, not theoretical ideals that sound good but don't help.</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Approach -->
+      <section class="about-approach">
+         <div class="container">
+            <div class="approach-content">
+               <h2>Our Approach</h2>
+
+               <h3>Brain-First, Not Behavior-First</h3>
+               <p>
+                  Most parenting resources focus on changing behavior. We focus on understanding the brain
+                  that's driving the behavior. When you understand WHY your child reacts the way they do,
+                  you can respond in ways that actually help — instead of accidentally making things worse.
+               </p>
+
+               <h3>Profiles, Not Labels</h3>
+               <p>
+                  Our 6 brain profiles (Intense Feeler, Reluctant Starter, Deep Diver, Sensitive Observer,
+                  Bold Explorer, and Big Picture Thinker) describe patterns, not permanent identities.
+                  Most kids show a primary profile with secondary traits. The goal is understanding, not boxing in.
+               </p>
+
+               <h3>AI-Powered, Parent-Guided</h3>
+               <p>
+                  We use AI tools to help you generate personalized strategies, but you're always in control.
+                  Our AI prompt packs give you ready-to-use prompts for ChatGPT or Claude — so you can get
+                  customized help for homework, meltdowns, IEP meetings, and more.
+               </p>
+
+               <h3>Education, Not Therapy</h3>
+               <p>
+                  We're an educational resource, not a replacement for professional support. If your child
+                  needs evaluation, therapy, or medical care, we encourage you to seek qualified professionals.
+                  Our tools complement professional support — they don't replace it.
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="about-cta">
+         <div class="container">
+            <h2>Ready to Understand Your Child's Brain?</h2>
+            <p>Take our free 3-minute quiz to discover their primary brain profile and get matched tools.</p>
+            <a href="/quiz/" class="btn btn-primary btn-lg">Take the Free Quiz →</a>
+         </div>
+      </section>
+
    </main>
 
    <div id="footer"></div>
 
    <script src="/js/components.js"></script>
+   <script src="/js/cart.js"></script>
+
 </body>
 
 </html>
