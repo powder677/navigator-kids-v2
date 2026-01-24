@@ -4,28 +4,27 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Map your product IDs to Stripe Price IDs
-// UPDATE THESE with your actual Stripe Price IDs from the dashboard
 const PRICE_MAP = {
   // Toolkits - $29 each
-  'toolkit-emotional': 'price_REPLACE_WITH_EMOTIONAL_TOOLKIT_PRICE_ID',
-  'toolkit-iep': 'price_REPLACE_WITH_IEP_TOOLKIT_PRICE_ID',
-  'toolkit-homework': 'price_REPLACE_WITH_HOMEWORK_TOOLKIT_PRICE_ID',
+  'toolkit-emotional': 'price_1St78LAx6JDn4AuAqFqKmw3T',
+  'toolkit-iep': 'price_1St78uAx6JDn4AuAhOH27Fbs',
+  'toolkit-homework': 'price_1St79XAx6JDn4AuAp9ltEfNs',
   
   // Complete Bundle - $67
-  'bundle-complete': 'price_REPLACE_WITH_COMPLETE_BUNDLE_PRICE_ID',
+  'bundle-complete': 'price_1St7A4Ax6JDn4AuAKnk66CbV',
   
-  // AI Prompt Packs - $19 each
-  'prompts-meltdown': 'price_REPLACE_WITH_MELTDOWN_PROMPTS_PRICE_ID',
-  'prompts-homework': 'price_REPLACE_WITH_HOMEWORK_PROMPTS_PRICE_ID',
-  'prompts-iep': 'price_REPLACE_WITH_IEP_PROMPTS_PRICE_ID',
-  'prompts-social': 'price_REPLACE_WITH_SOCIAL_PROMPTS_PRICE_ID',
-  'prompts-morning': 'price_REPLACE_WITH_MORNING_PROMPTS_PRICE_ID',
-  'prompts-anxiety': 'price_REPLACE_WITH_ANXIETY_PROMPTS_PRICE_ID',
+  // AI Prompt Packs - $19 each (all map to same product for now)
+  'prompts-meltdown': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  'prompts-homework': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  'prompts-iep': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  'prompts-social': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  'prompts-morning': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  'prompts-anxiety': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
   
-  // Activity Packets - $9 each
-  'activity-intense-feeler': 'price_REPLACE_WITH_INTENSE_FEELER_ACTIVITY_PRICE_ID',
-  'activity-reluctant-starter': 'price_REPLACE_WITH_RELUCTANT_STARTER_ACTIVITY_PRICE_ID',
-  'activity-deep-diver': 'price_REPLACE_WITH_DEEP_DIVER_ACTIVITY_PRICE_ID',
+  // Activity Packets - $9 each (all map to same product for now)
+  'activity-intense-feeler': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
+  'activity-reluctant-starter': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
+  'activity-deep-diver': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
 };
 
 module.exports = async (req, res) => {
