@@ -3,28 +3,45 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-// Map your product IDs to Stripe Price IDs
-const PRICE_MAP = {
-  // Toolkits - $29 each
-  'toolkit-emotional': 'price_1St78LAx6JDn4AuAqFqKmw3T',
-  'toolkit-iep': 'price_1St78uAx6JDn4AuAhOH27Fbs',
-  'toolkit-homework': 'price_1St79XAx6JDn4AuAp9ltEfNs',
+// Stripe Price IDs (from your Stripe Dashboard)
+const STRIPE_PRICES = {
+  'activity-packet': 'price_1St7BMAx6JDn4AuA1rqRIFyg',      // $9
+  'ai-prompts': 'price_1St7AnAx6JDn4AuAXsfJWw2B',          // $19
+  'complete-bundle': 'price_1St7A4Ax6JDn4AuAKnk66CbV',     // $67
+  'toolkit-homework': 'price_1St79XAx6JDn4AuAp9ltEfNs',    // $29
+  'toolkit-iep': 'price_1St78uAx6JDn4AuAhOH27Fbs',         // $29
+  'toolkit-emotional': 'price_1St78LAx6JDn4AuAqFqKmw3T',   // $29
+};
+
+// Map site product IDs to Stripe product categories
+const PRODUCT_TO_STRIPE = {
+  // Activity Packets - all map to $9 activity packet
+  'activity-packet-ember': 'activity-packet',
+  'activity-packet-shelly': 'activity-packet',
+  'activity-packet-sketch': 'activity-packet',
+  'activity-packet-whisper': 'activity-packet',
+  'activity-packet-bravely': 'activity-packet',
+  'activity-packet-cosmo': 'activity-packet',
+  'activity-packet-captain-choosy': 'activity-packet',
   
-  // Complete Bundle - $67
-  'bundle-complete': 'price_1St7A4Ax6JDn4AuAKnk66CbV',
+  // AI Prompt Packs - all map to $19 prompts
+  'ai-prompts-intense-feeler': 'ai-prompts',
+  'ai-prompts-reluctant-starter': 'ai-prompts',
+  'ai-prompts-deep-diver': 'ai-prompts',
+  'ai-prompts-sensitive-observer': 'ai-prompts',
+  'ai-prompts-bold-explorer': 'ai-prompts',
+  'ai-prompts-big-picture-thinker': 'ai-prompts',
   
-  // AI Prompt Packs - $19 each (all map to same product for now)
-  'prompts-meltdown': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'prompts-homework': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'prompts-iep': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'prompts-social': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'prompts-morning': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'prompts-anxiety': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
+  // Bundles
+  'complete-prompt-library': 'complete-bundle',
+  'complete-activity-bundle': 'complete-bundle',
+  'complete-bundle': 'complete-bundle',
+  'bundle-complete': 'complete-bundle',
   
-  // Activity Packets - $9 each (all map to same product for now)
-  'activity-intense-feeler': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
-  'activity-reluctant-starter': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
-  'activity-deep-diver': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
+  // Toolkits
+  'toolkit-emotional': 'toolkit-emotional',
+  'toolkit-iep': 'toolkit-iep',
+  'toolkit-homework': 'toolkit-homework',
 };
 
 module.exports = async (req, res) => {
@@ -50,10 +67,17 @@ module.exports = async (req, res) => {
 
     // Convert cart items to Stripe line items
     const lineItems = items.map(item => {
-      const priceId = PRICE_MAP[item.id];
+      // Get the Stripe product category
+      const stripeCategory = item.stripeProduct || PRODUCT_TO_STRIPE[item.id];
       
-      if (!priceId || priceId.includes('REPLACE')) {
-        throw new Error(`Invalid product ID or price not configured: ${item.id}`);
+      if (!stripeCategory) {
+        throw new Error(`Unknown product: ${item.id}`);
+      }
+      
+      const priceId = STRIPE_PRICES[stripeCategory];
+      
+      if (!priceId) {
+        throw new Error(`No Stripe price configured for: ${stripeCategory}`);
       }
 
       return {
