@@ -4,73 +4,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Review your cart and checkout. Navigator Kids AI - Tools for 2e kids.">
-    <title>Your Cart | Navigator Kids AI</title>
+    <meta name="description" content="Your shopping cart - Navigator Kids AI resources for twice-exceptional children.">
+    <title>Cart | Navigator Kids AI</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Shared Styles -->
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
         .cart-page {
-            padding: var(--space-12) 0;
+            padding: var(--space-12) 0 var(--space-16);
             min-height: 60vh;
         }
 
-        .cart-page h1 {
+        .cart-header {
             margin-bottom: var(--space-8);
         }
 
-        /* Continue Shopping Link */
-        .continue-shopping {
-            display: inline-flex;
+        .cart-header h1 {
+            margin-bottom: var(--space-2);
+        }
+
+        .cart-count-text {
+            color: var(--color-text-muted);
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--space-10);
+        }
+
+        @media (max-width: 900px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cart Items */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .cart-item {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            gap: var(--space-5);
             align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 600px) {
+            .cart-item {
+                grid-template-columns: 50px 1fr;
+                gap: var(--space-3);
+            }
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .cart-item-image {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .cart-item-details h3 {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-1);
+        }
+
+        .cart-item-type {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             gap: var(--space-2);
-            color: var(--color-sage);
-            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .cart-item-actions {
+                grid-column: span 2;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .cart-item-price {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            padding: 0;
+            text-decoration: underline;
+        }
+
+        .remove-btn:hover {
+            color: var(--color-terracotta);
+        }
+
+        /* Empty Cart */
+        .cart-empty {
+            text-align: center;
+            padding: var(--space-16) var(--space-8);
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+        }
+
+        .cart-empty-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .cart-empty h2 {
+            margin-bottom: var(--space-3);
+        }
+
+        .cart-empty p {
+            color: var(--color-text-light);
             margin-bottom: var(--space-6);
         }
 
-        .continue-shopping:hover {
-            color: var(--color-sage-dark);
+        /* Cart Summary */
+        .cart-summary {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: var(--space-6);
+            height: fit-content;
+        }
+
+        .cart-summary h2 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            font-size: var(--text-sm);
+        }
+
+        .summary-row.total {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            padding-top: var(--space-4);
+            margin-top: var(--space-4);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .summary-row .label {
+            color: var(--color-text-muted);
+        }
+
+        .cart-summary .btn {
+            width: 100%;
+            margin-top: var(--space-6);
+        }
+
+        .summary-note {
+            text-align: center;
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--space-4);
+            line-height: 1.6;
+        }
+
+        /* Suggested Products */
+        .suggested-section {
+            margin-top: var(--space-12);
+        }
+
+        .suggested-section h2 {
+            margin-bottom: var(--space-6);
+        }
+
+        .suggested-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        @media (max-width: 800px) {
+            .suggested-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .suggested-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .suggested-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .suggested-card-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-3);
+        }
+
+        .suggested-card h3 {
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-2);
+        }
+
+        .suggested-card .price {
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--space-3);
+        }
+
+        .suggested-card .btn {
+            width: 100%;
+            font-size: var(--text-sm);
+            padding: var(--space-2);
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Header (injected by components.js) -->
     <div id="header"></div>
 
     <main class="cart-page">
         <div class="container">
-            
-            <a href="/products/" class="continue-shopping">
-                ← Continue Shopping
-            </a>
 
-            <h1>Your Cart</h1>
-
-            <!-- Cart content rendered by cart.js -->
-            <div id="cartContainer">
-                <!-- Loading state -->
-                <p>Loading cart...</p>
+            <div class="cart-header">
+                <h1>Your Cart</h1>
+                <p class="cart-count-text"><span id="itemCount">0</span> items</p>
             </div>
+
+            <div class="cart-layout">
+                <div class="cart-main">
+                    <div class="cart-items" id="cartItems">
+                        <!-- Cart items rendered by cart.js -->
+                    </div>
+
+                    <div class="cart-empty" id="emptyCart" style="display: none;">
+                        <div class="cart-empty-icon">🛒</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added any resources yet. Check out our products to find tools for your 2e child.</p>
+                        <a href="/products/" class="btn btn-primary">Browse Products →</a>
+                    </div>
+                </div>
+
+                <aside class="cart-summary" id="cartSummary">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-row">
+                        <span class="label">Subtotal</span>
+                        <span id="subtotal">$0</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="label">Discount</span>
+                        <span id="discount">$0</span>
+                    </div>
+
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">$0</span>
+                    </div>
+
+                    <button id="checkoutBtn" class="btn btn-primary btn-lg">Proceed to Checkout →</button>
+
+                    <p class="summary-note">
+                        ✓ Instant PDF download<br>
+                        ✓ 7-day money-back guarantee
+                    </p>
+                </aside>
+            </div>
+
+            <section class="suggested-section" id="suggestedSection">
+                <h2>You Might Also Like</h2>
+                <div class="suggested-grid">
+                    <div class="suggested-card">
+                        <div class="suggested-card-icon">📦</div>
+                        <h3>Complete Prompt Library</h3>
+                        <p class="price">$67</p>
+                        <button class="btn btn-secondary" onclick="addToCart('complete-prompt-library')">Add to Cart</button>
+                    </div>
+                    <div class="suggested-card">
+                        <div class="suggested-card-icon">🎨</div>
+                        <h3>Activity Bundle</h3>
+                        <p class="price">$47</p>
+                        <button class="btn btn-secondary" onclick="addToCart('complete-activity-bundle')">Add to Cart</button>
+                    </div>
+                    <div class="suggested-card">
+                        <div class="suggested-card-icon">🎁</div>
+                        <h3>Everything Bundle</h3>
+                        <p class="price">$97</p>
+                        <button class="btn btn-secondary" onclick="addToCart('complete-bundle')">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </main>
 
-    <!-- Footer (injected by components.js) -->
     <div id="footer"></div>
 
-    <!-- Scripts -->
     <script src="/js/components.js"></script>
     <script src="/js/cart.js"></script>
-
 </body>
 
 </html>
