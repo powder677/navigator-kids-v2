@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Navigator Kids AI - Tools for 2e parents",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "stripe": "^14.0.0"
   }
