@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="A beginner's guide to using AI tools like ChatGPT for parenting support.">
+   <title>Your First AI Conversation | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="article-page">
+      <div class="container">
+
+         <nav class="breadcrumbs">
+            <a href="/">Home</a><span>/</span>
+            <a href="/resources/">Resources</a><span>/</span>
+            <span>AI for Parents</span>
+         </nav>
+
+         <div class="article-layout">
+
+            <article class="article-main">
+
+               <header class="article-header">
+                  <span class="article-badge">Guide</span>
+                  <h1>Your First AI Conversation</h1>
+                  <p class="article-excerpt">New to AI? Here is how to start using tools like ChatGPT to lighten your parenting load safely and effectively.</p>
+               </header>
+
+               <div class="article-body">
+                  <p>Artificial Intelligence can feel overwhelming. Is it safe? Is it accurate? The truth is, when used correctly, AI is simply a very powerful assistant. Think of it as a non-judgmental partner that is available 24/7 to help you brainstorm ideas.</p>
+
+                  <div class="callout callout-terracotta">
+                     <h3>Privacy Warning</h3>
+                     <p>Never share your child's full name, address, or medical records with an AI chatbot. Use pseudonyms or simply refer to them as "my child."</p>
+                  </div>
+
+                  <h2>Getting Started: The Context</h2>
+                  <p>AI works best when you give it context. If you just ask "Help me with a tantrum," you will get generic advice. If you explain the specific situation, you will get tailored strategies.</p>
+
+                  <ol class="numbered-list">
+                     <li>
+                        <h4>Define the Role</h4>
+                        <p>Tell the AI who it should be. "Act as a child psychologist" or "Act as an experienced special education advocate."</p>
+                     </li>
+                     <li>
+                        <h4>Describe the Child</h4>
+                        <p>Mention their age and any diagnoses or quirks. "My child is 7, loves trains, and has ADHD."</p>
+                     </li>
+                     <li>
+                        <h4>State the Goal</h4>
+                        <p>What do you want? "I need a 3-step morning routine gamified with a train theme."</p>
+                     </li>
+                  </ol>
+
+                  <h2>Try This Prompt</h2>
+                  <p>Copy this prompt to see how AI can help explain a complex topic to your child.</p>
+
+                  <div class="prompt-box">
+                     <div class="prompt-header">
+                        <span>📋 Copy this prompt into ChatGPT</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                     </div>
+                     <div class="prompt-content">Act as a gentle, expert parent coach.
+                        My child is <span class="prompt-var">[AGE]</span> years old and is feeling anxious about <span class="prompt-var">[SITUATION, e.g., going to the dentist]</span>.
+                        They love <span class="prompt-var">[INTEREST, e.g., Minecraft]</span>.
+
+                        Please write a short script I can use to explain what will happen, using metaphors related to their interest to make it less scary.</div>
+                  </div>
+
+               </div>
+
+            </article>
+
+            <aside class="article-sidebar">
+               <div class="sidebar-cta">
+                  <h3>Start Advocating</h3>
+                  <p>Ready to try more advanced prompts? Check out our AI Guide for Parents.</p>
+                  <a href="/tools/ai-guide/" class="btn">View AI Guide →</a>
+               </div>
+
+               <div class="sidebar-related">
+                  <h4>Related Guides</h4>
+                  <a href="/resources/iep-advocate-guide/">The IEP Advocate</a>
+                  <a href="/resources/sensory-scripts-guide/">Sensory Scripts</a>
+               </div>
+            </aside>
+
+         </div>
+      </div>
+   </main>
+
+   <div id="footer"></div>
+   <script src="/js/components.js"></script>
+   <script>
+      function copyPrompt(btn) {
+         const promptBox = btn.closest('.prompt-box');
+         const text = promptBox.querySelector('.prompt-content').innerText;
+         navigator.clipboard.writeText(text);
+         btn.textContent = '✓ Copied!';
+         setTimeout(() => btn.textContent = 'Copy', 2000);
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Use AI to remove emotion from your advocacy and draft professional IEP correspondence.">
+   <title>IEP Advocate Guide | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="article-page">
+      <div class="container">
+
+         <nav class="breadcrumbs">
+            <a href="/">Home</a><span>/</span>
+            <a href="/resources/">Resources</a><span>/</span>
+            <span>IEP Advocate Guide</span>
+         </nav>
+
+         <div class="article-layout">
+
+            <article class="article-main">
+
+               <header class="article-header">
+                  <span class="article-badge">Guide</span>
+                  <h1>The IEP Advocate: Taking the Emotion Out of Email</h1>
+                  <p class="article-excerpt">When you're fighting for your child's rights, it's easy to get emotional. Here is how AI can help you stay professional and effective.</p>
+               </header>
+
+               <div class="article-body">
+                  <p>Receiving an email that your child's accommodations were ignored—again—is infuriating. Your first instinct is likely to fire off an angry reply. While understandable, this rarely gets the results you want.</p>
+
+                  <p>AI tools like ChatGPT act as a "tone filter." They can take your raw, frustrated thoughts and translate them into "Teacher Speak"—the professional language that administrators respect.</p>
+
+                  <div class="example-box">
+                     <h3>See It In Action</h3>
+
+                     <div class="example-input">
+                        <h4>What You Type:</h4>
+                        <p>"I am so sick of you ignoring the IEP. He is supposed to sit at the front! Why is he in the back row again? Fix this now."</p>
+                     </div>
+
+                     <div class="example-arrow">↓</div>
+
+                     <div class="example-output">
+                        <h4>What AI Generates:</h4>
+                        <p>"I am writing to address a compliance concern regarding [Child]'s IEP. Specifically, accommodation #4 requires preferential seating. Currently, he is seated in the back row, which affects his ability to focus. Please confirm when this will be corrected."</p>
+                     </div>
+                  </div>
+
+                  <h2>Why "Teacher Speak" Works</h2>
+                  <p>Schools operate on documentation and data. When you write emotionally, it's easy for the administration to label you as "difficult." When you write objectively using the language of the system (compliance, accommodations, data), they take you seriously.</p>
+
+                  <div class="callout callout-cream">
+                     <h3>Tip: The "Data" Rule</h3>
+                     <p>Always ask for data. Instead of saying "He's struggling," say "The data shows a decline in his scores since the accommodation was removed."</p>
+                  </div>
+
+                  <h2>Template: The Compliance Check</h2>
+                  <p>If an accommodation is being missed, use this template to address it firmly but professionally.</p>
+
+                  <div class="email-template">
+                     <h4>📧 Email Template</h4>
+                     <div class="email-content">
+                        <p><strong>Subject:</strong> IEP Compliance Question - [Student Name]</p>
+                        <p>Dear [Case Manager Name],</p>
+                        <p>I hope this email finds you well.</p>
+                        <p>I am writing to clarify the implementation of [Student Name]'s IEP, specifically regarding [Accommodation Name]. My understanding from our last meeting was that this would be provided daily.</p>
+                        <p>Can you please share the data log or observations regarding the effectiveness of this accommodation over the last two weeks? We want to ensure we are supporting the team's efforts at home.</p>
+                        <p>Best,<br>[Your Name]</p>
+                     </div>
+                     <button class="copy-btn" onclick="copyEmail(this)">Copy Email</button>
+                  </div>
+
+               </div>
+
+            </article>
+
+            <aside class="article-sidebar">
+               <div class="sidebar-cta">
+                  <h3>Draft Your Letter</h3>
+                  <p>Use our IEP Advocate tool to turn your concerns into professional documentation instantly.</p>
+                  <a href="/tools/iep-advocate/" class="btn">Open IEP Advocate →</a>
+               </div>
+
+               <div class="sidebar-related">
+                  <h4>Related Guides</h4>
+                  <a href="/resources/curriculum-compactor-guide/">The Curriculum Compactor</a>
+                  <a href="/resources/sensory-scripts-guide/">Sensory Scripts</a>
+               </div>
+            </aside>
+
+         </div>
+      </div>
+   </main>
+
+   <div id="footer"></div>
+   <script src="/js/components.js"></script>
+   <script>
+      function copyEmail(btn) {
+         const emailBox = btn.closest('.email-template');
+         const text = emailBox.querySelector('.email-content').innerText;
+         navigator.clipboard.writeText(text);
+         btn.textContent = '✓ Copied!';
+         setTimeout(() => btn.textContent = 'Copy Email', 2000);
+      }
+   </script>
+</body>
+
+</html>
