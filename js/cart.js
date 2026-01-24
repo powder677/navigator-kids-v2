@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - CART SYSTEM
-   cart.js - Shopping cart with localStorage
+   cart.js - Shopping cart with Stripe Checkout
    ============================================ */
 
 (function() {
@@ -9,108 +9,458 @@
     // =========================================
     // CONFIGURATION
     // =========================================
-    const CART_CONFIG = {
-        storageKey: 'navigatorCart',
-        currency: 'USD',
-        // Stripe Payment Links (replace with your actual links)
-        stripeLinks: {
-            checkout: 'https://buy.stripe.com/your-checkout-session-link'
+    const CHECKOUT_API_URL = '/api/create-checkout';
+    const STORAGE_KEY = 'navigatorCart';
+    
+    // Product catalog with details
+    const PRODUCTS = {
+        // Toolkits - $29
+        'toolkit-emotional': {
+            id: 'toolkit-emotional',
+            name: 'Emotional Regulation Toolkit',
+            price: 29,
+            category: 'toolkit',
+            description: 'For Intense Feelers & Sensitive Observers'
+        },
+        'toolkit-iep': {
+            id: 'toolkit-iep',
+            name: 'IEP Advocacy Toolkit',
+            price: 29,
+            category: 'toolkit',
+            description: 'Navigate IEP meetings with confidence'
+        },
+        'toolkit-homework': {
+            id: 'toolkit-homework',
+            name: 'Homework & Executive Function',
+            price: 29,
+            category: 'toolkit',
+            description: 'For Reluctant Starters & Big Picture Thinkers'
+        },
+
+        // Bundle - $67
+        'bundle-complete': {
+            id: 'bundle-complete',
+            name: 'Complete 2e Toolkit Bundle',
+            price: 67,
+            category: 'bundle',
+            description: 'All 3 toolkits (Save $20)'
+        },
+
+        // AI Prompt Packs - $19
+        'prompts-meltdown': {
+            id: 'prompts-meltdown',
+            name: 'Meltdown Navigator Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for emotional crises'
+        },
+        'prompts-homework': {
+            id: 'prompts-homework',
+            name: 'Homework Helper Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for homework battles'
+        },
+        'prompts-iep': {
+            id: 'prompts-iep',
+            name: 'IEP Advocate Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for school advocacy'
+        },
+        'prompts-social': {
+            id: 'prompts-social',
+            name: 'Social Skills Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for social situations'
+        },
+        'prompts-morning': {
+            id: 'prompts-morning',
+            name: 'Morning Routine Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for smoother mornings'
+        },
+        'prompts-anxiety': {
+            id: 'prompts-anxiety',
+            name: 'Anxiety & Worry Prompts',
+            price: 19,
+            category: 'prompts',
+            description: '50 prompts for anxious moments'
+        },
+
+        // Activity Packets - $9
+        'activity-intense-feeler': {
+            id: 'activity-intense-feeler',
+            name: 'Intense Feeler Activity Packet',
+            price: 9,
+            category: 'activity',
+            description: '15 printable activities'
+        },
+        'activity-reluctant-starter': {
+            id: 'activity-reluctant-starter',
+            name: 'Reluctant Starter Activity Packet',
+            price: 9,
+            category: 'activity',
+            description: '15 printable activities'
+        },
+        'activity-deep-diver': {
+            id: 'activity-deep-diver',
+            name: 'Deep Diver Activity Packet',
+            price: 9,
+            category: 'activity',
+            description: '15 printable activities'
         }
     };
 
     // =========================================
-    // PRODUCT CATALOG
+    // CART STATE
     // =========================================
-    // Central product database - update prices/details here
-    const PRODUCTS = {
-        // AI Prompt Packs - $18 each
-        'ai-prompts-intense-feeler': {
-            id: 'ai-prompts-intense-feeler',
-            name: 'AI Prompts: Intense Feeler',
-            description: '50 prompts for emotional regulation, meltdown scripts, sensory support',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'intense-feeler',
-            icon: '🔥',
-            downloadUrl: '/downloads/ai-prompts-intense-feeler.pdf'
-        },
-        'ai-prompts-reluctant-starter': {
-            id: 'ai-prompts-reluctant-starter',
-            name: 'AI Prompts: Reluctant Starter',
-            description: '50 prompts for task initiation, homework help, motivation',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'reluctant-starter',
-            icon: '🐢',
-            downloadUrl: '/downloads/ai-prompts-reluctant-starter.pdf'
-        },
-        'ai-prompts-deep-diver': {
-            id: 'ai-prompts-deep-diver',
-            name: 'AI Prompts: Deep Diver',
-            description: '50 prompts for focus, hyperfocus channeling, interest-based learning',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'deep-diver',
-            icon: '🦉',
-            downloadUrl: '/downloads/ai-prompts-deep-diver.pdf'
-        },
-        'ai-prompts-sensitive-observer': {
-            id: 'ai-prompts-sensitive-observer',
-            name: 'AI Prompts: Sensitive Observer',
-            description: '50 prompts for sensory processing, social situations, anxiety',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'sensitive-observer',
-            icon: '🐰',
-            downloadUrl: '/downloads/ai-prompts-sensitive-observer.pdf'
-        },
-        'ai-prompts-bold-explorer': {
-            id: 'ai-prompts-bold-explorer',
-            name: 'AI Prompts: Bold Explorer',
-            description: '50 prompts for confidence building, trying new things, frustration',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'bold-explorer',
-            icon: '🦁',
-            downloadUrl: '/downloads/ai-prompts-bold-explorer.pdf'
-        },
-        'ai-prompts-big-picture-thinker': {
-            id: 'ai-prompts-big-picture-thinker',
-            name: 'AI Prompts: Big Picture Thinker',
-            description: '50 prompts for organization, transitions, executive function',
-            price: 18.00,
-            category: 'ai-prompts',
-            profile: 'big-picture-thinker',
-            icon: '🚀',
-            downloadUrl: '/downloads/ai-prompts-big-picture-thinker.pdf'
-        },
-        'ai-prompts-complete': {
-            id: 'ai-prompts-complete',
-            name: 'Complete AI Prompt Library',
-            description: 'All 300 prompts across all 6 profiles - best value!',
-            price: 67.00,
-            originalPrice: 108.00,
-            category: 'ai-prompts',
-            profile: 'all',
-            icon: '📚',
-            downloadUrl: '/downloads/ai-prompts-complete.zip',
-            isBundle: true
-        },
+    let cart = [];
 
-        // Activity Packets - $9 each
-        'packet-ember-dragon': {
-            id: 'packet-ember-dragon',
-            name: 'Ember the Dragon',
-            description: 'Interactive emotional regulation activities for Intense Feelers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'intense-feeler',
-            icon: '🐉',
-            downloadUrl: '/downloads/ember-the-dragon.html'
-        },
-        'packet-shelly-turtle': {
-            id: 'packet-shelly-turtle',
-            name: 'Shelly the Turtle',
+    // =========================================
+    // INITIALIZATION
+    // =========================================
+    function init() {
+        loadCart();
+        updateCartUI();
+        bindEvents();
+    }
+
+    // =========================================
+    // CART OPERATIONS
+    // =========================================
+    
+    function loadCart() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            cart = saved ? JSON.parse(saved) : [];
+        } catch (e) {
+            cart = [];
+        }
+    }
+
+    function saveCart() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function addItem(productId, quantity = 1) {
+        const product = PRODUCTS[productId];
+        if (!product) {
+            console.error('Product not found:', productId);
+            return false;
+        }
+
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                quantity: quantity
+            });
+        }
+
+        saveCart();
+        showAddedFeedback(product.name);
+        return true;
+    }
+
+    function removeItem(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        saveCart();
+    }
+
+    function updateQuantity(productId, quantity) {
+        const item = cart.find(item => item.id === productId);
+        if (item) {
+            if (quantity <= 0) {
+                removeItem(productId);
+            } else {
+                item.quantity = quantity;
+                saveCart();
+            }
+        }
+    }
+
+    function clearCart() {
+        cart = [];
+        saveCart();
+    }
+
+    function getCart() {
+        return [...cart];
+    }
+
+    function getCartCount() {
+        return cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+
+    function getCartTotal() {
+        return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+
+    // =========================================
+    // UI UPDATES
+    // =========================================
+    
+    function updateCartUI() {
+        // Update cart count badges
+        const countElements = document.querySelectorAll('.cart-count, [data-cart-count]');
+        const count = getCartCount();
+        
+        countElements.forEach(el => {
+            el.textContent = count;
+            el.style.display = count > 0 ? 'flex' : 'none';
+        });
+
+        // Update cart total displays
+        const totalElements = document.querySelectorAll('.cart-total, [data-cart-total]');
+        totalElements.forEach(el => {
+            el.textContent = '$' + getCartTotal();
+        });
+
+        // Render full cart if on cart page
+        renderCartPage();
+    }
+
+    function renderCartPage() {
+        const cartContainer = document.getElementById('cartItems');
+        const emptyMessage = document.getElementById('cartEmpty');
+        const cartSummary = document.getElementById('cartSummary');
+        
+        if (!cartContainer) return;
+
+        if (cart.length === 0) {
+            cartContainer.style.display = 'none';
+            if (cartSummary) cartSummary.style.display = 'none';
+            if (emptyMessage) emptyMessage.style.display = 'block';
+            return;
+        }
+
+        cartContainer.style.display = 'block';
+        if (cartSummary) cartSummary.style.display = 'block';
+        if (emptyMessage) emptyMessage.style.display = 'none';
+
+        // Render cart items
+        cartContainer.innerHTML = cart.map(item => `
+            <div class="cart-item" data-product-id="${item.id}">
+                <div class="cart-item-info">
+                    <h3 class="cart-item-name">${item.name}</h3>
+                    <p class="cart-item-price">$${item.price}</p>
+                </div>
+                <div class="cart-item-actions">
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="NavigatorCart.updateQuantity('${item.id}', ${item.quantity - 1})">−</button>
+                        <span class="qty-display">${item.quantity}</span>
+                        <button class="qty-btn" onclick="NavigatorCart.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="NavigatorCart.removeItem('${item.id}')">Remove</button>
+                </div>
+                <div class="cart-item-total">
+                    $${item.price * item.quantity}
+                </div>
+            </div>
+        `).join('');
+
+        // Update summary
+        const subtotalEl = document.getElementById('cartSubtotal');
+        const totalEl = document.getElementById('cartTotal');
+        
+        if (subtotalEl) subtotalEl.textContent = '$' + getCartTotal();
+        if (totalEl) totalEl.textContent = '$' + getCartTotal();
+    }
+
+    function showAddedFeedback(productName) {
+        // Create toast notification
+        const toast = document.createElement('div');
+        toast.className = 'cart-toast';
+        toast.innerHTML = `
+            <span class="cart-toast-icon">✓</span>
+            <span>${productName} added to cart</span>
+            <a href="/cart/" class="cart-toast-link">View Cart</a>
+        `;
+
+        // Add styles if not present
+        if (!document.getElementById('cart-toast-styles')) {
+            const styles = document.createElement('style');
+            styles.id = 'cart-toast-styles';
+            styles.textContent = `
+                .cart-toast {
+                    position: fixed;
+                    bottom: 24px;
+                    right: 24px;
+                    background: #1F2937;
+                    color: white;
+                    padding: 16px 20px;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                    z-index: 9999;
+                    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+                }
+                .cart-toast-icon {
+                    background: #22C55E;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                }
+                .cart-toast-link {
+                    color: #60A5FA;
+                    text-decoration: none;
+                    font-weight: 500;
+                    margin-left: 8px;
+                }
+                @keyframes slideIn {
+                    from { transform: translateX(100px); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(styles);
+        }
+
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    // =========================================
+    // EVENT BINDING
+    // =========================================
+    
+    function bindEvents() {
+        // Add to cart buttons
+        document.addEventListener('click', function(e) {
+            const addBtn = e.target.closest('[data-add-to-cart]');
+            if (addBtn) {
+                e.preventDefault();
+                const productId = addBtn.dataset.addToCart;
+                addItem(productId);
+            }
+        });
+
+        // Checkout button
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', handleCheckout);
+        }
+    }
+
+    // =========================================
+    // STRIPE CHECKOUT
+    // =========================================
+    
+    async function handleCheckout() {
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        
+        if (cart.length === 0) {
+            alert('Your cart is empty');
+            return;
+        }
+
+        // Show loading state
+        if (checkoutBtn) {
+            checkoutBtn.disabled = true;
+            checkoutBtn.textContent = 'Processing...';
+        }
+
+        try {
+            // Call our serverless function
+            const response = await fetch(CHECKOUT_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    items: cart.map(item => ({
+                        id: item.id,
+                        quantity: item.quantity
+                    }))
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Checkout failed');
+            }
+
+            // Redirect to Stripe Checkout
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                throw new Error('No checkout URL received');
+            }
+
+        } catch (error) {
+            console.error('Checkout error:', error);
+            alert('Checkout failed: ' + error.message + '\n\nPlease try again or contact support.');
+            
+            // Reset button
+            if (checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.textContent = 'Proceed to Checkout →';
+            }
+        }
+    }
+
+    // =========================================
+    // UTILITY FUNCTIONS
+    // =========================================
+    
+    function getProduct(productId) {
+        return PRODUCTS[productId] || null;
+    }
+
+    function getAllProducts() {
+        return { ...PRODUCTS };
+    }
+
+    // =========================================
+    // PUBLIC API
+    // =========================================
+    window.NavigatorCart = {
+        // Cart operations
+        addItem,
+        removeItem,
+        updateQuantity,
+        clearCart,
+        getCart,
+        getCartCount,
+        getCartTotal,
+        
+        // Product info
+        getProduct,
+        getAllProducts,
+        
+        // Checkout
+        checkout: handleCheckout,
+        
+        // Re-initialize (useful after dynamic content loads)
+        refresh: updateCartUI
+    };
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();            name: 'Shelly the Turtle',
             description: 'Task initiation games for Reluctant Starters',
             price: 9.00,
             category: 'activity-packet',
