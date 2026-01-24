@@ -1,0 +1,9 @@
+{
+  "name": "navigator-kids-ai",
+  "version": "1.0.0",
+  "description": "Navigator Kids AI - Tools for 2e parents",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
