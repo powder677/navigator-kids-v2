@@ -2,1231 +2,445 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Understand your twice-exceptional (2e) child's unique brain in 3 minutes. Free quiz + practical tools for parents of bright kids who struggle.">
-    <title>Navigator Kids AI™ | Understand Your 2e Child's Unique Brain</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Free starter pack for parents of twice-exceptional children. Get AI prompts, activity samples, and the brain profile quiz.">
+   <title>Free Starter Pack | Navigator Kids AI</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "Navigator Kids AI",
-        "description": "Educational resources and AI-powered tools for parents of twice-exceptional (2e) children.",
-        "audience": {
-            "@type": "ParentAudience",
-            "audienceType": "Parents of 2e children ages 6-9"
-        }
-    }
-    </script>
+   <style>
+      .starter-pack-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
 
-    <style>
-        /* =========================================
-           1. Variables & Reset
-           ========================================= */
-        :root {
-            /* Color System - Warm & Approachable */
-            --cream: #F9F7F2;
-            --cream-dark: #F0EDE5;
-            --terracotta: #E07A5F;
-            --terracotta-dark: #C96A52;
-            --sage: #81B29A;
-            --sage-light: #A8D0BA;
-            --navy: #3D405B;
-            --navy-light: #4A4E69;
-            --gold: #F2CC8F;
-            --gold-light: #F7DDB0;
-            --white: #FFFFFF;
-            --text: #4A4E69;
-            --text-light: #6B6E8A;
+      .starter-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
 
-            /* Typography */
-            --font-heading: 'Merriweather', Georgia, serif;
-            --font-body: 'Inter', -apple-system, sans-serif;
+      .starter-header .badge {
+         display: inline-block;
+         background: var(--color-sage);
+         color: var(--color-white);
+         font-size: var(--text-sm);
+         font-weight: 600;
+         padding: var(--space-1) var(--space-4);
+         border-radius: var(--radius-full);
+         margin-bottom: var(--space-4);
+      }
 
-            /* Spacing */
-            --container-width: 1140px;
-            --nav-height: 72px;
-            --section-padding: 5rem;
+      .starter-header h1 {
+         margin-bottom: var(--space-3);
+      }
 
-            /* Effects */
-            --shadow-sm: 0 2px 8px rgba(61, 64, 91, 0.06);
-            --shadow-md: 0 4px 20px rgba(61, 64, 91, 0.08);
-            --shadow-lg: 0 8px 40px rgba(61, 64, 91, 0.12);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-full: 50px;
-        }
+      .starter-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      /* What's Included */
+      .included-section {
+         margin-bottom: var(--space-12);
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      .included-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-6);
+      }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--cream);
-            color: var(--text);
-            line-height: 1.7;
-            padding-top: var(--nav-height);
-            -webkit-font-smoothing: antialiased;
-        }
+      @media (max-width: 800px) {
+         .included-grid {
+            grid-template-columns: 1fr;
+         }
+      }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            color: var(--navy);
-            line-height: 1.25;
-            font-weight: 700;
-        }
+      .included-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         text-align: center;
+         box-shadow: var(--shadow-md);
+      }
 
-        p {
-            margin-bottom: 1rem;
-        }
+      .included-icon {
+         width: 80px;
+         height: 80px;
+         background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+         border-radius: var(--radius-lg);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 2.5rem;
+         margin: 0 auto var(--space-5);
+      }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
+      .included-card h3 {
+         font-size: var(--text-lg);
+         margin-bottom: var(--space-3);
+      }
 
-        ul {
-            list-style: none;
-        }
+      .included-card p {
+         color: var(--color-text-light);
+         font-size: var(--text-sm);
+         margin-bottom: var(--space-4);
+      }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+      .included-list {
+         text-align: left;
+         font-size: var(--text-sm);
+      }
 
-        /* =========================================
-           2. Utility Classes
-           ========================================= */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+      .included-list li {
+         padding: var(--space-2) 0;
+         border-bottom: 1px solid var(--color-border);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
 
-        .text-center {
-            text-align: center;
-        }
+      .included-list li:last-child {
+         border-bottom: none;
+      }
 
-        .section-label {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--sage);
-            margin-bottom: 0.75rem;
-        }
+      .included-list li::before {
+         content: '✓';
+         color: var(--color-sage);
+         font-weight: 700;
+      }
 
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
+      /* Signup Form */
+      .signup-section {
+         background: var(--color-navy);
+         border-radius: var(--radius-xl);
+         padding: var(--space-12);
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-        }
+      .signup-section h2 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-3);
+      }
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: var(--radius-full);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+      .signup-section p {
+         color: rgba(249, 247, 242, 0.8);
+         margin-bottom: var(--space-6);
+         max-width: 500px;
+         margin-left: auto;
+         margin-right: auto;
+      }
 
-        .btn-primary {
-            background: var(--terracotta);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.35);
-        }
+      .signup-form {
+         display: flex;
+         gap: var(--space-3);
+         max-width: 500px;
+         margin: 0 auto;
+      }
 
-        .btn-primary:hover {
-            background: var(--terracotta-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(224, 122, 95, 0.45);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--navy);
-            border: 2px solid var(--navy);
-        }
-
-        .btn-secondary:hover {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        .btn-large {
-            padding: 1.25rem 2.75rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-arrow::after {
-            content: '→';
-            transition: transform 0.2s ease;
-        }
-
-        .btn-arrow:hover::after {
-            transform: translateX(4px);
-        }
-
-        /* =========================================
-           3. Navigation
-           ========================================= */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: var(--white);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.35rem;
-            color: var(--navy);
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .nav-links a:hover {
-            color: var(--terracotta);
-        }
-
-        .nav-btn {
-            padding: 0.65rem 1.25rem;
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Nav Toggle */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--navy);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* =========================================
-           4. Hero Section
-           ========================================= */
-        .hero {
-            position: relative;
-            padding: 4rem 0 5rem;
-            overflow: hidden;
-        }
-
-        /* Decorative Background Elements */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .hero-shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-
-        .hero-shape-1 {
-            width: 350px;
-            height: 350px;
-            background: var(--sage-light);
-            top: -100px;
-            left: -100px;
-        }
-
-        .hero-shape-2 {
-            width: 250px;
-            height: 250px;
-            background: var(--gold-light);
-            bottom: -50px;
-            right: -50px;
-        }
-
-        .hero-shape-3 {
-            width: 150px;
-            height: 150px;
-            background: var(--terracotta);
-            opacity: 0.2;
-            top: 60%;
-            left: 10%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--sage);
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--sage);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.2); }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.25rem, 5vw, 3.25rem);
-            margin-bottom: 1.25rem;
-            color: var(--navy);
-        }
-
-        .hero h1 span {
-            color: var(--terracotta);
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--text);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
+      @media (max-width: 600px) {
+         .signup-form {
             flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .hero-cta-note {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* =========================================
-           5. Trust Bar
-           ========================================= */
-        .trust-bar {
-            background: var(--white);
-            border-top: 1px solid rgba(61, 64, 91, 0.06);
-            border-bottom: 1px solid rgba(61, 64, 91, 0.06);
-            padding: 1.25rem 0;
-        }
-
-        .trust-items {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .trust-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--sage-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: var(--sage);
-        }
-
-        /* =========================================
-           6. Profiles Section
-           ========================================= */
-        .profiles-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .profile-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2rem 1.75rem;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--sage);
-            position: relative;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Alternate border colors */
-        .profile-card:nth-child(2) { border-color: var(--terracotta); }
-        .profile-card:nth-child(3) { border-color: var(--gold); }
-        .profile-card:nth-child(4) { border-color: #9B8AB8; /* Purple */ }
-        .profile-card:nth-child(5) { border-color: #7EB8D8; /* Blue */ }
-        .profile-card:nth-child(6) { border-color: #E8A87C; /* Peach */ }
-
-        .profile-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .profile-card:nth-child(1) .profile-icon { background: rgba(129, 178, 154, 0.15); }
-        .profile-card:nth-child(2) .profile-icon { background: rgba(224, 122, 95, 0.15); }
-        .profile-card:nth-child(3) .profile-icon { background: rgba(242, 204, 143, 0.25); }
-        .profile-card:nth-child(4) .profile-icon { background: rgba(155, 138, 184, 0.15); }
-        .profile-card:nth-child(5) .profile-icon { background: rgba(126, 184, 216, 0.15); }
-        .profile-card:nth-child(6) .profile-icon { background: rgba(232, 168, 124, 0.2); }
-
-        .profile-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-family: var(--font-heading);
-        }
-
-        .profile-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-
-        .profile-traits {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .profile-trait {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.6rem;
-            background: var(--cream);
-            border-radius: var(--radius-full);
-            color: var(--text-light);
-        }
-
-        /* =========================================
-           7. How It Works
-           ========================================= */
-        .how-it-works {
-            background: var(--white);
-            padding: var(--section-padding) 0;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-        }
-
-        /* Connector Line */
-        .step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 35px;
-            right: -1.5rem;
-            width: calc(100% - 70px);
-            height: 2px;
-            background: linear-gradient(90deg, var(--sage-light) 0%, transparent 100%);
-            transform: translateX(100%);
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            background: var(--cream);
-            border: 3px solid var(--sage);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .step h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .step p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            max-width: 280px;
-            margin: 0 auto;
-        }
-
-        .steps-cta {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        /* =========================================
-           8. Free Kit Section
-           ========================================= */
-        .free-kit {
-            padding: var(--section-padding) 0;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-        }
-
-        .free-kit-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .free-kit-text h2 {
-            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-            margin-bottom: 1rem;
-        }
-
-        .free-kit-text p {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-        }
-
-        .free-kit-features {
-            margin-bottom: 2rem;
-        }
-
-        .free-kit-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .free-kit-feature-icon {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--sage);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 0.75rem;
-            margin-top: 2px;
-        }
-
-        .free-kit-visual {
-            position: relative;
-        }
-
-        .free-kit-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-            position: relative;
-            transform: rotate(2deg);
-        }
-
-        .free-kit-card::before {
-            content: 'FREE';
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: var(--terracotta);
-            color: var(--white);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.4rem 1rem;
-            border-radius: var(--radius-full);
-            letter-spacing: 1px;
-        }
-
-        .free-kit-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .free-kit-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .free-kit-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* =========================================
-           9. Products Preview
-           ========================================= */
-        .products-preview {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .product-card {
-            background: var(--cream);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-badge {
-            align-self: flex-start;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.35rem 0.75rem;
-            border-radius: var(--radius-full);
-            margin-bottom: 1rem;
-        }
-
-        .product-card:first-child .product-badge {
-            background: var(--terracotta);
-            color: var(--white);
-        }
-
-        .product-card:last-child .product-badge {
-            background: var(--sage);
-            color: var(--white);
-        }
-
-        .product-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .product-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            flex-grow: 1;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(61, 64, 91, 0.1);
-        }
-
-        .product-price-amount {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .product-price-note {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        /* =========================================
-           10. Footer
-           ========================================= */
-        .footer {
-            background: var(--navy);
-            color: var(--cream);
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand .logo {
-            color: var(--cream);
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            max-width: 280px;
-        }
-
-        .footer-links h4 {
-            color: var(--cream);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: var(--font-body);
-        }
-
-        .footer-links a {
-            display: block;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--sage-light);
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(249, 247, 242, 0.1);
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            font-size: 0.85rem;
-            opacity: 0.6;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-disclaimer {
-            font-size: 0.8rem;
-            opacity: 0.5;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* =========================================
-           11. Responsive
-           ========================================= */
-        @media (max-width: 1024px) {
-            .profiles-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --section-padding: 3.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            .profiles-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .step:not(:last-child)::after {
-                display: none;
-            }
-
-            .free-kit-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .free-kit-visual {
-                order: -1;
-            }
-
-            .free-kit-card {
-                transform: rotate(0);
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .trust-items {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero-cta .btn {
-                width: 100%;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-brand p {
-                margin: 0 auto;
-            }
-        }
-    </style>
+         }
+      }
+
+      .signup-form input {
+         flex: 1;
+         padding: var(--space-4);
+         border: none;
+         border-radius: var(--radius-md);
+         font-size: var(--text-base);
+      }
+
+      .signup-form .btn {
+         white-space: nowrap;
+      }
+
+      .signup-note {
+         font-size: var(--text-sm);
+         color: rgba(249, 247, 242, 0.6);
+         margin-top: var(--space-4);
+      }
+
+      /* Success State */
+      .signup-success {
+         display: none;
+      }
+
+      .signup-success.show {
+         display: block;
+      }
+
+      .signup-success h3 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-2);
+      }
+
+      .signup-success p {
+         margin-bottom: 0;
+      }
+
+      /* Preview Section */
+      .preview-section {
+         margin-bottom: var(--space-12);
+      }
+
+      .preview-section h2 {
+         text-align: center;
+         margin-bottom: var(--space-8);
+      }
+
+      .preview-grid {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: var(--space-6);
+      }
+
+      @media (max-width: 700px) {
+         .preview-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .preview-card {
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+      }
+
+      .preview-card h4 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-3);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+      }
+
+      .preview-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         font-style: italic;
+         background: var(--color-white);
+         padding: var(--space-4);
+         border-radius: var(--radius-md);
+         border-left: 3px solid var(--color-sage);
+      }
+
+      /* FAQ */
+      .starter-faq {
+         max-width: 700px;
+         margin: 0 auto;
+      }
+
+      .starter-faq h2 {
+         text-align: center;
+         margin-bottom: var(--space-8);
+      }
+
+      .faq-item {
+         background: var(--color-white);
+         border-radius: var(--radius-md);
+         margin-bottom: var(--space-4);
+         box-shadow: var(--shadow-sm);
+      }
+
+      .faq-question {
+         width: 100%;
+         padding: var(--space-5);
+         background: none;
+         border: none;
+         text-align: left;
+         font-weight: 600;
+         cursor: pointer;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .faq-answer {
+         display: none;
+         padding: 0 var(--space-5) var(--space-5);
+         color: var(--color-text-light);
+      }
+
+      .faq-item.open .faq-answer {
+         display: block;
+      }
+   </style>
 </head>
 
 <body>
+   <div id="header"></div>
 
-    <!-- ============ NAVIGATION ============ -->
-    <nav class="navbar">
-        <div class="container nav-content">
-            <a href="/" class="logo">
-                <span class="logo-icon">🧭</span>
-                Navigator Kids AI
-            </a>
+   <main class="starter-pack-page">
+      <div class="container">
 
-            <div class="nav-links">
-                <a href="#profiles">Brain Profiles</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="resources/">Resources</a>
-                <a href="quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
+         <div class="starter-header">
+            <span class="badge">100% Free</span>
+            <h1>Navigator Kids Starter Pack</h1>
+            <p>Everything you need to start understanding and supporting your twice-exceptional child—completely free.</p>
+         </div>
+
+         <!-- What's Included -->
+         <section class="included-section">
+            <div class="included-grid">
+               <div class="included-card">
+                  <div class="included-icon">🧠</div>
+                  <h3>Brain Profile Quiz</h3>
+                  <p>Discover your child's unique wiring in just 3 minutes.</p>
+                  <ul class="included-list">
+                     <li>12 research-based questions</li>
+                     <li>Instant profile results</li>
+                     <li>Secondary trait identification</li>
+                     <li>Personalized next steps</li>
+                  </ul>
+               </div>
+
+               <div class="included-card">
+                  <div class="included-icon">🚨</div>
+                  <h3>De-escalation Kit</h3>
+                  <p>5 AI prompts for when things are falling apart.</p>
+                  <ul class="included-list">
+                     <li>Mid-meltdown scripts</li>
+                     <li>Post-meltdown processing</li>
+                     <li>Sibling impact support</li>
+                     <li>Self-care for parents</li>
+                  </ul>
+               </div>
+
+               <div class="included-card">
+                  <div class="included-icon">🎯</div>
+                  <h3>Strategy Sampler</h3>
+                  <p>A taste of profile-specific strategies.</p>
+                  <ul class="included-list">
+                     <li>1 prompt per profile type</li>
+                     <li>Morning routine helper</li>
+                     <li>Homework negotiation script</li>
+                     <li>Bedtime wind-down guide</li>
+                  </ul>
+               </div>
+            </div>
+         </section>
+
+         <!-- Signup Form -->
+         <section class="signup-section" id="signupSection">
+            <h2>Get Your Free Starter Pack</h2>
+            <p>Enter your email and we'll send everything to your inbox instantly. No spam, ever.</p>
+
+            <form class="signup-form" id="starterForm" onsubmit="handleStarterSignup(event)">
+               <input type="email" placeholder="Your email address" required id="starterEmail">
+               <button type="submit" class="btn btn-primary btn-lg">Send My Pack →</button>
+            </form>
+
+            <p class="signup-note">🔒 We respect your privacy. Unsubscribe anytime.</p>
+
+            <div class="signup-success" id="signupSuccess">
+               <h3>✨ Check Your Inbox!</h3>
+               <p>Your starter pack is on its way. Check your spam folder if you don't see it in a few minutes.</p>
+            </div>
+         </section>
+
+         <!-- Preview -->
+         <section class="preview-section">
+            <h2>Sneak Peek: Sample Prompts</h2>
+            <div class="preview-grid">
+               <div class="preview-card">
+                  <h4>🔥 Intense Feeler</h4>
+                  <p>"My child is in the middle of a meltdown about [trigger]. They're crying/yelling/hitting. I need a calm, step-by-step script I can use right now to help them regulate..."</p>
+               </div>
+               <div class="preview-card">
+                  <h4>🐢 Reluctant Starter</h4>
+                  <p>"My child needs to start [task] but is completely stuck. They seem overwhelmed and keep saying 'I can't.' Give me a way to break this into tiny, non-threatening first steps..."</p>
+               </div>
+               <div class="preview-card">
+                  <h4>🔭 Deep Diver</h4>
+                  <p>"My child has been hyperfocused on [topic] for hours and won't transition to [necessary activity]. I need a strategy that honors their interest while helping them shift..."</p>
+               </div>
+               <div class="preview-card">
+                  <h4>🐰 Sensitive Observer</h4>
+                  <p>"We're about to enter a [loud/crowded/new] environment and I know my child will be overwhelmed. Help me prepare them and create an exit strategy..."</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- FAQ -->
+         <section class="starter-faq">
+            <h2>Quick Questions</h2>
+
+            <div class="faq-item">
+               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                  Is this really free?
+                  <span>+</span>
+               </button>
+               <div class="faq-answer">
+                  Yes! The starter pack is completely free. We believe every parent deserves access to these basic tools. If you find them helpful, we have more comprehensive prompt packs and activity packets available for purchase.
+               </div>
             </div>
 
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- ============ HERO ============ -->
-    <header class="hero">
-        <div class="hero-bg">
-            <div class="hero-shape hero-shape-1"></div>
-            <div class="hero-shape hero-shape-2"></div>
-            <div class="hero-shape hero-shape-3"></div>
-        </div>
-
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    For parents of 1st–3rd graders
-                </div>
-
-                <h1>Is Your Child's Brain <span>Wired Differently?</span></h1>
-
-                <p class="hero-description">
-                    Discover why your bright kid struggles — and get tools that actually work for their unique mind. 
-                    Takes 3 minutes, no diagnosis needed.
-                </p>
-
-                <div class="hero-cta">
-                    <a href="quiz/" class="btn btn-primary btn-large btn-arrow">Take the Free Quiz </a>
-                    <span class="hero-cta-note">✓ Instant results &nbsp;•&nbsp; ✓ No email required to start</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- ============ TRUST BAR ============ -->
-    <section class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <span class="trust-icon">✓</span>
-                    Designed for twice-exceptional (2e) minds
-                </div>
-                <div class="trust-item">
-                    <span class="trust-icon">✓</span>
-                    No diagnosis required
-                </div>
-                <div class="trust-item">
-                    <span class="trust-icon">✓</span>
-                    Backed by neurodiversity research
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ PROFILES SECTION ============ -->
-    <section class="profiles-section" id="profiles">
-        <div class="container">
-            <div class="text-center">
-                <span class="section-label">6 Brain Profiles</span>
-                <h2 class="section-title">Does This Sound Like Your Child?</h2>
-                <p class="section-subtitle">
-                    Most 2e kids show a primary pattern and a secondary one. 
-                    The quiz identifies both so you get tools that match their actual brain.
-                </p>
+            <div class="faq-item">
+               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                  Do I need ChatGPT or an AI tool?
+                  <span>+</span>
+               </button>
+               <div class="faq-answer">
+                  For the AI prompts, yes—you'll need access to ChatGPT, Claude, or similar AI assistant. Both offer free tiers that work great with our prompts. The brain profile quiz works directly on our site.
+               </div>
             </div>
 
-            <div class="profiles-grid">
-                <!-- Profile 1: Intense Feeler -->
-                <article class="profile-card">
-                    <div class="profile-icon">🔥</div>
-                    <h3>The Intense Feeler</h3>
-                    <p>Big emotions hit fast and hard. They hold it together at school, then fall apart at home. Sensory overload is real.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Emotional intensity</span>
-                        <span class="profile-trait">Sensory sensitivity</span>
-                        <span class="profile-trait">Perfectionism</span>
-                    </div>
-                </article>
-
-                <!-- Profile 2: Reluctant Starter -->
-                <article class="profile-card">
-                    <div class="profile-icon">🐢</div>
-                    <h3>The Reluctant Starter</h3>
-                    <p>They know what to do but can't seem to begin. Homework takes hours. Getting dressed is a battle. It's not laziness — it's a wiring thing.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Task initiation</span>
-                        <span class="profile-trait">Avoidance</span>
-                        <span class="profile-trait">Interest-based focus</span>
-                    </div>
-                </article>
-
-                <!-- Profile 3: Deep Diver -->
-                <article class="profile-card">
-                    <div class="profile-icon">🦉</div>
-                    <h3>The Deep Diver</h3>
-                    <p>Can talk about dinosaurs for 3 hours but won't do 5 minutes of math. Hyperfocus is their superpower — when the topic's right.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Hyperfocus</span>
-                        <span class="profile-trait">Interest-driven</span>
-                        <span class="profile-trait">Perfectionism</span>
-                    </div>
-                </article>
-
-                <!-- Profile 4: Sensitive Observer -->
-                <article class="profile-card">
-                    <div class="profile-icon">🐰</div>
-                    <h3>The Sensitive Observer</h3>
-                    <p>Notices everything. Feels everything. Social situations are exhausting. They need time to recharge that others don't understand.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Sensory processing</span>
-                        <span class="profile-trait">Social wiring</span>
-                        <span class="profile-trait">Emotional depth</span>
-                    </div>
-                </article>
-
-                <!-- Profile 5: Bold Explorer -->
-                <article class="profile-card">
-                    <div class="profile-icon">🦁</div>
-                    <h3>The Bold Explorer</h3>
-                    <p>Jumps in first, thinks later. Loves new things but gives up when it gets hard. Their confidence needs protecting.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Risk-taking</span>
-                        <span class="profile-trait">Social engagement</span>
-                        <span class="profile-trait">Frustration tolerance</span>
-                    </div>
-                </article>
-
-                <!-- Profile 6: Big Picture Thinker -->
-                <article class="profile-card">
-                    <div class="profile-icon">🚀</div>
-                    <h3>The Big Picture Thinker</h3>
-                    <p>Sees the whole universe but loses their shoes. Great ideas, terrible follow-through. Transitions are the enemy.</p>
-                    <div class="profile-traits">
-                        <span class="profile-trait">Executive function</span>
-                        <span class="profile-trait">Organization</span>
-                        <span class="profile-trait">Transitions</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="text-center">
-                <span class="section-label">Simple Process</span>
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">
-                    Understand your child's brain in under 5 minutes. No appointments, no waiting rooms.
-                </p>
+            <div class="faq-item">
+               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                  Will you spam me?
+                  <span>+</span>
+               </button>
+               <div class="faq-answer">
+                  Never. You'll get your starter pack immediately, plus an optional weekly tip email (which you can unsubscribe from with one click). We hate spam as much as you do.
+               </div>
             </div>
 
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Take the 3-minute quiz</h3>
-                    <p>Answer questions about your child's daily patterns — what makes them tick and what makes them stuck.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Get their brain profile</h3>
-                    <p>See their primary and secondary patterns — finally understand why some things are so hard for them.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Get tools that fit</h3>
-                    <p>Access strategies, scripts, and activities designed specifically for their type of brain.</p>
-                </div>
+            <div class="faq-item">
+               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                  What ages is this for?
+                  <span>+</span>
+               </button>
+               <div class="faq-answer">
+                  Our tools are designed for children ages 6-9, though many strategies work for kids slightly outside this range. The language and activities are calibrated for roughly 1st-3rd grade.
+               </div>
             </div>
+         </section>
 
-            <div class="steps-cta">
-                <a href="quiz/" class="btn btn-primary btn-large btn-arrow">Start the Free Quiz </a>
-            </div>
-        </div>
-    </section>
+      </div>
+   </main>
 
-    <!-- ============ FREE KIT SECTION ============ -->
-    <section class="free-kit" id="free-kit">
-        <div class="container">
-            <div class="free-kit-content">
-                <div class="free-kit-text">
-                    <span class="section-label">Free Download</span>
-                    <h2>The De-Escalation Kit</h2>
-                    <p>
-                        When the meltdown hits, you don't have time to Google. 
-                        This kit gives you exactly what to say — and what not to say.
-                    </p>
+   <div id="footer"></div>
 
-                    <div class="free-kit-features">
-                        <div class="free-kit-feature">
-                            <span class="free-kit-feature-icon">✓</span>
-                            <span>3 proven scripts for different meltdown types</span>
-                        </div>
-                        <div class="free-kit-feature">
-                            <span class="free-kit-feature-icon">✓</span>
-                            <span>The "90-second reset" technique</span>
-                        </div>
-                        <div class="free-kit-feature">
-                            <span class="free-kit-feature-icon">✓</span>
-                            <span>Printable calm-down card for your fridge</span>
-                        </div>
-                    </div>
+   <script src="/js/components.js"></script>
 
-                    <a href="free/de-escalation-kit/" class="btn btn-secondary btn-arrow">Get the Free Kit </a>
-                </div>
+   <script>
+      function handleStarterSignup(e) {
+         e.preventDefault();
 
-                <div class="free-kit-visual">
-                    <div class="free-kit-card">
-                        <div class="free-kit-icon">🧘</div>
-                        <h3>De-Escalation Kit</h3>
-                        <p>What to say when they can't hear you</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+         const email = document.getElementById('starterEmail').value;
 
-    <!-- ============ PRODUCTS PREVIEW ============ -->
-    <section class="products-preview">
-        <div class="container">
-            <div class="text-center">
-                <span class="section-label">Tools That Work</span>
-                <h2 class="section-title">Built for Their Brain</h2>
-                <p class="section-subtitle">
-                    Once you know their profile, get tools matched to how they actually think.
-                </p>
-            </div>
+         // In production, send to email service (ConvertKit, Mailchimp, etc.)
+         console.log('Starter pack signup:', email);
 
-            <div class="products-grid">
-                <div class="product-card">
-                    <span class="product-badge">Most Popular</span>
-                    <h3>AI Prompt Packs</h3>
-                    <p>
-                        50 ready-to-paste prompts for ChatGPT or Claude. 
-                        Homework help, IEP emails, meltdown scripts, and more — written by parents who get it.
-                    </p>
-                    <div class="product-price">
-                        <span class="product-price-amount">$18</span>
-                        <span class="product-price-note">Instant download</span>
-                    </div>
-                </div>
+         // Show success
+         document.getElementById('starterForm').style.display = 'none';
+         document.querySelector('.signup-note').style.display = 'none';
+         document.getElementById('signupSuccess').classList.add('show');
 
-                <div class="product-card">
-                    <span class="product-badge">Interactive</span>
-                    <h3>Activity Packets</h3>
-                    <p>
-                        Fun, browser-based activities matched to each brain profile. 
-                        Regulation games, focus builders, and confidence boosters they'll actually want to do.
-                    </p>
-                    <div class="product-price">
-                        <span class="product-price-amount">$9</span>
-                        <span class="product-price-note">Per packet</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="/" class="logo">
-                        <span class="logo-icon">🧭</span>
-                        Navigator Kids AI
-                    </a>
-                    <p>Your child's brain didn't come with a manual. Until now.</p>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <a href="quiz/">Free Quiz</a>
-                    <a href="free/de-escalation-kit/">De-Escalation-Kit</a>
-                    <a href="resources/">Articles</a>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="about/">About Us</a>
-                    <a href="contact/">Contact</a>
-                    <a href="terms/">Terms</a>
-                    <a href="privacy/">Privacy</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>© 2026 Navigator Kids AI™. All rights reserved.</p>
-                <p class="footer-disclaimer">
-                    <strong>Disclaimer:</strong> This website provides educational information for parents. 
-                    It is not a substitute for professional medical, psychological, or educational advice, diagnosis, or treatment.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
-
+         // Track
+         if (typeof trackEvent === 'function') {
+            trackEvent('Lead', 'StarterPackSignup');
+         }
+      }
+   </script>
 </body>
 
 </html>

@@ -354,6 +354,20 @@
    <div id="footer"></div>
 
    <script src="/js/components.js"></script>
-   <script src="/js/form-handler.js"></script>
+   <script>
+      function handleSignup(e) {
+         e.preventDefault();
+
+         const email = document.getElementById('email').value;
+
+         // In production, this would submit to email service
+         console.log('Signup:', email);
+
+         // Show success message
+         document.getElementById('signupForm').style.display = 'none';
+         document.getElementById('signupSuccess').style.display = 'block';
+      }
+   </script>
 </body>
+
 </html>

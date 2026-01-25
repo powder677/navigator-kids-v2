@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Free Routine Builder Tool - Create morning, homework, and bedtime routines designed for your twice-exceptional child's brain.">
+   <title>Routine Builder | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .tool-page {
+         padding: var(--space-12) 0 var(--space-16);
+      }
+
+      .tool-header {
+         text-align: center;
+         margin-bottom: var(--space-10);
+      }
+
+      .tool-badge {
+         display: inline-block;
+         background: var(--color-sage);
+         color: var(--color-white);
+         font-size: var(--text-sm);
+         font-weight: 600;
+         padding: var(--space-1) var(--space-4);
+         border-radius: var(--radius-full);
+         margin-bottom: var(--space-4);
+      }
+
+      .tool-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .tool-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      .tool-layout {
+         display: grid;
+         grid-template-columns: 1fr 350px;
+         gap: var(--space-10);
+      }
+
+      @media (max-width: 900px) {
+         .tool-layout {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .tool-form {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         box-shadow: var(--shadow-lg);
+      }
+
+      .form-section {
+         margin-bottom: var(--space-6);
+      }
+
+      .form-section h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-3);
+      }
+
+      .form-group {
+         margin-bottom: var(--space-4);
+      }
+
+      .form-group label {
+         display: block;
+         font-weight: 500;
+         margin-bottom: var(--space-2);
+         font-size: var(--text-sm);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+         width: 100%;
+         padding: var(--space-3);
+         border: 1px solid var(--color-border);
+         border-radius: var(--radius-md);
+         font-size: var(--text-base);
+      }
+
+      .form-hint {
+         font-size: var(--text-xs);
+         color: var(--color-text-muted);
+         margin-top: var(--space-1);
+      }
+
+      .checkbox-group {
+         display: flex;
+         flex-wrap: wrap;
+         gap: var(--space-3);
+      }
+
+      .checkbox-item {
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+         font-size: var(--text-sm);
+      }
+
+      .checkbox-item input {
+         width: auto;
+      }
+
+      .tool-form .btn {
+         width: 100%;
+      }
+
+      .tool-sidebar {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-6);
+      }
+
+      .sidebar-card {
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+      }
+
+      .sidebar-card h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-3);
+      }
+
+      .sidebar-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin-bottom: var(--space-3);
+      }
+
+      .sidebar-card ul {
+         font-size: var(--text-sm);
+      }
+
+      .sidebar-card li {
+         padding: var(--space-2) 0;
+         color: var(--color-text-light);
+      }
+
+      .output-section {
+         display: none;
+         margin-top: var(--space-8);
+      }
+
+      .output-section.show {
+         display: block;
+      }
+
+      .output-box {
+         background: var(--color-navy);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+      }
+
+      .output-box h3 {
+         color: var(--color-cream);
+         margin-bottom: var(--space-4);
+      }
+
+      .output-content {
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: var(--radius-md);
+         padding: var(--space-5);
+         color: rgba(249, 247, 242, 0.9);
+         font-size: var(--text-sm);
+         line-height: var(--leading-relaxed);
+         white-space: pre-wrap;
+      }
+
+      .output-actions {
+         margin-top: var(--space-4);
+         display: flex;
+         gap: var(--space-3);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="tool-page">
+      <div class="container">
+
+         <div class="tool-header">
+            <span class="tool-badge">Free Tool</span>
+            <h1>Routine Builder</h1>
+            <p>Create visual routines tailored to your child's brain profile. Morning chaos to bedtime battles—we've got you covered.</p>
+         </div>
+
+         <div class="tool-layout">
+            <div class="tool-main">
+               <form class="tool-form" id="routineForm" onsubmit="generateRoutine(event)">
+
+                  <div class="form-section">
+                     <h3>Routine Type</h3>
+                     <div class="form-group">
+                        <label>Which routine do you need?</label>
+                        <select id="routineType" required>
+                           <option value="">Select routine...</option>
+                           <option value="morning">Morning Routine</option>
+                           <option value="after-school">After-School Routine</option>
+                           <option value="homework">Homework Routine</option>
+                           <option value="bedtime">Bedtime Routine</option>
+                           <option value="weekend">Weekend Morning</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label>Available Time</label>
+                        <select id="timeAvailable" required>
+                           <option value="">Select time...</option>
+                           <option value="30">30 minutes</option>
+                           <option value="45">45 minutes</option>
+                           <option value="60">1 hour</option>
+                           <option value="90">1.5 hours</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <div class="form-section">
+                     <h3>About Your Child</h3>
+                     <div class="form-group">
+                        <label>Brain Profile</label>
+                        <select id="profile" required>
+                           <option value="">Select profile...</option>
+                           <option value="intense-feeler">Intense Feeler</option>
+                           <option value="reluctant-starter">Reluctant Starter</option>
+                           <option value="deep-diver">Deep Diver</option>
+                           <option value="sensitive-observer">Sensitive Observer</option>
+                           <option value="bold-explorer">Bold Explorer</option>
+                           <option value="big-picture-thinker">Big Picture Thinker</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label>Child's Age</label>
+                        <select id="age" required>
+                           <option value="">Select age...</option>
+                           <option value="6">6 years old</option>
+                           <option value="7">7 years old</option>
+                           <option value="8">8 years old</option>
+                           <option value="9">9 years old</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <div class="form-section">
+                     <h3>Biggest Challenges</h3>
+                     <div class="form-group">
+                        <div class="checkbox-group">
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="transitions"> Transitions</label>
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="time-blindness"> Time blindness</label>
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="getting-started"> Getting started</label>
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="distractions"> Distractions</label>
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="sensory"> Sensory issues</label>
+                           <label class="checkbox-item"><input type="checkbox" name="challenges" value="resistance"> Resistance/refusal</label>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label>What usually goes wrong?</label>
+                        <textarea id="painPoints" placeholder="e.g., Gets stuck on choosing clothes, won't stop playing, meltdown at tooth brushing...">

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Get in touch with Navigator Kids AI. Questions about our tools, feedback, or support requests.">
+   <title>Contact Us | Navigator Kids AI</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+
+   <style>
+      .contact-page {
+         padding: var(--space-16) 0;
+      }
+
+      .contact-header {
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .contact-header h1 {
+         margin-bottom: var(--space-3);
+      }
+
+      .contact-header p {
+         font-size: var(--text-lg);
+         color: var(--color-text-light);
+         max-width: 500px;
+         margin: 0 auto;
+      }
+
+      .contact-layout {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: var(--space-12);
+         max-width: 1000px;
+         margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+         .contact-layout {
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+         }
+      }
+
+      /* Contact Form */
+      .contact-form-card {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-8);
+         box-shadow: var(--shadow-md);
+      }
+
+      .contact-form-card h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-6);
+      }
+
+      .contact-form .btn {
+         width: 100%;
+         margin-top: var(--space-2);
+      }
+
+      /* Contact Info */
+      .contact-info h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-6);
+      }
+
+      .contact-info-card {
+         background: var(--color-cream);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         margin-bottom: var(--space-4);
+      }
+
+      .contact-info-card h3 {
+         font-size: var(--text-base);
+         display: flex;
+         align-items: center;
+         gap: var(--space-2);
+         margin-bottom: var(--space-2);
+      }
+
+      .contact-info-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin: 0;
+      }
+
+      .contact-info-card a {
+         color: var(--color-terracotta);
+         font-weight: 500;
+      }
+
+      /* FAQ Teaser */
+      .faq-teaser {
+         background: var(--color-white);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         margin-top: var(--space-6);
+      }
+
+      .faq-teaser h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-4);
+      }
+
+      .faq-teaser-item {
+         padding: var(--space-3) 0;
+         border-bottom: 1px solid var(--color-border);
+      }
+
+      .faq-teaser-item:last-child {
+         border-bottom: none;
+      }
+
+      .faq-teaser-item a {
+         font-size: var(--text-sm);
+         color: var(--color-text);
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .faq-teaser-item a:hover {
+         color: var(--color-terracotta);
+      }
+
+      /* Success Message */
+      .form-success {
+         display: none;
+         text-align: center;
+         padding: var(--space-8);
+      }
+
+      .form-success.show {
+         display: block;
+      }
+
+      .form-success-icon {
+         font-size: 3rem;
+         margin-bottom: var(--space-4);
+      }
+
+      .form-success h3 {
+         color: var(--color-sage-dark);
+         margin-bottom: var(--space-2);
+      }
+
+      .form-success p {
+         color: var(--color-text-light);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="header"></div>
+
+   <main class="contact-page">
+      <div class="container">
+
+         <div class="contact-header">
+            <h1>Get in Touch</h1>
+            <p>Have a question, need support, or want to share feedback? We'd love to hear from you.</p>
+         </div>
+
+         <div class="contact-layout">
+            <!-- Contact Form -->
+            <div class="contact-form-card">
+               <h2>Send a Message</h2>
+
+               <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                  <div class="form-group">
+                     <label class="form-label">Your Name</label>
+                     <input type="text" class="form-input" id="contactName" required>
+                  </div>
+                  <div class="form-group">
+                     <label class="form-label">Email Address</label>
+                     <input type="email" class="form-input" id="contactEmail" required>
+                  </div>
+                  <div class="form-group">
+                     <label class="form-label">Subject</label>
+                     <select class="form-input" id="contactSubject">
+                        <option value="general">General Question</option>
+                        <option value="support">Product Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="refund">Refund Request</option>
+                        <option value="other">Other</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label class="form-label">Message</label>
+                     <textarea class="form-input" id="contactMessage" rows="5" required placeholder="How can we help?">
