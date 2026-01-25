@@ -5,7 +5,161 @@
 
 (function() {
     'use strict';
+// js/cart.js
+// Navigator Kids AI - Cart & Conversion Logic v2
 
+const NavigatorCart = {
+  key: 'navigator_cart_v2',
+
+  getCart() {
+    const cart = localStorage.getItem(this.key);
+    return cart ? JSON.parse(cart) : [];
+  },
+
+  saveCart(cart) {
+    localStorage.setItem(this.key, JSON.stringify(cart));
+    this.updateBadge();
+  },
+
+  addItem(productId, quantity = 1, redirectImmediately = false) {
+    // If direct buy (e.g. from Results Page HERO offer), skip cart logic
+    if (redirectImmediately) {
+      this.directCheckout(productId, quantity);
+      return;
+    }
+
+    let cart = this.getCart();
+    const existing = cart.find(item => item.id === productId);
+
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push({ id: productId, quantity });
+    }
+
+    this.saveCart(cart);
+    // Visual feedback
+    const btn = document.querySelector(`[data-product-id="${productId}"]`);
+    if(btn) {
+      const originalText = btn.innerText;
+      btn.innerText = "Added!";
+      setTimeout(() => btn.innerText = originalText, 1500);
+    }
+  },
+
+  removeItem(productId) {
+    let cart = this.getCart();
+    cart = cart.filter(item => item.id !== productId);
+    this.saveCart(cart);
+    this.renderCart(); // Re-render if on cart page
+  },
+
+  clear() {
+    localStorage.removeItem(this.key);
+    this.updateBadge();
+  },
+
+  updateBadge() {
+    const cart = this.getCart();
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById('cart-count');
+    if (badge) {
+      badge.innerText = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+  },
+
+  // 🚀 DIRECT CHECKOUT (High Velocity)
+  async directCheckout(productId, quantity) {
+    const btn = document.querySelector(`[data-product-id="${productId}"]`);
+    if(btn) {
+        btn.disabled = true;
+        btn.innerText = "Securing...";
+    }
+
+    try {
+      await this.processCheckout([{ id: productId, quantity }]);
+    } catch (err) {
+      console.error(err);
+      if(btn) {
+          btn.disabled = false;
+          btn.innerText = "Try Again";
+      }
+      alert("Secure connection failed. Please try again.");
+    }
+  },
+
+  // 🛒 STANDARD CHECKOUT
+  async checkout() {
+    const cart = this.getCart();
+    if (cart.length === 0) return;
+
+    const checkoutBtn = document.getElementById('checkout-button');
+    if(checkoutBtn) {
+        checkoutBtn.disabled = true;
+        checkoutBtn.innerText = "Processing...";
+    }
+
+    await this.processCheckout(cart);
+  },
+
+  async processCheckout(items) {
+    try {
+      const response = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            items,
+            successUrl: window.location.origin + '/thank-you',
+            cancelUrl: window.location.href 
+        }),
+      });
+
+      const session = await response.json();
+
+      if (session.error) {
+        throw new Error(session.error);
+      }
+
+      // Redirect to Stripe Hosted Checkout
+      const stripe = Stripe('pk_live_YOUR_PUBLISHABLE_KEY'); // ⚠️ REPLACE WITH YOUR KEY
+      await stripe.redirectToCheckout({ sessionId: session.id });
+
+    } catch (error) {
+      console.error('Checkout Error:', error);
+      alert('Payment initialization failed. Please try again.');
+      // Re-enable buttons if failed
+      const checkoutBtn = document.getElementById('checkout-button');
+      if(checkoutBtn) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerText = "Secure Checkout";
+      }
+    }
+  },
+  
+  // Call this on Thank You page
+  handleSuccess() {
+      this.clear();
+  }
+};
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  NavigatorCart.updateBadge();
+  
+  const checkoutBtn = document.getElementById('checkout-button');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        NavigatorCart.checkout();
+    });
+  }
+
+  // Check for success flag in URL if you use it, or just rely on thank-you page script
+  if (window.location.pathname.includes('thank-you')) {
+      NavigatorCart.handleSuccess();
+  }
+});
     // =========================================
     // CONFIGURATION
     // =========================================
