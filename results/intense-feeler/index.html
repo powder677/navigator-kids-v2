@@ -2,959 +2,581 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your child is an Intense Feeler. Learn what this means for their emotional regulation and get tools that help manage big feelings.">
-    <title>The Intense Feeler Profile | Navigator Kids AI</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Shared Styles -->
-    <link rel="stylesheet" href="/css/styles.css">
-
-    <style>
-        /* =========================================
-           RESULT PAGE STYLES
-           ========================================= */
-        
-        .result-hero {
-            background: linear-gradient(135deg, #FDE8E4 0%, #FCF0EE 100%);
-            padding: var(--space-16) 0 var(--space-12);
-            text-align: center;
-        }
-
-        .result-hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-2);
-            background: var(--color-white);
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            font-size: var(--text-sm);
-            font-weight: 600;
-            color: var(--color-terracotta);
-            margin-bottom: var(--space-6);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .result-hero-icon {
-            font-size: 5rem;
-            margin-bottom: var(--space-4);
-        }
-
-        .result-hero h1 {
-            font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
-            margin-bottom: var(--space-4);
-        }
-
-        .child-name {
-            color: var(--color-terracotta);
-        }
-
-        .result-hero-subtitle {
-            font-size: var(--text-lg);
-            color: var(--color-text);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .secondary-badge {
-            display: inline-block;
-            margin-top: var(--space-6);
-            padding: var(--space-2) var(--space-4);
-            background: var(--color-white);
-            border-radius: var(--radius-full);
-            font-size: var(--text-sm);
-            color: var(--color-text-light);
-        }
-
-        .secondary-badge strong {
-            color: var(--color-navy);
-        }
-
-        /* Validation Section */
-        .validation-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-white);
-        }
-
-        .validation-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-12);
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .validation-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-8);
-            }
-        }
-
-        .validation-content h2 {
-            font-size: var(--text-2xl);
-            margin-bottom: var(--space-4);
-        }
-
-        .validation-content p {
-            color: var(--color-text);
-            margin-bottom: var(--space-4);
-            font-size: var(--text-lg);
-            line-height: var(--leading-relaxed);
-        }
-
-        .validation-list {
-            margin-top: var(--space-6);
-        }
-
-        .validation-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-            margin-bottom: var(--space-4);
-            font-size: var(--text-base);
-        }
-
-        .validation-list li::before {
-            content: '✓';
-            color: var(--color-sage);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .validation-visual {
-            background: var(--color-cream);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-        }
-
-        .symptom-card {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            padding: var(--space-4);
-            margin-bottom: var(--space-4);
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            box-shadow: var(--shadow-xs);
-        }
-
-        .symptom-card:last-child {
-            margin-bottom: 0;
-        }
-
-        .symptom-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .symptom-card p {
-            margin: 0;
-            font-size: var(--text-sm);
-            color: var(--color-text);
-        }
-
-        /* Explanation Section */
-        .explanation-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-cream);
-        }
-
-        .explanation-content {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .explanation-content h2 {
-            text-align: center;
-            margin-bottom: var(--space-8);
-        }
-
-        .explanation-content p {
-            font-size: var(--text-lg);
-            line-height: var(--leading-relaxed);
-            margin-bottom: var(--space-6);
-        }
-
-        .explanation-callout {
-            background: var(--color-white);
-            border-left: 4px solid var(--color-terracotta);
-            padding: var(--space-6);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            margin: var(--space-8) 0;
-        }
-
-        .explanation-callout p {
-            margin: 0;
-            font-style: italic;
-            color: var(--color-text);
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-white);
-        }
-
-        .products-section h2 {
-            text-align: center;
-            margin-bottom: var(--space-3);
-        }
-
-        .products-section-subtitle {
-            text-align: center;
-            color: var(--color-text-light);
-            margin-bottom: var(--space-12);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-6);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 640px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .product-card-featured {
-            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
-            border: 2px solid var(--color-sage);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            position: relative;
-        }
-
-        .product-card-basic {
-            background: var(--color-cream);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-        }
-
-        .product-featured-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-sage);
-            color: var(--color-white);
-            font-size: var(--text-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-        }
-
-        .product-card-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-4);
-        }
-
-        .product-card-featured h3,
-        .product-card-basic h3 {
-            font-size: var(--text-xl);
-            margin-bottom: var(--space-2);
-        }
-
-        .product-card-featured p,
-        .product-card-basic p {
-            font-size: var(--text-sm);
-            color: var(--color-text-light);
-            margin-bottom: var(--space-4);
-        }
-
-        .product-includes {
-            margin-bottom: var(--space-6);
-        }
-
-        .product-includes li {
-            font-size: var(--text-sm);
-            color: var(--color-text);
-            padding: var(--space-2) 0;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .product-includes li:last-child {
-            border-bottom: none;
-        }
-
-        .product-includes li::before {
-            content: '✓';
-            color: var(--color-sage);
-            font-weight: 700;
-        }
-
-        .product-price-row {
-            display: flex;
-            align-items: baseline;
-            gap: var(--space-2);
-            margin-bottom: var(--space-4);
-        }
-
-        .product-price {
-            font-family: var(--font-heading);
-            font-size: var(--text-3xl);
-            font-weight: 700;
-            color: var(--color-navy);
-        }
-
-        .product-price-note {
-            font-size: var(--text-sm);
-            color: var(--color-text-muted);
-        }
-
-        .product-card-featured .btn,
-        .product-card-basic .btn {
-            width: 100%;
-        }
-
-        /* Bundle Section */
-        .bundle-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-cream);
-        }
-
-        .bundle-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--color-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-10);
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-        }
-
-        .bundle-badge {
-            display: inline-block;
-            background: var(--color-terracotta);
-            color: var(--color-white);
-            font-size: var(--text-sm);
-            font-weight: 700;
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-4);
-        }
-
-        .bundle-card h2 {
-            margin-bottom: var(--space-2);
-        }
-
-        .bundle-card > p {
-            color: var(--color-text-light);
-            margin-bottom: var(--space-6);
-        }
-
-        .bundle-items {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-6);
-            margin-bottom: var(--space-8);
-            flex-wrap: wrap;
-        }
-
-        .bundle-item {
-            text-align: center;
-        }
-
-        .bundle-item-icon {
-            font-size: 2.5rem;
-            margin-bottom: var(--space-2);
-        }
-
-        .bundle-item-name {
-            font-size: var(--text-sm);
-            font-weight: 600;
-            color: var(--color-navy);
-        }
-
-        .bundle-pricing {
-            margin-bottom: var(--space-6);
-        }
-
-        .bundle-price {
-            font-family: var(--font-heading);
-            font-size: var(--text-4xl);
-            font-weight: 700;
-            color: var(--color-navy);
-        }
-
-        .bundle-original {
-            font-size: var(--text-lg);
-            color: var(--color-text-muted);
-            text-decoration: line-through;
-            margin-left: var(--space-2);
-        }
-
-        .bundle-savings {
-            display: inline-block;
-            background: var(--color-success-light);
-            color: var(--color-success);
-            font-size: var(--text-sm);
-            font-weight: 600;
-            padding: var(--space-1) var(--space-3);
-            border-radius: var(--radius-full);
-            margin-top: var(--space-2);
-        }
-
-        /* Quick Win Section */
-        .quickwin-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-white);
-        }
-
-        .quickwin-card {
-            max-width: 720px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #E8F5F0 0%, #F0FAF6 100%);
-            border-radius: var(--radius-xl);
-            padding: var(--space-10);
-            border: 2px solid var(--color-sage-light);
-        }
-
-        .quickwin-header {
-            text-align: center;
-            margin-bottom: var(--space-6);
-        }
-
-        .quickwin-badge {
-            display: inline-block;
-            background: var(--color-sage);
-            color: var(--color-white);
-            font-size: var(--text-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-4);
-        }
-
-        .quickwin-card h2 {
-            font-size: var(--text-xl);
-        }
-
-        .quickwin-content {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-        }
-
-        .quickwin-content h3 {
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-4);
-        }
-
-        .quickwin-content p {
-            color: var(--color-text);
-            margin-bottom: var(--space-4);
-        }
-
-        .quickwin-steps {
-            margin-top: var(--space-4);
-        }
-
-        .quickwin-steps li {
-            display: flex;
-            gap: var(--space-3);
-            margin-bottom: var(--space-3);
-        }
-
-        .quickwin-step-num {
-            width: 24px;
-            height: 24px;
-            background: var(--color-sage);
-            color: var(--color-white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--text-xs);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: var(--section-padding) 0;
-            background: var(--color-cream);
-        }
-
-        .faq-section h2 {
-            text-align: center;
-            margin-bottom: var(--space-10);
-        }
-
-        .faq-list {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-4);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: var(--space-5) var(--space-6);
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: var(--text-base);
-            font-weight: 600;
-            color: var(--color-navy);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: var(--text-xl);
-            color: var(--color-text-muted);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            padding: 0 var(--space-6) var(--space-5);
-            display: none;
-        }
-
-        .faq-item.open .faq-answer {
-            display: block;
-        }
-
-        .faq-answer p {
-            color: var(--color-text-light);
-            margin: 0;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            padding: var(--section-padding) 0;
-            background: var(--color-navy);
-            text-align: center;
-        }
-
-        .final-cta h2 {
-            color: var(--color-cream);
-            margin-bottom: var(--space-4);
-        }
-
-        .final-cta p {
-            color: rgba(249, 247, 242, 0.8);
-            margin-bottom: var(--space-8);
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .final-cta .btn-primary {
-            background: var(--color-terracotta);
-        }
-
-        .final-cta .btn-primary:hover {
-            background: var(--color-terracotta-dark);
-        }
-    </style>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Intense Feeler | Navigator Kids AI™</title>
+
+   <!-- External Scripts (Stripe & Fonts) -->
+   <script src="https://js.stripe.com/v3/"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+   <style>
+      /* --- 1. DESIGN SYSTEM --- */
+      :root {
+         --color-navy: #002347;
+         --color-gold: #D4AF37;
+         --color-terracotta: #D44D5C;
+         /* Primary color for Intense Feeler */
+         --color-rose: #FDE8E4;
+         /* Background tint for Intense Feeler */
+         --color-cream: #FFF8E7;
+         --color-white: #ffffff;
+         --color-text: #333333;
+         --color-text-light: #666666;
+         --radius-md: 12px;
+         --radius-xl: 20px;
+         --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+         --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.1);
+         --font-body: 'Inter', sans-serif;
+         --font-heading: 'Merriweather', serif;
+      }
+
+      * {
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: var(--font-body);
+         color: var(--color-text);
+         line-height: 1.6;
+         margin: 0;
+         background-color: #fdfdfd;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: var(--font-heading);
+         color: var(--color-navy);
+         margin-top: 0;
+      }
+
+      .container {
+         max-width: 900px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      /* --- HEADER --- */
+      header {
+         padding: 20px 0;
+         border-bottom: 1px solid #eee;
+         background: white;
+      }
+
+      .logo {
+         font-weight: 700;
+         color: var(--color-navy);
+         font-size: 1.2rem;
+      }
+
+      /* --- TRUST HERO --- */
+      .result-hero {
+         background: linear-gradient(135deg, var(--color-rose) 0%, #FFF5F5 100%);
+         padding: 60px 0 40px;
+         text-align: center;
+      }
+
+      .result-hero-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: var(--color-white);
+         padding: 6px 16px;
+         border-radius: 50px;
+         font-size: 0.85rem;
+         font-weight: 600;
+         color: var(--color-terracotta);
+         margin-bottom: 24px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      .result-hero h1 {
+         font-size: clamp(2rem, 5vw, 3rem);
+         margin-bottom: 16px;
+      }
+
+      .result-hero-subtitle {
+         font-size: 1.15rem;
+         color: var(--color-text);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* --- VALIDATION SECTION --- */
+      .validation-section {
+         padding: 60px 0;
+         background: var(--color-white);
+      }
+
+      .validation-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 40px;
+         align-items: start;
+      }
+
+      @media (max-width: 768px) {
+         .validation-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .validation-list {
+         list-style: none;
+         padding: 0;
+         margin-top: 20px;
+      }
+
+      .validation-list li {
+         display: flex;
+         align-items: flex-start;
+         gap: 12px;
+         margin-bottom: 16px;
+         font-size: 1rem;
+      }
+
+      .validation-list li::before {
+         content: '✓';
+         color: var(--color-terracotta);
+         font-weight: 700;
+         flex-shrink: 0;
+      }
+
+      /* Visual Cards for Validation */
+      .symptom-card {
+         background: #FFF5F5;
+         border-radius: var(--radius-md);
+         padding: 16px;
+         margin-bottom: 12px;
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         border-left: 4px solid var(--color-terracotta);
+      }
+
+      .symptom-icon {
+         font-size: 1.5rem;
+      }
+
+      .symptom-card p {
+         margin: 0;
+         font-size: 0.9rem;
+         font-weight: 500;
+      }
+
+      /* --- URGENCY BAND --- */
+      .urgency-band {
+         background-color: var(--color-navy);
+         color: var(--color-cream);
+         padding: 30px 20px;
+         text-align: center;
+         margin: 40px 0;
+         border-left: 6px solid var(--color-terracotta);
+         border-radius: 4px;
+      }
+
+      /* --- HERO OFFER --- */
+      .hero-offer {
+         border: 3px solid var(--color-terracotta);
+         /* Specific border color */
+         background: var(--color-white);
+         padding: 40px;
+         border-radius: var(--radius-md);
+         box-shadow: var(--shadow-lg);
+         position: relative;
+         text-align: center;
+         margin-bottom: 60px;
+         overflow: hidden;
+      }
+
+      .hero-badge {
+         background: var(--color-terracotta);
+         color: var(--color-white);
+         position: absolute;
+         top: 0;
+         right: 0;
+         padding: 8px 20px;
+         font-weight: bold;
+         font-size: 0.85rem;
+         border-bottom-left-radius: 12px;
+      }
+
+      .offer-list {
+         text-align: left;
+         margin: 20px auto;
+         max-width: 450px;
+         line-height: 1.8;
+      }
+
+      .price-anchor {
+         text-decoration: line-through;
+         color: #888;
+         font-size: 1.1rem;
+         margin-right: 10px;
+      }
+
+      .price-main {
+         font-size: 2.5rem;
+         font-weight: 800;
+         color: var(--color-navy);
+      }
+
+      .btn-primary {
+         background-color: var(--color-terracotta);
+         color: white;
+         width: 100%;
+         max-width: 500px;
+         padding: 18px;
+         font-size: 1.2rem;
+         font-weight: bold;
+         border: none;
+         border-radius: 8px;
+         cursor: pointer;
+         margin-top: 20px;
+         transition: transform 0.2s;
+      }
+
+      .btn-primary:hover {
+         transform: translateY(-2px);
+         filter: brightness(1.1);
+      }
+
+      /* --- QUICK WIN --- */
+      .quickwin-section {
+         background: linear-gradient(135deg, var(--color-rose) 0%, #FFF5F5 100%);
+         padding: 50px 0;
+         margin-top: 60px;
+         border-radius: var(--radius-xl);
+      }
+
+      .step-circle {
+         width: 24px;
+         height: 24px;
+         background: var(--color-terracotta);
+         color: white;
+         border-radius: 50%;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 0.75rem;
+         font-weight: bold;
+         margin-right: 10px;
+      }
+
+      /* --- DOWNSELL BOXES --- */
+      .downsell-section {
+         margin-top: 60px;
+         padding-top: 40px;
+         border-top: 1px solid #eee;
+      }
+
+      .downsell-grid {
+         display: flex;
+         gap: 30px;
+         flex-wrap: wrap;
+      }
+
+      .downsell-card {
+         flex: 1;
+         min-width: 300px;
+         padding: 30px;
+         border-radius: var(--radius-md);
+         position: relative;
+         background: white;
+         border: 1px solid #eee;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+         transition: transform 0.2s, box-shadow 0.2s;
+         display: flex;
+         flex-direction: column;
+      }
+
+      .downsell-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Specific Themes */
+      .card-parent {
+         border-top: 5px solid var(--color-navy);
+      }
+
+      .card-kid {
+         border-top: 5px solid var(--color-terracotta);
+      }
+
+      /* Terracotta for Feeler */
+
+      .card-badge {
+         position: absolute;
+         top: -14px;
+         left: 50%;
+         transform: translateX(-50%);
+         background: #f0f0f0;
+         padding: 5px 15px;
+         border-radius: 50px;
+         font-size: 0.75rem;
+         font-weight: 700;
+         letter-spacing: 1px;
+         color: #555;
+         text-transform: uppercase;
+         border: 2px solid white;
+      }
+
+      .downsell-card h3 {
+         font-size: 1.3rem;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         text-align: center;
+         color: var(--color-navy);
+      }
+
+      .card-desc {
+         font-size: 0.95rem;
+         color: #666;
+         text-align: center;
+         margin-bottom: 20px;
+         line-height: 1.5;
+         min-height: 3rem;
+      }
+
+      .card-features {
+         margin: 0 0 25px 0;
+         padding: 15px 0;
+         list-style: none;
+         border-top: 1px solid #eee;
+         border-bottom: 1px solid #eee;
+      }
+
+      .card-features li {
+         margin-bottom: 8px;
+         font-size: 0.9rem;
+         display: flex;
+         align-items: start;
+         gap: 10px;
+         color: var(--color-text);
+      }
+
+      .card-features li::before {
+         content: '•';
+         color: #ccc;
+         font-weight: bold;
+         font-size: 1.2em;
+         line-height: 1;
+      }
+
+      .card-price {
+         text-align: center;
+         margin-bottom: 15px;
+         margin-top: auto;
+      }
+
+      .price-val {
+         font-size: 2.2rem;
+         font-weight: 700;
+         color: var(--color-navy);
+      }
+
+      .btn-secondary {
+         background: white;
+         border: 2px solid var(--color-navy);
+         color: var(--color-navy);
+         width: 100%;
+         padding: 14px;
+         font-weight: 700;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: all 0.2s;
+      }
+
+      .btn-secondary:hover {
+         background: var(--color-navy);
+         color: white;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+         text-align: center;
+         padding: 40px;
+         font-size: 0.8rem;
+         color: #888;
+         margin-top: 60px;
+         border-top: 1px solid #eee;
+      }
+   </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <div id="header"></div>
+   <header>
+      <nav class="container">
+         <div class="logo">Navigator Kids AI™</div>
+      </nav>
+   </header>
 
-    <!-- Hero Section -->
-    <section class="result-hero">
-        <div class="container">
-            <span class="result-hero-badge">
-                <span>🎯</span>
-                Primary Profile Identified
-            </span>
-            <div class="result-hero-icon">🔥</div>
-            <h1><span class="child-name" id="heroChildName">Your child</span> is an Intense Feeler</h1>
-            <p class="result-hero-subtitle">
-                Big emotions, sensory sensitivity, and a need for everything to feel "right." 
-                This isn't a flaw — it's how their nervous system is wired.
-            </p>
-            <div class="secondary-badge" id="secondaryBadge">
-                With strong <strong id="secondaryName">Deep Diver</strong> tendencies
+   <!-- 1. HERO -->
+   <section class="result-hero">
+      <div class="container">
+         <span class="result-hero-badge"><span>🎯</span> Analysis Complete</span>
+         <h1>The Intense Feeler</h1>
+         <p class="result-hero-subtitle">
+            They feel everything at 100% volume. It's not drama—it's a nervous system that amplifies every emotion, both the joy and the pain.
+         </p>
+      </div>
+   </section>
+
+   <!-- 2. VALIDATION -->
+   <section class="validation-section">
+      <div class="container">
+         <div class="validation-grid">
+            <div class="validation-content">
+               <h3>The Hidden Struggle</h3>
+               <p>Your child possesses "Emotional Intensity." Their emotional thermostat is sensitive, meaning small triggers can lead to massive reactions.</p>
+               <ul class="validation-list">
+                  <li>They go from happy to devastatingly sad in seconds (0 to 100).</li>
+                  <li>They seem to physically feel emotions (stomach aches, shaking).</li>
+                  <li>You often feel like you are "walking on eggshells" to avoid a blowout.</li>
+                  <li>They are deeply empathetic and often take on the feelings of others.</li>
+               </ul>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust Bar -->
-    <section class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <span class="trust-icon">✓</span>
-                    No diagnosis required
-                </div>
-                <div class="trust-item">
-                    <span class="trust-icon">✓</span>
-                    Backed by neurodiversity research
-                </div>
+            <!-- Visual Cards -->
+            <div class="validation-visual">
+               <div class="symptom-card"><span class="symptom-icon">🌋</span>
+                  <p><strong>The Eruption:</strong> Pressure builds up fast and explodes.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">🎢</span>
+                  <p><strong>The Rollercoaster:</strong> Exhausting highs and lows.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">❤️</span>
+                  <p><strong>Deep Heart:</strong> Feels love and pain intensely.</p>
+               </div>
             </div>
-        </div>
-    </section>
+         </div>
+      </div>
+   </section>
 
-    <!-- Validation Section -->
-    <section class="validation-section">
-        <div class="container">
-            <div class="validation-grid">
-                <div class="validation-content">
-                    <h2>What You're Probably Experiencing</h2>
-                    <p>
-                        If your child is an Intense Feeler, you're likely dealing with more than your fair share of meltdowns, 
-                        emotional explosions, and what feels like overreactions to small things.
-                    </p>
-                    <p>
-                        The good news? There's nothing "wrong" with your child. Their brain just processes emotions more deeply than most.
-                    </p>
-                    <ul class="validation-list">
-                        <li>They hold it together at school, then fall apart at home</li>
-                        <li>Transitions are emotional landmines</li>
-                        <li>Small frustrations lead to big reactions</li>
-                        <li>They feel other people's emotions intensely too</li>
-                        <li>"It's not fair" is a phrase you hear constantly</li>
-                    </ul>
-                </div>
-                <div class="validation-visual">
-                    <div class="symptom-card">
-                        <span class="symptom-icon">😤</span>
-                        <p><strong>Restraint collapse:</strong> Perfect at school, chaos at home</p>
-                    </div>
-                    <div class="symptom-card">
-                        <span class="symptom-icon">🏷️</span>
-                        <p><strong>Sensory triggers:</strong> Tags, socks, food textures</p>
-                    </div>
-                    <div class="symptom-card">
-                        <span class="symptom-icon">⏰</span>
-                        <p><strong>Transition trouble:</strong> Every switch is a struggle</p>
-                    </div>
-                    <div class="symptom-card">
-                        <span class="symptom-icon">❤️</span>
-                        <p><strong>Deep empathy:</strong> Feels everyone else's feelings too</p>
-                    </div>
-                </div>
+   <main class="container">
+
+      <!-- 3. URGENCY -->
+      <div class="urgency-band">
+         <h3>This is the moment most parents miss.</h3>
+         <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto;">
+            You have clarity right now. What usually determines progress is whether support starts
+            <strong>immediately</strong>, while this understanding is fresh.
+         </p>
+      </div>
+
+      <!-- 4. HERO OFFER -->
+      <section class="hero-offer" id="offer-hero">
+         <div class="hero-badge">RECOMMENDED FOR THIS PROFILE</div>
+         <h2>Complete Support Plan</h2>
+         <p>The system designed to teach regulation without shaming their feelings.</p>
+
+         <div class="offer-list">
+            <p>✅ <strong>Executive Function Support System</strong> (AI Prompts) - <em>Value $29</em></p>
+            <p>✅ <strong>Social Skills Support System</strong> (AI Prompts) - <em>Value $29</em></p>
+            <p>✅ <strong>Ember the Dragon Success System</strong> (Activity Packet) - <em>Value $12</em></p>
+            <p>✅ <strong>Bonus:</strong> Implementation Guide</p>
+         </div>
+
+         <div style="text-align: center; margin-top: 30px;">
+            <span class="price-anchor">$120 Value</span>
+            <span class="price-main">$69</span>
+         </div>
+
+         <button class="btn-primary" onclick="handleAddToCart('prod_combo_complete')">
+            Start Support Now
+         </button>
+         <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">
+            Instant Digital Access • Secure Checkout
+         </p>
+      </section>
+
+      <!-- 5. QUICK WIN -->
+      <section class="quickwin-section">
+         <div class="container" style="text-align: center; max-width: 700px;">
+            <span class="result-hero-badge" style="background:var(--color-terracotta); color:white;">Free Quick Win</span>
+            <h3>Try This Tonight: The "Co-Regulation Anchor"</h3>
+            <p>You cannot reason with a storm. When the intensity spikes, stop talking and start anchoring.</p>
+
+            <div style="background: white; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: left;">
+               <p style="margin-bottom: 10px;"><span class="step-circle">1</span><strong>Instead of:</strong> "Calm down, it's not a big deal!" (Dismissive)</p>
+               <p><span class="step-circle">2</span><strong>Say this:</strong> "I am here. I am calm. I will wait with you until the storm passes." (Safety)</p>
             </div>
-        </div>
-    </section>
+            <p style="font-size: 0.9rem; margin-top: 20px; font-style: italic;">By staying calm, you lend them your nervous system until theirs can come back online.</p>
+         </div>
+      </section>
 
-    <!-- Explanation Section -->
-    <section class="explanation-section">
-        <div class="container">
-            <div class="explanation-content">
-                <h2>Why This Happens</h2>
-                <p>
-                    Intense Feelers have a nervous system that's tuned to high sensitivity. They pick up on 
-                    everything — sounds, textures, emotions, injustice — and feel it all more deeply than neurotypical kids.
-                </p>
-                <p>
-                    Research suggests this may be linked to differences in how their brain processes sensory input 
-                    and regulates emotional responses. It's not about being "dramatic" or "too sensitive" — 
-                    it's neurology, not character.
-                </p>
-                <div class="explanation-callout">
-                    <p>
-                        "Many parents notice that their Intense Feelers are the most empathetic, creative, 
-                        and passionate kids in the room — when they're not overwhelmed."
-                    </p>
-                </div>
-                <p>
-                    The key to supporting an Intense Feeler isn't to toughen them up. It's to give them tools 
-                    to manage their big feelings before they boil over — and to recognize the warning signs 
-                    before meltdowns happen.
-                </p>
+      <!-- 6. DOWNSELL: NEW DEFINED BOXES -->
+      <section class="downsell-section">
+         <h3 style="text-align: center; margin-bottom: 30px; color: var(--color-text-light); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Or choose individual tools</h3>
+
+         <div class="downsell-grid">
+
+            <!-- Card 1: PARENTS -->
+            <div class="downsell-card card-parent">
+               <div class="card-badge">FOR PARENTS</div>
+               <h3>AI Support System</h3>
+               <p class="card-desc">The prompt library that helps you handle daily friction without the fight.</p>
+               <ul class="card-features">
+                  <li>50+ Custom Scripts</li>
+                  <li>De-escalation protocols</li>
+                  <li>Morning & Bedtime routine builders</li>
+                  <li>School advocacy templates</li>
+               </ul>
+               <div class="card-price">
+                  <span class="price-val">$29</span>
+               </div>
+               <button class="btn-secondary" onclick="handleAddToCart('prod_prompt_executive')">
+                  Get Prompts Only
+               </button>
             </div>
-        </div>
-    </section>
 
-    <!-- Products Section -->
-    <section class="products-section" id="tools">
-        <div class="container">
-            <span class="section-label">Matched Tools</span>
-            <h2>Tools Built for Intense Feelers</h2>
-            <p class="products-section-subtitle">
-                These resources are specifically designed for the emotional intensity 
-                and sensory sensitivity your child experiences.
-            </p>
-
-            <div class="products-grid">
-                <!-- Featured Product: AI Prompts -->
-                <div class="product-card-featured">
-                    <span class="product-featured-badge">Recommended</span>
-                    <div class="product-card-icon">🔥</div>
-                    <h3>AI Prompts: Intense Feeler</h3>
-                    <p>50 ready-to-paste prompts for ChatGPT or Claude, tailored for emotional regulation.</p>
-                    <ul class="product-includes">
-                        <li>Meltdown de-escalation scripts</li>
-                        <li>Sensory overwhelm support</li>
-                        <li>Transition warnings that work</li>
-                        <li>IEP emotion support language</li>
-                        <li>Bedtime calm-down prompts</li>
-                    </ul>
-                    <div class="product-price-row">
-                        <span class="product-price">$18</span>
-                        <span class="product-price-note">Instant PDF download</span>
-                    </div>
-                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-intense-feeler">
-                        Add to Cart
-                    </button>
-                </div>
-
-                <!-- Activity Packet -->
-                <div class="product-card-basic">
-                    <div class="product-card-icon">🐉</div>
-                    <h3>Ember the Dragon</h3>
-                    <p>Interactive browser-based activities for emotional regulation and sensory calming.</p>
-                    <ul class="product-includes">
-                        <li>Feelings thermometer game</li>
-                        <li>Calm-down breathing exercises</li>
-                        <li>Emotion identification cards</li>
-                        <li>Sensory break activities</li>
-                    </ul>
-                    <div class="product-price-row">
-                        <span class="product-price">$9</span>
-                        <span class="product-price-note">Interactive HTML</span>
-                    </div>
-                    <button class="btn btn-secondary" data-add-to-cart="packet-ember-dragon">
-                        Add to Cart
-                    </button>
-                </div>
+            <!-- Card 2: KIDS (Ember the Dragon) -->
+            <div class="downsell-card card-kid">
+               <div class="card-badge">FOR KIDS</div>
+               <h3>Ember the Dragon Pack</h3>
+               <p class="card-desc">Gamified activities to help kids name, tame, and regulate big feelings.</p>
+               <ul class="card-features">
+                  <li>"Fire Check" emotional logs</li>
+                  <li>Cool-down corner visuals</li>
+                  <li>Breathing games & tools</li>
+                  <li>Body-awareness activities</li>
+               </ul>
+               <div class="card-price">
+                  <span class="price-val">$12</span>
+               </div>
+               <!-- Updated to Ember ID for Intense Feeler -->
+               <button class="btn-secondary" onclick="handleAddToCart('prod_packet_ember')">
+                  Get Packet Only
+               </button>
             </div>
-        </div>
-    </section>
 
-    <!-- Bundle Section -->
-    <section class="bundle-section">
-        <div class="container">
-            <div class="bundle-card">
-                <span class="bundle-badge">Save $9</span>
-                <h2>Complete Intense Feeler Kit</h2>
-                <p>Everything you need to support your Intense Feeler, in one bundle.</p>
-                
-                <div class="bundle-items">
-                    <div class="bundle-item">
-                        <div class="bundle-item-icon">🔥</div>
-                        <div class="bundle-item-name">AI Prompts Pack</div>
-                    </div>
-                    <div class="bundle-item">
-                        <div class="bundle-item-icon">🐉</div>
-                        <div class="bundle-item-name">Ember Activity Packet</div>
-                    </div>
-                    <div class="bundle-item">
-                        <div class="bundle-item-icon">🧘</div>
-                        <div class="bundle-item-name">De-Escalation Kit</div>
-                    </div>
-                </div>
+         </div>
+      </section>
 
-                <div class="bundle-pricing">
-                    <span class="bundle-price">$27</span>
-                    <span class="bundle-original">$36</span>
-                    <div>
-                        <span class="bundle-savings">You save $9</span>
-                    </div>
-                </div>
+   </main>
 
-                <button class="btn btn-primary btn-lg" data-add-to-cart="bundle-intense-feeler">
-                    Get the Complete Kit →
-                </button>
-            </div>
-        </div>
-    </section>
+   <footer>
+      © 2026 Navigator Kids AI. All rights reserved.
+   </footer>
 
-    <!-- Quick Win Section -->
-    <section class="quickwin-section">
-        <div class="container">
-            <div class="quickwin-card">
-                <div class="quickwin-header">
-                    <span class="quickwin-badge">Free Quick Win</span>
-                    <h2>Try This Tonight</h2>
-                </div>
-                <div class="quickwin-content">
-                    <h3>The "Soft Landing" After-School Routine</h3>
-                    <p>
-                        Intense Feelers hold it together all day at school, then explode the moment they get home. 
-                        This happens because they've used up all their regulation energy. Here's how to help:
-                    </p>
-                    <ul class="quickwin-steps">
-                        <li>
-                            <span class="quickwin-step-num">1</span>
-                            <span>
-                                <strong>No questions for 15 minutes.</strong> Don't ask "How was school?" right away. 
-                                Their brain needs time to decompress.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="quickwin-step-num">2</span>
-                            <span>
-                                <strong>Offer a sensory reset.</strong> Crunchy snack, soft blanket, quiet space, 
-                                or physical movement — whatever soothes their system.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="quickwin-step-num">3</span>
-                            <span>
-                                <strong>Expect some release.</strong> Tears or grumpiness may happen and that's okay. 
-                                Better out than bottled up.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+   <!-- CART SCRIPT -->
+   <script src="/js/cart.js"></script>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2>Common Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Is this a diagnosis?
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            No. This quiz identifies patterns based on how your child processes the world. 
-                            It's not a medical or psychological diagnosis. If you have concerns about your child's 
-                            development, we always recommend consulting with a qualified professional who understands 
-                            twice-exceptional children.
-                        </p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        What ages is this for?
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Our profiles and tools are designed for children ages 6-9 (roughly 1st-3rd grade). 
-                            This is when many 2e patterns become most visible and when early support can make 
-                            the biggest difference.
-                        </p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Can my child be more than one type?
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Absolutely! Most 2e kids show a primary profile with strong secondary traits. 
-                            That's why we identify both. Your child's secondary profile (shown at the top of this page) 
-                            also influences how they experience the world.
-                        </p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        What if the profile doesn't feel quite right?
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            You know your child best. If another profile resonates more, trust your instincts. 
-                            You can explore all six profiles and choose tools that feel like the best fit for 
-                            your child's unique combination of traits.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Ready to Support Your Intense Feeler?</h2>
-            <p>Get tools built for their brain — not against it.</p>
-            <a href="#tools" class="btn btn-primary btn-lg">
-                Get the Toolkit →
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div id="footer"></div>
-
-    <!-- Scripts -->
-    <script src="/js/components.js"></script>
-    <script src="/js/cart.js"></script>
-
-    <script>
-        // =========================================
-        // PERSONALIZATION
-        // =========================================
-        
-        function loadProfileData() {
-            try {
-                const data = JSON.parse(localStorage.getItem('quizProfile'));
-                if (data && data.childName) {
-                    document.getElementById('heroChildName').textContent = data.childName;
-                }
-                if (data && data.secondary) {
-                    const profiles = {
-                        'intense-feeler': 'Intense Feeler',
-                        'reluctant-starter': 'Reluctant Starter',
-                        'deep-diver': 'Deep Diver',
-                        'sensitive-observer': 'Sensitive Observer',
-                        'bold-explorer': 'Bold Explorer',
-                        'big-picture-thinker': 'Big Picture Thinker'
-                    };
-                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Deep Diver';
-                }
-            } catch (e) {
-                // Use defaults
-            }
-        }
-
-        // =========================================
-        // FAQ TOGGLE
-        // =========================================
-        
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const isOpen = item.classList.contains('open');
-            
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            
-            // Toggle this one
-            if (!isOpen) {
-                item.classList.add('open');
-            }
-        }
-
-        // =========================================
-        // INIT
-        // =========================================
-        
-        document.addEventListener('DOMContentLoaded', loadProfileData);
-    </script>
+   <script>
+      function handleAddToCart(productId) {
+         if (typeof NavigatorCart !== 'undefined') {
+            NavigatorCart.addItem(productId, 1, true);
+         } else {
+            alert('Debug Message: Cart system not found. \n\nPlease ensure "cart.js" is in the "/js/" folder relative to this file.');
+            console.error('NavigatorCart object is missing. Check your script path.');
+         }
+      }
+   </script>
 
 </body>
 
