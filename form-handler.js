@@ -10,20 +10,15 @@
     // CONFIGURATION
     // =========================================
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFE_cy1N0eThZRwjzjyc4_MEGefjzjnTIgWHj_eIZFd-m4Ru0N84FM68fpcmgxr2s3Ig/exec';
+    const SUBMISSION_TIMEOUT_MS = 5000; // 5 Seconds Safety Net
 
     // =========================================
     // FORM SUBMISSION HANDLER
     // =========================================
     
     /**
-     * Submit form data to Google Sheets
+     * Submit form data to Google Sheets with Safety Timeout
      * @param {Object} data - Form data to submit
-     * @param {string} data.email - Required: email address
-     * @param {string} data.source - Required: form identifier (e.g., 'quiz', 'de-escalation-kit', 'newsletter')
-     * @param {string} [data.name] - Optional: name
-     * @param {string} [data.childName] - Optional: child's name
-     * @param {string} [data.profile] - Optional: quiz result profile
-     * @param {Object} [data.extra] - Optional: any additional data
      * @returns {Promise<{success: boolean, message: string}>}
      */
     async function submitToGoogleSheets(data) {
@@ -54,8 +49,11 @@
         };
 
         try {
-            // Submit to Google Apps Script
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
+            // 🛡️ SECURITY / UX FIX: Promise Race
+            // We race the fetch against a timeout. If fetch hangs, we assume success
+            // to prevent the user from being stuck in a "Sending..." state forever.
+            
+            const submitPromise = fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors', // Required for Google Apps Script
                 headers: {
@@ -64,9 +62,20 @@
                 body: JSON.stringify(payload)
             });
 
-            // Note: With 'no-cors', we can't read the response
-            // We assume success if no error was thrown
-            console.log('Form submitted successfully:', payload.email, payload.source);
+            const timeoutPromise = new Promise((resolve) => {
+                setTimeout(() => {
+                    console.warn(`Form submission timed out (${SUBMISSION_TIMEOUT_MS}ms). Assuming optimistic success.`);
+                    resolve({ ok: false, type: 'timeout' }); 
+                }, SUBMISSION_TIMEOUT_MS);
+            });
+
+            // Race them
+            const result = await Promise.race([submitPromise, timeoutPromise]);
+
+            // If it was a timeout (or actual success), we proceed as success 
+            // because 'no-cors' opaque responses don't let us see 200 vs 500 anyway.
+            
+            console.log('Form submission completed/handled:', payload.email);
             
             // Track event if analytics available
             if (typeof trackEvent === 'function') {
@@ -83,7 +92,9 @@
                 trackEvent('Form', 'Error', data.source);
             }
 
-            return { success: false, message: 'Submission failed. Please try again.' };
+            // Even on network error, we often want to fail gracefully or retry, 
+            // but for this MVP, we alert the user.
+            return { success: false, message: 'Submission failed. Please check your connection.' };
         }
     }
 
@@ -217,12 +228,6 @@
     /**
      * Quickly set up a simple email capture form
      * @param {Object} options
-     * @param {string} options.formId - ID of the form element
-     * @param {string} options.emailInputId - ID of the email input
-     * @param {string} options.source - Source identifier for tracking
-     * @param {string} [options.nameInputId] - Optional: ID of name input
-     * @param {string} [options.successMessage] - Custom success message
-     * @param {Function} [options.onSuccess] - Callback on success
      */
     function setupEmailForm(options) {
         const form = document.getElementById(options.formId);
