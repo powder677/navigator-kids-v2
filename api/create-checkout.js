@@ -1,104 +1,86 @@
 // api/create-checkout.js
-// Vercel Serverless Function for Stripe Checkout
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// 🔒 SECURITY: Server-Side Price Authority
+// The client sends an ID; we decide the price.
+// Updated to User Pricing: $69 Combo, $29 Prompts, $12 Packets
+const PRODUCT_MAP = {
+  // HERO OFFER: Complete Support Plan (2 AI Prompts + 1 Packet)
+  'prod_combo_complete': {
+    priceId: 'price_combo_6900', // You must create this in Stripe ($69.00)
+    name: 'Complete Support Plan (Navigator Bundle)',
+    allowQuantity: false // One per customer usually
+  },
+  
+  // SUPPORT SYSTEMS (AI Prompts) - $29
+  'prod_prompt_anxiety': { priceId: 'price_prompt_anxiety_2900', name: 'Anxiety Support System' },
+  'prod_prompt_executive': { priceId: 'price_prompt_exec_2900', name: 'Executive Function Support System' },
+  'prod_prompt_social': { priceId: 'price_prompt_social_2900', name: 'Social Skills Support System' },
 
-// Stripe Price IDs (from your Stripe Dashboard)
-const STRIPE_PRICES = {
-  'activity-packet': 'price_1St7BMAx6JDn4AuA1rqRIFyg',
-  'ai-prompts': 'price_1St7AnAx6JDn4AuAXsfJWw2B',
-  'complete-bundle': 'price_1St7A4Ax6JDn4AuAKnk66CbV',
-  'toolkit-homework': 'price_1St79XAx6JDn4AuAp9ltEfNs',
-  'toolkit-iep': 'price_1St78uAx6JDn4AuAhOH27Fbs',
-  'toolkit-emotional': 'price_1St78LAx6JDn4AuAqFqKmw3T',
-};
+  // SUCCESS SYSTEMS (Activity Packets) - $12
+  'prod_packet_bravely': { priceId: 'price_packet_bravely_1200', name: 'Bravely the Lion Success System' },
+  'prod_packet_cosmo': { priceId: 'price_packet_cosmo_1200', name: 'Cosmo Space Pup Success System' },
+  'prod_packet_whisper': { priceId: 'price_packet_whisper_1200', name: 'Whisper the Bunny Success System' },
 
-// Map site product IDs to Stripe product categories
-const PRODUCT_TO_STRIPE = {
-  'activity-packet-ember': 'activity-packet',
-  'activity-packet-shelly': 'activity-packet',
-  'activity-packet-sketch': 'activity-packet',
-  'activity-packet-whisper': 'activity-packet',
-  'activity-packet-bravely': 'activity-packet',
-  'activity-packet-cosmo': 'activity-packet',
-  'activity-packet-captain-choosy': 'activity-packet',
-  'ai-prompts-intense-feeler': 'ai-prompts',
-  'ai-prompts-reluctant-starter': 'ai-prompts',
-  'ai-prompts-deep-diver': 'ai-prompts',
-  'ai-prompts-sensitive-observer': 'ai-prompts',
-  'ai-prompts-bold-explorer': 'ai-prompts',
-  'ai-prompts-big-picture-thinker': 'ai-prompts',
-  'complete-prompt-library': 'complete-bundle',
-  'complete-activity-bundle': 'complete-bundle',
-  'complete-bundle': 'complete-bundle',
-  'bundle-complete': 'complete-bundle',
-  'toolkit-emotional': 'toolkit-emotional',
-  'toolkit-iep': 'toolkit-iep',
-  'toolkit-homework': 'toolkit-homework',
+  // ORDER BUMPS / ADD-ONS
+  'prod_audio_meltdown': { priceId: 'price_audio_meltdown_900', name: 'Emergency Meltdown Audio' }, // $9
+  'prod_guide_iep': { priceId: 'price_guide_iep_1200', name: 'IEP Translator Packet' }, // $12
+  'prod_service_concierge': { priceId: 'price_service_concierge_19900', name: 'Concierge Prompt Setup' } // $199
 };
 
 module.exports = async (req, res) => {
-  // Set JSON content type
-  res.setHeader('Content-Type', 'application/json');
-  
-  // Handle CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { items } = req.body;
+    const { items, successUrl, cancelUrl } = req.body;
 
-    if (!items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ error: 'No items provided' });
+    if (!items || items.length === 0) {
+      return res.status(400).json({ error: 'Cart is empty' });
     }
 
-    // Convert cart items to Stripe line items
-    const lineItems = [];
-    for (const item of items) {
-      const stripeCategory = item.stripeProduct || PRODUCT_TO_STRIPE[item.id];
+    // 🛡️ SECURITY: Validate and Construct Line Items
+    const lineItems = items.map(item => {
+      const product = PRODUCT_MAP[item.id];
       
-      if (!stripeCategory) {
-        return res.status(400).json({ error: `Unknown product: ${item.id}` });
-      }
-      
-      const priceId = STRIPE_PRICES[stripeCategory];
-      
-      if (!priceId) {
-        return res.status(400).json({ error: `No price for: ${stripeCategory}` });
+      // Stop invalid product injection
+      if (!product) {
+        throw new Error(`Invalid product ID: ${item.id}`);
       }
 
-      lineItems.push({
-        price: priceId,
-        quantity: item.quantity || 1,
-      });
-    }
+      // Stop negative quantity exploits
+      const quantity = parseInt(item.quantity);
+      if (isNaN(quantity) || quantity < 1) {
+        throw new Error('Invalid quantity');
+      }
 
-    // Create Stripe Checkout Session
+      return {
+        price: product.priceId,
+        quantity: quantity,
+      };
+    });
+
     const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
+      payment_method_types: ['card'],
       line_items: lineItems,
-      success_url: `${req.headers.origin || 'https://navigator-kids-v2.vercel.app'}/thank-you/?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin || 'https://navigator-kids-v2.vercel.app'}/cart/`,
+      mode: 'payment',
+      success_url: successUrl || 'https://navigatorkids.ai/thank-you',
+      cancel_url: cancelUrl || 'https://navigatorkids.ai/cart',
+      allow_promotion_codes: true, // Enable coupons
+      metadata: {
+        source: 'navigator_v2_checkout',
+        product_ids: items.map(i => i.id).join(',')
+      },
+      // OPTIONAL: Enable this if you configure the Order Bump in Stripe Dashboard
+      // phone_number_collection: { enabled: true }, 
     });
 
-    return res.status(200).json({ 
-      url: session.url,
-      sessionId: session.id 
-    });
+    res.status(200).json({ id: session.id });
 
   } catch (error) {
-    console.error('Stripe error:', error);
-    return res.status(500).json({ 
-      error: error.message || 'Checkout failed' 
-    });
+    console.error('Stripe Error:', error);
+    res.status(500).json({ error: error.message });
   }
 };
