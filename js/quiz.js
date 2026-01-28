@@ -17,7 +17,7 @@
     };
 
     // =========================================
-    // QUESTIONS DATA (FULLY RESTORED)
+    // QUESTIONS DATA
     // =========================================
     const QUESTIONS = [
         {
@@ -119,13 +119,13 @@
     ];
 
     // =========================================
-    // PROFILE DEFINITIONS (FULLY RESTORED)
+    // PROFILE DEFINITIONS
     // =========================================
     const PROFILES = {
         'intense-feeler': {
             name: 'Intense Feeler',
             icon: '🔥',
-            url: '/results/intense-feeler/index.html', // Fixed extension
+            url: '/results/intense-feeler/',
             character: 'Ember the Dragon',
             description: 'Big emotions, sensory sensitivity, and deep feelings',
             weights: { emotional: 3, sensory: 2, perfectionism: 2 }
@@ -133,7 +133,7 @@
         'reluctant-starter': {
             name: 'Reluctant Starter',
             icon: '🐢',
-            url: '/results/reluctant-starter/index.html', // Fixed extension
+            url: '/results/reluctant-starter/',
             character: 'Shelly the Turtle',
             description: 'Task initiation challenges and interest-based focus',
             weights: { executive: 3, avoidance: 2, motivation: 2 }
@@ -141,7 +141,7 @@
         'deep-diver': {
             name: 'Deep Diver',
             icon: '🦉',
-            url: '/results/deep-diver/index.html', // Fixed extension
+            url: '/results/deep-diver/',
             character: 'Sketch the Owl',
             description: 'Intense interests, hyperfocus, and deep learning',
             weights: { learning: 3, motivation: 2, perfectionism: 2 }
@@ -149,7 +149,7 @@
         'sensitive-observer': {
             name: 'Sensitive Observer',
             icon: '🐰',
-            url: '/results/sensitive-observer/index.html', // Fixed extension
+            url: '/results/sensitive-observer/',
             character: 'Whisper Bunny',
             description: 'Sensory processing sensitivity and social energy management',
             weights: { sensory: 3, social: 2, emotional: 2 }
@@ -157,7 +157,7 @@
         'bold-explorer': {
             name: 'Bold Explorer',
             icon: '🦁',
-            url: '/results/bold-explorer/index.html', // Fixed extension
+            url: '/results/bold-explorer/',
             character: 'Bravely the Lion',
             description: 'Novelty-seeking, quick starts, and confidence building',
             weights: { social: -2, motivation: 2, learning: 1 },
@@ -166,7 +166,7 @@
         'big-picture-thinker': {
             name: 'Big Picture Thinker',
             icon: '🚀',
-            url: '/results/big-picture-thinker/index.html', // Fixed extension
+            url: '/results/big-picture-thinker/',
             character: 'Cosmo Space Pup',
             description: 'Executive function, organization, and transitions',
             weights: { executive: 2, learning: 3, avoidance: 2 }
@@ -186,7 +186,7 @@
     };
 
     // =========================================
-    // QUIZ CLASS (FULLY RESTORED)
+    // QUIZ CLASS
     // =========================================
     class NavigatorQuiz {
         constructor(options = {}) {
@@ -239,7 +239,7 @@
                 this.onQuestionChange(this.currentQuestion);
                 return true;
             } else {
-                this.onComplete(); // Triggers the completion callback
+                this.onComplete();
                 return false;
             }
         }
@@ -362,155 +362,48 @@
     // =========================================
     // STATIC HELPERS
     // =========================================
-    NavigatorQuiz.getProfile = function(profileId) { return PROFILES[profileId] || null; };
-    NavigatorQuiz.getAllProfiles = function() { return PROFILES; };
-    NavigatorQuiz.getTraitLabel = function(traitId) { return TRAIT_LABELS[traitId] || traitId; };
+    
+    // Get profile by ID
+    NavigatorQuiz.getProfile = function(profileId) {
+        return PROFILES[profileId] || null;
+    };
+
+    // Get all profiles
+    NavigatorQuiz.getAllProfiles = function() {
+        return PROFILES;
+    };
+
+    // Get trait label
+    NavigatorQuiz.getTraitLabel = function(traitId) {
+        return TRAIT_LABELS[traitId] || traitId;
+    };
+
+    // Load saved results
     NavigatorQuiz.loadSavedResults = function() {
         try {
             const data = localStorage.getItem(QUIZ_CONFIG.storageKey);
             return data ? JSON.parse(data) : null;
-        } catch (e) { return null; }
+        } catch (e) {
+            return null;
+        }
     };
+
+    // Load profile data (for result pages)
     NavigatorQuiz.loadProfileData = function() {
         try {
             const data = localStorage.getItem(QUIZ_CONFIG.profileStorageKey);
             return data ? JSON.parse(data) : null;
-        } catch (e) { return null; }
+        } catch (e) {
+            return null;
+        }
     };
 
-    // Export Logic
+    // =========================================
+    // EXPORT
+    // =========================================
     window.NavigatorQuiz = NavigatorQuiz;
     window.QUIZ_QUESTIONS = QUESTIONS;
     window.QUIZ_PROFILES = PROFILES;
     window.QUIZ_TRAIT_LABELS = TRAIT_LABELS;
-
-    /* =================================================================
-       🚀 NEW: QUIZ UI CONTROLLER
-       This section connects the Logic (above) to the DOM (index.html).
-       It handles the "Gate" logic and redirection.
-       ================================================================= */
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        // Only run if we are on the quiz page
-        const quizContainer = document.getElementById('quiz-content');
-        if (!quizContainer) return;
-
-        // UI Elements
-        const progressBar = document.getElementById('progress-bar');
-        const loadingScreen = document.getElementById('loading-screen');
-        const resultsGate = document.getElementById('results-gate');
-        const quizWrapper = document.getElementById('quiz-container');
-
-        // Initialize Quiz Engine
-        const quiz = new NavigatorQuiz({
-            onQuestionChange: (index) => renderQuestion(),
-            onComplete: () => handleCompletion()
-        });
-
-        // 1. RENDER QUESTION
-        function renderQuestion() {
-            const q = quiz.getCurrentQuestion();
-            const total = quiz.getTotalQuestions();
-            const current = quiz.currentQuestion + 1;
-
-            // Update Bar
-            if (progressBar) {
-                progressBar.style.width = `${(current / total) * 100}%`;
-            }
-
-            // Render HTML
-            quizContainer.innerHTML = `
-                <div class="fade-in">
-                    <div style="font-size: 0.9rem; color: #888; margin-bottom: 10px; font-weight: bold; text-transform: uppercase;">
-                        Question ${current} of ${total}
-                    </div>
-                    <h2 style="font-size: 1.6rem; color: #002347; margin-bottom: 25px;">${q.emoji} ${q.question}</h2>
-                    <div class="options-grid" style="display: grid; gap: 15px;">
-                        ${q.options.map((opt, i) => `
-                            <button class="option-btn" data-score="${opt.score}">
-                                ${opt.text}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            // Attach Click Listeners
-            quizContainer.querySelectorAll('.option-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const score = parseInt(e.target.dataset.score);
-                    quiz.answerQuestion(score);
-                    
-                    // Visual feedback
-                    e.target.style.background = '#002347';
-                    e.target.style.color = '#fff';
-
-                    // Slight delay for UX
-                    setTimeout(() => {
-                        quiz.nextQuestion();
-                    }, 200);
-                });
-            });
-        }
-
-        // 2. HANDLE COMPLETION (THE GATE)
-        function handleCompletion() {
-            // Hide Quiz
-            quizWrapper.style.display = 'none';
-            
-            // Show Loading
-            if (loadingScreen) {
-                loadingScreen.style.display = 'block';
-                
-                // Simulate Analysis Steps
-                const steps = ["Analyzing patterns...", "Identifying strengths...", "Mapping brain profile..."];
-                const textEl = document.getElementById('loading-text');
-                let step = 0;
-                
-                const interval = setInterval(() => {
-                    if (textEl && step < steps.length) {
-                        textEl.innerText = steps[step];
-                        step++;
-                    } else {
-                        clearInterval(interval);
-                        // Save Data & Show Gate
-                        quiz.saveResults(); 
-                        showGate();
-                    }
-                }, 800);
-            } else {
-                quiz.saveResults();
-                showGate();
-            }
-        }
-
-        // 3. SHOW LOCKED GATE
-        function showGate() {
-            if (loadingScreen) loadingScreen.style.display = 'none';
-            if (resultsGate) {
-                resultsGate.style.display = 'block';
-                
-                // Populate Name
-                const results = quiz.getResults();
-                const nameEl = document.getElementById('gate-profile-name');
-                if (nameEl) nameEl.innerText = results.primary.name;
-
-                // Attach Unlock Listener
-                const unlockBtn = document.getElementById('unlock-btn');
-                if (unlockBtn) {
-                    unlockBtn.onclick = () => {
-                        window.location.href = results.primary.url;
-                    };
-                }
-            } else {
-                // Fallback if gate HTML is missing
-                const results = quiz.getResults();
-                window.location.href = results.primary.url;
-            }
-        }
-
-        // Start!
-        renderQuestion();
-    });
 
 })();

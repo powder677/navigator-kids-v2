@@ -1,226 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart | Navigator Kids AI™</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <meta name="description" content="Review your cart and checkout. Navigator Kids AI - Tools for 2e kids.">
+    <title>Your Cart | Navigator Kids AI</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
     <style>
-        body {
-            background-color: #FDFBF7;
-            font-family: 'Inter', sans-serif;
+        .cart-page {
+            padding: var(--space-12) 0;
+            min-height: 60vh;
         }
-        .cart-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+
+        .cart-page h1 {
+            margin-bottom: var(--space-8);
         }
-        .cart-header {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
+
+        /* Continue Shopping Link */
+        .continue-shopping {
+            display: inline-flex;
             align-items: center;
+            gap: var(--space-2);
+            color: var(--color-sage);
+            font-weight: 500;
+            margin-bottom: var(--space-6);
         }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .item-details h3 {
-            margin: 0 0 5px 0;
-            color: #002347;
-            font-size: 1.1rem;
-        }
-        .item-details p {
-            margin: 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .item-price {
-            font-weight: bold;
-            color: #002347;
-            font-size: 1.1rem;
-        }
-        .remove-btn {
-            color: #cc0000;
-            font-size: 0.8rem;
-            text-decoration: underline;
-            cursor: pointer;
-            border: none;
-            background: none;
-            margin-top: 5px;
-            padding: 0;
-        }
-        .cart-summary {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            text-align: right;
-        }
-        .total-line {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #002347;
-            margin-bottom: 20px;
-        }
-        .checkout-btn {
-            background-color: #002347;
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-            width: 100%;
-            max-width: 300px;
-        }
-        .checkout-btn:hover {
-            background-color: #D4AF37; /* Gold on hover */
-            color: #002347;
-        }
-        .checkout-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            display: none;
-        }
-        .secure-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: #888;
+
+        .continue-shopping:hover {
+            color: var(--color-sage-dark);
         }
     </style>
 </head>
+
 <body>
 
-    <header style="background: #fff; padding: 20px; border-bottom: 1px solid #eee;">
-        <nav class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
-            <div style="font-weight: 800; color: #002347; font-size: 1.2rem;">Navigator Kids AI™</div>
-            <a href="/" style="text-decoration: none; color: #666; font-size: 0.9rem;">Back to Home</a>
-        </nav>
-    </header>
+    <!-- Header (injected by components.js) -->
+    <div id="header"></div>
 
-    <main class="cart-container">
-        <div class="cart-header">
-            <h1 style="margin: 0; font-size: 1.8rem; color: #002347;">Your Order</h1>
-        </div>
-
-        <div id="cart-items">
-            </div>
-
-        <div id="empty-state" class="empty-state">
-            <h3 style="color: #888;">Your cart is empty.</h3>
-            <p>Ready to find your child's profile?</p>
-            <a href="/quiz/" style="color: #D4AF37; font-weight: bold; text-decoration: none;">Take the Assessment &rarr;</a>
-        </div>
-
-        <div id="cart-footer" class="cart-summary" style="display: none;">
-            <div class="total-line">
-                Total: <span id="cart-total">Calculating...</span>
-            </div>
+    <main class="cart-page">
+        <div class="container">
             
-            <button id="checkout-button" class="checkout-btn">
-                Proceed to Secure Checkout
-            </button>
-            
-            <div class="secure-badge">
-                🔒 TLS 256-bit Secure Encryption
+            <a href="/products/" class="continue-shopping">
+                ← Continue Shopping
+            </a>
+
+            <h1>Your Cart</h1>
+
+            <!-- Cart content rendered by cart.js -->
+            <div id="cartContainer">
+                <!-- Loading state -->
+                <p>Loading cart...</p>
             </div>
+
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 40px; color: #aaa; font-size: 0.8rem;">
-        &copy; 2026 Navigator Kids AI
-    </footer>
+    <!-- Footer (injected by components.js) -->
+    <div id="footer"></div>
 
-    <script src="../js/cart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCartPage();
-        });
+    <!-- Scripts -->
+    <script src="/js/components.js"></script>
+    <script src="/js/cart.js"></script>
 
-        function renderCartPage() {
-            const cart = NavigatorCart.getCart();
-            const container = document.getElementById('cart-items');
-            const footer = document.getElementById('cart-footer');
-            const emptyState = document.getElementById('empty-state');
-            const totalEl = document.getElementById('cart-total');
-
-            // 1. PRODUCT DISPLAY MAP (For visual rendering only)
-            // Prices must match server-side PRODUCT_MAP in api/create-checkout.js
-            const DISPLAY_MAP = {
-                'prod_combo_complete': { name: 'Complete Support Plan (Bundle)', price: 69.00 },
-                'prod_prompt_anxiety': { name: 'Anxiety Support System', price: 29.00 },
-                'prod_prompt_executive': { name: 'Executive Function Support System', price: 29.00 },
-                'prod_prompt_social': { name: 'Social Skills Support System', price: 29.00 },
-                'prod_packet_bravely': { name: 'Bravely the Lion Success System', price: 12.00 },
-                'prod_packet_cosmo': { name: 'Cosmo Space Pup Success System', price: 12.00 },
-                'prod_packet_whisper': { name: 'Whisper the Bunny Success System', price: 12.00 },
-                'prod_audio_meltdown': { name: 'Emergency Meltdown Audio', price: 9.00 },
-                'prod_guide_iep': { name: 'IEP Translator Packet', price: 12.00 },
-                'prod_service_concierge': { name: 'Concierge Prompt Setup', price: 199.00 }
-            };
-
-            container.innerHTML = '';
-
-            if (cart.length === 0) {
-                emptyState.style.display = 'block';
-                footer.style.display = 'none';
-                return;
-            }
-
-            emptyState.style.display = 'none';
-            footer.style.display = 'block';
-
-            let total = 0;
-
-            cart.forEach(item => {
-                const product = DISPLAY_MAP[item.id] || { name: 'Unknown Item', price: 0 };
-                const itemTotal = product.price * item.quantity;
-                total += itemTotal;
-
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div class="item-details">
-                            <h3>${product.name}</h3>
-                            <button class="remove-btn" onclick="NavigatorCart.removeItem('${item.id}')">Remove</button>
-                        </div>
-                        <div class="item-price">
-                            $${itemTotal.toFixed(2)}
-                        </div>
-                    </div>
-                `;
-            });
-
-            totalEl.innerText = `$${total.toFixed(2)}`;
-        }
-
-        // Hook into removeItem to re-render immediately
-        const originalRemove = NavigatorCart.removeItem;
-        NavigatorCart.removeItem = function(id) {
-            originalRemove.call(NavigatorCart, id);
-            renderCartPage();
-        };
-    </script>
 </body>
+
 </html>

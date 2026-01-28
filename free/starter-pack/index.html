@@ -1,446 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="preview-section" style="background: #f8f9fa; padding: var(--space-12) 0;">
+   <div class="container">
+      <div style="text-align: center; max-width: 700px; margin: 0 auto var(--space-8);">
+         <h2>Try It Right Now</h2>
+         <p style="font-size: var(--text-lg); color: var(--color-text-body);">
+            Don't just take our word for it. Copy this prompt, paste it into ChatGPT, and see what happens.
+         </p>
+      </div>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Free starter pack for parents of twice-exceptional children. Get AI prompts, activity samples, and the brain profile quiz.">
-   <title>Free Starter Pack | Navigator Kids AI</title>
-
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css">
-
-   <style>
-      .starter-pack-page {
-         padding: var(--space-12) 0 var(--space-16);
-      }
-
-      .starter-header {
-         text-align: center;
-         margin-bottom: var(--space-12);
-      }
-
-      .starter-header .badge {
-         display: inline-block;
-         background: var(--color-sage);
-         color: var(--color-white);
-         font-size: var(--text-sm);
-         font-weight: 600;
-         padding: var(--space-1) var(--space-4);
-         border-radius: var(--radius-full);
-         margin-bottom: var(--space-4);
-      }
-
-      .starter-header h1 {
-         margin-bottom: var(--space-3);
-      }
-
-      .starter-header p {
-         font-size: var(--text-lg);
-         color: var(--color-text-light);
-         max-width: 600px;
+      <div class="test-drive-box" style="
+         background: white; 
+         border: 2px dashed #cbd5e0; 
+         border-radius: var(--radius-lg); 
+         padding: var(--space-8); 
+         max-width: 800px; 
          margin: 0 auto;
-      }
+         position: relative;
+         box-shadow: var(--shadow-md);">
 
-      /* What's Included */
-      .included-section {
-         margin-bottom: var(--space-12);
-      }
-
-      .included-grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: var(--space-6);
-      }
-
-      @media (max-width: 800px) {
-         .included-grid {
-            grid-template-columns: 1fr;
-         }
-      }
-
-      .included-card {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         padding: var(--space-8);
-         text-align: center;
-         box-shadow: var(--shadow-md);
-      }
-
-      .included-icon {
-         width: 80px;
-         height: 80px;
-         background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
-         border-radius: var(--radius-lg);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 2.5rem;
-         margin: 0 auto var(--space-5);
-      }
-
-      .included-card h3 {
-         font-size: var(--text-lg);
-         margin-bottom: var(--space-3);
-      }
-
-      .included-card p {
-         color: var(--color-text-light);
-         font-size: var(--text-sm);
-         margin-bottom: var(--space-4);
-      }
-
-      .included-list {
-         text-align: left;
-         font-size: var(--text-sm);
-      }
-
-      .included-list li {
-         padding: var(--space-2) 0;
-         border-bottom: 1px solid var(--color-border);
-         display: flex;
-         align-items: center;
-         gap: var(--space-2);
-      }
-
-      .included-list li:last-child {
-         border-bottom: none;
-      }
-
-      .included-list li::before {
-         content: '✓';
-         color: var(--color-sage);
-         font-weight: 700;
-      }
-
-      /* Signup Form */
-      .signup-section {
-         background: var(--color-navy);
-         border-radius: var(--radius-xl);
-         padding: var(--space-12);
-         text-align: center;
-         margin-bottom: var(--space-12);
-      }
-
-      .signup-section h2 {
-         color: var(--color-cream);
-         margin-bottom: var(--space-3);
-      }
-
-      .signup-section p {
-         color: rgba(249, 247, 242, 0.8);
-         margin-bottom: var(--space-6);
-         max-width: 500px;
-         margin-left: auto;
-         margin-right: auto;
-      }
-
-      .signup-form {
-         display: flex;
-         gap: var(--space-3);
-         max-width: 500px;
-         margin: 0 auto;
-      }
-
-      @media (max-width: 600px) {
-         .signup-form {
-            flex-direction: column;
-         }
-      }
-
-      .signup-form input {
-         flex: 1;
-         padding: var(--space-4);
-         border: none;
-         border-radius: var(--radius-md);
-         font-size: var(--text-base);
-      }
-
-      .signup-form .btn {
-         white-space: nowrap;
-      }
-
-      .signup-note {
-         font-size: var(--text-sm);
-         color: rgba(249, 247, 242, 0.6);
-         margin-top: var(--space-4);
-      }
-
-      /* Success State */
-      .signup-success {
-         display: none;
-      }
-
-      .signup-success.show {
-         display: block;
-      }
-
-      .signup-success h3 {
-         color: var(--color-cream);
-         margin-bottom: var(--space-2);
-      }
-
-      .signup-success p {
-         margin-bottom: 0;
-      }
-
-      /* Preview Section */
-      .preview-section {
-         margin-bottom: var(--space-12);
-      }
-
-      .preview-section h2 {
-         text-align: center;
-         margin-bottom: var(--space-8);
-      }
-
-      .preview-grid {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: var(--space-6);
-      }
-
-      @media (max-width: 700px) {
-         .preview-grid {
-            grid-template-columns: 1fr;
-         }
-      }
-
-      .preview-card {
-         background: var(--color-cream);
-         border-radius: var(--radius-lg);
-         padding: var(--space-6);
-      }
-
-      .preview-card h4 {
-         font-size: var(--text-base);
-         margin-bottom: var(--space-3);
-         display: flex;
-         align-items: center;
-         gap: var(--space-2);
-      }
-
-      .preview-card p {
-         font-size: var(--text-sm);
-         color: var(--color-text-light);
-         font-style: italic;
-         background: var(--color-white);
-         padding: var(--space-4);
-         border-radius: var(--radius-md);
-         border-left: 3px solid var(--color-sage);
-      }
-
-      /* FAQ */
-      .starter-faq {
-         max-width: 700px;
-         margin: 0 auto;
-      }
-
-      .starter-faq h2 {
-         text-align: center;
-         margin-bottom: var(--space-8);
-      }
-
-      .faq-item {
-         background: var(--color-white);
-         border-radius: var(--radius-md);
-         margin-bottom: var(--space-4);
-         box-shadow: var(--shadow-sm);
-      }
-
-      .faq-question {
-         width: 100%;
-         padding: var(--space-5);
-         background: none;
-         border: none;
-         text-align: left;
-         font-weight: 600;
-         cursor: pointer;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-      }
-
-      .faq-answer {
-         display: none;
-         padding: 0 var(--space-5) var(--space-5);
-         color: var(--color-text-light);
-      }
-
-      .faq-item.open .faq-answer {
-         display: block;
-      }
-   </style>
-</head>
-
-<body>
-   <div id="header"></div>
-
-   <main class="starter-pack-page">
-      <div class="container">
-
-         <div class="starter-header">
-            <span class="badge">100% Free</span>
-            <h1>Navigator Kids Starter Pack</h1>
-            <p>Everything you need to start understanding and supporting your twice-exceptional child—completely free.</p>
+         <div style="
+            position: absolute; 
+            top: -15px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: #2E7D32; 
+            color: white; 
+            padding: 4px 12px; 
+            border-radius: 99px; 
+            font-size: 12px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;">
+            Free Sample
          </div>
 
-         <!-- What's Included -->
-         <section class="included-section">
-            <div class="included-grid">
-               <div class="included-card">
-                  <div class="included-icon">🧠</div>
-                  <h3>Brain Profile Quiz</h3>
-                  <p>Discover your child's unique wiring in just 3 minutes.</p>
-                  <ul class="included-list">
-                     <li>12 research-based questions</li>
-                     <li>Instant profile results</li>
-                     <li>Secondary trait identification</li>
-                     <li>Personalized next steps</li>
-                  </ul>
-               </div>
+         <h4 style="color: var(--color-navy); margin-bottom: var(--space-4);">🚨 The "Mid-Meltdown" Script</h4>
 
-               <div class="included-card">
-                  <div class="included-icon">🚨</div>
-                  <h3>De-escalation Kit</h3>
-                  <p>5 AI prompts for when things are falling apart.</p>
-                  <ul class="included-list">
-                     <li>Mid-meltdown scripts</li>
-                     <li>Post-meltdown processing</li>
-                     <li>Sibling impact support</li>
-                     <li>Self-care for parents</li>
-                  </ul>
-               </div>
+         <div class="code-block" style="
+            background: #f1f5f9; 
+            padding: var(--space-6); 
+            border-radius: var(--radius-md); 
+            font-family: monospace; 
+            color: #334155; 
+            line-height: 1.6; 
+            margin-bottom: var(--space-6);
+            border: 1px solid #e2e8f0;">
+            <span id="samplePrompt">My [Age]-year-old is in the middle of a meltdown. They are [Behavior: e.g., screaming/throwing things]. I have already tried [What you tried]. Give me a step-by-step script for the next 5 minutes that prioritizes safety and connection over correction. Tell me exactly what to say and when to stay silent.</span>
+         </div>
 
-               <div class="included-card">
-                  <div class="included-icon">🎯</div>
-                  <h3>Strategy Sampler</h3>
-                  <p>A taste of profile-specific strategies.</p>
-                  <ul class="included-list">
-                     <li>1 prompt per profile type</li>
-                     <li>Morning routine helper</li>
-                     <li>Homework negotiation script</li>
-                     <li>Bedtime wind-down guide</li>
-                  </ul>
-               </div>
-            </div>
-         </section>
-
-         <!-- Signup Form -->
-         <section class="signup-section" id="signupSection">
-            <h2>Get Your Free Starter Pack</h2>
-            <p>Enter your email and we'll send everything to your inbox instantly. No spam, ever.</p>
-
-            <form class="signup-form" id="starterForm" onsubmit="handleStarterSignup(event)">
-               <input type="email" placeholder="Your email address" required id="starterEmail">
-               <button type="submit" class="btn btn-primary btn-lg">Send My Pack →</button>
-            </form>
-
-            <p class="signup-note">🔒 We respect your privacy. Unsubscribe anytime.</p>
-
-            <div class="signup-success" id="signupSuccess">
-               <h3>✨ Check Your Inbox!</h3>
-               <p>Your starter pack is on its way. Check your spam folder if you don't see it in a few minutes.</p>
-            </div>
-         </section>
-
-         <!-- Preview -->
-         <section class="preview-section">
-            <h2>Sneak Peek: Sample Prompts</h2>
-            <div class="preview-grid">
-               <div class="preview-card">
-                  <h4>🔥 Intense Feeler</h4>
-                  <p>"My child is in the middle of a meltdown about [trigger]. They're crying/yelling/hitting. I need a calm, step-by-step script I can use right now to help them regulate..."</p>
-               </div>
-               <div class="preview-card">
-                  <h4>🐢 Reluctant Starter</h4>
-                  <p>"My child needs to start [task] but is completely stuck. They seem overwhelmed and keep saying 'I can't.' Give me a way to break this into tiny, non-threatening first steps..."</p>
-               </div>
-               <div class="preview-card">
-                  <h4>🔭 Deep Diver</h4>
-                  <p>"My child has been hyperfocused on [topic] for hours and won't transition to [necessary activity]. I need a strategy that honors their interest while helping them shift..."</p>
-               </div>
-               <div class="preview-card">
-                  <h4>🐰 Sensitive Observer</h4>
-                  <p>"We're about to enter a [loud/crowded/new] environment and I know my child will be overwhelmed. Help me prepare them and create an exit strategy..."</p>
-               </div>
-            </div>
-         </section>
-
-         <!-- FAQ -->
-         <section class="starter-faq">
-            <h2>Quick Questions</h2>
-
-            <div class="faq-item">
-               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                  Is this really free?
-                  <span>+</span>
-               </button>
-               <div class="faq-answer">
-                  Yes! The starter pack is completely free. We believe every parent deserves access to these basic tools. If you find them helpful, we have more comprehensive prompt packs and activity packets available for purchase.
-               </div>
-            </div>
-
-            <div class="faq-item">
-               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                  Do I need ChatGPT or an AI tool?
-                  <span>+</span>
-               </button>
-               <div class="faq-answer">
-                  For the AI prompts, yes—you'll need access to ChatGPT, Claude, or similar AI assistant. Both offer free tiers that work great with our prompts. The brain profile quiz works directly on our site.
-               </div>
-            </div>
-
-            <div class="faq-item">
-               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                  Will you spam me?
-                  <span>+</span>
-               </button>
-               <div class="faq-answer">
-                  Never. You'll get your starter pack immediately, plus an optional weekly tip email (which you can unsubscribe from with one click). We hate spam as much as you do.
-               </div>
-            </div>
-
-            <div class="faq-item">
-               <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                  What ages is this for?
-                  <span>+</span>
-               </button>
-               <div class="faq-answer">
-                  Our tools are designed for children ages 6-9, though many strategies work for kids slightly outside this range. The language and activities are calibrated for roughly 1st-3rd grade.
-               </div>
-            </div>
-         </section>
-
+         <button onclick="copyToClipboard()" id="copyBtn" style="
+            background: white; 
+            border: 2px solid var(--color-navy); 
+            color: var(--color-navy); 
+            font-weight: 600; 
+            padding: 12px 24px; 
+            border-radius: var(--radius-md); 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            margin: 0 auto; 
+            transition: all 0.2s;">
+            <span id="btnIcon" style="margin-right: 8px;">📋</span>
+            <span id="btnText">Copy to Clipboard</span>
+         </button>
       </div>
-   </main>
 
-   <div id="footer"></div>
+      <p style="text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--color-text-light);">
+         👆 <i>This is just 1 of the 5 prompts in the free De-escalation Kit.</i>
+      </p>
+   </div>
+</section>
 
-   <script src="/js/components.js"></script>
+<script>
+   function copyToClipboard() {
+      const text = document.getElementById('samplePrompt').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+         const btn = document.getElementById('copyBtn');
+         const btnText = document.getElementById('btnText');
+         const btnIcon = document.getElementById('btnIcon');
 
-   <script>
-      function handleStarterSignup(e) {
-         e.preventDefault();
+         btn.style.background = '#2E7D32';
+         btn.style.borderColor = '#2E7D32';
+         btn.style.color = 'white';
+         btnText.innerText = 'Copied! Now Paste into AI';
+         btnIcon.innerText = '✅';
 
-         const email = document.getElementById('starterEmail').value;
-
-         // In production, send to email service (ConvertKit, Mailchimp, etc.)
-         console.log('Starter pack signup:', email);
-
-         // Show success
-         document.getElementById('starterForm').style.display = 'none';
-         document.querySelector('.signup-note').style.display = 'none';
-         document.getElementById('signupSuccess').classList.add('show');
-
-         // Track
-         if (typeof trackEvent === 'function') {
-            trackEvent('Lead', 'StarterPackSignup');
-         }
-      }
-   </script>
-</body>
-
-</html>
+         setTimeout(() => {
+            btn.style.background = 'white';
+            btn.style.borderColor = 'var(--color-navy)';
+            btn.style.color = 'var(--color-navy)';
+            btnText.innerText = 'Copy to Clipboard';
+            btnIcon.innerText = '📋';
+         }, 3000);
+      });
+   }
+</script>
