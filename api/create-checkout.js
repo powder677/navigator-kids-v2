@@ -3,72 +3,53 @@ const Stripe = require('stripe');
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // 🔒 PRODUCT MAP
-// Maps frontend IDs to Stripe Price IDs from your CSV.
-// STATUS: LIVE & VERIFIED (Jan 28, 2026)
+// STATUS: Updated to Hyphens for Consistency
 const PRODUCT_MAP = {
-  // === TIER 4: BUNDLES ($57 - $97) ===
-  'prod_bundle_total': { 
-     priceId: 'price_1Suhv9Ax6JDn4AuAVwA91AvY', // $97.00 - Total Access Pass
+  // === TIER 4: BUNDLES ===
+  'prod-bundle-total': { 
+     priceId: 'price_1Suhv9Ax6JDn4AuAVwA91AvY', // $97.00
      name: 'Navigator Total Access Bundle' 
   },
-  'prod_bundle_school': { 
-     priceId: 'price_1SuhueAx6JDn4AuAfhofkzaX', // $79.00 - School Success Bundle
+  'prod-bundle-school': { 
+     priceId: 'price_1SuhueAx6JDn4AuAfhofkzaX', // $79.00
      name: 'School Success Bundle' 
   },
-  'prod_bundle_peace': { 
-     priceId: 'price_1SuhtzAx6JDn4AuA2TfH029k', // $57.00 - Peace at Home Bundle
+  'prod-bundle-peace': { 
+     priceId: 'price_1SuhtzAx6JDn4AuA2TfH029k', // $57.00
      name: 'Peace at Home Bundle' 
   },
 
-  // === TIER 3: CORE SYSTEMS ($37 - $67) ===
-  'prod_system_iep': { 
-     priceId: 'price_1St7A4Ax6JDn4AuAKnk66CbV', // $67.00 - IEP Advocacy System
+  // === TIER 3: CORE SYSTEMS ===
+  'prod-system-iep': { 
+     priceId: 'price_1St7A4Ax6JDn4AuAKnk66CbV', // $67.00
      name: 'The IEP Advocacy System' 
   },
-  'prod_system_social': { 
-     priceId: 'price_1SuhsEAx6JDn4AuA3a1nMcc5', // $47.00 - Social Navigation System
+  'prod-system-social': { 
+     priceId: 'price_1SuhsEAx6JDn4AuA3a1nMcc5', // $47.00
      name: 'The Social Navigation System' 
   },
-  'prod_system_meltdown': { 
-     priceId: 'price_1SuhrLAx6JDn4AuAyRLk8vms', // $37.00 - Meltdown Navigation System
+  'prod-system-meltdown': { 
+     priceId: 'price_1SuhrLAx6JDn4AuAyRLk8vms', // $37.00
      name: 'The Meltdown Navigation System' 
   },
 
-  // === TIER 2: QUICK WINS ($19 - $27) ===
-  'prod_system_morning': { 
-     priceId: 'price_1SuhqZAx6JDn4AuAfkkZGZVK', // $27.00 - Morning Launch System
+  // === TIER 2: QUICK WINS ===
+  'prod-system-morning': { 
+     priceId: 'price_1SuhqZAx6JDn4AuAfkkZGZVK', // $27.00
      name: 'The Morning Launch System' 
   },
-  'prod_workbook_anxiety': { 
-     priceId: 'price_1St7AnAx6JDn4AuAXsfJWw2B', // $19.00 - Junior Agent Workbook
+  'prod-workbook-anxiety': { 
+     priceId: 'price_1St7AnAx6JDn4AuAXsfJWw2B', // $19.00
      name: 'Junior Agent Anxiety Workbook' 
   },
 
   // === TIER 1: ACTIVITY PACKETS ($9.00) ===
-  'prod_packet_bravely': { 
-    priceId: 'price_1St7BMAx6JDn4AuA1rqRIFyg', 
-    name: 'Activity Pack: Bravely the Lion' 
-  },
-  'prod_packet_cosmo': { 
-    priceId: 'price_1SuhkFAx6JDn4AuAMEP5PVXz', 
-    name: 'Activity Pack: Cosmo' 
-  },
-  'prod_packet_ember': { 
-    priceId: 'price_1SuhlFAx6JDn4AuAlUVVw44I', 
-    name: 'Activity Pack: Ember' 
-  },
-  'prod_packet_shelly': { 
-    priceId: 'price_1SuhmEAx6JDn4AuAwdQy0Y10', 
-    name: 'Activity Pack: Shelly' 
-  },
-  'prod_packet_sketch': { 
-    priceId: 'price_1Suhn5Ax6JDn4AuAYk7igvIL', 
-    name: 'Activity Pack: Sketch' 
-  },
-  'prod_packet_whisper': { 
-    priceId: 'price_1SuhnqAx6JDn4AuACe9s9Qya', 
-    name: 'Activity Pack: Whisper' 
-  }
+  'prod-packet-bravely': { priceId: 'price_1St7BMAx6JDn4AuA1rqRIFyg', name: 'Activity Pack: Bravely the Lion' },
+  'prod-packet-cosmo': { priceId: 'price_1SuhkFAx6JDn4AuAMEP5PVXz', name: 'Activity Pack: Cosmo' },
+  'prod-packet-ember': { priceId: 'price_1SuhlFAx6JDn4AuAlUVVw44I', name: 'Activity Pack: Ember' },
+  'prod-packet-shelly': { priceId: 'price_1SuhmEAx6JDn4AuAwdQy0Y10', name: 'Activity Pack: Shelly' },
+  'prod-packet-sketch': { priceId: 'price_1Suhn5Ax6JDn4AuAYk7igvIL', name: 'Activity Pack: Sketch' },
+  'prod-packet-whisper': { priceId: 'price_1SuhnqAx6JDn4AuACe9s9Qya', name: 'Activity Pack: Whisper' }
 };
 
 module.exports = async (req, res) => {
