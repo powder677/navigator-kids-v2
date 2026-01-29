@@ -3,55 +3,58 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    ensureDependencies();
+    // Inject components from root directory
     injectHeader();
     injectFooter();
-    // initMobileMenu is called inside injectHeader after the HTML exists
+    
+    // Initialize standard handlers
     initFormspree(); 
 });
 
-// 1. ENSURE DEPENDENCIES
-function ensureDependencies() {
-    // Check for Tailwind/FontAwesome if necessary
-}
-
-// 2. INJECT HEADER
+/**
+ * Loads header.html and injects it into #header
+ */
 async function injectHeader() {
-    const headerContainer = document.getElementById('header');
-    if (!headerContainer) return;
+    const container = document.getElementById('header');
+    if (!container) return;
 
     try {
         const response = await fetch('/header.html');
+        if (!response.ok) throw new Error('Header file not found');
         const html = await response.text();
-        headerContainer.innerHTML = html;
-        
-        // Initialize mobile menu only AFTER the HTML is injected
+        container.innerHTML = html;
+
+        // Re-run mobile menu logic now that the HTML exists
         initMobileMenu();
         
-        // Update cart counts if cart.js is present
-        if (window.NavigatorCart) {
-            window.NavigatorCart.updateUI();
-        }
+        // Update Cart UI if cart.js is loaded
+        if (window.NavigatorCart) window.NavigatorCart.updateUI();
+        
     } catch (err) {
-        console.error('Error loading header:', err);
+        console.error('Error injecting header:', err);
     }
 }
 
-// 3. INJECT FOOTER
+/**
+ * Loads footer.html and injects it into #footer
+ */
 async function injectFooter() {
-    const footerContainer = document.getElementById('footer');
-    if (!footerContainer) return;
+    const container = document.getElementById('footer');
+    if (!container) return;
 
     try {
         const response = await fetch('/footer.html');
+        if (!response.ok) throw new Error('Footer file not found');
         const html = await response.text();
-        footerContainer.innerHTML = html;
+        container.innerHTML = html;
     } catch (err) {
-        console.error('Error loading footer:', err);
+        console.error('Error injecting footer:', err);
     }
 }
 
-// 4. MOBILE MENU LOGIC
+/**
+ * Mobile Menu Toggle Logic
+ */
 function initMobileMenu() {
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -66,7 +69,32 @@ function initMobileMenu() {
     }
 }
 
-// 6. FORMSPREE HANDLER (Already in your file)
+/**
+ * Formspree Form Handler
+ */
 function initFormspree() {
-    // ... (Your existing Formspree code)
+    const FORMSPREE_URL = 'https://formspree.io/f/mnjvvpyj';
+    
+    document.querySelectorAll('form[data-formspree]').forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            if (btn) { btn.disabled = true; btn.innerText = 'Sending...'; }
+            
+            try {
+                const res = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (res.ok) {
+                    window.location.href = form.dataset.redirect || '/thank-you/';
+                }
+            } catch (err) {
+                alert('Submission failed. Please email support@navigatorkids.ai');
+                if (btn) btn.disabled = false;
+            }
+        });
+    });
 }
