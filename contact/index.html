@@ -6,13 +6,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contact Us | Navigator Kids AI</title>
 
+   <script src="https://cdn.tailwindcss.com"></script>
+
    <link rel="stylesheet" href="/css/styles.css">
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   
-   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
    <script src="/js/components.js" defer></script>
@@ -31,17 +31,11 @@
          --bg-color: #F9FAFB;
       }
 
-      /* LAYOUT FIX: Enforce Grid Layout */
       body {
          font-family: 'Inter', sans-serif;
          background-color: var(--bg-color);
          color: var(--color-text);
-         
-         /* This ensures the footer stays at the bottom */
-         display: grid !important; 
-         grid-template-rows: auto 1fr auto !important;
-         min-height: 100vh;
-         margin: 0;
+         -webkit-font-smoothing: antialiased;
       }
 
       h1, h2, h3, h4 {
@@ -49,7 +43,7 @@
          color: var(--color-navy);
       }
 
-      /* Input Fields */
+      /* Form Styling */
       .form-input, .form-select, textarea {
          width: 100%;
          padding: 0.75rem;
@@ -75,6 +69,8 @@
          transition: all 0.2s;
          display: inline-block;
          text-align: center;
+         border: none;
+         cursor: pointer;
       }
       
       .btn-primary:hover {
@@ -85,11 +81,11 @@
    </style>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
 
    <div id="header"></div>
 
-   <main class="w-full pt-12 pb-16">
+   <main class="flex-grow py-12">
       <div class="container mx-auto px-4">
 
          <div class="text-center mb-12 max-w-2xl mx-auto">
