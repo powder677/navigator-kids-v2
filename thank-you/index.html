@@ -7,9 +7,14 @@
    <meta name="description" content="Thank you for your purchase from Navigator Kids AI.">
    <title>Thank You! | Navigator Kids AI</title>
 
+   <script src="https://cdn.tailwindcss.com"></script>
+
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
    <link rel="stylesheet" href="/css/styles.css">
 
    <style>
@@ -18,15 +23,15 @@
          display: flex;
          align-items: center;
          justify-content: center;
-         padding: var(--space-8);
-         background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+         padding: 2rem;
+         background: linear-gradient(180deg, #F9F7F2 0%, #F0EFE9 100%);
       }
 
       .thank-you-card {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         box-shadow: var(--shadow-lg);
-         padding: var(--space-12);
+         background: #FFFFFF;
+         border-radius: 1.5rem;
+         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+         padding: 3rem;
          max-width: 600px;
          width: 100%;
          text-align: center;
@@ -35,70 +40,115 @@
       .thank-you-icon {
          width: 80px;
          height: 80px;
-         background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-sage-dark) 100%);
+         background: linear-gradient(135deg, #81B29A 0%, #6A9E85 100%);
          border-radius: 50%;
          display: flex;
          align-items: center;
          justify-content: center;
-         margin: 0 auto var(--space-6);
+         margin: 0 auto 1.5rem;
          font-size: 2.5rem;
+         color: white;
       }
 
       .thank-you-card h1 {
-         margin-bottom: var(--space-4);
+         margin-bottom: 1rem;
+         font-family: 'Merriweather', serif;
+         color: #3D405B;
+         font-size: 2rem;
+         font-weight: 700;
       }
 
       .thank-you-card .subtitle {
-         font-size: var(--text-lg);
-         color: var(--color-text-light);
-         margin-bottom: var(--space-8);
+         font-size: 1.125rem;
+         color: #6B7280;
+         margin-bottom: 2rem;
+         line-height: 1.6;
       }
 
       .next-steps {
-         background: var(--color-cream);
-         border-radius: var(--radius-lg);
-         padding: var(--space-6);
+         background: #F9FAFB;
+         border: 1px solid #E5E7EB;
+         border-radius: 1rem;
+         padding: 1.5rem;
          text-align: left;
-         margin-bottom: var(--space-8);
+         margin-bottom: 2rem;
       }
 
       .next-steps h2 {
-         font-size: var(--text-lg);
-         margin-bottom: var(--space-4);
+         font-size: 1.125rem;
+         margin-bottom: 1rem;
          text-align: center;
+         font-weight: 700;
+         color: #3D405B;
       }
 
       .next-steps ol {
          margin: 0;
-         padding-left: var(--space-6);
+         padding-left: 1.5rem;
+         list-style: decimal;
       }
 
       .next-steps li {
-         padding: var(--space-2) 0;
-         color: var(--color-text);
+         padding: 0.5rem 0;
+         color: #4B5563;
       }
 
       .next-steps li strong {
-         color: var(--color-navy);
+         color: #3D405B;
       }
 
       .thank-you-actions {
          display: flex;
-         gap: var(--space-4);
+         gap: 1rem;
          justify-content: center;
          flex-wrap: wrap;
       }
 
-      .order-info {
-         margin-top: var(--space-8);
-         padding-top: var(--space-6);
-         border-top: 1px solid var(--color-border);
-         font-size: var(--text-sm);
-         color: var(--color-text-muted);
+      .btn {
+         display: inline-block;
+         padding: 0.75rem 1.5rem;
+         border-radius: 9999px;
+         font-weight: 600;
+         text-decoration: none;
+         transition: all 0.2s;
       }
 
-      .order-info a {
-         color: var(--color-sage);
+      .btn-primary {
+         background-color: #3D405B;
+         color: white;
+      }
+      .btn-primary:hover { background-color: #2D3047; }
+
+      .btn-outline {
+         background-color: white;
+         color: #3D405B;
+         border: 2px solid #3D405B;
+      }
+      .btn-outline:hover { background-color: #F9FAFB; }
+
+      .order-info {
+         margin-top: 2rem;
+         padding-top: 1.5rem;
+         border-top: 1px solid #E5E7EB;
+         font-size: 0.875rem;
+         color: #9CA3AF;
+      }
+
+      .order-info a { color: #81B29A; }
+      
+      /* Order List Styling */
+      .download-item {
+          display: flex; 
+          align-items: start; 
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #f3f4f6;
+      }
+      .download-item:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+          padding-bottom: 0;
       }
    </style>
 </head>
@@ -108,15 +158,21 @@
 
    <main class="thank-you-page">
       <div class="thank-you-card">
-         <div class="thank-you-icon">✓</div>
+         <div class="thank-you-icon">
+             <i class="fa-solid fa-check"></i>
+         </div>
          <h1>Thank You!</h1>
          <p class="subtitle">Your purchase was successful. You're one step closer to understanding your child's unique brain.</p>
 
+         <div id="orderDetails" class="next-steps" style="display: none; background: #FFF; border: 2px solid #81B29A;">
+            <h2 style="color: #81B29A;">Your Downloads</h2>
+            <div id="orderItemsList"></div>
+         </div>
          <div class="next-steps">
             <h2>What Happens Next</h2>
             <ol>
                <li><strong>Check your email</strong> — Your receipt and download links are on their way</li>
-               <li><strong>Download your files</strong> — Click the links in your email to access your products</li>
+               <li><strong>Download your files</strong> — Access your files immediately above</li>
                <li><strong>Start exploring</strong> — Begin with the Quick Start guide in each toolkit</li>
             </ol>
          </div>
@@ -139,6 +195,7 @@
 
    <script src="/js/components.js"></script>
    <script src="/js/cart.js"></script>
+   
    <script>
       document.addEventListener('DOMContentLoaded', function() {
          const urlParams = new URLSearchParams(window.location.search);
@@ -159,37 +216,34 @@
          // 2. If we have a valid order, show the specific downloads
          if (lastOrder && lastOrder.items && lastOrder.items.length > 0) {
             
-            // Show the order container
+            // Show the special downloads container
             detailsContainer.style.display = 'block';
-            
-            // Clear default text
             orderList.innerHTML = ''; 
 
             // Loop through every item bought
             lastOrder.items.forEach(item => {
-                // Get full product details (including downloadUrl) using our new helper
-                const product = window.NavigatorCart.getProduct(item.id);
+                // ⚠️ CRITICAL: This relies on js/cart.js having the 'getProduct' update!
+                let product = null;
+                if (window.NavigatorCart && typeof window.NavigatorCart.getProduct === 'function') {
+                    product = window.NavigatorCart.getProduct(item.id);
+                }
                 
                 if (product) {
-                    // Create a container for this item
                     const itemDiv = document.createElement('div');
-                    itemDiv.className = "mb-4 pb-4 border-b border-gray-100 last:border-0";
+                    itemDiv.className = "download-item";
                     
-                    // Generate the Download Button HTML
-                    // We only show the button if a downloadUrl exists for this product
+                    // Only show button if URL exists
                     const downloadBtn = product.downloadUrl 
-                        ? `<a href="${product.downloadUrl}" target="_blank" class="inline-block mt-2 bg-green-100 text-green-800 text-sm font-bold px-4 py-2 rounded-lg hover:bg-green-200 transition">
-                             <i class="fa-solid fa-download mr-2"></i> Download PDF/Zip
+                        ? `<a href="${product.downloadUrl}" target="_blank" class="inline-flex items-center mt-2 bg-green-100 text-green-800 text-sm font-bold px-4 py-2 rounded-lg hover:bg-green-200 transition no-underline">
+                             <i class="fa-solid fa-download mr-2"></i> Download Now
                            </a>`
                         : '';
 
                     itemDiv.innerHTML = `
-                        <div class="flex items-start gap-3">
-                            <span class="text-2xl">${product.icon}</span>
-                            <div>
-                                <h4 class="font-bold text-gray-800">${product.name}</h4>
-                                ${downloadBtn}
-                            </div>
+                        <div class="text-2xl pt-1">${product.icon}</div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-gray-800 text-sm">${product.name}</h4>
+                            ${downloadBtn}
                         </div>
                     `;
                     orderList.appendChild(itemDiv);
@@ -197,10 +251,10 @@
             });
 
          } else {
-             // Fallback if they arrived here without buying (or cleared cache)
+             // Fallback if they arrived here without buying
              if(!sessionId) {
-                 document.querySelector('.subtitle').innerText = "Session expired or invalid. Please check your email for your receipt.";
-                 nextStepsContainer.style.display = 'none';
+                 // You might want to hide the "Next Steps" if they just stumbled here
+                 // nextStepsContainer.style.display = 'none';
              }
          }
 
@@ -212,3 +266,5 @@
          }
       });
    </script>
+</body>
+</html>
