@@ -1,26 +1,24 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: BULLETPROOF (Auto-loads styles & dependencies)
+   Status: LAUNCH READY - Fixed Navigation
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    ensureDependencies(); // 1. Load Tailwind/Icons if missing
-    injectHeader();       // 2. Build Header
-    injectFooter();       // 3. Build Footer
-    initMobileMenu();     // 4. Activate Buttons
+    ensureDependencies();
+    injectHeader();
+    injectFooter();
+    initMobileMenu();
     setTimeout(syncCartCount, 500);
 });
 
-// 1. DEPENDENCY CHECKER (Self-Repairing)
+// 1. DEPENDENCY CHECKER
 function ensureDependencies() {
-    // Check for Tailwind
     if (!document.querySelector('script[src*="tailwindcss"]')) {
         const script = document.createElement('script');
         script.src = "https://cdn.tailwindcss.com";
         document.head.appendChild(script);
     }
     
-    // Check for FontAwesome
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const link = document.createElement('link');
         link.rel = "stylesheet";
@@ -40,20 +38,22 @@ function injectHeader() {
              <span style="font-family: 'Merriweather', serif; font-weight: 700; color: #3D405B; font-size: 1.25rem;">Navigator Kids AI</span>
           </a>
 
-          <div class="hidden md:flex items-center gap-6 lg:gap-8" id="desktopMenu">
-             <a href="/#profiles" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline">Brain Profiles</a>
-             <a href="/tools/iep-advocate/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline">IEP Tool</a>
-             <a href="/resources/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline">Resources</a>
+          <div class="hidden md:flex items-center gap-5 lg:gap-6" id="desktopMenu">
+             <a href="/quiz/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Free Quiz</a>
+             <a href="/products/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Products</a>
+             <a href="/tools/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Free Tools</a>
+             <a href="/resources/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Resources</a>
+             <a href="/about/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">About</a>
              
-             <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F] no-underline mx-2">
+             <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F] no-underline mx-1">
                 <i class="fa-solid fa-cart-shopping text-lg"></i>
                 <span id="navCartCount" data-count="0" class="absolute -top-2 -right-2 bg-[#E07A5F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center" style="display:none">0</span>
              </a>
              
              <a href="/quiz/" 
-                style="background-color: #3D405B !important; color: #FFFFFF !important;" 
-                class="px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-md no-underline whitespace-nowrap">
-                Take the Quiz
+                style="background-color: #E07A5F !important; color: #FFFFFF !important;" 
+                class="px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-md no-underline whitespace-nowrap ml-2">
+                Take the Quiz →
              </a>
           </div>
 
@@ -65,26 +65,29 @@ function injectHeader() {
 
        <div class="hidden bg-white border-t border-gray-100 p-4 absolute w-full shadow-xl left-0 top-[76px]" id="mobileMenu">
           <a href="/quiz/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Free Quiz</a>
-          <a href="/tools/iep-advocate/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">IEP Tool</a>
+          <a href="/products/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Products</a>
+          <a href="/tools/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Free Tools</a>
           <a href="/resources/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Resources</a>
-          <a href="/cart/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Cart (<span id="mobileCartCount">0</span>)</a>
+          <a href="/about/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">About</a>
+          <a href="/contact/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Contact</a>
+          <a href="/cart/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">
+             Cart (<span id="mobileCartCount">0</span>)
+          </a>
           
           <a href="/quiz/" 
-             style="background-color: #3D405B !important; color: #FFFFFF !important;"
-             class="block mt-4 text-center py-3 rounded-lg font-bold">
-             Take Quiz
+             style="background-color: #E07A5F !important; color: #FFFFFF !important;"
+             class="block mt-4 text-center py-3 rounded-lg font-bold no-underline">
+             Take the Quiz →
           </a>
        </div>
     </nav>
     <div style="height: 76px; width: 100%;"></div>
     `;
 
-    // Inject Logic
     const placeholder = document.getElementById('header');
     if (placeholder) {
         placeholder.innerHTML = headerHTML;
     } else {
-        // Fallback: Inject at start of body if no placeholder exists
         if(!document.querySelector('nav#navbar')) {
             document.body.insertAdjacentHTML('afterbegin', headerHTML);
         }
@@ -96,31 +99,55 @@ function injectFooter() {
     if(document.querySelector('footer')) return; 
 
     const footerHTML = `
-    <footer class="bg-[#3D405B] text-[#F9F7F2] py-12 mt-auto relative z-10">
+    <footer class="bg-[#3D405B] text-[#F9F7F2] py-16 mt-auto relative z-10">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between gap-8 mb-8">
-                <div class="w-full md:w-1/3">
-                    <a href="/" class="flex items-center gap-2 mb-3 text-[#F9F7F2] no-underline">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <a href="/" class="flex items-center gap-2 mb-4 text-[#F9F7F2] no-underline">
                         <span class="text-2xl">🧭</span>
                         <span class="font-bold text-xl">Navigator Kids AI</span>
                     </a>
-                    <p class="text-sm opacity-80 max-w-xs leading-relaxed">Neuroscience-backed tools for the "spicy" brains we love.</p>
+                    <p class="text-sm opacity-80 leading-relaxed">Your child's brain didn't come with a manual. Until now.</p>
+                    <p class="text-xs opacity-60 mt-3">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
                 </div>
+                
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2]">Resources</h4>
-                    <a href="/quiz/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">Free Quiz</a>
-                    <a href="/tools/iep-advocate/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">IEP Tool</a>
-                    <a href="/resources/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">Articles</a>
+                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Quick Links</h4>
+                    <a href="/quiz/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Quiz</a>
+                    <a href="/free/de-escalation-kit/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Regulation Kit</a>
+                    <a href="/resources/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Articles</a>
+                    <a href="/tools/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Tools</a>
                 </div>
+                
+                <!-- Products -->
                 <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2]">Support</h4>
-                    <a href="/contact/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">Contact</a>
-                    <a href="/privacy/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">Privacy</a>
-                    <a href="/terms/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline">Terms</a>
+                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Products</h4>
+                    <a href="/products/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">All Products</a>
+                    <a href="/products/#systems" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Parent Systems</a>
+                    <a href="/products/#bundles" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Bundles</a>
+                    <a href="/products/#activity-packs" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Activity Packs</a>
+                </div>
+                
+                <!-- Company -->
+                <div>
+                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Company</h4>
+                    <a href="/about/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">About Us</a>
+                    <a href="/contact/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Contact</a>
+                    <a href="/terms/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Terms of Service</a>
+                    <a href="/privacy/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Privacy Policy</a>
                 </div>
             </div>
-            <div class="border-t border-[#F9F7F2]/10 pt-8 text-center text-xs opacity-60">
-                <p>&copy; ${new Date().getFullYear()} Navigator Kids AI. All Rights Reserved.</p>
+            
+            <div class="border-t border-[#F9F7F2]/10 pt-8 text-center">
+                <p class="text-sm opacity-60 mb-2">&copy; ${new Date().getFullYear()} Navigator Kids AI™. All rights reserved.</p>
+                <p class="text-xs opacity-40 max-w-2xl mx-auto leading-relaxed">
+                    <strong>Disclaimer:</strong> This website provides educational information for parents. 
+                    It is not a substitute for professional medical, psychological, or educational advice, 
+                    diagnosis, or treatment. Always seek the advice of qualified professionals.
+                </p>
             </div>
         </div>
     </footer>
@@ -138,18 +165,30 @@ function initMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         
         if (toggle && menu) {
-            // Clone to remove old listeners
             const newToggle = toggle.cloneNode(true);
             toggle.parentNode.replaceChild(newToggle, toggle);
             
             newToggle.addEventListener('click', (e) => {
                 e.stopPropagation(); 
                 menu.classList.toggle('hidden');
+                
+                // Toggle icon
+                const icon = newToggle.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
             });
             
             document.addEventListener('click', (e) => {
                 if (!menu.contains(e.target) && !newToggle.contains(e.target)) {
                     menu.classList.add('hidden');
+                    const icon = newToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
             });
         }
@@ -172,6 +211,7 @@ function syncCartCount() {
     const desktopBadge = document.getElementById('navCartCount');
     if (desktopBadge) {
         desktopBadge.innerText = count;
+        desktopBadge.dataset.count = count;
         desktopBadge.style.display = count > 0 ? 'flex' : 'none';
     }
 
