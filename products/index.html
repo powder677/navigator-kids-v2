@@ -4,189 +4,319 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Shop Tools | Navigator Kids AI</title>
-   
+   <title>Navigator Kids - The Neurodivergent Family System</title>
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
    
-   <link rel="stylesheet" href="/css/styles.css">
-
-   <script src="/js/components.js" defer></script>
    <script src="/js/cart.js" defer></script>
 
    <style>
-      /* Page-Specific Styles */
-      .shop-hero {
-         background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
-         padding: 4rem 0;
-         text-align: center;
-         border-bottom: 1px solid #eee;
+      :root {
+         --primary-color: #FF6B6B;
+         --secondary-color: #4ECDC4;
+         --accent-color: #FFE66D;
+         --text-color: #2D3748;
+         --bg-color: #F7FAFC;
       }
-      .product-card {
-         transition: transform 0.2s, box-shadow 0.2s;
-         border: 1px solid #f0f0f0;
+
+      body {
+         font-family: 'Nunito', sans-serif;
+         background-color: var(--bg-color);
+         color: var(--text-color);
       }
-      .product-card:hover {
-         transform: translateY(-4px);
-         box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+      h1, h2, h3, h4, .font-heading {
+         font-family: 'Fredoka', sans-serif;
+      }
+
+      .btn-primary {
+         background-color: var(--primary-color);
+         color: white;
+         transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+         background-color: #ff5252;
+         transform: translateY(-2px);
       }
    </style>
 </head>
 
-<body class="bg-[#F7FAFC] font-sans text-gray-800">
+<body class="antialiased">
 
-   <div id="header"></div>
+   <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+         <span class="text-2xl bg-slate-100 p-2 rounded-lg">🧭</span>
+         <span class="font-heading text-xl font-bold text-[#3D405B]">Navigator Kids AI</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+         <a href="/#profiles" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A]">Brain Profiles</a>
+         <a href="/tools/iep-advocate/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A]">IEP Tool</a>
+         <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F]">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-[#E07A5F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+         </a>
+         <a href="/quiz/" class="bg-[#3D405B] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition">Take the Quiz</a>
+      </div>
+   </div>
+</nav>
 
-   <main>
+<header class="container mx-auto px-4 py-12">
+   <div class="bg-gradient-to-r from-[#3D405B] to-[#2D3047] rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">⚖️</div>
       
-      <section class="shop-hero">
-         <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-bold text-[#2D3748] mb-4 font-serif">Shop Tools & Resources</h1>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto">
-               Neuroscience-backed tools to help your child thrive.
-            </p>
-         </div>
-      </section>
-
-      <div class="container mx-auto px-4 py-12">
-
-         <div class="bg-white rounded-2xl shadow-lg border-2 border-[#4ECDC4] overflow-hidden mb-16 max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-3">
-               <div class="md:col-span-2 p-10">
-                  <span class="bg-[#4ECDC4] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Best Value</span>
-                  <h2 class="text-3xl font-bold mb-4 text-[#2D3748]">The Complete Parent Rescue System</h2>
-                  <p class="text-gray-600 mb-6">
-                     Get the entire ecosystem. Includes all 6 Parent Guides (Meltdowns, Anxiety, IEP, etc.) plus all 6 Kid Activity Packets.
-                  </p>
-                  <ul class="space-y-2 mb-8">
-                     <li class="flex items-center text-gray-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> All 5 Core Parent Systems</li>
-                     <li class="flex items-center text-gray-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> All 6 Kid Activity Packets</li>
-                     <li class="flex items-center text-gray-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Lifetime Updates</li>
-                  </ul>
-                  <div class="flex items-center gap-4">
-                     <button onclick="window.NavigatorCart.add('prod-bundle-total')" class="bg-[#FF6B6B] hover:bg-[#ff5252] text-white px-8 py-3 rounded-xl font-bold text-lg transition shadow-md transform hover:-translate-y-1">
-                        Add Bundle to Cart
-                     </button>
-                     <span class="text-2xl font-bold text-[#2D3748]">$97</span>
-                     <span class="text-gray-400 line-through text-sm">$197 Value</span>
-                  </div>
+      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+         <div>
+            <span class="bg-[#81B29A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Essential Advocacy Tool</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading leading-tight">The IEP Advocacy System</h1>
+            <p class="text-slate-200 text-lg mb-8 leading-relaxed">Stop feeling intimidated in school meetings. Translate your parental instincts into "Educator Speak" and secure the accommodations your child deserves.</p>
+            
+            <div class="space-y-4 mb-10">
+               <div class="flex items-start gap-3">
+                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                  <p class="text-slate-300 text-sm"><strong>Professional Scripts:</strong> Language that bypasses school "gatekeeping."</p>
                </div>
-               <div class="bg-[#E6FFFA] p-10 flex items-center justify-center flex-col text-center border-l border-gray-100">
-                  <div class="text-6xl mb-4">🏆</div>
-                  <h3 class="font-bold text-[#2D3748]">Everything You Need</h3>
-                  <p class="text-sm text-gray-500 mt-2">Instant Digital Download</p>
+               <div class="flex items-start gap-3">
+                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                  <p class="text-slate-300 text-sm"><strong>Accommodation Matrix:</strong> Matched to your child's specific brain profile.</p>
                </div>
             </div>
-         </div>
 
-         <div class="flex items-center gap-3 mb-8">
-            <div class="bg-blue-100 p-2 rounded-lg text-blue-600 text-xl"><i class="fa-solid fa-book-open"></i></div>
-            <h2 class="text-2xl font-bold text-[#2D3748]">Parent Rescue Systems</h2>
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+               <button onclick="window.NavigatorCart.add('prod-system-iep')" class="w-full sm:w-auto bg-[#E07A5F] hover:bg-[#C96A52] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transform hover:-translate-y-1 transition-all">
+                  Get the System — $67
+               </button>
+               <div class="text-left">
+                  <p class="text-xs text-slate-400 uppercase tracking-tighter">One-time purchase</p>
+                  <p class="text-sm font-bold text-slate-200 italic">Includes Lifetime Updates</p>
+               </div>
+            </div>
          </div>
          
-         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            
-            <div class="product-card bg-white rounded-xl p-6 shadow-sm">
-               <div class="flex justify-between items-start mb-4">
-                  <div class="text-4xl">⚖️</div>
-                  <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">School</span>
-               </div>
-               <h3 class="text-xl font-bold text-gray-800 mb-2">IEP Advocacy System</h3>
-               <p class="text-gray-600 text-sm mb-6 h-12">
-                  Stop feeling intimidated. Scripts and templates to get your child the accommodations they deserve.
-               </p>
-               <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                  <span class="text-xl font-bold text-gray-800">$67</span>
-                  <button onclick="window.NavigatorCart.add('prod-system-iep')" class="text-blue-500 font-bold hover:underline">Add to Cart</button>
-               </div>
-            </div>
-
-            <div class="product-card bg-white rounded-xl p-6 shadow-sm">
-               <div class="flex justify-between items-start mb-4">
-                  <div class="text-4xl">🧯</div>
-                  <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-bold">Crisis</span>
-               </div>
-               <h3 class="text-xl font-bold text-gray-800 mb-2">Meltdown Navigation</h3>
-               <p class="text-gray-600 text-sm mb-6 h-12">
-                  De-escalation protocols for when logic leaves the room. Restore safety and connection fast.
-               </p>
-               <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                  <span class="text-xl font-bold text-gray-800">$37</span>
-                  <button onclick="window.NavigatorCart.add('prod-system-meltdown')" class="text-blue-500 font-bold hover:underline">Add to Cart</button>
+         <div class="hidden md:block">
+            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+               <div class="text-5xl mb-4">🛡️</div>
+               <h3 class="font-heading text-xl mb-2 text-white">Your Advocate’s Toolkit</h3>
+               <p class="text-slate-400 text-sm mb-6">Designed to level the playing field between parents and school districts.</p>
+               <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                     <span class="block text-xs font-bold text-[#81B29A]">50+</span>
+                     <span class="text-[10px] text-slate-300">Email Templates</span>
+                  </div>
+                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                     <span class="block text-xs font-bold text-[#81B29A]">100%</span>
+                     <span class="text-[10px] text-slate-300">Law Aligned</span>
+                  </div>
                </div>
             </div>
+         </div>
+      </div>
+   </div>
+</header>
 
-            <div class="product-card bg-white rounded-xl p-6 shadow-sm">
-               <div class="flex justify-between items-start mb-4">
-                  <div class="text-4xl">🤝</div>
-                  <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs font-bold">Social</span>
-               </div>
-               <h3 class="text-xl font-bold text-gray-800 mb-2">Social Navigation</h3>
-               <p class="text-gray-600 text-sm mb-6 h-12">
-                  Help them navigate friendships, rejection, and group play without hovering or shaming.
+   <section class="container mx-auto px-4 py-8">
+      <div class="flex items-center gap-3 mb-8">
+         <div class="bg-teal-100 p-2 rounded-lg text-teal-600 text-2xl">🧠</div>
+         <h2 class="text-3xl font-bold text-gray-800 font-heading">Parent Rescue Systems</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-blue-50 flex items-center justify-center text-6xl">⚖️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">IEP Advocacy System</h3>
+               <p class="text-xs font-bold text-blue-600 mb-3 uppercase tracking-wide">Level the Playing Field</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Stop feeling intimidated in school meetings. These prompts translate your parental instincts into "Educator Speak," ensuring your child gets the accommodations they legally deserve.
                </p>
-               <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                  <span class="text-xl font-bold text-gray-800">$47</span>
-                  <button onclick="window.NavigatorCart.add('prod-system-social')" class="text-blue-500 font-bold hover:underline">Add to Cart</button>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$67.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-system-iep')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
                </div>
             </div>
-
          </div>
 
-         <div class="flex items-center gap-3 mb-8">
-            <div class="bg-orange-100 p-2 rounded-lg text-orange-600 text-xl"><i class="fa-solid fa-puzzle-piece"></i></div>
-            <h2 class="text-2xl font-bold text-[#2D3748]">Kid Activity Packets ($9)</h2>
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-green-50 flex items-center justify-center text-6xl">🚦</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Social Navigation</h3>
+               <p class="text-xs font-bold text-green-600 mb-3 uppercase tracking-wide">Coach, Don't Hover</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  It’s painful to watch your child on the sidelines. These scripts help you role-play social entry, handle rejection, and build friendship skills without making them feel self-conscious.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$47.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-system-social')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
          </div>
 
-         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="product-card bg-white rounded-xl p-5 shadow-sm">
-               <div class="text-4xl mb-3">🦁</div>
-               <h4 class="font-bold text-gray-800 mb-1">Bravely the Lion</h4>
-               <p class="text-xs text-gray-500 mb-4">For Anxiety & Fear</p>
-               <div class="flex justify-between items-center">
-                  <span class="font-bold">$9.00</span>
-                  <button onclick="window.NavigatorCart.add('prod-packet-bravely')" class="text-[#FF6B6B] font-bold text-sm hover:underline">Add +</button>
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-red-50 flex items-center justify-center text-6xl">🧯</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Meltdown Navigation</h3>
+               <p class="text-xs font-bold text-red-600 mb-3 uppercase tracking-wide">The Emergency Brake</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  For moments when logic leaves the room. Get step-by-step de-escalation protocols to transform a 45-minute explosion into a moment of co-regulation and safety.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$37.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-system-meltdown')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
                </div>
             </div>
+         </div>
 
-            <div class="product-card bg-white rounded-xl p-5 shadow-sm">
-               <div class="text-4xl mb-3">🚀</div>
-               <h4 class="font-bold text-gray-800 mb-1">Cosmo Space Pup</h4>
-               <p class="text-xs text-gray-500 mb-4">For Big Picture Thinkers</p>
-               <div class="flex justify-between items-center">
-                  <span class="font-bold">$9.00</span>
-                  <button onclick="window.NavigatorCart.add('prod-packet-cosmo')" class="text-[#FF6B6B] font-bold text-sm hover:underline">Add +</button>
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-yellow-50 flex items-center justify-center text-6xl">☀️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Morning Launch System</h3>
+               <p class="text-xs font-bold text-yellow-600 mb-3 uppercase tracking-wide">From Chaos to Quiet</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Bedtime and mornings are often battles. Use these "safety signals" and executive function scaffolds to lower your child's defenses and secure a peaceful routine.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$27.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-system-morning')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
                </div>
             </div>
+         </div>
 
-            <div class="product-card bg-white rounded-xl p-5 shadow-sm">
-               <div class="text-4xl mb-3">🔥</div>
-               <h4 class="font-bold text-gray-800 mb-1">Ember the Dragon</h4>
-               <p class="text-xs text-gray-500 mb-4">For Intense Feelers</p>
-               <div class="flex justify-between items-center">
-                  <span class="font-bold">$9.00</span>
-                  <button onclick="window.NavigatorCart.add('prod-packet-ember')" class="text-[#FF6B6B] font-bold text-sm hover:underline">Add +</button>
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-purple-50 flex items-center justify-center text-6xl">🕵️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Junior Agent Workbook</h3>
+               <p class="text-xs font-bold text-purple-600 mb-3 uppercase tracking-wide">Stop the Spiral</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Break the reassurance loop. A gamified workbook that teaches your child neuroscience-backed "Bio-Hacks" to stop panic attacks instantly.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$19.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-workbook-anxiety')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
                </div>
             </div>
-
-            <div class="product-card bg-white rounded-xl p-5 shadow-sm">
-               <div class="text-4xl mb-3">🐢</div>
-               <h4 class="font-bold text-gray-800 mb-1">Shelly the Turtle</h4>
-               <p class="text-xs text-gray-500 mb-4">For Reluctant Starters</p>
-               <div class="flex justify-between items-center">
-                  <span class="font-bold">$9.00</span>
-                  <button onclick="window.NavigatorCart.add('prod-packet-shelly')" class="text-[#FF6B6B] font-bold text-sm hover:underline">Add +</button>
-               </div>
-            </div>
-
          </div>
 
       </div>
-   </main>
+   </section>
 
-   <div id="footer"></div>
+   <section class="container mx-auto px-4 py-12">
+      <div class="flex items-center gap-3 mb-8">
+         <div class="bg-orange-100 p-2 rounded-lg text-orange-600 text-2xl">🦁</div>
+         <div>
+            <h2 class="text-3xl font-bold text-gray-800 font-heading">Kid Activity Packets</h2>
+            <p class="text-gray-500 text-sm">Game + Printable Field Guide</p>
+         </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🦁</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Bravely the Lion</h4>
+              <p class="text-xs font-bold text-orange-500 uppercase mb-2">Find Your Roar</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Courage isn't the absence of fear. Use "Shrink Ray" games to shrink worry monsters down to size.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-bravely')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🚀</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Cosmo Space Pup</h4>
+              <p class="text-xs font-bold text-purple-500 uppercase mb-2">Channel the Energy</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Turn "distracted" into "observant." Give hyper-curious kids a way to document discoveries.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-cosmo')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🔥</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Ember the Dragon</h4>
+              <p class="text-xs font-bold text-red-500 uppercase mb-2">Cool Down the Lava</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Anger is just fuel. Ember helps kids recognize the "rumble" before the explosion.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-ember')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🐢</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Shelly the Turtle</h4>
+              <p class="text-xs font-bold text-green-500 uppercase mb-2">A Shell for the Noise</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  The world is loud. Shelly teaches sensory regulation and "turtle time" to recharge.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-shelly')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🦉</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Sketch the Owl</h4>
+              <p class="text-xs font-bold text-yellow-500 uppercase mb-2">The "Good Enough" Guide</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  For the child who rips up their paper. Sketch teaches the art of the "Beautiful Oops."
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-sketch')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🐰</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Whisper the Bunny</h4>
+              <p class="text-xs font-bold text-pink-500 uppercase mb-2">The Power of Soft Skills</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  You don't have to be loud to be a leader. Whisper helps quiet kids set boundaries.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod-packet-whisper')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+      </div>
+   </section>
+
+   <footer class="bg-white border-t mt-12 py-8">
+      <div class="container mx-auto px-4 text-center">
+         <p class="text-gray-400 text-sm">© 2026 Navigator Kids AI. All Rights Reserved.</p>
+         <div class="mt-4 flex justify-center gap-4 text-sm text-gray-500">
+             <a href="/privacy/" class="hover:text-[#FF6B6B]">Privacy Policy</a>
+             <a href="/terms/" class="hover:text-[#FF6B6B]">Terms of Service</a>
+             <a href="/contact/" class="hover:text-[#FF6B6B]">Contact Support</a>
+         </div>
+      </div>
+   </footer>
+
+   <script>
+      window.addEventListener('cartUpdated', function(e) {
+         const count = e.detail.count;
+         const badge = document.getElementById('cart-count');
+         if(badge) badge.innerText = count;
+      });
+      // Init Check
+      if(window.NavigatorCart) {
+         const badge = document.getElementById('cart-count');
+         if(badge) badge.innerText = window.NavigatorCart.getItemCount();
+      }
+   </script>
 
 </body>
 </html>
