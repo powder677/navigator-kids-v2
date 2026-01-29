@@ -1,210 +1,84 @@
-/* ============================================
-   NAVIGATOR KIDS AI - CART SYSTEM (FINAL LAUNCH VERSION)
-   Status: SYNCED with Stripe Backend
-   ============================================ */
+// api/create-checkout.js
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-(function() {
-    'use strict';
-    const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
+// 🔒 PRODUCT MAP
+// Maps frontend IDs (from cart.js) to Stripe Price IDs (from your CSV)
+// STATUS: SYNCED with js/cart.js (Final Launch Version)
+const PRODUCT_MAP = {
+  // === TIER 4: BUNDLES ===
+  'prod_bundle_total': { 
+     priceId: 'price_1Suhv9Ax6JDn4AuAVwA91AvY', // $97.00
+     name: 'Navigator Total Access Bundle' 
+  },
+  'prod_bundle_school': { 
+     priceId: 'price_1SuhueAx6JDn4AuAfhofkzaX', // $79.00
+     name: 'School Success Bundle' 
+  },
+  'prod_bundle_peace': { 
+     priceId: 'price_1SuhtzAx6JDn4AuA2TfH029k', // $57.00
+     name: 'Peace at Home Bundle' 
+  },
 
-    // 🔒 PRODUCT CATALOG
-    // CRITICAL: These IDs must match the keys in api/create-checkout.js
-    const PRODUCTS = {
-        // === TIER 4: BUNDLES ===
-        'prod_bundle_total': {
-            id: 'prod_bundle_total',
-            name: 'Navigator Total Access Bundle',
-            description: 'The Complete Ecosystem. All Systems + Bonuses.',
-            price: 97.00,
-            originalPrice: 197.00,
-            icon: '🏆',
-            downloadUrl: '/downloads/bundles/total-access-pass.zip', 
-            isBundle: true,
-            isNew: true
-        },
-        'prod_bundle_school': {
-            id: 'prod_bundle_school',
-            name: 'School Success Bundle',
-            description: 'IEP Advocacy + Social Navigation System.',
-            price: 79.00,
-            icon: '🎓',
-            downloadUrl: '/downloads/bundles/school-success.zip',
-            isBundle: true
-        },
-        'prod_bundle_peace': {
-            id: 'prod_bundle_peace',
-            name: 'Peace at Home Bundle',
-            description: 'Meltdown System + Morning Launch + Anxiety Workbook.',
-            price: 57.00,
-            icon: '🏠',
-            downloadUrl: '/downloads/bundles/peace-at-home.zip',
-            isBundle: true
-        },
+  // === TIER 3: CORE SYSTEMS ===
+  'prod_system_iep': { 
+     priceId: 'price_1St7A4Ax6JDn4AuAKnk66CbV', // $67.00
+     name: 'The IEP Advocacy System' 
+  },
+  'prod_system_social': { 
+     priceId: 'price_1SuhsEAx6JDn4AuA3a1nMcc5', // $47.00
+     name: 'The Social Navigation System' 
+  },
+  'prod_system_meltdown': { 
+     priceId: 'price_1SuhrLAx6JDn4AuAyRLk8vms', // $37.00
+     name: 'The Meltdown Navigation System' 
+  },
 
-        // === TIER 3: CORE SYSTEMS ===
-        'prod_system_iep': {
-            id: 'prod_system_iep',
-            name: 'The IEP Advocacy System',
-            price: 67.00,
-            icon: '⚖️',
-            downloadUrl: '/downloads/systems/The_IEP_Advocacy_System_Premium.pdf'
-        },
-        'prod_system_social': {
-            id: 'prod_system_social',
-            name: 'The Social Navigation System',
-            price: 47.00,
-            icon: '🚦',
-            downloadUrl: '/downloads/systems/Social_Navigation_System_Final_26Page.pdf'
-        },
-        'prod_system_meltdown': {
-            id: 'prod_system_meltdown',
-            name: 'The Meltdown Navigation System',
-            price: 37.00,
-            icon: '🧯',
-            downloadUrl: '/downloads/systems/The_2e_Meltdown_Navigation_System.pdf'
-        },
+  // === TIER 2: QUICK WINS ===
+  'prod_system_morning': { 
+     priceId: 'price_1SuhqZAx6JDn4AuAfkkZGZVK', // $27.00
+     name: 'The Morning Launch System' 
+  },
+  'prod_workbook_anxiety': { 
+     priceId: 'price_1St7AnAx6JDn4AuAXsfJWw2B', // $19.00
+     name: 'Junior Agent Anxiety Workbook' 
+  },
 
-        // === TIER 2: QUICK WINS ===
-        'prod_system_morning': {
-            id: 'prod_system_morning',
-            name: 'The Morning Launch System',
-            price: 27.00,
-            icon: '☀️',
-            downloadUrl: '/downloads/systems/The_Morning_Launch_System_Prompt_Library.pdf'
-        },
-        'prod_workbook_anxiety': {
-            id: 'prod_workbook_anxiety',
-            name: 'Junior Agent Anxiety Workbook',
-            price: 19.00,
-            icon: '🕵️',
-            downloadUrl: '/downloads/systems/Junior_Agent_Anxiety_Workbook_Final.pdf'
-        },
+  // === TIER 1: ACTIVITY PACKETS ($9.00) ===
+  'prod_packet_bravely': { priceId: 'price_1St7BMAx6JDn4AuA1rqRIFyg', name: 'Activity Pack: Bravely the Lion' },
+  'prod_packet_cosmo': { priceId: 'price_1SuhkFAx6JDn4AuAMEP5PVXz', name: 'Activity Pack: Cosmo' },
+  'prod_packet_ember': { priceId: 'price_1SuhlFAx6JDn4AuAlUVVw44I', name: 'Activity Pack: Ember' },
+  'prod_packet_shelly': { priceId: 'price_1SuhmEAx6JDn4AuAwdQy0Y10', name: 'Activity Pack: Shelly' },
+  'prod_packet_sketch': { priceId: 'price_1Suhn5Ax6JDn4AuAYk7igvIL', name: 'Activity Pack: Sketch' },
+  'prod_packet_whisper': { priceId: 'price_1SuhnqAx6JDn4AuACe9s9Qya', name: 'Activity Pack: Whisper' }
+};
 
-        // === TIER 1: ACTIVITY PACKETS ($9.00) ===
-        'prod_packet_bravely': {
-            id: 'prod_packet_bravely',
-            name: 'Activity Pack: Bravely the Lion',
-            description: 'Game + Field Guide for Bold Explorers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'bold-explorer',
-            icon: '🦁',
-            downloadUrl: '/downloads/activity-packets/bravely-kit.zip'
-        },
-        'prod_packet_cosmo': {
-            id: 'prod_packet_cosmo',
-            name: 'Activity Pack: Cosmo',
-            description: 'Game + Mission for Big Picture Thinkers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'big-picture-thinker',
-            icon: '🚀',
-            downloadUrl: '/downloads/activity-packets/cosmo-kit.zip'
-        },
-        'prod_packet_ember': {
-            id: 'prod_packet_ember',
-            name: 'Activity Pack: Ember',
-            description: 'Game + Guide for Intense Feelers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'intense-feeler',
-            icon: '🔥',
-            downloadUrl: '/downloads/activity-packets/ember-kit.zip'
-        },
-        'prod_packet_shelly': {
-            id: 'prod_packet_shelly',
-            name: 'Activity Pack: Shelly',
-            description: 'Game + Guide for Reluctant Starters',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'reluctant-starter',
-            icon: '🐢',
-            downloadUrl: '/downloads/activity-packets/shelly-kit.zip'
-        },
-        'prod_packet_sketch': {
-            id: 'prod_packet_sketch',
-            name: 'Activity Pack: Sketch',
-            description: 'Game + Guide for Deep Divers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'deep-diver',
-            icon: '🦉',
-            downloadUrl: '/downloads/activity-packets/sketch-kit.zip'
-        },
-        'prod_packet_whisper': {
-            id: 'prod_packet_whisper',
-            name: 'Activity Pack: Whisper',
-            description: 'Game + Guide for Sensitive Observers',
-            price: 9.00,
-            category: 'activity-packet',
-            profile: 'sensitive-observer',
-            icon: '🐰',
-            downloadUrl: '/downloads/activity-packets/whisper-kit.zip'
-        }
-    };
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-    // [KEEP CART CLASS LOGIC BELOW]
-    // Copy the rest of the Cart Class (constructor, add, remove, etc.) from your previous file.
-    // ...
-    
-    // --- MINIFIED CART CLASS FOR CONTEXT ---
-    class Cart {
-        constructor() { this.items = this.load(); }
-        load() { try { return JSON.parse(localStorage.getItem(CART_CONFIG.storageKey) || '[]'); } catch (e) { return []; } }
-        save() { localStorage.setItem(CART_CONFIG.storageKey, JSON.stringify(this.items)); this.dispatchUpdate(); }
-        dispatchUpdate() { window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { items: this.items, count: this.getItemCount(), total: this.getTotal() } })); }
-        add(productId, quantity = 1) {
-            const product = PRODUCTS[productId];
-            if (!product) return false;
-            const existing = this.items.find(i => i.id === productId);
-            if (existing) existing.quantity += quantity;
-            else this.items.push({ id: productId, quantity, addedAt: new Date().toISOString() });
-            this.save(); this.showAddedNotification(product); return true;
-        }
-        remove(productId) {
-            const idx = this.items.findIndex(i => i.id === productId);
-            if (idx > -1) { this.items.splice(idx, 1); this.save(); }
-        }
-        getItems() { return this.items.map(i => ({ ...i, product: PRODUCTS[i.id] })).filter(i => i.product); }
-        getItemCount() { return this.items.reduce((t, i) => t + i.quantity, 0); }
-        getTotal() { return this.items.reduce((t, i) => t + (PRODUCTS[i.id]?.price || 0) * i.quantity, 0); }
-        isEmpty() { return this.items.length === 0; }
-        
-        // Notification
-        showAddedNotification(product) { 
-             // ... keep your notification logic ...
-             alert(product.name + " added to cart!"); 
-        }
-    }
+  try {
+    const { items, successUrl, cancelUrl } = req.body;
+    if (!items || items.length === 0) return res.status(400).json({ error: 'Cart is empty' });
 
-    // Checkout Function
-    function checkout() {
-        if (cart.isEmpty()) return alert('Cart is empty');
-        
-        // Show loading state
-        const checkoutBtn = document.querySelector('.cart-summary button');
-        if(checkoutBtn) checkoutBtn.innerText = "Processing...";
+    const lineItems = items.map(item => {
+      const product = PRODUCT_MAP[item.id];
+      if (!product) throw new Error(`Invalid product ID: ${item.id}`);
+      return { price: product.priceId, quantity: parseInt(item.quantity) || 1 };
+    });
 
-        const data = { items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), total: cart.getTotal() };
-        
-        fetch('/api/create-checkout', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(session => {
-            if(session.error) alert("Checkout Error: " + session.error);
-            else if(session.id) window.Stripe('YOUR_PUBLIC_KEY_HERE').redirectToCheckout({ sessionId: session.id });
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Network Error. Please try again.");
-            if(checkoutBtn) checkoutBtn.innerText = "Checkout ->";
-        });
-    }
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: successUrl || 'https://navigatorkids.ai/thank-you',
+      cancel_url: cancelUrl || 'https://navigatorkids.ai/cart',
+      allow_promotion_codes: true,
+      metadata: { source: 'navigator_v2_launch', product_ids: items.map(i => i.id).join(',') }
+    });
 
-    // Init
-    const cart = new Cart();
-    window.NavigatorCart = { add: (id) => cart.add(id), remove: (id) => cart.remove(id), checkout, getItemCount: () => cart.getItemCount() };
-})();
+    res.status(200).json({ id: session.id });
+  } catch (error) {
+    console.error('Stripe Error:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
