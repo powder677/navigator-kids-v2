@@ -7,13 +7,17 @@
    <meta name="description" content="Understand your twice-exceptional (2e) child's unique brain in 3 minutes. Free quiz + practical tools for parents of bright kids who struggle.">
    <title>Navigator Kids AI™ | Understand Your 2e Child's Unique Brain</title>
 
-  <link rel="stylesheet" href="/css/styles.css"> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
- <script src="/js/components.js" defer></script>
-  <script src="/js/cart.js" defer></script>
-   
-  <script type="application/ld+json">
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <script src="/js/components.js" defer></script>
+   <script src="/js/cart.js" defer></script>
+
+   <script type="application/ld+json">
       {
          "@context": "https://schema.org",
          "@type": "EducationalOrganization",
@@ -82,7 +86,7 @@
          background-color: var(--cream);
          color: var(--text);
          line-height: 1.7;
-         padding-top: var(--nav-height);
+         /* 3. Removed padding-top here because Tailwind header is sticky/handled by component logic */
          -webkit-font-smoothing: antialiased;
       }
 
@@ -204,91 +208,11 @@
       }
 
       /* =========================================
-           3. Navigation
-           ========================================= */
-      .navbar {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: var(--nav-height);
-         background: var(--white);
-         box-shadow: var(--shadow-sm);
-         z-index: 1000;
-      }
-
-      .nav-content {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         height: 100%;
-      }
-
-      .logo {
-         display: flex;
-         align-items: center;
-         gap: 0.5rem;
-         font-family: var(--font-heading);
-         font-weight: 700;
-         font-size: 1.35rem;
-         color: var(--navy);
-      }
-
-      .logo-icon {
-         width: 36px;
-         height: 36px;
-         background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
-         border-radius: 10px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 1.25rem;
-      }
-
-      .nav-links {
-         display: flex;
-         align-items: center;
-         gap: 2rem;
-      }
-
-      .nav-links a {
-         font-weight: 500;
-         color: var(--text);
-      }
-
-      .nav-links a:hover {
-         color: var(--terracotta);
-      }
-
-      .nav-btn {
-         padding: 0.65rem 1.25rem;
-         font-size: 0.9rem;
-      }
-
-      /* Mobile Nav Toggle */
-      .nav-toggle {
-         display: none;
-         background: none;
-         border: none;
-         cursor: pointer;
-         padding: 0.5rem;
-      }
-
-      .nav-toggle span {
-         display: block;
-         width: 24px;
-         height: 2px;
-         background: var(--navy);
-         margin: 5px 0;
-         transition: all 0.3s ease;
-      }
-
-      /* =========================================
            4. Hero Section
            ========================================= */
       .hero {
          position: relative;
-         padding: 4rem 0 5rem;
+         padding: 8rem 0 5rem; /* Increased top padding to account for fixed header */
          overflow: hidden;
       }
 
@@ -447,7 +371,7 @@
       }
 
       /* =========================================
-           5.5 NEW: Premium Advocacy Section
+           5.5 PREMIUM ADVOCACY SECTION
            ========================================= */
       .advocacy-section {
          padding: var(--section-padding) 0;
@@ -731,7 +655,7 @@
       }
 
       /* =========================================
-           8. Free Kit Section (Teaser - Keep as is or remove if redundant)
+           8. Free Kit Section (Teaser)
            ========================================= */
       .free-kit {
          padding: var(--section-padding) 0;
@@ -904,75 +828,6 @@
       }
 
       /* =========================================
-           10. Footer
-           ========================================= */
-      .footer {
-         background: var(--navy);
-         color: var(--cream);
-         padding: 3rem 0 2rem;
-      }
-
-      .footer-content {
-         display: flex;
-         justify-content: space-between;
-         align-items: flex-start;
-         flex-wrap: wrap;
-         gap: 2rem;
-         margin-bottom: 2rem;
-      }
-
-      .footer-brand .logo {
-         color: var(--cream);
-         margin-bottom: 0.75rem;
-      }
-
-      .footer-brand p {
-         font-size: 0.9rem;
-         opacity: 0.8;
-         max-width: 280px;
-      }
-
-      .footer-links h4 {
-         color: var(--cream);
-         font-size: 0.9rem;
-         font-weight: 600;
-         margin-bottom: 1rem;
-         font-family: var(--font-body);
-      }
-
-      .footer-links a {
-         display: block;
-         font-size: 0.9rem;
-         opacity: 0.7;
-         margin-bottom: 0.5rem;
-      }
-
-      .footer-links a:hover {
-         opacity: 1;
-         color: var(--sage-light);
-      }
-
-      .footer-bottom {
-         padding-top: 2rem;
-         border-top: 1px solid rgba(249, 247, 242, 0.1);
-         text-align: center;
-      }
-
-      .footer-bottom p {
-         font-size: 0.85rem;
-         opacity: 0.6;
-         margin-bottom: 0.5rem;
-      }
-
-      .footer-disclaimer {
-         font-size: 0.8rem;
-         opacity: 0.5;
-         max-width: 700px;
-         margin: 0 auto;
-         line-height: 1.5;
-      }
-
-      /* =========================================
            11. Responsive
            ========================================= */
       @media (max-width: 1024px) {
@@ -1048,42 +903,13 @@
          .hero-cta .btn {
             width: 100%;
          }
-
-         .footer-content {
-            flex-direction: column;
-            text-align: center;
-         }
-
-         .footer-brand p {
-            margin: 0 auto;
-         }
       }
    </style>
 </head>
 
 <body>
 
-   <nav class="navbar">
-      <div class="container nav-content">
-         <a href="/" class="logo">
-            <span class="logo-icon">🧭</span>
-            Navigator Kids AI
-         </a>
-
-         <div class="nav-links">
-            <a href="#profiles">Brain Profiles</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="resources/">Resources</a>
-            <a href="quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
-         </div>
-
-         <button class="nav-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-         </button>
-      </div>
-   </nav>
+   <div id="header"></div>
 
    <header class="hero">
       <div class="hero-bg">
@@ -1356,51 +1182,7 @@
       </div>
    </section>
 
-   <footer class="footer">
-      <div class="container">
-         <div class="footer-content">
-            <div class="footer-brand">
-               <a href="/" class="logo">
-                  <span class="logo-icon">🧭</span>
-                  Navigator Kids AI
-               </a>
-               <p>Your child's brain didn't come with a manual. Until now.</p>
-            </div>
-
-            <div class="footer-links">
-               <h4>Resources</h4>
-               <a href="quiz/">Free Quiz</a>
-               <a href="free/de-escalation-kit/">De-Escalation-Kit</a>
-               <a href="resources/">Articles</a>
-            </div>
-
-            <div class="footer-links">
-               <h4>Company</h4>
-               <a href="about/">About Us</a>
-               <a href="contact/">Contact</a>
-               <a href="terms/">Terms</a>
-               <a href="privacy/">Privacy</a>
-            </div>
-         </div>
-
-         <div class="footer-bottom">
-            <p>© 2026 Navigator Kids AI™. All rights reserved.</p>
-            <p class="footer-disclaimer">
-               <strong>Disclaimer:</strong> This website provides educational information for parents.
-               It is not a substitute for professional medical, psychological, or educational advice, diagnosis, or treatment.
-            </p>
-         </div>
-      </div>
-   </footer>
-
-   <script>
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-
-      navToggle.addEventListener('click', () => {
-         navLinks.classList.toggle('active');
-      });
-   </script>
+   <div id="footer"></div>
 
 </body>
 
