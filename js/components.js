@@ -54,10 +54,14 @@ function injectHeader() {
     `;
 
     // Try to find a placeholder, otherwise prepend to body
+    // This logic ensures it works even if you don't have <div id="header">
     const placeholder = document.getElementById('header');
     if (placeholder) {
         placeholder.innerHTML = headerHTML;
     } else {
+        // Remove any EXISTING nav first to prevent duplicates
+        const existingNav = document.querySelector('nav');
+        if (existingNav) existingNav.remove();
         document.body.insertAdjacentHTML('afterbegin', headerHTML);
     }
 }
@@ -109,10 +113,10 @@ function injectFooter() {
     if (placeholder) {
         placeholder.innerHTML = footerHTML;
     } else {
-        // Prevent duplicate footers
-        if (!document.querySelector('footer')) {
-            document.body.insertAdjacentHTML('beforeend', footerHTML);
-        }
+        // Remove any EXISTING footer first
+        const existingFooter = document.querySelector('footer');
+        if (existingFooter) existingFooter.remove();
+        document.body.insertAdjacentHTML('beforeend', footerHTML);
     }
 }
 
@@ -123,12 +127,11 @@ function initMobileMenu() {
 
     if (toggle && menu) {
         toggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent immediate closing
+            e.stopPropagation(); 
             toggle.classList.toggle('active');
             menu.classList.toggle('active');
         });
 
-        // Close when clicking outside
         document.addEventListener('click', (e) => {
             if (!menu.contains(e.target) && !toggle.contains(e.target)) {
                 toggle.classList.remove('active');
@@ -138,27 +141,23 @@ function initMobileMenu() {
     }
 }
 
-// 4. CART COUNT SYNC (Connects with your cart.js)
+// 4. CART COUNT SYNC
 function updateCartCount() {
     const cartData = localStorage.getItem('navigatorCart');
     const cart = cartData ? JSON.parse(cartData) : [];
     const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
-    // Update Desktop Badge
     const desktopBadge = document.getElementById('navCartCount');
     if (desktopBadge) {
         desktopBadge.innerText = count;
         desktopBadge.setAttribute('data-count', count);
-        // Hide if 0 (CSS handles this via :empty or data-count, but let's be safe)
         desktopBadge.style.display = count > 0 ? 'flex' : 'none';
     }
 
-    // Update Mobile Text
     const mobileText = document.getElementById('mobileCartCount');
     if (mobileText) mobileText.innerText = count;
 }
 
-// Listen for updates from cart.js
 window.addEventListener('cartUpdated', updateCartCount);
 
 // 5. ACTIVE LINK HIGHLIGHTER
