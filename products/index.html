@@ -4,16 +4,14 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Products - Navigator Kids</title>
-   <!-- Tailwind CSS for rapid styling -->
+   <title>Navigator Kids - The Neurodivergent Family System</title>
    <script src="https://cdn.tailwindcss.com"></script>
-   <!-- Font Awesome for Icons -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <!-- Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+   
+   <script src="/js/cart.js" defer></script>
 
    <style>
-      /* Custom Styles to match a Kids Theme */
       :root {
          --primary-color: #FF6B6B;
          --secondary-color: #4ECDC4;
@@ -28,602 +26,301 @@
          color: var(--text-color);
       }
 
-      h1,
-      h2,
-      h3,
-      h4,
-      .font-heading {
+      h1, h2, h3, h4, .font-heading {
          font-family: 'Fredoka', sans-serif;
       }
 
       .btn-primary {
          background-color: var(--primary-color);
          color: white;
-         transition: transform 0.2s, box-shadow 0.2s;
+         transition: all 0.3s ease;
       }
 
       .btn-primary:hover {
-         transform: translateY(-2px);
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
          background-color: #ff5252;
-      }
-
-      .product-card {
-         transition: all 0.3s ease;
-         border: 2px solid transparent;
-      }
-
-      .product-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-         border-color: var(--secondary-color);
-      }
-
-      /* Specific style for Rescue Prompts to make them distinct */
-      .prompt-card {
-         border: 1px solid #e2e8f0;
-         background: white;
-         transition: all 0.3s ease;
-      }
-
-      .prompt-card:hover {
-         border-color: #667eea;
-         box-shadow: 0 10px 20px rgba(102, 126, 234, 0.1);
-         transform: translateY(-3px);
-      }
-
-      .blob-shape {
-         position: absolute;
-         z-index: -1;
-         opacity: 0.1;
+         transform: translateY(-2px);
       }
    </style>
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="antialiased">
 
-   <!-- Header (Simulated based on your site structure) -->
-   <header class="bg-white shadow-sm sticky top-0 z-50">
+   <nav class="bg-white shadow-sm sticky top-0 z-50">
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-         <a href="../index.html" class="flex items-center gap-2 group">
-            <i class="fa-solid fa-compass text-3xl text-[#FF6B6B] group-hover:rotate-45 transition-transform duration-300"></i>
-            <span class="font-heading text-2xl font-bold text-gray-800">Navigator<span class="text-[#4ECDC4]">Kids</span></span>
-         </a>
-
-         <!-- Mobile Menu Button -->
-         <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none">
-            <i class="fa-solid fa-bars text-2xl"></i>
-         </button>
-
-         <!-- Desktop Nav -->
-         <nav class="hidden md:flex items-center gap-8 font-medium text-gray-600">
-            <a href="../index.html" class="hover:text-[#FF6B6B] transition-colors">Home</a>
-            <a href="../about/index.html" class="hover:text-[#FF6B6B] transition-colors">About</a>
-            <a href="index.html" class="text-[#FF6B6B]">Shop</a>
-            <a href="../resources/index.html" class="hover:text-[#FF6B6B] transition-colors">Resources</a>
-            <a href="../cart/index.html" class="relative group">
-               <i class="fa-solid fa-cart-shopping text-xl group-hover:text-[#FF6B6B] transition-colors"></i>
-               <span id="cart-count" class="absolute -top-2 -right-2 bg-[#FF6B6B] text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+         <div class="flex items-center gap-2">
+            <span class="text-3xl">🧭</span>
+            <span class="font-heading text-xl font-bold text-gray-800">Navigator Kids</span>
+         </div>
+         <div class="flex items-center gap-6">
+            <a href="/cart/" class="relative hover:text-[#FF6B6B] transition">
+               <i class="fa-solid fa-cart-shopping text-xl"></i>
+               <span id="cart-count" class="absolute -top-2 -right-2 bg-[#FF6B6B] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
             </a>
-         </nav>
+         </div>
       </div>
+   </nav>
 
-      <!-- Mobile Nav Menu (Hidden by default) -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col gap-4">
-         <a href="../index.html" class="block py-2">Home</a>
-         <a href="../about/index.html" class="block py-2">About</a>
-         <a href="index.html" class="block py-2 text-[#FF6B6B] font-bold">Shop</a>
-         <a href="../resources/index.html" class="block py-2">Resources</a>
-         <a href="../cart/index.html" class="block py-2">Cart</a>
+   <header class="container mx-auto px-4 py-12">
+      <div class="bg-gradient-to-r from-[#2D3748] to-[#1a202c] rounded-2xl shadow-2xl p-8 text-white relative overflow-hidden">
+         <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">🏆</div>
+         
+         <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+               <span class="bg-[#FF6B6B] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Best Value</span>
+               <h2 class="text-3xl md:text-4xl font-bold mb-2 font-heading">The Complete Parent Rescue System</h2>
+               <p class="text-gray-300 text-lg mb-6">The "I'm Ready for Anything" Toolkit.</p>
+               
+               <div class="space-y-3 mb-8">
+                  <p class="flex items-start text-gray-300">
+                     <span class="text-green-400 mr-2 text-xl">✓</span>
+                     <span><strong>Stop Guessing:</strong> Whether it's a meltdown at 4 PM, homework at 6 PM, or sleep at 9 PM, have the exact script in your pocket.</span>
+                  </p>
+                  <p class="flex items-start text-gray-300">
+                     <span class="text-green-400 mr-2 text-xl">✓</span>
+                     <span><strong>Includes Everything:</strong> All 5 Parent Systems + All 6 Kid Activity Packets.</span>
+                  </p>
+               </div>
+
+               <div class="flex flex-col sm:flex-row items-center gap-4">
+                  <div>
+                     <span class="text-4xl font-bold text-white">$97.00</span>
+                     <span class="text-gray-400 text-sm line-through block">$197 Value</span>
+                  </div>
+                  <button onclick="window.NavigatorCart.add('prod_bundle_total')" class="w-full sm:w-auto bg-[#FF6B6B] hover:bg-[#ff5252] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg transform hover:-translate-y-1 transition-all">
+                     Get The Full System
+                  </button>
+               </div>
+               <p class="text-xs text-gray-400 mt-4"><i class="fa-solid fa-lock mr-1"></i> Secure Checkout via Stripe</p>
+            </div>
+            
+            <div class="hidden md:block bg-white/10 rounded-xl p-6 backdrop-blur-sm border border-white/10">
+               <div class="grid grid-cols-2 gap-4">
+                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
+                       <div class="text-3xl mb-1">⚖️</div>
+                       <div class="text-xs font-bold">IEP System</div>
+                   </div>
+                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
+                       <div class="text-3xl mb-1">🚦</div>
+                       <div class="text-xs font-bold">Social System</div>
+                   </div>
+                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
+                       <div class="text-3xl mb-1">🧯</div>
+                       <div class="text-xs font-bold">Meltdown System</div>
+                   </div>
+                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
+                       <div class="text-3xl mb-1">☀️</div>
+                       <div class="text-xs font-bold">Morning System</div>
+                   </div>
+               </div>
+               <div class="mt-4 bg-[#FF6B6B]/90 p-3 rounded-lg text-white text-center shadow-sm">
+                  <span class="font-bold">+ 6 Activity Packs Included Free</span>
+               </div>
+            </div>
+         </div>
       </div>
    </header>
 
-   <!-- Main Content -->
-   <main class="flex-grow">
-
-      <!-- Hero Section -->
-      <section class="relative bg-gradient-to-b from-[#4ECDC4]/10 to-transparent py-16 px-4 overflow-hidden">
-         <svg class="blob-shape top-0 left-0 w-64 h-64 text-[#FF6B6B]" fill="currentColor" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.4,82.2,23.1,70.8,34.5C59.4,45.9,47.9,55,35.6,61.8C23.3,68.6,10.2,73.1,-2.4,77.3C-15,81.5,-27.1,85.4,-38.5,80.5C-49.9,75.6,-60.6,61.9,-68.6,47.4C-76.6,32.9,-81.9,17.6,-80.4,2.9C-78.9,-11.8,-70.6,-25.9,-60.5,-37.4C-50.4,-48.9,-38.5,-57.8,-26.3,-66.2C-14.1,-74.6, -1.6,-82.5,12.5,-84.5C26.6,-86.5,41.2,-82.6,44.7,-76.4Z" transform="translate(100 100)" />
-         </svg>
-
-         <div class="container mx-auto text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">Support & Adventure</h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">AI-powered tools for parents and adventure-filled packets for kids.</p>
-         </div>
-      </section>
-
-      <!-- SECTION 1: PARENT RESCUE PROMPTS (Top Section) -->
-      <section class="py-12 px-4 bg-white">
-         <div class="container mx-auto">
-
-            <!-- URGENCY STRIP -->
-            <div class="max-w-4xl mx-auto bg-[#FFF4F4] border border-[#FF6B6B]/30 rounded-xl p-5 mb-10 text-center shadow-sm">
-               <p class="text-sm font-bold text-[#FF6B6B] uppercase tracking-wide mb-1">
-                  For the moments that matter most
-               </p>
-               <p class="text-gray-700 text-lg font-semibold">
-                  Use these when emotions are high, words are failing, and you need help <span class="underline decoration-[#FF6B6B] decoration-2 underline-offset-2">right now</span>.
-               </p>
-            </div>
-
-            <div class="text-center mb-10">
-               <h2 class="text-3xl font-bold text-gray-800 inline-block">
-                  Parent Rescue Prompts
-               </h2>
-               <span class="block text-lg font-normal text-gray-500 mt-2">
-                  For moments when your child needs you — and you need the right words
-               </span>
-            </div>
-
-            <!-- Grid for Individual Prompts -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-
-               <!-- Prompt 1: Anxiety (Start Here) -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group ring-2 ring-[#FF6B6B]/40">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-
-                  <!-- Start Here Badge -->
-                  <span class="inline-block bg-[#FF6B6B]/10 text-[#FF6B6B] text-xs font-bold px-3 py-1 rounded-full mb-3 self-start">
-                     Start Here
-                  </span>
-
-                  <!-- LION CUB SVG ICON -->
-                  <div class="mb-4 w-12 h-12 flex items-center justify-center">
-                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
-                        <!-- Mane -->
-                        <circle cx="50" cy="50" r="45" fill="#FDBA74" />
-                        <circle cx="50" cy="50" r="35" fill="#FDE047" />
-                        <!-- Ears -->
-                        <circle cx="25" cy="25" r="10" fill="#FDBA74" />
-                        <circle cx="75" cy="25" r="10" fill="#FDBA74" />
-                        <circle cx="25" cy="25" r="5" fill="#FFE4E6" />
-                        <circle cx="75" cy="25" r="5" fill="#FFE4E6" />
-                        <!-- Face -->
-                        <circle cx="50" cy="55" r="30" fill="#FEF3C7" />
-                        <!-- Eyes -->
-                        <circle cx="40" cy="50" r="4" fill="#1F2937" />
-                        <circle cx="60" cy="50" r="4" fill="#1F2937" />
-                        <!-- Nose/Snout -->
-                        <circle cx="50" cy="62" r="12" fill="#FDE68A" />
-                        <path d="M46 58 Q50 65 54 58" fill="#F9A8D4" /> <!-- Nose -->
-                        <path d="M50 62 L50 68 M50 68 Q45 72 40 68 M50 68 Q55 72 60 68" stroke="#4B5563" stroke-width="2" fill="none" /> <!-- Mouth -->
-                     </svg>
-                  </div>
-
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">Anxiety Intelligence</h3>
-                  <p class="text-xs text-purple-600 font-semibold mb-3">For spirals, reassurance loops, and constant "what ifs"</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When worry takes over and reassurance stops working, this guide shows you exactly what to say — without feeding the fear. Use calm, neuroscience-aligned scripts that help your child feel safe again in the moment.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">Designed for real-time anxiety, not therapy homework.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">Calm Anxiety Now</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-               <!-- Prompt 2: Meltdowns -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-red-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                  <div class="mb-4 text-red-500 bg-red-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl">
-                     <i class="fa-solid fa-fire-extinguisher"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">Meltdown Navigation</h3>
-                  <p class="text-xs text-red-600 font-semibold mb-3">For emotional explosions, shutdowns, and loss of control</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When emotions hit too fast and everything escalates, these prompts guide you through de-escalation step by step — even when your child can’t hear logic yet.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">For the moments you need calm now — not later.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">De-Escalate Now</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-               <!-- Prompt 3: IEP Advocate -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                  <div class="mb-4 text-blue-500 bg-blue-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl">
-                     <i class="fa-solid fa-file-contract"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">IEP Advocate</h3>
-                  <p class="text-xs text-blue-600 font-semibold mb-3">For school meetings, emails, and feeling talked over</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When school conversations feel overwhelming or intimidating, these prompts help you speak clearly, confidently, and professionally — without needing legal training.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">Translate your instincts into educator-ready language.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">Prepare for School Conversations</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-               <!-- Prompt 4: Sleep Reset -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                  <div class="mb-4 text-indigo-500 bg-indigo-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl">
-                     <i class="fa-solid fa-moon"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">Sleep Reset Prompts</h3>
-                  <p class="text-xs text-indigo-600 font-semibold mb-3">For bedtime battles and racing minds</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When bedtime becomes tense or your child’s mind won’t slow down, these gentle scripts help signal safety, calm the nervous system, and guide nights toward rest.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">Built for bedtime — not battles.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">Settle Bedtime Now</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-               <!-- Prompt 5: Social Confidence -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-teal-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                  <div class="mb-4 text-teal-500 bg-teal-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl">
-                     <i class="fa-solid fa-comments"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">Social Confidence Coach</h3>
-                  <p class="text-xs text-teal-600 font-semibold mb-3">For social hesitation and friendship struggles</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When your child struggles with friendships, confidence, or social hesitation, these prompts help you support connection — without pushing, pressure, or awkward lectures.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">Support belonging without forcing behavior.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">Support Confidence Now</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-               <!-- Prompt 6: Focus & Homework -->
-               <div class="prompt-card rounded-xl p-6 flex flex-col h-full relative overflow-hidden group">
-                  <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-100 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                  <div class="mb-4 text-yellow-500 bg-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl">
-                     <i class="fa-solid fa-glasses"></i>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-1">Focus & Homework</h3>
-                  <p class="text-xs text-yellow-600 font-semibold mb-3">For distraction, refusal, and conflict</p>
-                  <p class="text-gray-600 text-sm mb-4 flex-grow">When attention disappears and homework turns into conflict, these prompts help reset motivation, reduce power struggles, and rebuild cooperation — calmly.</p>
-                  <p class="text-xs text-gray-400 italic mb-4">For learning moments that don’t need to end in tears.</p>
-                  <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
-                     <div class="flex justify-between items-center">
-                        <div>
-                           <span class="text-2xl font-bold text-[#FF6B6B]">$29</span>
-                           <span class="block text-xs text-gray-400 mt-1">Available instantly after checkout</span>
-                        </div>
-                        <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-bold transition">Reset Focus Now</button>
-                     </div>
-                     <p class="text-[11px] text-gray-400 text-right mt-1">No login. No setup. Use immediately.</p>
-                  </div>
-               </div>
-
-            </div>
-
-            <!-- BUNDLE: Full Width "Long Box" -->
-            <div class="relative rounded-2xl overflow-hidden bg-white border-2 border-[#4ECDC4] shadow-lg group">
-               <div class="absolute top-0 right-0 bg-[#4ECDC4] text-white text-xs font-bold px-6 py-2 rounded-bl-xl uppercase tracking-wider z-10">Most Parents Choose This First</div>
-               <div class="absolute inset-0 bg-gradient-to-r from-teal-50/50 to-transparent opacity-50"></div>
-
-               <div class="p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 relative z-10">
-                  <!-- Icon Area -->
-                  <div class="flex-shrink-0">
-                     <div class="w-24 h-24 bg-[#4ECDC4]/10 rounded-2xl flex items-center justify-center text-[#4ECDC4]">
-                        <i class="fa-solid fa-layer-group text-5xl"></i>
-                     </div>
-                  </div>
-
-                  <!-- Content Area -->
-                  <div class="flex-grow text-center md:text-left">
-                     <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">The Complete Parent Rescue System</h3>
-                     <p class="text-gray-600 max-w-2xl">A full emotional safety toolkit for parents — covering anxiety, meltdowns, sleep, school, social stress, and focus — so you’re never guessing what to say again.</p>
-                     <p class="text-sm text-gray-700 font-semibold mt-3 mb-4">
-                        Covers the most common emotional crises parents face — so you’re never unprepared.
-                     </p>
-                     <div class="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-gray-500 font-medium">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-[#4ECDC4]"></i> Instant digital access</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-[#4ECDC4]"></i> Use immediately</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-[#4ECDC4]"></i> No prep required</span>
-                     </div>
-                  </div>
-
-                  <!-- Action Area -->
-                  <div class="flex flex-col items-center gap-2 flex-shrink-0 min-w-[200px]">
-                     <div class="text-center mb-2">
-                        <span class="block text-sm text-gray-400 line-through font-bold mb-1">Total Value: $174</span>
-                        <span class="block text-4xl font-bold text-[#FF6B6B]">$129</span>
-                        <span class="block text-xs text-gray-400 mt-1">Available instantly</span>
-                     </div>
-                     <button class="w-full bg-[#4ECDC4] hover:bg-[#3dbdb4] text-white text-lg px-8 py-3 rounded-xl font-bold transition shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                        Get The Bundle
-                     </button>
-                  </div>
-               </div>
-            </div>
-
-         </div>
-      </section>
-
-      <!-- SEPARATOR -->
-      <div class="container mx-auto px-4">
-         <hr class="border-t-2 border-dashed border-gray-200 my-8">
+   <section class="container mx-auto px-4 py-8">
+      <div class="flex items-center gap-3 mb-8">
+         <div class="bg-teal-100 p-2 rounded-lg text-teal-600 text-2xl">🧠</div>
+         <h2 class="text-3xl font-bold text-gray-800 font-heading">Parent Rescue Systems</h2>
       </div>
 
-      <!-- SECTION 2: KIDS ACTIVITY PACKETS -->
-      <section class="py-12 px-4">
-         <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-10 gap-4">
-               <div>
-                  <h2 class="text-3xl font-bold text-gray-800 flex items-center gap-3">
-                     <i class="fa-solid fa-shapes text-[#FF6B6B]"></i>
-                     Activity Packets
-                  </h2>
-                  <p class="text-gray-500 mt-2">Fun, printable adventures designed for specific developmental needs.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-blue-50 flex items-center justify-center text-6xl">⚖️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">IEP Advocacy System</h3>
+               <p class="text-xs font-bold text-blue-600 mb-3 uppercase tracking-wide">Level the Playing Field</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Stop feeling intimidated in school meetings. These prompts translate your parental instincts into "Educator Speak," ensuring your child gets the accommodations they legally deserve.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$67.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_system_iep')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
                </div>
-
-               <!-- Diagnosis / Need Filter -->
-               <div class="bg-white p-2 rounded-lg shadow-sm border border-gray-200 flex items-center gap-3">
-                  <label for="diagnosis-filter" class="text-sm font-bold text-gray-600 whitespace-nowrap"><i class="fa-solid fa-filter mr-1"></i> Filter by Need:</label>
-                  <select id="diagnosis-filter" class="text-sm border-none bg-transparent font-semibold text-gray-700 focus:outline-none cursor-pointer p-1">
-                     <option value="all">Show All Needs</option>
-                     <option value="anxiety">Anxiety & Fear</option>
-                     <option value="adhd">ADHD & Focus</option>
-                     <option value="emotional">Emotional Regulation (Anger/Meltdowns)</option>
-                     <option value="social">Social Skills & Confidence</option>
-                     <option value="learning">Curiosity & Learning</option>
-                  </select>
-               </div>
-            </div>
-
-            <!-- Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="activity-grid">
-
-               <!-- Bravely the Lion -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="anxiety,emotional">
-                  <div class="h-64 bg-orange-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-lion text-9xl text-orange-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 5-8</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Bravely the Lion</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Join Bravely on a journey to find courage! Perfect for kids dealing with anxiety or new situations.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="activity-packets/bravely-the-lion/index.html" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Captain Choosy -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="adhd,social">
-                  <div class="h-64 bg-blue-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-user-astronaut text-9xl text-blue-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 6-9</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Captain Choosy</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Learn decision making skills with Captain Choosy. Navigate the galaxy of choices!</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="activity-packets/captain-choosy/index.html" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Cosmo Space Pup -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="learning">
-                  <div class="h-64 bg-indigo-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-dog text-9xl text-indigo-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 4-7</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Cosmo Space Pup</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Blast off with Cosmo! A fun way to explore curiosity and learning about the world.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="activity-packets/cosmo-space-pup/index.html" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Ember the Dragon -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="emotional,anger">
-                  <div class="h-64 bg-red-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-dragon text-9xl text-red-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 5-9</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Ember the Dragon</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Help Ember manage big fiery emotions. Great for anger management and emotional regulation.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="#" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Shelly the Turtle -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="anxiety,emotional">
-                  <div class="h-64 bg-green-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-shield-cat text-9xl text-green-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 4-7</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Shelly the Turtle</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Slow down and take a breath with Shelly. Mindfulness and patience activities.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="#" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Sketch the Owl -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="adhd,learning">
-                  <div class="h-64 bg-yellow-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-crow text-9xl text-yellow-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 6-10</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Sketch the Owl</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">Unleash creativity and focus with Sketch. Art-based activities for expressive kids.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="#" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Whisper the Bunny -->
-               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group activity-packet-card" data-categories="social,anxiety">
-                  <div class="h-64 bg-pink-100 flex items-center justify-center relative overflow-hidden">
-                     <i class="fa-solid fa-carrot text-9xl text-pink-300 transform group-hover:scale-110 transition-transform duration-500"></i>
-                     <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 shadow-sm">Ages 3-6</div>
-                  </div>
-                  <div class="p-6">
-                     <h3 class="text-2xl font-bold mb-2 text-gray-800">Whisper the Bunny</h3>
-                     <p class="text-gray-600 mb-4 line-clamp-2">A gentle guide for quiet kids. Building social confidence and listening skills.</p>
-                     <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold text-[#FF6B6B]">$12.00</span>
-                        <a href="activity-packets/whisper-bunny/index.html" class="btn-primary px-4 py-2 rounded-lg font-bold text-sm">View Details</a>
-                     </div>
-                  </div>
-               </div>
-
-            </div>
-
-            <!-- Empty State Message (Hidden by default) -->
-            <div id="no-results-message" class="hidden text-center py-12">
-               <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
-               <p class="text-gray-500 text-lg">No packets found for this specific need. Try selecting "Show All Needs".</p>
-            </div>
-
-         </div>
-      </section>
-
-      <!-- Newsletter / CTA -->
-      <section class="bg-[#2D3748] text-white py-16">
-         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Join the Navigator Club</h2>
-            <p class="mb-8 text-gray-300 max-w-xl mx-auto">Get free activity sheets, parenting tips, and updates on new packet releases directly to your inbox.</p>
-            <form class="max-w-md mx-auto flex gap-2">
-               <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]">
-               <button class="bg-[#4ECDC4] px-6 py-3 rounded-lg font-bold hover:bg-[#3dbdb4] transition">Subscribe</button>
-            </form>
-         </div>
-      </section>
-
-   </main>
-
-   <!-- Footer -->
-   <footer class="bg-white border-t py-12">
-      <div class="container mx-auto px-4">
-         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-               <div class="flex items-center gap-2 mb-4">
-                  <i class="fa-solid fa-compass text-2xl text-[#FF6B6B]"></i>
-                  <span class="font-heading text-xl font-bold text-gray-800">Navigator<span class="text-[#4ECDC4]">Kids</span></span>
-               </div>
-               <p class="text-gray-500 text-sm">Empowering kids to navigate their world with confidence and creativity.</p>
-            </div>
-            <div>
-               <h4 class="font-bold mb-4 text-gray-800">Shop</h4>
-               <ul class="text-sm text-gray-500 space-y-2">
-                  <li><a href="index.html" class="hover:text-[#FF6B6B]">All Products</a></li>
-                  <li><a href="#" class="hover:text-[#FF6B6B]">Activity Packets</a></li>
-                  <li><a href="#" class="hover:text-[#FF6B6B]">Bundles</a></li>
-               </ul>
-            </div>
-            <div>
-               <h4 class="font-bold mb-4 text-gray-800">Support</h4>
-               <ul class="text-sm text-gray-500 space-y-2">
-                  <li><a href="../contact/index.html" class="hover:text-[#FF6B6B]">Contact Us</a></li>
-                  <li><a href="#" class="hover:text-[#FF6B6B]">FAQ</a></li>
-                  <li><a href="#" class="hover:text-[#FF6B6B]">Shipping & Returns</a></li>
-               </ul>
-            </div>
-            <div>
-               <h4 class="font-bold mb-4 text-gray-800">Legal</h4>
-               <ul class="text-sm text-gray-500 space-y-2">
-                  <li><a href="../privacy/index.html" class="hover:text-[#FF6B6B]">Privacy Policy</a></li>
-                  <li><a href="../terms/index.html" class="hover:text-[#FF6B6B]">Terms of Service</a></li>
-               </ul>
             </div>
          </div>
-         <div class="text-center text-xs text-gray-400 border-t pt-8">
-            © 2024 Navigator Kids. All rights reserved.
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-green-50 flex items-center justify-center text-6xl">🚦</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Social Navigation</h3>
+               <p class="text-xs font-bold text-green-600 mb-3 uppercase tracking-wide">Coach, Don't Hover</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  It’s painful to watch your child on the sidelines. These scripts help you role-play social entry, handle rejection, and build friendship skills without making them feel self-conscious.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$47.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_system_social')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-red-50 flex items-center justify-center text-6xl">🧯</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Meltdown Navigation</h3>
+               <p class="text-xs font-bold text-red-600 mb-3 uppercase tracking-wide">The Emergency Brake</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  For moments when logic leaves the room. Get step-by-step de-escalation protocols to transform a 45-minute explosion into a moment of co-regulation and safety.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$37.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_system_meltdown')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-yellow-50 flex items-center justify-center text-6xl">☀️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Morning Launch System</h3>
+               <p class="text-xs font-bold text-yellow-600 mb-3 uppercase tracking-wide">From Chaos to Quiet</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Bedtime and mornings are often battles. Use these "safety signals" and executive function scaffolds to lower your child's defenses and secure a peaceful routine.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$27.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_system_morning')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-40 bg-purple-50 flex items-center justify-center text-6xl">🕵️</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Junior Agent Workbook</h3>
+               <p class="text-xs font-bold text-purple-600 mb-3 uppercase tracking-wide">Stop the Spiral</p>
+               <p class="text-gray-600 mb-6 text-sm leading-relaxed h-20">
+                  Break the reassurance loop. A gamified workbook that teaches your child neuroscience-backed "Bio-Hacks" to stop panic attacks instantly.
+               </p>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-2xl font-bold text-gray-800">$19.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_workbook_anxiety')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </section>
+
+   <section class="container mx-auto px-4 py-12">
+      <div class="flex items-center gap-3 mb-8">
+         <div class="bg-orange-100 p-2 rounded-lg text-orange-600 text-2xl">🦁</div>
+         <div>
+            <h2 class="text-3xl font-bold text-gray-800 font-heading">Kid Activity Packets</h2>
+            <p class="text-gray-500 text-sm">Game + Printable Field Guide</p>
+         </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🦁</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Bravely the Lion</h4>
+              <p class="text-xs font-bold text-orange-500 uppercase mb-2">Find Your Roar</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Courage isn't the absence of fear. Use "Shrink Ray" games to shrink worry monsters down to size.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_bravely')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🚀</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Cosmo Space Pup</h4>
+              <p class="text-xs font-bold text-purple-500 uppercase mb-2">Channel the Energy</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Turn "distracted" into "observant." Give hyper-curious kids a way to document discoveries.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_cosmo')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🔥</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Ember the Dragon</h4>
+              <p class="text-xs font-bold text-red-500 uppercase mb-2">Cool Down the Lava</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  Anger is just fuel. Ember helps kids recognize the "rumble" before the explosion.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_ember')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🐢</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Shelly the Turtle</h4>
+              <p class="text-xs font-bold text-green-500 uppercase mb-2">A Shell for the Noise</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  The world is loud. Shelly teaches sensory regulation and "turtle time" to recharge.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_shelly')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🦉</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Sketch the Owl</h4>
+              <p class="text-xs font-bold text-yellow-500 uppercase mb-2">The "Good Enough" Guide</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  For the child who rips up their paper. Sketch teaches the art of the "Beautiful Oops."
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_sketch')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+              <div class="text-4xl mb-3">🐰</div>
+              <h4 class="text-xl font-bold text-gray-800 font-heading">Whisper the Bunny</h4>
+              <p class="text-xs font-bold text-pink-500 uppercase mb-2">The Power of Soft Skills</p>
+              <p class="text-gray-600 text-xs mb-4 h-12">
+                  You don't have to be loud to be a leader. Whisper helps quiet kids set boundaries.
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-gray-50">
+                  <span class="font-bold text-gray-800">$9.00</span>
+                  <button onclick="window.NavigatorCart.add('prod_packet_whisper')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
+              </div>
+          </div>
+
+      </div>
+   </section>
+
+   <footer class="bg-white border-t mt-12 py-8">
+      <div class="container mx-auto px-4 text-center">
+         <p class="text-gray-400 text-sm">© 2026 Navigator Kids AI. All Rights Reserved.</p>
+         <div class="mt-4 flex justify-center gap-4 text-sm text-gray-500">
+             <a href="/privacy/" class="hover:text-[#FF6B6B]">Privacy Policy</a>
+             <a href="/terms/" class="hover:text-[#FF6B6B]">Terms of Service</a>
+             <a href="/contact/" class="hover:text-[#FF6B6B]">Contact Support</a>
          </div>
       </div>
    </footer>
 
-   <!-- Mobile Menu Script & Filter Logic -->
    <script>
-      // Mobile Menu
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenuBtn.addEventListener('click', () => {
-         mobileMenu.classList.toggle('hidden');
+      window.addEventListener('cartUpdated', function(e) {
+         const count = e.detail.count;
+         const badge = document.getElementById('cart-count');
+         if(badge) badge.innerText = count;
       });
-
-      // Simple Cart Count Simulation
-      const cartCount = document.getElementById('cart-count');
-      const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cartCount) {
-         cartCount.innerText = savedCart.length;
+      // Init Check
+      if(window.NavigatorCart) {
+         const badge = document.getElementById('cart-count');
+         if(badge) badge.innerText = window.NavigatorCart.getItemCount();
       }
-
-      // Diagnosis / Need Filter Logic
-      const filterSelect = document.getElementById('diagnosis-filter');
-      const activityCards = document.querySelectorAll('.activity-packet-card');
-      const noResultsMsg = document.getElementById('no-results-message');
-
-      filterSelect.addEventListener('change', function() {
-         const selectedFilter = this.value;
-         let visibleCount = 0;
-
-         activityCards.forEach(card => {
-            const categories = card.getAttribute('data-categories').split(',');
-
-            // Show if 'all' is selected OR if the card has the selected category tag
-            if (selectedFilter === 'all' || categories.includes(selectedFilter)) {
-               card.style.display = 'block'; // Or 'flex' if your layout requires
-               // Add animation/fade in optional
-               card.style.opacity = '1';
-               visibleCount++;
-            } else {
-               card.style.display = 'none';
-               card.style.opacity = '0';
-            }
-         });
-
-         // Show "No Results" if everything is hidden
-         if (visibleCount === 0) {
-            noResultsMsg.classList.remove('hidden');
-         } else {
-            noResultsMsg.classList.add('hidden');
-         }
-      });
    </script>
-</body>
 
+</body>
 </html>
