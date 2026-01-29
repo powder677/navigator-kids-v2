@@ -4,196 +4,221 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Get in touch with Navigator Kids AI. Questions about our tools, feedback, or support requests.">
    <title>Contact Us | Navigator Kids AI</title>
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css">
+   
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <script src="/js/components.js" defer></script>
+   <script src="/js/cart.js" defer></script>
 
    <style>
-      .contact-page {
-         padding: var(--space-16) 0;
+      :root {
+         /* Premium Palette */
+         --color-navy: #3D405B;
+         --color-sage: #81B29A;
+         --color-sage-light: #A8D0BA;
+         --color-terracotta: #E07A5F;
+         --color-cream: #F9F7F2;
+         --color-white: #FFFFFF;
+         --color-text: #4A4E69;
+         --bg-color: #F9FAFB;
+         
+         /* Spacing Variables (Mapped for your existing CSS) */
+         --space-2: 0.5rem;
+         --space-3: 0.75rem;
+         --space-4: 1rem;
+         --space-6: 1.5rem;
+         --space-8: 2rem;
+         --space-12: 3rem;
+         --space-16: 4rem;
+         
+         --radius-lg: 0.5rem;
+         --radius-xl: 1rem;
+         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
-      .contact-header {
-         text-align: center;
-         margin-bottom: var(--space-12);
-      }
-
-      .contact-header h1 {
-         margin-bottom: var(--space-3);
-      }
-
-      .contact-header p {
-         font-size: var(--text-lg);
-         color: var(--color-text-light);
-         max-width: 500px;
-         margin: 0 auto;
-      }
-
-      .contact-layout {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: var(--space-12);
-         max-width: 1000px;
-         margin: 0 auto;
-      }
-
-      @media (max-width: 768px) {
-         .contact-layout {
-            grid-template-columns: 1fr;
-            gap: var(--space-8);
-         }
-      }
-
-      /* Contact Form */
-      .contact-form-card {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         padding: var(--space-8);
-         box-shadow: var(--shadow-md);
-      }
-
-      .contact-form-card h2 {
-         font-size: var(--text-xl);
-         margin-bottom: var(--space-6);
-      }
-
-      .contact-form .btn {
-         width: 100%;
-         margin-top: var(--space-2);
-      }
-
-      /* Contact Info */
-      .contact-info h2 {
-         font-size: var(--text-xl);
-         margin-bottom: var(--space-6);
-      }
-
-      .contact-info-card {
-         background: var(--color-cream);
-         border-radius: var(--radius-lg);
-         padding: var(--space-6);
-         margin-bottom: var(--space-4);
-      }
-
-      .contact-info-card h3 {
-         font-size: var(--text-base);
-         display: flex;
-         align-items: center;
-         gap: var(--space-2);
-         margin-bottom: var(--space-2);
-      }
-
-      .contact-info-card p {
-         font-size: var(--text-sm);
-         color: var(--color-text-light);
-         margin: 0;
-      }
-
-      .contact-info-card a {
-         color: var(--color-terracotta);
-         font-weight: 500;
-      }
-
-      /* FAQ Teaser */
-      .faq-teaser {
-         background: var(--color-white);
-         border-radius: var(--radius-lg);
-         padding: var(--space-6);
-         margin-top: var(--space-6);
-      }
-
-      .faq-teaser h3 {
-         font-size: var(--text-base);
-         margin-bottom: var(--space-4);
-      }
-
-      .faq-teaser-item {
-         padding: var(--space-3) 0;
-         border-bottom: 1px solid var(--color-border);
-      }
-
-      .faq-teaser-item:last-child {
-         border-bottom: none;
-      }
-
-      .faq-teaser-item a {
-         font-size: var(--text-sm);
+      body {
+         font-family: 'Inter', sans-serif;
+         background-color: var(--bg-color);
          color: var(--color-text);
          display: flex;
-         justify-content: space-between;
-         align-items: center;
+         flex-direction: column;
+         min-height: 100vh;
       }
 
-      .faq-teaser-item a:hover {
-         color: var(--color-terracotta);
+      h1, h2, h3, h4 {
+         font-family: 'Merriweather', serif;
+         color: var(--color-navy);
       }
 
-      /* Success Message */
-      .form-success {
-         display: none;
+      /* Form Styling Overrides */
+      .form-input, .form-select, textarea {
+         width: 100%;
+         padding: 0.75rem;
+         border: 1px solid #E2E8F0;
+         border-radius: var(--radius-lg);
+         background: white;
+         transition: border-color 0.2s;
+      }
+      
+      .form-input:focus, .form-select:focus, textarea:focus {
+         outline: none;
+         border-color: var(--color-navy);
+         ring: 2px solid var(--color-sage-light);
+      }
+
+      .btn-primary {
+         background-color: var(--color-navy);
+         color: white;
+         padding: 0.75rem 1.5rem;
+         border-radius: 9999px;
+         font-weight: 600;
+         transition: all 0.2s;
+         display: inline-block;
          text-align: center;
-         padding: var(--space-8);
       }
-
-      .form-success.show {
-         display: block;
-      }
-
-      .form-success-icon {
-         font-size: 3rem;
-         margin-bottom: var(--space-4);
-      }
-
-      .form-success h3 {
-         color: var(--color-sage-dark);
-         margin-bottom: var(--space-2);
-      }
-
-      .form-success p {
-         color: var(--color-text-light);
+      
+      .btn-primary:hover {
+         background-color: #2D3047; /* Darker Navy */
+         transform: translateY(-1px);
       }
    </style>
 </head>
 
-<body>
+<body class="antialiased">
+
    <div id="header"></div>
 
-   <main class="contact-page">
-      <div class="container">
+   <main class="flex-grow py-16">
+      <div class="container mx-auto px-4">
 
-         <div class="contact-header">
-            <h1>Get in Touch</h1>
-            <p>Have a question, need support, or want to share feedback? We'd love to hear from you.</p>
+         <div class="text-center mb-12 max-w-2xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">Get in Touch</h1>
+            <p class="text-lg text-gray-600">Have a question about a tool, need support, or just want to share a win? We read every message.</p>
          </div>
 
-         <div class="contact-layout">
-            <!-- Contact Form -->
-            <div class="contact-form-card">
-               <h2>Send a Message</h2>
+         <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+               <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
 
-               <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
-                  <div class="form-group">
-                     <label class="form-label">Your Name</label>
-                     <input type="text" class="form-input" id="contactName" required>
+               <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                  <div class="space-y-4">
+                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Your Name</label>
+                        <input type="text" class="form-input" id="contactName" required placeholder="Parent or Educator Name">
+                     </div>
+                     
+                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                        <input type="email" class="form-input" id="contactEmail" required placeholder="you@example.com">
+                     </div>
+
+                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Subject</label>
+                        <select class="form-select w-full p-3 border rounded-lg" id="contactSubject">
+                           <option value="general">General Question</option>
+                           <option value="support">Product Support / Download Issue</option>
+                           <option value="feedback">Feedback / Suggestion</option>
+                           <option value="refund">Refund Request</option>
+                        </select>
+                     </div>
+
+                     <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Message</label>
+                        <textarea class="form-input" id="contactMessage" rows="5" required placeholder="How can we help?"></textarea>
+                     </div>
+
+                     <button type="submit" class="btn-primary w-full shadow-lg">
+                        Send Message
+                     </button>
                   </div>
-                  <div class="form-group">
-                     <label class="form-label">Email Address</label>
-                     <input type="email" class="form-input" id="contactEmail" required>
+               </form>
+               
+               <div id="successMessage" class="hidden text-center py-10">
+                  <div class="text-5xl mb-4">✅</div>
+                  <h3 class="text-xl font-bold text-[#81B29A]">Message Sent!</h3>
+                  <p class="text-gray-600">We'll get back to you within 24 hours.</p>
+               </div>
+            </div>
+
+            <div class="space-y-8">
+               
+               <div class="bg-[#F9F7F2] p-8 rounded-2xl border border-[#E2E8F0]">
+                  <h3 class="text-xl font-bold mb-6 text-[#3D405B]">Other Ways to Connect</h3>
+                  
+                  <div class="space-y-4">
+                     <div class="flex items-start gap-3">
+                        <div class="mt-1 text-[#E07A5F]"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                           <p class="font-semibold text-gray-800">Email Us Directly</p>
+                           <a href="mailto:support@navigatorkids.ai" class="text-[#E07A5F] hover:underline">support@navigatorkids.ai</a>
+                        </div>
+                     </div>
+                     
+                     <div class="flex items-start gap-3">
+                        <div class="mt-1 text-[#E07A5F]"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                           <p class="font-semibold text-gray-800">Response Time</p>
+                           <p class="text-sm text-gray-600">Mon-Fri, 9am - 5pm EST<br>Usually within 24 hours.</p>
+                        </div>
+                     </div>
                   </div>
-                  <div class="form-group">
-                     <label class="form-label">Subject</label>
-                     <select class="form-input" id="contactSubject">
-                        <option value="general">General Question</option>
-                        <option value="support">Product Support</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="refund">Refund Request</option>
-                        <option value="other">Other</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <label class="form-label">Message</label>
-                     <textarea class="form-input" id="contactMessage" rows="5" required placeholder="How can we help?">
+               </div>
+
+               <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                  <h3 class="text-xl font-bold mb-4 text-[#3D405B]">Common Questions</h3>
+                  <ul class="space-y-3">
+                     <li>
+                        <a href="#" class="flex justify-between items-center text-gray-600 hover:text-[#E07A5F] transition group">
+                           <span class="text-sm">Where are my downloads?</span>
+                           <i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:opacity-100"></i>
+                        </a>
+                     </li>
+                     <li class="border-t border-gray-50 pt-3">
+                        <a href="#" class="flex justify-between items-center text-gray-600 hover:text-[#E07A5F] transition group">
+                           <span class="text-sm">Do you offer refunds?</span>
+                           <i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:opacity-100"></i>
+                        </a>
+                     </li>
+                     <li class="border-t border-gray-50 pt-3">
+                        <a href="#" class="flex justify-between items-center text-gray-600 hover:text-[#E07A5F] transition group">
+                           <span class="text-sm">Is this for ADHD/Autism too?</span>
+                           <i class="fa-solid fa-chevron-right text-xs opacity-50 group-hover:opacity-100"></i>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </main>
+
+   <div id="footer"></div>
+
+   <script>
+      function handleContactSubmit(e) {
+         e.preventDefault();
+         const btn = e.target.querySelector('button');
+         const originalText = btn.innerText;
+         
+         // Simulate sending state
+         btn.disabled = true;
+         btn.innerText = "Sending...";
+         
+         setTimeout(() => {
+            // Hide form, show success
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('successMessage').classList.remove('hidden');
+         }, 1000);
+      }
+   </script>
+
+</body>
+</html>
