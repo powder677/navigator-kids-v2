@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: LAUNCH READY - Fixed Navigation
+   Status: LAUNCH READY - Fixed Navigation + Forms
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     injectHeader();
     injectFooter();
     initMobileMenu();
+    initFormspree();
     setTimeout(syncCartCount, 500);
 });
 
@@ -172,7 +173,6 @@ function initMobileMenu() {
                 e.stopPropagation(); 
                 menu.classList.toggle('hidden');
                 
-                // Toggle icon
                 const icon = newToggle.querySelector('i');
                 if (menu.classList.contains('hidden')) {
                     icon.classList.remove('fa-times');
@@ -220,3 +220,48 @@ function syncCartCount() {
 }
 
 window.addEventListener('cartUpdated', syncCartCount);
+
+// 6. FORMSPREE HANDLER
+function initFormspree() {
+    const FORMSPREE_URL = 'https://formspree.io/f/mnjvvpyj';
+    
+    document.querySelectorAll('form[data-formspree]').forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn ? btn.innerText : 'Submit';
+            if (btn) { btn.disabled = true; btn.innerText = 'Sending...'; }
+            
+            const formData = new FormData(form);
+            // Add page info for context
+            formData.append('_source', window.location.pathname);
+            
+            try {
+                const res = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (res.ok) {
+                    const successEl = form.querySelector('.form-success');
+                    if (successEl) {
+                        form.style.display = 'none';
+                        successEl.classList.remove('hidden');
+                        successEl.style.display = 'block';
+                    } else if (form.dataset.redirect) {
+                        window.location.href = form.dataset.redirect;
+                    } else {
+                        form.innerHTML = '<div style="text-align:center;padding:2rem;"><div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div><h3 style="margin:0 0 0.5rem;color:#3D405B;">Got it!</h3><p style="margin:0;color:#666;">Check your inbox.</p></div>';
+                    }
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (err) {
+                alert('Something went wrong. Please try again or email us directly.');
+                if (btn) { btn.disabled = false; btn.innerText = originalText; }
+            }
+        });
+    });
+}
