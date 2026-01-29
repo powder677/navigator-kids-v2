@@ -53,10 +53,13 @@
          transition: border-color 0.2s;
       }
       
-      .form-input:focus, .form-select:focus, textarea:focus {
-         outline: none;
-         border-color: var(--color-navy);
-         box-shadow: 0 0 0 2px var(--color-sage-light);
+     <form data-formspree>
+   <input type="text" name="name" required>
+   <input type="email" name="email" required>
+   <textarea name="message" required></textarea>
+   <button type="submit">Send</button>
+   <div class="form-success hidden">✅ Message sent!</div>
+</form>
       }
 
       /* Buttons */
