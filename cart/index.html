@@ -6,11 +6,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Your Cart | Navigator Kids AI</title>
    
+   <link rel="stylesheet" href="/css/styles.css">
+   
+   <script src="https://cdn.tailwindcss.com"></script>
+
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   
-   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
    <script src="/js/components.js" defer></script>
@@ -18,7 +20,7 @@
 
    <style>
       :root {
-         /* Updated Premium Palette */
+         /* Premium Palette Overrides */
          --color-navy: #3D405B;
          --color-sage: #81B29A;
          --color-sage-light: #A8D0BA;
@@ -42,10 +44,20 @@
          font-family: 'Merriweather', serif;
          color: var(--color-navy);
       }
+      
+      /* Fix for Cart JS rendering */
+      #cartContainer {
+          min-height: 400px;
+          width: 100%;
+          max-width: 900px; /* Constrain width for better readability */
+          margin: 0 auto;
+      }
 
-      /* Loading Spinner Color Override */
-      .text-primary {
-         color: var(--color-sage);
+      /* Ensure Tailwind doesn't hide your cart buttons */
+      .btn {
+          display: inline-flex !important; 
+          align-items: center;
+          justify-content: center;
       }
    </style>
 </head>
@@ -56,9 +68,9 @@
 
    <main class="container mx-auto px-4 py-12 flex-grow">
       
-      <div class="flex items-center gap-2 mb-8 text-sm">
-         <a href="/products/" class="text-gray-500 hover:text-[#E07A5F] transition font-medium">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Continue Shopping
+      <div class="flex items-center gap-2 mb-8 text-sm max-w-[900px] mx-auto">
+         <a href="/products/" class="text-gray-500 hover:text-[#E07A5F] transition font-medium no-underline flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i> Continue Shopping
          </a>
       </div>
 
@@ -74,11 +86,21 @@
    <div id="footer"></div>
 
    <script>
-      // Force render on load if cart.js loaded before DOM
+      // SAFETY CHECK: Force the cart to render if it gets stuck
       window.addEventListener('load', function() {
-         if(window.NavigatorCart && document.getElementById('cartContainer').innerHTML.includes('Loading')) {
-            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: {} }));
-         }
+         setTimeout(function() {
+             const container = document.getElementById('cartContainer');
+             // If still showing loading text after 500ms, kickstart it
+             if(container && container.innerHTML.includes('Loading')) {
+                 console.log("Kickstarting Cart Render...");
+                 if (window.NavigatorCart && window.NavigatorCart.renderCartPage) {
+                     window.NavigatorCart.renderCartPage();
+                 } else {
+                     // Fallback event dispatch
+                     window.dispatchEvent(new CustomEvent('cartUpdated', { detail: {} }));
+                 }
+             }
+         }, 500);
       });
    </script>
 
