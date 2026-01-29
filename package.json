@@ -1,7 +1,19 @@
 {
   "name": "navigator-kids-v2",
   "version": "1.0.0",
+  "description": "Navigator Kids V2 Frontend & API",
+  "scripts": {
+    "start": "serve .",
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static assets'"
+  },
   "engines": {
-    "node": "24.x"
+    "node": "20.x"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
   }
 }
