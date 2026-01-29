@@ -386,13 +386,21 @@
         renderCartPage();
     }
 
-    // Expose API
+    // ... inside js/cart.js at the bottom ...
+
+    // Expose Public API
     window.NavigatorCart = {
-        add: (id) => cart.add(id),
+        add: (id, qty) => cart.add(id, qty),
         remove: (id) => cart.remove(id),
-        clear: () => cart.clear(), // New Clear Function
+        clear: () => cart.clear(),
         checkout: checkout,
-        getItemCount: () => cart.getItemCount()
+        getItems: () => cart.getItems(),
+        getItemCount: () => cart.getItemCount(),
+        getTotal: () => cart.getTotal(),
+        isEmpty: () => cart.isEmpty(),
+        formatCurrency: (amt) => cart.formatCurrency(amt),
+        renderCartPage: renderCartPage,
+        getProduct: (id) => PRODUCTS[id] // <--- ADD THIS LINE (Don't forget the comma above it!)
     };
 
 })();
