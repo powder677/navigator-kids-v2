@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - CART SYSTEM
-   Status: FIXED (Paths Aligned with Repo)
+   Status: FIXED (Aligned with Repo Filenames)
    ============================================ */
 
 (function() {
@@ -8,6 +8,7 @@
     const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
 
     // 🔒 PRODUCT CATALOG
+    // URLs updated to match your ACTUAL file structure
     const PRODUCTS = {
         // === TIER 4: BUNDLES ===
         'prod-bundle-total': {
@@ -15,7 +16,6 @@
             name: 'Navigator Total Access Bundle',
             price: 97.00,
             icon: '🏆',
-            // Ensure you have this zip created in this folder
             downloadUrl: '/downloads/bundles/total-access-pass.zip', 
             isBundle: true
         },
@@ -36,12 +36,13 @@
             isBundle: true
         },
 
-        // === TIER 3: CORE SYSTEMS (Paths Fixed) ===
+        // === TIER 3: CORE SYSTEMS (Fixed Mismatched PDF Names) ===
         'prod-system-iep': {
             id: 'prod-system-iep',
             name: 'The IEP Advocacy System',
             price: 67.00,
             icon: '⚖️',
+            // WAS: iep-advocacy-system.pdf -> FIXED:
             downloadUrl: '/downloads/systems/the-iep-advocacy-system-premium.pdf'
         },
         'prod-system-social': {
@@ -56,15 +57,17 @@
             name: 'The Meltdown Navigation System',
             price: 37.00,
             icon: '🧯',
+            // WAS: meltdown-navigation-system.pdf -> FIXED:
             downloadUrl: '/downloads/systems/2e-meltdown-navigation-system.pdf'
         },
 
-        // === TIER 2: QUICK WINS (Paths Fixed) ===
+        // === TIER 2: QUICK WINS (Fixed Mismatched PDF Names) ===
         'prod-system-morning': {
             id: 'prod-system-morning',
             name: 'The Morning Launch System',
             price: 27.00,
             icon: '☀️',
+            // WAS: morning-launch-system.pdf -> FIXED:
             downloadUrl: '/downloads/systems/morning-launch-system-prompt.pdf'
         },
         'prod-workbook-anxiety': {
@@ -72,15 +75,17 @@
             name: 'Junior Agent Anxiety Workbook',
             price: 19.00,
             icon: '🕵️',
+            // WAS: anxiety-workbook.pdf -> FIXED:
             downloadUrl: '/downloads/systems/junior-agent-workbook.pdf'
         },
 
-        // === TIER 1: ACTIVITY PACKETS (Folder & Filenames Fixed) ===
+        // === TIER 1: ACTIVITY PACKETS (Fixed Folder & File Names) ===
         'prod-packet-bravely': { 
             id: 'prod-packet-bravely', 
             name: 'Activity Pack: Bravely', 
             price: 9.00, 
             icon: '🦁', 
+            // WAS: /downloads/packets/bravely.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/bravely-the-lion.zip' 
         },
         'prod-packet-cosmo': { 
@@ -88,6 +93,7 @@
             name: 'Activity Pack: Cosmo', 
             price: 9.00, 
             icon: '🚀', 
+            // WAS: /downloads/packets/cosmo.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/cosmo-space-mission.zip' 
         },
         'prod-packet-ember': { 
@@ -95,6 +101,7 @@
             name: 'Activity Pack: Ember', 
             price: 9.00, 
             icon: '🔥', 
+            // WAS: /downloads/packets/ember.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/ember-the-dragon.zip' 
         },
         'prod-packet-shelly': { 
@@ -102,6 +109,7 @@
             name: 'Activity Pack: Shelly', 
             price: 9.00, 
             icon: '🐢', 
+            // WAS: /downloads/packets/shelly.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/shelly-the-turtle.zip' 
         },
         'prod-packet-sketch': { 
@@ -109,6 +117,7 @@
             name: 'Activity Pack: Sketch', 
             price: 9.00, 
             icon: '🦉', 
+            // WAS: /downloads/packets/sketch.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/sketch-the-owl.zip' 
         },
         'prod-packet-whisper': { 
@@ -116,7 +125,24 @@
             name: 'Activity Pack: Whisper', 
             price: 9.00, 
             icon: '🐰', 
+            // WAS: /downloads/packets/whisper.zip -> FIXED:
             downloadUrl: '/downloads/activity-packets/whisper-the-cozy.zip' 
+        },
+
+        // === HERO OFFERS (For HTML Compatibility) ===
+        'prod_combo_complete': {
+            id: 'prod_combo_complete',
+            name: 'Complete Support Plan',
+            price: 69.00,
+            icon: '🔥',
+            downloadUrl: '/downloads/bundles/total-access-pass.zip' 
+        },
+        'prod_prompt_executive': {
+            id: 'prod_prompt_executive',
+            name: 'AI Support System',
+            price: 29.00,
+            icon: '🤖',
+            downloadUrl: '/downloads/systems/morning-launch-system-prompt.pdf' 
         }
     };
 
@@ -151,11 +177,7 @@
         validateCart() {
             const initialCount = this.items.length;
             this.items = this.items.filter(item => PRODUCTS[item.id]);
-            
-            if (this.items.length !== initialCount) {
-                console.log("Cleaned up invalid items from cart.");
-                this.save();
-            }
+            if (this.items.length !== initialCount) this.save();
         }
 
         dispatchUpdate() {
@@ -299,7 +321,7 @@
                 if(checkoutBtn) checkoutBtn.innerText = originalText;
             }
             else if(session.id) {
-                // IMPORTANT: Replace with your LIVE publishable key before full launch
+                // REPLACE WITH YOUR LIVE KEY
                 const stripe = Stripe('pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd');
                 stripe.redirectToCheckout({ sessionId: session.id });
             }
@@ -324,7 +346,7 @@
                     <div class="text-6xl mb-4 opacity-20">🛒</div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">Your cart is empty</h2>
                     <p class="text-gray-500 mb-6">Looks like you haven't added any tools yet.</p>
-                    <a href="/" class="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#ff5252] transition">
+                    <a href="/products/" class="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#ff5252] transition">
                         Browse Shop
                     </a>
                 </div>`;
@@ -381,7 +403,7 @@
     }
 
     // =========================================
-    // INITIALIZATION
+    // INITIALIZATION & PUBLIC API
     // =========================================
     const cart = new Cart();
 
@@ -393,7 +415,6 @@
         renderCartPage();
     }
 
-    // Expose Public API
     window.NavigatorCart = {
         add: (id, qty) => cart.add(id, qty),
         remove: (id) => cart.remove(id),
@@ -405,7 +426,7 @@
         isEmpty: () => cart.isEmpty(),
         formatCurrency: (amt) => cart.formatCurrency(amt),
         renderCartPage: renderCartPage,
-        getProduct: (id) => PRODUCTS[id] 
+        getProduct: (id) => PRODUCTS[id]
     };
 
 })();
