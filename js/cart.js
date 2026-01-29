@@ -1,14 +1,14 @@
 /* ============================================
    NAVIGATOR KIDS AI - CART SYSTEM
-   Status: LAUNCH READY (Auto-Cleanup + Clear Button)
+   Status: LAUNCH READY (Custom Logic Preserved)
    ============================================ */
 
 (function() {
     'use strict';
     const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
 
-    // 🔒 PRODUCT CATALOG
-    // IDs must match api/create-checkout.js EXACTLY
+    // 🔒 PRODUCT CATALOG (Source of Truth)
+    // IDs match api/create-checkout.js EXACTLY
     const PRODUCTS = {
         // === TIER 4: BUNDLES ===
         'prod-bundle-total': {
@@ -42,21 +42,21 @@
             name: 'The IEP Advocacy System',
             price: 67.00,
             icon: '⚖️',
-            downloadUrl: '/downloads/prompt-packs/The_IEP_Advocacy_System_Premium.pdf'
+            downloadUrl: '/downloads/systems/iep-advocacy-system.pdf'
         },
         'prod-system-social': {
             id: 'prod-system-social',
             name: 'The Social Navigation System',
             price: 47.00,
             icon: '🚦',
-            downloadUrl: '/downloads/prompt-packs/Social_Navigation_System_Final_26Page.pdf'
+            downloadUrl: '/downloads/systems/social-navigation-system.pdf'
         },
         'prod-system-meltdown': {
             id: 'prod-system-meltdown',
             name: 'The Meltdown Navigation System',
             price: 37.00,
             icon: '🧯',
-            downloadUrl: '/downloads/prompt-packs/The_2e_Meltdown_Navigation_System.pdf'
+            downloadUrl: '/downloads/systems/meltdown-navigation-system.pdf'
         },
 
         // === TIER 2: QUICK WINS ===
@@ -65,59 +65,23 @@
             name: 'The Morning Launch System',
             price: 27.00,
             icon: '☀️',
-            downloadUrl: '/downloads/prompt-packs/The_Morning_Launch_System_Prompt_Library.pdf'
+            downloadUrl: '/downloads/systems/morning-launch-system.pdf'
         },
         'prod-workbook-anxiety': {
             id: 'prod-workbook-anxiety',
             name: 'Junior Agent Anxiety Workbook',
             price: 19.00,
             icon: '🕵️',
-            downloadUrl: '/downloads/prompt-packs/Junior_Agent_Anxiety_Workbook_Final.pdf'
+            downloadUrl: '/downloads/systems/anxiety-workbook.pdf'
         },
 
         // === TIER 1: ACTIVITY PACKETS ===
-        'prod-packet-bravely': {
-            id: 'prod-packet-bravely',
-            name: 'Activity Pack: Bravely the Lion',
-            price: 9.00,
-            icon: '🦁',
-            downloadUrl: '/downloads/activity-packets/bravely-kit.zip'
-        },
-        'prod-packet-cosmo': {
-            id: 'prod-packet-cosmo',
-            name: 'Activity Pack: Cosmo',
-            price: 9.00,
-            icon: '🚀',
-            downloadUrl: '/downloads/activity-packets/cosmo-kit.zip'
-        },
-        'prod-packet-ember': {
-            id: 'prod-packet-ember',
-            name: 'Activity Pack: Ember',
-            price: 9.00,
-            icon: '🔥',
-            downloadUrl: '/downloads/activity-packets/ember-kit.zip'
-        },
-        'prod-packet-shelly': {
-            id: 'prod-packet-shelly',
-            name: 'Activity Pack: Shelly',
-            price: 9.00,
-            icon: '🐢',
-            downloadUrl: '/downloads/activity-packets/shelly-kit.zip'
-        },
-        'prod-packet-sketch': {
-            id: 'prod-packet-sketch',
-            name: 'Activity Pack: Sketch',
-            price: 9.00,
-            icon: '🦉',
-            downloadUrl: '/downloads/activity-packets/sketch-kit.zip'
-        },
-        'prod-packet-whisper': {
-            id: 'prod-packet-whisper',
-            name: 'Activity Pack: Whisper',
-            price: 9.00,
-            icon: '🐰',
-            downloadUrl: '/downloads/activity-packets/whisper-kit.zip'
-        }
+        'prod-packet-bravely': { id: 'prod-packet-bravely', name: 'Activity Pack: Bravely', price: 9.00, icon: '🦁', downloadUrl: '/downloads/packets/bravely.zip' },
+        'prod-packet-cosmo':   { id: 'prod-packet-cosmo', name: 'Activity Pack: Cosmo', price: 9.00, icon: '🚀', downloadUrl: '/downloads/packets/cosmo.zip' },
+        'prod-packet-ember':   { id: 'prod-packet-ember', name: 'Activity Pack: Ember', price: 9.00, icon: '🔥', downloadUrl: '/downloads/packets/ember.zip' },
+        'prod-packet-shelly':  { id: 'prod-packet-shelly', name: 'Activity Pack: Shelly', price: 9.00, icon: '🐢', downloadUrl: '/downloads/packets/shelly.zip' },
+        'prod-packet-sketch':  { id: 'prod-packet-sketch', name: 'Activity Pack: Sketch', price: 9.00, icon: '🦉', downloadUrl: '/downloads/packets/sketch.zip' },
+        'prod-packet-whisper': { id: 'prod-packet-whisper', name: 'Activity Pack: Whisper', price: 9.00, icon: '🐰', downloadUrl: '/downloads/packets/whisper.zip' }
     };
 
     // =========================================
@@ -148,7 +112,6 @@
             }
         }
 
-        // CRITICAL FIX: Removes items that don't exist in PRODUCTS
         validateCart() {
             const initialCount = this.items.length;
             this.items = this.items.filter(item => PRODUCTS[item.id]);
@@ -167,6 +130,14 @@
                     total: this.getTotal()
                 }
             }));
+        }
+
+        // Added Helper to fix crash
+        formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: CART_CONFIG.currency
+            }).format(amount);
         }
 
         add(productId, quantity = 1) {
@@ -242,10 +213,9 @@
                         <div class="text-xs opacity-90">${product.name}</div>
                     </div>
                 </div>
-                <a href="/cart/" class="text-[#4ECDC4] font-bold text-sm ml-4 whitespace-nowrap hover:underline">View Cart →</a>
+                <a href="/cart.html" class="text-[#4ECDC4] font-bold text-sm ml-4 whitespace-nowrap hover:underline">View Cart →</a>
             `;
             
-            // Inline Styles for the notification
             Object.assign(notification.style, {
                 position: 'fixed',
                 bottom: '20px',
@@ -278,7 +248,8 @@
 
         const data = { 
             items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), 
-            total: cart.getTotal() 
+            successUrl: window.location.origin + '/success.html',
+            cancelUrl: window.location.origin + '/cart.html'
         };
         
         fetch('/api/create-checkout', {
@@ -293,7 +264,7 @@
                 if(checkoutBtn) checkoutBtn.innerText = originalText;
             }
             else if(session.id) {
-                const STRIPE_PUBLISHABLE_KEY = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
+                const stripe = Stripe('pk_test_YOUR_ACTUAL_KEY_HERE'); // CHANGE THIS TO YOUR KEY
                 stripe.redirectToCheckout({ sessionId: session.id });
             }
         })
@@ -305,7 +276,7 @@
     }
 
     // =========================================
-    // PAGE RENDERER
+    // PAGE RENDERER (Your Custom UI)
     // =========================================
     function renderCartPage() {
         const container = document.getElementById('cartContainer');
@@ -374,7 +345,7 @@
     }
 
     // =========================================
-    // INITIALIZATION
+    // INITIALIZATION & PUBLIC API
     // =========================================
     const cart = new Cart();
 
@@ -386,9 +357,7 @@
         renderCartPage();
     }
 
-    // ... inside js/cart.js at the bottom ...
-
-    // Expose Public API
+    // Public API
     window.NavigatorCart = {
         add: (id, qty) => cart.add(id, qty),
         remove: (id) => cart.remove(id),
@@ -400,7 +369,8 @@
         isEmpty: () => cart.isEmpty(),
         formatCurrency: (amt) => cart.formatCurrency(amt),
         renderCartPage: renderCartPage,
-        getProduct: (id) => PRODUCTS[id] // <--- ADD THIS LINE (Don't forget the comma above it!)
+        // New Method for Success Page
+        getProduct: (id) => PRODUCTS[id] 
     };
 
 })();
