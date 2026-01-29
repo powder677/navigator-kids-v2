@@ -6,54 +6,67 @@ document.addEventListener('DOMContentLoaded', () => {
     ensureDependencies();
     injectHeader();
     injectFooter();
-    initMobileMenu();
-    initFormspree(); // This is the primary handler for all captures
+    // initMobileMenu is called inside injectHeader after the HTML exists
+    initFormspree(); 
 });
 
-// ... (keep ensureDependencies, injectHeader, injectFooter, initMobileMenu)
+// 1. ENSURE DEPENDENCIES
+function ensureDependencies() {
+    // Check for Tailwind/FontAwesome if necessary
+}
 
-// 6. FORMSPREE HANDLER
-function initFormspree() {
-    const FORMSPREE_URL = 'https://formspree.io/f/mnjvvpyj';
+// 2. INJECT HEADER
+async function injectHeader() {
+    const headerContainer = document.getElementById('header');
+    if (!headerContainer) return;
+
+    try {
+        const response = await fetch('/header.html');
+        const html = await response.text();
+        headerContainer.innerHTML = html;
+        
+        // Initialize mobile menu only AFTER the HTML is injected
+        initMobileMenu();
+        
+        // Update cart counts if cart.js is present
+        if (window.NavigatorCart) {
+            window.NavigatorCart.updateUI();
+        }
+    } catch (err) {
+        console.error('Error loading header:', err);
+    }
+}
+
+// 3. INJECT FOOTER
+async function injectFooter() {
+    const footerContainer = document.getElementById('footer');
+    if (!footerContainer) return;
+
+    try {
+        const response = await fetch('/footer.html');
+        const html = await response.text();
+        footerContainer.innerHTML = html;
+    } catch (err) {
+        console.error('Error loading footer:', err);
+    }
+}
+
+// 4. MOBILE MENU LOGIC
+function initMobileMenu() {
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
     
-    // Selects all forms with the data-formspree attribute
-    document.querySelectorAll('form[data-formspree]').forEach(form => {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn ? btn.innerText : 'Submit';
-            if (btn) { btn.disabled = true; btn.innerText = 'Sending...'; }
-            
-            const formData = new FormData(form);
-            formData.append('_source_page', window.location.pathname);
-            
-            try {
-                const res = await fetch(FORMSPREE_URL, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (res.ok) {
-                    // Check for a success message element or redirect
-                    const successEl = form.querySelector('.form-success');
-                    if (successEl) {
-                        form.style.display = 'none';
-                        successEl.classList.remove('hidden');
-                        successEl.style.display = 'block';
-                    } else if (form.dataset.redirect) {
-                        window.location.href = form.dataset.redirect;
-                    } else {
-                        form.innerHTML = '<div style="text-align:center;padding:2rem;"><div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div><h3 style="margin:0 0 0.5rem;color:#3D405B;">Success!</h3><p style="margin:0;color:#666;">Check your inbox shortly.</p></div>';
-                    }
-                } else {
-                    throw new Error('Submission failed');
-                }
-            } catch (err) {
-                alert('Something went wrong. Please try again or email support@navigatorkids.ai.');
-                if (btn) { btn.disabled = false; btn.innerText = originalText; }
-            }
+    if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', () => {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
-    });
+    }
+}
+
+// 6. FORMSPREE HANDLER (Already in your file)
+function initFormspree() {
+    // ... (Your existing Formspree code)
 }
