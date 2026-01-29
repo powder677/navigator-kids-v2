@@ -140,19 +140,75 @@
    <script src="/js/components.js"></script>
    <script src="/js/cart.js"></script>
    <script>
-      // Clear the cart after successful purchase
       document.addEventListener('DOMContentLoaded', function() {
-         // Check if we came from Stripe checkout (has session_id)
          const urlParams = new URLSearchParams(window.location.search);
          const sessionId = urlParams.get('session_id');
 
+         // 1. Get the order details from local storage
+         let lastOrder = null;
+         try {
+            lastOrder = JSON.parse(localStorage.getItem('lastOrder'));
+         } catch (e) {
+            console.error('Could not read order');
+         }
+
+         const orderList = document.getElementById('orderItemsList');
+         const detailsContainer = document.getElementById('orderDetails');
+         const nextStepsContainer = document.querySelector('.next-steps');
+
+         // 2. If we have a valid order, show the specific downloads
+         if (lastOrder && lastOrder.items && lastOrder.items.length > 0) {
+            
+            // Show the order container
+            detailsContainer.style.display = 'block';
+            
+            // Clear default text
+            orderList.innerHTML = ''; 
+
+            // Loop through every item bought
+            lastOrder.items.forEach(item => {
+                // Get full product details (including downloadUrl) using our new helper
+                const product = window.NavigatorCart.getProduct(item.id);
+                
+                if (product) {
+                    // Create a container for this item
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "mb-4 pb-4 border-b border-gray-100 last:border-0";
+                    
+                    // Generate the Download Button HTML
+                    // We only show the button if a downloadUrl exists for this product
+                    const downloadBtn = product.downloadUrl 
+                        ? `<a href="${product.downloadUrl}" target="_blank" class="inline-block mt-2 bg-green-100 text-green-800 text-sm font-bold px-4 py-2 rounded-lg hover:bg-green-200 transition">
+                             <i class="fa-solid fa-download mr-2"></i> Download PDF/Zip
+                           </a>`
+                        : '';
+
+                    itemDiv.innerHTML = `
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">${product.icon}</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">${product.name}</h4>
+                                ${downloadBtn}
+                            </div>
+                        </div>
+                    `;
+                    orderList.appendChild(itemDiv);
+                }
+            });
+
+         } else {
+             // Fallback if they arrived here without buying (or cleared cache)
+             if(!sessionId) {
+                 document.querySelector('.subtitle').innerText = "Session expired or invalid. Please check your email for your receipt.";
+                 nextStepsContainer.style.display = 'none';
+             }
+         }
+
+         // 3. Clear the cart (Prevents buying the same thing twice by accident)
          if (sessionId) {
-            // Clear the cart
-            NavigatorCart.clear()
-            console.log('Cart cleared after successful checkout');
+            if (window.NavigatorCart && typeof window.NavigatorCart.clear === 'function') {
+               window.NavigatorCart.clear();
+            }
          }
       });
    </script>
-</body>
-
-</html>
