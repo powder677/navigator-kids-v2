@@ -293,7 +293,7 @@
                 if(checkoutBtn) checkoutBtn.innerText = originalText;
             }
             else if(session.id) {
-                const stripe = Stripe('pk_live_51Qt5UQAx6JDn4AuAu7Y7w8X7q8X7q8X7q8X7q8X7q8X7q8X7q8X7q8X7q8X7q8X'); // PASTE YOUR PUBLIC KEY
+                const STRIPE_PUBLISHABLE_KEY = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
                 stripe.redirectToCheckout({ sessionId: session.id });
             }
         })
