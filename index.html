@@ -732,7 +732,7 @@
       }
 
       /* =========================================
-           8. Free Kit Section
+           8. Free Kit Section (Teaser - Keep as is or remove if redundant)
            ========================================= */
       .free-kit {
          padding: var(--section-padding) 0;
@@ -826,82 +826,82 @@
       }
 
       /* =========================================
-           9. Products Preview
+           9. REPLACEMENT: Lead Magnet Capture
            ========================================= */
-      .products-preview {
+      .lead-capture-section {
          padding: var(--section-padding) 0;
          background: var(--white);
+         border-top: 1px solid rgba(61, 64, 91, 0.05);
       }
 
-      .products-grid {
+      .lead-magnet-wrapper {
          display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: 2rem;
-         margin-top: 3rem;
-         max-width: 900px;
-         margin-left: auto;
-         margin-right: auto;
+         grid-template-columns: 1fr 1fr;
+         gap: 4rem;
+         align-items: center;
+         max-width: 1000px;
+         margin: 0 auto;
       }
 
-      .product-card {
+      .lead-visual {
          background: var(--cream);
+         border: 2px solid var(--navy);
          border-radius: var(--radius-lg);
-         padding: 2rem;
-         display: flex;
-         flex-direction: column;
+         padding: 3rem 2rem;
+         text-align: center;
+         position: relative;
+      }
+      
+      .lead-visual::after {
+         content: '';
+         position: absolute;
+         top: 10px;
+         left: 10px;
+         right: -10px;
+         bottom: -10px;
+         background: var(--sage);
+         border-radius: var(--radius-lg);
+         z-index: -1;
       }
 
-      .product-badge {
-         align-self: flex-start;
-         font-size: 0.7rem;
-         font-weight: 600;
-         text-transform: uppercase;
-         letter-spacing: 1px;
-         padding: 0.35rem 0.75rem;
-         border-radius: var(--radius-full);
+      .lead-form-container {
+         padding: 1rem;
+      }
+
+      .form-group {
          margin-bottom: 1rem;
       }
 
-      .product-card:first-child .product-badge {
-         background: var(--terracotta);
-         color: var(--white);
+      .form-input {
+         width: 100%;
+         padding: 1rem;
+         border: 2px solid #E2E8F0;
+         border-radius: var(--radius-md);
+         font-family: var(--font-body);
+         font-size: 1rem;
+         transition: border-color 0.3s;
       }
 
-      .product-card:last-child .product-badge {
-         background: var(--sage);
-         color: var(--white);
+      .form-input:focus {
+         outline: none;
+         border-color: var(--navy);
       }
 
-      .product-card h3 {
-         font-size: 1.35rem;
-         margin-bottom: 0.75rem;
-      }
-
-      .product-card p {
-         font-size: 0.95rem;
-         color: var(--text-light);
-         flex-grow: 1;
-      }
-
-      .product-price {
-         display: flex;
-         align-items: baseline;
-         gap: 0.5rem;
-         margin-top: 1rem;
-         padding-top: 1rem;
-         border-top: 1px solid rgba(61, 64, 91, 0.1);
-      }
-
-      .product-price-amount {
-         font-family: var(--font-heading);
-         font-size: 1.5rem;
+      .form-btn {
+         width: 100%;
+         background: var(--navy);
+         color: white;
+         padding: 1rem;
+         border: none;
+         border-radius: var(--radius-full);
          font-weight: 700;
-         color: var(--navy);
+         cursor: pointer;
+         transition: all 0.3s;
       }
 
-      .product-price-note {
-         font-size: 0.85rem;
-         color: var(--text-light);
+      .form-btn:hover {
+         background: var(--navy-light);
+         transform: translateY(-2px);
       }
 
       /* =========================================
@@ -986,6 +986,15 @@
          :root {
             --section-padding: 3.5rem;
          }
+         
+         .lead-magnet-wrapper {
+             grid-template-columns: 1fr;
+             gap: 2rem;
+         }
+         
+         .lead-visual {
+             order: -1;
+         }
 
          .nav-links {
             display: none;
@@ -1030,10 +1039,6 @@
 
          .free-kit-card {
             transform: rotate(0);
-         }
-
-         .products-grid {
-            grid-template-columns: 1fr;
          }
 
          .trust-items {
@@ -1275,7 +1280,7 @@
       <div class="container">
          <div class="free-kit-content">
             <div class="free-kit-text">
-               <span class="section-label">Free Download</span>
+               <span class="section-label">Most Popular Free Tool</span>
                <h2>The De-Escalation Kit</h2>
                <p>
                   When the meltdown hits, you don't have time to Google.
@@ -1296,8 +1301,8 @@
                      <span>Printable calm-down card for your fridge</span>
                   </div>
                </div>
-
-               <a href="free/de-escalation-kit/" class="btn btn-secondary btn-arrow">Get the Free Kit </a>
+               
+               <a href="#get-the-kit" class="btn btn-secondary btn-arrow">Get the Free Kit </a>
             </div>
 
             <div class="free-kit-visual">
@@ -1311,42 +1316,43 @@
       </div>
    </section>
 
-   <section class="products-preview">
+   <section class="lead-capture-section" id="get-the-kit">
       <div class="container">
          <div class="text-center">
-            <span class="section-label">Tools That Work</span>
-            <h2 class="section-title">Built for Their Brain</h2>
-            <p class="section-subtitle">
-               Once you know their profile, get tools matched to how they actually think.
-            </p>
+             <span class="section-label">System Protocol</span>
+             <h2 class="section-title">Emergency Regulation Kit</h2>
+             <p class="section-subtitle">
+                 The exact protocol for when the thinking brain is offline. Stop guessing and start co-regulating.
+             </p>
          </div>
-
-         <div class="products-grid">
-            <div class="product-card">
-               <span class="product-badge">Most Popular</span>
-               <h3>AI Prompt Packs</h3>
-               <p>
-                  50 ready-to-paste prompts for ChatGPT or Claude.
-                  Homework help, IEP emails, meltdown scripts, and more — written by parents who get it.
-               </p>
-               <div class="product-price">
-                  <span class="product-price-amount">$18</span>
-                  <span class="product-price-note">Instant download</span>
-               </div>
-            </div>
-
-            <div class="product-card">
-               <span class="product-badge">Interactive</span>
-               <h3>Activity Packets</h3>
-               <p>
-                  Fun, browser-based activities matched to each brain profile.
-                  Regulation games, focus builders, and confidence boosters they'll actually want to do.
-               </p>
-               <div class="product-price">
-                  <span class="product-price-amount">$9</span>
-                  <span class="product-price-note">Per packet</span>
-               </div>
-            </div>
+         
+         <div class="lead-magnet-wrapper">
+             <div class="lead-visual">
+                 <div class="free-kit-icon" style="font-size:5rem;">🛡️</div>
+                 <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--navy); margin-bottom:1rem;">Nervous System Protocol</h3>
+                 <ul style="text-align:left; display:inline-block; font-size:0.9rem; color:var(--text-light);">
+                     <li style="margin-bottom:0.5rem"><strong>Phase 1:</strong> Rapid Response Protocol</li>
+                     <li style="margin-bottom:0.5rem"><strong>Phase 2:</strong> Co-Regulation Scripting</li>
+                     <li><strong>Phase 3:</strong> Physiological Reset</li>
+                 </ul>
+             </div>
+             
+             <div class="lead-form-container">
+                 <form onsubmit="event.preventDefault(); window.location.href='/thank-you/';">
+                     <div class="form-group">
+                         <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Your First Name</label>
+                         <input type="text" class="form-input" placeholder="Jane" required>
+                     </div>
+                     <div class="form-group">
+                         <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Best Email Address</label>
+                         <input type="email" class="form-input" placeholder="jane@example.com" required>
+                     </div>
+                     <button type="submit" class="form-btn">Send Me The PDF Now</button>
+                     <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">
+                         <i class="fa-solid fa-lock"></i> Your privacy is safe. Unsubscribe anytime.
+                     </p>
+                 </form>
+             </div>
          </div>
       </div>
    </section>
