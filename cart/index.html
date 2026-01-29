@@ -5,82 +5,79 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Your Cart | Navigator Kids AI</title>
+   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
    
+   <script src="/js/components.js" defer></script>
    <script src="/js/cart.js" defer></script>
 
    <style>
       :root {
-         --primary-color: #FF6B6B;
-         --secondary-color: #4ECDC4;
-         --accent-color: #FFE66D;
-         --text-color: #2D3748;
-         --bg-color: #F7FAFC;
+         /* Updated Premium Palette */
+         --color-navy: #3D405B;
+         --color-sage: #81B29A;
+         --color-sage-light: #A8D0BA;
+         --color-terracotta: #E07A5F;
+         --color-cream: #F9F7F2;
+         --color-white: #FFFFFF;
+         --color-text: #4A4E69;
+         --bg-color: #F9FAFB;
       }
 
       body {
-         font-family: 'Nunito', sans-serif;
+         font-family: 'Inter', sans-serif;
          background-color: var(--bg-color);
-         color: var(--text-color);
+         color: var(--color-text);
          display: flex;
          flex-direction: column;
          min-height: 100vh;
       }
 
       h1, h2, h3, h4, .font-heading {
-         font-family: 'Fredoka', sans-serif;
+         font-family: 'Merriweather', serif;
+         color: var(--color-navy);
       }
 
-      main {
-         flex: 1; /* Pushes footer down */
+      /* Loading Spinner Color Override */
+      .text-primary {
+         color: var(--color-sage);
       }
    </style>
 </head>
 
 <body class="antialiased">
 
-   <nav class="bg-white shadow-sm sticky top-0 z-50">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-         <a href="/" class="flex items-center gap-2 hover:opacity-80 transition">
-            <span class="text-3xl">🧭</span>
-            <span class="font-heading text-xl font-bold text-gray-800">Navigator Kids</span>
-         </a>
-         <a href="/" class="text-sm font-bold text-gray-500 hover:text-[#FF6B6B]">
+   <div id="header"></div>
+
+   <main class="container mx-auto px-4 py-12 flex-grow">
+      
+      <div class="flex items-center gap-2 mb-8 text-sm">
+         <a href="/products/" class="text-gray-500 hover:text-[#E07A5F] transition font-medium">
             <i class="fa-solid fa-arrow-left mr-1"></i> Continue Shopping
          </a>
       </div>
-   </nav>
 
-   <main class="container mx-auto px-4 py-12">
-      
       <div id="cartContainer">
-         <div class="max-w-2xl mx-auto text-center py-20">
-            <div class="animate-spin inline-block w-10 h-10 border-4 border-current border-t-transparent text-[#FF6B6B] rounded-full mb-4" role="status" aria-label="loading"></div>
+         <div class="max-w-2xl mx-auto text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100">
+            <div class="animate-spin inline-block w-10 h-10 border-4 border-[#E07A5F] border-t-transparent rounded-full mb-4" role="status" aria-label="loading"></div>
             <p class="text-gray-500 text-lg">Loading your cart...</p>
          </div>
       </div>
 
    </main>
 
-   <footer class="bg-white border-t mt-auto py-8">
-      <div class="container mx-auto px-4 text-center">
-         <p class="text-gray-400 text-sm">© 2026 Navigator Kids AI. Secure Checkout via Stripe.</p>
-         <div class="mt-4 flex justify-center gap-4 text-sm text-gray-500">
-             <a href="/privacy/" class="hover:text-[#FF6B6B]">Privacy</a>
-             <a href="/terms/" class="hover:text-[#FF6B6B]">Terms</a>
-             <a href="/contact/" class="hover:text-[#FF6B6B]">Support</a>
-         </div>
-      </div>
-   </footer>
+   <div id="footer"></div>
 
    <script>
-      // Force render on load in case the defer script missed the event
+      // Force render on load if cart.js loaded before DOM
       window.addEventListener('load', function() {
          if(window.NavigatorCart && document.getElementById('cartContainer').innerHTML.includes('Loading')) {
-             // Dispatch a fake update to trigger render
-             window.dispatchEvent(new CustomEvent('cartUpdated', { detail: {} }));
+            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: {} }));
          }
       });
    </script>
