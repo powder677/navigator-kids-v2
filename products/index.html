@@ -45,80 +45,76 @@
 
 <body class="antialiased">
 
-   <nav class="bg-white shadow-sm sticky top-0 z-50">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-         <div class="flex items-center gap-2">
-            <span class="text-3xl">🧭</span>
-            <span class="font-heading text-xl font-bold text-gray-800">Navigator Kids</span>
-         </div>
-         <div class="flex items-center gap-6">
-            <a href="/cart/" class="relative hover:text-[#FF6B6B] transition">
-               <i class="fa-solid fa-cart-shopping text-xl"></i>
-               <span id="cart-count" class="absolute -top-2 -right-2 bg-[#FF6B6B] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-            </a>
-         </div>
+   <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+         <span class="text-2xl bg-slate-100 p-2 rounded-lg">🧭</span>
+         <span class="font-heading text-xl font-bold text-[#3D405B]">Navigator Kids AI</span>
       </div>
-   </nav>
+      <div class="hidden md:flex items-center gap-8">
+         <a href="/#profiles" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A]">Brain Profiles</a>
+         <a href="/tools/iep-advocate/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A]">IEP Tool</a>
+         <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F]">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-[#E07A5F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+         </a>
+         <a href="/quiz/" class="bg-[#3D405B] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-700 transition">Take the Quiz</a>
+      </div>
+   </div>
+</nav>
 
-   <header class="container mx-auto px-4 py-12">
-      <div class="bg-gradient-to-r from-[#2D3748] to-[#1a202c] rounded-2xl shadow-2xl p-8 text-white relative overflow-hidden">
-         <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">🏆</div>
-         
-         <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-            <div>
-               <span class="bg-[#FF6B6B] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Best Value</span>
-               <h2 class="text-3xl md:text-4xl font-bold mb-2 font-heading">The Complete Parent Rescue System</h2>
-               <p class="text-gray-300 text-lg mb-6">The "I'm Ready for Anything" Toolkit.</p>
-               
-               <div class="space-y-3 mb-8">
-                  <p class="flex items-start text-gray-300">
-                     <span class="text-green-400 mr-2 text-xl">✓</span>
-                     <span><strong>Stop Guessing:</strong> Whether it's a meltdown at 4 PM, homework at 6 PM, or sleep at 9 PM, have the exact script in your pocket.</span>
-                  </p>
-                  <p class="flex items-start text-gray-300">
-                     <span class="text-green-400 mr-2 text-xl">✓</span>
-                     <span><strong>Includes Everything:</strong> All 5 Parent Systems + Lifetime Updates.</span>
-                  </p>
-               </div>
-
-               <div class="flex flex-col sm:flex-row items-center gap-4">
-                  <div>
-                     <span class="text-4xl font-bold text-white">$97.00</span>
-                     <span class="text-gray-400 text-sm line-through block">$197 Value</span>
-                  </div>
-                  <button onclick="window.NavigatorCart.add('prod-bundle-total')" class="w-full sm:w-auto bg-[#FF6B6B] hover:bg-[#ff5252] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg transform hover:-translate-y-1 transition-all">
-                     Get The Full System
-                  </button>
-               </div>
-               <p class="text-xs text-gray-400 mt-4"><i class="fa-solid fa-lock mr-1"></i> Secure Checkout via Stripe</p>
-            </div>
+<header class="container mx-auto px-4 py-12">
+   <div class="bg-gradient-to-r from-[#3D405B] to-[#2D3047] rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">⚖️</div>
+      
+      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+         <div>
+            <span class="bg-[#81B29A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Essential Advocacy Tool</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading leading-tight">The IEP Advocacy System</h1>
+            <p class="text-slate-200 text-lg mb-8 leading-relaxed">Stop feeling intimidated in school meetings. Translate your parental instincts into "Educator Speak" and secure the accommodations your child deserves.</p>
             
-            <div class="hidden md:block bg-white/10 rounded-xl p-6 backdrop-blur-sm border border-white/10">
-               <div class="grid grid-cols-2 gap-4">
-                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
-                       <div class="text-3xl mb-1">⚖️</div>
-                       <div class="text-xs font-bold">IEP System</div>
-                   </div>
-                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
-                       <div class="text-3xl mb-1">🚦</div>
-                       <div class="text-xs font-bold">Social System</div>
-                   </div>
-                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
-                       <div class="text-3xl mb-1">🧯</div>
-                       <div class="text-xs font-bold">Meltdown System</div>
-                   </div>
-                   <div class="bg-white/90 p-4 rounded-lg text-gray-800 text-center shadow-sm">
-                       <div class="text-3xl mb-1">☀️</div>
-                       <div class="text-xs font-bold">Morning System</div>
-                   </div>
+            <div class="space-y-4 mb-10">
+               <div class="flex items-start gap-3">
+                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                  <p class="text-slate-300 text-sm"><strong>Professional Scripts:</strong> Language that bypasses school "gatekeeping."</p>
                </div>
-               <div class="mt-4 bg-[#FF6B6B]/90 p-3 rounded-lg text-white text-center shadow-sm">
-                  <span class="font-bold">+ Anxiety Workbook Included Free</span>
+               <div class="flex items-start gap-3">
+                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                  <p class="text-slate-300 text-sm"><strong>Accommodation Matrix:</strong> Matched to your child's specific brain profile.</p>
+               </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+               <button onclick="window.NavigatorCart.add('prod-system-iep')" class="w-full sm:w-auto bg-[#E07A5F] hover:bg-[#C96A52] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transform hover:-translate-y-1 transition-all">
+                  Get the System — $67
+               </button>
+               <div class="text-left">
+                  <p class="text-xs text-slate-400 uppercase tracking-tighter">One-time purchase</p>
+                  <p class="text-sm font-bold text-slate-200 italic">Includes Lifetime Updates</p>
+               </div>
+            </div>
+         </div>
+         
+         <div class="hidden md:block">
+            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+               <div class="text-5xl mb-4">🛡️</div>
+               <h3 class="font-heading text-xl mb-2 text-white">Your Advocate’s Toolkit</h3>
+               <p class="text-slate-400 text-sm mb-6">Designed to level the playing field between parents and school districts.</p>
+               <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                     <span class="block text-xs font-bold text-[#81B29A]">50+</span>
+                     <span class="text-[10px] text-slate-300">Email Templates</span>
+                  </div>
+                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                     <span class="block text-xs font-bold text-[#81B29A]">100%</span>
+                     <span class="text-[10px] text-slate-300">Law Aligned</span>
+                  </div>
                </div>
             </div>
          </div>
       </div>
-   </header>
+   </div>
+</header>
 
    <section class="container mx-auto px-4 py-8">
       <div class="flex items-center gap-3 mb-8">
