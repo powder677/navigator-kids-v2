@@ -6,6 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contact Us | Navigator Kids AI</title>
 
+   <link rel="stylesheet" href="/css/styles.css">
+
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -27,28 +29,12 @@
          --color-white: #FFFFFF;
          --color-text: #4A4E69;
          --bg-color: #F9FAFB;
-         
-         /* Spacing Variables (Mapped for your existing CSS) */
-         --space-2: 0.5rem;
-         --space-3: 0.75rem;
-         --space-4: 1rem;
-         --space-6: 1.5rem;
-         --space-8: 2rem;
-         --space-12: 3rem;
-         --space-16: 4rem;
-         
-         --radius-lg: 0.5rem;
-         --radius-xl: 1rem;
-         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
       body {
          font-family: 'Inter', sans-serif;
          background-color: var(--bg-color);
          color: var(--color-text);
-         display: flex;
-         flex-direction: column;
-         min-height: 100vh;
       }
 
       h1, h2, h3, h4 {
@@ -61,7 +47,7 @@
          width: 100%;
          padding: 0.75rem;
          border: 1px solid #E2E8F0;
-         border-radius: var(--radius-lg);
+         border-radius: 0.5rem;
          background: white;
          transition: border-color 0.2s;
       }
@@ -69,7 +55,7 @@
       .form-input:focus, .form-select:focus, textarea:focus {
          outline: none;
          border-color: var(--color-navy);
-         ring: 2px solid var(--color-sage-light);
+         box-shadow: 0 0 0 2px var(--color-sage-light);
       }
 
       .btn-primary {
@@ -84,17 +70,18 @@
       }
       
       .btn-primary:hover {
-         background-color: #2D3047; /* Darker Navy */
+         background-color: #2D3047;
          transform: translateY(-1px);
+         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
    </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
    <div id="header"></div>
 
-   <main class="flex-grow py-16">
+   <main class="flex-grow pt-24 pb-16">
       <div class="container mx-auto px-4">
 
          <div class="text-center mb-12 max-w-2xl mx-auto">
