@@ -2,288 +2,373 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your child is a Bold Explorer. Learn why they jump in fast but give up when things get hard, and get tools that build resilience.">
-    <title>The Bold Explorer Profile | Navigator Kids AI</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Bold Explorer | Navigator Kids AI™</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+   <script src="https://js.stripe.com/v3/"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Anti-flicker for Header Injection */
-        body { padding-top: 76px; }
-        #header + * { margin-top: 0; }
+   <style>
+      /* --- 1. DESIGN SYSTEM (Lion Gold Theme for Bold Explorer) --- */
+      :root {
+         --color-navy: #002347;
+         --color-gold: #D4AF37;
+         --color-terracotta: #D44D5C;
+         
+         /* Primary color for Bold Explorer (Lion Gold/Orange) */
+         --color-lion: #E09F3E; 
+         --color-lion-light: #FEF3C7; 
+         
+         --color-cream: #FFF8E7;
+         --color-white: #ffffff;
+         --color-text: #333333;
+         --color-text-light: #666666;
+         --radius-md: 12px;
+         --radius-xl: 20px;
+         --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+         --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.1);
+         --font-body: 'Inter', sans-serif;
+         --font-heading: 'Merriweather', serif;
+      }
 
-        .result-hero { background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%); padding: var(--space-16) 0 var(--space-12); text-align: center; }
-        .result-hero-badge { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; color: #7EB8D8; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
-        .result-hero-icon { font-size: 5rem; margin-bottom: var(--space-4); }
-        .result-hero h1 { font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl)); margin-bottom: var(--space-4); }
-        .child-name { color: #5A9BC7; }
-        .result-hero-subtitle { font-size: var(--text-lg); color: var(--color-text); max-width: 600px; margin: 0 auto; }
-        .secondary-badge { display: inline-block; margin-top: var(--space-6); padding: var(--space-2) var(--space-4); background: var(--color-white); border-radius: var(--radius-full); font-size: var(--text-sm); color: var(--color-text-light); }
-        .secondary-badge strong { color: var(--color-navy); }
+      * { box-sizing: border-box; }
 
-        .validation-section { padding: var(--section-padding) 0; background: var(--color-white); }
-        .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
-        @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
-        .validation-content h2 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
-        .validation-content p { color: var(--color-text); margin-bottom: var(--space-4); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
-        .validation-list { margin-top: var(--space-6); }
-        .validation-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-base); }
-        .validation-list li::before { content: '✓'; color: #7EB8D8; font-weight: 700; flex-shrink: 0; }
-        .validation-visual { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
-        .symptom-card { background: var(--color-white); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-4); box-shadow: var(--shadow-xs); }
-        .symptom-card:last-child { margin-bottom: 0; }
-        .symptom-icon { font-size: 1.5rem; flex-shrink: 0; }
-        .symptom-card p { margin: 0; font-size: var(--text-sm); color: var(--color-text); }
+      body {
+         font-family: var(--font-body);
+         color: var(--color-text);
+         line-height: 1.6;
+         margin: 0;
+         background-color: #fdfdfd;
+         padding-top: 76px;
+      }
+      
+      #header + * { margin-top: 0; }
 
-        .explanation-section { padding: var(--section-padding) 0; background: var(--color-cream); }
-        .explanation-content { max-width: 720px; margin: 0 auto; }
-        .explanation-content h2 { text-align: center; margin-bottom: var(--space-8); }
-        .explanation-content p { font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); }
-        .explanation-callout { background: var(--color-white); border-left: 4px solid #7EB8D8; padding: var(--space-6); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: var(--space-8) 0; }
-        .explanation-callout p { margin: 0; font-style: italic; color: var(--color-text); }
+      h1, h2, h3, h4 {
+         font-family: var(--font-heading);
+         color: var(--color-navy);
+         margin-top: 0;
+      }
 
-        .products-section { padding: var(--section-padding) 0; background: var(--color-white); }
-        .products-section h2 { text-align: center; margin-bottom: var(--space-3); }
-        .products-section-subtitle { text-align: center; color: var(--color-text-light); margin-bottom: var(--space-12); max-width: 600px; margin-left: auto; margin-right: auto; }
-        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 900px; margin: 0 auto; }
-        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
-        .product-card-featured { background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%); border: 2px solid #7EB8D8; border-radius: var(--radius-xl); padding: var(--space-8); position: relative; }
-        .product-card-basic { background: var(--color-cream); border-radius: var(--radius-xl); padding: var(--space-8); }
-        .product-featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #7EB8D8; color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); }
-        .product-card-icon { font-size: 3rem; margin-bottom: var(--space-4); }
-        .product-card-featured h3, .product-card-basic h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
-        .product-card-featured p, .product-card-basic p { font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-4); }
-        .product-includes { margin-bottom: var(--space-6); }
-        .product-includes li { font-size: var(--text-sm); color: var(--color-text); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: var(--space-2); }
-        .product-includes li:last-child { border-bottom: none; }
-        .product-includes li::before { content: '✓'; color: #7EB8D8; font-weight: 700; }
-        .product-price-row { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-4); }
-        .product-price { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--color-navy); }
-        .product-price-note { font-size: var(--text-sm); color: var(--color-text-muted); }
-        .product-card-featured .btn, .product-card-basic .btn { width: 100%; }
+      .container {
+         max-width: 900px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
 
-        .quickwin-section { padding: var(--section-padding) 0; background: var(--color-cream); }
-        .quickwin-card { max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%); border-radius: var(--radius-xl); padding: var(--space-10); border: 2px solid rgba(126, 184, 216, 0.3); }
-        .quickwin-header { text-align: center; margin-bottom: var(--space-6); }
-        .quickwin-badge { display: inline-block; background: #7EB8D8; color: var(--color-white); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
-        .quickwin-card h2 { font-size: var(--text-xl); }
-        .quickwin-content { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-6); }
-        .quickwin-content h3 { font-size: var(--text-lg); margin-bottom: var(--space-4); }
-        .quickwin-content p { color: var(--color-text); margin-bottom: var(--space-4); }
-        .quickwin-steps { margin-top: var(--space-4); }
-        .quickwin-steps li { display: flex; gap: var(--space-3); margin-bottom: var(--space-3); }
-        .quickwin-step-num { width: 24px; height: 24px; background: #7EB8D8; color: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0; }
+      /* --- TRUST HERO --- */
+      .result-hero {
+         /* Lion Gradient */
+         background: linear-gradient(135deg, var(--color-lion-light) 0%, #ffffff 100%);
+         padding: 60px 0 40px;
+         text-align: center;
+      }
 
-        .faq-section { padding: var(--section-padding) 0; background: var(--color-white); }
-        .faq-section h2 { text-align: center; margin-bottom: var(--space-10); }
-        .faq-list { max-width: 720px; margin: 0 auto; }
-        .faq-item { background: var(--color-cream); border-radius: var(--radius-md); margin-bottom: var(--space-4); overflow: hidden; }
-        .faq-question { width: 100%; padding: var(--space-5) var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-base); font-weight: 600; color: var(--color-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .faq-question::after { content: '+'; font-size: var(--text-xl); color: var(--color-text-muted); }
-        .faq-item.open .faq-question::after { transform: rotate(45deg); }
-        .faq-answer { padding: 0 var(--space-6) var(--space-5); display: none; }
-        .faq-item.open .faq-answer { display: block; }
-        .faq-answer p { color: var(--color-text-light); margin: 0; }
+      .result-hero-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: var(--color-white);
+         padding: 6px 16px;
+         border-radius: 50px;
+         font-size: 0.85rem;
+         font-weight: 600;
+         color: var(--color-lion);
+         margin-bottom: 24px;
+         box-shadow: var(--shadow-sm);
+      }
 
-        .final-cta { padding: var(--section-padding) 0; background: var(--color-navy); text-align: center; }
-        .final-cta h2 { color: var(--color-cream); margin-bottom: var(--space-4); }
-        .final-cta p { color: rgba(249, 247, 242, 0.8); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto; }
-    </style>
+      .result-hero h1 {
+         font-size: clamp(2rem, 5vw, 3rem);
+         margin-bottom: 16px;
+      }
+
+      .result-hero-subtitle {
+         font-size: 1.15rem;
+         color: var(--color-text);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* --- VALIDATION SECTION --- */
+      .validation-section {
+         padding: 60px 0;
+         background: var(--color-white);
+      }
+
+      .validation-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 40px;
+         align-items: start;
+      }
+
+      @media (max-width: 768px) {
+         .validation-grid { grid-template-columns: 1fr; }
+      }
+
+      .validation-list {
+         list-style: none;
+         padding: 0;
+         margin-top: 20px;
+      }
+
+      .validation-list li {
+         display: flex;
+         align-items: flex-start;
+         gap: 12px;
+         margin-bottom: 16px;
+         font-size: 1rem;
+      }
+
+      .validation-list li::before {
+         content: '✓';
+         color: var(--color-lion);
+         font-weight: 700;
+         flex-shrink: 0;
+      }
+
+      /* Visual Cards */
+      .symptom-card {
+         background: var(--color-lion-light);
+         border-radius: var(--radius-md);
+         padding: 16px;
+         margin-bottom: 12px;
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         border-left: 4px solid var(--color-lion);
+      }
+
+      .symptom-icon { font-size: 1.5rem; }
+
+      .symptom-card p {
+         margin: 0;
+         font-size: 0.9rem;
+         font-weight: 500;
+      }
+
+      /* --- URGENCY BAND --- */
+      .urgency-band {
+         background-color: var(--color-navy);
+         color: var(--color-cream);
+         padding: 30px 20px;
+         text-align: center;
+         margin: 40px 0;
+         border-left: 6px solid var(--color-lion);
+         border-radius: 4px;
+      }
+
+      /* --- HERO OFFER --- */
+      .hero-offer {
+         border: 3px solid var(--color-lion);
+         background: var(--color-white);
+         padding: 40px;
+         border-radius: var(--radius-md);
+         box-shadow: var(--shadow-lg);
+         position: relative;
+         text-align: center;
+         margin-bottom: 60px;
+         overflow: hidden;
+      }
+
+      .hero-badge {
+         background: var(--color-lion);
+         color: var(--color-white);
+         position: absolute;
+         top: 0;
+         right: 0;
+         padding: 8px 20px;
+         font-weight: bold;
+         font-size: 0.85rem;
+         border-bottom-left-radius: 12px;
+      }
+
+      .offer-list {
+         text-align: left;
+         margin: 20px auto;
+         max-width: 450px;
+         line-height: 1.8;
+      }
+
+      .price-main {
+         font-size: 2.5rem;
+         font-weight: 800;
+         color: var(--color-navy);
+      }
+
+      .btn-primary {
+         background-color: var(--color-terracotta);
+         color: white;
+         width: 100%;
+         max-width: 500px;
+         padding: 18px;
+         font-size: 1.2rem;
+         font-weight: bold;
+         border: none;
+         border-radius: 8px;
+         cursor: pointer;
+         margin-top: 20px;
+         transition: transform 0.2s;
+      }
+
+      .btn-primary:hover {
+         transform: translateY(-2px);
+         filter: brightness(1.1);
+      }
+
+      /* --- QUICK WIN --- */
+      .quickwin-section {
+         background: linear-gradient(135deg, var(--color-lion-light) 0%, #ffffff 100%);
+         padding: 50px 0;
+         margin-top: 60px;
+         border-radius: var(--radius-xl);
+      }
+
+      .step-circle {
+         width: 24px;
+         height: 24px;
+         background: var(--color-lion);
+         color: white;
+         border-radius: 50%;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 0.75rem;
+         font-weight: bold;
+         margin-right: 10px;
+      }
+   </style>
 </head>
 
 <body>
-    <div id="header"></div>
 
-    <section class="result-hero">
-        <div class="container">
-            <span class="result-hero-badge"><span>🎯</span> Primary Profile Identified</span>
-            <div class="result-hero-icon">🦁</div>
-            <h1><span class="child-name" id="heroChildName">Your child</span> is a Bold Explorer</h1>
-            <p class="result-hero-subtitle">
-                They jump in first and think later. They love trying new things — but their confidence crashes hard when things get difficult.
-            </p>
-            <div class="secondary-badge">With strong <strong id="secondaryName">Deep Diver</strong> tendencies</div>
-        </div>
-    </section>
+   <div id="header"></div>
 
-    <section class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item"><span class="trust-icon">✓</span> No diagnosis required</div>
-                <div class="trust-item"><span class="trust-icon">✓</span> Backed by neurodiversity research</div>
+   <section class="result-hero">
+      <div class="container">
+         <span class="result-hero-badge"><span>🦁</span> Profile Type</span>
+         <h1 class="dynamic-child-name">Your child</h1>
+         <div class="result-hero-subtitle">is a <strong>Bold Explorer</strong></div>
+         <p style="max-width: 600px; margin: 15px auto 0;">
+            They have a Ferrari engine with bicycle brakes. They are fearless, fast, and often leap before looking.
+         </p>
+      </div>
+   </section>
+
+   <section class="validation-section">
+      <div class="container">
+         <div class="validation-grid">
+            <div class="validation-content">
+               <h3>The "Too Much" Myth</h3>
+               <p>Your child is a <strong>High-Energy Processor</strong>. They aren't "bad"—they are literally physically unable to slow down their brain or body.</p>
+               <ul class="validation-list">
+                  <li>"Walk, don't run!" is the phrase you say most often.</li>
+                  <li>They interrupt constantly because if they don't say it now, it's gone.</li>
+                  <li>They are natural leaders but can be perceived as "bossy."</li>
+                  <li>They rush through homework just to be done, making careless mistakes.</li>
+               </ul>
             </div>
-        </div>
-    </section>
-
-    <section class="validation-section">
-        <div class="container">
-            <div class="validation-grid">
-                <div class="validation-content">
-                    <h2>What You're Probably Experiencing</h2>
-                    <p>If <span class="dynamic-child-name">your child</span> is a Bold Explorer, they probably have no fear of trying new things — at first. They're the kid who volunteers immediately, raises their hand first, and jumps into the deep end.</p>
-                    <p>But the moment something gets hard or they're not immediately good at it? That confidence can collapse.</p>
-                    <ul class="validation-list">
-                        <li>Enthusiastic start, dramatic give-up</li>
-                        <li>Quits activities the moment they're not winning</li>
-                        <li>Huge confidence swings — sky high or rock bottom</li>
-                        <li>Takes social risks others won't, but gets hurt easily</li>
-                        <li>Frustration when they can't master something instantly</li>
-                    </ul>
-                </div>
-                <div class="validation-visual">
-                    <div class="symptom-card"><span class="symptom-icon">🚀</span><p><strong>Instant launch:</strong> Always first to try new things</p></div>
-                    <div class="symptom-card"><span class="symptom-icon">💥</span><p><strong>Crash landing:</strong> Quits hard when it gets difficult</p></div>
-                    <div class="symptom-card"><span class="symptom-icon">🎢</span><p><strong>Confidence roller coaster:</strong> Huge highs, deep lows</p></div>
-                    <div class="symptom-card"><span class="symptom-icon">❤️‍🩹</span><p><strong>Tender heart:</strong> Gets hurt more than they show</p></div>
-                </div>
+            <div class="validation-visual">
+               <div class="symptom-card"><span class="symptom-icon">⚡</span>
+                  <p><strong>The Motor:</strong> It feels like they are driven by a motor that never turns off.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">🏎️</span>
+                  <p><strong>The Blur:</strong> They move so fast they often knock things over without noticing.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">👑</span>
+                  <p><strong>The Captain:</strong> They have a strong need to be in control of their environment.</p>
+               </div>
             </div>
-        </div>
-    </section>
+         </div>
+      </div>
+   </section>
 
-    <section class="explanation-section">
-        <div class="container">
-            <div class="explanation-content">
-                <h2>Why This Happens</h2>
-                <p>Bold Explorers often have a brain that's wired for novelty-seeking. New things create a rush of dopamine. But that same wiring can mean they lack the frustration tolerance for the long, boring middle part of learning.</p>
-                <p>Their confidence may also be more fragile than it appears. They project boldness, but underneath, they may be more sensitive to failure than they let on.</p>
-                <div class="explanation-callout">
-                    <p>"Many parents describe their Bold Explorer as 'all or nothing.' They're either completely confident or completely crushed. The goal is building resilience for the messy middle."</p>
-                </div>
-                <p>The key isn't to dampen their enthusiasm — that's their superpower. It's to help them build frustration tolerance and see difficulty as part of the adventure, not the end of it.</p>
+   <main class="container">
+
+      <div class="urgency-band">
+         <h3>You can't crush this spirit, but you can steer it.</h3>
+         <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto;">
+            The goal isn't to break their will—it's to install better brakes so they can control their own speed.
+         </p>
+      </div>
+
+      <section class="hero-offer" id="offer-hero">
+         <div class="hero-badge">RECOMMENDED FOR THIS PROFILE</div>
+         <h2>Bravely the Lion Activity Packet</h2>
+         <p>High-energy games to teach impulse control and "pause power" without shame.</p>
+
+         <div class="offer-list">
+            <p>✅ <strong>The "Pause Button" Remote</strong> - A physical tool for stopping</p>
+            <p>✅ <strong>Bravely's Energy Meter</strong> - Self-regulating high vs. low energy</p>
+            <p>✅ <strong>Stop-Think-Roar Game</strong> - Practicing impulse control playfully</p>
+            <p>✅ <strong>Instant Digital Download</strong></p>
+         </div>
+
+         <div style="text-align: center; margin-top: 30px;">
+            <span class="price-main">$9</span>
+         </div>
+
+         <button class="btn-primary" onclick="handleAddToCart('prod_packet_bravely')">
+            Get the Activity Packet
+         </button>
+         <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">
+            Secure Checkout • Lifetime Access
+         </p>
+      </section>
+
+      <section class="quickwin-section">
+         <div class="container" style="text-align: center; max-width: 700px;">
+            <span class="result-hero-badge" style="background:var(--color-lion); color:white;">Free Quick Win</span>
+            <h3>Try This Tonight: "Heavy Work"</h3>
+            <p>You cannot talk a Lion into calmness. You have to engage their muscles.</p>
+
+            <div style="background: white; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: left;">
+               <p style="margin-bottom: 10px;"><span class="step-circle">1</span><strong>The Science:</strong> "Proprioception" (pushing/pulling) releases calming chemicals in the brain.</p>
+               <p><span class="step-circle">2</span><strong>The Action:</strong> Before homework/dinner, have them do "Wall Pushes" or carry a heavy basket of laundry.</p>
             </div>
-        </div>
-    </section>
+            <p style="font-size: 0.9rem; margin-top: 20px; font-style: italic;">Burning off the "fizz" in their muscles allows their brain to finally focus.</p>
+         </div>
+      </section>
 
-    <section class="products-section" id="tools">
-        <div class="container">
-            <span class="section-label">Matched Tools</span>
-            <h2>Tools Built for Bold Explorers</h2>
-            <p class="products-section-subtitle">These resources help build resilience and protect their confidence when the going gets tough.</p>
-            <div class="products-grid">
-                <div class="product-card-featured">
-                    <span class="product-featured-badge">Recommended</span>
-                    <div class="product-card-icon">🦁</div>
-                    <h3>AI Prompts: Bold Explorer</h3>
-                    <p>50 ready-to-paste prompts for building resilience and frustration tolerance.</p>
-                    <ul class="product-includes">
-                        <li>Frustration tolerance builders</li>
-                        <li>Growth mindset scripts</li>
-                        <li>"The messy middle" coaching</li>
-                        <li>Confidence repair prompts</li>
-                        <li>Trying again after failure</li>
-                    </ul>
-                    <div class="product-price-row">
-                        <span class="product-price">$27</span>
-                        <span class="product-price-note">Instant PDF download</span>
-                    </div>
-                    <button class="btn btn-primary" onclick="handleAddToCart('prod-system-morning')">Add to Cart</button>
-                </div>
-                <div class="product-card-basic">
-                    <div class="product-card-icon">🦁</div>
-                    <h3>Bravely the Lion</h3>
-                    <p>Interactive activities that turn persistence into a game and celebrate trying.</p>
-                    <ul class="product-includes">
-                        <li>Courage challenge cards</li>
-                        <li>Try-again adventure games</li>
-                        <li>Brave moment collector</li>
-                        <li>Mistake celebration activities</li>
-                    </ul>
-                    <div class="product-price-row">
-                        <span class="product-price">$9</span>
-                        <span class="product-price-note">Interactive HTML</span>
-                    </div>
-                    <button class="btn btn-secondary" onclick="handleAddToCart('prod-packet-bravely')">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
+   </main>
 
-    <section class="quickwin-section">
-        <div class="container">
-            <div class="quickwin-card">
-                <div class="quickwin-header">
-                    <span class="quickwin-badge">Free Quick Win</span>
-                    <h2>Try This Tonight</h2>
-                </div>
-                <div class="quickwin-content">
-                    <h3>The "Not Yet" Reframe</h3>
-                    <p>When your Bold Explorer wants to quit something hard, try this simple language shift:</p>
-                    <ul class="quickwin-steps">
-                        <li><span class="quickwin-step-num">1</span><span><strong>Catch the "I can't."</strong> When they say "I can't do this," add one word: "...yet."</span></li>
-                        <li><span class="quickwin-step-num">2</span><span><strong>Normalize struggle.</strong> "This is supposed to be hard. That means your brain is growing."</span></li>
-                        <li><span class="quickwin-step-num">3</span><span><strong>Celebrate the try, not the win.</strong> "I saw you try three times. That's what brave looks like."</span></li>
-                    </ul>
-                    <p style="margin-top: var(--space-4); font-style: italic;">Bold Explorers need to learn that struggle isn't failure — it's just the next level of the adventure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+   <div id="footer"></div>
 
-    <section class="faq-section">
-        <div class="container">
-            <h2>Common Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">Should I let them quit things?</button>
-                    <div class="faq-answer"><p>Balance is key. Quitting everything reinforces the pattern. Never quitting teaches them nothing. Try: "Let's see this through to [specific milestone], then decide." This builds persistence without trapping them in misery.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">Is this ADHD?</button>
-                    <div class="faq-answer"><p>Some traits overlap with ADHD (novelty-seeking, frustration intolerance), but Bold Explorer is a pattern, not a diagnosis. If you're concerned, consult a professional. Either way, the strategies for building frustration tolerance are helpful.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">How do I protect their confidence without coddling?</button>
-                    <div class="faq-answer"><p>Focus on effort, not outcome. Praise the trying, not the winning. And when they fail, help them see it as information, not identity. "That didn't work. What can we try differently?"</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
+   <script src="/js/cart.js"></script>
+   <script src="/js/components.js"></script>
 
-    <section class="final-cta">
-        <div class="container">
-            <h2>Ready to Support Your Bold Explorer?</h2>
-            <p>Get tools that build resilience without dimming their spark.</p>
-            <a href="#tools" class="btn btn-primary btn-lg">Get the Toolkit →</a>
-        </div>
-    </section>
+   <script>
+      // Add to Cart Logic
+      function handleAddToCart(productId) {
+         if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
+             NavigatorCart.add(productId, 1);
+         } else {
+             console.error('Cart system not loaded');
+             alert('Please refresh the page and try again.');
+         }
+      }
 
-    <div id="footer"></div>
-
-    <script src="/js/components.js"></script>
-    <script src="/js/cart.js"></script>
-    <script>
-        function loadProfileData() {
-            try {
-                const data = JSON.parse(localStorage.getItem('quizProfile'));
-                if (data && data.childName) document.getElementById('heroChildName').textContent = data.childName;
-                if (data && data.secondary) {
-                    const profiles = {'intense-feeler':'Intense Feeler','reluctant-starter':'Reluctant Starter','deep-diver':'Deep Diver','sensitive-observer':'Sensitive Observer','bold-explorer':'Bold Explorer','big-picture-thinker':'Big Picture Thinker'};
-                    document.getElementById('secondaryName').textContent = profiles[data.secondary] || 'Deep Diver';
-                }
-            } catch (e) {}
-        }
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const isOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
-        }
-        
-        function handleAddToCart(productId) {
-            if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
-                NavigatorCart.add(productId, 1);
-            } else {
-                console.error('Cart system not loaded');
-                alert('Please refresh the page and try again.');
+      // Load profile data from quiz
+      function loadProfileData() {
+         try {
+            const data = JSON.parse(localStorage.getItem('quizProfile'));
+            if (data && data.childName && data.childName !== 'Your child') {
+               // Update all instances of the child's name
+               document.querySelectorAll('.dynamic-child-name').forEach(el => {
+                  el.textContent = data.childName;
+               });
             }
-        }
+         } catch (e) {
+            console.log('No quiz profile found');
+         }
+      }
 
-        document.addEventListener('DOMContentLoaded', loadProfileData);
-    </script>
+      document.addEventListener('DOMContentLoaded', loadProfileData);
+   </script>
+
 </body>
 </html>
