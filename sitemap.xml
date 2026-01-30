@@ -1,56 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://navigatorkidsai.com/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/products/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/quiz/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/tools/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.80</priority>
-  </url>
+  
+  <url><loc>https://navigatorkidsai.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/</loc><priority>0.9</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/</loc><priority>0.8</priority></url>
+  <url><loc>https://navigatorkidsai.com/quiz/</loc><priority>0.9</priority></url>
 
-  <url>
-    <loc>https://navigatorkidsai.com/free/de-escalation-kit/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/tools/accommodations/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/tools/sensory-scripts/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://navigatorkidsai.com/tools/ai-guide/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <priority>0.80</priority>
-  </url>
+  <url><loc>https://navigatorkidsai.com/results/intense-feeler/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/results/reluctant-starter/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/results/deep-diver/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/results/sensitive-observer/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/results/bold-explorer/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/results/big-picture-thinker/</loc><priority>0.7</priority></url>
 
-  <url><loc>https://navigatorkidsai.com/results/intense-feeler/</loc><priority>0.60</priority></url>
-  <url><loc>https://navigatorkidsai.com/results/reluctant-starter/</loc><priority>0.60</priority></url>
-  <url><loc>https://navigatorkidsai.com/results/deep-diver/</loc><priority>0.60</priority></url>
-  <url><loc>https://navigatorkidsai.com/results/sensitive-observer/</loc><priority>0.60</priority></url>
-  <url><loc>https://navigatorkidsai.com/results/bold-explorer/</loc><priority>0.60</priority></url>
-  <url><loc>https://navigatorkidsai.com/results/big-picture-thinker/</loc><priority>0.60</priority></url>
+  <url><loc>https://navigatorkidsai.com/free/de-escalation-kit/</loc><priority>0.8</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/accommodations/</loc><priority>0.8</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/sensory-scripts/</loc><priority>0.8</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/ai-guide/</loc><priority>0.8</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/morning-routine-builder/</loc><priority>0.5</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/iep-meeting-prep/</loc><priority>0.5</priority></url>
+  <url><loc>https://navigatorkidsai.com/tools/pattern-tracker-preview/</loc><priority>0.5</priority></url>
 
-  <url>
-    <loc>https://navigatorkidsai.com/contact/</loc>
-    <priority>0.50</priority>
-  </url>
+  <url><loc>https://navigatorkidsai.com/products/iep-advocacy-system/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/social-navigation/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/meltdown-navigation/</loc><priority>0.7</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/bravely-the-lion/</loc><priority>0.6</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/cosmo-space-pup/</loc><priority>0.6</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/ember-the-dragon/</loc><priority>0.6</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/shelly-the-turtle/</loc><priority>0.6</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/sketch-the-owl/</loc><priority>0.6</priority></url>
+  <url><loc>https://navigatorkidsai.com/products/activity-packets/whisper-the-bunny/</loc><priority>0.6</priority></url>
+
+  <url><loc>https://navigatorkidsai.com/about/</loc><priority>0.4</priority></url>
+  <url><loc>https://navigatorkidsai.com/contact/</loc><priority>0.5</priority></url>
+  <url><loc>https://navigatorkidsai.com/privacy-policy/</loc><priority>0.3</priority></url>
+  <url><loc>https://navigatorkidsai.com/terms-of-service/</loc><priority>0.3</priority></url>
+  <url><loc>https://navigatorkidsai.com/faq/</loc><priority>0.5</priority></url>
+
 </urlset>
