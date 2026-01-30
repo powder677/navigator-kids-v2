@@ -30,174 +30,222 @@
         body {
             background-color: #F9F7F2;
             color: #3D405B;
+            -webkit-font-smoothing: antialiased;
         }
-        .font-heading {
-            font-family: 'Outfit', sans-serif;
+
+        /* Improved Spacing and Grid Logic */
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
+
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
+
+        /* Card Depth & UI Polish */
         .tool-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            position: relative;
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(61, 64, 91, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
+
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-color: #81B29A;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border-color: var(--color-sage);
         }
+
         .tool-card-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
-        .tool-card-badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
+
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.4rem 1rem;
             border-radius: 9999px;
-            background: #f1f5f9;
-            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        .tool-card-badge.featured-badge {
-            background: #E07A5F;
-            color: white;
+
+        .badge-free {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #dcfce7;
         }
-        .tool-card-badge.coming-soon {
+
+        .badge-featured {
+            background: #E07A5F;
+            color: #ffffff;
+        }
+
+        .badge-soon {
             background: #f1f5f9;
             color: #94a3b8;
         }
-        .tool-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+
+        /* Typography spacing */
+        .tool-title {
+            font-size: 1.75rem;
+            line-height: 1.2;
+            font-weight: 800;
             margin-bottom: 1rem;
-            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
         }
-        .tool-card p {
+
+        .tool-description {
+            font-size: 1rem;
+            line-height: 1.7;
             color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             flex-grow: 1;
         }
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
+
+        /* Buttons */
+        .btn-base {
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
             font-weight: 700;
             text-align: center;
             transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
         }
-        .btn-primary {
+
+        .btn-terracotta {
             background: #E07A5F;
             color: white;
+            box-shadow: 0 4px 14px 0 rgba(224, 122, 95, 0.39);
         }
-        .btn-primary:hover {
+
+        .btn-terracotta:hover {
             background: #d46a4f;
+            box-shadow: 0 6px 20px rgba(224, 122, 95, 0.23);
         }
-        .btn-secondary {
-            background: #f8fafc;
+
+        .btn-outline {
+            background: #ffffff;
             color: #3D405B;
-            border: 1px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
         }
-        .btn-secondary:hover:not(:disabled) {
-            background: #f1f5f9;
+
+        .btn-outline:hover:not(:disabled) {
+            border-color: #3D405B;
+            background: #f8fafc;
         }
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        .featured-tool {
-            border: 2px solid #E07A5F;
-            background: linear-gradient(to bottom right, #ffffff, #fffaf9);
+
+        /* Premium CTA Section spacing */
+        .premium-cta {
+            margin-top: 8rem;
+            padding: 5rem 2rem;
+            border-radius: 3rem;
+            background: #3D405B;
+            position: relative;
+            overflow: hidden;
         }
     </style>
 </head>
 <body class="min-h-screen">
     <header id="header-placeholder"></header>
 
-    <main class="max-w-6xl mx-auto px-4 pt-32 pb-20">
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading mb-6">Free Tools for 2e Parents</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Quick-start resources to help you navigate school advocacy, emotional regulation, and daily life with your twice-exceptional child.
+    <main class="max-w-7xl mx-auto px-6 section-padding">
+        <div class="max-w-3xl mx-auto text-center mb-20">
+            <span class="inline-block px-4 py-1 rounded-full bg-sage/10 text-sage font-bold text-sm mb-6 uppercase tracking-widest">Resource Library</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold font-heading mb-8 text-navy leading-tight">Free Tools for 2e Parents</h1>
+            <p class="text-xl text-gray-500 leading-relaxed">
+                Practical, ready-to-use resources to help you advocate at school, manage meltdowns at home, and understand your child's brilliant, unique brain.
             </p>
         </div>
 
         <div class="tools-grid">
 
-            <div class="tool-card featured-tool">
-                <div class="tool-card-icon">🧘</div>
-                <span class="tool-card-badge featured-badge">Most Popular</span>
-                <h3>Emergency Regulation Kit</h3>
-                <p>5 free de-escalation scripts for meltdowns. What to say when your child's thinking brain goes offline.</p>
-                <a href="/free/de-escalation-kit/" class="btn btn-primary">Get Free Kit →</a>
+            <div class="tool-card border-2 border-terracotta/20 bg-gradient-to-br from-white to-orange-50/30">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon">🧘</div>
+                    <span class="badge badge-featured shadow-sm">Most Popular</span>
+                </div>
+                <h3 class="tool-title font-heading">Emergency Regulation Kit</h3>
+                <p class="tool-description">5 free de-escalation scripts for when your child's thinking brain goes offline. Includes the "Reset" script and "Justice Trap" guide.</p>
+                <a href="/free/de-escalation-kit/" class="btn-base btn-terracotta">Download Free Kit →</a>
             </div>
 
             <div class="tool-card">
-                <div class="tool-card-icon">📝</div>
-                <span class="tool-card-badge">Free Tool</span>
-                <h3>Accommodation Checklist</h3>
-                <p>Browse accommodations by brain profile. Check what applies and generate a list for your IEP meeting.</p>
-                <a href="/tools/accommodations/" class="btn btn-secondary">Build List →</a>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon">📝</div>
+                    <span class="badge badge-free">Free Tool</span>
+                </div>
+                <h3 class="tool-title font-heading">Accommodation Checklist</h3>
+                <p class="tool-description">Filter 100+ classroom accommodations by brain profile. Generate a custom PDF list to bring to your next IEP or 504 meeting.</p>
+                <a href="/tools/accommodations/" class="btn-base btn-outline">Build Your List →</a>
             </div>
 
             <div class="tool-card">
-                <div class="tool-card-icon">🌊</div>
-                <span class="tool-card-badge">Free Tool</span>
-                <h3>Sensory Scripts</h3>
-                <p>Ready-to-use calming scripts for sensory overload, clothing battles, noise sensitivity, and more.</p>
-                <a href="/tools/sensory-scripts/" class="btn btn-secondary">Get Scripts →</a>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon">🌊</div>
+                    <span class="badge badge-free">Free Tool</span>
+                </div>
+                <h3 class="tool-title font-heading">Sensory Scripts</h3>
+                <p class="tool-description">Ready-to-use verbal scripts for sensory overload, clothing battles, and noise sensitivity. Calm the nervous system without the fight.</p>
+                <a href="/tools/sensory-scripts/" class="btn-base btn-outline">View Scripts →</a>
             </div>
 
             <div class="tool-card">
-                <div class="tool-card-icon">🤖</div>
-                <span class="tool-card-badge">Free Guide</span>
-                <h3>AI Guide for 2e Parents</h3>
-                <p>Never used ChatGPT? This beginner guide shows you how to get personalized parenting support.</p>
-                <a href="/tools/ai-guide/" class="btn btn-secondary">Read Guide →</a>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon">🤖</div>
+                    <span class="badge badge-free">Guide</span>
+                </div>
+                <h3 class="tool-title font-heading">AI Guide for 2e Parents</h3>
+                <p class="tool-description">New to AI? This beginner guide shows you how to use ChatGPT or Claude to get personalized parenting advice and school support.</p>
+                <a href="/tools/ai-guide/" class="btn-base btn-outline">Read the Guide →</a>
             </div>
 
-            <div class="tool-card">
-                <div class="tool-card-icon">📊</div>
-                <span class="tool-card-badge coming-soon">Coming Soon</span>
-                <h3>Pattern Tracker</h3>
-                <p>Log meltdowns, triggers, and what helped. Patterns emerge to help predict and prevent.</p>
-                <button class="btn btn-secondary" disabled>Coming Soon</button>
+            <div class="tool-card opacity-75">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon grayscale">📊</div>
+                    <span class="badge badge-soon">Coming Soon</span>
+                </div>
+                <h3 class="tool-title font-heading">Pattern Tracker</h3>
+                <p class="tool-description">A digital log to track meltdowns and triggers. Identify the patterns that help you predict and prevent future explosions.</p>
+                <button class="btn-base btn-outline opacity-50" disabled>Coming Soon</button>
             </div>
 
-            <div class="tool-card">
-                <div class="tool-card-icon">⏰</div>
-                <span class="tool-card-badge coming-soon">Coming Soon</span>
-                <h3>Routine Builder</h3>
-                <p>Create visual morning, homework, and bedtime routines for your child's brain profile.</p>
-                <button class="btn btn-secondary" disabled>Coming Soon</button>
+            <div class="tool-card opacity-75">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="tool-card-icon grayscale">⏰</div>
+                    <span class="badge badge-soon">Coming Soon</span>
+                </div>
+                <h3 class="tool-title font-heading">Routine Builder</h3>
+                <p class="tool-description">Drag-and-drop builder to create visual morning and bedtime routines tailored to your child's specific executive function needs.</p>
+                <button class="btn-base btn-outline opacity-50" disabled>Coming Soon</button>
             </div>
 
         </div>
 
-        <div class="mt-24 bg-navy rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-64 h-64 bg-terracotta/10 rounded-full -ml-32 -mt-32"></div>
-            <div class="relative z-10">
-                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-6">Complete Support Systems</h2>
-                <p class="text-xl opacity-80 mb-10 max-w-2xl mx-auto">
-                    Our parent systems and kid activity packets give you scripts, strategies, and tools for every situation — IEP meetings, meltdowns, social skills, and daily routines.
+        <div class="premium-cta text-center shadow-2xl">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-terracotta/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-sage/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white mb-8">Complete Support Systems</h2>
+                <p class="text-xl text-cream/80 mb-12 leading-relaxed">
+                    Our full parent systems and kid activity packets give you the deep-dive strategies you need for IEP meetings, social navigation, and emotional regulation.
                 </p>
-                <a href="/products/" class="btn btn-primary px-10 py-4 rounded-full text-xl font-bold inline-block">
-                    Explore Systems & Bundles →
-                </a>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/products/" class="btn-base btn-terracotta px-12 py-5 text-xl">
+                        Explore Systems & Bundles →
+                    </a>
+                </div>
             </div>
         </div>
     </main>
