@@ -1,15 +1,15 @@
 /* ============================================
-   NAVIGATOR KIDS AI - CART SYSTEM
-   Status: LAUNCH READY (All Products & Legacy IDs)
+   NAVIGATOR KIDS AI - MASTER CART SYSTEM
+   Status: LAUNCH READY (V2.2 - Live Stripe)
    ============================================ */
 
 (function() {
     'use strict';
     const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
 
-    // 🔒 PRODUCT CATALOG
+    // 🔒 PRODUCT CATALOG (Verified IDs & Prices)
     const PRODUCTS = {
-        // === TIER 4: BUNDLES ===
+        // === BUNDLES ===
         'prod-bundle-total': {
             id: 'prod-bundle-total',
             name: 'Navigator Total Access Bundle',
@@ -35,7 +35,7 @@
             isBundle: true
         },
 
-        // === TIER 3: CORE SYSTEMS ===
+        // === CORE SYSTEMS ===
         'prod-system-iep': {
             id: 'prod-system-iep',
             name: 'The IEP Advocacy System',
@@ -57,14 +57,12 @@
             icon: '🧯',
             downloadUrl: '/downloads/systems/2e-meltdown-navigation-system.pdf'
         },
-
-        // === TIER 2: QUICK WINS ===
         'prod-system-morning': {
             id: 'prod-system-morning',
             name: 'The Morning Launch System',
             price: 27.00,
             icon: '☀️',
-            downloadUrl: '/downloads/systems/morning-launch-system-prompt.pdf'
+            downloadUrl: '/downloads/systems/morning-launch-system-prompt.zip'
         },
         'prod-workbook-anxiety': {
             id: 'prod-workbook-anxiety',
@@ -74,78 +72,19 @@
             downloadUrl: '/downloads/systems/junior-agent-workbook.pdf'
         },
 
-        // === TIER 1: ACTIVITY PACKETS ===
-        'prod-packet-bravely': { 
-            id: 'prod-packet-bravely', 
-            name: 'Activity Pack: Bravely', 
-            price: 9.00, 
-            icon: '🦁', 
-            downloadUrl: '/downloads/activity-packets/bravely-kit.zip' 
-        },
-        'prod-packet-cosmo': { 
-            id: 'prod-packet-cosmo', 
-            name: 'Activity Pack: Cosmo', 
-            price: 9.00, 
-            icon: '🚀', 
-            downloadUrl: '/downloads/activity-packets/cosmo-kit.zip' 
-        },
-        'prod-packet-ember': { 
-            id: 'prod-packet-ember', 
-            name: 'Activity Pack: Ember', 
-            price: 9.00, 
-            icon: '🔥', 
-            downloadUrl: '/downloads/activity-packets/ember-kit.zip' 
-        },
-        'prod-packet-shelly': { 
-            id: 'prod-packet-shelly', 
-            name: 'Activity Pack: Shelly', 
-            price: 9.00, 
-            icon: '🐢', 
-            downloadUrl: '/downloads/activity-packets/shelly-kit.zip' 
-        },
-        'prod-packet-sketch': { 
-            id: 'prod-packet-sketch', 
-            name: 'Activity Pack: Sketch', 
-            price: 9.00, 
-            icon: '🦉', 
-            downloadUrl: '/downloads/activity-packets/sketch-kit.zip' 
-        },
-        'prod-packet-whisper': { 
-            id: 'prod-packet-whisper', 
-            name: 'Activity Pack: Whisper', 
-            price: 9.00, 
-            icon: '🐰', 
-            downloadUrl: '/downloads/activity-packets/whisper-kit.zip' 
-        },
-        'prod-packet-captain': { 
-            id: 'prod-packet-captain', 
-            name: 'Activity Pack: Captain Choosy', 
-            price: 9.00, 
-            icon: '🎯', 
-            downloadUrl: '/downloads/activity-packets/captain-kit.zip' 
-        },
+        // === ACTIVITY PACKETS ($9 FIX) ===
+        'prod-packet-bravely': { id: 'prod-packet-bravely', name: 'Pack: Bravely the Lion', price: 9.00, icon: '🦁', downloadUrl: '/downloads/activity-packets/bravely-kit.zip' },
+        'prod-packet-cosmo': { id: 'prod-packet-cosmo', name: 'Pack: Cosmo Space Pup', price: 9.00, icon: '🚀', downloadUrl: '/downloads/activity-packets/cosmo-kit.zip' },
+        'prod-packet-ember': { id: 'prod-packet-ember', name: 'Pack: Ember the Dragon', price: 9.00, icon: '🔥', downloadUrl: '/downloads/activity-packets/ember-kit.zip' },
+        'prod-packet-shelly': { id: 'prod-packet-shelly', name: 'Pack: Shelly the Turtle', price: 9.00, icon: '🐢', downloadUrl: '/downloads/activity-packets/shelly-kit.zip' },
+        'prod-packet-sketch': { id: 'prod-packet-sketch', name: 'Pack: Sketch the Owl', price: 9.00, icon: '🦉', downloadUrl: '/downloads/activity-packets/sketch-kit.zip' },
+        'prod-packet-whisper': { id: 'prod-packet-whisper', name: 'Pack: Whisper the Bunny', price: 9.00, icon: '🐰', downloadUrl: '/downloads/activity-packets/whisper-kit.zip' },
 
-        // === HERO OFFERS & LEGACY IDs ===
-        'prod_combo_complete': {
-            id: 'prod_combo_complete',
-            name: 'Complete Support Plan',
-            price: 69.00,
-            icon: '🔥',
-            downloadUrl: '/downloads/bundles/total-access-pass.zip',
-            isBundle: true
-        },
-        'prod_prompt_executive': {
-            id: 'prod_prompt_executive',
-            name: 'AI Support System',
-            price: 29.00,
-            icon: '🤖',
-            downloadUrl: '/downloads/systems/morning-launch-system-prompt.pdf' 
-        }
+        // === LEGACY IDs (For Quiz compatibility) ===
+        'prod_combo_complete': { id: 'prod_combo_complete', name: 'Complete Support Plan', price: 69.00, icon: '🔥', downloadUrl: '/downloads/bundles/peace-at-home.zip', isBundle: true },
+        'prod_prompt_executive': { id: 'prod_prompt_executive', name: 'AI Support System', price: 29.00, icon: '🤖', downloadUrl: '/downloads/systems/morning-launch-system-prompt.zip' }
     };
 
-    // =========================================
-    // CART LOGIC
-    // =========================================
     class Cart {
         constructor() {
             this.items = this.load();
@@ -156,74 +95,37 @@
             try {
                 const data = localStorage.getItem(CART_CONFIG.storageKey);
                 return data ? JSON.parse(data) : [];
-            } catch (e) {
-                console.error('Error loading cart:', e);
-                return [];
-            }
+            } catch (e) { return []; }
         }
 
         save() {
-            try {
-                localStorage.setItem(CART_CONFIG.storageKey, JSON.stringify(this.items));
-                this.dispatchUpdate();
-            } catch (e) {
-                console.error('Error saving cart:', e);
-            }
+            localStorage.setItem(CART_CONFIG.storageKey, JSON.stringify(this.items));
+            this.dispatchUpdate();
+            this.updateCounterUI();
         }
 
         validateCart() {
-            const initialCount = this.items.length;
             this.items = this.items.filter(item => PRODUCTS[item.id]);
-            if (this.items.length !== initialCount) this.save();
+            this.save();
         }
 
         dispatchUpdate() {
-            window.dispatchEvent(new CustomEvent('cartUpdated', {
-                detail: {
-                    items: this.items,
-                    count: this.getItemCount(),
-                    total: this.getTotal()
-                }
-            }));
+            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: this.getItemCount(), total: this.getTotal() }}));
         }
 
-        formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: CART_CONFIG.currency
-            }).format(amount);
-        }
-
-        add(productId, quantity = 1) {
+        add(productId, qty = 1) {
             const product = PRODUCTS[productId];
-            if (!product) {
-                console.error('Product not found:', productId);
-                return false;
-            }
-
-            const existingIndex = this.items.findIndex(item => item.id === productId);
-
-            if (existingIndex > -1) {
-                this.items[existingIndex].quantity += quantity;
-            } else {
-                this.items.push({
-                    id: productId,
-                    quantity: quantity,
-                    addedAt: new Date().toISOString()
-                });
-            }
-
+            if (!product) return;
+            const idx = this.items.findIndex(i => i.id === productId);
+            if (idx > -1) { this.items[idx].quantity += qty; } 
+            else { this.items.push({ id: productId, quantity: qty, addedAt: new Date().toISOString() }); }
             this.save();
             this.showAddedNotification(product);
-            return true;
         }
 
         remove(productId) {
-            const index = this.items.findIndex(item => item.id === productId);
-            if (index > -1) {
-                this.items.splice(index, 1);
-                this.save();
-            }
+            this.items = this.items.filter(i => i.id !== productId);
+            this.save();
         }
 
         clear() {
@@ -231,198 +133,98 @@
             this.save();
         }
 
-        getItems() {
-            return this.items.map(item => ({
-                ...item,
-                product: PRODUCTS[item.id]
-            })).filter(item => item.product);
-        }
+        getItems() { return this.items.map(i => ({ ...i, product: PRODUCTS[i.id] })).filter(i => i.product); }
+        getItemCount() { return this.items.reduce((t, i) => t + i.quantity, 0); }
+        getTotal() { return this.items.reduce((t, i) => t + (PRODUCTS[i.id] ? PRODUCTS[i.id].price * i.quantity : 0), 0); }
+        isEmpty() { return this.items.length === 0; }
 
-        getItemCount() {
-            return this.items.reduce((total, item) => total + item.quantity, 0);
-        }
-
-        getTotal() {
-            return this.items.reduce((total, item) => {
-                const product = PRODUCTS[item.id];
-                return total + (product ? product.price * item.quantity : 0);
-            }, 0);
-        }
-
-        isEmpty() {
-            return this.items.length === 0;
+        updateCounterUI() {
+            const count = this.getItemCount();
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = count;
+                el.style.display = count > 0 ? 'flex' : 'none';
+            });
         }
 
         showAddedNotification(product) {
             const existing = document.querySelector('.cart-notification');
             if (existing) existing.remove();
-
-            const notification = document.createElement('div');
-            notification.className = 'cart-notification';
-            notification.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">${product.icon}</span>
-                    <div>
-                        <div class="font-bold text-sm">Added to Cart</div>
-                        <div class="text-xs opacity-90">${product.name}</div>
-                    </div>
-                </div>
-                <a href="/cart/" class="text-[#4ECDC4] font-bold text-sm ml-4 whitespace-nowrap hover:underline">View Cart →</a>
-            `;
-            
-            Object.assign(notification.style, {
-                position: 'fixed',
-                bottom: '20px',
-                right: '20px',
-                background: '#2D3748',
-                color: 'white',
-                padding: '12px 20px',
-                borderRadius: '10px',
-                boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                zIndex: '9999',
-                animation: 'slideUp 0.3s ease-out'
-            });
-
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 4000);
+            const n = document.createElement('div');
+            n.className = 'cart-notification';
+            n.innerHTML = `<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:24px;">${product.icon}</span><div><div style="font-weight:bold;font-size:14px;">Added to Cart</div><div style="font-size:12px;opacity:0.8;">${product.name}</div></div></div><a href="/cart/" style="color:#D4AF37;font-weight:bold;margin-left:15px;text-decoration:none;">View Cart →</a>`;
+            Object.assign(n.style, { position:'fixed', bottom:'20px', right:'20px', background:'#002347', color:'white', padding:'15px 20px', borderRadius:'12px', boxShadow:'0 10px 30px rgba(0,0,0,0.3)', display:'flex', alignItems:'center', zIndex:'10000' });
+            document.body.appendChild(n);
+            setTimeout(() => n.remove(), 3500);
         }
     }
 
-    // =========================================
-    // CHECKOUT FUNCTION
-    // =========================================
-    function checkout() {
-        if (cart.isEmpty()) return alert('Your cart is empty!');
+    const cart = new Cart();
 
-        const checkoutBtn = document.querySelector('.cart-summary button');
-        const originalText = checkoutBtn ? checkoutBtn.innerText : 'Checkout';
-        if(checkoutBtn) checkoutBtn.innerText = "Processing...";
+    async function handleCheckout() {
+        if (cart.isEmpty()) return;
+        const btn = document.querySelector('.checkout-trigger');
+        if(btn) { btn.disabled = true; btn.innerText = "Redirecting..."; }
 
-        const data = { 
-            items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), 
-            successUrl: window.location.origin + '/thank-you/',
-            cancelUrl: window.location.origin + '/cart/'
-        };
-        
-        fetch('/api/create-checkout', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(session => {
-            if(session.error) {
-                alert("Checkout Error: " + session.error);
-                if(checkoutBtn) checkoutBtn.innerText = originalText;
-            }
-            else if(session.id) {
+        try {
+            const response = await fetch('/api/create-checkout', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), successUrl: window.location.origin + '/thank-you/', cancelUrl: window.location.origin + '/cart/' })
+            });
+            const session = await response.json();
+            if(session.id) {
                 const stripe = Stripe('pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd');
                 stripe.redirectToCheckout({ sessionId: session.id });
             }
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Network Error. Please try again.");
-            if(checkoutBtn) checkoutBtn.innerText = originalText;
-        });
+        } catch (err) { alert("Checkout error. Please refresh."); }
     }
 
-    // =========================================
-    // PAGE RENDERER
-    // =========================================
     function renderCartPage() {
         const container = document.getElementById('cartContainer');
         if (!container) return;
-
         if (cart.isEmpty()) {
-            container.innerHTML = `
-                <div class="text-center py-12">
-                    <div class="text-6xl mb-4 opacity-20">🛒</div>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Your cart is empty</h2>
-                    <p class="text-gray-500 mb-6">Looks like you haven't added any tools yet.</p>
-                    <a href="/products/" class="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#ff5252] transition">
-                        Browse Shop
-                    </a>
-                </div>`;
+            container.innerHTML = `<div style="text-align:center;padding:100px 20px;"><div style="font-size:64px;margin-bottom:20px;">🛒</div><h2>Your cart is empty</h2><p style="color:#6B7280;margin-bottom:30px;">Choose a support system to get started.</p><a href="/products/" style="background:#002347;color:white;padding:15px 30px;border-radius:12px;text-decoration:none;font-weight:bold;">Browse Products</a></div>`;
             return;
         }
 
         const itemsHTML = cart.getItems().map(item => `
-            <div class="flex items-center justify-between border-b border-gray-100 py-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-16 h-16 bg-gray-50 rounded-lg flex items-center justify-center text-3xl">
-                        ${item.product.icon}
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-gray-800">${item.product.name}</h4>
-                        <p class="text-sm text-gray-500">$${item.product.price.toFixed(2)}</p>
-                    </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:25px 0;border-bottom:1px solid #E5E7EB;">
+                <div style="display:flex;align-items:center;gap:20px;">
+                    <div style="width:60px;height:60px;background:#F9FAFB;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:30px;">${item.product.icon}</div>
+                    <div><h4 style="margin:0;font-weight:700;">${item.product.name}</h4><p style="margin:5px 0 0;color:#6B7280;font-size:14px;">$${item.product.price.toFixed(2)}</p></div>
                 </div>
-                <button onclick="window.NavigatorCart.remove('${item.id}')" class="text-gray-400 hover:text-red-500 transition px-3 py-2">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+                <button onclick="window.NavigatorCart.remove('${item.id}')" style="background:none;border:none;color:#9CA3AF;cursor:pointer;font-size:18px;"><i class="fa-solid fa-trash-can"></i></button>
             </div>
         `).join('');
 
         container.innerHTML = `
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2">
-                    <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
-                        ${itemsHTML}
+            <div style="display:grid;grid-template-columns: 1fr 350px; gap:40px; margin-top:40px;">
+                <div><div style="background:white;border-radius:20px;padding:30px;box-shadow:0 4px 6px rgba(0,0,0,0.02);">${itemsHTML}</div><button onclick="window.NavigatorCart.clear()" style="margin-top:20px;background:none;border:none;color:#E07A5F;text-decoration:underline;cursor:pointer;font-size:14px;">Empty Cart</button></div>
+                <div><div style="background:white;border-radius:20px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,0.05);position:sticky;top:100px;">
+                    <h3 style="margin-top:0;">Order Summary</h3>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin:30px 0;padding-top:20px;border-top:2px solid #F3F4F6;">
+                        <span style="font-weight:600;color:#6B7280;">Total Due</span>
+                        <span style="font-size:32px;font-weight:800;color:#002347;">$${cart.getTotal().toFixed(2)}</span>
                     </div>
-                    <div class="text-right">
-                        <button onclick="window.NavigatorCart.clear()" class="text-sm text-red-400 hover:text-red-600 underline">
-                            Empty Cart
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-1">
-                    <div class="cart-summary bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
-                        <h3 class="font-bold text-lg mb-4 border-b pb-4">Summary</h3>
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-gray-600">Total</span>
-                            <span class="text-3xl font-bold text-[#FF6B6B]">$${cart.getTotal().toFixed(2)}</span>
-                        </div>
-                        <button onclick="window.NavigatorCart.checkout()" class="w-full bg-[#FF6B6B] text-white font-bold py-4 rounded-xl hover:bg-[#ff5252] transition shadow-lg transform hover:-translate-y-1">
-                            Checkout Securely
-                        </button>
-                        <p class="text-center text-xs text-gray-400 mt-4">
-                            <i class="fa-solid fa-lock mr-1"></i> SSL Encrypted Payment
-                        </p>
-                    </div>
-                </div>
+                    <button class="checkout-trigger" onclick="window.NavigatorCart.checkout()" style="width:100%;background:#D4AF37;color:#002347;border:none;padding:20px;border-radius:15px;font-weight:800;font-size:18px;cursor:pointer;transition:transform 0.2s;">Checkout Securely</button>
+                    <p style="text-align:center;font-size:12px;color:#9CA3AF;margin-top:20px;"><i class="fa-solid fa-lock"></i> SSL Encrypted Payment</p>
+                </div></div>
             </div>
         `;
-    }
-
-    // =========================================
-    // INITIALIZATION & PUBLIC API
-    // =========================================
-    const cart = new Cart();
-
-    window.addEventListener('cartUpdated', renderCartPage);
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', renderCartPage);
-    } else {
-        renderCartPage();
     }
 
     window.NavigatorCart = {
         add: (id, qty) => cart.add(id, qty),
         remove: (id) => cart.remove(id),
         clear: () => cart.clear(),
-        checkout: checkout,
+        checkout: handleCheckout,
         getItems: () => cart.getItems(),
         getItemCount: () => cart.getItemCount(),
         getTotal: () => cart.getTotal(),
         isEmpty: () => cart.isEmpty(),
-        formatCurrency: (amt) => cart.formatCurrency(amt),
-        renderCartPage: renderCartPage,
         getProduct: (id) => PRODUCTS[id]
     };
 
+    document.addEventListener('DOMContentLoaded', () => { cart.updateCounterUI(); renderCartPage(); });
+    window.addEventListener('cartUpdated', renderCartPage);
 })();
