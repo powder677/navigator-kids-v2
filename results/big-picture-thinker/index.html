@@ -12,15 +12,18 @@
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
    <style>
-      /* --- 1. DESIGN SYSTEM (Merged from both pages) --- */
+      /* --- 1. DESIGN SYSTEM (Galaxy Theme for Big Picture Thinker) --- */
       :root {
          --color-navy: #002347;
          --color-gold: #D4AF37;
          --color-terracotta: #D44D5C;
+         
+         /* Primary color for Big Picture (Galaxy Purple/Indigo) */
+         --color-galaxy: #483D8B; /* Dark Slate Blue / Indigo */
+         --color-galaxy-light: #E6E6FA; /* Lavender */
+         
          --color-cream: #FFF8E7;
          --color-white: #ffffff;
-         --color-blue-light: #E5F3FA;
-         --color-blue-med: #7EB8D8;
          --color-text: #333333;
          --color-text-light: #666666;
          --radius-md: 12px;
@@ -56,8 +59,10 @@
          padding: 0 20px;
       }
 
+      /* --- TRUST HERO --- */
       .result-hero {
-         background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%);
+         /* Galaxy Gradient */
+         background: linear-gradient(135deg, var(--color-galaxy-light) 0%, #ffffff 100%);
          padding: 60px 0 40px;
          text-align: center;
       }
@@ -71,46 +76,95 @@
          border-radius: 50px;
          font-size: 0.85rem;
          font-weight: 600;
-         color: var(--color-blue-med);
+         color: var(--color-galaxy);
          margin-bottom: 24px;
          box-shadow: var(--shadow-sm);
       }
 
-      .result-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
-      .result-hero-subtitle { font-size: 1.15rem; color: var(--color-text); max-width: 600px; margin: 0 auto; }
+      .result-hero h1 {
+         font-size: clamp(2rem, 5vw, 3rem);
+         margin-bottom: 16px;
+      }
 
-      .validation-section { padding: 60px 0; background: var(--color-white); }
-      .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-      @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; } }
+      .result-hero-subtitle {
+         font-size: 1.15rem;
+         color: var(--color-text);
+         max-width: 600px;
+         margin: 0 auto;
+      }
 
-      .validation-list { list-style: none; padding: 0; margin-top: 20px; }
-      .validation-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 1rem; }
-      .validation-list li::before { content: '✓'; color: var(--color-blue-med); font-weight: 700; flex-shrink: 0; }
+      /* --- VALIDATION SECTION --- */
+      .validation-section {
+         padding: 60px 0;
+         background: var(--color-white);
+      }
 
+      .validation-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 40px;
+         align-items: start;
+      }
+
+      @media (max-width: 768px) {
+         .validation-grid { grid-template-columns: 1fr; }
+      }
+
+      .validation-list {
+         list-style: none;
+         padding: 0;
+         margin-top: 20px;
+      }
+
+      .validation-list li {
+         display: flex;
+         align-items: flex-start;
+         gap: 12px;
+         margin-bottom: 16px;
+         font-size: 1rem;
+      }
+
+      .validation-list li::before {
+         content: '✓';
+         color: var(--color-galaxy);
+         font-weight: 700;
+         flex-shrink: 0;
+      }
+
+      /* Visual Cards */
       .symptom-card {
-         background: var(--color-cream);
+         background: var(--color-galaxy-light);
          border-radius: var(--radius-md);
          padding: 16px;
          margin-bottom: 12px;
          display: flex;
          align-items: center;
          gap: 16px;
+         border-left: 4px solid var(--color-galaxy);
       }
-      .symptom-icon { font-size: 1.5rem; }
-      .symptom-card p { margin: 0; font-size: 0.9rem; font-weight: 500; }
 
+      .symptom-icon { font-size: 1.5rem; }
+
+      .symptom-card p {
+         margin: 0;
+         font-size: 0.9rem;
+         font-weight: 500;
+      }
+
+      /* --- URGENCY BAND --- */
       .urgency-band {
          background-color: var(--color-navy);
          color: var(--color-cream);
          padding: 30px 20px;
          text-align: center;
          margin: 40px 0;
-         border-left: 6px solid var(--color-gold);
+         border-left: 6px solid var(--color-galaxy);
          border-radius: 4px;
       }
 
+      /* --- HERO OFFER --- */
       .hero-offer {
-         border: 3px solid var(--color-gold);
+         border: 3px solid var(--color-galaxy);
          background: var(--color-white);
          padding: 40px;
          border-radius: var(--radius-md);
@@ -122,8 +176,8 @@
       }
 
       .hero-badge {
-         background: var(--color-gold);
-         color: var(--color-navy);
+         background: var(--color-galaxy);
+         color: var(--color-white);
          position: absolute;
          top: 0;
          right: 0;
@@ -133,9 +187,18 @@
          border-bottom-left-radius: 12px;
       }
 
-      .offer-list { text-align: left; margin: 20px auto; max-width: 450px; line-height: 1.8; }
-      .price-anchor { text-decoration: line-through; color: #888; font-size: 1.1rem; margin-right: 10px; }
-      .price-main { font-size: 2.5rem; font-weight: 800; color: var(--color-navy); }
+      .offer-list {
+         text-align: left;
+         margin: 20px auto;
+         max-width: 450px;
+         line-height: 1.8;
+      }
+
+      .price-main {
+         font-size: 2.5rem;
+         font-weight: 800;
+         color: var(--color-navy);
+      }
 
       .btn-primary {
          background-color: var(--color-terracotta);
@@ -151,10 +214,15 @@
          margin-top: 20px;
          transition: transform 0.2s;
       }
-      .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
+      .btn-primary:hover {
+         transform: translateY(-2px);
+         filter: brightness(1.1);
+      }
+
+      /* --- QUICK WIN --- */
       .quickwin-section {
-         background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%);
+         background: linear-gradient(135deg, var(--color-galaxy-light) 0%, #ffffff 100%);
          padding: 50px 0;
          margin-top: 60px;
          border-radius: var(--radius-xl);
@@ -163,7 +231,7 @@
       .step-circle {
          width: 24px;
          height: 24px;
-         background: var(--color-blue-med);
+         background: var(--color-galaxy);
          color: white;
          border-radius: 50%;
          display: inline-flex;
@@ -173,66 +241,6 @@
          font-weight: bold;
          margin-right: 10px;
       }
-
-      .downsell-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee; }
-      .downsell-grid { display: flex; gap: 30px; flex-wrap: wrap; }
-
-      .downsell-card {
-         flex: 1;
-         min-width: 300px;
-         padding: 30px;
-         border-radius: var(--radius-md);
-         position: relative;
-         background: white;
-         border: 1px solid #eee;
-         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-         transition: transform 0.2s, box-shadow 0.2s;
-         display: flex;
-         flex-direction: column;
-      }
-      .downsell-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
-
-      .card-parent { border-top: 5px solid var(--color-navy); }
-      .card-kid { border-top: 5px solid var(--color-blue-med); }
-
-      .card-badge {
-         position: absolute;
-         top: -14px;
-         left: 50%;
-         transform: translateX(-50%);
-         background: #f0f0f0;
-         padding: 5px 15px;
-         border-radius: 50px;
-         font-size: 0.75rem;
-         font-weight: 700;
-         letter-spacing: 1px;
-         color: #555;
-         text-transform: uppercase;
-         border: 2px solid white;
-      }
-
-      .downsell-card h3 { font-size: 1.3rem; margin-top: 10px; margin-bottom: 10px; text-align: center; color: var(--color-navy); }
-      .card-desc { font-size: 0.95rem; color: #666; text-align: center; margin-bottom: 20px; line-height: 1.5; min-height: 3rem; }
-      
-      .card-features { margin: 0 0 25px 0; padding: 15px 0; list-style: none; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-      .card-features li { margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: start; gap: 10px; color: var(--color-text); }
-      .card-features li::before { content: '•'; color: #ccc; font-weight: bold; font-size: 1.2em; line-height: 1; }
-
-      .card-price { text-align: center; margin-bottom: 15px; margin-top: auto; }
-      .price-val { font-size: 2.2rem; font-weight: 700; color: var(--color-navy); }
-
-      .btn-secondary {
-         background: white;
-         border: 2px solid var(--color-navy);
-         color: var(--color-navy);
-         width: 100%;
-         padding: 14px;
-         font-weight: 700;
-         border-radius: 8px;
-         cursor: pointer;
-         transition: all 0.2s;
-      }
-      .btn-secondary:hover { background: var(--color-navy); color: white; }
    </style>
 </head>
 
@@ -242,11 +250,11 @@
 
    <section class="result-hero">
       <div class="container">
-         <span class="result-hero-badge"><span>🎯</span> Analysis Complete</span>
-         <h1><span class="dynamic-child-name">Your child</span> is a Big Picture Thinker</h1>
-         <p class="result-hero-subtitle">
-            You finally understand why they can describe the entire universe but can't find their shoes.
-            It's not defiance. It's an overflow of vision with a shortage of execution.
+         <span class="result-hero-badge"><span>🚀</span> Profile Type</span>
+         <h1 class="dynamic-child-name">Your child</h1>
+         <div class="result-hero-subtitle">is a <strong>Big Picture Thinker</strong></div>
+         <p style="max-width: 600px; margin: 15px auto 0;">
+            They see the whole forest but bump into every tree. They are brilliant, creative, and completely chaotic.
          </p>
       </div>
    </section>
@@ -255,24 +263,24 @@
       <div class="container">
          <div class="validation-grid">
             <div class="validation-content">
-               <h3>The Hidden Struggle</h3>
-               <p><span class="dynamic-child-name">Your child</span> possesses "Asynchronous Development." Their intellect is miles ahead of their executive function.</p>
+               <h3>The "Right-Brained" Reality</h3>
+               <p>Your child is a <strong>Visual-Spatial Learner</strong> in a linear world. They think in images and concepts, not checklists and spreadsheets.</p>
                <ul class="validation-list">
-                  <li>They create elaborate plans but struggle to start step one.</li>
-                  <li>Traditional checklists don't work; they see the goal, not the steps.</li>
-                  <li>They get overwhelmed by simple multi-step directions.</li>
-                  <li>Brilliant ideas, messy execution.</li>
+                  <li>Their room looks like a tornado hit it (but they claim they know where everything is).</li>
+                  <li>They consistently lose homework, coats, and lunchboxes.</li>
+                  <li>They have amazing ideas but struggle to put them on paper.</li>
+                  <li>Step-by-step instructions make them zone out instantly.</li>
                </ul>
             </div>
             <div class="validation-visual">
-               <div class="symptom-card"><span class="symptom-icon">🔭</span>
-                  <p><strong>Visionary Gap:</strong> Sees the goal, misses the steps</p>
+               <div class="symptom-card"><span class="symptom-icon">🌪️</span>
+                  <p><strong>The Tornado:</strong> Chaos seems to follow them physically, even when they try to be neat.</p>
                </div>
-               <div class="symptom-card"><span class="symptom-icon">⚡</span>
-                  <p><strong>Fast Brain:</strong> Thinks faster than they can act</p>
+               <div class="symptom-card"><span class="symptom-icon">🎨</span>
+                  <p><strong>The Visionary:</strong> They can imagine complex inventions but can't find their shoes.</p>
                </div>
-               <div class="symptom-card"><span class="symptom-icon">🧩</span>
-                  <p><strong>Missing Pieces:</strong> Loses details in the big picture</p>
+               <div class="symptom-card"><span class="symptom-icon">⏳</span>
+                  <p><strong>Time Blindness:</strong> They honestly believe "5 minutes" is enough time to do everything.</p>
                </div>
             </div>
          </div>
@@ -282,93 +290,47 @@
    <main class="container">
 
       <div class="urgency-band">
-         <h3>This is the moment most parents miss.</h3>
+         <h3>They aren't "messy" on purpose. They lack a system.</h3>
          <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto;">
-            You have clarity right now. What usually determines progress is whether support starts
-            <strong>immediately</strong>, while this understanding is fresh.
+            Conventional organizing advice (color coding, filing cabinets) often fails them. They need visual, "out-in-the-open" systems.
          </p>
       </div>
 
       <section class="hero-offer" id="offer-hero">
          <div class="hero-badge">RECOMMENDED FOR THIS PROFILE</div>
-         <h2>Complete Support Plan</h2>
-         <p>The only system designed to bridge the gap between their vision and their actions.</p>
+         <h2>Cosmo Space Pup Activity Packet</h2>
+         <p>Visual, gamified systems to help disorganized kids manage their own routines and "stuff."</p>
 
          <div class="offer-list">
-            <p>✅ <strong>Executive Function Support System</strong> (AI Prompts) - <em>Value $29</em></p>
-            <p>✅ <strong>Social Skills Support System</strong> (AI Prompts) - <em>Value $29</em></p>
-            <p>✅ <strong>Cosmo Space Pup Success System</strong> (Activity Packet) - <em>Value $12</em></p>
-            <p>✅ <strong>Bonus:</strong> Implementation Guide</p>
+            <p>✅ <strong>Mission Control Checklist</strong> - Gamified morning/evening routines</p>
+            <p>✅ <strong>"Black Hole" Bin Labels</strong> - Organizing the messiest spots</p>
+            <p>✅ <strong>Cosmo's Launch Sequence</strong> - Step-by-step executive function aid</p>
+            <p>✅ <strong>Instant Digital Download</strong></p>
          </div>
 
          <div style="text-align: center; margin-top: 30px;">
-            <span class="price-anchor">$120 Value</span>
-            <span class="price-main">$57</span>
+            <span class="price-main">$9</span>
          </div>
 
-         <button class="btn-primary" onclick="handleAddToCart('prod-bundle-peace')">
-            Start Support Now
+         <button class="btn-primary" onclick="handleAddToCart('prod_packet_cosmo')">
+            Get the Activity Packet
          </button>
          <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">
-            Instant Digital Access • Secure Checkout
+            Secure Checkout • Lifetime Access
          </p>
       </section>
 
       <section class="quickwin-section">
          <div class="container" style="text-align: center; max-width: 700px;">
-            <span class="result-hero-badge" style="background:var(--color-blue-med); color:white;">Free Quick Win</span>
-            <h3>Try This Tonight: The "End Result" Reframe</h3>
-            <p>When asking a Big Picture Thinker to do a chore, don't give steps. Give the vision.</p>
+            <span class="result-hero-badge" style="background:var(--color-galaxy); color:white;">Free Quick Win</span>
+            <h3>Try This Tonight: "The Launchpad"</h3>
+            <p>Stop the morning scramble before it starts by creating a single visual zone.</p>
 
             <div style="background: white; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: left;">
-               <p style="margin-bottom: 10px;"><span class="step-circle">1</span><strong>Instead of:</strong> "Put your shoes in the bin, hang up your coat, and wash your hands."</p>
-               <p><span class="step-circle">2</span><strong>Say this:</strong> "Make the hallway look like a magazine photo."</p>
+               <p style="margin-bottom: 10px;"><span class="step-circle">1</span><strong>The Concept:</strong> A box, basket, or square of tape on the floor near the door.</p>
+               <p><span class="step-circle">2</span><strong>The Rule:</strong> "If it's not on the Launchpad tonight, it doesn't go to school tomorrow." (Visual limitation)</p>
             </div>
-            <p style="font-size: 0.9rem; margin-top: 20px; font-style: italic;">They can visualize the "magazine photo" and reverse-engineer the steps better than following a list.</p>
-         </div>
-      </section>
-
-      <section class="downsell-section">
-         <h3 style="text-align: center; margin-bottom: 30px; color: var(--color-text-light); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Or choose individual tools</h3>
-
-         <div class="downsell-grid">
-
-            <div class="downsell-card card-parent">
-               <div class="card-badge">FOR PARENTS</div>
-               <h3>AI Support System</h3>
-               <p class="card-desc">The prompt library that helps you handle daily friction without the fight.</p>
-               <ul class="card-features">
-                  <li>50+ Custom Scripts</li>
-                  <li>De-escalation protocols</li>
-                  <li>Morning & Bedtime routine builders</li>
-                  <li>School advocacy templates</li>
-               </ul>
-               <div class="card-price">
-                  <span class="price-val">$27</span>
-               </div>
-               <button class="btn-secondary" onclick="handleAddToCart('prod-system-morning')">
-                  Get Prompts Only
-               </button>
-            </div>
-
-            <div class="downsell-card card-kid">
-               <div class="card-badge">FOR KIDS</div>
-               <h3>Cosmo Space Pup Pack</h3>
-               <p class="card-desc">Gamified printable activities to build executive function skills while having fun.</p>
-               <ul class="card-features">
-                  <li>Interactive mission logs</li>
-                  <li>"Space Pup" badges & rewards</li>
-                  <li>Visual checklists</li>
-                  <li>Fun skill-building games</li>
-               </ul>
-               <div class="card-price">
-                  <span class="price-val">$9</span>
-               </div>
-               <button class="btn-secondary" onclick="handleAddToCart('prod-packet-cosmo')">
-                  Get Packet Only
-               </button>
-            </div>
-
+            <p style="font-size: 0.9rem; margin-top: 20px; font-style: italic;">Visual thinkers need to SEE their items to remember them. Putting things "away" inside drawers often means they cease to exist.</p>
          </div>
       </section>
 
@@ -376,20 +338,37 @@
 
    <div id="footer"></div>
 
-   <script src="/js/components.js"></script>
    <script src="/js/cart.js"></script>
+   <script src="/js/components.js"></script>
 
    <script>
+      // Add to Cart Logic
       function handleAddToCart(productId) {
          if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
-            NavigatorCart.add(productId, 1);
+             NavigatorCart.add(productId, 1);
          } else {
-            console.error('Cart system not loaded');
-            alert('Please refresh the page and try again.');
+             console.error('Cart system not loaded');
+             alert('Please refresh the page and try again.');
          }
       }
+
+      // Load profile data from quiz
+      function loadProfileData() {
+         try {
+            const data = JSON.parse(localStorage.getItem('quizProfile'));
+            if (data && data.childName && data.childName !== 'Your child') {
+               // Update all instances of the child's name
+               document.querySelectorAll('.dynamic-child-name').forEach(el => {
+                  el.textContent = data.childName;
+               });
+            }
+         } catch (e) {
+            console.log('No quiz profile found');
+         }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadProfileData);
    </script>
 
 </body>
-
 </html>
