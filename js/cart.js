@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - CART SYSTEM
-   Status: LAUNCH READY (All Products Linked)
+   Status: LAUNCH READY (All Products & Legacy IDs)
    ============================================ */
 
 (function() {
@@ -125,13 +125,14 @@
             downloadUrl: '/downloads/activity-packets/captain-kit.zip' 
         },
 
-        // === HERO OFFERS ===
+        // === HERO OFFERS & LEGACY IDs ===
         'prod_combo_complete': {
             id: 'prod_combo_complete',
             name: 'Complete Support Plan',
             price: 69.00,
             icon: '🔥',
-            downloadUrl: '/downloads/bundles/total-access-pass.zip' 
+            downloadUrl: '/downloads/bundles/total-access-pass.zip',
+            isBundle: true
         },
         'prod_prompt_executive': {
             id: 'prod_prompt_executive',
