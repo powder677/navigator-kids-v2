@@ -1,323 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Learn how to use AI tools like ChatGPT and Claude to support your twice-exceptional child. Beginner-friendly guide for parents.">
+   <meta name="description" content="AI Guide for 2e Parents - Learn how to use ChatGPT for personalized parenting support.">
    <title>AI Guide for 2e Parents | Navigator Kids AI</title>
-
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css">
-
    <style>
-      .guide-page {
-         padding: var(--space-12) 0 var(--space-16);
+      /* Design System Components */
+      .tool-hero {
+         background: linear-gradient(135deg, #002347 0%, #003366 50%, #004080 100%);
+         padding: 80px 0 100px;
+         position: relative;
+         overflow: hidden;
       }
-
-      .guide-header {
-         text-align: center;
-         margin-bottom: var(--space-12);
-      }
-
-      .guide-badge {
-         display: inline-block;
-         background: var(--color-sage);
-         color: var(--color-white);
-         font-size: var(--text-sm);
-         font-weight: 600;
-         padding: var(--space-1) var(--space-4);
-         border-radius: var(--radius-full);
-         margin-bottom: var(--space-4);
-      }
-
-      .guide-header h1 {
-         margin-bottom: var(--space-3);
-      }
-
-      .guide-header p {
-         font-size: var(--text-lg);
-         color: var(--color-text-light);
-         max-width: 600px;
-         margin: 0 auto;
-      }
-
-      .guide-content {
-         max-width: 800px;
-         margin: 0 auto;
-      }
-
-      .guide-section {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         padding: var(--space-8);
-         margin-bottom: var(--space-8);
-         box-shadow: var(--shadow-md);
-      }
-
-      .guide-section h2 {
-         font-size: var(--text-xl);
-         margin-bottom: var(--space-4);
-         display: flex;
-         align-items: center;
-         gap: var(--space-3);
-      }
-
-      .guide-section h3 {
-         font-size: var(--text-lg);
-         margin-top: var(--space-6);
-         margin-bottom: var(--space-3);
-      }
-
-      .guide-section p {
-         margin-bottom: var(--space-4);
-         line-height: var(--leading-relaxed);
-      }
-
-      .guide-section ul {
-         margin-left: var(--space-6);
-         margin-bottom: var(--space-4);
-      }
-
-      .guide-section li {
-         margin-bottom: var(--space-2);
-         line-height: var(--leading-relaxed);
-      }
-
-      .step-number {
-         width: 36px;
-         height: 36px;
-         background: var(--color-sage);
-         color: white;
+      .tool-hero::before {
+         content: '';
+         position: absolute;
+         top: -50%;
+         right: -10%;
+         width: 600px;
+         height: 600px;
+         background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
          border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-weight: 700;
-         flex-shrink: 0;
       }
+      .tool-hero::after {
+         content: '';
+         position: absolute;
+         bottom: -30%;
+         left: -5%;
+         width: 400px;
+         height: 400px;
+         background: radial-gradient(circle, rgba(129, 178, 154, 0.1) 0%, transparent 70%);
+         border-radius: 50%;
+      }
+      .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+      @media (max-width: 900px) { .hero-content { grid-template-columns: 1fr; text-align: center; } .hero-illustration { display: none; } }
+      .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(129, 178, 154, 0.2); color: #81B29A; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 100px; margin-bottom: 20px; }
+      .tool-hero h1 { font-family: 'Merriweather', serif; font-size: clamp(2rem, 5vw, 3rem); color: white; margin-bottom: 20px; line-height: 1.2; }
+      .tool-hero h1 span { color: #D4AF37; }
+      .hero-description { font-size: 1.125rem; color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin-bottom: 30px; }
+      .hero-features { display: flex; flex-wrap: wrap; gap: 20px; }
+      .hero-feature { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.9); font-size: 15px; }
+      .hero-feature-icon { width: 36px; height: 36px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+      .illustration-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); transform: rotate(-2deg); max-width: 320px; }
 
+      .tool-main { padding: 60px 0 80px; background: #F9FAFB; min-height: 60vh; }
+      .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+      /* Article Styles */
+      article h2 { font-family: 'Merriweather', serif; color: #002347; margin-top: 50px; font-size: 1.75rem; }
+      article p { line-height: 1.8; color: #374151; font-size: 1.1rem; margin-bottom: 24px; }
+      
+      /* Prompt Example Card */
       .prompt-example {
-         background: var(--color-cream);
-         border-radius: var(--radius-md);
-         padding: var(--space-5);
-         margin: var(--space-4) 0;
-         font-family: monospace;
-         font-size: var(--text-sm);
-         line-height: var(--leading-relaxed);
+         background: white;
+         border-radius: 16px;
+         border: 1px solid #E5E7EB;
+         padding: 30px;
+         margin: 30px 0;
+         box-shadow: 0 4px 6px rgba(0,0,0,0.02);
       }
-
-      .prompt-example-label {
-         font-family: var(--font-sans);
+      .prompt-label { font-weight: 700; color: #81B29A; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 12px; }
+      .prompt-text { font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #1F2937; margin: 0 0 24px; padding: 0; line-height: 1.6; font-style: normal; border: none; }
+      .copy-prompt-btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: #F3F4F6;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 8px;
          font-weight: 600;
-         color: var(--color-sage-dark);
-         margin-bottom: var(--space-2);
-         display: block;
+         color: #374151;
+         cursor: pointer;
+         transition: all 0.2s;
       }
+      .copy-prompt-btn:hover { background: #E5E7EB; }
 
-      .comparison-table {
-         width: 100%;
-         border-collapse: collapse;
-         margin: var(--space-6) 0;
-      }
+      /* CTA */
+      .cta-section { background: linear-gradient(135deg, #002347 0%, #003366 100%); border-radius: 20px; padding: 50px; margin-top: 60px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+      .cta-content h3 { font-size: 1.75rem; color: white; margin-bottom: 12px; font-family: 'Merriweather', serif; }
+      .cta-content p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; margin: 0; }
+      .cta-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: #D4AF37; color: #002347; font-weight: 700; font-size: 16px; border-radius: 12px; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
 
-      .comparison-table th,
-      .comparison-table td {
-         padding: var(--space-4);
-         text-align: left;
-         border-bottom: 1px solid var(--color-border);
-      }
-
-      .comparison-table th {
-         background: var(--color-cream);
-         font-weight: 600;
-      }
-
-      .tip-box {
-         background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-cream) 100%);
-         border-radius: var(--radius-lg);
-         padding: var(--space-5);
-         margin: var(--space-6) 0;
-      }
-
-      .tip-box h4 {
-         font-size: var(--text-base);
-         margin-bottom: var(--space-2);
-      }
-
-      .tip-box p {
-         margin: 0;
-         font-size: var(--text-sm);
-      }
-
-      .cta-section {
-         background: var(--color-navy);
-         border-radius: var(--radius-xl);
-         padding: var(--space-10);
-         text-align: center;
-      }
-
-      .cta-section h2 {
-         color: var(--color-cream);
-         margin-bottom: var(--space-3);
-      }
-
-      .cta-section p {
-         color: rgba(249, 247, 242, 0.8);
-         margin-bottom: var(--space-6);
-         max-width: 500px;
-         margin-left: auto;
-         margin-right: auto;
-      }
+      /* Toast */
+      .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: #1F2937; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); display: flex; align-items: center; gap: 12px; z-index: 200; opacity: 0; transition: all 0.3s ease; pointer-events: none; }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .toast-icon { width: 28px; height: 28px; background: #81B29A; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
    </style>
 </head>
-
 <body>
-   <div id="header"></div>
+   <div id="header-placeholder"></div>
 
-   <main class="guide-page">
+   <section class="tool-hero">
+      <div class="container" style="max-width: 1100px;">
+         <div class="hero-content">
+            <div class="hero-text">
+               <div class="hero-badge">Beginner Guide</div>
+               <h1>AI Guide for <span>2e Parents</span></h1>
+               <p class="hero-description">Never used ChatGPT? This step-by-step guide shows you how to get personalized parenting support using free AI tools.</p>
+               <div class="hero-features">
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">🆓</div>
+                     <span>100% free</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">⏱️</div>
+                     <span>10 min read</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">🎯</div>
+                     <span>Practical examples</span>
+                  </div>
+               </div>
+            </div>
+            <div class="hero-illustration">
+               <div class="illustration-card">
+                  <div style="font-weight:bold; margin-bottom:10px;">Me:</div>
+                  <div style="font-size:13px; color:#6B7280; margin-bottom:15px;">Create a visual routine for my 2e child...</div>
+                  <div style="font-weight:bold; margin-bottom:10px; color:#81B29A;">AI:</div>
+                  <div style="font-size:13px; border-left:2px solid #81B29A; padding-left:10px;">"Here is a 5-step morning plan with sensory breaks..."</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <main class="tool-main">
       <div class="container">
+         <article>
+            <h2>What is AI and Why Should You Care?</h2>
+            <p>Artificial Intelligence (like ChatGPT) isn't just for techies. For parents of 2e children, it's like having a research assistant, a behavioral consultant, and a sympathetic ear available 24/7. It can take your raw observations and turn them into structured plans.</p>
 
-         <div class="guide-header">
-            <span class="guide-badge">Free Guide</span>
-            <h1>AI Guide for 2e Parents</h1>
-            <p>Never used ChatGPT or Claude? No problem. This beginner-friendly guide will have you getting personalized parenting support in minutes.</p>
+            <h2>Getting Started</h2>
+            <p>Go to <a href="https://chat.openai.com">chatgpt.com</a> and create a free account. You don't need the paid version to get incredible results. Once you're in, you just talk to it like a person.</p>
+
+            <h2>Your First Prompt</h2>
+            <div class="prompt-example">
+               <div class="prompt-label">Try this prompt:</div>
+               <blockquote class="prompt-text" id="prompt-1">
+                  My 8-year-old is twice-exceptional with ADHD and giftedness. They have a meltdown every morning getting ready for school. Can you help me create a visual routine that builds in transition warnings and sensory breaks?
+               </blockquote>
+               <button class="copy-prompt-btn" onclick="copyPrompt('prompt-1')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  Copy Prompt
+               </button>
+            </div>
+
+            <h2>Tips for Better Results</h2>
+            <p>The more context you give, the better the advice. Tell the AI your child's age, their specific profile (like "Intense Feeler"), and what has or hasn't worked in the past.</p>
+         </article>
+
+         <div class="cta-section">
+            <div class="cta-content">
+               <h3>Ready for Advanced Prompts?</h3>
+               <p>Our IEP Advocacy System includes 50+ custom-engineered AI prompts for school meetings.</p>
+            </div>
+            <a href="/products/" class="cta-button">View IEP System</a>
          </div>
-
-         <div class="guide-content">
-
-            <section class="guide-section">
-               <h2><span class="step-number">1</span> What is AI and Why Use It?</h2>
-               <p>AI assistants like ChatGPT and Claude are like having a knowledgeable friend available 24/7. You type questions or describe situations, and they respond with helpful, personalized advice.</p>
-               <p><strong>For 2e parents, AI is especially powerful because:</strong></p>
-               <ul>
-                  <li>It's available at 2am during a meltdown</li>
-                  <li>It never judges your parenting</li>
-                  <li>It can be customized for YOUR specific child</li>
-                  <li>It generates ideas you might not think of alone</li>
-                  <li>It's infinitely patient with follow-up questions</li>
-               </ul>
-            </section>
-
-            <section class="guide-section">
-               <h2><span class="step-number">2</span> Choose Your AI Tool</h2>
-               <p>Both of these work great with our prompts. Pick one and create a free account:</p>
-
-               <table class="comparison-table">
-                  <tr>
-                     <th></th>
-                     <th>ChatGPT</th>
-                     <th>Claude</th>
-                  </tr>
-                  <tr>
-                     <td><strong>Website</strong></td>
-                     <td><a href="https://chat.openai.com" target="_blank">chat.openai.com</a></td>
-                     <td><a href="https://claude.ai" target="_blank">claude.ai</a></td>
-                  </tr>
-                  <tr>
-                     <td><strong>Free tier</strong></td>
-                     <td>Yes (GPT-3.5)</td>
-                     <td>Yes</td>
-                  </tr>
-                  <tr>
-                     <td><strong>Best for</strong></td>
-                     <td>General use, widely known</td>
-                     <td>Nuanced, longer responses</td>
-                  </tr>
-                  <tr>
-                     <td><strong>Mobile app</strong></td>
-                     <td>Yes</td>
-                     <td>Yes</td>
-                  </tr>
-               </table>
-
-               <div class="tip-box">
-                  <h4>💡 Our Recommendation</h4>
-                  <p>Start with whichever feels easier. Both work well! Many parents try both and develop a preference over time.</p>
-               </div>
-            </section>
-
-            <section class="guide-section">
-               <h2><span class="step-number">3</span> Write Effective Prompts</h2>
-               <p>A "prompt" is just what you type to the AI. Better prompts = better responses. Here's the formula:</p>
-
-               <h3>The Basic Formula</h3>
-               <p><strong>Context + Situation + What You Need = Great Response</strong></p>
-
-               <div class="prompt-example">
-                  <span class="prompt-example-label">❌ Vague Prompt:</span>
-                  "How do I help my kid with homework?"
-               </div>
-
-               <div class="prompt-example">
-                  <span class="prompt-example-label">✅ Specific Prompt:</span>
-                  "My 8-year-old has ADHD and is a Deep Diver brain type. He hyperfocuses on Minecraft but refuses to start homework. Tonight he needs to do 15 minutes of math practice. Give me a step-by-step script for transitioning him from screen time to homework without a meltdown."
-               </div>
-
-               <h3>Key Elements to Include</h3>
-               <ul>
-                  <li><strong>Child's age</strong> - Strategies differ by developmental stage</li>
-                  <li><strong>Brain profile</strong> - From our quiz (Intense Feeler, Deep Diver, etc.)</li>
-                  <li><strong>Any diagnoses</strong> - ADHD, ASD, anxiety, etc.</li>
-                  <li><strong>Specific situation</strong> - What's happening right now</li>
-                  <li><strong>What you want</strong> - Script? Ideas? Explanation?</li>
-               </ul>
-            </section>
-
-            <section class="guide-section">
-               <h2><span class="step-number">4</span> Using Our Prompt Packs</h2>
-               <p>Our AI Prompt Packs give you ready-to-use prompts so you don't have to write them from scratch.</p>
-
-               <h3>How to Use Them</h3>
-               <ol>
-                  <li>Open the PDF on your phone or computer</li>
-                  <li>Find the prompt that matches your situation</li>
-                  <li>Copy the prompt text</li>
-                  <li>Paste into ChatGPT or Claude</li>
-                  <li>Fill in the [brackets] with your specifics</li>
-                  <li>Hit send and get your personalized response!</li>
-               </ol>
-
-               <div class="tip-box">
-                  <h4>💡 Pro Tip: Follow Up!</h4>
-                  <p>Don't stop at one response. Ask "Can you make that simpler?" or "What if that doesn't work?" or "Give me 3 more options." The conversation continues until you have what you need.</p>
-               </div>
-            </section>
-
-            <section class="guide-section">
-               <h2><span class="step-number">5</span> Common Questions</h2>
-
-               <h3>Is it safe to share details about my child?</h3>
-               <p>Use first names only (or pseudonyms). Don't share identifying details like school names, addresses, or full names. AI doesn't "remember" your conversations by default.</p>
-
-               <h3>What if the AI gives bad advice?</h3>
-               <p>AI is a tool, not a replacement for professional guidance. Use your parental judgment. If something feels off, ask for alternatives or consult a professional.</p>
-
-               <h3>Can I use this during a meltdown?</h3>
-               <p>Yes! Our prompts are designed for real-time use. Keep them bookmarked on your phone for quick access.</p>
-
-               <h3>How is this different from Google?</h3>
-               <p>Google gives you articles to read. AI gives you personalized, conversational responses tailored to YOUR specific situation. It's like having a consultant vs. searching a library.</p>
-            </section>
-
-            <section class="cta-section">
-               <h2>Ready to Try It?</h2>
-               <p>Get our free De-escalation Kit with 5 prompts to practice with, or take the quiz to find your child's brain profile.</p>
-               <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                  <a href="/free/de-escalation-kit/" class="btn btn-primary btn-lg">Get Free Prompts →</a>
-                  <a href="/quiz/" class="btn btn-secondary btn-lg">Take the Quiz →</a>
-               </div>
-            </section>
-
-         </div>
-
       </div>
    </main>
 
-   <div id="footer"></div>
-   <script src="/js/components.js"></script>
-</body>
+   <div class="toast" id="toast">
+      <div class="toast-icon"><svg width="16" height="16" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+      <span id="toastMessage">Prompt copied!</span>
+   </div>
 
+   <div id="footer-placeholder"></div>
+   <script src="/js/components.js"></script>
+   <script>
+      function copyPrompt(id) {
+         const text = document.getElementById(id).innerText;
+         navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+         });
+      }
+   </script>
+</body>
 </html>
