@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Tools & Resources - Navigator Kids AI</title>
+    <meta name="description" content="Free Tools & Resources for parents of twice-exceptional children.">
+    <title>Free Tools & Resources | Navigator Kids AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: '#3D405B',
-                        terracotta: '#E07A5F',
+                        navy: '#002347',
+                        navyLight: '#003366',
+                        gold: '#D4AF37',
                         sage: '#81B29A',
-                        cream: '#F9F7F2',
+                        terracotta: '#E07A5F',
+                        cream: '#F9FAFB',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
                     }
                 }
             }
@@ -28,230 +31,341 @@
     </script>
     <style>
         body {
-            background-color: #F9F7F2;
-            color: #3D405B;
+            background-color: #F9FAFB;
+            color: #1F2937;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Improved Spacing and Grid Logic */
-        .section-padding {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
+        /* Hero Section Pattern */
+        .tool-hero {
+            background: linear-gradient(135deg, #002347 0%, #003366 50%, #004080 100%);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .tools-grid {
+        .tool-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .tool-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(129, 178, 154, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Card Depth & UI Polish */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-illustration {
+                display: none;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(129, 178, 154, 0.2);
+            color: #81B29A;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .tool-hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .tool-hero h1 span {
+            color: #D4AF37;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+        }
+
+        .hero-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Card Pattern */
         .tool-card {
-            background: #ffffff;
-            border-radius: 2rem;
+            background: white;
+            border-radius: 20px;
             padding: 2.5rem;
-            border: 1px solid rgba(61, 64, 91, 0.08);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
         .tool-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            border-color: var(--color-sage);
-        }
-
-        .tool-card-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-        }
-
-        .badge {
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 0.4rem 1rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .badge-free {
-            background: #f0fdf4;
-            color: #166534;
-            border: 1px solid #dcfce7;
-        }
-
-        .badge-featured {
-            background: #E07A5F;
-            color: #ffffff;
+            border-color: #81B29A;
         }
 
         .badge-soon {
             background: #f1f5f9;
             color: #94a3b8;
-        }
-
-        /* Typography spacing */
-        .tool-title {
-            font-size: 1.75rem;
-            line-height: 1.2;
+            font-size: 0.7rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-
-        .tool-description {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #64748b;
-            margin-bottom: 2rem;
-            flex-grow: 1;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
         }
 
         /* Buttons */
-        .btn-base {
-            padding: 1rem 1.5rem;
-            border-radius: 1rem;
-            font-weight: 700;
-            text-align: center;
-            transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-
         .btn-terracotta {
             background: #E07A5F;
             color: white;
-            box-shadow: 0 4px 14px 0 rgba(224, 122, 95, 0.39);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px 0 rgba(224, 122, 95, 0.3);
         }
 
         .btn-terracotta:hover {
             background: #d46a4f;
-            box-shadow: 0 6px 20px rgba(224, 122, 95, 0.23);
+            transform: translateY(-2px);
         }
 
         .btn-outline {
             background: #ffffff;
-            color: #3D405B;
-            border: 2px solid #e2e8f0;
+            color: #002347;
+            border: 2px solid #E5E7EB;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.2s;
         }
 
         .btn-outline:hover:not(:disabled) {
-            border-color: #3D405B;
-            background: #f8fafc;
+            border-color: #81B29A;
+            color: #81B29A;
+            background: #F0FDF4;
         }
 
-        /* Premium CTA Section spacing */
-        .premium-cta {
-            margin-top: 8rem;
-            padding: 5rem 2rem;
-            border-radius: 3rem;
-            background: #3D405B;
-            position: relative;
-            overflow: hidden;
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #002347 0%, #003366 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 800px) {
+            .cta-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .cta-content h3 {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 12px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: #D4AF37;
+            color: #002347;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background: #E5C04B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
         }
     </style>
 </head>
 <body class="min-h-screen">
     <header id="header-placeholder"></header>
 
-    <main class="max-w-7xl mx-auto px-6 section-padding">
-        <div class="max-w-3xl mx-auto text-center mb-20">
-            <span class="inline-block px-4 py-1 rounded-full bg-sage/10 text-sage font-bold text-sm mb-6 uppercase tracking-widest">Resource Library</span>
-            <h1 class="text-5xl md:text-6xl font-extrabold font-heading mb-8 text-navy leading-tight">Free Tools for 2e Parents</h1>
-            <p class="text-xl text-gray-500 leading-relaxed">
-                Practical, ready-to-use resources to help you advocate at school, manage meltdowns at home, and understand your child's brilliant, unique brain.
-            </p>
+    <section class="tool-hero">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Resource Library</div>
+                    <h1>Free Tools for <span>2e Parents</span></h1>
+                    <p class="hero-description">Practical, brain-based resources to help you advocate at school, manage meltdowns at home, and understand your child's brilliant, unique wiring.</p>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <div class="hero-feature-icon">📝</div>
+                            <span>Advocacy Checklists</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="hero-feature-icon">🧘</div>
+                            <span>Regulation Scripts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="illustration-card" style="transform: rotate(3deg);">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center text-2xl">📋</div>
+                            <div class="font-bold text-navy">IEP Guide</div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-2 bg-gray-100 rounded w-full"></div>
+                            <div class="h-2 bg-gray-100 rounded w-4/5"></div>
+                            <div class="h-2 bg-sage/20 rounded w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="tools-grid">
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="tool-card border-2 border-terracotta/20 bg-gradient-to-br from-white to-orange-50/30">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon">🧘</div>
-                    <span class="badge badge-featured shadow-sm">Most Popular</span>
+            <div class="tool-card border-2 border-sage/30 bg-gradient-to-br from-white to-sage/5">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🧘</div>
+                    <span class="hero-badge" style="margin:0; font-size:10px;">Most Popular</span>
                 </div>
-                <h3 class="tool-title font-heading">Emergency Regulation Kit</h3>
-                <p class="tool-description">5 free de-escalation scripts for when your child's thinking brain goes offline. Includes the "Reset" script and "Justice Trap" guide.</p>
-                <a href="/free/de-escalation-kit/" class="btn-base btn-terracotta">Download Free Kit →</a>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Emergency Regulation Kit</h3>
+                <p class="text-gray-600 mb-8 flex-grow">5 free de-escalation scripts for when your child's thinking brain goes offline. Includes the "Reset" script.</p>
+                <a href="/free/de-escalation-kit/" class="btn-terracotta">Download Free Kit →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon">📝</div>
-                    <span class="badge badge-free">Free Tool</span>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">📝</div>
                 </div>
-                <h3 class="tool-title font-heading">Accommodation Checklist</h3>
-                <p class="tool-description">Filter 100+ classroom accommodations by brain profile. Generate a custom PDF list to bring to your next IEP or 504 meeting.</p>
-                <a href="/tools/accommodations/" class="btn-base btn-outline">Build Your List →</a>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Accommodation Checklist</h3>
+                <p class="text-gray-600 mb-8 flex-grow">Filter 100+ classroom accommodations by brain profile. Generate a custom PDF list for your next IEP meeting.</p>
+                <a href="/tools/accommodations/" class="btn-outline">Build Your List →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon">🌊</div>
-                    <span class="badge badge-free">Free Tool</span>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🌊</div>
                 </div>
-                <h3 class="tool-title font-heading">Sensory Scripts</h3>
-                <p class="tool-description">Ready-to-use verbal scripts for sensory overload, clothing battles, and noise sensitivity. Calm the nervous system without the fight.</p>
-                <a href="/tools/sensory-scripts/" class="btn-base btn-outline">View Scripts →</a>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Sensory Scripts</h3>
+                <p class="text-gray-600 mb-8 flex-grow">Ready-to-use verbal scripts for clothing battles, noise sensitivity, and transitions. Calm the system without the fight.</p>
+                <a href="/tools/sensory-scripts/" class="btn-outline">View Scripts →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon">🤖</div>
-                    <span class="badge badge-free">Guide</span>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🤖</div>
                 </div>
-                <h3 class="tool-title font-heading">AI Guide for 2e Parents</h3>
-                <p class="tool-description">New to AI? This beginner guide shows you how to use ChatGPT or Claude to get personalized parenting advice and school support.</p>
-                <a href="/tools/ai-guide/" class="btn-base btn-outline">Read the Guide →</a>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">AI Guide for Parents</h3>
+                <p class="text-gray-600 mb-8 flex-grow">New to AI? Learn how to use ChatGPT or Claude to get personalized parenting advice and school support.</p>
+                <a href="/tools/ai-guide/" class="btn-outline">Read the Guide →</a>
             </div>
 
             <div class="tool-card opacity-75">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon grayscale">📊</div>
-                    <span class="badge badge-soon">Coming Soon</span>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl grayscale">📊</div>
+                    <span class="badge-soon">Coming Soon</span>
                 </div>
-                <h3 class="tool-title font-heading">Pattern Tracker</h3>
-                <p class="tool-description">A digital log to track meltdowns and triggers. Identify the patterns that help you predict and prevent future explosions.</p>
-                <button class="btn-base btn-outline opacity-50" disabled>Coming Soon</button>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Pattern Tracker</h3>
+                <p class="text-gray-600 mb-8 flex-grow">A digital log to track meltdowns and triggers. Identify the patterns that help you predict and prevent future explosions.</p>
+                <button class="btn-outline opacity-50" disabled>Coming Soon</button>
             </div>
 
             <div class="tool-card opacity-75">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="tool-card-icon grayscale">⏰</div>
-                    <span class="badge badge-soon">Coming Soon</span>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl grayscale">⏰</div>
+                    <span class="badge-soon">Coming Soon</span>
                 </div>
-                <h3 class="tool-title font-heading">Routine Builder</h3>
-                <p class="tool-description">Drag-and-drop builder to create visual morning and bedtime routines tailored to your child's specific executive function needs.</p>
-                <button class="btn-base btn-outline opacity-50" disabled>Coming Soon</button>
+                <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Routine Builder</h3>
+                <p class="text-gray-600 mb-8 flex-grow">Create visual morning and bedtime routines tailored to your child's specific executive function needs.</p>
+                <button class="btn-outline opacity-50" disabled>Coming Soon</button>
             </div>
 
         </div>
 
-        <div class="premium-cta text-center shadow-2xl">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-terracotta/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-sage/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
-            
-            <div class="relative z-10 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white mb-8">Complete Support Systems</h2>
-                <p class="text-xl text-cream/80 mb-12 leading-relaxed">
-                    Our full parent systems and kid activity packets give you the deep-dive strategies you need for IEP meetings, social navigation, and emotional regulation.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="/products/" class="btn-base btn-terracotta px-12 py-5 text-xl">
-                        Explore Systems & Bundles →
-                    </a>
-                </div>
+        <div class="cta-section">
+            <div class="cta-content">
+                <h3>Want More Support?</h3>
+                <p>Our complete support systems give you deep-dive strategies for IEP meetings, social navigation, and emotional regulation.</p>
             </div>
+            <a href="/products/" class="cta-button">
+                Explore Systems
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
     </main>
 
     <footer id="footer-placeholder"></footer>
-
     <script src="/js/components.js"></script>
 </body>
 </html>
