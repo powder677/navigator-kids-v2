@@ -345,7 +345,7 @@
          <section class="cta-section">
             <h2>Want More?</h2>
             <p>The De-escalation Kit is just a taste. Our full Prompt Packs include 50 prompts for every parenting situation.</p>
-            <a href="/products/ai-prompts/" class="btn btn-primary btn-lg">View Full Prompt Packs →</a>
+            <a href="/products/" class="btn btn-primary btn-lg">View All Products →</a>
          </section>
 
       </div>
@@ -353,27 +353,48 @@
 
    <div id="footer"></div>
 
-  <script src="/js/components.js"></script>
+   <script src="/js/components.js"></script>
    <script>
-      function handleSignup(e) {
+      async function handleSignup(e) {
          e.preventDefault();
          const email = document.getElementById('email').value;
          const btn = e.target.querySelector('button');
+         const originalText = btn.innerText;
          
          // 1. Show loading state
          btn.disabled = true;
          btn.innerText = "Processing...";
 
-         // 2. Simulate delay (in real app, submit to backend here)
-         setTimeout(() => {
-             // 3. Hide form / Show success
-             document.getElementById('signupForm').style.display = 'none';
-             document.getElementById('signupSuccess').style.display = 'block';
-             
-             // 4. Trigger Download
-             // Ensure this filename matches exactly what is on your server
-             window.location.href = "/free/de-escalation-kit/De-escalation_Kit_Free.pdf";
-         }, 1000);
+         try {
+             // 2. Submit to Formspree
+             const response = await fetch('https://formspree.io/f/mnjvvpyj', {
+                 method: 'POST',
+                 headers: { 
+                     'Content-Type': 'application/json',
+                     'Accept': 'application/json'
+                 },
+                 body: JSON.stringify({
+                     email: email,
+                     _source: 'de-escalation-kit',
+                     _subject: 'New De-Escalation Kit Download'
+                 })
+             });
+
+             if (response.ok) {
+                 // 3. Hide form / Show success
+                 document.getElementById('signupForm').style.display = 'none';
+                 document.getElementById('signupSuccess').style.display = 'block';
+                 
+                 // 4. Trigger Download
+                 window.location.href = "/free/de-escalation-kit/De-escalation_Kit_Free.pdf";
+             } else {
+                 throw new Error('Submission failed');
+             }
+         } catch (err) {
+             alert('Something went wrong. Please try again.');
+             btn.disabled = false;
+             btn.innerText = originalText;
+         }
       }
    </script>
 </body>
