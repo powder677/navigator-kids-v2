@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - CART SYSTEM
-   Status: LAUNCH READY (Corrected URLs & Live Key)
+   Status: FIXED (Added Legacy IDs & Missing Products)
    ============================================ */
 
 (function() {
@@ -35,13 +35,13 @@
             isBundle: true
         },
 
-        // === TIER 3: CORE SYSTEMS (Updated from your snippet) ===
+        // === TIER 3: CORE SYSTEMS ===
         'prod-system-iep': {
             id: 'prod-system-iep',
             name: 'The IEP Advocacy System',
             price: 67.00,
             icon: '⚖️',
-            downloadUrl: '/downloads/systems/iep-advocacy-system-premium.zip'
+            downloadUrl: '/downloads/systems/the-iep-advocacy-system-premium.pdf'
         },
         'prod-system-social': {
             id: 'prod-system-social',
@@ -58,7 +58,7 @@
             downloadUrl: '/downloads/systems/2e-meltdown-navigation-system.pdf'
         },
 
-        // === TIER 2: QUICK WINS (Updated from your snippet) ===
+        // === TIER 2: QUICK WINS ===
         'prod-system-morning': {
             id: 'prod-system-morning',
             name: 'The Morning Launch System',
@@ -80,51 +80,52 @@
             name: 'Activity Pack: Bravely', 
             price: 9.00, 
             icon: '🦁', 
-            downloadUrl: '/downloads/activity-packets/bravely-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/bravely-the-lion.zip' 
         },
         'prod-packet-cosmo': { 
             id: 'prod-packet-cosmo', 
             name: 'Activity Pack: Cosmo', 
             price: 9.00, 
             icon: '🚀', 
-            downloadUrl: '/downloads/activity-packets/cosmo-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/cosmo-space-mission.zip' 
         },
         'prod-packet-ember': { 
             id: 'prod-packet-ember', 
             name: 'Activity Pack: Ember', 
             price: 9.00, 
             icon: '🔥', 
-            downloadUrl: '/downloads/activity-packets/ember-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/ember-the-dragon.zip' 
         },
         'prod-packet-shelly': { 
             id: 'prod-packet-shelly', 
             name: 'Activity Pack: Shelly', 
             price: 9.00, 
             icon: '🐢', 
-            downloadUrl: '/downloads/activity-packets/shelly-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/shelly-the-turtle.zip' 
         },
         'prod-packet-sketch': { 
             id: 'prod-packet-sketch', 
             name: 'Activity Pack: Sketch', 
             price: 9.00, 
             icon: '🦉', 
-            downloadUrl: '/downloads/activity-packets/sketch-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/sketch-the-owl.zip' 
         },
         'prod-packet-whisper': { 
             id: 'prod-packet-whisper', 
             name: 'Activity Pack: Whisper', 
             price: 9.00, 
             icon: '🐰', 
-            downloadUrl: '/downloads/activity-packets/whisper-kit.zip' 
+            downloadUrl: '/downloads/activity-packets/whisper-the-cozy.zip' 
         },
 
-        // === HERO OFFERS ===
+        // === HERO OFFERS & LEGACY IDs (Added for Results Pages) ===
         'prod_combo_complete': {
             id: 'prod_combo_complete',
             name: 'Complete Support Plan',
             price: 69.00,
             icon: '🔥',
-            downloadUrl: '/downloads/bundles/total-access-pass.zip' 
+            downloadUrl: '/downloads/bundles/total-access-pass.zip',
+            isBundle: true
         },
         'prod_prompt_executive': {
             id: 'prod_prompt_executive',
@@ -132,6 +133,13 @@
             price: 29.00,
             icon: '🤖',
             downloadUrl: '/downloads/systems/morning-launch-system-prompt.pdf' 
+        },
+        'prod_packet_captain': {
+            id: 'prod_packet_captain',
+            name: 'Activity Pack: Captain Choosy',
+            price: 9.00,
+            icon: '🎯',
+            downloadUrl: '/downloads/activity-packets/captain-kit.zip'
         }
     };
 
