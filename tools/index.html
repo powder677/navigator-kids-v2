@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Tools & Resources for parents of twice-exceptional children.">
-    <title>Free Tools & Resources | Navigator Kids AI</title>
+    <title>Free Tools & Resources - Navigator Kids AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -36,7 +35,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Hero Section Pattern */
+        /* Hero Section */
         .tool-hero {
             background: linear-gradient(135deg, #002347 0%, #003366 50%, #004080 100%);
             padding: 80px 0 100px;
@@ -92,7 +91,7 @@
             background: rgba(129, 178, 154, 0.2);
             color: #81B29A;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             padding: 8px 16px;
             border-radius: 100px;
             margin-bottom: 20px;
@@ -100,10 +99,11 @@
 
         .tool-hero h1 {
             font-family: 'Merriweather', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: white;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #FFFFFF; /* Pure white for maximum contrast */
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .tool-hero h1 span {
@@ -111,10 +111,11 @@
         }
 
         .hero-description {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.25rem;
+            color: #FFFFFF; /* Changed from grey-white to pure white */
             line-height: 1.7;
             margin-bottom: 30px;
+            opacity: 0.95;
         }
 
         .hero-features {
@@ -127,28 +128,29 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
+            color: #FFFFFF; /* Pure white */
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .hero-feature-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
         }
 
-        /* Card Pattern */
+        /* Tool Cards */
         .tool-card {
-            background: white;
-            border-radius: 20px;
+            background: #FFFFFF;
+            border-radius: 24px;
             padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             border: 2px solid transparent;
             display: flex;
             flex-direction: column;
@@ -156,43 +158,83 @@
         }
 
         .tool-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            transform: translateY(-8px);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -12px rgba(0, 35, 71, 0.15);
             border-color: #81B29A;
         }
 
-        .badge-soon {
-            background: #f1f5f9;
-            color: #94a3b8;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 0.4rem 1rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
+        /* Bottom CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #002347 0%, #003366 100%);
+            border-radius: 32px;
+            padding: 60px;
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 35, 71, 0.2);
         }
 
-        /* Buttons */
+        @media (max-width: 800px) {
+            .cta-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 40px 20px;
+            }
+        }
+
+        .cta-content h3 {
+            font-size: 2.25rem;
+            color: #FFFFFF; /* Pure white */
+            margin-bottom: 16px;
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            color: #FFFFFF; /* Pure white */
+            font-size: 1.15rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: #D4AF37;
+            color: #002347; /* Dark navy text on gold background */
+            font-weight: 800;
+            font-size: 18px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background: #F9F7F2;
+            color: #002347;
+            transform: scale(1.05);
+        }
+
         .btn-terracotta {
             background: #E07A5F;
             color: white;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 12px;
             font-weight: 700;
             text-align: center;
             transition: all 0.2s;
-            box-shadow: 0 4px 14px 0 rgba(224, 122, 95, 0.3);
-        }
-
-        .btn-terracotta:hover {
-            background: #d46a4f;
-            transform: translateY(-2px);
         }
 
         .btn-outline {
-            background: #ffffff;
+            background: #FFFFFF;
             color: #002347;
             border: 2px solid #E5E7EB;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 12px;
             font-weight: 700;
             text-align: center;
@@ -203,53 +245,6 @@
             border-color: #81B29A;
             color: #81B29A;
             background: #F0FDF4;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #002347 0%, #003366 100%);
-            border-radius: 20px;
-            padding: 50px;
-            margin-top: 80px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (max-width: 800px) {
-            .cta-section {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        .cta-content h3 {
-            font-size: 1.75rem;
-            color: white;
-            margin-bottom: 12px;
-            font-family: 'Merriweather', serif;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: #D4AF37;
-            color: #002347;
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .cta-button:hover {
-            background: #E5C04B;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
         }
     </style>
 </head>
@@ -265,7 +260,7 @@
                     <p class="hero-description">Practical, brain-based resources to help you advocate at school, manage meltdowns at home, and understand your child's brilliant, unique wiring.</p>
                     <div class="hero-features">
                         <div class="hero-feature">
-                            <div class="hero-feature-icon">📝</div>
+                            <div class="hero-feature-icon">📋</div>
                             <span>Advocacy Checklists</span>
                         </div>
                         <div class="hero-feature">
@@ -275,15 +270,27 @@
                     </div>
                 </div>
                 <div class="hero-illustration">
-                    <div class="illustration-card" style="transform: rotate(3deg);">
+                    <div class="bg-white p-8 rounded-3xl shadow-2xl rotate-3 max-w-sm">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-sage rounded-lg flex items-center justify-center text-2xl">📋</div>
-                            <div class="font-bold text-navy">IEP Guide</div>
+                            <div class="w-14 h-14 bg-sage rounded-2xl flex items-center justify-center text-3xl text-white">📋</div>
+                            <div>
+                                <div class="font-bold text-navy text-lg leading-tight">IEP Builder</div>
+                                <div class="text-gray-400 text-sm">3 items checked</div>
+                            </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="h-2 bg-gray-100 rounded w-full"></div>
-                            <div class="h-2 bg-gray-100 rounded w-4/5"></div>
-                            <div class="h-2 bg-sage/20 rounded w-full"></div>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 border-2 border-sage bg-sage rounded flex items-center justify-center text-[10px] text-white">✓</div>
+                                <div class="h-2 bg-gray-100 rounded w-full"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 border-2 border-sage bg-sage rounded flex items-center justify-center text-[10px] text-white">✓</div>
+                                <div class="h-2 bg-gray-100 rounded w-3/4"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 border-2 border-gray-200 rounded"></div>
+                                <div class="h-2 bg-gray-50 rounded w-full"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,64 +298,64 @@
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-            <div class="tool-card border-2 border-sage/30 bg-gradient-to-br from-white to-sage/5">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl">🧘</div>
-                    <span class="hero-badge" style="margin:0; font-size:10px;">Most Popular</span>
+            <div class="tool-card border-2 border-sage/20 bg-gradient-to-br from-white to-sage/5">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">🧘</div>
+                    <span class="hero-badge" style="margin:0; font-size:11px;">Most Popular</span>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Emergency Regulation Kit</h3>
-                <p class="text-gray-600 mb-8 flex-grow">5 free de-escalation scripts for when your child's thinking brain goes offline. Includes the "Reset" script.</p>
-                <a href="/free/de-escalation-kit/" class="btn-terracotta">Download Free Kit →</a>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">5 free de-escalation scripts for when your child's thinking brain goes offline. Includes the "Reset" script.</p>
+                <a href="/free/de-escalation-kit/" class="btn-terracotta text-lg">Download Free Kit →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl">📝</div>
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">📝</div>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Accommodation Checklist</h3>
-                <p class="text-gray-600 mb-8 flex-grow">Filter 100+ classroom accommodations by brain profile. Generate a custom PDF list for your next IEP meeting.</p>
-                <a href="/tools/accommodations/" class="btn-outline">Build Your List →</a>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">Filter 100+ classroom accommodations by brain profile. Generate a custom PDF list for your next IEP meeting.</p>
+                <a href="/tools/accommodations/" class="btn-outline text-lg">Build Your List →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl">🌊</div>
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">🌊</div>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Sensory Scripts</h3>
-                <p class="text-gray-600 mb-8 flex-grow">Ready-to-use verbal scripts for clothing battles, noise sensitivity, and transitions. Calm the system without the fight.</p>
-                <a href="/tools/sensory-scripts/" class="btn-outline">View Scripts →</a>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">Ready-to-use verbal scripts for clothing battles, noise sensitivity, and transitions. Calm the system without the fight.</p>
+                <a href="/tools/sensory-scripts/" class="btn-outline text-lg">View Scripts →</a>
             </div>
 
             <div class="tool-card">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl">🤖</div>
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">🤖</div>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">AI Guide for Parents</h3>
-                <p class="text-gray-600 mb-8 flex-grow">New to AI? Learn how to use ChatGPT or Claude to get personalized parenting advice and school support.</p>
-                <a href="/tools/ai-guide/" class="btn-outline">Read the Guide →</a>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">New to AI? Learn how to use ChatGPT or Claude to get personalized parenting advice and school support.</p>
+                <a href="/tools/ai-guide/" class="btn-outline text-lg">Read the Guide →</a>
             </div>
 
-            <div class="tool-card opacity-75">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl grayscale">📊</div>
+            <div class="tool-card opacity-70 grayscale-[0.5]">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">📊</div>
                     <span class="badge-soon">Coming Soon</span>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Pattern Tracker</h3>
-                <p class="text-gray-600 mb-8 flex-grow">A digital log to track meltdowns and triggers. Identify the patterns that help you predict and prevent future explosions.</p>
-                <button class="btn-outline opacity-50" disabled>Coming Soon</button>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">A digital log to track meltdowns and triggers. Identify patterns to help predict and prevent future explosions.</p>
+                <button class="btn-outline opacity-50 cursor-not-allowed" disabled>In Development</button>
             </div>
 
-            <div class="tool-card opacity-75">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="text-4xl grayscale">⏰</div>
+            <div class="tool-card opacity-70 grayscale-[0.5]">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="text-5xl">⏰</div>
                     <span class="badge-soon">Coming Soon</span>
                 </div>
                 <h3 class="text-2xl font-bold text-navy mb-4 font-serif">Routine Builder</h3>
-                <p class="text-gray-600 mb-8 flex-grow">Create visual morning and bedtime routines tailored to your child's specific executive function needs.</p>
-                <button class="btn-outline opacity-50" disabled>Coming Soon</button>
+                <p class="text-gray-600 mb-10 flex-grow text-lg">Create visual morning and bedtime routines tailored to your child's specific executive function needs.</p>
+                <button class="btn-outline opacity-50 cursor-not-allowed" disabled>In Development</button>
             </div>
 
         </div>
@@ -356,11 +363,11 @@
         <div class="cta-section">
             <div class="cta-content">
                 <h3>Want More Support?</h3>
-                <p>Our complete support systems give you deep-dive strategies for IEP meetings, social navigation, and emotional regulation.</p>
+                <p>Our complete systems give you deep-dive strategies for IEP meetings, social navigation, and emotional regulation.</p>
             </div>
             <a href="/products/" class="cta-button">
-                Explore Systems
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                Explore Support Systems
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
         </div>
     </main>
