@@ -1,0 +1,15 @@
+# Navigator Kids AI - Robots.txt
+User-agent: *
+
+# Block access to private/functional pages
+Disallow: /thank-you/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /downloads/
+
+# Allow everything else
+Allow: /
+
+# Sitemap Location
+Sitemap: https://navigatorkidsai.com/sitemap.xml
