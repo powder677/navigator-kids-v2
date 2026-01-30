@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
+        /* Anti-flicker for Header Injection */
+        body { padding-top: 76px; }
+        #header + * { margin-top: 0; }
+
         .result-hero { background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%); padding: var(--space-16) 0 var(--space-12); text-align: center; }
         .result-hero-badge { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; color: #7EB8D8; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
         .result-hero-icon { font-size: 5rem; margin-bottom: var(--space-4); }
@@ -99,7 +103,7 @@
         <div class="container">
             <span class="result-hero-badge"><span>🎯</span> Primary Profile Identified</span>
             <div class="result-hero-icon">🦁</div>
-            <h1><span class="child-name" id="heroChildName">Your child</span> is a Bold Explorer</h1>
+            <h1><span class="dynamic-child-name" id="heroChildName">Your child</span> is a Bold Explorer</h1>
             <p class="result-hero-subtitle">
                 They jump in first and think later. They love trying new things — but their confidence crashes hard when things get difficult.
             </p>
@@ -121,7 +125,7 @@
             <div class="validation-grid">
                 <div class="validation-content">
                     <h2>What You're Probably Experiencing</h2>
-                    <p>If your child is a Bold Explorer, they probably have no fear of trying new things — at first. They're the kid who volunteers immediately, raises their hand first, and jumps into the deep end.</p>
+                    <p>If <span class="dynamic-child-name">your child</span> is a Bold Explorer, they probably have no fear of trying new things — at first. They're the kid who volunteers immediately, raises their hand first, and jumps into the deep end.</p>
                     <p>But the moment something gets hard or they're not immediately good at it? That confidence can collapse.</p>
                     <ul class="validation-list">
                         <li>Enthusiastic start, dramatic give-up</li>
@@ -177,7 +181,7 @@
                         <span class="product-price">$18</span>
                         <span class="product-price-note">Instant PDF download</span>
                     </div>
-                    <button class="btn btn-primary" data-add-to-cart="ai-prompts-bold-explorer">Add to Cart</button>
+                    <button class="btn btn-primary" onclick="handleAddToCart('prod_prompt_executive')">Add to Cart</button>
                 </div>
                 <div class="product-card-basic">
                     <div class="product-card-icon">🦁</div>
@@ -193,7 +197,7 @@
                         <span class="product-price">$9</span>
                         <span class="product-price-note">Interactive HTML</span>
                     </div>
-                    <button class="btn btn-secondary" data-add-to-cart="packet-bravely-lion">Add to Cart</button>
+                    <button class="btn btn-secondary" onclick="handleAddToCart('prod_packet_bravely')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -269,6 +273,16 @@
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
             if (!isOpen) item.classList.add('open');
         }
+        
+        function handleAddToCart(productId) {
+            if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
+                NavigatorCart.add(productId, 1);
+            } else {
+                console.error('Cart system not loaded');
+                alert('Please refresh the page and try again.');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', loadProfileData);
     </script>
 </body>
