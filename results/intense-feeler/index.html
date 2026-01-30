@@ -1,167 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Intense Feeler | Navigator Kids AI™</title>
+
+   <script src="https://js.stripe.com/v3/"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+   <style>
+      /* --- 1. DESIGN SYSTEM --- */
+      :root {
+         --color-navy: #002347;
+         --color-gold: #D4AF37;
+         --color-terracotta: #D44D5C;
+         /* Primary color for Intense Feeler */
+         --color-rose: #FDE8E4;
+         /* Background tint for Intense Feeler */
+         --color-cream: #FFF8E7;
+         --color-white: #ffffff;
+         --color-text: #333333;
+         --color-text-light: #666666;
+         --radius-md: 12px;
+         --radius-xl: 20px;
+         --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+         --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.1);
+         --font-body: 'Inter', sans-serif;
+         --font-heading: 'Merriweather', serif;
+      }
+
+      * {
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: var(--font-body);
+         color: var(--color-text);
+         line-height: 1.6;
+         margin: 0;
+         background-color: #fdfdfd;
+         /* Added to accommodate fixed header */
+         padding-top: 76px; 
+      }
+      
+      #header + * { margin-top: 0; }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: var(--font-heading);
+         color: var(--color-navy);
+         margin-top: 0;
+      }
+
+      .container {
+         max-width: 900px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      /* --- TRUST HERO --- */
+      .result-hero {
+         background: linear-gradient(135deg, var(--color-rose) 0%, #FFF5F5 100%);
+         padding: 60px 0 40px;
+         text-align: center;
+      }
+
+      .result-hero-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: var(--color-white);
+         padding: 6px 16px;
+         border-radius: 50px;
+         font-size: 0.85rem;
+         font-weight: 600;
+         color: var(--color-terracotta);
+         margin-bottom: 24px;
+         box-shadow: var(--shadow-sm);
+      }
+
+      .result-hero h1 {
+         font-size: clamp(2rem, 5vw, 3rem);
+         margin-bottom: 16px;
+      }
+
+      .result-hero-subtitle {
+         font-size: 1.15rem;
+         color: var(--color-text);
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      /* --- VALIDATION SECTION --- */
+      .validation-section {
+         padding: 60px 0;
+         background: var(--color-white);
+      }
+
+      .validation-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 40px;
+         align-items: start;
+      }
+
+      @media (max-width: 768px) {
+         .validation-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .validation-list {
+         list-style: none;
+         padding: 0;
+         margin-top: 20px;
+      }
+
+      .validation-list li {
+         display: flex;
+         align-items: flex-start;
+         gap: 12px;
+         margin-bottom: 16px;
+         font-size: 1rem;
+      }
+
+      .validation-list li::before {
+         content: '✓';
+         color: var(--color-terracotta);
+         font-weight: 700;
+         flex-shrink: 0;
+      }
+
+      /* Visual Cards for Validation */
+      .symptom-card {
+         background: #FFF5F5;
+         border-radius: var(--radius-md);
+         padding: 16px;
+         margin-bottom: 12px;
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         border-left: 4px solid var(--color-terracotta);
+      }
+
+      .symptom-icon {
+         font-size: 1.5rem;
+      }
+
+      .symptom-card p {
+         margin: 0;
+         font-size: 0.9rem;
+         font-weight: 500;
+      }
+
+      /* --- URGENCY BAND --- */
+      .urgency-band {
+         background-color: var(--color-navy);
+         color: var(--color-cream);
+         padding: 30px 20px;
+         text-align: center;
+         margin: 40px 0;
+         border-left: 6px solid var(--color-terracotta);
+         border-radius: 4px;
+      }
+
+      /* --- HERO OFFER --- */
+      .hero-offer {
+         border: 3px solid var(--color-terracotta);
+         /* Specific border color */
+         background: var(--color-white);
+         padding: 40px;
+         border-radius: var(--radius-md);
+         box-shadow: var(--shadow-lg);
+         position: relative;
+         text-align: center;
+         margin-bottom: 60px;
+         overflow: hidden;
+      }
+
+      .hero-badge {
+         background: var(--color-terracotta);
+         color: var(--color-white);
+         position: absolute;
+         top: 0;
+         right: 0;
+         padding: 8px 20px;
+         font-weight: bold;
+         font-size: 0.85rem;
+         border-bottom-left-radius: 12px;
+      }
+
+      .offer-list {
+         text-align: left;
+         margin: 20px auto;
+         max-width: 450px;
+         line-height: 1.8;
+      }
+
+      .price-anchor {
+         text-decoration: line-through;
+         color: #888;
+         font-size: 1.1rem;
+         margin-right: 10px;
+      }
+
+      .price-main {
+         font-size: 2.5rem;
+         font-weight: 800;
+         color: var(--color-navy);
+      }
+
+      .btn-primary {
+         background-color: var(--color-terracotta);
+         color: white;
+         width: 100%;
+         max-width: 500px;
+         padding: 18px;
+         font-size: 1.2rem;
+         font-weight: bold;
+         border: none;
+         border-radius: 8px;
+         cursor: pointer;
+         margin-top: 20px;
+         transition: transform 0.2s;
+      }
+
+      .btn-primary:hover {
+         transform: translateY(-2px);
+         filter: brightness(1.1);
+      }
+
+      /* --- QUICK WIN --- */
+      .quickwin-section {
+         background: linear-gradient(135deg, var(--color-rose) 0%, #FFF5F5 100%);
+         padding: 50px 0;
+         margin-top: 60px;
+         border-radius: var(--radius-xl);
+      }
+
+      .step-circle {
+         width: 24px;
+         height: 24px;
+         background: var(--color-terracotta);
+         color: white;
+         border-radius: 50%;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 0.75rem;
+         font-weight: bold;
+         margin-right: 10px;
+      }
+
+      /* --- DOWNSELL BOXES --- */
+      .downsell-section {
+         margin-top: 60px;
+         padding-top: 40px;
+         border-top: 1px solid #eee;
+      }
+
+      .downsell-grid {
+         display: flex;
+         gap: 30px;
+         flex-wrap: wrap;
+      }
+
+      .downsell-card {
+         flex: 1;
+         min-width: 300px;
+         padding: 30px;
+         border-radius: var(--radius-md);
+         position: relative;
+         background: white;
+         border: 1px solid #eee;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+         transition: transform 0.2s, box-shadow 0.2s;
+         display: flex;
+         flex-direction: column;
+      }
+
+      .downsell-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Specific Themes */
+      .card-parent {
+         border-top: 5px solid var(--color-navy);
+      }
+
+      .card-kid {
+         border-top: 5px solid var(--color-terracotta);
+      }
+
+      /* Terracotta for Feeler */
+
+      .card-badge {
+         position: absolute;
+         top: -14px;
+         left: 50%;
+         transform: translateX(-50%);
+         background: #f0f0f0;
+         padding: 5px 15px;
+         border-radius: 50px;
+         font-size: 0.75rem;
+         font-weight: 700;
+         letter-spacing: 1px;
+         color: #555;
+         text-transform: uppercase;
+         border: 2px solid white;
+      }
+
+      .downsell-card h3 {
+         font-size: 1.3rem;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         text-align: center;
+         color: var(--color-navy);
+      }
+
+      .card-desc {
+         font-size: 0.95rem;
+         color: #666;
+         text-align: center;
+         margin-bottom: 20px;
+         line-height: 1.5;
+         min-height: 3rem;
+      }
+
+      .card-features {
+         margin: 0 0 25px 0;
+         padding: 15px 0;
+         list-style: none;
+         border-top: 1px solid #eee;
+         border-bottom: 1px solid #eee;
+      }
+
+      .card-features li {
+         margin-bottom: 8px;
+         font-size: 0.9rem;
+         display: flex;
+         align-items: start;
+         gap: 10px;
+         color: var(--color-text);
+      }
+
+      .card-features li::before {
+         content: '•';
+         color: #ccc;
+         font-weight: bold;
+         font-size: 1.2em;
+         line-height: 1;
+      }
+
+      .card-price {
+         text-align: center;
+         margin-bottom: 15px;
+         margin-top: auto;
+      }
+
+      .price-val {
+         font-size: 2.2rem;
+         font-weight: 700;
+         color: var(--color-navy);
+      }
+
+      .btn-secondary {
+         background: white;
+         border: 2px solid var(--color-navy);
+         color: var(--color-navy);
+         width: 100%;
+         padding: 14px;
+         font-weight: 700;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: all 0.2s;
+      }
+
+      .btn-secondary:hover {
+         background: var(--color-navy);
+         color: white;
+      }
+   </style>
+</head>
+
 <body>
-    <div id="header"></div>
 
-    <main>
-        <section class="result-hero">
-            <div class="container">
-                <div class="result-hero-badge">
-                    <span>🔥</span> Profile Type
-                </div>
-                <h1 class="dynamic-child-name">Your child</h1>
-                <div class="result-hero-subtitle">is an <strong>Intense Feeler</strong></div>
+   <div id="header"></div>
+
+   <section class="result-hero">
+      <div class="container">
+         <span class="result-hero-badge"><span>🔥</span> Profile Type</span>
+         <h1 class="dynamic-child-name">Your child</h1>
+         <div class="result-hero-subtitle">is an <strong>Intense Feeler</strong></div>
+         <p style="max-width: 600px; margin: 15px auto 0;">
+            They feel everything at 100% volume. It's not drama—it's a nervous system that amplifies every emotion, both the joy and the pain.
+         </p>
+      </div>
+   </section>
+
+   <section class="validation-section">
+      <div class="container">
+         <div class="validation-grid">
+            <div class="validation-content">
+               <h3>The Hidden Struggle</h3>
+               <p>Your child possesses "Emotional Intensity." Their emotional thermostat is sensitive, meaning small triggers can lead to massive reactions.</p>
+               <ul class="validation-list">
+                  <li>They go from happy to devastatingly sad in seconds (0 to 100).</li>
+                  <li>They seem to physically feel emotions (stomach aches, shaking).</li>
+                  <li>You often feel like you are "walking on eggshells" to avoid a blowout.</li>
+                  <li>They are deeply empathetic and often take on the feelings of others.</li>
+               </ul>
             </div>
-        </section>
-
-        <section class="validation-section">
-            <div class="container">
-                <div class="validation-grid">
-                    <div>
-                        <h2>Does this sound familiar?</h2>
-                        <ul class="validation-list">
-                            <li>Small disappointments trigger big reactions</li>
-                            <li>They absorb the emotions of everyone in the room</li>
-                            <li>Criticism (even gentle) feels like a physical blow</li>
-                            <li>Joy is ecstatic, but sadness is crushing</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="symptom-card">
-                            <span class="symptom-icon">⛈️</span>
-                            <p><strong>The Storm:</strong> Emotions hit them like a weather event—sudden, all-consuming, and exhausting.</p>
-                        </div>
-                        <div class="symptom-card">
-                            <span class="symptom-icon">🛡️</span>
-                            <p><strong>The Defense:</strong> They may lash out or shut down to protect their raw nerves.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="validation-visual">
+               <div class="symptom-card"><span class="symptom-icon">🌋</span>
+                  <p><strong>The Eruption:</strong> Pressure builds up fast and explodes.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">🎢</span>
+                  <p><strong>The Rollercoaster:</strong> Exhausting highs and lows.</p>
+               </div>
+               <div class="symptom-card"><span class="symptom-icon">❤️</span>
+                  <p><strong>Deep Heart:</strong> Feels love and pain intensely.</p>
+               </div>
             </div>
-        </section>
+         </div>
+      </div>
+   </section>
 
-        <div class="container">
-            <div class="urgency-band">
-                <h3>This isn't "drama." It's a regulated nervous system seeking safety.</h3>
-                <p>Without tools, Intense Feelers often grow up believing they are "too much" for the world.</p>
+   <main class="container">
+
+      <div class="urgency-band">
+         <h3>This is the moment most parents miss.</h3>
+         <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto;">
+            You have clarity right now. What usually determines progress is whether support starts
+            <strong>immediately</strong>, while this understanding is fresh.
+         </p>
+      </div>
+
+      <section class="hero-offer" id="offer-hero">
+         <div class="hero-badge">RECOMMENDED FOR THIS PROFILE</div>
+         <h2>The Intense Feeler Toolkit</h2>
+         <p>The system designed to teach regulation without shaming their feelings.</p>
+
+         <div class="offer-list">
+            <p>✅ <strong>Meltdown Navigation System</strong> - <em>Value $37</em></p>
+            <p>✅ <strong>Morning Launch System</strong> - <em>Value $27</em></p>
+            <p>✅ <strong>Ember the Dragon Activity Packet</strong> - <em>Value $9</em></p>
+         </div>
+
+         <div style="text-align: center; margin-top: 30px;">
+            <span class="price-anchor">$73 Value</span>
+            <span class="price-main">$57</span>
+         </div>
+
+         <button class="btn-primary" onclick="handleAddToCart('prod_combo_complete')">
+            Get the Complete Toolkit
+         </button>
+         <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">
+            Instant Digital Download • Lifetime Access
+         </p>
+      </section>
+
+      <section class="quickwin-section">
+         <div class="container" style="text-align: center; max-width: 700px;">
+            <span class="result-hero-badge" style="background:var(--color-terracotta); color:white;">Free Quick Win</span>
+            <h3>Try This Tonight: The "Co-Regulation Anchor"</h3>
+            <p>You cannot reason with a storm. When the intensity spikes, stop talking and start anchoring.</p>
+
+            <div style="background: white; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: left;">
+               <p style="margin-bottom: 10px;"><span class="step-circle">1</span><strong>Instead of:</strong> "Calm down, it's not a big deal!" (Dismissive)</p>
+               <p><span class="step-circle">2</span><strong>Say this:</strong> "I am here. I am calm. I will wait with you until the storm passes." (Safety)</p>
             </div>
-        </div>
+            <p style="font-size: 0.9rem; margin-top: 20px; font-style: italic;">By staying calm, you lend them your nervous system until theirs can come back online.</p>
+         </div>
+      </section>
 
-        <section class="container">
-            <div class="hero-offer">
-                <div class="hero-badge">PEACE AT HOME BUNDLE</div>
-                <h2>The Intense Feeler Toolkit</h2>
-                <p>A complete system to help your child navigate big emotions without crushing their spirit.</p>
-                
-                <div class="offer-list">
-                    <p>✅ <strong>Meltdown Navigation System</strong> - <em>Value $37</em></p>
-                    <p>✅ <strong>Morning Launch System</strong> - <em>Value $27</em></p>
-                    <p>✅ <strong>Ember the Dragon Activity Packet</strong> - <em>Value $9</em></p>
-                </div>
+      <section class="downsell-section">
+         <h3 style="text-align: center; margin-bottom: 30px; color: var(--color-text-light); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Or choose individual tools</h3>
 
-                <div class="card-price">
-                    <span class="price-anchor">$73 Value</span>
-                    <span class="price-main">$57</span>
-                </div>
+         <div class="downsell-grid">
 
-                <button class="btn-primary" onclick="handleAddToCart('prod_combo_complete')">
-                    Get the Complete Toolkit
-                </button>
-                <p class="results-cta-note" style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-                    Instant Digital Download • Lifetime Access
-                </p>
+            <div class="downsell-card card-parent">
+               <div class="card-badge">FOR PARENTS</div>
+               <h3>AI Support System</h3>
+               <p class="card-desc">The prompt library that helps you handle daily friction without the fight.</p>
+               <ul class="card-features">
+                  <li>Meltdown De-escalation Scripts</li>
+                  <li>Co-regulation Strategies</li>
+                  <li>"After the Storm" Reconnection</li>
+               </ul>
+               <div class="card-price">
+                  <span class="price-val">$29</span>
+               </div>
+               <button class="btn-secondary" onclick="handleAddToCart('prod_prompt_executive')">
+                  Add System
+               </button>
             </div>
-        </section>
 
-        <section class="quickwin-section">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 40px;">Immediate Shifts You Can Make</h2>
-                <div class="validation-list" style="max-width: 600px; margin: 0 auto;">
-                    <li><span class="step-circle">1</span> <strong>Validate First:</strong> "I see how big this feels" before "Calm down."</li>
-                    <li><span class="step-circle">2</span> <strong>Co-Regulate:</strong> Lend them your calm. They can't access theirs yet.</li>
-                    <li><span class="step-circle">3</span> <strong>The "Pause" Button:</strong> Teach them to step away before the explosion.</li>
-                </div>
+            <div class="downsell-card card-kid">
+               <div class="card-badge">FOR KIDS</div>
+               <h3>Ember the Dragon</h3>
+               <p class="card-desc">Gamified activities to help kids name, tame, and regulate big feelings.</p>
+               <ul class="card-features">
+                  <li>Emotion Color Wheel</li>
+                  <li>"Cool Down" Cards</li>
+                  <li>Ember's Breathing Games</li>
+               </ul>
+               <div class="card-price">
+                  <span class="price-val">$9</span>
+               </div>
+               <button class="btn-secondary" onclick="handleAddToCart('prod_packet_ember')">
+                  Add Activity Pack
+               </button>
             </div>
-        </section>
 
-        <section class="downsell-section">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 40px;">Or Start with a Single Tool</h2>
-                <div class="downsell-grid">
-                    
-                    <div class="downsell-card card-parent">
-                        <div class="card-badge">FOR PARENTS</div>
-                        <h3>AI Support System</h3>
-                        <div class="card-desc">
-                            Specific scripts and strategies to de-escalate meltdowns instantly.
-                        </div>
-                        <ul class="card-features">
-                            <li>Meltdown De-escalation Scripts</li>
-                            <li>Co-regulation Strategies</li>
-                            <li>"After the Storm" Reconnection</li>
-                        </ul>
-                        <div class="card-price">
-                            <span class="price-val">$29</span>
-                        </div>
-                        <button class="btn-secondary" onclick="handleAddToCart('prod_prompt_executive')">
-                            Add System
-                        </button>
-                    </div>
+         </div>
+      </section>
 
-                    <div class="downsell-card card-kid">
-                        <div class="card-badge">FOR KIDS</div>
-                        <h3>Ember the Dragon</h3>
-                        <div class="card-desc">
-                            Fun activities to help them name, tame, and master their big feelings.
-                        </div>
-                        <ul class="card-features">
-                            <li>Emotion Color Wheel</li>
-                            <li>"Cool Down" Cards</li>
-                            <li>Ember's Breathing Games</li>
-                        </ul>
-                        <div class="card-price">
-                            <span class="price-val">$9</span>
-                        </div>
-                        <button class="btn-secondary" onclick="handleAddToCart('prod_packet_ember')">
-                            Add Activity Pack
-                        </button>
-                    </div>
+   </main>
 
-                </div>
-            </div>
-        </section>
-    </main>
+   <div id="footer"></div>
 
-    <div id="footer"></div>
+   <script src="/js/cart.js"></script>
+   <script src="/js/components.js"></script>
 
-    <script src="/js/cart.js"></script>
-    <script src="/js/components.js"></script>
-    
-    <script>
-        // Cart Handler
-        function handleAddToCart(productId) {
-            if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
-                NavigatorCart.add(productId, 1);
-            } else {
-                console.error('Cart system not loaded');
-                alert('Please refresh the page and try again.');
+   <script>
+      function handleAddToCart(productId) {
+         if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
+             NavigatorCart.add(productId, 1);
+         } else {
+             console.error('Cart system not loaded');
+             alert('Please refresh the page and try again.');
+         }
+      }
+
+      // Load profile data from quiz
+      function loadProfileData() {
+         try {
+            const data = JSON.parse(localStorage.getItem('quizProfile'));
+            if (data && data.childName && data.childName !== 'Your child') {
+               // Update all instances of the child's name
+               document.querySelectorAll('.dynamic-child-name').forEach(el => {
+                  el.textContent = data.childName;
+               });
             }
-        }
+         } catch (e) {
+            console.log('No quiz profile found');
+         }
+      }
 
-        // Load profile data from quiz
-        function loadProfileData() {
-           try {
-              const data = JSON.parse(localStorage.getItem('quizProfile'));
-              if (data && data.childName && data.childName !== 'Your child') {
-                 // Update all instances of the child's name
-                 document.querySelectorAll('.dynamic-child-name').forEach(el => {
-                    el.textContent = data.childName;
-                 });
-              }
-           } catch (e) {
-              console.log('No quiz profile found');
-           }
-        }
+      document.addEventListener('DOMContentLoaded', loadProfileData);
+   </script>
 
-        document.addEventListener('DOMContentLoaded', loadProfileData);
-    </script>
 </body>
+
 </html>
