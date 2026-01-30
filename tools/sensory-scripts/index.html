@@ -1,423 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Free Sensory Scripts Tool - Get calming scripts and strategies for sensory overload, meltdowns, and regulation support.">
-   <title>Sensory Scripts | Navigator Kids AI</title>
-
+   <meta name="description" content="Free Sensory Calming Scripts - Know exactly what to say during sensory overload.">
+   <title>Sensory Calming Scripts | Navigator Kids AI</title>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css">
-
    <style>
-      .tool-page {
-         padding: var(--space-12) 0 var(--space-16);
+      /* Hero Section Styling */
+      .tool-hero {
+         background: linear-gradient(135deg, #002347 0%, #003366 50%, #004080 100%);
+         padding: 80px 0 100px;
+         position: relative;
+         overflow: hidden;
       }
-
-      .tool-header {
-         text-align: center;
-         margin-bottom: var(--space-10);
+      .tool-hero::before {
+         content: '';
+         position: absolute;
+         top: -50%;
+         right: -10%;
+         width: 600px;
+         height: 600px;
+         background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+         border-radius: 50%;
       }
-
-      .tool-badge {
-         display: inline-block;
-         background: var(--color-sage);
-         color: var(--color-white);
-         font-size: var(--text-sm);
+      .tool-hero::after {
+         content: '';
+         position: absolute;
+         bottom: -30%;
+         left: -5%;
+         width: 400px;
+         height: 400px;
+         background: radial-gradient(circle, rgba(129, 178, 154, 0.1) 0%, transparent 70%);
+         border-radius: 50%;
+      }
+      .hero-content {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 60px;
+         align-items: center;
+         position: relative;
+         z-index: 1;
+      }
+      @media (max-width: 900px) {
+         .hero-content { grid-template-columns: 1fr; text-align: center; }
+         .hero-illustration { display: none; }
+      }
+      .hero-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: rgba(129, 178, 154, 0.2);
+         color: #81B29A;
+         font-size: 14px;
          font-weight: 600;
-         padding: var(--space-1) var(--space-4);
-         border-radius: var(--radius-full);
-         margin-bottom: var(--space-4);
+         padding: 8px 16px;
+         border-radius: 100px;
+         margin-bottom: 20px;
+      }
+      .tool-hero h1 {
+         font-family: 'Merriweather', serif;
+         font-size: clamp(2rem, 5vw, 3rem);
+         color: white;
+         margin-bottom: 20px;
+         line-height: 1.2;
+      }
+      .tool-hero h1 span { color: #D4AF37; }
+      .hero-description {
+         font-size: 1.125rem;
+         color: rgba(255, 255, 255, 0.8);
+         line-height: 1.7;
+         margin-bottom: 30px;
+      }
+      .hero-features { display: flex; flex-wrap: wrap; gap: 20px; }
+      .hero-feature {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         color: rgba(255, 255, 255, 0.9);
+         font-size: 15px;
+      }
+      .hero-feature-icon {
+         width: 36px;
+         height: 36px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 18px;
+      }
+      .illustration-card {
+         background: white;
+         border-radius: 20px;
+         padding: 30px;
+         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+         transform: rotate(3deg);
+         max-width: 320px;
       }
 
-      .tool-header h1 {
-         margin-bottom: var(--space-3);
+      /* Main Content Area */
+      .tool-main {
+         padding: 60px 0 80px;
+         background: #F9FAFB;
+         min-height: 60vh;
+      }
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+      /* Category Tabs */
+      .tabs-container {
+         display: flex;
+         gap: 10px;
+         overflow-x: auto;
+         padding-bottom: 20px;
+         margin-bottom: 40px;
+         scrollbar-width: none;
+      }
+      .tabs-container::-webkit-scrollbar { display: none; }
+      .tab-btn {
+         padding: 12px 24px;
+         background: white;
+         border: 1px solid #E5E7EB;
+         border-radius: 100px;
+         color: #374151;
+         font-weight: 600;
+         cursor: pointer;
+         white-space: nowrap;
+         transition: all 0.2s;
+      }
+      .tab-btn.active {
+         background: #002347;
+         color: white;
+         border-color: #002347;
       }
 
-      .tool-header p {
-         font-size: var(--text-lg);
-         color: var(--color-text-light);
-         max-width: 600px;
-         margin: 0 auto;
-      }
-
+      /* Script Cards */
       .scripts-grid {
          display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: var(--space-6);
-         margin-bottom: var(--space-10);
+         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+         gap: 24px;
       }
-
-      @media (max-width: 700px) {
-         .scripts-grid {
-            grid-template-columns: 1fr;
-         }
-      }
-
       .script-card {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         padding: var(--space-6);
-         box-shadow: var(--shadow-md);
-         cursor: pointer;
-         transition: all var(--transition-fast);
+         background: white;
+         border-radius: 12px;
+         padding: 24px;
+         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+         transition: all 0.2s ease;
+         border: 2px solid transparent;
+         display: flex;
+         flex-direction: column;
       }
-
       .script-card:hover {
-         transform: translateY(-4px);
-         box-shadow: var(--shadow-lg);
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+         transform: translateY(-2px);
       }
-
-      .script-card.active {
-         border: 2px solid var(--color-sage);
-      }
-
-      .script-icon {
-         font-size: 2.5rem;
-         margin-bottom: var(--space-3);
-      }
-
-      .script-card h3 {
-         font-size: var(--text-lg);
-         margin-bottom: var(--space-2);
-      }
-
-      .script-card p {
-         font-size: var(--text-sm);
-         color: var(--color-text-light);
-         margin: 0;
-      }
-
-      .script-detail {
+      .script-header { display: flex; gap: 16px; margin-bottom: 16px; }
+      .script-emoji { font-size: 24px; }
+      .script-header h4 { font-size: 1.1rem; margin: 0; color: #1F2937; }
+      .script-trigger { font-size: 0.875rem; color: #6B7280; margin: 4px 0 0; }
+      .script-content {
+         background: #F9FAFB;
+         padding: 16px;
+         border-radius: 8px;
+         border-left: 4px solid #81B29A;
+         margin-bottom: 20px;
          display: none;
-         background: var(--color-cream);
-         border-radius: var(--radius-xl);
-         padding: var(--space-8);
-         margin-bottom: var(--space-10);
       }
-
-      .script-detail.show {
-         display: block;
-      }
-
-      .script-detail h2 {
-         margin-bottom: var(--space-4);
-      }
-
-      .script-detail h3 {
-         font-size: var(--text-base);
-         margin-top: var(--space-6);
-         margin-bottom: var(--space-3);
-      }
-
-      .script-box {
-         background: var(--color-white);
-         border-radius: var(--radius-lg);
-         padding: var(--space-5);
-         margin: var(--space-4) 0;
-         border-left: 4px solid var(--color-sage);
-      }
-
-      .script-box p {
-         margin: 0 0 var(--space-2);
-         line-height: var(--leading-relaxed);
-      }
-
-      .script-box p:last-child {
-         margin-bottom: 0;
-      }
-
-      .script-label {
-         font-size: var(--text-xs);
-         color: var(--color-sage-dark);
+      .script-content.visible { display: block; }
+      .script-content p { font-style: italic; font-size: 0.95rem; line-height: 1.6; color: #374151; margin: 0; }
+      .script-actions { display: flex; gap: 12px; margin-top: auto; }
+      .btn-view {
+         flex: 1;
+         padding: 10px;
+         background: #F3F4F6;
+         border: none;
+         border-radius: 8px;
          font-weight: 600;
-         text-transform: uppercase;
-         letter-spacing: 0.05em;
-         margin-bottom: var(--space-2);
+         color: #374151;
+         cursor: pointer;
+      }
+      .btn-copy {
+         padding: 10px 20px;
+         background: #81B29A;
+         border: none;
+         border-radius: 8px;
+         font-weight: 600;
+         color: white;
+         cursor: pointer;
       }
 
-      .tip-list {
-         margin: var(--space-4) 0;
-      }
-
-      .tip-list li {
-         padding: var(--space-2) 0;
-         line-height: var(--leading-relaxed);
-      }
-
+      /* CTA Section */
       .cta-section {
-         background: var(--color-navy);
-         border-radius: var(--radius-xl);
-         padding: var(--space-10);
-         text-align: center;
+         background: linear-gradient(135deg, #002347 0%, #003366 100%);
+         border-radius: 20px;
+         padding: 50px;
+         margin-top: 60px;
+         display: grid;
+         grid-template-columns: 1fr auto;
+         gap: 40px;
+         align-items: center;
       }
+      @media (max-width: 800px) { .cta-section { grid-template-columns: 1fr; text-align: center; } }
+      .cta-content h3 { font-size: 1.75rem; color: white; margin-bottom: 12px; font-family: 'Merriweather', serif; }
+      .cta-content p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; margin: 0; }
+      .cta-button {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 16px 32px;
+         background: #D4AF37;
+         color: #002347;
+         font-weight: 700;
+         font-size: 16px;
+         border-radius: 12px;
+         text-decoration: none;
+         transition: all 0.2s ease;
+         white-space: nowrap;
+      }
+      .cta-button:hover { background: #E5C04B; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4); }
 
-      .cta-section h2 {
-         color: var(--color-cream);
-         margin-bottom: var(--space-3);
+      /* Toast */
+      .toast {
+         position: fixed;
+         bottom: 100px;
+         left: 50%;
+         transform: translateX(-50%) translateY(20px);
+         background: #1F2937;
+         color: white;
+         padding: 16px 24px;
+         border-radius: 12px;
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         z-index: 200;
+         opacity: 0;
+         transition: all 0.3s ease;
+         pointer-events: none;
       }
-
-      .cta-section p {
-         color: rgba(249, 247, 242, 0.8);
-         margin-bottom: var(--space-6);
-         max-width: 500px;
-         margin-left: auto;
-         margin-right: auto;
-      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .toast-icon { width: 28px; height: 28px; background: #81B29A; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
    </style>
 </head>
-
 <body>
-   <div id="header"></div>
+   <div id="header-placeholder"></div>
 
-   <main class="tool-page">
+   <section class="tool-hero">
       <div class="container">
+         <div class="hero-content">
+            <div class="hero-text">
+               <div class="hero-badge">Free Resource</div>
+               <h1>Sensory <span>Calming Scripts</span></h1>
+               <p class="hero-description">Ready-to-use scripts for when sensory overload hits. Know exactly what to say during clothing battles, noise sensitivity, food texture issues, and more.</p>
+               <div class="hero-features">
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">📋</div>
+                     <span>12+ scripts</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">🎯</div>
+                     <span>Situation-specific</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">📱</div>
+                     <span>Copy & use</span>
+                  </div>
+               </div>
+            </div>
+            <div class="hero-illustration">
+               <div class="illustration-card">
+                  <div class="script-header">
+                     <span class="script-emoji">🎧</span>
+                     <div>
+                        <h4>Noise Overload</h4>
+                        <p class="script-trigger">At a loud restaurant</p>
+                     </div>
+                  </div>
+                  <div style="background:#F9FAFB; padding:12px; border-radius:8px; font-size:13px; font-style:italic; border-left:3px solid #81B29A;">
+                     "I can see this noise feels like it's pushing on your ears. Let's find a quiet spot..."
+                  </div>
+                  <div style="margin-top:15px; display:flex; gap:10px;">
+                     <div style="height:30px; width:100%; background:#002347; border-radius:5px; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:bold;">View Script</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
-         <div class="tool-header">
-            <span class="tool-badge">Free Tool</span>
-            <h1>Sensory Scripts</h1>
-            <p>Ready-to-use calming scripts for common sensory challenges. Click a situation to get your script.</p>
+   <main class="tool-main">
+      <div class="container">
+         <div class="tabs-container">
+            <button class="tab-btn active" onclick="filterScripts('Clothing', this)">Clothing</button>
+            <button class="tab-btn" onclick="filterScripts('Sound', this)">Sound</button>
+            <button class="tab-btn" onclick="filterScripts('Food', this)">Food</button>
+            <button class="tab-btn" onclick="filterScripts('Transitions', this)">Transitions</button>
          </div>
 
-         <div class="scripts-grid">
-            <div class="script-card" onclick="showScript('overload')">
-               <div class="script-icon">🌊</div>
-               <h3>Sensory Overload</h3>
-               <p>When everything is too loud, bright, or overwhelming</p>
-            </div>
-            <div class="script-card" onclick="showScript('clothing')">
-               <div class="script-icon">👕</div>
-               <h3>Clothing Battles</h3>
-               <p>Tags, seams, textures that feel unbearable</p>
-            </div>
-            <div class="script-card" onclick="showScript('noise')">
-               <div class="script-icon">🔊</div>
-               <h3>Noise Sensitivity</h3>
-               <p>When sounds are painful or distracting</p>
-            </div>
-            <div class="script-card" onclick="showScript('food')">
-               <div class="script-icon">🍽️</div>
-               <h3>Food Textures</h3>
-               <p>Picky eating driven by sensory needs</p>
-            </div>
-            <div class="script-card" onclick="showScript('touch')">
-               <div class="script-icon">✋</div>
-               <h3>Touch Aversion</h3>
-               <p>When physical contact feels wrong</p>
-            </div>
-            <div class="script-card" onclick="showScript('seeking')">
-               <div class="script-icon">💨</div>
-               <h3>Sensory Seeking</h3>
-               <p>When they need MORE input to regulate</p>
-            </div>
-         </div>
-
-         <!-- Sensory Overload Script -->
-         <div class="script-detail" id="script-overload">
-            <h2>🌊 Sensory Overload Script</h2>
-            <p>Use when your child is overwhelmed by their environment—too much noise, light, activity, or stimulation.</p>
-
-            <h3>Recognizing the Signs</h3>
-            <ul class="tip-list">
-               <li>Covering ears or eyes</li>
-               <li>Trying to escape or hide</li>
-               <li>Becoming aggressive or "shutting down"</li>
-               <li>Saying "it's too much" or "I can't"</li>
-            </ul>
-
-            <h3>Calming Script (Say in a low, slow voice)</h3>
-            <div class="script-box">
-               <p class="script-label">Step 1: Acknowledge</p>
-               <p>"I can see this is too much right now. That's okay. I'm here."</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Step 2: Reduce Input</p>
-               <p>"Let's find somewhere quieter. Can you come with me, or do you need me to wait?"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Step 3: Ground</p>
-               <p>"Let's take 3 slow breaths together. In... 2... 3... Out... 2... 3..."</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Step 4: Offer Tools</p>
-               <p>"Would headphones help? Or would you like to squeeze my hand really tight?"</p>
+         <div class="scripts-grid" id="scriptsContainer">
+            <div class="script-card" data-category="Clothing">
+               <div class="script-header">
+                  <span class="script-emoji">👖</span>
+                  <div>
+                     <h4>Clothing Tags & Seams</h4>
+                     <p class="script-trigger">Refusing to wear clothes due to texture</p>
+                  </div>
+               </div>
+               <div class="script-content" id="script-1">
+                  <p>"I can see those seams are really bothering your body right now. Your skin is giving you big signals. Let's problem-solve together. Would you like to try wearing it inside out, or should we look for the 'soft' pair?"</p>
+               </div>
+               <div class="script-actions">
+                  <button class="btn-view" onclick="toggleScript('script-1')">View Script</button>
+                  <button class="btn-copy" onclick="copyScript('script-1')">Copy</button>
+               </div>
             </div>
 
-            <h3>What NOT to Say</h3>
-            <ul class="tip-list">
-               <li>❌ "It's not that loud/bright/etc."</li>
-               <li>❌ "Everyone else is fine."</li>
-               <li>❌ "You need to calm down."</li>
-               <li>❌ "Stop being dramatic."</li>
-            </ul>
-         </div>
-
-         <!-- Clothing Script -->
-         <div class="script-detail" id="script-clothing">
-            <h2>👕 Clothing Battles Script</h2>
-            <p>Use when tags, seams, or textures make getting dressed a daily battle.</p>
-
-            <h3>Prevention Strategies</h3>
-            <ul class="tip-list">
-               <li>Cut ALL tags (even the tiny ones)</li>
-               <li>Wash new clothes multiple times before wearing</li>
-               <li>Buy duplicates of clothes that work</li>
-               <li>Let them choose from 2-3 pre-approved options</li>
-               <li>Inside-out for exposed seams</li>
-            </ul>
-
-            <h3>In-the-Moment Script</h3>
-            <div class="script-box">
-               <p class="script-label">Validate</p>
-               <p>"I believe you that it feels wrong. Bodies are different and yours is telling you something."</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Problem-Solve Together</p>
-               <p>"Let's figure this out. Is it the waist? The sleeves? Can you show me where it bothers you?"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Offer Alternatives</p>
-               <p>"Would you like to try the soft pants instead? Or we can adjust this one?"</p>
-            </div>
-
-            <h3>For School/Events</h3>
-            <div class="script-box">
-               <p>"I know this isn't your favorite, but we need to wear [item] for [event]. Can we do a test run for 10 minutes? If it's still unbearable, we'll problem-solve."</p>
+            <div class="script-card" data-category="Sound" style="display:none;">
+               <div class="script-header">
+                  <span class="script-emoji">📢</span>
+                  <div>
+                     <h4>The Loud Crowd</h4>
+                     <p class="script-trigger">Sudden noise at a party or event</p>
+                  </div>
+               </div>
+               <div class="script-content" id="script-2">
+                  <p>"The sound in here is hitting your ears like a giant drum. Your brain is telling you it's too much. Let's step into the hallway for a 2-minute quiet break so your ears can rest."</p>
+               </div>
+               <div class="script-actions">
+                  <button class="btn-view" onclick="toggleScript('script-2')">View Script</button>
+                  <button class="btn-copy" onclick="copyScript('script-2')">Copy</button>
+               </div>
             </div>
          </div>
 
-         <!-- Noise Script -->
-         <div class="script-detail" id="script-noise">
-            <h2>🔊 Noise Sensitivity Script</h2>
-            <p>Use when sounds that others tolerate cause distress or physical discomfort.</p>
-
-            <h3>Proactive Tools</h3>
-            <ul class="tip-list">
-               <li>Noise-canceling headphones</li>
-               <li>Earplugs (loop earplugs for kids)</li>
-               <li>Warning before loud events</li>
-               <li>Escape plan for overwhelming situations</li>
-            </ul>
-
-            <h3>When They're Distressed</h3>
-            <div class="script-box">
-               <p class="script-label">Acknowledge Reality</p>
-               <p>"That sound is really bothering you. Some people's ears are more sensitive—yours are picking up things others don't even notice."</p>
+         <div class="cta-section">
+            <div class="cta-content">
+               <h3>Want More Support?</h3>
+               <p>Our Meltdown Navigation System gives you 50+ scripts and an emergency response plan for high-sensory days.</p>
             </div>
-            <div class="script-box">
-               <p class="script-label">Offer Control</p>
-               <p>"Would headphones help? Or would you like to move somewhere quieter?"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">For Unavoidable Noise</p>
-               <p>"This sound will last until [time/event]. Let's count down together / use headphones / focus on this other thing."</p>
-            </div>
+            <a href="/products/" class="cta-button">
+               View System
+               <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
          </div>
-
-         <!-- Food Script -->
-         <div class="script-detail" id="script-food">
-            <h2>🍽️ Food Texture Script</h2>
-            <p>Use when picky eating is driven by sensory needs, not preference.</p>
-
-            <h3>Understanding Sensory-Based Eating</h3>
-            <ul class="tip-list">
-               <li>This is NOT manipulation or willfulness</li>
-               <li>Certain textures can trigger gag reflexes</li>
-               <li>Mixed textures are often harder than single textures</li>
-               <li>Temperature and smell matter too</li>
-            </ul>
-
-            <h3>Mealtime Script</h3>
-            <div class="script-box">
-               <p class="script-label">Pressure-Free Exposure</p>
-               <p>"This food is here if you want to try it. No pressure. You can touch it, smell it, or just look at it."</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">When They Refuse</p>
-               <p>"That's okay. Your body is telling you something. There's [safe food] if you're hungry."</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Celebrating Trying</p>
-               <p>"You licked it! That's so brave. You don't have to eat it—just learning about it is great."</p>
-            </div>
-         </div>
-
-         <!-- Touch Script -->
-         <div class="script-detail" id="script-touch">
-            <h2>✋ Touch Aversion Script</h2>
-            <p>Use when your child pulls away from touch or is bothered by physical contact.</p>
-
-            <div class="script-box">
-               <p class="script-label">Teaching Others</p>
-               <p>"[Child]'s body works differently. They like hugs sometimes but not always. Let's ask first: '[Child], would you like a hug, high-five, or wave?'"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">When They Pull Away</p>
-               <p>"I noticed that touch didn't feel good right now. Thanks for listening to your body. Would you like space, or a different kind of connection?"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Offering Alternatives</p>
-               <p>"Instead of a hug, would you like a: firm squeeze on your shoulders? Fist bump? Just sitting close? Or nothing right now?"</p>
-            </div>
-         </div>
-
-         <!-- Seeking Script -->
-         <div class="script-detail" id="script-seeking">
-            <h2>💨 Sensory Seeking Script</h2>
-            <p>Use when your child needs MORE input—crashing, spinning, chewing, or constant movement.</p>
-
-            <h3>Healthy Seeking Activities</h3>
-            <ul class="tip-list">
-               <li>Heavy work: carrying groceries, pushing laundry basket</li>
-               <li>Crash pad or pile of pillows</li>
-               <li>Spinning in office chair (with supervision)</li>
-               <li>Chew toys or crunchy snacks</li>
-               <li>Tight hugs or weighted blanket</li>
-               <li>Jumping, climbing, swinging</li>
-            </ul>
-
-            <div class="script-box">
-               <p class="script-label">Redirect to Safe Seeking</p>
-               <p>"I can see your body needs to MOVE! Let's find a safe way. Would you like to jump on the trampoline, do wall push-ups, or carry this heavy basket for me?"</p>
-            </div>
-            <div class="script-box">
-               <p class="script-label">Proactive Sensory Diet</p>
-               <p>"Before we go to [low-input activity], let's fill your body's tank. 10 jumps, 5 spins, then squeezes!"</p>
-            </div>
-         </div>
-
-         <section class="cta-section">
-            <h2>Need More Support?</h2>
-            <p>Our AI Prompt Packs include 50+ prompts for every sensory situation, personalized to your child's profile.</p>
-            <a href="/products/ai-prompts/sensitive-observer/" class="btn btn-primary btn-lg">View Sensitive Observer Pack →</a>
-         </section>
-
       </div>
    </main>
 
-   <div id="footer"></div>
+   <div class="toast" id="toast">
+      <div class="toast-icon">
+         <svg width="16" height="16" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <span id="toastMessage">Script copied to clipboard!</span>
+   </div>
+
+   <div id="footer-placeholder"></div>
 
    <script src="/js/components.js"></script>
    <script>
-      function showScript(scriptId) {
-         // Hide all scripts
-         document.querySelectorAll('.script-detail').forEach(s => s.classList.remove('show'));
-         document.querySelectorAll('.script-card').forEach(c => c.classList.remove('active'));
+      function toggleScript(id) {
+         const content = document.getElementById(id);
+         content.classList.toggle('visible');
+      }
 
-         // Show selected script
-         document.getElementById('script-' + scriptId).classList.add('show');
-         event.currentTarget.classList.add('active');
+      function copyScript(id) {
+         const text = document.getElementById(id).innerText;
+         navigator.clipboard.writeText(text).then(() => {
+            showToast('Script copied to clipboard!');
+         });
+      }
 
-         // Scroll to script
-         document.getElementById('script-' + scriptId).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+      function showToast(message) {
+         const toast = document.getElementById('toast');
+         document.getElementById('toastMessage').textContent = message;
+         toast.classList.add('show');
+         setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+
+      function filterScripts(category, btn) {
+         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+         btn.classList.add('active');
+         document.querySelectorAll('.script-card').forEach(card => {
+            card.style.display = card.dataset.category === category ? 'flex' : 'none';
          });
       }
    </script>
 </body>
-
 </html>
