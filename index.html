@@ -1163,16 +1163,20 @@
              </div>
              
              <div class="lead-form-container">
-                 <form onsubmit="event.preventDefault(); window.location.href='/thank-you/';">
+               <form data-formspree data-redirect="/thank-you/">
                      <div class="form-group">
                          <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Your First Name</label>
-                         <input type="text" class="form-input" placeholder="Jane" required>
+                         <input type="text" name="name" class="form-input" placeholder="Jane" required>
                      </div>
                      <div class="form-group">
                          <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Best Email Address</label>
-                         <input type="email" class="form-input" placeholder="jane@example.com" required>
+                         <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
                      </div>
                      <button type="submit" class="form-btn">Send Me The PDF Now</button>
+                     <div class="form-success" style="display:none; text-align:center; padding:1rem;">
+                        <h3>✅ Sent!</h3>
+                        <p>Check your inbox.</p>
+                     </div>
                      <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">
                          <i class="fa-solid fa-lock"></i> Your privacy is safe. Unsubscribe anytime.
                      </p>
