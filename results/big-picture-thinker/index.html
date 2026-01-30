@@ -31,11 +31,8 @@
          --font-heading: 'Merriweather', serif;
       }
 
-      * {
-         box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
-      /* Anti-flicker for Header Injection */
       body {
          font-family: var(--font-body);
          color: var(--color-text);
@@ -47,10 +44,7 @@
       
       #header + * { margin-top: 0; }
 
-      h1,
-      h2,
-      h3,
-      h4 {
+      h1, h2, h3, h4 {
          font-family: var(--font-heading);
          color: var(--color-navy);
          margin-top: 0;
@@ -62,7 +56,6 @@
          padding: 0 20px;
       }
 
-      /* --- TRUST HERO --- */
       .result-hero {
          background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%);
          padding: 60px 0 40px;
@@ -83,59 +76,17 @@
          box-shadow: var(--shadow-sm);
       }
 
-      .result-hero h1 {
-         font-size: clamp(2rem, 5vw, 3rem);
-         margin-bottom: 16px;
-      }
+      .result-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
+      .result-hero-subtitle { font-size: 1.15rem; color: var(--color-text); max-width: 600px; margin: 0 auto; }
 
-      .result-hero-subtitle {
-         font-size: 1.15rem;
-         color: var(--color-text);
-         max-width: 600px;
-         margin: 0 auto;
-      }
+      .validation-section { padding: 60px 0; background: var(--color-white); }
+      .validation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+      @media (max-width: 768px) { .validation-grid { grid-template-columns: 1fr; } }
 
-      /* --- VALIDATION SECTION --- */
-      .validation-section {
-         padding: 60px 0;
-         background: var(--color-white);
-      }
+      .validation-list { list-style: none; padding: 0; margin-top: 20px; }
+      .validation-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 1rem; }
+      .validation-list li::before { content: '✓'; color: var(--color-blue-med); font-weight: 700; flex-shrink: 0; }
 
-      .validation-grid {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 40px;
-         align-items: start;
-      }
-
-      @media (max-width: 768px) {
-         .validation-grid {
-            grid-template-columns: 1fr;
-         }
-      }
-
-      .validation-list {
-         list-style: none;
-         padding: 0;
-         margin-top: 20px;
-      }
-
-      .validation-list li {
-         display: flex;
-         align-items: flex-start;
-         gap: 12px;
-         margin-bottom: 16px;
-         font-size: 1rem;
-      }
-
-      .validation-list li::before {
-         content: '✓';
-         color: var(--color-blue-med);
-         font-weight: 700;
-         flex-shrink: 0;
-      }
-
-      /* Visual Cards for Validation */
       .symptom-card {
          background: var(--color-cream);
          border-radius: var(--radius-md);
@@ -145,18 +96,9 @@
          align-items: center;
          gap: 16px;
       }
+      .symptom-icon { font-size: 1.5rem; }
+      .symptom-card p { margin: 0; font-size: 0.9rem; font-weight: 500; }
 
-      .symptom-icon {
-         font-size: 1.5rem;
-      }
-
-      .symptom-card p {
-         margin: 0;
-         font-size: 0.9rem;
-         font-weight: 500;
-      }
-
-      /* --- URGENCY BAND --- */
       .urgency-band {
          background-color: var(--color-navy);
          color: var(--color-cream);
@@ -167,7 +109,6 @@
          border-radius: 4px;
       }
 
-      /* --- HERO OFFER --- */
       .hero-offer {
          border: 3px solid var(--color-gold);
          background: var(--color-white);
@@ -192,25 +133,9 @@
          border-bottom-left-radius: 12px;
       }
 
-      .offer-list {
-         text-align: left;
-         margin: 20px auto;
-         max-width: 450px;
-         line-height: 1.8;
-      }
-
-      .price-anchor {
-         text-decoration: line-through;
-         color: #888;
-         font-size: 1.1rem;
-         margin-right: 10px;
-      }
-
-      .price-main {
-         font-size: 2.5rem;
-         font-weight: 800;
-         color: var(--color-navy);
-      }
+      .offer-list { text-align: left; margin: 20px auto; max-width: 450px; line-height: 1.8; }
+      .price-anchor { text-decoration: line-through; color: #888; font-size: 1.1rem; margin-right: 10px; }
+      .price-main { font-size: 2.5rem; font-weight: 800; color: var(--color-navy); }
 
       .btn-primary {
          background-color: var(--color-terracotta);
@@ -226,13 +151,8 @@
          margin-top: 20px;
          transition: transform 0.2s;
       }
+      .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-      .btn-primary:hover {
-         transform: translateY(-2px);
-         filter: brightness(1.1);
-      }
-
-      /* --- QUICK WIN --- */
       .quickwin-section {
          background: linear-gradient(135deg, #E5F3FA 0%, #EDF7FC 100%);
          padding: 50px 0;
@@ -254,18 +174,8 @@
          margin-right: 10px;
       }
 
-      /* --- DOWNSELL BOXES (REDEFINED) --- */
-      .downsell-section {
-         margin-top: 60px;
-         padding-top: 40px;
-         border-top: 1px solid #eee;
-      }
-
-      .downsell-grid {
-         display: flex;
-         gap: 30px;
-         flex-wrap: wrap;
-      }
+      .downsell-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee; }
+      .downsell-grid { display: flex; gap: 30px; flex-wrap: wrap; }
 
       .downsell-card {
          flex: 1;
@@ -280,20 +190,10 @@
          display: flex;
          flex-direction: column;
       }
+      .downsell-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
 
-      .downsell-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Specific Themes */
-      .card-parent {
-         border-top: 5px solid var(--color-navy);
-      }
-
-      .card-kid {
-         border-top: 5px solid var(--color-blue-med);
-      }
+      .card-parent { border-top: 5px solid var(--color-navy); }
+      .card-kid { border-top: 5px solid var(--color-blue-med); }
 
       .card-badge {
          position: absolute;
@@ -311,59 +211,15 @@
          border: 2px solid white;
       }
 
-      .downsell-card h3 {
-         font-size: 1.3rem;
-         margin-top: 10px;
-         margin-bottom: 10px;
-         text-align: center;
-         color: var(--color-navy);
-      }
+      .downsell-card h3 { font-size: 1.3rem; margin-top: 10px; margin-bottom: 10px; text-align: center; color: var(--color-navy); }
+      .card-desc { font-size: 0.95rem; color: #666; text-align: center; margin-bottom: 20px; line-height: 1.5; min-height: 3rem; }
+      
+      .card-features { margin: 0 0 25px 0; padding: 15px 0; list-style: none; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+      .card-features li { margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: start; gap: 10px; color: var(--color-text); }
+      .card-features li::before { content: '•'; color: #ccc; font-weight: bold; font-size: 1.2em; line-height: 1; }
 
-      .card-desc {
-         font-size: 0.95rem;
-         color: #666;
-         text-align: center;
-         margin-bottom: 20px;
-         line-height: 1.5;
-         min-height: 3rem;
-      }
-
-      .card-features {
-         margin: 0 0 25px 0;
-         padding: 15px 0;
-         list-style: none;
-         border-top: 1px solid #eee;
-         border-bottom: 1px solid #eee;
-      }
-
-      .card-features li {
-         margin-bottom: 8px;
-         font-size: 0.9rem;
-         display: flex;
-         align-items: start;
-         gap: 10px;
-         color: var(--color-text);
-      }
-
-      .card-features li::before {
-         content: '•';
-         color: #ccc;
-         font-weight: bold;
-         font-size: 1.2em;
-         line-height: 1;
-      }
-
-      .card-price {
-         text-align: center;
-         margin-bottom: 15px;
-         margin-top: auto;
-      }
-
-      .price-val {
-         font-size: 2.2rem;
-         font-weight: 700;
-         color: var(--color-navy);
-      }
+      .card-price { text-align: center; margin-bottom: 15px; margin-top: auto; }
+      .price-val { font-size: 2.2rem; font-weight: 700; color: var(--color-navy); }
 
       .btn-secondary {
          background: white;
@@ -376,21 +232,7 @@
          cursor: pointer;
          transition: all 0.2s;
       }
-
-      .btn-secondary:hover {
-         background: var(--color-navy);
-         color: white;
-      }
-
-      /* --- FOOTER --- */
-      footer {
-         text-align: center;
-         padding: 40px;
-         font-size: 0.8rem;
-         color: #888;
-         margin-top: 60px;
-         border-top: 1px solid #eee;
-      }
+      .btn-secondary:hover { background: var(--color-navy); color: white; }
    </style>
 </head>
 
@@ -461,10 +303,10 @@
 
          <div style="text-align: center; margin-top: 30px;">
             <span class="price-anchor">$120 Value</span>
-            <span class="price-main">$69</span>
+            <span class="price-main">$57</span>
          </div>
 
-         <button class="btn-primary" onclick="handleAddToCart('prod_combo_complete')">
+         <button class="btn-primary" onclick="handleAddToCart('prod-bundle-peace')">
             Start Support Now
          </button>
          <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">
@@ -502,9 +344,9 @@
                   <li>School advocacy templates</li>
                </ul>
                <div class="card-price">
-                  <span class="price-val">$29</span>
+                  <span class="price-val">$27</span>
                </div>
-               <button class="btn-secondary" onclick="handleAddToCart('prod_prompt_executive')">
+               <button class="btn-secondary" onclick="handleAddToCart('prod-system-morning')">
                   Get Prompts Only
                </button>
             </div>
@@ -520,9 +362,9 @@
                   <li>Fun skill-building games</li>
                </ul>
                <div class="card-price">
-                  <span class="price-val">$12</span>
+                  <span class="price-val">$9</span>
                </div>
-               <button class="btn-secondary" onclick="handleAddToCart('prod_packet_cosmo')">
+               <button class="btn-secondary" onclick="handleAddToCart('prod-packet-cosmo')">
                   Get Packet Only
                </button>
             </div>
@@ -538,7 +380,6 @@
    <script src="/js/cart.js"></script>
 
    <script>
-      // Wrapper function to safely handle cart additions
       function handleAddToCart(productId) {
          if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
             NavigatorCart.add(productId, 1);
