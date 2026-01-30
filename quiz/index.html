@@ -977,12 +977,6 @@
             element.classList.add('selected');
             
             document.getElementById('btnNext').disabled = false;
-            
-            setTimeout(() => {
-                if (currentQuestion < QUESTIONS.length - 1) {
-                    nextQuestion();
-                }
-            }, 400);
         }
 
         function nextQuestion() {
