@@ -353,19 +353,27 @@
 
    <div id="footer"></div>
 
-   <script src="/js/components.js"></script>
+  <script src="/js/components.js"></script>
    <script>
       function handleSignup(e) {
          e.preventDefault();
-
          const email = document.getElementById('email').value;
+         const btn = e.target.querySelector('button');
+         
+         // 1. Show loading state
+         btn.disabled = true;
+         btn.innerText = "Processing...";
 
-         // In production, this would submit to email service
-         console.log('Signup:', email);
-
-         // Show success message
-         document.getElementById('signupForm').style.display = 'none';
-         document.getElementById('signupSuccess').style.display = 'block';
+         // 2. Simulate delay (in real app, submit to backend here)
+         setTimeout(() => {
+             // 3. Hide form / Show success
+             document.getElementById('signupForm').style.display = 'none';
+             document.getElementById('signupSuccess').style.display = 'block';
+             
+             // 4. Trigger Download
+             // Ensure this filename matches exactly what is on your server
+             window.location.href = "/free/de-escalation-kit/De-escalation_Kit_Free.pdf";
+         }, 1000);
       }
    </script>
 </body>
