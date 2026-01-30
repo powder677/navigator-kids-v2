@@ -6,7 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>The Big Picture Thinker | Navigator Kids AI™</title>
 
-   <!-- External Scripts (Stripe & Fonts) -->
    <script src="https://js.stripe.com/v3/"></script>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +35,17 @@
          box-sizing: border-box;
       }
 
+      /* Anti-flicker for Header Injection */
       body {
          font-family: var(--font-body);
          color: var(--color-text);
          line-height: 1.6;
          margin: 0;
          background-color: #fdfdfd;
+         padding-top: 76px;
       }
+      
+      #header + * { margin-top: 0; }
 
       h1,
       h2,
@@ -57,19 +60,6 @@
          max-width: 900px;
          margin: 0 auto;
          padding: 0 20px;
-      }
-
-      /* --- HEADER --- */
-      header {
-         padding: 20px 0;
-         border-bottom: 1px solid #eee;
-         background: white;
-      }
-
-      .logo {
-         font-weight: 700;
-         color: var(--color-navy);
-         font-size: 1.2rem;
       }
 
       /* --- TRUST HERO --- */
@@ -406,17 +396,12 @@
 
 <body>
 
-   <header>
-      <nav class="container">
-         <div class="logo">Navigator Kids AI™</div>
-      </nav>
-   </header>
+   <div id="header"></div>
 
-   <!-- 1. HERO -->
    <section class="result-hero">
       <div class="container">
          <span class="result-hero-badge"><span>🎯</span> Analysis Complete</span>
-         <h1>The Big Picture Thinker</h1>
+         <h1><span class="dynamic-child-name">Your child</span> is a Big Picture Thinker</h1>
          <p class="result-hero-subtitle">
             You finally understand why they can describe the entire universe but can't find their shoes.
             It's not defiance. It's an overflow of vision with a shortage of execution.
@@ -424,13 +409,12 @@
       </div>
    </section>
 
-   <!-- 2. VALIDATION -->
    <section class="validation-section">
       <div class="container">
          <div class="validation-grid">
             <div class="validation-content">
                <h3>The Hidden Struggle</h3>
-               <p>Your child possesses "Asynchronous Development." Their intellect is miles ahead of their executive function.</p>
+               <p><span class="dynamic-child-name">Your child</span> possesses "Asynchronous Development." Their intellect is miles ahead of their executive function.</p>
                <ul class="validation-list">
                   <li>They create elaborate plans but struggle to start step one.</li>
                   <li>Traditional checklists don't work; they see the goal, not the steps.</li>
@@ -438,7 +422,6 @@
                   <li>Brilliant ideas, messy execution.</li>
                </ul>
             </div>
-            <!-- Visual Cards -->
             <div class="validation-visual">
                <div class="symptom-card"><span class="symptom-icon">🔭</span>
                   <p><strong>Visionary Gap:</strong> Sees the goal, misses the steps</p>
@@ -456,7 +439,6 @@
 
    <main class="container">
 
-      <!-- 3. URGENCY -->
       <div class="urgency-band">
          <h3>This is the moment most parents miss.</h3>
          <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto;">
@@ -465,7 +447,6 @@
          </p>
       </div>
 
-      <!-- 4. HERO OFFER -->
       <section class="hero-offer" id="offer-hero">
          <div class="hero-badge">RECOMMENDED FOR THIS PROFILE</div>
          <h2>Complete Support Plan</h2>
@@ -491,7 +472,6 @@
          </p>
       </section>
 
-      <!-- 5. QUICK WIN -->
       <section class="quickwin-section">
          <div class="container" style="text-align: center; max-width: 700px;">
             <span class="result-hero-badge" style="background:var(--color-blue-med); color:white;">Free Quick Win</span>
@@ -506,13 +486,11 @@
          </div>
       </section>
 
-      <!-- 6. DOWNSELL: NEW DEFINED BOXES -->
       <section class="downsell-section">
          <h3 style="text-align: center; margin-bottom: 30px; color: var(--color-text-light); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Or choose individual tools</h3>
 
          <div class="downsell-grid">
 
-            <!-- Card 1: PARENTS (Consistent across all pages) -->
             <div class="downsell-card card-parent">
                <div class="card-badge">FOR PARENTS</div>
                <h3>AI Support System</h3>
@@ -531,7 +509,6 @@
                </button>
             </div>
 
-            <!-- Card 2: KIDS (Change Name/ID per page) -->
             <div class="downsell-card card-kid">
                <div class="card-badge">FOR KIDS</div>
                <h3>Cosmo Space Pup Pack</h3>
@@ -545,7 +522,6 @@
                <div class="card-price">
                   <span class="price-val">$12</span>
                </div>
-               <!-- IMPORTANT: Change 'prod_packet_cosmo' for other characters (e.g., prod_packet_bravely) -->
                <button class="btn-secondary" onclick="handleAddToCart('prod_packet_cosmo')">
                   Get Packet Only
                </button>
@@ -556,21 +532,19 @@
 
    </main>
 
-   <footer>
-      © 2026 Navigator Kids AI. All rights reserved.
-   </footer>
+   <div id="footer"></div>
 
-   <!-- CART SCRIPT -->
+   <script src="/js/components.js"></script>
    <script src="/js/cart.js"></script>
 
    <script>
       // Wrapper function to safely handle cart additions
       function handleAddToCart(productId) {
-         if (typeof NavigatorCart !== 'undefined') {
-            NavigatorCart.addItem(productId, 1, true);
+         if (typeof NavigatorCart !== 'undefined' && NavigatorCart.add) {
+            NavigatorCart.add(productId, 1);
          } else {
-            alert('Debug Message: Cart system not found. \n\nPlease ensure "cart.js" is in the "/js/" folder relative to this file.');
-            console.error('NavigatorCart object is missing. Check your script path.');
+            console.error('Cart system not loaded');
+            alert('Please refresh the page and try again.');
          }
       }
    </script>
