@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
+        /* Anti-flicker for Header Injection */
+        body { padding-top: 76px; }
+        #header + * { margin-top: 0; }
+
         /* =========================================
            QUIZ PAGE STYLES
            ========================================= */
@@ -29,7 +33,7 @@
 
         .quiz-container {
             width: 100%;
-            max-width: 900px; /* Wider layout fixed */
+            max-width: 640px;
             margin: 0 auto;
         }
 
@@ -774,63 +778,44 @@
             }
         ];
 
-        // Profile definitions with trait weights
         const PROFILES = {
             'intense-feeler': {
                 name: 'Intense Feeler',
                 icon: '🔥',
                 url: '/results/intense-feeler/',
-                traits: ['emotional', 'sensory', 'perfectionism'],
                 weights: { emotional: 3, sensory: 2, perfectionism: 2 }
             },
             'reluctant-starter': {
                 name: 'Reluctant Starter',
                 icon: '🐢',
                 url: '/results/reluctant-starter/',
-                traits: ['executive', 'avoidance', 'motivation'],
                 weights: { executive: 3, avoidance: 2, motivation: 2 }
             },
             'deep-diver': {
                 name: 'Deep Diver',
                 icon: '🦉',
                 url: '/results/deep-diver/',
-                traits: ['learning', 'motivation', 'perfectionism'],
                 weights: { learning: 3, motivation: 2, perfectionism: 2 }
             },
             'sensitive-observer': {
                 name: 'Sensitive Observer',
                 icon: '🐰',
                 url: '/results/sensitive-observer/',
-                traits: ['sensory', 'social', 'emotional'],
                 weights: { sensory: 3, social: 2, emotional: 2 }
             },
             'bold-explorer': {
                 name: 'Bold Explorer',
                 icon: '🦁',
                 url: '/results/bold-explorer/',
-                traits: ['social', 'motivation', 'learning'],
-                // Bold explorers score LOW on these (inverse)
                 weights: { social: -2, motivation: 2, learning: 1 },
-                inverse: ['social'] // Low social exhaustion = bold
+                inverse: ['social']
             },
             'big-picture-thinker': {
                 name: 'Big Picture Thinker',
                 icon: '🚀',
                 url: '/results/big-picture-thinker/',
-                traits: ['executive', 'learning', 'avoidance'],
                 weights: { executive: 2, learning: 3, avoidance: 2 }
             }
-        };
-
-        const TRAIT_LABELS = {
-            executive: 'Task Initiation',
-            sensory: 'Sensory Sensitivity',
-            emotional: 'Emotional Intensity',
-            motivation: 'Interest-Based Drive',
-            social: 'Social Recovery Need',
-            perfectionism: 'Perfectionism',
-            avoidance: 'Task Overwhelm',
-            learning: 'Learning Autonomy'
         };
 
         // =========================================
@@ -844,11 +829,21 @@
         // =========================================
         // QUIZ FUNCTIONS
         // =========================================
-        
+
         function startQuiz() {
             showScreen('questionScreen');
             renderQuestion();
             updateProgress();
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
         }
 
         function renderQuestion() {
@@ -860,11 +855,137 @@
             document.getElementById('currentNum').textContent = currentQuestion + 1;
             document.getElementById('totalNum').textContent = QUESTIONS.length;
 
-            // Render options
             const optionsContainer = document.getElementById('answerOptions');
             optionsContainer.innerHTML = q.options.map((opt, idx) => `
                 <button class="answer-option ${answers[q.id] === opt.score ? 'selected' : ''}" 
                         onclick="selectAnswer('${q.id}', ${opt.score}, this)">
                     <span class="answer-indicator"></span>
                     <span>${opt.text}</span>
-                </button
+                </button>
+            `).join('');
+
+            // Update navigation
+            document.getElementById('btnBack').disabled = currentQuestion === 0;
+            document.getElementById('btnNext').disabled = !answers[q.id];
+            
+            // Change button text on last question
+            const nextBtn = document.getElementById('btnNext');
+            if (currentQuestion === QUESTIONS.length - 1) {
+                nextBtn.textContent = 'See Results →';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+        }
+
+        function selectAnswer(questionId, score, element) {
+            answers[questionId] = score;
+            
+            // Update visual selection
+            document.querySelectorAll('.answer-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            // Enable next button
+            document.getElementById('btnNext').disabled = false;
+            
+            // Auto-advance after short delay
+            setTimeout(() => {
+                if (currentQuestion < QUESTIONS.length - 1) {
+                    nextQuestion();
+                }
+            }, 350);
+        }
+
+        function nextQuestion() {
+            if (!answers[QUESTIONS[currentQuestion].id]) return;
+            
+            if (currentQuestion < QUESTIONS.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+                updateProgress();
+            } else {
+                // Quiz complete - show email capture
+                showScreen('emailScreen');
+                updateProgress();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+                updateProgress();
+            }
+        }
+
+        function submitEmail(event) {
+            event.preventDefault();
+            
+            childName = document.getElementById('childNameInput').value || 'Your child';
+            parentEmail = document.getElementById('parentEmailInput').value || '';
+            
+            processResults();
+        }
+
+        function skipEmail() {
+            childName = 'Your child';
+            parentEmail = '';
+            processResults();
+        }
+
+        function processResults() {
+            // Show loading
+            showScreen('loadingScreen');
+            
+            // Calculate results
+            const results = calculateResults();
+            
+            // Save to localStorage for results page
+            const profileData = {
+                childName: childName,
+                parentEmail: parentEmail,
+                primary: results.primary,
+                secondary: results.secondary,
+                traitScores: answers,
+                completedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('quizProfile', JSON.stringify(profileData));
+            
+            // Redirect to profile page after brief loading
+            setTimeout(() => {
+                window.location.href = PROFILES[results.primary].url;
+            }, 1500);
+        }
+
+        function calculateResults() {
+            const profileScores = {};
+
+            for (const [profileId, profile] of Object.entries(PROFILES)) {
+                let score = 0;
+                
+                for (const [trait, weight] of Object.entries(profile.weights)) {
+                    const traitScore = answers[trait] || 0;
+                    
+                    if (profile.inverse && profile.inverse.includes(trait)) {
+                        score += (5 - traitScore) * Math.abs(weight);
+                    } else {
+                        score += traitScore * weight;
+                    }
+                }
+                
+                profileScores[profileId] = score;
+            }
+
+            const sorted = Object.entries(profileScores).sort((a, b) => b[1] - a[1]);
+
+            return {
+                primary: sorted[0][0],
+                secondary: sorted[1][0],
+                scores: profileScores
+            };
+        }
+    </script>
+
+</body>
+
+</html>
