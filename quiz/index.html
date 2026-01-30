@@ -7,12 +7,10 @@
     <meta name="description" content="Free 3-minute quiz to understand your twice-exceptional child's unique brain. Discover their primary learning profile and get matched tools.">
     <title>Free Brain Profile Quiz | Navigator Kids AI</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Shared Styles -->
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
@@ -30,10 +28,11 @@
         }
 
         .quiz-container {
-    width: 100%;
-    max-width: 900px; /* Wider and more comfortable */
-    margin: 0 auto;
-}
+            width: 100%;
+            max-width: 900px; /* Wider layout fixed */
+            margin: 0 auto;
+        }
+
         /* =========================================
            QUIZ CARD
            ========================================= */
@@ -522,20 +521,17 @@
 
 <body>
 
-    <!-- Header -->
     <div id="header"></div>
 
     <main class="quiz-page">
         <div class="quiz-container">
             <div class="quiz-card">
-                <!-- Progress Bar -->
                 <div class="quiz-progress">
                     <div class="quiz-progress-fill" id="progressBar" style="width: 0%"></div>
                 </div>
 
                 <div class="quiz-content">
                     
-                    <!-- SCREEN: Welcome -->
                     <div class="quiz-screen active" id="welcomeScreen">
                         <div class="welcome-icon">🧒</div>
                         <h1 class="welcome-title">Discover Your Child's Brain Profile</h1>
@@ -567,7 +563,6 @@
                         <p class="welcome-note">No email required to see results</p>
                     </div>
 
-                    <!-- SCREEN: Questions (rendered by JS) -->
                     <div class="quiz-screen" id="questionScreen">
                         <div class="question-header">
                             <div class="question-category" id="questionCategory">
@@ -581,8 +576,7 @@
                         </div>
 
                         <div class="answer-options" id="answerOptions">
-                            <!-- Answers rendered by JS -->
-                        </div>
+                            </div>
 
                         <div class="question-nav">
                             <button class="btn-back" id="btnBack" onclick="prevQuestion()">
@@ -594,7 +588,6 @@
                         </div>
                     </div>
 
-                    <!-- SCREEN: Email Capture -->
                     <div class="quiz-screen" id="emailScreen">
                         <div class="email-screen-icon">✨</div>
                         <h2>Your Results Are Ready!</h2>
@@ -624,7 +617,6 @@
                         <p class="email-privacy">🔒 We never share your info. Unsubscribe anytime.</p>
                     </div>
 
-                    <!-- SCREEN: Loading -->
                     <div class="quiz-screen" id="loadingScreen">
                         <div class="loading-screen">
                             <div class="loading-spinner"></div>
@@ -632,7 +624,6 @@
                         </div>
                     </div>
 
-                    <!-- SCREEN: Results -->
                     <div class="quiz-screen" id="resultsScreen">
                         <div class="results-header">
                             <span class="results-badge">Profile Complete</span>
@@ -657,8 +648,7 @@
                         <div class="results-traits">
                             <h3>Trait Snapshot</h3>
                             <div class="trait-bars" id="traitBars">
-                                <!-- Rendered by JS -->
-                            </div>
+                                </div>
                         </div>
 
                         <div class="results-cta">
@@ -676,10 +666,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <div id="footer"></div>
 
-    <!-- Scripts -->
     <script src="/js/components.js"></script>
     <script src="/js/cart.js"></script>
 
@@ -879,197 +867,4 @@
                         onclick="selectAnswer('${q.id}', ${opt.score}, this)">
                     <span class="answer-indicator"></span>
                     <span>${opt.text}</span>
-                </button>
-            `).join('');
-
-            // Update navigation
-            document.getElementById('btnBack').disabled = currentQuestion === 0;
-            document.getElementById('btnNext').disabled = !answers[q.id];
-            document.getElementById('btnNext').textContent = 
-                currentQuestion === QUESTIONS.length - 1 ? 'See Results →' : 'Next →';
-
-            updateProgress();
-        }
-
-        function selectAnswer(questionId, score, element) {
-            answers[questionId] = score;
-            
-            // Update UI
-            document.querySelectorAll('.answer-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            element.classList.add('selected');
-            
-            document.getElementById('btnNext').disabled = false;
-
-            // Auto-advance after short delay
-            setTimeout(() => {
-                if (currentQuestion < QUESTIONS.length - 1) {
-                    nextQuestion();
-                }
-            }, 300);
-        }
-
-        function nextQuestion() {
-            if (!answers[QUESTIONS[currentQuestion].id]) return;
-
-            if (currentQuestion < QUESTIONS.length - 1) {
-                currentQuestion++;
-                renderQuestion();
-            } else {
-                // Quiz complete - show email capture
-                showScreen('emailScreen');
-                updateProgress(100);
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                renderQuestion();
-            }
-        }
-
-        function updateProgress(override) {
-            const progress = override || ((currentQuestion + 1) / QUESTIONS.length * 100);
-            document.getElementById('progressBar').style.width = progress + '%';
-        }
-
-        function submitEmail(e) {
-            e.preventDefault();
-            childName = document.getElementById('childNameInput').value || 'Your child';
-            parentEmail = document.getElementById('parentEmailInput').value;
-
-            // Store data
-            storeQuizData();
-            
-            // Show loading then results
-            showResults();
-        }
-
-        function skipEmail() {
-            childName = 'Your child';
-            storeQuizData();
-            showResults();
-        }
-
-        function storeQuizData() {
-            const data = {
-                childName,
-                parentEmail,
-                answers,
-                completedAt: new Date().toISOString()
-            };
-            localStorage.setItem('quizResults', JSON.stringify(data));
-
-            // TODO: Send to your email service / backend
-            if (parentEmail) {
-                console.log('Would send to email service:', data);
-            }
-        }
-
-        function showResults() {
-            showScreen('loadingScreen');
-
-            setTimeout(() => {
-                const results = calculateResults();
-                displayResults(results);
-                showScreen('resultsScreen');
-            }, 1500);
-        }
-
-        function calculateResults() {
-            // Calculate score for each profile
-            const profileScores = {};
-
-            for (const [profileId, profile] of Object.entries(PROFILES)) {
-                let score = 0;
-                
-                for (const [trait, weight] of Object.entries(profile.weights)) {
-                    const traitScore = answers[trait] || 0;
-                    
-                    // Handle inverse traits (Bold Explorer has low social exhaustion)
-                    if (profile.inverse && profile.inverse.includes(trait)) {
-                        score += (5 - traitScore) * Math.abs(weight);
-                    } else {
-                        score += traitScore * weight;
-                    }
-                }
-                
-                profileScores[profileId] = score;
-            }
-
-            // Sort profiles by score
-            const sorted = Object.entries(profileScores)
-                .sort((a, b) => b[1] - a[1]);
-
-            return {
-                primary: sorted[0][0],
-                secondary: sorted[1][0],
-                scores: profileScores,
-                traitScores: { ...answers }
-            };
-        }
-
-        function displayResults(results) {
-            const primary = PROFILES[results.primary];
-            const secondary = PROFILES[results.secondary];
-
-            // Update profile cards
-            document.getElementById('resultChildName').textContent = childName;
-            document.getElementById('primaryIcon').textContent = primary.icon;
-            document.getElementById('primaryName').textContent = primary.name;
-            document.getElementById('secondaryIcon').textContent = secondary.icon;
-            document.getElementById('secondaryName').textContent = secondary.name;
-
-            // Update trait bars
-            const traitBarsContainer = document.getElementById('traitBars');
-            const topTraits = Object.entries(results.traitScores)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 5);
-
-            traitBarsContainer.innerHTML = topTraits.map(([trait, score]) => {
-                const percent = (score / 4) * 100;
-                const level = score >= 3 ? 'high' : score >= 2 ? 'medium' : 'low';
-                return `
-                    <div class="trait-bar">
-                        <span class="trait-bar-label">${TRAIT_LABELS[trait]}</span>
-                        <div class="trait-bar-track">
-                            <div class="trait-bar-fill ${level}" style="width: ${percent}%"></div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // Update CTA button
-            document.getElementById('resultsCtaBtn').href = primary.url;
-
-            // Store for result page
-            localStorage.setItem('quizProfile', JSON.stringify({
-                primary: results.primary,
-                secondary: results.secondary,
-                childName,
-                traitScores: results.traitScores
-            }));
-        }
-
-        function showScreen(screenId) {
-            document.querySelectorAll('.quiz-screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        // =========================================
-        // ANALYTICS (Optional)
-        // =========================================
-        function trackQuizEvent(action, label) {
-            if (typeof trackEvent === 'function') {
-                trackEvent('Quiz', action, label);
-            }
-        }
-    </script>
-
-</body>
-
-</html>
+                </button
