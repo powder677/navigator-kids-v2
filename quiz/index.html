@@ -14,16 +14,49 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
-        /* Anti-flicker for Header Injection */
-        body { padding-top: 76px; }
-        #header + * { margin-top: 0; }
+        /* =========================================
+           MISSING VARIABLES FROM DESIGN SYSTEM
+           ========================================= */
+        :root {
+            /* Spacing Scale */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            /* Additional Radius */
+            --radius-xl: 24px;
+        }
 
         /* =========================================
-           QUIZ PAGE STYLES
+           QUIZ PAGE LAYOUT
            ========================================= */
+        body { 
+            padding-top: 76px; 
+        }
         
+        #header + * { 
+            margin-top: 0; 
+        }
+
         .quiz-page {
-            min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100vh - 76px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -71,7 +104,7 @@
         }
 
         /* =========================================
-           WELCOME SCREEN
+           SCREEN TRANSITIONS
            ========================================= */
         .quiz-screen {
             display: none;
@@ -87,16 +120,22 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* =========================================
+           WELCOME SCREEN
+           ========================================= */
         .welcome-icon {
             font-size: 4rem;
             text-align: center;
             margin-bottom: var(--space-4);
+            line-height: 1;
         }
 
         .welcome-title {
             text-align: center;
             font-size: var(--text-3xl);
             margin-bottom: var(--space-4);
+            font-family: var(--font-heading);
+            color: var(--color-navy);
         }
 
         .welcome-subtitle {
@@ -107,6 +146,7 @@
             max-width: 480px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
         .welcome-features {
@@ -122,12 +162,13 @@
             align-items: center;
             gap: var(--space-2);
             font-size: var(--text-sm);
+            font-weight: 500;
             color: var(--color-text);
         }
 
         .welcome-feature-icon {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             background: var(--color-sage-light);
             color: var(--color-sage-dark);
             border-radius: 50%;
@@ -163,14 +204,11 @@
             gap: var(--space-2);
             font-size: var(--text-sm);
             font-weight: 600;
-            color: var(--color-sage);
-            margin-bottom: var(--space-3);
-        }
-
-        .question-count {
-            font-size: var(--text-sm);
-            color: var(--color-text-muted);
-            margin-top: var(--space-2);
+            color: var(--color-sage-dark);
+            background: var(--color-sage-light);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-4);
         }
 
         .question-text {
@@ -179,6 +217,12 @@
             color: var(--color-navy);
             line-height: 1.4;
             text-align: center;
+            margin-bottom: var(--space-2);
+        }
+
+        .question-count {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
         }
 
         /* Answer Options */
@@ -197,6 +241,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: left;
+            font-family: var(--font-body);
             font-size: var(--text-base);
             color: var(--color-text);
             display: flex;
@@ -207,6 +252,7 @@
         .answer-option:hover {
             background: var(--color-sage-light);
             border-color: var(--color-sage);
+            transform: translateX(4px);
         }
 
         .answer-option.selected {
@@ -225,6 +271,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
+            background: var(--color-white);
         }
 
         .answer-option:hover .answer-indicator {
@@ -257,6 +304,7 @@
             background: none;
             border: none;
             color: var(--color-text-muted);
+            font-family: var(--font-body);
             font-size: var(--text-sm);
             font-weight: 500;
             cursor: pointer;
@@ -265,10 +313,12 @@
             align-items: center;
             gap: var(--space-2);
             transition: color 0.2s ease;
+            border-radius: var(--radius-md);
         }
 
         .btn-back:hover {
             color: var(--color-text);
+            background: var(--color-cream);
         }
 
         .btn-back:disabled {
@@ -283,6 +333,16 @@
         .btn-next:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* =========================================
+           BUTTON OVERRIDES
+           ========================================= */
+        .btn-lg {
+            padding: 1.1rem 2.5rem;
+            font-size: 1.05rem;
         }
 
         /* =========================================
@@ -290,19 +350,23 @@
            ========================================= */
         .email-screen-icon {
             text-align: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: var(--space-4);
+            line-height: 1;
         }
 
         .email-screen h2 {
             text-align: center;
             margin-bottom: var(--space-2);
+            font-family: var(--font-heading);
+            color: var(--color-navy);
         }
 
         .email-screen-subtitle {
             text-align: center;
             color: var(--color-text-light);
             margin-bottom: var(--space-8);
+            font-size: var(--text-base);
         }
 
         .email-form {
@@ -312,6 +376,20 @@
 
         .email-form .form-group {
             margin-bottom: var(--space-4);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-navy);
+            margin-bottom: var(--space-2);
+        }
+
+        .form-hint {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--space-2);
         }
 
         .email-form .btn {
@@ -328,9 +406,11 @@
             background: none;
             border: none;
             color: var(--color-text-muted);
+            font-family: var(--font-body);
             font-size: var(--text-sm);
             cursor: pointer;
             text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         .email-skip button:hover {
@@ -368,6 +448,8 @@
         .results-title {
             font-size: var(--text-2xl);
             margin-bottom: var(--space-2);
+            font-family: var(--font-heading);
+            color: var(--color-navy);
         }
 
         .child-name {
@@ -398,11 +480,12 @@
             border-radius: var(--radius-lg);
             padding: var(--space-5);
             text-align: center;
+            border: 2px solid transparent;
         }
 
         .result-profile-card.primary {
             background: linear-gradient(135deg, var(--color-sage-light) 0%, rgba(129, 178, 154, 0.3) 100%);
-            border: 2px solid var(--color-sage);
+            border-color: var(--color-sage);
         }
 
         .result-profile-label {
@@ -421,6 +504,7 @@
         .result-profile-icon {
             font-size: 2.5rem;
             margin-bottom: var(--space-2);
+            line-height: 1;
         }
 
         .result-profile-name {
@@ -439,8 +523,10 @@
         .results-traits h3 {
             font-size: var(--text-base);
             font-family: var(--font-body);
+            font-weight: 600;
             text-align: center;
             margin-bottom: var(--space-4);
+            color: var(--color-navy);
         }
 
         .trait-bars {
@@ -464,15 +550,15 @@
 
         .trait-bar-track {
             flex: 1;
-            height: 8px;
+            height: 10px;
             background: var(--color-cream-dark);
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
         }
 
         .trait-bar-fill {
             height: 100%;
-            border-radius: 4px;
+            border-radius: 5px;
             transition: width 0.6s ease;
         }
 
@@ -536,6 +622,7 @@
 
                 <div class="quiz-content">
                     
+                    <!-- Welcome Screen -->
                     <div class="quiz-screen active" id="welcomeScreen">
                         <div class="welcome-icon">🧒</div>
                         <h1 class="welcome-title">Discover Your Child's Brain Profile</h1>
@@ -567,6 +654,7 @@
                         <p class="welcome-note">No email required to see results</p>
                     </div>
 
+                    <!-- Question Screen -->
                     <div class="quiz-screen" id="questionScreen">
                         <div class="question-header">
                             <div class="question-category" id="questionCategory">
@@ -579,8 +667,7 @@
                             </div>
                         </div>
 
-                        <div class="answer-options" id="answerOptions">
-                            </div>
+                        <div class="answer-options" id="answerOptions"></div>
 
                         <div class="question-nav">
                             <button class="btn-back" id="btnBack" onclick="prevQuestion()">
@@ -592,6 +679,7 @@
                         </div>
                     </div>
 
+                    <!-- Email Capture Screen -->
                     <div class="quiz-screen" id="emailScreen">
                         <div class="email-screen-icon">✨</div>
                         <h2>Your Results Are Ready!</h2>
@@ -621,6 +709,7 @@
                         <p class="email-privacy">🔒 We never share your info. Unsubscribe anytime.</p>
                     </div>
 
+                    <!-- Loading Screen -->
                     <div class="quiz-screen" id="loadingScreen">
                         <div class="loading-screen">
                             <div class="loading-spinner"></div>
@@ -628,6 +717,7 @@
                         </div>
                     </div>
 
+                    <!-- Results Screen -->
                     <div class="quiz-screen" id="resultsScreen">
                         <div class="results-header">
                             <span class="results-badge">Profile Complete</span>
@@ -651,8 +741,7 @@
 
                         <div class="results-traits">
                             <h3>Trait Snapshot</h3>
-                            <div class="trait-bars" id="traitBars">
-                                </div>
+                            <div class="trait-bars" id="traitBars"></div>
                         </div>
 
                         <div class="results-cta">
