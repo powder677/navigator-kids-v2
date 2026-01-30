@@ -8,7 +8,9 @@
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    
+   <script src="/js/components.js" defer></script>
    <script src="/js/cart.js" defer></script>
 
    <style>
@@ -46,69 +48,67 @@
 <body class="antialiased">
 
    <div id="header"></div>
-<script src="/js/components.js"></script>
 
-<header class="container mx-auto px-4 py-12">
-   <div class="bg-gradient-to-r from-[#3D405B] to-[#2D3047] rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
-      <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">⚖️</div>
-      
-      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-         <div>
-            <span class="bg-[#81B29A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Essential Advocacy Tool</span>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading leading-tight">The IEP Advocacy System</h1>
-            <p class="text-slate-200 text-lg mb-8 leading-relaxed">Stop feeling intimidated in school meetings. Translate your parental instincts into "Educator Speak" and secure the accommodations your child deserves.</p>
-            
-            <div class="space-y-4 mb-10">
-               <div class="flex items-start gap-3">
-                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
-                  <p class="text-slate-300 text-sm"><strong>Professional Scripts:</strong> Language that bypasses school "gatekeeping."</p>
-               </div>
-               <div class="flex items-start gap-3">
-                  <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
-                  <p class="text-slate-300 text-sm"><strong>Accommodation Matrix:</strong> Matched to your child's specific brain profile.</p>
-               </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row items-center gap-6">
-               <button onclick="window.NavigatorCart.add('prod-system-iep')" class="w-full sm:w-auto bg-[#E07A5F] hover:bg-[#C96A52] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transform hover:-translate-y-1 transition-all">
-                  Get the System — $67
-               </button>
-               <div class="text-left">
-                  <p class="text-xs text-slate-400 uppercase tracking-tighter">One-time purchase</p>
-                  <p class="text-sm font-bold text-slate-200 italic">Includes Lifetime Updates</p>
-               </div>
-            </div>
-         </div>
+   <header class="container mx-auto px-4 py-12">
+      <div class="mt-8 bg-gradient-to-r from-[#3D405B] to-[#2D3047] rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+         <div class="absolute top-0 right-0 opacity-10 text-9xl transform translate-x-12 -translate-y-8">⚖️</div>
          
-         <div class="hidden md:block">
-            <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-               <div class="text-5xl mb-4">🛡️</div>
-               <h3 class="font-heading text-xl mb-2 text-white">Your Advocate’s Toolkit</h3>
-               <p class="text-slate-400 text-sm mb-6">Designed to level the playing field between parents and school districts.</p>
-               <div class="grid grid-cols-2 gap-4">
-                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
-                     <span class="block text-xs font-bold text-[#81B29A]">50+</span>
-                     <span class="text-[10px] text-slate-300">Email Templates</span>
+         <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+               <span class="bg-[#81B29A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Essential Advocacy Tool</span>
+               <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading leading-tight">The IEP Advocacy System</h1>
+               <p class="text-slate-200 text-lg mb-8 leading-relaxed">Stop feeling intimidated in school meetings. Translate your parental instincts into "Educator Speak" and secure the accommodations your child deserves.</p>
+               
+               <div class="space-y-4 mb-10">
+                  <div class="flex items-start gap-3">
+                     <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                     <p class="text-slate-300 text-sm"><strong>Professional Scripts:</strong> Language that bypasses school "gatekeeping."</p>
                   </div>
-                  <div class="bg-white/10 p-3 rounded-xl border border-white/5">
-                     <span class="block text-xs font-bold text-[#81B29A]">100%</span>
-                     <span class="text-[10px] text-slate-300">Law Aligned</span>
+                  <div class="flex items-start gap-3">
+                     <div class="bg-green-500/20 p-1 rounded-full text-green-400"><i class="fa-solid fa-check text-sm"></i></div>
+                     <p class="text-slate-300 text-sm"><strong>Accommodation Matrix:</strong> Matched to your child's specific brain profile.</p>
+                  </div>
+               </div>
+
+               <div class="flex flex-col sm:flex-row items-center gap-6">
+                  <button onclick="window.NavigatorCart.add('prod-system-iep')" class="w-full sm:w-auto bg-[#E07A5F] hover:bg-[#C96A52] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transform hover:-translate-y-1 transition-all">
+                     Get the System — $67
+                  </button>
+                  <div class="text-left">
+                     <p class="text-xs text-slate-400 uppercase tracking-tighter">One-time purchase</p>
+                     <p class="text-sm font-bold text-slate-200 italic">Includes Lifetime Updates</p>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="hidden md:block">
+               <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
+                  <div class="text-5xl mb-4">🛡️</div>
+                  <h3 class="font-heading text-xl mb-2 text-white">Your Advocate’s Toolkit</h3>
+                  <p class="text-slate-400 text-sm mb-6">Designed to level the playing field between parents and school districts.</p>
+                  <div class="grid grid-cols-2 gap-4">
+                     <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                        <span class="block text-xs font-bold text-[#81B29A]">50+</span>
+                        <span class="text-[10px] text-slate-300">AI Prompts</span>
+                     </div>
+                     <div class="bg-white/10 p-3 rounded-xl border border-white/5">
+                        <span class="block text-xs font-bold text-[#81B29A]">100%</span>
+                        <span class="text-[10px] text-slate-300">Law Aligned</span>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-   </div>
-</header>
+   </header>
 
-   <section class="container mx-auto px-4 py-8">
+   <section class="container mx-auto px-4 py-8" id="systems">
       <div class="flex items-center gap-3 mb-8">
          <div class="bg-teal-100 p-2 rounded-lg text-teal-600 text-2xl">🧠</div>
          <h2 class="text-3xl font-bold text-gray-800 font-heading">Parent Rescue Systems</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
             <div class="h-40 bg-blue-50 flex items-center justify-center text-6xl">⚖️</div>
             <div class="p-6">
@@ -183,11 +183,96 @@
                </div>
             </div>
          </div>
+      </div>
+   </section>
+
+   <section class="container mx-auto px-4 py-12" id="bundles">
+      <div class="flex items-center gap-3 mb-8">
+         <div class="bg-purple-100 p-2 rounded-lg text-purple-600 text-2xl">🎁</div>
+         <div>
+            <h2 class="text-3xl font-bold text-gray-800 font-heading">Value Bundles</h2>
+            <p class="text-gray-500 text-sm">Save 30-40% with our most popular combinations</p>
+         </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+         <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border-2 border-purple-200 relative">
+            <div class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</div>
+            <div class="h-32 bg-purple-100 flex items-center justify-center text-5xl">🏆</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Total Access Bundle</h3>
+               <p class="text-xs font-bold text-purple-600 mb-3 uppercase tracking-wide">Everything We Make</p>
+               <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                  All 4 parent systems + all 6 activity packets + lifetime updates. The complete toolkit for your 2e family.
+               </p>
+               <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                  <li>✓ IEP Advocacy System ($67)</li>
+                  <li>✓ Social Navigation ($47)</li>
+                  <li>✓ Meltdown Navigation ($37)</li>
+                  <li>✓ Morning Launch System ($27)</li>
+                  <li>✓ All 6 Activity Packets ($54)</li>
+               </ul>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-purple-100">
+                  <div>
+                     <span class="text-gray-400 line-through text-sm">$232</span>
+                     <span class="text-2xl font-bold text-gray-800 ml-2">$97</span>
+                  </div>
+                  <button onclick="window.NavigatorCart.add('prod-bundle-total')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-32 bg-blue-50 flex items-center justify-center text-5xl">🎓</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">School Success Bundle</h3>
+               <p class="text-xs font-bold text-blue-600 mb-3 uppercase tracking-wide">Advocacy + Social Skills</p>
+               <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Everything you need to advocate at school and support social development.
+               </p>
+               <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                  <li>✓ IEP Advocacy System ($67)</li>
+                  <li>✓ Social Navigation ($47)</li>
+                  <li>✓ Bravely the Lion Pack ($9)</li>
+               </ul>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <div>
+                     <span class="text-gray-400 line-through text-sm">$123</span>
+                     <span class="text-2xl font-bold text-gray-800 ml-2">$79</span>
+                  </div>
+                  <button onclick="window.NavigatorCart.add('prod-bundle-school')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="h-32 bg-green-50 flex items-center justify-center text-5xl">🏠</div>
+            <div class="p-6">
+               <h3 class="text-2xl font-bold mb-1 text-gray-800 font-heading">Peace at Home Bundle</h3>
+               <p class="text-xs font-bold text-green-600 mb-3 uppercase tracking-wide">Regulation + Routines</p>
+               <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Tackle meltdowns and daily chaos with proven systems and kid activities.
+               </p>
+               <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                  <li>✓ Meltdown Navigation ($37)</li>
+                  <li>✓ Morning Launch System ($27)</li>
+                  <li>✓ Ember the Dragon Pack ($9)</li>
+               </ul>
+               <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                  <div>
+                     <span class="text-gray-400 line-through text-sm">$73</span>
+                     <span class="text-2xl font-bold text-gray-800 ml-2">$57</span>
+                  </div>
+                  <button onclick="window.NavigatorCart.add('prod-bundle-peace')" class="btn-primary px-6 py-2 rounded-lg font-bold">Add to Cart</button>
+               </div>
+            </div>
+         </div>
 
       </div>
    </section>
 
-   <section class="container mx-auto px-4 py-12">
+   <section class="container mx-auto px-4 py-12" id="activity-packets">
       <div class="flex items-center gap-3 mb-8">
          <div class="bg-orange-100 p-2 rounded-lg text-orange-600 text-2xl">🦁</div>
          <div>
@@ -197,7 +282,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
           <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
               <div class="text-4xl mb-3">🦁</div>
               <h4 class="text-xl font-bold text-gray-800 font-heading">Bravely the Lion</h4>
@@ -275,33 +359,10 @@
                   <button onclick="window.NavigatorCart.add('prod-packet-whisper')" class="text-[#FF6B6B] font-bold text-sm hover:text-red-600 transition">Add +</button>
               </div>
           </div>
-
       </div>
    </section>
 
-   <footer class="bg-white border-t mt-12 py-8">
-      <div class="container mx-auto px-4 text-center">
-         <p class="text-gray-400 text-sm">© 2026 Navigator Kids AI. All Rights Reserved.</p>
-         <div class="mt-4 flex justify-center gap-4 text-sm text-gray-500">
-             <a href="/privacy/" class="hover:text-[#FF6B6B]">Privacy Policy</a>
-             <a href="/terms/" class="hover:text-[#FF6B6B]">Terms of Service</a>
-             <a href="/contact/" class="hover:text-[#FF6B6B]">Contact Support</a>
-         </div>
-      </div>
-   </footer>
-
-   <script>
-      window.addEventListener('cartUpdated', function(e) {
-         const count = e.detail.count;
-         const badge = document.getElementById('cart-count');
-         if(badge) badge.innerText = count;
-      });
-      // Init Check
-      if(window.NavigatorCart) {
-         const badge = document.getElementById('cart-count');
-         if(badge) badge.innerText = window.NavigatorCart.getItemCount();
-      }
-   </script>
+   <div id="footer"></div>
 
 </body>
 </html>
