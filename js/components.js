@@ -256,6 +256,40 @@ function initFormspree() {
             } catch (err) {
                 alert('Something went wrong. Please try again or email us directly.');
                 if (btn) { btn.disabled = false; btn.innerText = originalText; }
+               /* ============================================
+   PERSONALIZATION ENGINE
+   Add this to the bottom of js/components.js
+   ============================================ */
+
+function personalizeSite() {
+    try {
+        const data = localStorage.getItem('quizProfile');
+        if (!data) return;
+
+        const profile = JSON.parse(data);
+        const name = profile.childName || "Your child";
+
+        // 1. Find elements marked for personalization
+        document.querySelectorAll('.dynamic-child-name').forEach(el => {
+            el.textContent = name;
+        });
+
+        // 2. Personalize headers if found
+        const heroTitle = document.querySelector('h1 .highlight');
+        if (heroTitle && heroTitle.textContent.includes('Child')) {
+            heroTitle.textContent = name;
+        }
+
+    } catch (e) {
+        console.log('Personalization skipped');
+    }
+}
+
+// Add to initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing init calls ...
+    personalizeSite(); 
+});
             }
         });
     });
