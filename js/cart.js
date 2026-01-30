@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - MASTER CART SYSTEM
-   Status: LAUNCH READY (V2.2 - Live Stripe)
+   Status: LAUNCH READY (V2.3 - Integrated)
    ============================================ */
 
 (function() {
@@ -105,8 +105,9 @@
         }
 
         validateCart() {
+            const before = this.items.length;
             this.items = this.items.filter(item => PRODUCTS[item.id]);
-            this.save();
+            if (this.items.length !== before) this.save();
         }
 
         dispatchUpdate() {
@@ -163,20 +164,30 @@
     async function handleCheckout() {
         if (cart.isEmpty()) return;
         const btn = document.querySelector('.checkout-trigger');
+        const originalText = btn ? btn.innerText : 'Checkout';
         if(btn) { btn.disabled = true; btn.innerText = "Redirecting..."; }
 
         try {
             const response = await fetch('/api/create-checkout', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), successUrl: window.location.origin + '/thank-you/', cancelUrl: window.location.origin + '/cart/' })
+                body: JSON.stringify({ 
+                    items: cart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), 
+                    successUrl: window.location.origin + '/thank-you/', 
+                    cancelUrl: window.location.origin + '/cart/' 
+                })
             });
             const session = await response.json();
             if(session.id) {
                 const stripe = Stripe('pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd');
                 stripe.redirectToCheckout({ sessionId: session.id });
+            } else {
+                throw new Error("Session ID missing");
             }
-        } catch (err) { alert("Checkout error. Please refresh."); }
+        } catch (err) { 
+            alert("Checkout error. Please refresh and try again."); 
+            if(btn) { btn.disabled = false; btn.innerText = originalText; }
+        }
     }
 
     function renderCartPage() {
@@ -213,10 +224,11 @@
         `;
     }
 
+    // Export API
     window.NavigatorCart = {
         add: (id, qty) => cart.add(id, qty),
-        remove: (id) => cart.remove(id),
-        clear: () => cart.clear(),
+        remove: (id) => { cart.remove(id); renderCartPage(); },
+        clear: () => { cart.clear(); renderCartPage(); },
         checkout: handleCheckout,
         getItems: () => cart.getItems(),
         getItemCount: () => cart.getItemCount(),
@@ -225,6 +237,10 @@
         getProduct: (id) => PRODUCTS[id]
     };
 
-    document.addEventListener('DOMContentLoaded', () => { cart.updateCounterUI(); renderCartPage(); });
+    // Auto-Init
+    const run = () => { cart.updateCounterUI(); renderCartPage(); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+    else run();
+
     window.addEventListener('cartUpdated', renderCartPage);
 })();
