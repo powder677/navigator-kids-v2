@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: LAUNCH READY
+   Status: LAUNCH READY (With Personalization)
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     injectFooter();
     initMobileMenu();
     initFormspree();
+    personalizeSite(); // <--- Added here correctly
     setTimeout(syncCartCount, 500);
 });
 
@@ -256,11 +257,12 @@ function initFormspree() {
             } catch (err) {
                 alert('Something went wrong. Please try again or email us directly.');
                 if (btn) { btn.disabled = false; btn.innerText = originalText; }
-               /* ============================================
-   PERSONALIZATION ENGINE
-   Add this to the bottom of js/components.js
-   ============================================ */
+            }
+        });
+    });
+}
 
+// 7. PERSONALIZATION ENGINE
 function personalizeSite() {
     try {
         const data = localStorage.getItem('quizProfile');
@@ -283,14 +285,4 @@ function personalizeSite() {
     } catch (e) {
         console.log('Personalization skipped');
     }
-}
-
-// Add to initialization
-document.addEventListener('DOMContentLoaded', () => {
-    // ... existing init calls ...
-    personalizeSite(); 
-});
-            }
-        });
-    });
 }
