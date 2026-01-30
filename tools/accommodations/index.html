@@ -1,329 +1,2056 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Accommodations List by Brain Profile - Find IEP and 504 accommodation ideas matched to your twice-exceptional child.">
-    <title>Accommodations List | Navigator Kids AI</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Free IEP & 504 Accommodations Checklist - Find accommodations matched to your twice-exceptional child's brain profile.">
+   <title>Accommodations Checklist | Navigator Kids AI</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: '#3D405B',
-                        terracotta: '#E07A5F',
-                        sage: '#81B29A',
-                        cream: '#F9F7F2',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
 
-    <style>
-        body {
-            background-color: #F9F7F2;
-            color: #3D405B;
-            -webkit-font-smoothing: antialiased;
-        }
+   <style>
+      :root {
+         --profile-intense: #D44D5C;
+         --profile-intense-light: #FEF2F2;
+         --profile-reluctant: #81B29A;
+         --profile-reluctant-light: #F0FDF4;
+         --profile-deep: #9333EA;
+         --profile-deep-light: #FAF5FF;
+         --profile-sensitive: #F4A261;
+         --profile-sensitive-light: #FFFBEB;
+         --profile-bold: #E76F51;
+         --profile-bold-light: #FFF7ED;
+         --profile-big: #3B82F6;
+         --profile-big-light: #EFF6FF;
+      }
 
-        .profile-tab {
-            @apply px-4 py-2 bg-white border-2 border-gray-200 rounded-full text-sm font-semibold transition-all duration-200 flex items-center gap-2;
-        }
+      /* Hero Section */
+      .tool-hero {
+         background: linear-gradient(135deg, #002347 0%, #003366 50%, #004080 100%);
+         padding: 80px 0 100px;
+         position: relative;
+         overflow: hidden;
+      }
 
-        .profile-tab:hover {
-            @apply border-sage text-sage;
-        }
+      .tool-hero::before {
+         content: '';
+         position: absolute;
+         top: -50%;
+         right: -10%;
+         width: 600px;
+         height: 600px;
+         background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+         border-radius: 50%;
+      }
 
-        .profile-tab.active {
-            @apply bg-sage border-sage text-white shadow-md;
-        }
+      .tool-hero::after {
+         content: '';
+         position: absolute;
+         bottom: -30%;
+         left: -5%;
+         width: 400px;
+         height: 400px;
+         background: radial-gradient(circle, rgba(129, 178, 154, 0.1) 0%, transparent 70%);
+         border-radius: 50%;
+      }
 
-        .accommodations-panel {
+      .hero-content {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 60px;
+         align-items: center;
+         position: relative;
+         z-index: 1;
+      }
+
+      @media (max-width: 900px) {
+         .hero-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+         }
+      }
+
+      .hero-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: rgba(129, 178, 154, 0.2);
+         color: #81B29A;
+         font-size: 14px;
+         font-weight: 600;
+         padding: 8px 16px;
+         border-radius: 100px;
+         margin-bottom: 20px;
+      }
+
+      .hero-badge::before {
+         content: '✓';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #81B29A;
+         color: white;
+         border-radius: 50%;
+         font-size: 12px;
+      }
+
+      .tool-hero h1 {
+         font-family: 'Merriweather', serif;
+         font-size: clamp(2rem, 5vw, 3rem);
+         color: white;
+         margin-bottom: 20px;
+         line-height: 1.2;
+      }
+
+      .tool-hero h1 span {
+         color: #D4AF37;
+      }
+
+      .hero-description {
+         font-size: 1.125rem;
+         color: rgba(255, 255, 255, 0.8);
+         line-height: 1.7;
+         margin-bottom: 30px;
+      }
+
+      .hero-features {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+      }
+
+      .hero-feature {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         color: rgba(255, 255, 255, 0.9);
+         font-size: 15px;
+      }
+
+      .hero-feature-icon {
+         width: 36px;
+         height: 36px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 18px;
+      }
+
+      .hero-illustration {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .illustration-card {
+         background: white;
+         border-radius: 20px;
+         padding: 30px;
+         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+         transform: rotate(3deg);
+         max-width: 320px;
+      }
+
+      .illustration-card-header {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         margin-bottom: 20px;
+         padding-bottom: 15px;
+         border-bottom: 2px dashed #E5E7EB;
+      }
+
+      .illustration-card-icon {
+         width: 50px;
+         height: 50px;
+         background: linear-gradient(135deg, #81B29A, #5A9A7A);
+         border-radius: 12px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 24px;
+      }
+
+      .illustration-card-title {
+         font-weight: 700;
+         color: #1F2937;
+         font-size: 16px;
+      }
+
+      .illustration-card-subtitle {
+         font-size: 13px;
+         color: #6B7280;
+      }
+
+      .illustration-items {
+         display: flex;
+         flex-direction: column;
+         gap: 12px;
+      }
+
+      .illustration-item {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         padding: 10px 12px;
+         background: #F9FAFB;
+         border-radius: 10px;
+         font-size: 14px;
+         color: #374151;
+      }
+
+      .illustration-item.checked {
+         background: #F0FDF4;
+         color: #166534;
+      }
+
+      .illustration-check {
+         width: 22px;
+         height: 22px;
+         border: 2px solid #D1D5DB;
+         border-radius: 6px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-shrink: 0;
+      }
+
+      .illustration-item.checked .illustration-check {
+         background: #81B29A;
+         border-color: #81B29A;
+         color: white;
+      }
+
+      @media (max-width: 900px) {
+         .hero-illustration {
             display: none;
-        }
+         }
+      }
 
-        .accommodations-panel.active {
-            display: block;
-            animation: fadeIn 0.4s ease-out;
-        }
+      /* Main Content */
+      .tool-main {
+         padding: 60px 0 80px;
+         background: #F9FAFB;
+         min-height: 60vh;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+      /* Profile Tabs */
+      .profile-tabs-wrapper {
+         margin-bottom: 40px;
+      }
 
-        .accommodation-card {
-            @apply bg-white rounded-xl p-5 border border-gray-100 shadow-sm transition-all duration-200 flex items-start gap-4 cursor-pointer;
-        }
+      .profile-tabs-label {
+         text-align: center;
+         font-size: 14px;
+         color: #6B7280;
+         margin-bottom: 16px;
+         font-weight: 500;
+      }
 
-        .accommodation-card:hover {
-            @apply border-sage shadow-md;
-        }
+      .profile-tabs {
+         display: flex;
+         gap: 10px;
+         flex-wrap: wrap;
+         justify-content: center;
+      }
 
-        .accommodation-card input[type="checkbox"] {
-            @apply mt-1 w-5 h-5 rounded border-gray-300 text-sage focus:ring-sage;
-        }
+      .profile-tab {
+         padding: 12px 20px;
+         background: white;
+         border: 2px solid #E5E7EB;
+         border-radius: 12px;
+         font-size: 15px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         color: #374151;
+      }
 
-        @media print {
-            header, .profile-tabs, .export-section, footer, .tool-badge {
-                display: none !important;
-            }
-            .accommodations-panel {
-                display: block !important;
-                opacity: 1 !important;
-            }
-            .accommodation-card {
-                border: 1px solid #eee !important;
-                break-inside: avoid;
-            }
-            input[type="checkbox"]:not(:checked) + div, 
-            input[type="checkbox"]:not(:checked) {
-                display: none !important;
-            }
-        }
-    </style>
+      .profile-tab:hover {
+         border-color: #9CA3AF;
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .profile-tab .emoji {
+         font-size: 20px;
+      }
+
+      /* Active states for each profile */
+      .profile-tab[data-profile="intense-feeler"].active {
+         background: var(--profile-intense);
+         border-color: var(--profile-intense);
+         color: white;
+      }
+
+      .profile-tab[data-profile="reluctant-starter"].active {
+         background: var(--profile-reluctant);
+         border-color: var(--profile-reluctant);
+         color: white;
+      }
+
+      .profile-tab[data-profile="deep-diver"].active {
+         background: var(--profile-deep);
+         border-color: var(--profile-deep);
+         color: white;
+      }
+
+      .profile-tab[data-profile="sensitive-observer"].active {
+         background: var(--profile-sensitive);
+         border-color: var(--profile-sensitive);
+         color: white;
+      }
+
+      .profile-tab[data-profile="bold-explorer"].active {
+         background: var(--profile-bold);
+         border-color: var(--profile-bold);
+         color: white;
+      }
+
+      .profile-tab[data-profile="big-picture"].active {
+         background: var(--profile-big);
+         border-color: var(--profile-big);
+         color: white;
+      }
+
+      /* Panels */
+      .accommodations-panel {
+         display: none;
+      }
+
+      .accommodations-panel.active {
+         display: block;
+         animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+         from { opacity: 0; transform: translateY(10px); }
+         to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Panel Intro */
+      .panel-intro {
+         border-radius: 16px;
+         padding: 30px;
+         margin-bottom: 40px;
+         display: flex;
+         align-items: center;
+         gap: 24px;
+      }
+
+      .panel-intro-icon {
+         width: 70px;
+         height: 70px;
+         border-radius: 16px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 36px;
+         flex-shrink: 0;
+      }
+
+      .panel-intro h2 {
+         font-size: 1.5rem;
+         margin-bottom: 8px;
+         font-family: 'Merriweather', serif;
+      }
+
+      .panel-intro p {
+         margin: 0;
+         color: #4B5563;
+         line-height: 1.6;
+      }
+
+      /* Profile-specific intro colors */
+      #panel-intense-feeler .panel-intro {
+         background: var(--profile-intense-light);
+         border-left: 4px solid var(--profile-intense);
+      }
+      #panel-intense-feeler .panel-intro-icon {
+         background: var(--profile-intense);
+      }
+      #panel-intense-feeler .panel-intro h2 {
+         color: var(--profile-intense);
+      }
+
+      #panel-reluctant-starter .panel-intro {
+         background: var(--profile-reluctant-light);
+         border-left: 4px solid var(--profile-reluctant);
+      }
+      #panel-reluctant-starter .panel-intro-icon {
+         background: var(--profile-reluctant);
+      }
+      #panel-reluctant-starter .panel-intro h2 {
+         color: var(--profile-reluctant);
+      }
+
+      #panel-deep-diver .panel-intro {
+         background: var(--profile-deep-light);
+         border-left: 4px solid var(--profile-deep);
+      }
+      #panel-deep-diver .panel-intro-icon {
+         background: var(--profile-deep);
+      }
+      #panel-deep-diver .panel-intro h2 {
+         color: var(--profile-deep);
+      }
+
+      #panel-sensitive-observer .panel-intro {
+         background: var(--profile-sensitive-light);
+         border-left: 4px solid var(--profile-sensitive);
+      }
+      #panel-sensitive-observer .panel-intro-icon {
+         background: var(--profile-sensitive);
+      }
+      #panel-sensitive-observer .panel-intro h2 {
+         color: var(--profile-sensitive);
+      }
+
+      #panel-bold-explorer .panel-intro {
+         background: var(--profile-bold-light);
+         border-left: 4px solid var(--profile-bold);
+      }
+      #panel-bold-explorer .panel-intro-icon {
+         background: var(--profile-bold);
+      }
+      #panel-bold-explorer .panel-intro h2 {
+         color: var(--profile-bold);
+      }
+
+      #panel-big-picture .panel-intro {
+         background: var(--profile-big-light);
+         border-left: 4px solid var(--profile-big);
+      }
+      #panel-big-picture .panel-intro-icon {
+         background: var(--profile-big);
+      }
+      #panel-big-picture .panel-intro h2 {
+         color: var(--profile-big);
+      }
+
+      @media (max-width: 600px) {
+         .panel-intro {
+            flex-direction: column;
+            text-align: center;
+         }
+      }
+
+      /* Category Sections */
+      .category-section {
+         margin-bottom: 40px;
+      }
+
+      .category-header {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         margin-bottom: 20px;
+      }
+
+      .category-icon {
+         width: 40px;
+         height: 40px;
+         background: white;
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 20px;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .category-section h3 {
+         font-size: 1.25rem;
+         color: #1F2937;
+         margin: 0;
+      }
+
+      /* Accommodation Cards */
+      .accommodations-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+         gap: 16px;
+      }
+
+      .accommodation-card {
+         background: white;
+         border-radius: 12px;
+         padding: 20px;
+         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+         display: flex;
+         align-items: flex-start;
+         gap: 16px;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         border: 2px solid transparent;
+         position: relative;
+      }
+
+      .accommodation-card:hover {
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+         transform: translateY(-2px);
+      }
+
+      .accommodation-card.checked {
+         border-color: #81B29A;
+         background: #F0FDF4;
+      }
+
+      .accommodation-card input {
+         display: none;
+      }
+
+      .custom-checkbox {
+         width: 24px;
+         height: 24px;
+         border: 2px solid #D1D5DB;
+         border-radius: 6px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-shrink: 0;
+         transition: all 0.2s ease;
+         margin-top: 2px;
+      }
+
+      .custom-checkbox svg {
+         opacity: 0;
+         transform: scale(0.5);
+         transition: all 0.2s ease;
+      }
+
+      .accommodation-card.checked .custom-checkbox {
+         background: #81B29A;
+         border-color: #81B29A;
+      }
+
+      .accommodation-card.checked .custom-checkbox svg {
+         opacity: 1;
+         transform: scale(1);
+      }
+
+      .accommodation-text h4 {
+         font-size: 15px;
+         font-weight: 600;
+         margin-bottom: 6px;
+         color: #1F2937;
+         line-height: 1.4;
+      }
+
+      .accommodation-text p {
+         font-size: 13px;
+         color: #6B7280;
+         margin: 0;
+         line-height: 1.5;
+      }
+
+      /* Floating Selection Counter */
+      .selection-counter {
+         position: fixed;
+         bottom: 30px;
+         right: 30px;
+         background: #002347;
+         color: white;
+         padding: 16px 24px;
+         border-radius: 16px;
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         z-index: 100;
+         transform: translateY(100px);
+         opacity: 0;
+         transition: all 0.3s ease;
+      }
+
+      .selection-counter.visible {
+         transform: translateY(0);
+         opacity: 1;
+      }
+
+      .selection-count {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .count-number {
+         width: 36px;
+         height: 36px;
+         background: #D4AF37;
+         color: #002347;
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: 700;
+         font-size: 18px;
+      }
+
+      .count-label {
+         font-size: 14px;
+         color: rgba(255, 255, 255, 0.8);
+      }
+
+      .selection-counter .btn {
+         padding: 10px 20px;
+         font-size: 14px;
+         white-space: nowrap;
+      }
+
+      @media (max-width: 600px) {
+         .selection-counter {
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            flex-direction: column;
+            gap: 12px;
+         }
+
+         .selection-counter .btn {
+            width: 100%;
+         }
+      }
+
+      /* Toast Notification */
+      .toast {
+         position: fixed;
+         bottom: 100px;
+         left: 50%;
+         transform: translateX(-50%) translateY(20px);
+         background: #1F2937;
+         color: white;
+         padding: 16px 24px;
+         border-radius: 12px;
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         z-index: 200;
+         opacity: 0;
+         transition: all 0.3s ease;
+         pointer-events: none;
+      }
+
+      .toast.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      .toast-icon {
+         width: 28px;
+         height: 28px;
+         background: #81B29A;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      /* Export Section */
+      .export-section {
+         background: white;
+         border-radius: 20px;
+         padding: 50px;
+         text-align: center;
+         margin-top: 50px;
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+         border: 1px solid #E5E7EB;
+      }
+
+      .export-section h3 {
+         font-size: 1.75rem;
+         color: #1F2937;
+         margin-bottom: 12px;
+         font-family: 'Merriweather', serif;
+      }
+
+      .export-section > p {
+         color: #6B7280;
+         margin-bottom: 30px;
+         font-size: 1.05rem;
+      }
+
+      .export-buttons {
+         display: flex;
+         gap: 16px;
+         justify-content: center;
+         flex-wrap: wrap;
+      }
+
+      .export-btn {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 600;
+         font-size: 15px;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         border: none;
+      }
+
+      .export-btn-primary {
+         background: #81B29A;
+         color: white;
+      }
+
+      .export-btn-primary:hover {
+         background: #6A9A82;
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px rgba(129, 178, 154, 0.4);
+      }
+
+      .export-btn-secondary {
+         background: white;
+         color: #374151;
+         border: 2px solid #E5E7EB;
+      }
+
+      .export-btn-secondary:hover {
+         border-color: #9CA3AF;
+         transform: translateY(-2px);
+      }
+
+      .export-btn-icon {
+         width: 20px;
+         height: 20px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+         background: linear-gradient(135deg, #002347 0%, #003366 100%);
+         border-radius: 20px;
+         padding: 50px;
+         margin-top: 60px;
+         display: grid;
+         grid-template-columns: 1fr auto;
+         gap: 40px;
+         align-items: center;
+      }
+
+      @media (max-width: 800px) {
+         .cta-section {
+            grid-template-columns: 1fr;
+            text-align: center;
+         }
+      }
+
+      .cta-content h3 {
+         font-size: 1.75rem;
+         color: white;
+         margin-bottom: 12px;
+         font-family: 'Merriweather', serif;
+      }
+
+      .cta-content p {
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 1.05rem;
+         margin: 0;
+      }
+
+      .cta-button {
+         display: inline-flex;
+         align-items: center;
+         gap: 10px;
+         padding: 16px 32px;
+         background: #D4AF37;
+         color: #002347;
+         font-weight: 700;
+         font-size: 16px;
+         border-radius: 12px;
+         text-decoration: none;
+         transition: all 0.2s ease;
+         white-space: nowrap;
+      }
+
+      .cta-button:hover {
+         background: #E5C04B;
+         transform: translateY(-2px);
+         box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      /* Universal Accommodations */
+      .universal-section {
+         margin-top: 50px;
+         padding-top: 50px;
+         border-top: 2px solid #E5E7EB;
+      }
+
+      .universal-header {
+         text-align: center;
+         margin-bottom: 30px;
+      }
+
+      .universal-badge {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: #FEF3C7;
+         color: #92400E;
+         font-size: 13px;
+         font-weight: 600;
+         padding: 6px 14px;
+         border-radius: 100px;
+         margin-bottom: 12px;
+      }
+
+      .universal-header h3 {
+         font-size: 1.5rem;
+         color: #1F2937;
+         margin-bottom: 8px;
+      }
+
+      .universal-header p {
+         color: #6B7280;
+         max-width: 500px;
+         margin: 0 auto;
+      }
+   </style>
 </head>
 
-<body class="min-h-screen">
-    <header id="header-placeholder"></header>
+<body>
+   <div id="header"></div>
 
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24">
-        
-        <div class="text-center mb-16">
-            <span class="inline-block bg-sage/10 text-sage font-bold px-4 py-1 rounded-full mb-6 text-sm tracking-widest uppercase">Free Advocacy Tool</span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading mb-6">Accommodations List</h1>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Browse ideas organized by brain profile. Select the ones that fit <span class="dynamic-child-name">your child</span> and export a custom list for your next IEP or 504 meeting.
-            </p>
-        </div>
+   <!-- Hero Section -->
+   <section class="tool-hero">
+      <div class="container">
+         <div class="hero-content">
+            <div class="hero-text">
+               <div class="hero-badge">100% Free Tool</div>
+               <h1>Build Your <span>IEP Accommodations</span> List</h1>
+               <p class="hero-description">
+                  Browse research-backed accommodations organized by brain profile. Check what fits your child, then copy or print your personalized list for your next IEP or 504 meeting.
+               </p>
+               <div class="hero-features">
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">🧠</div>
+                     <span>6 brain profiles</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">📋</div>
+                     <span>70+ accommodations</span>
+                  </div>
+                  <div class="hero-feature">
+                     <div class="hero-feature-icon">📤</div>
+                     <span>Copy or print</span>
+                  </div>
+               </div>
+            </div>
+            <div class="hero-illustration">
+               <div class="illustration-card">
+                  <div class="illustration-card-header">
+                     <div class="illustration-card-icon">📋</div>
+                     <div>
+                        <div class="illustration-card-title">IEP Accommodations</div>
+                        <div class="illustration-card-subtitle">3 items selected</div>
+                     </div>
+                  </div>
+                  <div class="illustration-items">
+                     <div class="illustration-item checked">
+                        <div class="illustration-check">✓</div>
+                        Extended time on tests
+                     </div>
+                     <div class="illustration-item checked">
+                        <div class="illustration-check">✓</div>
+                        Calm-down space access
+                     </div>
+                     <div class="illustration-item checked">
+                        <div class="illustration-check">✓</div>
+                        Movement breaks
+                     </div>
+                     <div class="illustration-item">
+                        <div class="illustration-check"></div>
+                        Preferential seating
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
-        <div class="profile-tabs flex flex-wrap justify-center gap-3 mb-12">
-            <button class="profile-tab active" onclick="showProfile('intense-feeler')">🔥 Intense Feeler</button>
-            <button class="profile-tab" onclick="showProfile('reluctant-starter')">🐢 Reluctant Starter</button>
-            <button class="profile-tab" onclick="showProfile('deep-diver')">🦉 Deep Diver</button>
-            <button class="profile-tab" onclick="showProfile('sensitive-observer')">🐰 Sensitive Observer</button>
-            <button class="profile-tab" onclick="showProfile('bold-explorer')">🦁 Bold Explorer</button>
-            <button class="profile-tab" onclick="showProfile('big-picture')">🚀 Big Picture Thinker</button>
-        </div>
+   <!-- Main Tool -->
+   <main class="tool-main">
+      <div class="container">
 
-        <div class="bg-white/50 backdrop-blur-sm rounded-3xl p-4 md:p-8 border border-white shadow-xl">
-            
-            <div class="accommodations-panel active" id="panel-intense-feeler">
-                <div class="mb-10 bg-gradient-to-r from-orange-50 to-red-50 p-8 rounded-2xl border-l-4 border-orange-400">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🔥 Intense Feeler Supports</h2>
-                    <p class="text-gray-600">Focus on emotional regulation, transition warnings, and safe recovery spaces.</p>
-                </div>
+         <!-- Profile Tabs -->
+         <div class="profile-tabs-wrapper">
+            <div class="profile-tabs-label">Select your child's brain profile:</div>
+            <div class="profile-tabs">
+               <button class="profile-tab active" data-profile="intense-feeler" onclick="showProfile('intense-feeler', this)">
+                  <span class="emoji">🔥</span> Intense Feeler
+               </button>
+               <button class="profile-tab" data-profile="reluctant-starter" onclick="showProfile('reluctant-starter', this)">
+                  <span class="emoji">🐢</span> Reluctant Starter
+               </button>
+               <button class="profile-tab" data-profile="deep-diver" onclick="showProfile('deep-diver', this)">
+                  <span class="emoji">🔭</span> Deep Diver
+               </button>
+               <button class="profile-tab" data-profile="sensitive-observer" onclick="showProfile('sensitive-observer', this)">
+                  <span class="emoji">🐰</span> Sensitive Observer
+               </button>
+               <button class="profile-tab" data-profile="bold-explorer" onclick="showProfile('bold-explorer', this)">
+                  <span class="emoji">🦁</span> Bold Explorer
+               </button>
+               <button class="profile-tab" data-profile="big-picture" onclick="showProfile('big-picture', this)">
+                  <span class="emoji">🚀</span> Big Picture
+               </button>
+            </div>
+         </div>
 
-                <div class="space-y-12">
-                    <section>
-                        <h3 class="text-lg font-bold font-heading text-sage uppercase tracking-wider mb-6 pb-2 border-b-2 border-sage/20">Emotional Regulation</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">Access to Calm-Down Space</h4>
-                                    <p class="text-sm text-gray-500">A designated quiet area the student can access autonomously when overwhelmed.</p>
-                                </div>
-                            </label>
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">Signal System for Distress</h4>
-                                    <p class="text-sm text-gray-500">Non-verbal way (card or hand signal) to communicate a need for help without drawing peer attention.</p>
-                                </div>
-                            </label>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h3 class="text-lg font-bold font-heading text-sage uppercase tracking-wider mb-6 pb-2 border-b-2 border-sage/20">Testing & Assignments</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">Option to Retake After Recovery</h4>
-                                    <p class="text-sm text-gray-500">Opportunity to demonstrate knowledge once the nervous system has returned to baseline.</p>
-                                </div>
-                            </label>
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">Separate Testing Location</h4>
-                                    <p class="text-sm text-gray-500">Low-stimulation environment to prevent sensory triggers during high-stakes work.</p>
-                                </div>
-                            </label>
-                        </div>
-                    </section>
-                </div>
+         <!-- Intense Feeler Panel -->
+         <div class="accommodations-panel active" id="panel-intense-feeler">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🔥</div>
+               <div>
+                  <h2>Intense Feeler Accommodations</h2>
+                  <p>For children who experience emotions intensely and may need support with regulation, transitions, and managing frustration when things don't go as expected.</p>
+               </div>
             </div>
 
-            <div class="accommodations-panel" id="panel-reluctant-starter">
-                <div class="mb-10 bg-gradient-to-r from-green-50 to-sage/10 p-8 rounded-2xl border-l-4 border-sage">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🐢 Reluctant Starter Supports</h2>
-                    <p class="text-gray-600">Focus on task initiation, chunking, and reducing blank-page paralysis.</p>
-                </div>
-                <div class="space-y-12">
-                    <section>
-                        <h3 class="text-lg font-bold font-heading text-sage uppercase tracking-wider mb-6 pb-2 border-b-2 border-sage/20">Task Initiation</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">First-Step Prompting</h4>
-                                    <p class="text-sm text-gray-500">Teacher provides a specific cue or "anchor sentence" to help the student begin writing.</p>
-                                </div>
-                            </label>
-                            <label class="accommodation-card">
-                                <input type="checkbox">
-                                <div>
-                                    <h4 class="font-bold text-navy">Graphic Organizers</h4>
-                                    <p class="text-sm text-gray-500">Pre-made templates to provide structure before independent work starts.</p>
-                                </div>
-                            </label>
-                        </div>
-                    </section>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">💚</div>
+                  <h3>Emotional Regulation</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Access to calm-down space|Designated quiet area student can access when overwhelmed">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Access to calm-down space</h4>
+                        <p>Designated quiet area student can access when overwhelmed</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Breaks for emotional regulation|Scheduled or as-needed breaks to use coping strategies">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Breaks for emotional regulation</h4>
+                        <p>Scheduled or as-needed breaks to use coping strategies</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Signal system for distress|Non-verbal way to communicate need for help (card, hand signal)">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Signal system for distress</h4>
+                        <p>Non-verbal way to communicate need for help (card, hand signal)</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Check-ins with trusted adult|Regular brief meetings with counselor or teacher">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Check-ins with trusted adult</h4>
+                        <p>Regular brief meetings with counselor or teacher</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Emotional vocabulary support|Teaching and prompting feeling words">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Emotional vocabulary support</h4>
+                        <p>Teaching and prompting feeling words to identify emotions</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Cool-down protocol|Agreed-upon steps when escalation begins">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Cool-down protocol</h4>
+                        <p>Agreed-upon steps when escalation begins</p>
+                     </div>
+                  </label>
+               </div>
             </div>
 
-            <div class="accommodations-panel" id="panel-deep-diver">
-                <div class="mb-10 bg-slate-50 p-8 rounded-2xl border-l-4 border-navy">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🦉 Deep Diver Supports</h2>
-                    <p class="text-gray-600">Focus on closure time, interest-based projects, and curriculum compacting.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <label class="accommodation-card">
-                        <input type="checkbox">
-                        <div>
-                            <h4 class="font-bold text-navy">Transition Closure Time</h4>
-                            <p class="text-sm text-gray-500">Allowing 2-3 minutes to reach a logical stopping point before switching subjects.</p>
-                        </div>
-                    </label>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">📝</div>
+                  <h3>Testing & Assignments</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Extended time when frustrated|Additional time when emotional state affects performance">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Extended time when frustrated</h4>
+                        <p>Additional time when emotional state affects performance</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Option to retake after meltdown|Opportunity to demonstrate knowledge after recovering">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Option to retake after meltdown</h4>
+                        <p>Opportunity to demonstrate knowledge after recovering</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Separate testing location|Reduced stimulation environment for assessments">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Separate testing location</h4>
+                        <p>Reduced stimulation environment for assessments</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Modified grading during crisis|Flexibility during documented difficult periods">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Modified grading during crisis</h4>
+                        <p>Flexibility during documented difficult periods</p>
+                     </div>
+                  </label>
+               </div>
             </div>
 
-            <div class="accommodations-panel" id="panel-sensitive-observer">
-                <div class="mb-10 bg-blue-50 p-8 rounded-2xl border-l-4 border-blue-400">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🐰 Sensitive Observer Supports</h2>
-                    <p class="text-gray-600">Focus on sensory environment, lighting, and social safety.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <label class="accommodation-card">
-                        <input type="checkbox">
-                        <div>
-                            <h4 class="font-bold text-navy">Noise-Canceling Headphones</h4>
-                            <p class="text-sm text-gray-500">Permitted use during independent work or high-volume school events.</p>
-                        </div>
-                    </label>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🔄</div>
+                  <h3>Transitions & Environment</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Advance notice of changes|Warning before schedule changes or unexpected events">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Advance notice of changes</h4>
+                        <p>Warning before schedule changes or unexpected events</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Transition warnings|5-minute and 2-minute warnings before activity changes">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Transition warnings</h4>
+                        <p>5-minute and 2-minute warnings before activity changes</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Preferential seating|Near door, away from triggers, or near calming influence">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Preferential seating</h4>
+                        <p>Near door, away from triggers, or near calming influence</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Fidget tools permitted|Access to stress balls, fidget toys for self-regulation">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Fidget tools permitted</h4>
+                        <p>Access to stress balls, fidget toys for self-regulation</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+         </div>
+
+         <!-- Reluctant Starter Panel -->
+         <div class="accommodations-panel" id="panel-reluctant-starter">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🐢</div>
+               <div>
+                  <h2>Reluctant Starter Accommodations</h2>
+                  <p>For children who struggle with task initiation, often due to overwhelm, perfectionism, or executive function challenges that make getting started feel impossible.</p>
+               </div>
             </div>
 
-            <div class="accommodations-panel" id="panel-bold-explorer">
-                <div class="mb-10 bg-amber-50 p-8 rounded-2xl border-l-4 border-amber-400">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🦁 Bold Explorer Supports</h2>
-                    <p class="text-gray-600">Focus on movement breaks, leadership roles, and standing desks.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <label class="accommodation-card">
-                        <input type="checkbox">
-                        <div>
-                            <h4 class="font-bold text-navy">Movement Breaks</h4>
-                            <p class="text-sm text-gray-500">Scheduled opportunities to move, stretch, or perform a "heavy work" errand.</p>
-                        </div>
-                    </label>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🚀</div>
+                  <h3>Task Initiation</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Chunked assignments|Large tasks broken into smaller, manageable steps">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Chunked assignments</h4>
+                        <p>Large tasks broken into smaller, manageable steps</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="First-step prompts|Teacher cue to help get started on tasks">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>First-step prompts</h4>
+                        <p>Teacher cue to help get started on tasks</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Graphic organizers provided|Pre-made templates to reduce blank-page paralysis">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Graphic organizers provided</h4>
+                        <p>Pre-made templates to reduce blank-page paralysis</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Body double / work partner|Working alongside a peer to maintain momentum">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Body double / work partner</h4>
+                        <p>Working alongside a peer to maintain momentum</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Sentence starters provided|First few words given to overcome blank-page paralysis">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Sentence starters provided</h4>
+                        <p>First few words given to overcome blank-page paralysis</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Planning time before tasks|Dedicated time to organize approach before starting">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Planning time before tasks</h4>
+                        <p>Dedicated time to organize approach before starting</p>
+                     </div>
+                  </label>
+               </div>
             </div>
 
-            <div class="accommodations-panel" id="panel-big-picture">
-                <div class="mb-10 bg-purple-50 p-8 rounded-2xl border-l-4 border-purple-400">
-                    <h2 class="text-2xl font-bold font-heading text-navy mb-2">🚀 Big Picture Thinker Supports</h2>
-                    <p class="text-gray-600">Focus on step-by-step instructions and oral response options.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <label class="accommodation-card">
-                        <input type="checkbox">
-                        <div>
-                            <h4 class="font-bold text-navy">Written Step-by-Step Instructions</h4>
-                            <p class="text-sm text-gray-500">Breaking multi-step oral directions into a numbered checklist on the desk.</p>
-                        </div>
-                    </label>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">⏰</div>
+                  <h3>Time & Deadlines</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Extended time on assignments|Additional time to complete work (1.5x or 2x)">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Extended time on assignments</h4>
+                        <p>Additional time to complete work (1.5x or 2x)</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Flexible deadlines|Ability to negotiate due dates in advance">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Flexible deadlines</h4>
+                        <p>Ability to negotiate due dates in advance</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="No penalty for late work|Focus on mastery rather than timeliness">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>No penalty for late work</h4>
+                        <p>Focus on mastery rather than timeliness</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Visual timer access|Timer to make time passage visible">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Visual timer access</h4>
+                        <p>Timer to make time passage visible</p>
+                     </div>
+                  </label>
+               </div>
             </div>
 
-        </div>
-
-        <div class="mt-16 bg-navy rounded-3xl p-10 text-center text-white shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-terracotta/10 rounded-full -mr-32 -mt-32"></div>
-            <div class="relative z-10">
-                <h3 class="text-2xl font-bold font-heading mb-4">Export Your Selected List</h3>
-                <p class="text-cream/70 mb-8 max-w-xl mx-auto">Take these ideas to your school team. You can copy them to your notes or print them directly.</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button onclick="exportAccommodations()" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-8 py-3 rounded-xl transition-all">Copy to Clipboard</button>
-                    <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-3 rounded-xl transition-all">Print List</button>
-                </div>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">📚</div>
+                  <h3>Homework</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Reduced homework quantity|Quality over quantity (odd problems only, etc.)">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Reduced homework quantity</h4>
+                        <p>Quality over quantity (odd problems only, etc.)</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Modified homework expectations|Alternative ways to demonstrate learning">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Modified homework expectations</h4>
+                        <p>Alternative ways to demonstrate learning</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Homework agenda check|Teacher verifies assignments are written down">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Homework agenda check</h4>
+                        <p>Teacher verifies assignments are written down</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Parent communication system|Regular updates on missing/upcoming work">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Parent communication system</h4>
+                        <p>Regular updates on missing/upcoming work</p>
+                     </div>
+                  </label>
+               </div>
             </div>
-        </div>
+         </div>
 
-    </main>
+         <!-- Deep Diver Panel -->
+         <div class="accommodations-panel" id="panel-deep-diver">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🔭</div>
+               <div>
+                  <h2>Deep Diver Accommodations</h2>
+                  <p>For children who hyperfocus on interests and may struggle with transitions, non-preferred tasks, and cognitive flexibility when asked to shift gears.</p>
+               </div>
+            </div>
 
-    <footer id="footer-placeholder"></footer>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🔄</div>
+                  <h3>Transitions</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Transition warnings|Multiple warnings before activity changes (10, 5, 2 min)">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Transition warnings</h4>
+                        <p>Multiple warnings before activity changes (10, 5, 2 min)</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Closure time before transitions|Time to reach stopping point before switching">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Closure time before transitions</h4>
+                        <p>Time to reach stopping point before switching</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Visual schedule|Posted schedule showing activity sequence">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Visual schedule</h4>
+                        <p>Posted schedule showing activity sequence</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Transition object permitted|Comfort item during difficult transitions">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Transition object permitted</h4>
+                        <p>Comfort item during difficult transitions</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
 
-    <script src="/js/components.js"></script>
-    <script>
-        function showProfile(profile) {
-            // Update tabs
-            document.querySelectorAll('.profile-tab').forEach(tab => tab.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">⭐</div>
+                  <h3>Engagement & Interest</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Interest-based projects|Connect assignments to special interests when possible">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Interest-based projects</h4>
+                        <p>Connect assignments to special interests when possible</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Enrichment opportunities|Advanced content in areas of strength">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Enrichment opportunities</h4>
+                        <p>Advanced content in areas of strength</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Curriculum compacting|Test out of mastered material for enrichment time">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Curriculum compacting</h4>
+                        <p>Test out of mastered material for enrichment time</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Expert role opportunities|Chance to share knowledge with peers">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Expert role opportunities</h4>
+                        <p>Chance to share knowledge with peers</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Passion project time|Scheduled time for independent exploration">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Passion project time</h4>
+                        <p>Scheduled time for independent exploration</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Depth over breadth option|Go deep on fewer topics rather than surface on many">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Depth over breadth option</h4>
+                        <p>Go deep on fewer topics rather than surface on many</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+         </div>
 
-            // Update panels
-            document.querySelectorAll('.accommodations-panel').forEach(panel => panel.classList.remove('active'));
-            document.getElementById('panel-' + profile).classList.add('active');
-        }
+         <!-- Sensitive Observer Panel -->
+         <div class="accommodations-panel" id="panel-sensitive-observer">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🐰</div>
+               <div>
+                  <h2>Sensitive Observer Accommodations</h2>
+                  <p>For children who are deeply affected by sensory input, social dynamics, and environmental factors — often noticing things others miss.</p>
+               </div>
+            </div>
 
-        function exportAccommodations() {
-            const checked = document.querySelectorAll('input:checked');
-            let text = "SELECTED ACCOMMODATIONS FOR MY CHILD\n====================================\n\n";
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🎧</div>
+                  <h3>Sensory Environment</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Noise-canceling headphones|For independent work and overwhelming situations">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Noise-canceling headphones</h4>
+                        <p>For independent work and overwhelming situations</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Preferential seating|Away from noise, lights, high-traffic areas">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Preferential seating</h4>
+                        <p>Away from noise, lights, high-traffic areas</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Sensory breaks|Access to calm space or sensory tools as needed">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Sensory breaks</h4>
+                        <p>Access to calm space or sensory tools as needed</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Modified lighting permitted|Sunglasses, hat, or adjusted seat away from lights">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Modified lighting permitted</h4>
+                        <p>Sunglasses, hat, or adjusted seat away from lights</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Flexible dress code|Accommodations for clothing sensitivities">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Flexible dress code</h4>
+                        <p>Accommodations for clothing sensitivities</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Scent-free zone|Area free from perfumes, cleaners, strong odors">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Scent-free zone</h4>
+                        <p>Area free from perfumes, cleaners, strong odors</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
 
-            checked.forEach(checkbox => {
-                const card = checkbox.closest('.accommodation-card');
-                const title = card.querySelector('h4').textContent;
-                const desc = card.querySelector('p').textContent;
-                text += `• ${title}: ${desc}\n\n`;
-            });
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">👥</div>
+                  <h3>Social & Participation</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Alternative to oral presentations|Written, recorded, or small-group options">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Alternative to oral presentations</h4>
+                        <p>Written, recorded, or small-group options</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Opt-out from assemblies|Alternative location during overwhelming events">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Opt-out from assemblies</h4>
+                        <p>Alternative location during overwhelming events</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Partner/group choice|Input on groupings for collaborative work">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Partner/group choice</h4>
+                        <p>Input on groupings for collaborative work</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Safe lunch seating|Option for quieter eating environment">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Safe lunch seating</h4>
+                        <p>Option for quieter eating environment</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Processing time before responding|Extra wait time when called on">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Processing time before responding</h4>
+                        <p>Extra wait time when called on</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Written vs. verbal instructions|Get directions in writing, not just spoken">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Written vs. verbal instructions</h4>
+                        <p>Get directions in writing, not just spoken</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+         </div>
 
-            if (checked.length === 0) {
-                alert("Please select at least one accommodation first.");
-                return;
-            }
+         <!-- Bold Explorer Panel -->
+         <div class="accommodations-panel" id="panel-bold-explorer">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🦁</div>
+               <div>
+                  <h2>Bold Explorer Accommodations</h2>
+                  <p>For children with high energy, risk-taking tendencies, and a need for movement and stimulation — who learn best by doing.</p>
+               </div>
+            </div>
 
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Accommodations copied to clipboard!');
-            });
-        }
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🏃</div>
+                  <h3>Movement & Energy</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Movement breaks|Scheduled opportunities to move throughout the day">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Movement breaks</h4>
+                        <p>Scheduled opportunities to move throughout the day</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Standing desk option|Alternative to seated work">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Standing desk option</h4>
+                        <p>Alternative to seated work</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Errand helper role|Legitimate reasons to move around school">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Errand helper role</h4>
+                        <p>Legitimate reasons to move around school</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Fidget tools permitted|Movement aids that don't distract others">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Fidget tools permitted</h4>
+                        <p>Movement aids that don't distract others</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Flexible seating|Wobble chair, exercise ball, or floor options">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Flexible seating</h4>
+                        <p>Wobble chair, exercise ball, or floor options</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Hands-on learning prioritized|Active, tactile learning approaches">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Hands-on learning prioritized</h4>
+                        <p>Active, tactile learning approaches</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
 
-        // Task 5: Dynamic Name Loading (Skipped per request, but kept placeholder logic for span)
-        function loadProfileData() {
-           try {
-              const data = JSON.parse(localStorage.getItem('quizProfile'));
-              if (data && data.childName && data.childName !== 'Your child') {
-                 document.querySelectorAll('.dynamic-child-name').forEach(el => {
-                    el.textContent = data.childName;
-                 });
-              }
-           } catch (e) {
-              console.log('No quiz profile found');
-           }
-        }
-        document.addEventListener('DOMContentLoaded', loadProfileData);
-    </script>
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">🎯</div>
+                  <h3>Behavior & Choices</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Positive behavior support plan|Focus on teaching replacement behaviors">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Positive behavior support plan</h4>
+                        <p>Focus on teaching replacement behaviors</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Choice in assignments|Options to maintain engagement">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Choice in assignments</h4>
+                        <p>Options to maintain engagement</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Leadership opportunities|Constructive outlets for take-charge energy">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Leadership opportunities</h4>
+                        <p>Constructive outlets for take-charge energy</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Clear, consistent expectations|Written rules and predictable consequences">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Clear, consistent expectations</h4>
+                        <p>Written rules and predictable consequences</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Safe risk-taking outlets|Appropriate challenges and physical activities">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Safe risk-taking outlets</h4>
+                        <p>Appropriate challenges and physical activities</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Immediate feedback|Quick, frequent check-ins on performance">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Immediate feedback</h4>
+                        <p>Quick, frequent check-ins on performance</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+         </div>
+
+         <!-- Big Picture Panel -->
+         <div class="accommodations-panel" id="panel-big-picture">
+            <div class="panel-intro">
+               <div class="panel-intro-icon">🚀</div>
+               <div>
+                  <h2>Big Picture Thinker Accommodations</h2>
+                  <p>For children who think conceptually and see connections others miss — but may struggle with details, sequential steps, and execution.</p>
+               </div>
+            </div>
+
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">📋</div>
+                  <h3>Organization & Planning</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Step-by-step instructions|Written steps for multi-part tasks">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Step-by-step instructions</h4>
+                        <p>Written steps for multi-part tasks</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Graphic organizers|Visual tools to structure thinking">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Graphic organizers</h4>
+                        <p>Visual tools to structure thinking</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Check-ins on long projects|Scheduled progress checks before due date">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Check-ins on long projects</h4>
+                        <p>Scheduled progress checks before due date</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Organization support|Help with materials, locker, backpack systems">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Organization support</h4>
+                        <p>Help with materials, locker, backpack systems</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Color-coded systems|Visual organization by subject or type">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Color-coded systems</h4>
+                        <p>Visual organization by subject or type</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Checklists for routines|Step-by-step guides for repeated processes">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Checklists for routines</h4>
+                        <p>Step-by-step guides for repeated processes</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+
+            <div class="category-section">
+               <div class="category-header">
+                  <div class="category-icon">💡</div>
+                  <h3>Showing Knowledge</h3>
+               </div>
+               <div class="accommodations-grid">
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Alternative assessments|Projects, presentations, verbal responses">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Alternative assessments</h4>
+                        <p>Projects, presentations, verbal responses</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Oral responses for written|Dictate answers when writing is the barrier">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Oral responses for written</h4>
+                        <p>Dictate answers when writing is the barrier</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Credit for process shown|Not just right/wrong, but thinking demonstrated">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Credit for process shown</h4>
+                        <p>Not just right/wrong, but thinking demonstrated</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Separate grades: ideas vs. execution|Distinguish content knowledge from detail work">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Separate grades: ideas vs. execution</h4>
+                        <p>Distinguish content knowledge from detail work</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Spelling/grammar not penalized|Focus on ideas in drafts">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Spelling/grammar not penalized</h4>
+                        <p>Focus on ideas in drafts</p>
+                     </div>
+                  </label>
+                  <label class="accommodation-card" onclick="toggleCard(this)">
+                     <input type="checkbox" name="accommodation" value="Use of technology|Typing, speech-to-text, calculators permitted">
+                     <div class="custom-checkbox">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </div>
+                     <div class="accommodation-text">
+                        <h4>Use of technology</h4>
+                        <p>Typing, speech-to-text, calculators permitted</p>
+                     </div>
+                  </label>
+               </div>
+            </div>
+         </div>
+
+         <!-- Universal Accommodations (always visible) -->
+         <div class="universal-section">
+            <div class="universal-header">
+               <div class="universal-badge">⭐ Applies to All Profiles</div>
+               <h3>Universal Accommodations</h3>
+               <p>These foundational accommodations benefit most twice-exceptional learners regardless of their primary profile.</p>
+            </div>
+            <div class="accommodations-grid">
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Extended time on tests|1.5x or 2x time for all assessments">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Extended time on tests</h4>
+                     <p>1.5x or 2x time for all assessments</p>
+                  </div>
+               </label>
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Preferential seating|Strategic placement for focus and access">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Preferential seating</h4>
+                     <p>Strategic placement for focus and access</p>
+                  </div>
+               </label>
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Copy of notes provided|Teacher or peer notes available">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Copy of notes provided</h4>
+                     <p>Teacher or peer notes available</p>
+                  </div>
+               </label>
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Frequent check-ins|Regular communication between school and home">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Frequent check-ins</h4>
+                     <p>Regular communication between school and home</p>
+                  </div>
+               </label>
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Reduced quantity, maintained rigor|Quality over quantity for assignments">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Reduced quantity, maintained rigor</h4>
+                     <p>Quality over quantity for assignments</p>
+                  </div>
+               </label>
+               <label class="accommodation-card" onclick="toggleCard(this)">
+                  <input type="checkbox" name="accommodation" value="Access to water/snacks|Self-regulation support throughout day">
+                  <div class="custom-checkbox">
+                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="accommodation-text">
+                     <h4>Access to water/snacks</h4>
+                     <p>Self-regulation support throughout day</p>
+                  </div>
+               </label>
+            </div>
+         </div>
+
+         <!-- Export Section -->
+         <div class="export-section">
+            <h3>Ready to Export Your List?</h3>
+            <p>Download or copy your selected accommodations to bring to your next IEP or 504 meeting.</p>
+            <div class="export-buttons">
+               <button class="export-btn export-btn-primary" onclick="exportAccommodations()">
+                  <svg class="export-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  Copy to Clipboard
+               </button>
+               <button class="export-btn export-btn-secondary" onclick="printAccommodations()">
+                  <svg class="export-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                  Print List
+               </button>
+            </div>
+         </div>
+
+         <!-- CTA Section -->
+         <div class="cta-section">
+            <div class="cta-content">
+               <h3>Need Help Advocating for These?</h3>
+               <p>Our IEP Advocacy System gives you scripts, email templates, and step-by-step guides for getting accommodations approved.</p>
+            </div>
+            <a href="/products/" class="cta-button">
+               View IEP System
+               <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+         </div>
+
+      </div>
+   </main>
+
+   <!-- Floating Selection Counter -->
+   <div class="selection-counter" id="selectionCounter">
+      <div class="selection-count">
+         <div class="count-number" id="countNumber">0</div>
+         <div class="count-label">selected</div>
+      </div>
+      <button class="btn btn-primary" onclick="exportAccommodations()">Copy List</button>
+   </div>
+
+   <!-- Toast Notification -->
+   <div class="toast" id="toast">
+      <div class="toast-icon">
+         <svg width="16" height="16" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <span id="toastMessage">Copied to clipboard!</span>
+   </div>
+
+   <div id="footer"></div>
+
+   <script src="/js/components.js"></script>
+   <script>
+      // Track selections
+      let selectedCount = 0;
+
+      function showProfile(profile, button) {
+         // Update tabs
+         document.querySelectorAll('.profile-tab').forEach(tab => tab.classList.remove('active'));
+         button.classList.add('active');
+
+         // Update panels
+         document.querySelectorAll('.accommodations-panel').forEach(panel => panel.classList.remove('active'));
+         document.getElementById('panel-' + profile).classList.add('active');
+      }
+
+      function toggleCard(card) {
+         const checkbox = card.querySelector('input');
+         checkbox.checked = !checkbox.checked;
+         card.classList.toggle('checked', checkbox.checked);
+         updateCounter();
+      }
+
+      function updateCounter() {
+         const checked = document.querySelectorAll('.accommodation-card input:checked');
+         selectedCount = checked.length;
+         
+         const counter = document.getElementById('selectionCounter');
+         const countNumber = document.getElementById('countNumber');
+         
+         countNumber.textContent = selectedCount;
+         
+         if (selectedCount > 0) {
+            counter.classList.add('visible');
+         } else {
+            counter.classList.remove('visible');
+         }
+      }
+
+      function showToast(message) {
+         const toast = document.getElementById('toast');
+         const toastMessage = document.getElementById('toastMessage');
+         toastMessage.textContent = message;
+         toast.classList.add('show');
+         
+         setTimeout(() => {
+            toast.classList.remove('show');
+         }, 3000);
+      }
+
+      function exportAccommodations() {
+         const checked = document.querySelectorAll('.accommodation-card input:checked');
+         
+         if (checked.length === 0) {
+            showToast('No accommodations selected yet');
+            return;
+         }
+
+         let text = "IEP/504 ACCOMMODATIONS REQUEST\n";
+         text += "Generated by Navigator Kids AI\n";
+         text += "================================\n\n";
+         text += `${checked.length} accommodations selected:\n\n`;
+
+         checked.forEach((checkbox, index) => {
+            const [title, desc] = checkbox.value.split('|');
+            text += `${index + 1}. ${title}\n`;
+            text += `   ${desc}\n\n`;
+         });
+
+         text += "================================\n";
+         text += "Learn more at navigatorkidsai.com";
+
+         navigator.clipboard.writeText(text).then(() => {
+            showToast(`${checked.length} accommodations copied!`);
+         }).catch(() => {
+            showToast('Could not copy. Please try again.');
+         });
+      }
+
+      function printAccommodations() {
+         window.print();
+      }
+
+      // Initialize - restore any checked states
+      document.addEventListener('DOMContentLoaded', function() {
+         updateCounter();
+      });
+   </script>
 </body>
+
 </html>
