@@ -71,7 +71,15 @@
             icon: '🕵️',
             downloadUrl: '/downloads/systems/junior-agent-workbook.pdf'
         },
-
+       
+        'prod-service-battleplan': {
+           id: 'prod-service-battleplan',
+           name: 'The IEP Battle Plan',
+           price: 497.00,
+           icon: '🛡️',
+           isService: true,
+           stripePrice: 'price_1SvvZ6Ax6JDn4AuASL4rewfj'
+        },
         // === ACTIVITY PACKETS ($9 FIX) ===
         'prod-packet-bravely': { id: 'prod-packet-bravely', name: 'Pack: Bravely the Lion', price: 9.00, icon: '🦁', downloadUrl: '/downloads/activity-packets/bravely-kit.zip' },
         'prod-packet-cosmo': { id: 'prod-packet-cosmo', name: 'Pack: Cosmo Space Pup', price: 9.00, icon: '🚀', downloadUrl: '/downloads/activity-packets/cosmo-kit.zip' },
