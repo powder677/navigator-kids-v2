@@ -91,6 +91,10 @@ function injectHeader() {
     const placeholder = document.getElementById('header');
     if (placeholder) {
         placeholder.innerHTML = headerHTML;
+        /* ── FIX #1: Add .loaded class so header becomes visible ──
+           The CSS rule `#header { opacity: 0 }` / `#header.loaded { opacity: 1 }`
+           requires this class to be added after content is injected. */
+        placeholder.classList.add('loaded');
     } else {
         if(!document.querySelector('nav#navbar')) {
             document.body.insertAdjacentHTML('afterbegin', headerHTML);
@@ -313,14 +317,20 @@ function personalizeSite() {
    'use strict';
 
    // ── CONFIG ──
-   const BP_URL = '/iep/battle-plan/';
+   /* FIX #3: Changed from '/iep/battle-plan/' (which 404'd) to '/iep/'
+      since the Battle Plan sales page IS /iep/index.html */
+   const BP_URL = '/iep/';
    const BP_PRICE = '$497';
    
-   // Only show on /iep/ pages (not on the battle plan page itself)
+   // Only show on /iep/ sub-pages (not on the battle plan sales page itself)
    const currentPath = window.location.pathname;
    if (!currentPath.startsWith('/iep/')) return;
    if (currentPath.includes('/battle-plan')) return;
    if (document.body.classList.contains('no-bp-cta')) return;
+
+   /* FIX #3 (cont.): Don't show the "Get Your Battle Plan" CTA on the
+      Battle Plan sales page itself (/iep/ or /iep/index.html) */
+   if (currentPath === '/iep/' || currentPath === '/iep/index.html') return;
 
    // ── STYLES ──
    const style = document.createElement('style');
