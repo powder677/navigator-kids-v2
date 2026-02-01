@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- ===================== -->
-  <!-- MAIN PAGES -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/</loc>
     <changefreq>weekly</changefreq>
@@ -65,9 +62,87 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- ===================== -->
-  <!-- QUIZ RESULT PAGES -->
-  <!-- ===================== -->
+  <url>
+    <loc>https://navigatorkidsai.com/iep/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/what-is-an-iep/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/iep-vs-504/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/how-to-prepare-for-an-iep-meeting/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/iep-meeting-checklist/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/iep-meeting-questions/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/after-the-iep-meeting/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/common-school-tactics/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/california/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/florida/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/illinois/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/new-jersey/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/new-york/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/pennsylvania/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navigatorkidsai.com/iep/states/texas/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://navigatorkidsai.com/results/intense-feeler/</loc>
     <changefreq>monthly</changefreq>
@@ -99,9 +174,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ===================== -->
-  <!-- FREE TOOLS / LEAD MAGNETS -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/free/de-escalation-kit/</loc>
     <changefreq>monthly</changefreq>
@@ -118,9 +190,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ===================== -->
-  <!-- TOOLS -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/tools/accommodations/</loc>
     <changefreq>monthly</changefreq>
@@ -146,11 +215,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-   </url>
 
-  <!-- ===================== -->
-  <!-- PRODUCTS - ACTIVITY PACKETS -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/products/activity-packets/</loc>
     <changefreq>monthly</changefreq>
@@ -192,9 +257,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ===================== -->
-  <!-- PRODUCTS - AI PROMPTS -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/products/ai-prompts/</loc>
     <changefreq>monthly</changefreq>
@@ -231,9 +293,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- ===================== -->
-  <!-- RESOURCES / ARTICLES -->
-  <!-- ===================== -->
   <url>
     <loc>https://navigatorkidsai.com/resources/emotional-intensity/</loc>
     <changefreq>monthly</changefreq>
