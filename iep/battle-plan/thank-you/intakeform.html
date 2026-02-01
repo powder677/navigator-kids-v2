@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Complete your IEP Battle Plan intake assessment. Your answers power your personalized heat map, meeting script, and strategy session.">
+   <title>Your Battle Plan Assessment | Navigator Kids AI™</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+   <link rel="stylesheet" href="/css/styles.css">
+   <script src="/js/components.js" defer></script>
+
+   <style>
+      :root {
+         --f-navy: #1a2744;
+         --f-navy-light: #2a3d5e;
+         --f-gold: #d4a853;
+         --f-gold-light: #f5e6c4;
+         --f-gold-bg: #fdf8ef;
+         --f-cream: #faf6f0;
+         --f-white: #ffffff;
+         --f-text: #2c3e50;
+         --f-text-light: #636e72;
+         --f-text-muted: #95a5a6;
+         --f-border: #e0d6ca;
+         --f-border-focus: #d4a853;
+         --f-green: #27ae60;
+         --f-green-soft: #eafaf1;
+         --f-red: #c0392b;
+         --f-red-soft: #fdf0ee;
+         --f-radius: 10px;
+      }
+
+      * { box-sizing: border-box; }
+
+      .intake-page {
+         background: var(--f-cream);
+         min-height: 100vh;
+      }
+
+      /* ─── TOP BAR ─── */
+      .intake-topbar {
+         background: var(--f-navy);
+         padding: 1rem 1.5rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+      .intake-topbar .brand {
+         font-family: 'Merriweather', serif;
+         font-size: 0.95rem;
+         color: var(--f-gold);
+         font-weight: 700;
+         text-decoration: none;
+      }
+      .intake-topbar .save-indicator {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.75rem;
+         color: rgba(255,255,255,0.4);
+         display: flex;
+         align-items: center;
+         gap: 0.4rem;
+      }
+      .intake-topbar .save-dot {
+         width: 6px; height: 6px;
+         border-radius: 50%;
+         background: var(--f-green);
+         display: inline-block;
+      }
+
+      /* ─── PROGRESS ─── */
+      .intake-progress {
+         background: var(--f-white);
+         border-bottom: 1px solid var(--f-border);
+         padding: 1.25rem 1.5rem;
+         position: sticky;
+         top: 0;
+         z-index: 100;
+      }
+      .progress-inner {
+         max-width: 680px;
+         margin: 0 auto;
+      }
+      .progress-meta {
+         display: flex;
+         justify-content: space-between;
+         align-items: baseline;
+         margin-bottom: 0.6rem;
+      }
+      .progress-step-label {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.78rem;
+         font-weight: 600;
+         color: var(--f-navy);
+         text-transform: uppercase;
+         letter-spacing: 0.06em;
+      }
+      .progress-count {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.75rem;
+         color: var(--f-text-muted);
+      }
+      .progress-track {
+         height: 6px;
+         background: #eee;
+         border-radius: 3px;
+         overflow: hidden;
+      }
+      .progress-fill {
+         height: 100%;
+         background: linear-gradient(90deg, var(--f-gold), #e6be6a);
+         border-radius: 3px;
+         transition: width 0.5s ease;
+      }
+
+      /* ─── FORM CONTAINER ─── */
+      .intake-body {
+         max-width: 680px;
+         margin: 0 auto;
+         padding: 2.5rem 1.5rem 6rem;
+      }
+
+      /* ─── STEP ─── */
+      .form-step {
+         display: none;
+         animation: stepIn 0.35s ease;
+      }
+      .form-step.active {
+         display: block;
+      }
+      @keyframes stepIn {
+         from { opacity: 0; transform: translateY(12px); }
+         to { opacity: 1; transform: translateY(0); }
+      }
+      .step-header {
+         margin-bottom: 2rem;
+      }
+      .step-header h2 {
+         font-family: 'Merriweather', serif;
+         font-size: 1.5rem;
+         color: var(--f-navy);
+         margin: 0 0 0.5rem;
+         line-height: 1.35;
+      }
+      .step-header p {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.9rem;
+         color: var(--f-text-light);
+         margin: 0;
+         line-height: 1.6;
+      }
+      .step-context {
+         background: var(--f-gold-bg);
+         border-left: 3px solid var(--f-gold);
+         border-radius: 0 var(--f-radius) var(--f-radius) 0;
+         padding: 1rem 1.25rem;
+         margin-bottom: 2rem;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.85rem;
+         line-height: 1.6;
+         color: var(--f-text);
+      }
+      .step-context strong { color: var(--f-navy); }
+
+      /* ─── FORM FIELDS ─── */
+      .field-group {
+         margin-bottom: 1.5rem;
+      }
+      .field-row {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 1rem;
+      }
+      @media (max-width: 500px) {
+         .field-row { grid-template-columns: 1fr; }
+      }
+      .field-group label {
+         display: block;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.82rem;
+         font-weight: 600;
+         color: var(--f-navy);
+         margin-bottom: 0.4rem;
+      }
+      .field-group label .required {
+         color: var(--f-red);
+         margin-left: 2px;
+      }
+      .field-group label .optional {
+         font-weight: 400;
+         color: var(--f-text-muted);
+         font-size: 0.75rem;
+      }
+      .field-group input[type="text"],
+      .field-group input[type="email"],
+      .field-group input[type="tel"],
+      .field-group input[type="date"],
+      .field-group input[type="number"],
+      .field-group select,
+      .field-group textarea {
+         width: 100%;
+         padding: 0.75rem 1rem;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.9rem;
+         color: var(--f-text);
+         background: var(--f-white);
+         border: 1.5px solid var(--f-border);
+         border-radius: var(--f-radius);
+         outline: none;
+         transition: border-color 0.2s, box-shadow 0.2s;
+         -webkit-appearance: none;
+      }
+      .field-group input:focus,
+      .field-group select:focus,
+      .field-group textarea:focus {
+         border-color: var(--f-border-focus);
+         box-shadow: 0 0 0 3px rgba(212,168,83,0.12);
+      }
+      .field-group textarea {
+         min-height: 100px;
+         resize: vertical;
+         line-height: 1.6;
+      }
+      .field-group select {
+         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23636e72' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+         background-repeat: no-repeat;
+         background-position: right 1rem center;
+         padding-right: 2.5rem;
+      }
+      .field-hint {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.75rem;
+         color: var(--f-text-muted);
+         margin-top: 0.3rem;
+         line-height: 1.5;
+      }
+      .field-error {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.75rem;
+         color: var(--f-red);
+         margin-top: 0.3rem;
+         display: none;
+      }
+      .field-group.has-error input,
+      .field-group.has-error select,
+      .field-group.has-error textarea {
+         border-color: var(--f-red);
+      }
+      .field-group.has-error .field-error {
+         display: block;
+      }
+
+      /* ─── RADIO / CHECKBOX GROUPS ─── */
+      .choice-group {
+         margin-bottom: 1.5rem;
+      }
+      .choice-group .choice-label {
+         display: block;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.82rem;
+         font-weight: 600;
+         color: var(--f-navy);
+         margin-bottom: 0.75rem;
+         line-height: 1.5;
+      }
+      .choice-options {
+         display: flex;
+         flex-direction: column;
+         gap: 0.5rem;
+      }
+      .choice-option {
+         display: flex;
+         align-items: flex-start;
+         gap: 0.65rem;
+         background: var(--f-white);
+         border: 1.5px solid var(--f-border);
+         border-radius: var(--f-radius);
+         padding: 0.85rem 1rem;
+         cursor: pointer;
+         transition: border-color 0.15s, background 0.15s;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.88rem;
+         color: var(--f-text);
+         line-height: 1.5;
+      }
+      .choice-option:hover {
+         border-color: var(--f-gold);
+         background: var(--f-gold-bg);
+      }
+      .choice-option input {
+         margin-top: 3px;
+         flex-shrink: 0;
+         accent-color: var(--f-gold);
+      }
+      .choice-option.selected {
+         border-color: var(--f-gold);
+         background: var(--f-gold-bg);
+      }
+
+      /* ─── SCALE / LIKERT ─── */
+      .scale-group {
+         margin-bottom: 1.75rem;
+      }
+      .scale-group .scale-label {
+         display: block;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.85rem;
+         font-weight: 500;
+         color: var(--f-text);
+         margin-bottom: 0.75rem;
+         line-height: 1.5;
+      }
+      .scale-options {
+         display: flex;
+         gap: 0;
+         border: 1.5px solid var(--f-border);
+         border-radius: var(--f-radius);
+         overflow: hidden;
+      }
+      .scale-btn {
+         flex: 1;
+         padding: 0.65rem 0.25rem;
+         text-align: center;
+         background: var(--f-white);
+         border: none;
+         border-right: 1px solid var(--f-border);
+         cursor: pointer;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.72rem;
+         font-weight: 500;
+         color: var(--f-text-light);
+         transition: all 0.15s;
+         line-height: 1.3;
+      }
+      .scale-btn:last-child { border-right: none; }
+      .scale-btn:hover { background: var(--f-gold-bg); }
+      .scale-btn.selected {
+         background: var(--f-gold);
+         color: var(--f-navy);
+         font-weight: 700;
+      }
+
+      /* ─── SECTION DIVIDER ─── */
+      .section-divider {
+         border: none;
+         border-top: 1px solid var(--f-border);
+         margin: 2rem 0;
+      }
+
+      /* ─── NAVIGATION ─── */
+      .step-nav {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-top: 2.5rem;
+         padding-top: 1.5rem;
+         border-top: 1px solid var(--f-border);
+      }
+      .btn-back {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.88rem;
+         font-weight: 500;
+         color: var(--f-text-light);
+         background: none;
+         border: none;
+         cursor: pointer;
+         padding: 0.65rem 1.25rem;
+         border-radius: var(--f-radius);
+         transition: color 0.15s, background 0.15s;
+      }
+      .btn-back:hover {
+         color: var(--f-navy);
+         background: rgba(0,0,0,0.04);
+      }
+      .btn-next {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.92rem;
+         font-weight: 700;
+         color: var(--f-navy);
+         background: var(--f-gold);
+         border: none;
+         cursor: pointer;
+         padding: 0.85rem 2rem;
+         border-radius: var(--f-radius);
+         transition: all 0.2s;
+         box-shadow: 0 2px 12px rgba(212,168,83,0.2);
+      }
+      .btn-next:hover {
+         transform: translateY(-1px);
+         box-shadow: 0 4px 18px rgba(212,168,83,0.35);
+      }
+      .btn-next:disabled {
+         opacity: 0.5;
+         cursor: not-allowed;
+         transform: none;
+         box-shadow: none;
+      }
+      .btn-submit {
+         font-family: 'Inter', sans-serif;
+         font-size: 1rem;
+         font-weight: 700;
+         color: var(--f-white);
+         background: var(--f-navy);
+         border: none;
+         cursor: pointer;
+         padding: 1rem 2.5rem;
+         border-radius: var(--f-radius);
+         transition: all 0.2s;
+         box-shadow: 0 4px 20px rgba(26,39,68,0.25);
+      }
+      .btn-submit:hover {
+         transform: translateY(-1px);
+         box-shadow: 0 6px 28px rgba(26,39,68,0.35);
+      }
+
+      /* ─── WELCOME STEP ─── */
+      .welcome-card {
+         background: var(--f-white);
+         border-radius: 16px;
+         padding: 2.5rem;
+         box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+         text-align: center;
+         margin-bottom: 2rem;
+      }
+      .welcome-card .welcome-icon {
+         font-size: 3rem;
+         margin-bottom: 1rem;
+      }
+      .welcome-card h1 {
+         font-family: 'Merriweather', serif;
+         font-size: 1.6rem;
+         color: var(--f-navy);
+         margin: 0 0 0.75rem;
+      }
+      .welcome-card p {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.92rem;
+         color: var(--f-text-light);
+         line-height: 1.7;
+         margin: 0 0 1.5rem;
+         max-width: 520px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+      .welcome-checklist {
+         text-align: left;
+         max-width: 420px;
+         margin: 0 auto;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.85rem;
+         line-height: 2.2;
+         color: var(--f-text);
+         list-style: none;
+         padding: 0;
+      }
+      .welcome-checklist li::before {
+         content: '✓ ';
+         color: var(--f-gold);
+         font-weight: 700;
+      }
+      .welcome-time {
+         display: inline-flex;
+         align-items: center;
+         gap: 0.4rem;
+         background: var(--f-gold-bg);
+         border: 1px solid var(--f-gold-light);
+         border-radius: 100px;
+         padding: 0.45rem 1rem;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.78rem;
+         font-weight: 600;
+         color: var(--f-navy);
+         margin-top: 1rem;
+      }
+
+      /* ─── REVIEW STEP ─── */
+      .review-section {
+         background: var(--f-white);
+         border: 1px solid var(--f-border);
+         border-radius: var(--f-radius);
+         padding: 1.5rem;
+         margin-bottom: 1rem;
+      }
+      .review-section h4 {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.8rem;
+         font-weight: 700;
+         text-transform: uppercase;
+         letter-spacing: 0.06em;
+         color: var(--f-gold);
+         margin: 0 0 0.75rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+      .review-section h4 button {
+         font-size: 0.72rem;
+         color: var(--f-text-muted);
+         background: none;
+         border: none;
+         cursor: pointer;
+         text-decoration: underline;
+      }
+      .review-row {
+         display: flex;
+         justify-content: space-between;
+         padding: 0.4rem 0;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.85rem;
+         color: var(--f-text);
+         line-height: 1.5;
+      }
+      .review-row .rlabel {
+         color: var(--f-text-muted);
+         flex-shrink: 0;
+         margin-right: 1rem;
+      }
+      .review-row .rvalue {
+         text-align: right;
+         font-weight: 500;
+      }
+
+      /* ─── CONFIRMATION ─── */
+      .confirmation-card {
+         background: var(--f-white);
+         border-radius: 16px;
+         padding: 3rem 2.5rem;
+         box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+         text-align: center;
+      }
+      .confirmation-card .conf-icon {
+         width: 64px; height: 64px;
+         background: var(--f-green-soft);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 2rem;
+         margin: 0 auto 1.5rem;
+      }
+      .confirmation-card h2 {
+         font-family: 'Merriweather', serif;
+         font-size: 1.5rem;
+         color: var(--f-navy);
+         margin: 0 0 0.75rem;
+      }
+      .confirmation-card p {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.92rem;
+         color: var(--f-text-light);
+         line-height: 1.7;
+         margin: 0 0 1rem;
+      }
+      .conf-timeline {
+         text-align: left;
+         max-width: 440px;
+         margin: 2rem auto 0;
+         font-family: 'Inter', sans-serif;
+         font-size: 0.88rem;
+         color: var(--f-text);
+      }
+      .conf-timeline-item {
+         display: grid;
+         grid-template-columns: 80px 1fr;
+         gap: 1rem;
+         padding: 0.75rem 0;
+         border-bottom: 1px solid var(--f-border);
+      }
+      .conf-timeline-item:last-child { border-bottom: none; }
+      .conf-timeline-item .time {
+         font-weight: 700;
+         color: var(--f-gold);
+         font-size: 0.82rem;
+      }
+   </style>
+</head>
+
+<body class="intake-page">
+
+   <!-- TOP BAR (replaces normal header) -->
+   <div class="intake-topbar">
+      <a href="/" class="brand">Navigator Kids AI™</a>
+      <span class="save-indicator">
+         <span class="save-dot"></span>
+         <span id="saveStatus">Progress auto-saved</span>
+      </span>
+   </div>
+
+   <!-- PROGRESS -->
+   <div class="intake-progress">
+      <div class="progress-inner">
+         <div class="progress-meta">
+            <span class="progress-step-label" id="progressLabel">Getting Started</span>
+            <span class="progress-count" id="progressCount">Step 1 of 8</span>
+         </div>
+         <div class="progress-track">
+            <div class="progress-fill" id="progressFill" style="width:12.5%"></div>
+         </div>
+      </div>
+   </div>
+
+   <!-- FORM -->
+   <div class="intake-body">
+      <form id="intakeForm" novalidate>
+
+      <!-- ═══════ STEP 1: WELCOME + BASICS ═══════ -->
+      <div class="form-step active" data-step="1">
+         <div class="welcome-card">
+            <div class="welcome-icon">🛡️</div>
+            <h1>Let's Build Your Battle Plan</h1>
+            <p>Every answer you give shapes your personalized heat map, meeting script, and strategy session. Be honest, be specific, and don't hold back—this is for your child.</p>
+            <ul class="welcome-checklist">
+               <li>Your answers are 100% confidential</li>
+               <li>Progress saves automatically — close and come back anytime</li>
+               <li>Your Heat Map and materials deliver within 48–72 hours</li>
+               <li>Strategy call scheduled after you submit</li>
+            </ul>
+            <div class="welcome-time">⏱ About 15–20 minutes to complete</div>
+         </div>
+
+         <div class="step-header">
+            <h2>About You & Your Child</h2>
+         </div>
+
+         <div class="field-row">
+            <div class="field-group">
+               <label>Your First Name <span class="required">*</span></label>
+               <input type="text" name="parent_first" required>
+            </div>
+            <div class="field-group">
+               <label>Your Last Name <span class="required">*</span></label>
+               <input type="text" name="parent_last" required>
+            </div>
+         </div>
+
+         <div class="field-row">
+            <div class="field-group">
+               <label>Email <span class="required">*</span></label>
+               <input type="email" name="parent_email" required>
+               <p class="field-hint">We'll send your Battle Plan materials here.</p>
+            </div>
+            <div class="field-group">
+               <label>Phone <span class="required">*</span></label>
+               <input type="tel" name="parent_phone" required>
+               <p class="field-hint">For scheduling your strategy call.</p>
+            </div>
+         </div>
+
+         <hr class="section-divider">
+
+         <div class="field-row">
+            <div class="field-group">
+               <label>Child's First Name <span class="required">*</span></label>
+               <input type="text" name="child_first" required>
+            </div>
+            <div class="field-group">
+               <label>Child's Age <span class="required">*</span></label>
+               <input type="number" name="child_age" min="3" max="21" required>
+            </div>
+         </div>
+
+         <div class="field-row">
+            <div class="field-group">
+               <label>Grade <span class="required">*</span></label>
+               <select name="child_grade" required>
+                  <option value="">Select grade...</option>
+                  <option>Pre-K</option>
+                  <option>Kindergarten</option>
+                  <option>1st</option><option>2nd</option><option>3rd</option>
+                  <option>4th</option><option>5th</option><option>6th</option>
+                  <option>7th</option><option>8th</option><option>9th</option>
+                  <option>10th</option><option>11th</option><option>12th</option>
+               </select>
+            </div>
+            <div class="field-group">
+               <label>State <span class="required">*</span></label>
+               <select name="state" required>
+                  <option value="">Select state...</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+                  <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+                  <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                  <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+                  <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+                  <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                  <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+                  <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+                  <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                  <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+                  <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+                  <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                  <option>Wisconsin</option><option>Wyoming</option><option>Washington D.C.</option>
+               </select>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>School Name <span class="required">*</span></label>
+            <input type="text" name="school_name" required>
+         </div>
+
+         <div class="field-group">
+            <label>School District <span class="optional">(optional)</span></label>
+            <input type="text" name="school_district">
+         </div>
+
+         <div class="step-nav">
+            <span></span>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 2: IEP STATUS & MEETING ═══════ -->
+      <div class="form-step" data-step="2">
+         <div class="step-header">
+            <h2>IEP Status & Upcoming Meeting</h2>
+            <p>This helps us tailor your Battle Plan to exactly where you are in the process.</p>
+         </div>
+
+         <div class="choice-group">
+            <label class="choice-label">Where are you in the IEP process? <span class="required">*</span></label>
+            <div class="choice-options">
+               <label class="choice-option"><input type="radio" name="iep_status" value="no-eval" required> I haven't requested an evaluation yet</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="eval-requested"> I've requested an evaluation — waiting for response</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="eval-in-progress"> Evaluation is in progress or recently completed</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="eligibility"> We have an eligibility meeting coming up</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="has-iep"> My child has an existing IEP</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="has-504"> My child has a 504 Plan (want to push for IEP)</label>
+               <label class="choice-option"><input type="radio" name="iep_status" value="denied"> My child was denied eligibility (want to challenge)</label>
+            </div>
+         </div>
+
+         <div class="choice-group">
+            <label class="choice-label">What type of meeting is coming up?</label>
+            <div class="choice-options">
+               <label class="choice-option"><input type="radio" name="meeting_type" value="initial-eval"> Initial Evaluation / Eligibility Meeting</label>
+               <label class="choice-option"><input type="radio" name="meeting_type" value="annual-review"> Annual IEP Review</label>
+               <label class="choice-option"><input type="radio" name="meeting_type" value="triennial"> Triennial Re-evaluation</label>
+               <label class="choice-option"><input type="radio" name="meeting_type" value="amendment"> IEP Amendment Meeting</label>
+               <label class="choice-option"><input type="radio" name="meeting_type" value="not-scheduled"> No meeting scheduled yet</label>
+               <label class="choice-option"><input type="radio" name="meeting_type" value="other-meeting"> Other</label>
+            </div>
+         </div>
+
+         <div class="field-row">
+            <div class="field-group">
+               <label>Meeting Date <span class="optional">(if scheduled)</span></label>
+               <input type="date" name="meeting_date">
+            </div>
+            <div class="field-group">
+               <label>Meeting Format</label>
+               <select name="meeting_format">
+                  <option value="">Select...</option>
+                  <option value="in-person">In-Person</option>
+                  <option value="virtual">Virtual (Zoom/Teams/Meet)</option>
+                  <option value="hybrid">Hybrid</option>
+                  <option value="unknown">Not sure yet</option>
+               </select>
+            </div>
+         </div>
+
+         <hr class="section-divider">
+
+         <div class="choice-group">
+            <label class="choice-label">Does your child have any existing diagnoses? <span class="optional">(check all that apply)</span></label>
+            <div class="choice-options">
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="adhd"> ADHD</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="autism"> Autism / ASD</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="anxiety"> Anxiety</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="depression"> Depression</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="dyslexia"> Dyslexia</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="dysgraphia"> Dysgraphia</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="dyscalculia"> Dyscalculia</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="spd"> Sensory Processing Disorder</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="gifted"> Identified as Gifted / High-Ability</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="ocd"> OCD</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="other-dx"> Other (describe below)</label>
+               <label class="choice-option"><input type="checkbox" name="diagnoses" value="no-dx"> No formal diagnosis</label>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>Diagnosis details or notes <span class="optional">(optional)</span></label>
+            <textarea name="diagnosis_notes" placeholder="E.g., 'Diagnosed ADHD-Combined Type by Dr. Smith, March 2024. Private neuropsych showed FSIQ 132, Processing Speed 89.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 3: ACADEMIC & COGNITIVE ═══════ -->
+      <div class="form-step" data-step="3">
+         <div class="step-header">
+            <h2>Academic Output vs. Potential</h2>
+            <p>This is often where 2e kids get missed. Strong test scores or verbal ability can hide real struggles.</p>
+         </div>
+
+         <div class="step-context">
+            <strong>Why this matters:</strong> If your child's ability is in the 90th percentile but their output is at the 50th, that gap IS the adverse effect on educational performance—even if the report card says "B."
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child's grades reflect their true ability level.</label>
+            <div class="scale-options" data-name="grades_reflect_ability">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can verbally explain concepts far beyond what they can put on paper.</label>
+            <div class="scale-options" data-name="verbal_vs_written">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child produces significantly less written output than their peers.</label>
+            <div class="scale-options" data-name="written_output">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child's performance is wildly inconsistent—brilliant one day, can't function the next.</label>
+            <div class="scale-options" data-name="inconsistent_performance">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>What does the gap between ability and output look like for your child?</label>
+            <textarea name="ability_gap_description" placeholder="E.g., 'She can explain the entire plot of a novel verbally in stunning detail, but her book report is three sentences and took 2 hours of crying to produce.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 4: EXECUTIVE FUNCTION ═══════ -->
+      <div class="form-step" data-step="4">
+         <div class="step-header">
+            <h2>Executive Function</h2>
+            <p>The invisible skills that school demands every single day—and that many 2e kids are silently drowning in.</p>
+         </div>
+
+         <div class="step-context">
+            <strong>Why this matters:</strong> Executive function deficits are the #1 hidden driver of 2e underperformance. A child can have a 140 IQ and still not be able to start a worksheet without 5 prompts.
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can independently begin tasks without repeated prompts or reminders.</label>
+            <div class="scale-options" data-name="task_initiation">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can keep track of materials, assignments, and deadlines.</label>
+            <div class="scale-options" data-name="organization">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can transition between activities without significant distress or delay.</label>
+            <div class="scale-options" data-name="transitions">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">Homework that "should take 20 minutes" regularly takes over an hour.</label>
+            <div class="scale-options" data-name="homework_time">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can plan and execute multi-step projects without significant adult support.</label>
+            <div class="scale-options" data-name="planning">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>What does executive function struggle look like in your home? <span class="optional">(optional)</span></label>
+            <textarea name="ef_description" placeholder="E.g., 'Every morning is a 45-minute battle. He can't find his shoes, forgets his lunch, and I have to tell him to brush his teeth 4 times. At school they say he's fine.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 5: SOCIAL-EMOTIONAL ═══════ -->
+      <div class="form-step" data-step="5">
+         <div class="step-header">
+            <h2>Social-Emotional Functioning</h2>
+            <p>How your child navigates feelings, friendships, and the emotional weight of school.</p>
+         </div>
+
+         <div class="step-context">
+            <strong>Why this matters:</strong> "Educational performance" under IDEA includes social-emotional functioning. A child who is anxious, isolated, or melting down daily is not accessing FAPE—regardless of their grades.
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child has age-appropriate friendships and social connections.</label>
+            <div class="scale-options" data-name="friendships">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child experiences significant anxiety related to school (performance, attendance, social).</label>
+            <div class="scale-options" data-name="school_anxiety">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can regulate emotions when frustrated, disappointed, or overwhelmed.</label>
+            <div class="scale-options" data-name="emotional_regulation">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child expresses feelings of being "different," "stupid," or "broken" despite high ability.</label>
+            <div class="scale-options" data-name="self_perception">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>How often does your child have meltdowns or shutdowns?</label>
+            <select name="meltdown_frequency">
+               <option value="">Select...</option>
+               <option value="rarely">Rarely (less than once a month)</option>
+               <option value="occasionally">Occasionally (few times a month)</option>
+               <option value="weekly">Weekly</option>
+               <option value="several-weekly">Several times a week</option>
+               <option value="daily">Daily</option>
+               <option value="multiple-daily">Multiple times a day</option>
+            </select>
+         </div>
+
+         <div class="field-group">
+            <label>Describe a recent difficult moment. <span class="optional">(optional but very helpful)</span></label>
+            <textarea name="difficult_moment" placeholder="E.g., 'Last Tuesday she came home from school, threw her backpack, screamed for 30 minutes, then sobbed and said she's the dumbest kid in class. She has a 3.8 GPA.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 6: SENSORY & COMMUNICATION ═══════ -->
+      <div class="form-step" data-step="6">
+         <div class="step-header">
+            <h2>Sensory & Communication</h2>
+            <p>How your child's body processes the world, and how they express what they need.</p>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child is bothered by things others don't notice (noise, textures, lights, smells, tags).</label>
+            <div class="scale-options" data-name="sensory_sensitivity">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child seeks out intense sensory input (spinning, crashing, chewing, fidgeting).</label>
+            <div class="scale-options" data-name="sensory_seeking">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child can express their needs and feelings verbally to adults at school.</label>
+            <div class="scale-options" data-name="self_advocacy">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child understands non-literal language (sarcasm, idioms, social cues).</label>
+            <div class="scale-options" data-name="pragmatic_language">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>Any sensory or communication notes? <span class="optional">(optional)</span></label>
+            <textarea name="sensory_notes" placeholder="E.g., 'He can't eat in the cafeteria—the noise makes him gag. He eats alone in the counselor's office. School says this is his choice.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 7: BEHAVIOR & HOME VS SCHOOL ═══════ -->
+      <div class="form-step" data-step="7">
+         <div class="step-header">
+            <h2>Behavioral Patterns & the Home-School Gap</h2>
+            <p>This is the one that makes or breaks 2e IEP cases. If your child looks "fine" at school but falls apart at home, this section is everything.</p>
+         </div>
+
+         <div class="step-context">
+            <strong>The Masking Problem:</strong> Many 2e kids hold it together at school through sheer willpower, then explode the second they're in a safe environment. The school sees a "good student." You see a child who is <em>depleted</em>. This gap is critical data for your case.
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child's behavior at school matches what I see at home.</label>
+            <div class="scale-options" data-name="home_school_match">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child "holds it together" at school and then falls apart at home.</label>
+            <div class="scale-options" data-name="afterschool_collapse">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">My child avoids or resists school (complains of illness, begs to stay home, cries before school).</label>
+            <div class="scale-options" data-name="school_avoidance">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="scale-group">
+            <label class="scale-label">When I describe my child's struggles, the school doesn't see (or believe) the same things.</label>
+            <div class="scale-options" data-name="school_disbelief">
+               <button type="button" class="scale-btn" data-value="1">Strongly Disagree</button>
+               <button type="button" class="scale-btn" data-value="2">Disagree</button>
+               <button type="button" class="scale-btn" data-value="3">Neutral</button>
+               <button type="button" class="scale-btn" data-value="4">Agree</button>
+               <button type="button" class="scale-btn" data-value="5">Strongly Agree</button>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>Describe the biggest difference between what school sees and what you see at home.</label>
+            <textarea name="home_school_gap_description" placeholder="E.g., 'The teacher says he's a model student. At home he screams for an hour over homework, hits his sister, and tells me he wants to die. When I told the school this, the counselor said he's probably just tired.'"></textarea>
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ STEP 8: SERVICES, GAPS, PRIORITIES ═══════ -->
+      <div class="form-step" data-step="8">
+         <div class="step-header">
+            <h2>Current Services & Your Priorities</h2>
+            <p>What's working, what's missing, and what you want to walk out of that meeting with.</p>
+         </div>
+
+         <div class="field-group">
+            <label>What services or supports does your child currently receive? <span class="optional">(check all that apply)</span></label>
+            <div class="choice-options">
+               <label class="choice-option"><input type="checkbox" name="current_services" value="none"> No services currently</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="sped-reading"> Special Ed — Reading/Writing</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="sped-math"> Special Ed — Math</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="speech"> Speech/Language Therapy</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="ot"> Occupational Therapy</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="counseling"> School Counseling / Social Work</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="behavior-plan"> Behavior Intervention Plan (BIP)</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="504-accoms"> 504 Accommodations</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="gifted"> Gifted Services</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="aide"> 1:1 Aide or Paraprofessional</label>
+               <label class="choice-option"><input type="checkbox" name="current_services" value="other-service"> Other</label>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>What's NOT working? What needs to change?</label>
+            <textarea name="whats_not_working" placeholder="E.g., 'His reading goal hasn't changed in 2 years. The OT was reduced from 2x to 1x per week without telling us. He still can't get through a school day without shutting down but they keep saying he's making progress.'"></textarea>
+         </div>
+
+         <hr class="section-divider">
+
+         <div class="choice-group">
+            <label class="choice-label">What do you most want to come out of your next meeting with? <span class="optional">(check up to 3)</span></label>
+            <div class="choice-options">
+               <label class="choice-option"><input type="checkbox" name="goals" value="eval"> Approval for comprehensive evaluation</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="eligibility"> IEP eligibility determination</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="new-goals"> Better, measurable IEP goals</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="more-services"> Additional or increased services</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="placement"> Change in placement or setting</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="bip"> Behavioral support / Behavior Intervention Plan</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="504-to-iep"> Convert 504 to IEP</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="implementation"> Ensure existing IEP is actually followed</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="iee"> Independent Educational Evaluation (IEE)</label>
+               <label class="choice-option"><input type="checkbox" name="goals" value="other-goal"> Other</label>
+            </div>
+         </div>
+
+         <div class="field-group">
+            <label>If there's one thing you want us to know, what is it?</label>
+            <textarea name="one_thing" placeholder="Anything — the detail that keeps you up at night, the thing that happened last week, the sentence that made you buy this. This is your space."></textarea>
+         </div>
+
+         <div class="field-group">
+            <label>Preferred days/times for your Strategy Call <span class="optional">(optional)</span></label>
+            <input type="text" name="preferred_times" placeholder="E.g., 'Weekday mornings before 10am EST, or Thursday after 3pm'">
+         </div>
+
+         <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+            <button type="button" class="btn-submit" onclick="submitForm()">Submit My Assessment →</button>
+         </div>
+      </div>
+
+      <!-- ═══════ CONFIRMATION ═══════ -->
+      <div class="form-step" data-step="confirm">
+         <div class="confirmation-card">
+            <div class="conf-icon">✓</div>
+            <h2>Assessment Received.</h2>
+            <p>We have everything we need. Your Battle Plan is in production.</p>
+
+            <div class="conf-timeline">
+               <div class="conf-timeline-item">
+                  <span class="time">Now</span>
+                  <span>You'll receive a confirmation email with a summary of your responses.</span>
+               </div>
+               <div class="conf-timeline-item">
+                  <span class="time">48–72 hrs</span>
+                  <span>Your Heat Map, Meeting Script, Emails, Legal Brief, and Parent Concerns Statement are delivered to your inbox.</span>
+               </div>
+               <div class="conf-timeline-item">
+                  <span class="time">3–5 days</span>
+                  <span>Your live Strategy Call is scheduled via the link in your email.</span>
+               </div>
+               <div class="conf-timeline-item">
+                  <span class="time">After call</span>
+                  <span>Call recording delivered. You're ready. Walk in dangerous.</span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      </form>
+   </div>
+
+   <script>
+   (function() {
+      'use strict';
+
+      const TOTAL_STEPS = 8;
+      const STORAGE_KEY = 'bp_intake_draft';
+      let currentStep = 1;
+
+      const stepLabels = {
+         1: 'About You & Your Child',
+         2: 'IEP Status & Meeting',
+         3: 'Academic & Cognitive',
+         4: 'Executive Function',
+         5: 'Social-Emotional',
+         6: 'Sensory & Communication',
+         7: 'Behavior & Home vs School',
+         8: 'Services & Priorities'
+      };
+
+      // ── NAVIGATION ──
+      window.nextStep = function() {
+         if (!validateStep(currentStep)) return;
+         saveProgress();
+         if (currentStep < TOTAL_STEPS) {
+            showStep(currentStep + 1);
+         }
+      };
+
+      window.prevStep = function() {
+         saveProgress();
+         if (currentStep > 1) showStep(currentStep - 1);
+      };
+
+      function showStep(n) {
+         document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+         const target = document.querySelector(`.form-step[data-step="${n}"]`);
+         if (target) {
+            target.classList.add('active');
+            currentStep = n;
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         }
+      }
+
+      function updateProgress() {
+         const pct = (currentStep / TOTAL_STEPS) * 100;
+         document.getElementById('progressFill').style.width = pct + '%';
+         document.getElementById('progressLabel').textContent = stepLabels[currentStep] || '';
+         document.getElementById('progressCount').textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+      }
+
+      // ── VALIDATION ──
+      function validateStep(step) {
+         const stepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+         const required = stepEl.querySelectorAll('[required]');
+         let valid = true;
+
+         // Clear previous errors
+         stepEl.querySelectorAll('.has-error').forEach(el => el.classList.remove('has-error'));
+
+         required.forEach(field => {
+            if (field.type === 'radio') {
+               const group = stepEl.querySelectorAll(`[name="${field.name}"]`);
+               const checked = Array.from(group).some(r => r.checked);
+               if (!checked) {
+                  valid = false;
+                  // Highlight the choice group
+                  field.closest('.choice-group')?.classList.add('has-error');
+               }
+            } else if (!field.value.trim()) {
+               valid = false;
+               field.closest('.field-group')?.classList.add('has-error');
+            }
+         });
+
+         if (!valid) {
+            const firstError = stepEl.querySelector('.has-error');
+            if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+         }
+
+         return valid;
+      }
+
+      // ── SCALE BUTTONS ──
+      document.querySelectorAll('.scale-options').forEach(group => {
+         group.querySelectorAll('.scale-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+               group.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+               btn.classList.add('selected');
+               saveProgress();
+            });
+         });
+      });
+
+      // ── CHOICE OPTION HIGHLIGHTING ──
+      document.querySelectorAll('.choice-option').forEach(opt => {
+         const input = opt.querySelector('input');
+         if (!input) return;
+
+         input.addEventListener('change', () => {
+            if (input.type === 'radio') {
+               opt.closest('.choice-options').querySelectorAll('.choice-option').forEach(o => o.classList.remove('selected'));
+            }
+            if (input.checked) {
+               opt.classList.add('selected');
+            } else {
+               opt.classList.remove('selected');
+            }
+            saveProgress();
+         });
+      });
+
+      // ── AUTO-SAVE ──
+      function collectFormData() {
+         const data = {};
+         const form = document.getElementById('intakeForm');
+
+         // Text/email/tel/date/number inputs + selects + textareas
+         form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea').forEach(el => {
+            if (el.name) data[el.name] = el.value;
+         });
+
+         // Radio buttons
+         form.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+            data[el.name] = el.value;
+         });
+
+         // Checkboxes (grouped by name)
+         const checkboxGroups = {};
+         form.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+            if (!checkboxGroups[el.name]) checkboxGroups[el.name] = [];
+            checkboxGroups[el.name].push(el.value);
+         });
+         Object.assign(data, checkboxGroups);
+
+         // Scale buttons
+         document.querySelectorAll('.scale-options').forEach(group => {
+            const name = group.dataset.name;
+            const selected = group.querySelector('.scale-btn.selected');
+            if (name && selected) data[name] = selected.dataset.value;
+         });
+
+         data._step = currentStep;
+         data._timestamp = new Date().toISOString();
+
+         return data;
+      }
+
+      function saveProgress() {
+         try {
+            const data = collectFormData();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            const status = document.getElementById('saveStatus');
+            status.textContent = 'Saved just now';
+            setTimeout(() => { status.textContent = 'Progress auto-saved'; }, 2000);
+         } catch (e) { /* silent fail */ }
+      }
+
+      function loadProgress() {
+         try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (!saved) return;
+
+            const form = document.getElementById('intakeForm');
+
+            // Text inputs, selects, textareas
+            Object.keys(saved).forEach(key => {
+               if (key.startsWith('_')) return;
+
+               const el = form.querySelector(`[name="${key}"]`);
+               if (!el) return;
+
+               if (el.type === 'radio') {
+                  const radio = form.querySelector(`[name="${key}"][value="${saved[key]}"]`);
+                  if (radio) {
+                     radio.checked = true;
+                     radio.closest('.choice-option')?.classList.add('selected');
+                  }
+               } else if (el.type === 'checkbox') {
+                  // Skip — handled below
+               } else {
+                  el.value = saved[key];
+               }
+            });
+
+            // Checkboxes
+            ['diagnoses', 'current_services', 'goals'].forEach(name => {
+               if (Array.isArray(saved[name])) {
+                  saved[name].forEach(val => {
+                     const cb = form.querySelector(`[name="${name}"][value="${val}"]`);
+                     if (cb) {
+                        cb.checked = true;
+                        cb.closest('.choice-option')?.classList.add('selected');
+                     }
+                  });
+               }
+            });
+
+            // Scale buttons
+            document.querySelectorAll('.scale-options').forEach(group => {
+               const name = group.dataset.name;
+               if (saved[name]) {
+                  const btn = group.querySelector(`[data-value="${saved[name]}"]`);
+                  if (btn) btn.classList.add('selected');
+               }
+            });
+
+            // Restore step
+            if (saved._step && saved._step > 1 && saved._step <= TOTAL_STEPS) {
+               showStep(saved._step);
+            }
+
+         } catch (e) { /* silent fail */ }
+      }
+
+      // Auto-save on field changes
+      document.getElementById('intakeForm').addEventListener('input', () => {
+         clearTimeout(window._saveTimer);
+         window._saveTimer = setTimeout(saveProgress, 1000);
+      });
+
+      // ── SUBMIT ──
+      window.submitForm = function() {
+         if (!validateStep(currentStep)) return;
+
+         const data = collectFormData();
+         const btn = document.querySelector('.btn-submit');
+         btn.textContent = 'Submitting...';
+         btn.disabled = true;
+
+         // POST to your API endpoint
+         fetch('/api/battle-plan-intake', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+         })
+         .then(res => {
+            if (!res.ok) throw new Error('Submit failed');
+            return res.json();
+         })
+         .then(() => {
+            // Clear saved draft
+            localStorage.removeItem(STORAGE_KEY);
+            // Show confirmation
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelector('.form-step[data-step="confirm"]').classList.add('active');
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('progressLabel').textContent = 'Complete';
+            document.getElementById('progressCount').textContent = '✓ Submitted';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         })
+         .catch(() => {
+            // Fallback: email the data (or show error)
+            alert('There was an issue submitting. Your answers have been saved — please contact us at hello@navigatorkids.ai and we will retrieve your assessment.');
+            btn.textContent = 'Submit My Assessment →';
+            btn.disabled = false;
+         });
+      };
+
+      // ── INIT ──
+      loadProgress();
+      updateProgress();
+
+   })();
+   </script>
+
+</body>
+</html>
