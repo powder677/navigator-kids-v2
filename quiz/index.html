@@ -9,624 +9,672 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
-        /* =========================================
-           PREMIUM QUIZ DESIGN
-           ========================================= */
-        
-        * {
-            box-sizing: border-box;
+        /* ═══════════════════════════════════════
+           NAVIGATOR KIDS — Brain Profile Quiz
+           Premium Redesign
+           ═══════════════════════════════════════ */
+
+        :root {
+            --q-navy: #1a2744;
+            --q-navy-mid: #253554;
+            --q-navy-light: #2f4470;
+            --q-gold: #d4a853;
+            --q-gold-light: #f5e6c4;
+            --q-gold-bg: #fdf8ef;
+            --q-cream: #faf6f0;
+            --q-warm-white: #fefcf9;
+            --q-sage: #81b29a;
+            --q-sage-soft: #e8f3ed;
+            --q-terracotta: #e07a5f;
+            --q-terracotta-soft: #fdf0ee;
+            --q-text: #2c3e50;
+            --q-text-light: #636e72;
+            --q-text-muted: #a0a8b0;
+            --q-border: #e4ddd3;
+            --q-white: #ffffff;
+            --q-radius: 14px;
+            --q-shadow-sm: 0 2px 8px rgba(26,39,68,0.04);
+            --q-shadow-md: 0 8px 30px rgba(26,39,68,0.07);
+            --q-shadow-lg: 0 16px 50px rgba(26,39,68,0.1);
         }
 
-        body { 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
             padding-top: 76px;
-            background: var(--color-cream);
+            background: var(--q-cream);
+            -webkit-font-smoothing: antialiased;
         }
 
         .quiz-page {
             min-height: calc(100vh - 76px);
-            padding: 60px 24px 80px;
-            background: linear-gradient(180deg, #FFFFFF 0%, var(--color-cream) 40%);
+            background: var(--q-cream);
         }
 
-        .quiz-container {
-            max-width: 800px;
+        /* ─── PROGRESS BAR ─── */
+        .quiz-progress-bar {
+            position: sticky;
+            top: 76px;
+            z-index: 100;
+            background: var(--q-white);
+            border-bottom: 1px solid var(--q-border);
+            padding: 0;
+            display: none;
+        }
+        .quiz-progress-bar.visible { display: block; }
+        .progress-inner {
+            max-width: 640px;
             margin: 0 auto;
+            padding: 16px 24px;
         }
-
-        /* Progress Bar - Full width, elegant */
-        .quiz-progress-wrapper {
-            max-width: 600px;
-            margin: 0 auto 48px;
-        }
-
-        .quiz-progress-label {
+        .progress-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: var(--color-text-muted);
+            margin-bottom: 10px;
         }
-
-        .quiz-progress {
+        .progress-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--q-navy);
+        }
+        .progress-count {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--q-text-muted);
+        }
+        .progress-segments {
+            display: flex;
+            gap: 4px;
+        }
+        .progress-seg {
+            flex: 1;
             height: 4px;
-            background: var(--color-cream-dark);
+            background: var(--q-border);
             border-radius: 2px;
-            overflow: hidden;
+            transition: background 0.4s ease;
+        }
+        .progress-seg.filled {
+            background: var(--q-gold);
+        }
+        .progress-seg.current {
+            background: linear-gradient(90deg, var(--q-gold), var(--q-gold-light));
         }
 
-        .quiz-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--color-sage) 0%, var(--color-terracotta) 100%);
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
-        }
-
-        /* =========================================
-           SCREEN TRANSITIONS
-           ========================================= */
+        /* ─── SCREEN SYSTEM ─── */
         .quiz-screen {
             display: none;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 56px 24px 100px;
         }
-
         .quiz-screen.active {
             display: block;
-            animation: fadeUp 0.5s ease;
+            animation: screenIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
         }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes screenIn {
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* =========================================
-           WELCOME SCREEN - Hero style
-           ========================================= */
+        /* ═══════ WELCOME SCREEN ═══════ */
         .welcome-screen {
             text-align: center;
-            padding: 40px 0;
+            max-width: 540px;
+            padding-top: 80px;
         }
 
-        .welcome-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-gold-light) 100%);
-            border-radius: 30px;
-            display: flex;
+        .welcome-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            margin: 0 auto 32px;
-            box-shadow: 0 12px 40px rgba(129, 178, 154, 0.3);
+            gap: 6px;
+            background: var(--q-gold-bg);
+            border: 1px solid var(--q-gold-light);
+            color: var(--q-navy);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 100px;
+            margin-bottom: 32px;
         }
 
         .welcome-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            font-weight: 700;
-            color: var(--color-navy);
-            margin-bottom: 20px;
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 5.5vw, 3rem);
+            font-weight: 400;
+            color: var(--q-navy);
             line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .welcome-title em {
+            font-style: italic;
+            color: var(--q-terracotta);
         }
 
         .welcome-subtitle {
-            font-size: 1.2rem;
-            color: var(--color-text-light);
-            max-width: 520px;
-            margin: 0 auto 48px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: var(--q-text-light);
             line-height: 1.7;
+            margin-bottom: 48px;
         }
 
         .welcome-features {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-bottom: 48px;
+            gap: 32px;
+            margin-bottom: 40px;
         }
-
         .welcome-feature {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 15px;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: var(--color-text);
+            color: var(--q-text);
         }
-
-        .welcome-feature-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--color-sage);
-            color: white;
+        .welcome-feature .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--q-gold);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
+            flex-shrink: 0;
         }
 
-        .welcome-cta .btn {
+        .btn-start {
+            display: inline-block;
+            background: var(--q-navy);
+            color: var(--q-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
             padding: 18px 48px;
-            font-size: 1.1rem;
-            border-radius: 60px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(26,39,68,0.2);
+            letter-spacing: 0.01em;
+        }
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(26,39,68,0.28);
+            background: var(--q-navy-mid);
         }
 
-        .welcome-note {
-            font-size: 14px;
-            color: var(--color-text-muted);
+        .welcome-footnote {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--q-text-muted);
             margin-top: 20px;
         }
 
-        @media (max-width: 600px) {
-            .welcome-features {
-                flex-direction: column;
-                gap: 16px;
-                align-items: center;
-            }
+        @media (max-width: 500px) {
+            .welcome-screen { padding-top: 48px; }
+            .welcome-features { flex-direction: column; gap: 12px; align-items: center; }
         }
 
-        /* =========================================
-           QUESTION SCREEN - Clean & spacious
-           ========================================= */
-        .question-screen {
-            max-width: 640px;
-            margin: 0 auto;
-        }
+        /* ═══════ QUESTION SCREEN ═══════ */
+        .question-screen { padding-top: 48px; }
 
         .question-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
-
         .question-category {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            gap: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--color-sage-dark);
-            background: var(--color-sage-light);
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 28px;
+            color: var(--q-sage);
+            margin-bottom: 20px;
         }
-
         .question-text {
-            font-family: var(--font-heading);
-            font-size: clamp(1.4rem, 3.5vw, 1.75rem);
-            font-weight: 700;
-            color: var(--color-navy);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+            font-weight: 400;
+            color: var(--q-navy);
             line-height: 1.4;
-            margin-bottom: 0;
         }
 
-        /* Answer Options - Card style */
+        /* Answer Cards */
         .answer-options {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .answer-option {
-            background: #FFFFFF;
-            border: 2px solid var(--color-cream-dark);
-            border-radius: 16px;
-            padding: 20px 24px;
+            background: var(--q-white);
+            border: 2px solid transparent;
+            border-radius: var(--q-radius);
+            padding: 20px 22px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            text-align: left;
-            font-family: var(--font-body);
-            font-size: 16px;
-            line-height: 1.5;
-            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--q-text);
             display: flex;
             align-items: center;
             gap: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            box-shadow: var(--q-shadow-sm);
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+            outline: none;
         }
-
         .answer-option:hover {
-            border-color: var(--color-sage);
-            background: #FFFFFF;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(129, 178, 154, 0.15);
+            border-color: var(--q-border);
+            box-shadow: var(--q-shadow-md);
+            transform: translateY(-1px);
         }
-
+        .answer-option:focus-visible {
+            border-color: var(--q-gold);
+            box-shadow: 0 0 0 3px rgba(212,168,83,0.15);
+        }
         .answer-option.selected {
-            background: var(--color-sage);
-            border-color: var(--color-sage);
-            color: #FFFFFF;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(129, 178, 154, 0.3);
+            border-color: var(--q-navy);
+            background: var(--q-navy);
+            color: var(--q-white);
+            box-shadow: var(--q-shadow-md);
+            transform: translateY(-1px);
         }
 
-        .answer-indicator {
-            width: 26px;
-            height: 26px;
-            border: 2px solid var(--color-border-dark);
+        .answer-pip {
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
+            border: 2px solid var(--q-border);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.25s ease;
-            background: #FFFFFF;
+            transition: all 0.2s ease;
+            background: var(--q-white);
+            position: relative;
+        }
+        .answer-option:hover .answer-pip {
+            border-color: var(--q-text-muted);
+        }
+        .answer-option.selected .answer-pip {
+            border-color: var(--q-gold);
+            background: var(--q-gold);
+        }
+        .answer-option.selected .answer-pip::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--q-navy);
+            border-radius: 50%;
         }
 
-        .answer-option:hover .answer-indicator {
-            border-color: var(--color-sage);
-        }
+        .answer-label { flex: 1; }
 
-        .answer-option.selected .answer-indicator {
-            background: #FFFFFF;
-            border-color: #FFFFFF;
-        }
-
-        .answer-option.selected .answer-indicator::after {
-            content: '✓';
-            color: var(--color-sage);
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Navigation */
+        /* Question Nav */
         .question-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 56px;
+            margin-top: 48px;
         }
-
-        .btn-back {
+        .nav-back {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--q-text-muted);
             background: none;
             border: none;
-            color: var(--color-text-muted);
-            font-family: var(--font-body);
-            font-size: 15px;
-            font-weight: 500;
             cursor: pointer;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            border-radius: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: all 0.15s;
+        }
+        .nav-back:hover { color: var(--q-text); background: rgba(0,0,0,0.03); }
+        .nav-back:disabled { opacity: 0; pointer-events: none; }
+
+        .nav-next {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--q-white);
+            background: var(--q-navy);
+            border: none;
+            cursor: pointer;
+            padding: 14px 32px;
+            border-radius: 100px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 12px rgba(26,39,68,0.15);
+        }
+        .nav-next:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(26,39,68,0.22);
+        }
+        .nav-next:disabled {
+            opacity: 0.35;
+            cursor: default;
+            transform: none;
+            box-shadow: none;
         }
 
-        .btn-back:hover {
-            color: var(--color-text);
-            background: var(--color-cream);
-        }
-
-        .btn-back:disabled {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .btn-next {
-            padding: 16px 36px;
-            font-size: 16px;
-            border-radius: 50px;
-        }
-
-        .btn-next:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        /* =========================================
-           EMAIL CAPTURE - Clean form
-           ========================================= */
+        /* ═══════ EMAIL SCREEN ═══════ */
         .email-screen {
-            max-width: 480px;
-            margin: 0 auto;
             text-align: center;
-            padding: 20px 0;
+            max-width: 440px;
+            padding-top: 64px;
         }
 
-        .email-screen-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-terracotta-light) 100%);
-            border-radius: 24px;
+        .email-icon-wrap {
+            width: 72px;
+            height: 72px;
+            background: var(--q-gold-bg);
+            border: 1px solid var(--q-gold-light);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 2rem;
             margin: 0 auto 28px;
-            box-shadow: 0 12px 40px rgba(224, 122, 95, 0.2);
         }
 
         .email-screen h2 {
-            font-family: var(--font-heading);
-            font-size: 1.75rem;
-            color: var(--color-navy);
-            margin-bottom: 12px;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.65rem;
+            font-weight: 400;
+            color: var(--q-navy);
+            margin-bottom: 8px;
         }
-
-        .email-screen-subtitle {
-            color: var(--color-text-light);
-            font-size: 1.05rem;
-            margin-bottom: 40px;
+        .email-screen .email-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--q-text-light);
+            margin-bottom: 36px;
             line-height: 1.6;
         }
 
-        .email-form {
-            text-align: left;
-        }
+        .email-form { text-align: left; }
 
-        .form-group {
-            margin-bottom: 20px;
+        .form-field {
+            margin-bottom: 18px;
         }
-
-        .form-label {
+        .form-field label {
             display: block;
-            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
             font-weight: 600;
-            color: var(--color-navy);
-            margin-bottom: 8px;
+            color: var(--q-navy);
+            margin-bottom: 6px;
         }
-
-        .form-input {
+        .form-field input {
             width: 100%;
-            padding: 16px 20px;
-            border: 2px solid var(--color-cream-dark);
-            border-radius: 12px;
-            font-family: var(--font-body);
-            font-size: 16px;
-            transition: all 0.2s ease;
-            background: #FFFFFF;
-        }
-
-        .form-input:focus {
+            padding: 14px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: var(--q-text);
+            background: var(--q-white);
+            border: 1.5px solid var(--q-border);
+            border-radius: 10px;
             outline: none;
-            border-color: var(--color-sage);
-            box-shadow: 0 0 0 4px rgba(129, 178, 154, 0.1);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-field input:focus {
+            border-color: var(--q-gold);
+            box-shadow: 0 0 0 3px rgba(212,168,83,0.1);
+        }
+        .form-field input::placeholder { color: var(--q-text-muted); }
+        .form-field .hint {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: var(--q-text-muted);
+            margin-top: 5px;
         }
 
-        .form-input::placeholder {
-            color: var(--color-text-muted);
-        }
-
-        .form-hint {
-            font-size: 13px;
-            color: var(--color-text-muted);
-            margin-top: 8px;
-        }
-
-        .email-form .btn {
+        .email-submit {
             width: 100%;
-            padding: 18px;
-            font-size: 1.05rem;
-            margin-top: 12px;
-            border-radius: 14px;
+            padding: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--q-white);
+            background: var(--q-navy);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 3px 16px rgba(26,39,68,0.15);
+        }
+        .email-submit:hover {
+            background: var(--q-navy-mid);
+            box-shadow: 0 5px 24px rgba(26,39,68,0.22);
         }
 
         .email-skip {
-            margin-top: 28px;
+            margin-top: 24px;
         }
-
         .email-skip button {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            color: var(--q-text-muted);
             background: none;
             border: none;
-            color: var(--color-text-muted);
-            font-family: var(--font-body);
-            font-size: 14px;
             cursor: pointer;
             text-decoration: underline;
             text-underline-offset: 3px;
-            transition: color 0.2s;
+            transition: color 0.15s;
         }
-
-        .email-skip button:hover {
-            color: var(--color-text);
-        }
+        .email-skip button:hover { color: var(--q-text); }
 
         .email-privacy {
-            font-size: 13px;
-            color: var(--color-text-muted);
-            margin-top: 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: var(--q-text-muted);
+            margin-top: 20px;
         }
 
-        /* =========================================
-           LOADING STATE
-           ========================================= */
+        /* ═══════ LOADING SCREEN ═══════ */
         .loading-screen {
             text-align: center;
-            padding: 80px 0;
+            padding-top: 120px;
         }
-
-        .loading-spinner {
-            width: 56px;
-            height: 56px;
-            border: 3px solid var(--color-cream-dark);
-            border-top-color: var(--color-sage);
+        .loading-ring {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--q-border);
+            border-top-color: var(--q-navy);
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 28px;
+            animation: ring 0.75s linear infinite;
+            margin: 0 auto 24px;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
+        @keyframes ring { to { transform: rotate(360deg); } }
         .loading-text {
-            color: var(--color-text-light);
-            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: var(--q-text-light);
+        }
+        .loading-detail {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--q-text-muted);
+            margin-top: 6px;
         }
 
-        /* =========================================
-           RESULTS SCREEN
-           ========================================= */
+        /* ═══════ RESULTS SCREEN ═══════ */
         .results-screen {
-            max-width: 560px;
-            margin: 0 auto;
-            padding: 20px 0;
+            max-width: 540px;
+            padding-top: 48px;
         }
 
         .results-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
-
-        .results-badge {
+        .results-eyebrow {
             display: inline-block;
-            background: var(--color-sage-light);
-            color: var(--color-sage-dark);
-            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
             font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            margin-bottom: 20px;
+            color: var(--q-sage);
+            margin-bottom: 16px;
         }
-
         .results-title {
-            font-family: var(--font-heading);
+            font-family: 'DM Serif Display', serif;
             font-size: 1.75rem;
-            color: var(--color-navy);
-            margin-bottom: 0;
+            font-weight: 400;
+            color: var(--q-navy);
         }
-
-        .child-name {
-            color: var(--color-terracotta);
+        .results-title .child-name {
+            color: var(--q-terracotta);
         }
 
         /* Profile Cards */
-        .results-profiles {
+        .profile-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 440px) {
+            .profile-cards { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 500px) {
-            .results-profiles {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .result-profile-card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            padding: 28px 24px;
+        .profile-card {
+            background: var(--q-white);
+            border-radius: var(--q-radius);
+            padding: 28px 20px;
             text-align: center;
-            border: 2px solid var(--color-cream-dark);
+            box-shadow: var(--q-shadow-sm);
+            border: 1px solid var(--q-border);
         }
-
-        .result-profile-card.primary {
-            background: linear-gradient(135deg, var(--color-sage-light) 0%, rgba(129, 178, 154, 0.2) 100%);
-            border-color: var(--color-sage);
+        .profile-card.primary {
+            background: var(--q-navy);
+            border-color: var(--q-navy);
+            box-shadow: var(--q-shadow-lg);
         }
-
-        .result-profile-label {
-            font-size: 11px;
+        .profile-card .card-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
             font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--color-text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
+        .profile-card .card-label { color: var(--q-text-muted); }
+        .profile-card.primary .card-label { color: var(--q-gold); }
 
-        .result-profile-card.primary .result-profile-label {
-            color: var(--color-sage-dark);
-        }
-
-        .result-profile-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
+        .profile-card .card-icon {
+            font-size: 2.8rem;
             line-height: 1;
+            margin-bottom: 12px;
         }
-
-        .result-profile-name {
-            font-family: var(--font-heading);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--color-navy);
-            margin: 0;
+        .profile-card .card-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
         }
+        .profile-card .card-name { color: var(--q-navy); }
+        .profile-card.primary .card-name { color: var(--q-white); }
 
-        /* Traits Preview */
-        .results-traits {
-            background: #FFFFFF;
-            border-radius: 20px;
+        /* Trait Bars */
+        .traits-panel {
+            background: var(--q-white);
+            border-radius: var(--q-radius);
             padding: 28px;
-            margin-bottom: 36px;
-            border: 2px solid var(--color-cream-dark);
+            margin-bottom: 32px;
+            box-shadow: var(--q-shadow-sm);
+            border: 1px solid var(--q-border);
         }
-
-        .results-traits h3 {
-            font-size: 15px;
-            font-family: var(--font-body);
-            font-weight: 600;
+        .traits-panel h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--q-text-muted);
             text-align: center;
             margin-bottom: 24px;
-            color: var(--color-navy);
         }
-
-        .trait-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .trait-bar {
-            display: flex;
+        .trait-row {
+            display: grid;
+            grid-template-columns: 110px 1fr 32px;
+            gap: 12px;
             align-items: center;
-            gap: 16px;
+            margin-bottom: 14px;
         }
-
-        .trait-bar-label {
-            width: 110px;
-            font-size: 14px;
-            color: var(--color-text);
-            flex-shrink: 0;
+        .trait-row:last-child { margin-bottom: 0; }
+        .trait-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--q-text);
         }
-
-        .trait-bar-track {
-            flex: 1;
-            height: 10px;
-            background: var(--color-cream);
-            border-radius: 5px;
+        .trait-track {
+            height: 8px;
+            background: var(--q-cream);
+            border-radius: 4px;
             overflow: hidden;
         }
-
-        .trait-bar-fill {
+        .trait-fill {
             height: 100%;
-            border-radius: 5px;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 0;
         }
-
-        .trait-bar-fill.high { background: linear-gradient(90deg, var(--color-terracotta) 0%, var(--color-terracotta-light) 100%); }
-        .trait-bar-fill.medium { background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%); }
-        .trait-bar-fill.low { background: var(--color-sage-light); }
+        .trait-fill.high { background: var(--q-terracotta); }
+        .trait-fill.medium { background: var(--q-gold); }
+        .trait-fill.low { background: var(--q-sage); }
+        .trait-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--q-text-muted);
+            text-align: right;
+        }
 
         /* Results CTA */
         .results-cta {
             text-align: center;
         }
-
-        .results-cta .btn {
-            padding: 18px 40px;
-            font-size: 1.05rem;
-            border-radius: 14px;
-            margin-bottom: 16px;
+        .results-cta-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 18px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--q-navy);
+            background: var(--q-gold);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(212,168,83,0.25);
         }
-
+        .results-cta-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 28px rgba(212,168,83,0.35);
+        }
         .results-cta-note {
-            font-size: 14px;
-            color: var(--color-text-muted);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--q-text-muted);
+            margin-top: 14px;
         }
     </style>
 </head>
@@ -636,148 +684,108 @@
     <div id="header"></div>
 
     <main class="quiz-page">
-        <div class="quiz-container">
-            
-            <!-- Progress Bar -->
-            <div class="quiz-progress-wrapper" id="progressWrapper" style="display: none;">
-                <div class="quiz-progress-label">
-                    <span>Brain Profile Quiz</span>
-                    <span id="progressText">1 of 8</span>
+
+        <!-- Segmented Progress Bar -->
+        <div class="quiz-progress-bar" id="progressBar">
+            <div class="progress-inner">
+                <div class="progress-meta">
+                    <span class="progress-label" id="progressLabel">Task Initiation</span>
+                    <span class="progress-count" id="progressCount">1 of 8</span>
                 </div>
-                <div class="quiz-progress">
-                    <div class="quiz-progress-fill" id="progressBar" style="width: 12.5%"></div>
-                </div>
+                <div class="progress-segments" id="progressSegments"></div>
             </div>
-
-            <!-- Welcome Screen -->
-            <div class="quiz-screen welcome-screen active" id="welcomeScreen">
-                <div class="welcome-icon">🧒</div>
-                <h1 class="welcome-title">Discover Your Child's<br>Brain Profile</h1>
-                <p class="welcome-subtitle">
-                    Answer 8 quick questions about your child's daily patterns and we'll identify their primary and secondary brain profiles.
-                </p>
-                
-                <div class="welcome-features">
-                    <div class="welcome-feature">
-                        <span class="welcome-feature-icon">✓</span>
-                        <span>3 minutes</span>
-                    </div>
-                    <div class="welcome-feature">
-                        <span class="welcome-feature-icon">✓</span>
-                        <span>8 questions</span>
-                    </div>
-                    <div class="welcome-feature">
-                        <span class="welcome-feature-icon">✓</span>
-                        <span>Instant results</span>
-                    </div>
-                </div>
-
-                <div class="welcome-cta">
-                    <button class="btn btn-primary" onclick="startQuiz()">
-                        Start the Quiz →
-                    </button>
-                </div>
-                <p class="welcome-note">No email required to see results</p>
-            </div>
-
-            <!-- Question Screen -->
-            <div class="quiz-screen question-screen" id="questionScreen">
-                <div class="question-header">
-                    <div class="question-category" id="questionCategory">
-                        <span id="categoryEmoji">🎯</span>
-                        <span id="categoryName">Category</span>
-                    </div>
-                    <h2 class="question-text" id="questionText">Question goes here</h2>
-                </div>
-
-                <div class="answer-options" id="answerOptions"></div>
-
-                <div class="question-nav">
-                    <button class="btn-back" id="btnBack" onclick="prevQuestion()">
-                        ← Back
-                    </button>
-                    <button class="btn btn-primary btn-next" id="btnNext" onclick="nextQuestion()" disabled>
-                        Next →
-                    </button>
-                </div>
-            </div>
-
-            <!-- Email Capture Screen -->
-            <div class="quiz-screen email-screen" id="emailScreen">
-                <div class="email-screen-icon">✨</div>
-                <h2>Your Results Are Ready!</h2>
-                <p class="email-screen-subtitle">
-                    Enter your child's name to personalize their profile.
-                </p>
-
-                <form class="email-form" onsubmit="submitEmail(event)">
-                    <div class="form-group">
-                        <label class="form-label">Your Child's First Name</label>
-                        <input type="text" class="form-input" id="childNameInput" placeholder="e.g., Emma" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Your Email (optional)</label>
-                        <input type="email" class="form-input" id="parentEmailInput" placeholder="you@email.com">
-                        <p class="form-hint">Get their full profile + free De-Escalation Kit</p>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        See My Child's Profile →
-                    </button>
-                </form>
-
-                <div class="email-skip">
-                    <button type="button" onclick="skipEmail()">Skip, just show results</button>
-                </div>
-
-                <p class="email-privacy">🔒 We never share your info. Unsubscribe anytime.</p>
-            </div>
-
-            <!-- Loading Screen -->
-            <div class="quiz-screen" id="loadingScreen">
-                <div class="loading-screen">
-                    <div class="loading-spinner"></div>
-                    <p class="loading-text">Analyzing patterns...</p>
-                </div>
-            </div>
-
-            <!-- Results Screen -->
-            <div class="quiz-screen results-screen" id="resultsScreen">
-                <div class="results-header">
-                    <span class="results-badge">Profile Complete</span>
-                    <h2 class="results-title">
-                        <span class="child-name" id="resultChildName">Your child</span> is a...
-                    </h2>
-                </div>
-
-                <div class="results-profiles">
-                    <div class="result-profile-card primary">
-                        <div class="result-profile-label">Primary Profile</div>
-                        <div class="result-profile-icon" id="primaryIcon">🔥</div>
-                        <h3 class="result-profile-name" id="primaryName">Intense Feeler</h3>
-                    </div>
-                    <div class="result-profile-card">
-                        <div class="result-profile-label">Secondary</div>
-                        <div class="result-profile-icon" id="secondaryIcon">🦉</div>
-                        <h3 class="result-profile-name" id="secondaryName">Deep Diver</h3>
-                    </div>
-                </div>
-
-                <div class="results-traits">
-                    <h3>Trait Snapshot</h3>
-                    <div class="trait-bars" id="traitBars"></div>
-                </div>
-
-                <div class="results-cta">
-                    <a href="#" class="btn btn-primary" id="resultsCtaBtn">
-                        See Full Profile + Tools →
-                    </a>
-                    <p class="results-cta-note">
-                        Understand why they struggle — and what actually helps
-                    </p>
-                </div>
-            </div>
-
         </div>
+
+        <!-- ═══════ WELCOME ═══════ -->
+        <div class="quiz-screen welcome-screen active" id="welcomeScreen">
+            <span class="welcome-badge">✦ Free · 3 Minutes · No Login</span>
+            <h1 class="welcome-title">What Makes Your Child's<br>Brain <em>Different?</em></h1>
+            <p class="welcome-subtitle">Eight questions. Instant clarity on why your twice-exceptional child thrives in some moments and struggles in others — and what to do about it.</p>
+            <div class="welcome-features">
+                <span class="welcome-feature"><span class="dot"></span> 8 questions</span>
+                <span class="welcome-feature"><span class="dot"></span> Instant profile</span>
+                <span class="welcome-feature"><span class="dot"></span> Matched tools</span>
+            </div>
+            <button class="btn-start" onclick="startQuiz()">Discover Their Profile →</button>
+            <p class="welcome-footnote">No email required to see your results.</p>
+        </div>
+
+        <!-- ═══════ QUESTIONS ═══════ -->
+        <div class="quiz-screen question-screen" id="questionScreen">
+            <div class="question-header">
+                <div class="question-category">
+                    <span id="categoryEmoji">🎯</span>
+                    <span id="categoryName">Category</span>
+                </div>
+                <h2 class="question-text" id="questionText">Question goes here</h2>
+            </div>
+            <div class="answer-options" id="answerOptions"></div>
+            <div class="question-nav">
+                <button class="nav-back" id="btnBack" onclick="prevQuestion()">← Back</button>
+                <button class="nav-next" id="btnNext" onclick="nextQuestion()" disabled>Next →</button>
+            </div>
+        </div>
+
+        <!-- ═══════ EMAIL CAPTURE ═══════ -->
+        <div class="quiz-screen email-screen" id="emailScreen">
+            <div class="email-icon-wrap">✨</div>
+            <h2>Your Profile Is Ready</h2>
+            <p class="email-sub">Add your child's name to personalize their results.</p>
+            <form class="email-form" onsubmit="submitEmail(event)">
+                <div class="form-field">
+                    <label>Your Child's First Name</label>
+                    <input type="text" id="childNameInput" placeholder="e.g., Emma" required>
+                </div>
+                <div class="form-field">
+                    <label>Your Email <span style="font-weight:400;color:var(--q-text-muted)">(optional)</span></label>
+                    <input type="email" id="parentEmailInput" placeholder="you@email.com">
+                    <p class="hint">Get their full profile + free De-Escalation Kit</p>
+                </div>
+                <button type="submit" class="email-submit">See My Child's Profile →</button>
+            </form>
+            <div class="email-skip">
+                <button type="button" onclick="skipEmail()">Skip — just show results</button>
+            </div>
+            <p class="email-privacy">🔒 No spam, ever. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- ═══════ LOADING ═══════ -->
+        <div class="quiz-screen" id="loadingScreen">
+            <div class="loading-screen">
+                <div class="loading-ring"></div>
+                <p class="loading-text">Analyzing patterns...</p>
+                <p class="loading-detail">Matching against 6 brain profiles</p>
+            </div>
+        </div>
+
+        <!-- ═══════ RESULTS ═══════ -->
+        <div class="quiz-screen results-screen" id="resultsScreen">
+            <div class="results-header">
+                <span class="results-eyebrow">Profile Complete</span>
+                <h2 class="results-title"><span class="child-name" id="resultChildName">Your child</span> is a...</h2>
+            </div>
+            <div class="profile-cards">
+                <div class="profile-card primary">
+                    <div class="card-label">Primary Profile</div>
+                    <div class="card-icon" id="primaryIcon">🔥</div>
+                    <div class="card-name" id="primaryName">Intense Feeler</div>
+                </div>
+                <div class="profile-card">
+                    <div class="card-label">Secondary</div>
+                    <div class="card-icon" id="secondaryIcon">🦉</div>
+                    <div class="card-name" id="secondaryName">Deep Diver</div>
+                </div>
+            </div>
+            <div class="traits-panel">
+                <h3>Trait Snapshot</h3>
+                <div id="traitBars"></div>
+            </div>
+            <div class="results-cta">
+                <a href="#" class="results-cta-btn" id="resultsCtaBtn">See Full Profile + Tools →</a>
+                <p class="results-cta-note">Understand why they struggle — and what actually helps.</p>
+            </div>
+        </div>
+
     </main>
 
     <div id="footer"></div>
@@ -786,11 +794,13 @@
     <script src="/js/cart.js"></script>
 
     <script>
+        /* ═══════════════════════════════════════
+           QUIZ ENGINE — Logic preserved exactly
+           ═══════════════════════════════════════ */
+
         const QUESTIONS = [
             {
-                id: 'executive',
-                category: 'Task Initiation',
-                emoji: '🎯',
+                id: 'executive', category: 'Task Initiation', emoji: '🎯',
                 question: "When it's time to start homework or a chore, your child typically...",
                 options: [
                     { text: "Jumps right in without much prompting", score: 1 },
@@ -800,9 +810,7 @@
                 ]
             },
             {
-                id: 'sensory',
-                category: 'Sensory Processing',
-                emoji: '🌡️',
+                id: 'sensory', category: 'Sensory Processing', emoji: '🌡️',
                 question: "How does your child react to busy, loud, or overwhelming environments?",
                 options: [
                     { text: "Handles them easily, no problem", score: 1 },
@@ -812,9 +820,7 @@
                 ]
             },
             {
-                id: 'emotional',
-                category: 'Emotional Intensity',
-                emoji: '💗',
+                id: 'emotional', category: 'Emotional Intensity', emoji: '💗',
                 question: "When something upsets your child (even something small), they...",
                 options: [
                     { text: "Recover quickly and move on", score: 1 },
@@ -824,9 +830,7 @@
                 ]
             },
             {
-                id: 'motivation',
-                category: 'Motivation Pattern',
-                emoji: '🚀',
+                id: 'motivation', category: 'Motivation Pattern', emoji: '🚀',
                 question: "Your child's effort and engagement depends on...",
                 options: [
                     { text: "They work consistently on most things", score: 1 },
@@ -836,9 +840,7 @@
                 ]
             },
             {
-                id: 'social',
-                category: 'Social Energy',
-                emoji: '🤝',
+                id: 'social', category: 'Social Energy', emoji: '🤝',
                 question: "After a full day at school, your child is usually...",
                 options: [
                     { text: "Ready to play and hang out with friends", score: 1 },
@@ -848,9 +850,7 @@
                 ]
             },
             {
-                id: 'perfectionism',
-                category: 'Perfectionism',
-                emoji: '⭐',
+                id: 'perfectionism', category: 'Perfectionism', emoji: '⭐',
                 question: "When your child makes a mistake or doesn't meet their own expectations...",
                 options: [
                     { text: "They shrug it off and try again", score: 1 },
@@ -860,9 +860,7 @@
                 ]
             },
             {
-                id: 'avoidance',
-                category: 'Task Overwhelm',
-                emoji: '🧩',
+                id: 'avoidance', category: 'Task Overwhelm', emoji: '🧩',
                 question: "When faced with a multi-step task or project, your child...",
                 options: [
                     { text: "Breaks it down and works through it", score: 1 },
@@ -872,9 +870,7 @@
                 ]
             },
             {
-                id: 'learning',
-                category: 'Learning Style',
-                emoji: '📚',
+                id: 'learning', category: 'Learning Style', emoji: '📚',
                 question: "Your child learns best when...",
                 options: [
                     { text: "Following step-by-step instructions", score: 1 },
@@ -886,43 +882,23 @@
         ];
 
         const PROFILES = {
-            'intense-feeler': {
-                name: 'Intense Feeler',
-                icon: '🔥',
-                url: '/results/intense-feeler/',
-                weights: { emotional: 3, sensory: 2, perfectionism: 2 }
-            },
-            'reluctant-starter': {
-                name: 'Reluctant Starter',
-                icon: '🐢',
-                url: '/results/reluctant-starter/',
-                weights: { executive: 3, avoidance: 2, motivation: 2 }
-            },
-            'deep-diver': {
-                name: 'Deep Diver',
-                icon: '🦉',
-                url: '/results/deep-diver/',
-                weights: { learning: 3, motivation: 2, perfectionism: 2 }
-            },
-            'sensitive-observer': {
-                name: 'Sensitive Observer',
-                icon: '🐰',
-                url: '/results/sensitive-observer/',
-                weights: { sensory: 3, social: 2, emotional: 2 }
-            },
-            'bold-explorer': {
-                name: 'Bold Explorer',
-                icon: '🦁',
-                url: '/results/bold-explorer/',
-                weights: { social: -2, motivation: 2, learning: 1 },
-                inverse: ['social']
-            },
-            'big-picture-thinker': {
-                name: 'Big Picture Thinker',
-                icon: '🚀',
-                url: '/results/big-picture-thinker/',
-                weights: { executive: 2, learning: 3, avoidance: 2 }
-            }
+            'intense-feeler': { name: 'Intense Feeler', icon: '🔥', url: '/results/intense-feeler/', weights: { emotional: 3, sensory: 2, perfectionism: 2 } },
+            'reluctant-starter': { name: 'Reluctant Starter', icon: '🐢', url: '/results/reluctant-starter/', weights: { executive: 3, avoidance: 2, motivation: 2 } },
+            'deep-diver': { name: 'Deep Diver', icon: '🦉', url: '/results/deep-diver/', weights: { learning: 3, motivation: 2, perfectionism: 2 } },
+            'sensitive-observer': { name: 'Sensitive Observer', icon: '🐰', url: '/results/sensitive-observer/', weights: { sensory: 3, social: 2, emotional: 2 } },
+            'bold-explorer': { name: 'Bold Explorer', icon: '🦁', url: '/results/bold-explorer/', weights: { social: -2, motivation: 2, learning: 1 }, inverse: ['social'] },
+            'big-picture-thinker': { name: 'Big Picture Thinker', icon: '🚀', url: '/results/big-picture-thinker/', weights: { executive: 2, learning: 3, avoidance: 2 } }
+        };
+
+        const TRAIT_LABELS = {
+            executive: 'Task Start',
+            sensory: 'Sensory',
+            emotional: 'Intensity',
+            motivation: 'Motivation',
+            social: 'Social Energy',
+            perfectionism: 'Perfectionism',
+            avoidance: 'Overwhelm',
+            learning: 'Autonomy'
         };
 
         let currentQuestion = 0;
@@ -930,58 +906,69 @@
         let childName = 'Your child';
         let parentEmail = '';
 
+        // ── Build progress segments ──
+        function buildProgressSegments() {
+            const container = document.getElementById('progressSegments');
+            container.innerHTML = QUESTIONS.map((_, i) => `<div class="progress-seg" data-idx="${i}"></div>`).join('');
+        }
+        buildProgressSegments();
+
+        function updateProgress() {
+            const segs = document.querySelectorAll('.progress-seg');
+            segs.forEach((seg, i) => {
+                seg.classList.remove('filled', 'current');
+                if (i < currentQuestion) seg.classList.add('filled');
+                if (i === currentQuestion) seg.classList.add('current');
+            });
+            document.getElementById('progressCount').textContent = (currentQuestion + 1) + ' of ' + QUESTIONS.length;
+            document.getElementById('progressLabel').textContent = QUESTIONS[currentQuestion].category;
+        }
+
+        function showScreen(id) {
+            document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            const showProgress = id === 'questionScreen';
+            document.getElementById('progressBar').classList.toggle('visible', showProgress);
+        }
+
+        // ── Start ──
         function startQuiz() {
-            document.getElementById('progressWrapper').style.display = 'block';
             showScreen('questionScreen');
             renderQuestion();
             updateProgress();
         }
 
-        function showScreen(screenId) {
-            document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-            
-            const hideProgress = ['welcomeScreen', 'loadingScreen', 'resultsScreen'].includes(screenId);
-            document.getElementById('progressWrapper').style.display = hideProgress ? 'none' : 'block';
-        }
-
-        function updateProgress() {
-            const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = (currentQuestion + 1) + ' of ' + QUESTIONS.length;
-        }
-
+        // ── Render Question ──
         function renderQuestion() {
             const q = QUESTIONS[currentQuestion];
-            
             document.getElementById('categoryEmoji').textContent = q.emoji;
             document.getElementById('categoryName').textContent = q.category;
             document.getElementById('questionText').textContent = q.question;
 
-            const optionsContainer = document.getElementById('answerOptions');
-            optionsContainer.innerHTML = q.options.map((opt, idx) => 
-                '<button class="answer-option ' + (answers[q.id] === opt.score ? 'selected' : '') + '" onclick="selectAnswer(\'' + q.id + '\', ' + opt.score + ', this)"><span class="answer-indicator"></span><span>' + opt.text + '</span></button>'
-            ).join('');
+            const container = document.getElementById('answerOptions');
+            container.innerHTML = q.options.map((opt, idx) => {
+                const sel = answers[q.id] === opt.score ? ' selected' : '';
+                return `<button class="answer-option${sel}" onclick="selectAnswer('${q.id}', ${opt.score}, this)" aria-label="${opt.text}">
+                    <span class="answer-pip"></span>
+                    <span class="answer-label">${opt.text}</span>
+                </button>`;
+            }).join('');
 
             document.getElementById('btnBack').disabled = currentQuestion === 0;
             document.getElementById('btnNext').disabled = !answers[q.id];
-            
-            const nextBtn = document.getElementById('btnNext');
-            nextBtn.textContent = currentQuestion === QUESTIONS.length - 1 ? 'See Results →' : 'Next →';
+            document.getElementById('btnNext').textContent = currentQuestion === QUESTIONS.length - 1 ? 'See Results →' : 'Next →';
         }
 
-        function selectAnswer(questionId, score, element) {
-            answers[questionId] = score;
-            
-            document.querySelectorAll('.answer-option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            
+        function selectAnswer(qId, score, el) {
+            answers[qId] = score;
+            document.querySelectorAll('.answer-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
             document.getElementById('btnNext').disabled = false;
         }
 
         function nextQuestion() {
             if (!answers[QUESTIONS[currentQuestion].id]) return;
-            
             if (currentQuestion < QUESTIONS.length - 1) {
                 currentQuestion++;
                 renderQuestion();
@@ -999,12 +986,11 @@
             }
         }
 
-        function submitEmail(event) {
-            event.preventDefault();
-            
+        // ── Email ──
+        function submitEmail(e) {
+            e.preventDefault();
             childName = document.getElementById('childNameInput').value || 'Your child';
             parentEmail = document.getElementById('parentEmailInput').value || '';
-            
             processResults();
         }
 
@@ -1014,53 +1000,77 @@
             processResults();
         }
 
+        // ── Results ──
         function processResults() {
             showScreen('loadingScreen');
-            
             const results = calculateResults();
-            
+
             const profileData = {
-                childName: childName,
-                parentEmail: parentEmail,
+                childName, parentEmail,
                 primary: results.primary,
                 secondary: results.secondary,
                 traitScores: answers,
                 completedAt: new Date().toISOString()
             };
-            
             localStorage.setItem('quizProfile', JSON.stringify(profileData));
-            
+
             setTimeout(() => {
                 window.location.href = PROFILES[results.primary].url;
-            }, 1500);
+            }, 1800);
         }
 
         function calculateResults() {
             const profileScores = {};
-
-            for (const [profileId, profile] of Object.entries(PROFILES)) {
+            for (const [pid, profile] of Object.entries(PROFILES)) {
                 let score = 0;
-                
                 for (const [trait, weight] of Object.entries(profile.weights)) {
-                    const traitScore = answers[trait] || 0;
-                    
-                    if (profile.inverse && profile.inverse.includes(trait)) {
-                        score += (5 - traitScore) * Math.abs(weight);
-                    } else {
-                        score += traitScore * weight;
-                    }
+                    const ts = answers[trait] || 0;
+                    score += (profile.inverse && profile.inverse.includes(trait))
+                        ? (5 - ts) * Math.abs(weight)
+                        : ts * weight;
                 }
-                
-                profileScores[profileId] = score;
+                profileScores[pid] = score;
+            }
+            const sorted = Object.entries(profileScores).sort((a, b) => b[1] - a[1]);
+            return { primary: sorted[0][0], secondary: sorted[1][0], scores: profileScores };
+        }
+
+        // This renders the results screen (used if you display inline instead of redirect)
+        function renderResults(results) {
+            const primary = PROFILES[results.primary];
+            const secondary = PROFILES[results.secondary];
+
+            document.getElementById('resultChildName').textContent = childName;
+            document.getElementById('primaryIcon').textContent = primary.icon;
+            document.getElementById('primaryName').textContent = primary.name;
+            document.getElementById('secondaryIcon').textContent = secondary.icon;
+            document.getElementById('secondaryName').textContent = secondary.name;
+            document.getElementById('resultsCtaBtn').href = primary.url;
+
+            // Trait bars
+            const barsContainer = document.getElementById('traitBars');
+            barsContainer.innerHTML = '';
+            for (const q of QUESTIONS) {
+                const val = answers[q.id] || 0;
+                const pct = (val / 4) * 100;
+                const level = pct >= 75 ? 'high' : pct >= 50 ? 'medium' : 'low';
+                barsContainer.innerHTML += `
+                    <div class="trait-row">
+                        <span class="trait-name">${TRAIT_LABELS[q.id]}</span>
+                        <div class="trait-track"><div class="trait-fill ${level}" style="width:0%"></div></div>
+                        <span class="trait-value">${val}/4</span>
+                    </div>`;
             }
 
-            const sorted = Object.entries(profileScores).sort((a, b) => b[1] - a[1]);
-
-            return {
-                primary: sorted[0][0],
-                secondary: sorted[1][0],
-                scores: profileScores
-            };
+            // Animate bars in
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    barsContainer.querySelectorAll('.trait-fill').forEach((bar, i) => {
+                        const val = answers[QUESTIONS[i].id] || 0;
+                        bar.style.width = ((val / 4) * 100) + '%';
+                    });
+                }, 100);
+            });
         }
     </script>
 
