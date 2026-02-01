@@ -242,7 +242,8 @@
         getItemCount: () => cart.getItemCount(),
         getTotal: () => cart.getTotal(),
         isEmpty: () => cart.isEmpty(),
-        getProduct: (id) => PRODUCTS[id]
+        getProduct: (id) => PRODUCTS[id],
+        directCheckout: (id) => directCheckout(id),
     };
 
     // Auto-Init
