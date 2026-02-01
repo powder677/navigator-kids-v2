@@ -296,3 +296,249 @@ function personalizeSite() {
         console.log('Personalization skipped');
     }
 }
+/* ═══════════════════════════════════════════════════════════════
+   IEP BATTLE PLAN — CTA Component
+   ═══════════════════════════════════════════════════════════════
+   
+   INSTRUCTIONS:
+   Paste this entire block into the BOTTOM of your existing components.js file.
+   It will automatically inject a CTA section before the footer on all /iep/ pages,
+   and add a subtle sticky bar at the bottom of the viewport.
+   
+   To disable on a specific page, add class="no-bp-cta" to the <body> tag.
+   To change the offer URL, update the BP_URL constant below.
+   ═══════════════════════════════════════════════════════════════ */
+
+(function() {
+   'use strict';
+
+   // ── CONFIG ──
+   const BP_URL = '/iep/battle-plan/';
+   const BP_PRICE = '$497';
+   
+   // Only show on /iep/ pages (not on the battle plan page itself)
+   const currentPath = window.location.pathname;
+   if (!currentPath.startsWith('/iep/')) return;
+   if (currentPath.includes('/battle-plan')) return;
+   if (document.body.classList.contains('no-bp-cta')) return;
+
+   // ── STYLES ──
+   const style = document.createElement('style');
+   style.textContent = `
+      /* ─── Inline CTA Section ─── */
+      .bp-inline-cta {
+         background: linear-gradient(135deg, #1a2744 0%, #2a3d5e 100%);
+         padding: 3rem 1.5rem;
+         margin-top: 3rem;
+         position: relative;
+         overflow: hidden;
+      }
+      .bp-inline-cta::before {
+         content: '';
+         position: absolute;
+         top: -50%; right: -10%;
+         width: 300px; height: 300px;
+         background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+         pointer-events: none;
+      }
+      .bp-inline-cta-inner {
+         max-width: 700px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 1fr auto;
+         gap: 2rem;
+         align-items: center;
+         position: relative;
+         z-index: 1;
+      }
+      @media (max-width: 640px) {
+         .bp-inline-cta-inner {
+            grid-template-columns: 1fr;
+            text-align: center;
+         }
+      }
+      .bp-inline-cta-text h3 {
+         font-family: 'Merriweather', serif;
+         font-size: 1.25rem;
+         font-weight: 700;
+         color: #ffffff;
+         margin: 0 0 0.5rem;
+         line-height: 1.35;
+      }
+      .bp-inline-cta-text p {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.88rem;
+         color: rgba(255,255,255,0.65);
+         margin: 0;
+         line-height: 1.6;
+      }
+      .bp-inline-cta-btn {
+         display: inline-block;
+         background: #d4a853;
+         color: #1a2744;
+         font-family: 'Inter', sans-serif;
+         font-weight: 700;
+         font-size: 0.92rem;
+         padding: 0.85rem 1.75rem;
+         border-radius: 8px;
+         text-decoration: none;
+         white-space: nowrap;
+         transition: all 0.2s ease;
+         box-shadow: 0 3px 15px rgba(212,168,83,0.25);
+      }
+      .bp-inline-cta-btn:hover {
+         transform: translateY(-1px);
+         box-shadow: 0 5px 22px rgba(212,168,83,0.4);
+      }
+      .bp-inline-cta-btn span {
+         display: block;
+         font-size: 0.72rem;
+         font-weight: 500;
+         opacity: 0.7;
+         margin-top: 0.15rem;
+      }
+
+      /* ─── Sticky Bottom Bar ─── */
+      .bp-sticky-bar {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         background: #1a2744;
+         padding: 0.65rem 1.5rem;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 1rem;
+         z-index: 9999;
+         transform: translateY(100%);
+         transition: transform 0.4s ease;
+         box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      }
+      .bp-sticky-bar.visible {
+         transform: translateY(0);
+      }
+      .bp-sticky-bar p {
+         font-family: 'Inter', sans-serif;
+         font-size: 0.82rem;
+         color: rgba(255,255,255,0.8);
+         margin: 0;
+      }
+      .bp-sticky-bar p strong {
+         color: #d4a853;
+      }
+      .bp-sticky-bar a {
+         display: inline-block;
+         background: #d4a853;
+         color: #1a2744;
+         font-family: 'Inter', sans-serif;
+         font-weight: 700;
+         font-size: 0.78rem;
+         padding: 0.45rem 1.1rem;
+         border-radius: 6px;
+         text-decoration: none;
+         white-space: nowrap;
+         transition: opacity 0.2s;
+      }
+      .bp-sticky-bar a:hover { opacity: 0.9; }
+      .bp-sticky-close {
+         background: none;
+         border: none;
+         color: rgba(255,255,255,0.4);
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 0 0.25rem;
+         line-height: 1;
+      }
+      .bp-sticky-close:hover { color: rgba(255,255,255,0.7); }
+      @media (max-width: 500px) {
+         .bp-sticky-bar p { display: none; }
+         .bp-sticky-bar { justify-content: center; }
+         .bp-sticky-bar a { font-size: 0.82rem; padding: 0.5rem 1.5rem; }
+      }
+
+      /* Push footer content up so sticky bar doesn't cover it */
+      body.bp-bar-active { padding-bottom: 50px; }
+   `;
+   document.head.appendChild(style);
+
+   // ── INLINE CTA (before footer) ──
+   function injectInlineCTA() {
+      const footer = document.getElementById('footer');
+      if (!footer) return;
+
+      const cta = document.createElement('section');
+      cta.className = 'bp-inline-cta';
+      cta.setAttribute('aria-label', 'IEP Battle Plan offer');
+      cta.innerHTML = `
+         <div class="bp-inline-cta-inner">
+            <div class="bp-inline-cta-text">
+               <h3>Stop Googling. Start Strategizing.</h3>
+               <p>The IEP Battle Plan gives you a personalized heat map, meeting script, pre-written emails, and a live strategy call—so you walk in prepared, not panicked.</p>
+            </div>
+            <a href="${BP_URL}" class="bp-inline-cta-btn">
+               Get Your Battle Plan
+               <span>Starts at ${BP_PRICE}</span>
+            </a>
+         </div>
+      `;
+
+      footer.parentNode.insertBefore(cta, footer);
+   }
+
+   // ── STICKY BAR ──
+   function injectStickyBar() {
+      // Don't show if user dismissed it this session
+      if (sessionStorage.getItem('bp-bar-dismissed')) return;
+
+      const bar = document.createElement('div');
+      bar.className = 'bp-sticky-bar';
+      bar.setAttribute('role', 'complementary');
+      bar.setAttribute('aria-label', 'IEP Battle Plan');
+      bar.innerHTML = `
+         <p>IEP meeting coming up? <strong>Get your personalized Battle Plan.</strong></p>
+         <a href="${BP_URL}">Learn More →</a>
+         <button class="bp-sticky-close" aria-label="Dismiss">&times;</button>
+      `;
+      document.body.appendChild(bar);
+
+      // Show after user scrolls 40% of the page
+      let shown = false;
+      function checkScroll() {
+         const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+         if (scrollPercent > 0.35 && !shown) {
+            bar.classList.add('visible');
+            document.body.classList.add('bp-bar-active');
+            shown = true;
+         }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      // Also check immediately in case page is already scrolled
+      checkScroll();
+
+      // Close button
+      bar.querySelector('.bp-sticky-close').addEventListener('click', () => {
+         bar.classList.remove('visible');
+         document.body.classList.remove('bp-bar-active');
+         sessionStorage.setItem('bp-bar-dismissed', '1');
+      });
+   }
+
+   // ── INIT ──
+   // Wait for DOM to be ready (components.js may load deferred)
+   if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+         // Small delay to let header/footer components render first
+         setTimeout(() => {
+            injectInlineCTA();
+            injectStickyBar();
+         }, 100);
+      });
+   } else {
+      setTimeout(() => {
+         injectInlineCTA();
+         injectStickyBar();
+      }, 100);
+   }
+
+})();
