@@ -7,6 +7,9 @@
     'use strict';
     const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
 
+    // Stripe publishable key
+    const STRIPE_PK = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
+
     // 🔒 PRODUCT CATALOG (Verified IDs & Prices)
     const PRODUCTS = {
         // === BUNDLES ===
@@ -187,7 +190,7 @@
             });
             const session = await response.json();
             if(session.id) {
-                const stripe = Stripe('pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd');
+                const stripe = Stripe(STRIPE_PK);
                 stripe.redirectToCheckout({ sessionId: session.id });
             } else {
                 throw new Error("Session ID missing");
@@ -195,6 +198,47 @@
         } catch (err) { 
             alert("Checkout error. Please refresh and try again."); 
             if(btn) { btn.disabled = false; btn.innerText = originalText; }
+        }
+    }
+
+    /* ── FIX: directCheckout — was exported but never defined ──
+       Uses Stripe Checkout (client-side) for products with a stripePrice ID.
+       For the IEP Battle Plan: pays via Stripe → redirects to intake form. */
+    async function directCheckout(productId) {
+        const product = PRODUCTS[productId];
+        if (!product) {
+            alert('Product not found. Please contact hello@navigatorkidsai.com');
+            return;
+        }
+
+        // Service products with a Stripe Price ID → direct to Stripe Checkout
+        if (product.stripePrice) {
+            // Disable the clicked button for feedback
+            var btns = document.querySelectorAll('[onclick*="' + productId + '"]');
+            btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.6'; b.innerText = 'Redirecting to checkout…'; });
+
+            try {
+                var stripe = Stripe(STRIPE_PK);
+                var result = await stripe.redirectToCheckout({
+                    lineItems: [{ price: product.stripePrice, quantity: 1 }],
+                    mode: 'payment',
+                    successUrl: window.location.origin + '/iep/battle-plan/thank-you/?session_id={CHECKOUT_SESSION_ID}',
+                    cancelUrl: window.location.origin + '/iep/'
+                });
+                // redirectToCheckout only returns if there's an error
+                if (result.error) {
+                    alert(result.error.message || 'Payment could not be started. Please try again.');
+                    btns.forEach(function(b) { b.disabled = false; b.style.opacity = '1'; b.innerText = b.className.includes('price') ? 'Get Your Battle Plan →' : 'Get Your Battle Plan — $497'; });
+                }
+            } catch (err) {
+                console.error('Stripe directCheckout error:', err);
+                alert('Could not connect to payment processor. Please try again or contact hello@navigatorkidsai.com');
+                btns.forEach(function(b) { b.disabled = false; b.style.opacity = '1'; b.innerText = b.className.includes('price') ? 'Get Your Battle Plan →' : 'Get Your Battle Plan — $497'; });
+            }
+        } else {
+            // Regular products: add to cart and go to cart page
+            cart.add(productId, 1);
+            window.location.href = '/cart/';
         }
     }
 
