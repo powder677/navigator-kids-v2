@@ -720,6 +720,13 @@
          transform: translateY(-2px);
          box-shadow: 0 6px 28px rgba(212,168,83,0.45);
       }
+      /* Reset button elements to match anchor styling */
+      button.price-cta,
+      button.hero-cta {
+         border: none;
+         cursor: pointer;
+         font-family: inherit;
+      }
       .bp-final-cta .final-note {
          margin-top: 1.5rem;
          font-size: 0.82rem;
@@ -1000,7 +1007,7 @@
                <div class="price-amount">$497</div>
                <div class="price-context">One-time investment. Unlimited re-listens of your strategy call.</div>
 
-               <a href="#" class="price-cta" id="buyButton">Get Your Battle Plan →</a>
+               <button class="price-cta" id="buyButton" data-direct-checkout onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan →</button>
 
                <ul class="price-includes">
                   <li>Deep-dive Diagnostic Assessment (8 domains)</li>
@@ -1119,7 +1126,7 @@
          <div class="content-wrapper">
             <h2>Your Child's Team Has Professionals.<br>Now You Have One Too.</h2>
             <p>The next IEP meeting doesn't have to end with you crying in the parking lot. It can end with the school scrambling to document every commitment they just made—because you made them say it on the record.</p>
-            <a href="#pricing" class="hero-cta">Get Your Battle Plan — $497</a>
+            <button class="hero-cta" data-direct-checkout onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan — $497</button>
             <p class="final-note">One-time purchase · 7-day guarantee · Delivered in 48–72 hours</p>
          </div>
       </section>
@@ -1128,6 +1135,8 @@
 
    <div id="footer"></div>
 
+   <script src="https://js.stripe.com/v3/"></script>
+   <script src="/js/cart.js"></script>
    <script>
       // FAQ Accordion
       document.querySelectorAll('.faq-question').forEach(q => {
