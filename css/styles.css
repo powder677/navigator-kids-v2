@@ -1580,3 +1580,11 @@ img { max-width: 100%; height: auto; }
         padding: 20px;
     }
 }
+/* Prevent header flash-of-unstyled-content */
+#header {
+   opacity: 0;
+   transition: opacity 0.15s ease;
+}
+#header.loaded {
+   opacity: 1;
+}
