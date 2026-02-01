@@ -86,7 +86,6 @@
          background-color: var(--cream);
          color: var(--text);
          line-height: 1.7;
-         /* 3. Removed padding-top here because Tailwind header is sticky/handled by component logic */
          -webkit-font-smoothing: antialiased;
       }
 
@@ -212,7 +211,7 @@
            ========================================= */
       .hero {
          position: relative;
-         padding: 8rem 0 5rem; /* Increased top padding to account for fixed header */
+         padding: 8rem 0 5rem;
          overflow: hidden;
       }
 
@@ -371,6 +370,34 @@
       }
 
       /* =========================================
+           5.2 NEW IEP HUB TEASER
+           ========================================= */
+      .iep-hub-teaser {
+         background-color: var(--white);
+         padding: 4rem 1rem;
+         text-align: center;
+         border-bottom: 1px solid rgba(61, 64, 91, 0.05);
+      }
+
+      .iep-hub-content {
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      .iep-hub-teaser h2 {
+         font-size: 2rem;
+         margin-bottom: 1rem;
+         color: var(--navy);
+      }
+
+      .iep-hub-teaser p {
+         font-size: 1.1rem;
+         max-width: 600px;
+         margin: 0 auto 2rem;
+         color: var(--text-light);
+      }
+
+      /* =========================================
            5.5 PREMIUM ADVOCACY SECTION
            ========================================= */
       .advocacy-section {
@@ -404,7 +431,7 @@
          font-size: 2rem;
          margin-bottom: 1rem;
       }
-      
+
       .advocacy-label {
          color: var(--sage);
          font-size: 0.85rem;
@@ -429,7 +456,7 @@
          text-align: center;
          backdrop-filter: blur(10px);
       }
-      
+
       .advocacy-price {
          font-size: 3rem;
          font-weight: 700;
@@ -444,7 +471,7 @@
          margin: 1.5rem 0;
          display: inline-block;
       }
-      
+
       .advocacy-feature {
          display: flex;
          align-items: center;
@@ -457,14 +484,14 @@
       .advocacy-feature i {
          color: var(--sage);
       }
-      
+
       .btn-glow {
          background: var(--terracotta);
          color: white;
          box-shadow: 0 0 20px rgba(224, 122, 95, 0.4);
          width: 100%;
       }
-      
+
       .btn-glow:hover {
          background: var(--terracotta-dark);
          box-shadow: 0 0 30px rgba(224, 122, 95, 0.6);
@@ -774,7 +801,7 @@
          text-align: center;
          position: relative;
       }
-      
+
       .lead-visual::after {
          content: '';
          position: absolute;
@@ -840,14 +867,14 @@
          :root {
             --section-padding: 3.5rem;
          }
-         
+
          .lead-magnet-wrapper {
-             grid-template-columns: 1fr;
-             gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
          }
-         
+
          .lead-visual {
-             order: -1;
+            order: -1;
          }
 
          .nav-links {
@@ -873,13 +900,13 @@
          }
 
          .advocacy-wrapper {
-             grid-template-columns: 1fr;
-             padding: 2.5rem;
-             text-align: center;
+            grid-template-columns: 1fr;
+            padding: 2.5rem;
+            text-align: center;
          }
-         
+
          .advocacy-features {
-             text-align: left;
+            text-align: left;
          }
 
          .free-kit-content {
@@ -959,29 +986,37 @@
       </div>
    </section>
 
+   <section class="iep-hub-teaser">
+      <div class="container iep-hub-content">
+         <h2>Struggling with School?</h2>
+         <p>Don't face the IEP process alone. Access our free, comprehensive guide specifically designed for 2e families fighting for support.</p>
+         <a href="/iep/" class="btn btn-secondary btn-arrow" style="border-color:var(--terracotta); color:var(--terracotta);">Enter the IEP Advocacy Hub</a>
+      </div>
+   </section>
+
    <section class="advocacy-section" id="advocacy">
-       <div class="container">
-           <div class="advocacy-wrapper">
-               <div class="advocacy-content">
-                   <span class="advocacy-label">Flagship Parent System</span>
-                   <h2>School Advocacy Made Simple</h2>
-                   <p>Stop feeling intimidated in school meetings. Get the professional scripts, email templates, and legal frameworks to ensure your child gets the accommodations they deserve.</p>
-                   <ul class="advocacy-features">
-                       <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Translate "Parent Worry" to "Educator Speak"</li>
-                       <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> 50+ Ready-to-Send Email Templates</li>
-                       <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Accommodations Matched to Brain Profile</li>
-                   </ul>
-               </div>
-               
-               <div class="advocacy-card">
-                   <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">The IEP Advocacy System</h3>
-                   <div class="advocacy-price">$67</div>
-                   <p style="font-size:0.9rem; margin-bottom:1.5rem; color:rgba(255,255,255,0.6);">One-time purchase • Lifetime updates</p>
-                   <button onclick="window.NavigatorCart.add('prod-system-iep')" class="btn btn-glow btn-large">Get The System</button>
-                   <p style="margin-top:1rem; font-size:0.8rem; color:rgba(255,255,255,0.5);"><i class="fa-solid fa-lock"></i> Secure Checkout</p>
-               </div>
-           </div>
-       </div>
+      <div class="container">
+         <div class="advocacy-wrapper">
+            <div class="advocacy-content">
+               <span class="advocacy-label">Flagship Parent System</span>
+               <h2>School Advocacy Made Simple</h2>
+               <p>Stop feeling intimidated in school meetings. Get the professional scripts, email templates, and legal frameworks to ensure your child gets the accommodations they deserve.</p>
+               <ul class="advocacy-features">
+                  <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Translate "Parent Worry" to "Educator Speak"</li>
+                  <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> 50+ Ready-to-Send Email Templates</li>
+                  <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Accommodations Matched to Brain Profile</li>
+               </ul>
+            </div>
+
+            <div class="advocacy-card">
+               <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">The IEP Advocacy System</h3>
+               <div class="advocacy-price">$67</div>
+               <p style="font-size:0.9rem; margin-bottom:1.5rem; color:rgba(255,255,255,0.6);">One-time purchase • Lifetime updates</p>
+               <button onclick="window.NavigatorCart.add('prod-system-iep')" class="btn btn-glow btn-large">Get The System</button>
+               <p style="margin-top:1rem; font-size:0.8rem; color:rgba(255,255,255,0.5);"><i class="fa-solid fa-lock"></i> Secure Checkout</p>
+            </div>
+         </div>
+      </div>
    </section>
 
    <section class="profiles-section" id="profiles">
@@ -1126,7 +1161,7 @@
                      <span>Printable calm-down card for your fridge</span>
                   </div>
                </div>
-               
+
                <a href="#get-the-kit" class="btn btn-secondary btn-arrow">Get the Free Kit </a>
             </div>
 
@@ -1144,44 +1179,44 @@
    <section class="lead-capture-section" id="get-the-kit">
       <div class="container">
          <div class="text-center">
-             <span class="section-label">System Protocol</span>
-             <h2 class="section-title">Emergency Regulation Kit</h2>
-             <p class="section-subtitle">
-                 The exact protocol for when the thinking brain is offline. Stop guessing and start co-regulating.
-             </p>
+            <span class="section-label">System Protocol</span>
+            <h2 class="section-title">Emergency Regulation Kit</h2>
+            <p class="section-subtitle">
+               The exact protocol for when the thinking brain is offline. Stop guessing and start co-regulating.
+            </p>
          </div>
-         
+
          <div class="lead-magnet-wrapper">
-             <div class="lead-visual">
-                 <div class="free-kit-icon" style="font-size:5rem;">🛡️</div>
-                 <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--navy); margin-bottom:1rem;">Nervous System Protocol</h3>
-                 <ul style="text-align:left; display:inline-block; font-size:0.9rem; color:var(--text-light);">
-                     <li style="margin-bottom:0.5rem"><strong>Phase 1:</strong> Rapid Response Protocol</li>
-                     <li style="margin-bottom:0.5rem"><strong>Phase 2:</strong> Co-Regulation Scripting</li>
-                     <li><strong>Phase 3:</strong> Physiological Reset</li>
-                 </ul>
-             </div>
-             
-             <div class="lead-form-container">
+            <div class="lead-visual">
+               <div class="free-kit-icon" style="font-size:5rem;">🛡️</div>
+               <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--navy); margin-bottom:1rem;">Nervous System Protocol</h3>
+               <ul style="text-align:left; display:inline-block; font-size:0.9rem; color:var(--text-light);">
+                  <li style="margin-bottom:0.5rem"><strong>Phase 1:</strong> Rapid Response Protocol</li>
+                  <li style="margin-bottom:0.5rem"><strong>Phase 2:</strong> Co-Regulation Scripting</li>
+                  <li><strong>Phase 3:</strong> Physiological Reset</li>
+               </ul>
+            </div>
+
+            <div class="lead-form-container">
                <form data-formspree data-redirect="/thank-you/">
-                     <div class="form-group">
-                         <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Your First Name</label>
-                         <input type="text" name="name" class="form-input" placeholder="Jane" required>
-                     </div>
-                     <div class="form-group">
-                         <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Best Email Address</label>
-                         <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
-                     </div>
-                     <button type="submit" class="form-btn">Send Me The PDF Now</button>
-                     <div class="form-success" style="display:none; text-align:center; padding:1rem;">
-                        <h3>✅ Sent!</h3>
-                        <p>Check your inbox.</p>
-                     </div>
-                     <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">
-                         <i class="fa-solid fa-lock"></i> Your privacy is safe. Unsubscribe anytime.
-                     </p>
-                 </form>
-             </div>
+                  <div class="form-group">
+                     <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Your First Name</label>
+                     <input type="text" name="name" class="form-input" placeholder="Jane" required>
+                  </div>
+                  <div class="form-group">
+                     <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Best Email Address</label>
+                     <input type="email" name="email" class="form-input" placeholder="jane@example.com" required>
+                  </div>
+                  <button type="submit" class="form-btn">Send Me The PDF Now</button>
+                  <div class="form-success" style="display:none; text-align:center; padding:1rem;">
+                     <h3>✅ Sent!</h3>
+                     <p>Check your inbox.</p>
+                  </div>
+                  <p style="text-align:center; font-size:0.8rem; color:#999; margin-top:1rem;">
+                     <i class="fa-solid fa-lock"></i> Your privacy is safe. Unsubscribe anytime.
+                  </p>
+               </form>
+            </div>
          </div>
       </div>
    </section>
