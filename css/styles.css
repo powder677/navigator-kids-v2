@@ -1177,3 +1177,221 @@ img { max-width: 100%; height: auto; }
 .link-block .btn-secondary {
     margin: 5px;
 }
+/* =========================================
+   21. RESOURCE / BLOG POST TEMPLATE
+   (Styles for all /resources/ articles)
+   ========================================= */
+
+/* 1. Page Layout (Grid) */
+.article-page {
+    padding: 60px 0 100px;
+    background-color: var(--color-cream);
+}
+
+.article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px; /* Content takes space, Sidebar is fixed 300px */
+    gap: 60px;
+    align-items: start;
+}
+
+/* 2. Breadcrumbs */
+.breadcrumbs {
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.breadcrumbs a {
+    font-weight: 600;
+    color: var(--color-terracotta);
+}
+
+.breadcrumbs span {
+    margin: 0 8px;
+    color: var(--color-border);
+}
+
+/* 3. Article Container */
+.article-content {
+    background: var(--color-white);
+    padding: 60px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 4. Article Header */
+.article-category {
+    display: inline-block;
+    background: var(--color-sage-light);
+    color: var(--color-navy);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--color-navy);
+}
+
+.article-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.article-byline {
+    font-size: 0.95rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+/* 5. Trust Bar (The "Verified" checkmarks) */
+.article-trust-bar {
+    background: #F0F9F4; /* Light Sage Green */
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    margin: 30px 0 40px;
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-sage-dark);
+    border-left: 4px solid var(--color-sage);
+}
+
+/* 6. Body Typography */
+.article-body p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--color-navy);
+}
+
+.article-body h2 {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: var(--color-navy);
+}
+
+.article-body h3 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--color-terracotta);
+}
+
+/* 7. Callout Box ("The Coke Bottle Effect") */
+.callout-box {
+    background: var(--color-cream);
+    border: 2px solid var(--color-navy); /* High contrast border */
+    border-radius: var(--radius-md);
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.callout-box h4 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.callout-box p {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+/* 8. Disclaimer & CTA */
+.article-disclaimer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.article-cta {
+    margin-top: 60px;
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.article-cta h3 { color: var(--color-white); margin-bottom: 10px; }
+.article-cta p { color: rgba(255,255,255,0.8); margin-bottom: 25px; }
+
+/* 9. Sidebar (Right Column) */
+.article-sidebar {
+    position: sticky;
+    top: 20px; /* Sticks when scrolling */
+}
+
+.sidebar-widget {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border);
+}
+
+.sidebar-widget h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-cream);
+    padding-bottom: 10px;
+}
+
+.sidebar-widget p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+}
+
+.related-links li {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.related-links li:last-child { border: none; }
+
+.related-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-navy);
+}
+
+.related-links a:hover {
+    color: var(--color-terracotta);
+}
+
+/* 10. Responsive Design (Mobile) */
+@media (max-width: 900px) {
+    .article-layout {
+        grid-template-columns: 1fr; /* Stack sidebar under content */
+        gap: 40px;
+    }
+
+    .article-content {
+        padding: 30px 20px; /* Smaller padding on mobile */
+    }
+
+    .article-header h1 {
+        font-size: 2rem;
+    }
+}
