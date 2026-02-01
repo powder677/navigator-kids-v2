@@ -1395,3 +1395,188 @@ img { max-width: 100%; height: auto; }
         font-size: 2rem;
     }
 }
+/* =========================================
+   22. ABOUT PAGE STYLES
+   (Fixes formatting for /about/index.html)
+   ========================================= */
+
+/* Hero Section */
+.about-hero {
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.about-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    color: var(--color-navy);
+}
+
+.about-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Mission Section */
+.about-mission {
+    padding: 80px 0;
+    background: var(--color-white);
+}
+
+.mission-content {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.mission-content h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 40px;
+}
+
+.mission-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: var(--color-text);
+}
+
+.mission-highlight {
+    background: var(--color-cream);
+    border-left: 5px solid var(--color-sage);
+    padding: 30px;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: 40px 0;
+}
+
+.mission-highlight p {
+    margin: 0;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-navy);
+}
+
+/* Beliefs Grid */
+.about-beliefs {
+    padding: 80px 0;
+    background: var(--color-cream);
+}
+
+.about-beliefs h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 60px;
+}
+
+.beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.belief-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 35px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.belief-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.belief-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.belief-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--color-navy);
+}
+
+.belief-card p {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Approach Section */
+.about-approach {
+    padding: 80px 0;
+    background: var(--color-white);
+}
+
+.approach-content {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.approach-content h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 50px;
+}
+
+.approach-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-terracotta);
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.approach-content p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* About CTA */
+.about-cta {
+    padding: 100px 0;
+    background: var(--color-navy);
+    text-align: center;
+    color: var(--color-white);
+}
+
+.about-cta h2 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .beliefs-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+    .mission-highlight {
+        padding: 20px;
+    }
+}
