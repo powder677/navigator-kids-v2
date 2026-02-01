@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: LAUNCH READY (With Personalization)
+   Status: LAUNCH READY (With IEP Hub Integration)
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     injectFooter();
     initMobileMenu();
     initFormspree();
-    personalizeSite(); // <--- Added here correctly
+    personalizeSite(); 
     setTimeout(syncCartCount, 500);
 });
 
@@ -45,6 +45,7 @@ function injectHeader() {
              <a href="/products/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Products</a>
              <a href="/tools/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Free Tools</a>
              <a href="/resources/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Resources</a>
+             <a href="/iep/" class="text-sm font-semibold text-[#3D405B] hover:text-[#E07A5F] no-underline transition bg-[#F9F7F2] px-2 py-1 rounded border border-[#E07A5F]/20">IEP Hub</a>
              <a href="/about/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">About</a>
              
              <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F] no-underline mx-1">
@@ -70,6 +71,7 @@ function injectHeader() {
           <a href="/products/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Products</a>
           <a href="/tools/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Free Tools</a>
           <a href="/resources/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Resources</a>
+          <a href="/iep/" class="block py-3 border-b border-gray-50 text-[#E07A5F] font-bold hover:bg-gray-50 px-2 rounded">IEP Advocacy Hub</a>
           <a href="/about/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">About</a>
           <a href="/contact/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Contact</a>
           <a href="/cart/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">
@@ -103,7 +105,7 @@ function injectFooter() {
     const footerHTML = `
     <footer class="bg-[#3D405B] text-[#F9F7F2] py-16 mt-auto relative z-10">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
                 
                 <div class="md:col-span-1">
                     <a href="/" class="flex items-center gap-2 mb-4 text-[#F9F7F2] no-underline">
@@ -120,6 +122,14 @@ function injectFooter() {
                     <a href="/free/de-escalation-kit/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Regulation Kit</a>
                     <a href="/resources/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Articles</a>
                     <a href="/tools/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Tools</a>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Advocacy</h4>
+                    <a href="/iep/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition text-[#E07A5F] font-semibold">IEP Hub</a>
+                    <a href="/iep/states/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">State Laws Map</a>
+                    <a href="/iep/iep-meeting-checklist/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Meeting Checklist</a>
+                    <a href="/iep/common-school-tactics/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">School Tactics</a>
                 </div>
                 
                 <div>
