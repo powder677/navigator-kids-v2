@@ -1007,7 +1007,8 @@
                <div class="price-amount">$497</div>
                <div class="price-context">One-time investment. Unlimited re-listens of your strategy call.</div>
 
-               <button class="price-cta" id="buyButton" data-direct-checkout onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan →</button>
+               <!-- FIX #2: Added fallback — if NavigatorCart isn't loaded, redirect to intake form -->
+               <button class="price-cta" id="buyButton" data-direct-checkout onclick="if(window.NavigatorCart&&window.NavigatorCart.directCheckout){window.NavigatorCart.directCheckout('prod-service-battleplan')}else{window.location.href='/iep/battle-plan/thank-you/intakeform.html'}">Get Your Battle Plan →</button>
 
                <ul class="price-includes">
                   <li>Deep-dive Diagnostic Assessment (8 domains)</li>
@@ -1126,7 +1127,8 @@
          <div class="content-wrapper">
             <h2>Your Child's Team Has Professionals.<br>Now You Have One Too.</h2>
             <p>The next IEP meeting doesn't have to end with you crying in the parking lot. It can end with the school scrambling to document every commitment they just made—because you made them say it on the record.</p>
-            <button class="hero-cta" data-direct-checkout onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan — $497</button>
+            <!-- FIX #2: Added fallback — if NavigatorCart isn't loaded, redirect to intake form -->
+            <button class="hero-cta" data-direct-checkout onclick="if(window.NavigatorCart&&window.NavigatorCart.directCheckout){window.NavigatorCart.directCheckout('prod-service-battleplan')}else{window.location.href='/iep/battle-plan/thank-you/intakeform.html'}">Get Your Battle Plan — $497</button>
             <p class="final-note">One-time purchase · 7-day guarantee · Delivered in 48–72 hours</p>
          </div>
       </section>
