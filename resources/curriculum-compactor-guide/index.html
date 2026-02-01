@@ -4,8 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Your shopping cart - Navigator Kids AI resources for twice-exceptional children.">
-   <title>Cart | Navigator Kids AI</title>
+   <meta name="description" content="Free guides, articles, and resources for parents of twice-exceptional (2e) children. Practical strategies backed by neurodiversity research.">
+   <title>Resources & Guides | Navigator Kids AI</title>
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,249 +13,336 @@
    <link rel="stylesheet" href="/css/styles.css">
 
    <style>
-      .cart-page {
+      /* ── Resources Page ── */
+      .resources-page {
          padding: var(--space-12) 0 var(--space-16);
          min-height: 60vh;
       }
 
-      .cart-header {
-         margin-bottom: var(--space-8);
+      /* Hero / Intro */
+      .resources-hero {
+         text-align: center;
+         max-width: 680px;
+         margin: 0 auto var(--space-10);
       }
 
-      .cart-header h1 {
-         margin-bottom: var(--space-2);
+      .resources-hero h1 {
+         margin-bottom: var(--space-3);
       }
 
-      .cart-count {
+      .resources-hero p {
+         color: var(--color-text-light);
+         font-size: var(--text-lg);
+         line-height: 1.7;
+      }
+
+      /* Category Filter */
+      .category-filter {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: var(--space-2);
+         margin-bottom: var(--space-10);
+      }
+
+      .filter-btn {
+         background: var(--color-white);
+         border: 1px solid var(--color-border);
+         border-radius: 999px;
+         padding: var(--space-2) var(--space-4);
+         font-size: var(--text-sm);
+         font-weight: 500;
          color: var(--color-text-muted);
+         cursor: pointer;
+         transition: all 0.2s ease;
+         font-family: inherit;
       }
 
-      .cart-layout {
+      .filter-btn:hover {
+         border-color: var(--color-primary);
+         color: var(--color-primary);
+      }
+
+      .filter-btn.active {
+         background: var(--color-primary);
+         border-color: var(--color-primary);
+         color: var(--color-white);
+      }
+
+      /* Featured Article */
+      .featured-article {
+         background: var(--color-white);
+         border-radius: var(--radius-xl);
+         box-shadow: var(--shadow-lg);
+         overflow: hidden;
+         margin-bottom: var(--space-10);
          display: grid;
-         grid-template-columns: 1fr 380px;
-         gap: var(--space-10);
+         grid-template-columns: 1fr 1fr;
       }
 
-      @media (max-width: 900px) {
-         .cart-layout {
+      @media (max-width: 800px) {
+         .featured-article {
             grid-template-columns: 1fr;
          }
       }
 
-      /* Cart Items */
-      .cart-items {
-         display: flex;
-         flex-direction: column;
-         gap: var(--space-4);
-      }
-
-      .cart-item {
-         background: var(--color-white);
-         border-radius: var(--radius-lg);
-         padding: var(--space-5);
-         display: grid;
-         grid-template-columns: 80px 1fr auto;
-         gap: var(--space-5);
-         align-items: center;
-         box-shadow: var(--shadow-sm);
-      }
-
-      @media (max-width: 600px) {
-         .cart-item {
-            grid-template-columns: 60px 1fr;
-            gap: var(--space-3);
-         }
-      }
-
-      .cart-item-image {
-         width: 80px;
-         height: 80px;
-         background: var(--color-cream);
-         border-radius: var(--radius-md);
+      .featured-image {
+         background: linear-gradient(135deg, #e8dfd5 0%, #d4c8b8 100%);
          display: flex;
          align-items: center;
          justify-content: center;
-         font-size: 2rem;
+         min-height: 280px;
+         font-size: 5rem;
       }
 
-      @media (max-width: 600px) {
-         .cart-item-image {
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-         }
-      }
-
-      .cart-item-details h3 {
-         font-size: var(--text-base);
-         margin-bottom: var(--space-1);
-      }
-
-      .cart-item-type {
-         font-size: var(--text-sm);
-         color: var(--color-text-muted);
-      }
-
-      .cart-item-actions {
+      .featured-content {
+         padding: var(--space-8);
          display: flex;
          flex-direction: column;
-         align-items: flex-end;
-         gap: var(--space-2);
+         justify-content: center;
       }
 
-      @media (max-width: 600px) {
-         .cart-item-actions {
-            grid-column: span 2;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-         }
-      }
-
-      .cart-item-price {
-         font-size: var(--text-lg);
-         font-weight: 700;
-         color: var(--color-navy);
-      }
-
-      .remove-btn {
-         background: none;
-         border: none;
-         color: var(--color-text-muted);
-         font-size: var(--text-sm);
-         cursor: pointer;
-         padding: 0;
-      }
-
-      .remove-btn:hover {
-         color: var(--color-terracotta);
-      }
-
-      /* Empty Cart */
-      .cart-empty {
-         text-align: center;
-         padding: var(--space-16) var(--space-8);
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-      }
-
-      .cart-empty-icon {
-         font-size: 4rem;
-         margin-bottom: var(--space-4);
-      }
-
-      .cart-empty h2 {
-         margin-bottom: var(--space-3);
-      }
-
-      .cart-empty p {
-         color: var(--color-text-light);
-         margin-bottom: var(--space-6);
-      }
-
-      /* Cart Summary */
-      .cart-summary {
-         background: var(--color-white);
-         border-radius: var(--radius-xl);
-         padding: var(--space-6);
-         box-shadow: var(--shadow-lg);
-         position: sticky;
-         top: var(--space-6);
-      }
-
-      .cart-summary h2 {
-         font-size: var(--text-lg);
-         margin-bottom: var(--space-6);
-         padding-bottom: var(--space-4);
-         border-bottom: 1px solid var(--color-border);
-      }
-
-      .summary-row {
-         display: flex;
-         justify-content: space-between;
-         padding: var(--space-2) 0;
-         font-size: var(--text-sm);
-      }
-
-      .summary-row.total {
-         font-size: var(--text-lg);
-         font-weight: 700;
-         padding-top: var(--space-4);
-         margin-top: var(--space-4);
-         border-top: 1px solid var(--color-border);
-      }
-
-      .summary-row .label {
-         color: var(--color-text-muted);
-      }
-
-      .cart-summary .btn {
-         width: 100%;
-         margin-top: var(--space-6);
-      }
-
-      .summary-note {
-         text-align: center;
+      .featured-badge {
+         display: inline-block;
+         background: var(--color-primary);
+         color: var(--color-white);
          font-size: var(--text-xs);
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+         padding: var(--space-1) var(--space-3);
+         border-radius: 999px;
+         margin-bottom: var(--space-3);
+         width: fit-content;
+      }
+
+      .featured-content h2 {
+         font-size: var(--text-xl);
+         margin-bottom: var(--space-3);
+         line-height: 1.3;
+      }
+
+      .featured-content h2 a {
+         color: inherit;
+         text-decoration: none;
+      }
+
+      .featured-content h2 a:hover {
+         color: var(--color-primary);
+      }
+
+      .featured-content p {
+         color: var(--color-text-light);
+         margin-bottom: var(--space-4);
+         line-height: 1.7;
+      }
+
+      .featured-meta {
+         font-size: var(--text-sm);
          color: var(--color-text-muted);
-         margin-top: var(--space-4);
       }
 
-      /* Suggested Products */
-      .suggested-section {
-         margin-top: var(--space-12);
-      }
-
-      .suggested-section h2 {
-         margin-bottom: var(--space-6);
-      }
-
-      .suggested-grid {
+      /* Article Grid */
+      .articles-grid {
          display: grid;
          grid-template-columns: repeat(3, 1fr);
          gap: var(--space-6);
+         margin-bottom: var(--space-12);
       }
 
-      @media (max-width: 800px) {
-         .suggested-grid {
+      @media (max-width: 900px) {
+         .articles-grid {
             grid-template-columns: repeat(2, 1fr);
          }
       }
 
-      @media (max-width: 500px) {
-         .suggested-grid {
+      @media (max-width: 600px) {
+         .articles-grid {
             grid-template-columns: 1fr;
          }
       }
 
-      .suggested-card {
+      .article-card {
          background: var(--color-white);
          border-radius: var(--radius-lg);
-         padding: var(--space-5);
-         text-align: center;
          box-shadow: var(--shadow-sm);
+         overflow: hidden;
+         transition: box-shadow 0.2s ease, transform 0.2s ease;
+         display: flex;
+         flex-direction: column;
       }
 
-      .suggested-card-icon {
-         font-size: 2rem;
-         margin-bottom: var(--space-3);
+      .article-card:hover {
+         box-shadow: var(--shadow-lg);
+         transform: translateY(-2px);
       }
 
-      .suggested-card h3 {
-         font-size: var(--text-sm);
+      .article-card-image {
+         background: var(--color-cream);
+         height: 160px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 3rem;
+      }
+
+      .article-card-image.social    { background: linear-gradient(135deg, #e8dfd5 0%, #d4c8b8 100%); }
+      .article-card-image.emotional { background: linear-gradient(135deg, #f0ddd4 0%, #e4cfc3 100%); }
+      .article-card-image.school    { background: linear-gradient(135deg, #d5dfe8 0%, #c3cfd9 100%); }
+      .article-card-image.brain     { background: linear-gradient(135deg, #dde8d5 0%, #cdd9c3 100%); }
+      .article-card-image.parenting { background: linear-gradient(135deg, #e3d5e8 0%, #d4c3d9 100%); }
+
+      .article-card-body {
+         padding: var(--space-5);
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+      }
+
+      .article-card-category {
+         font-size: var(--text-xs);
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+         color: var(--color-primary);
          margin-bottom: var(--space-2);
       }
 
-      .suggested-card .price {
-         font-weight: 700;
-         color: var(--color-navy);
+      .article-card-body h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-2);
+         line-height: 1.4;
+      }
+
+      .article-card-body h3 a {
+         color: inherit;
+         text-decoration: none;
+      }
+
+      .article-card-body h3 a:hover {
+         color: var(--color-primary);
+      }
+
+      .article-card-body p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         line-height: 1.6;
+         flex: 1;
+      }
+
+      .article-card-footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-top: var(--space-4);
+         padding-top: var(--space-3);
+         border-top: 1px solid var(--color-border);
+         font-size: var(--text-xs);
+         color: var(--color-text-muted);
+      }
+
+      .read-time {
+         display: flex;
+         align-items: center;
+         gap: var(--space-1);
+      }
+
+      /* Free Resource CTA Banner */
+      .resource-cta-banner {
+         background: linear-gradient(135deg, var(--color-navy) 0%, #2a3a5c 100%);
+         color: var(--color-white);
+         border-radius: var(--radius-xl);
+         padding: var(--space-10) var(--space-8);
+         text-align: center;
+         margin-bottom: var(--space-12);
+      }
+
+      .resource-cta-banner h2 {
+         color: var(--color-white);
          margin-bottom: var(--space-3);
       }
 
-      .suggested-card .btn {
+      .resource-cta-banner p {
+         color: rgba(255, 255, 255, 0.8);
+         max-width: 520px;
+         margin: 0 auto var(--space-6);
+         line-height: 1.7;
+      }
+
+      .resource-cta-banner .btn {
+         background: var(--color-white);
+         color: var(--color-navy);
+      }
+
+      .resource-cta-banner .btn:hover {
+         background: var(--color-cream);
+      }
+
+      /* Section Headers */
+      .section-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: baseline;
+         margin-bottom: var(--space-6);
+      }
+
+      .section-header h2 {
+         margin-bottom: 0;
+      }
+
+      .section-header a {
+         font-size: var(--text-sm);
+         font-weight: 500;
+         color: var(--color-primary);
+         text-decoration: none;
+      }
+
+      .section-header a:hover {
+         text-decoration: underline;
+      }
+
+      /* Quick-Start Guide Boxes */
+      .quick-start-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: var(--space-6);
+         margin-bottom: var(--space-12);
+      }
+
+      @media (max-width: 800px) {
+         .quick-start-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      .quick-start-card {
+         background: var(--color-white);
+         border-radius: var(--radius-lg);
+         padding: var(--space-6);
+         box-shadow: var(--shadow-sm);
+         text-align: center;
+      }
+
+      .quick-start-icon {
+         font-size: 2.5rem;
+         margin-bottom: var(--space-3);
+      }
+
+      .quick-start-card h3 {
+         font-size: var(--text-base);
+         margin-bottom: var(--space-2);
+      }
+
+      .quick-start-card p {
+         font-size: var(--text-sm);
+         color: var(--color-text-light);
+         margin-bottom: var(--space-4);
+         line-height: 1.6;
+      }
+
+      .quick-start-card .btn {
          width: 100%;
          font-size: var(--text-sm);
-         padding: var(--space-2);
       }
    </style>
 </head>
@@ -263,78 +350,275 @@
 <body>
    <div id="header"></div>
 
-   <main class="cart-page">
+   <main class="resources-page">
       <div class="container">
 
-         <div class="cart-header">
-            <h1>Your Cart</h1>
-            <p class="cart-count"><span id="itemCount">0</span> items</p>
+         <!-- Hero -->
+         <div class="resources-hero">
+            <h1>Resources &amp; Guides</h1>
+            <p>Free, practical articles written by parents of 2e kids, for parents of 2e kids. No jargon, no judgment&mdash;just strategies that actually work.</p>
          </div>
 
-         <div class="cart-layout">
-            <div class="cart-main">
-               <div class="cart-items" id="cartItems">
-                  <!-- Cart items will be rendered here by JS -->
-               </div>
+         <!-- Quick Start -->
+         <div class="quick-start-grid">
+            <div class="quick-start-card">
+               <div class="quick-start-icon">&#x1F9E0;</div>
+               <h3>New Here?</h3>
+               <p>Take the free quiz to discover your child's brain profile. Everything else makes more sense after that.</p>
+               <a href="/quiz/" class="btn btn-primary">Take the Quiz &rarr;</a>
+            </div>
+            <div class="quick-start-card">
+               <div class="quick-start-icon">&#x1F6C8;</div>
+               <h3>In Crisis?</h3>
+               <p>Grab the De-Escalation Kit. Scripts for what to say (and what not to say) when the meltdown hits.</p>
+               <a href="/free/de-escalation-kit/" class="btn btn-secondary">Get the Free Kit</a>
+            </div>
+            <div class="quick-start-card">
+               <div class="quick-start-icon">&#x1F3EB;</div>
+               <h3>School Meeting Coming?</h3>
+               <p>The IEP Advocacy System has 50+ email templates and scripts to walk in confident.</p>
+               <a href="/products/iep-advocacy-system/" class="btn btn-secondary">Learn More</a>
+            </div>
+         </div>
 
-               <div class="cart-empty" id="emptyCart" style="display: none;">
-                  <div class="cart-empty-icon">🛒</div>
-                  <h2>Your cart is empty</h2>
-                  <p>Looks like you haven't added any resources yet. Check out our products to find tools for your 2e child.</p>
-                  <a href="/products/" class="btn btn-primary">Browse Products →</a>
+         <!-- Category Filter -->
+         <div class="category-filter" id="categoryFilter">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="social">Social &amp; Friendship</button>
+            <button class="filter-btn" data-category="emotional">Emotions &amp; Regulation</button>
+            <button class="filter-btn" data-category="school">School &amp; Advocacy</button>
+            <button class="filter-btn" data-category="brain">Understanding Their Brain</button>
+            <button class="filter-btn" data-category="parenting">Parenting &amp; Self-Care</button>
+         </div>
+
+         <!-- Featured Article -->
+         <a href="/resources/playdate-problem/" style="text-decoration: none; color: inherit;">
+            <div class="featured-article">
+               <div class="featured-image">&#x1F9F8;</div>
+               <div class="featured-content">
+                  <span class="featured-badge">Featured Guide</span>
+                  <h2>The Playdate Problem: Why Forced Socializing Backfires for 2e Kids</h2>
+                  <p>You arranged the perfect playdate. It ended in tears. Here's why traditional friendship strategies fail differently-wired kids&mdash;and what to do instead.</p>
+                  <span class="featured-meta">By Avery Sage &middot; 8 min read</span>
+               </div>
+            </div>
+         </a>
+
+         <!-- All Articles -->
+         <div class="section-header">
+            <h2>All Guides</h2>
+         </div>
+
+         <div class="articles-grid" id="articlesGrid">
+
+            <!-- Social & Friendship -->
+            <div class="article-card" data-category="social">
+               <div class="article-card-image social">&#x1F465;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Social &amp; Friendship</span>
+                  <h3><a href="/resources/finding-peer-groups/">Finding "Your People": Why Smart Kids Need Different Friends</a></h3>
+                  <p>From isolation to inclusion: why your child feels lonely in a crowd, and where to find the peers who actually understand them.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
                </div>
             </div>
 
-            <aside class="cart-summary" id="cartSummary">
-               <h2>Order Summary</h2>
-
-               <div class="summary-row">
-                  <span class="label">Subtotal</span>
-                  <span id="subtotal">$0</span>
-               </div>
-
-               <div class="summary-row">
-                  <span class="label">Discount</span>
-                  <span id="discount">$0</span>
-               </div>
-
-               <div class="summary-row total">
-                  <span>Total</span>
-                  <span id="total">$0</span>
-               </div>
-
-               <a href="/checkout/" class="btn btn-primary btn-lg">Proceed to Checkout →</a>
-
-               <p class="summary-note">
-                  ✓ Instant PDF download<br>
-                  ✓ 7-day money-back guarantee
-               </p>
-            </aside>
-         </div>
-
-         <section class="suggested-section" id="suggestedSection">
-            <h2>You Might Also Like</h2>
-            <div class="suggested-grid">
-               <div class="suggested-card">
-                  <div class="suggested-card-icon">📦</div>
-                  <h3>Complete Prompt Library</h3>
-                  <p class="price">$67</p>
-                  <button class="btn btn-secondary" onclick="addToCart('complete-prompt-library')">Add to Cart</button>
-               </div>
-               <div class="suggested-card">
-                  <div class="suggested-card-icon">🎨</div>
-                  <h3>Activity Bundle</h3>
-                  <p class="price">$47</p>
-                  <button class="btn btn-secondary" onclick="addToCart('activity-bundle-complete')">Add to Cart</button>
-               </div>
-               <div class="suggested-card">
-                  <div class="suggested-card-icon">🎁</div>
-                  <h3>Everything Bundle</h3>
-                  <p class="price">$97</p>
-                  <button class="btn btn-secondary" onclick="addToCart('complete-bundle')">Add to Cart</button>
+            <div class="article-card" data-category="social">
+               <div class="article-card-image social">&#x1F91D;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Social &amp; Friendship</span>
+                  <h3><a href="/resources/friendship-formula/">The Friendship Formula</a></h3>
+                  <p>A step-by-step approach to helping your 2e child build and maintain real friendships&mdash;on their own terms.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 7 min</span>
+                  </div>
                </div>
             </div>
-         </section>
+
+            <div class="article-card" data-category="social">
+               <div class="article-card-image social">&#x1F30D;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Social &amp; Friendship</span>
+                  <h3><a href="/resources/introvert-or-isolated/">Introverted or Isolated? How to Tell the Difference</a></h3>
+                  <p>Your child says they're fine alone. Are they really? How to distinguish healthy introversion from social withdrawal.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 5 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Emotions & Regulation -->
+            <div class="article-card" data-category="emotional">
+               <div class="article-card-image emotional">&#x1F525;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Emotions &amp; Regulation</span>
+                  <h3><a href="/resources/meltdown-vs-tantrum/">Meltdown vs. Tantrum: Why the Difference Changes Everything</a></h3>
+                  <p>They look the same from the outside. But the brain science is completely different&mdash;and so is what works.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 5 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="emotional">
+               <div class="article-card-image emotional">&#x1F9D8;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Emotions &amp; Regulation</span>
+                  <h3><a href="/resources/after-school-restraint-collapse/">After-School Restraint Collapse: The 3pm Meltdown Explained</a></h3>
+                  <p>They held it together all day. Now they're home and falling apart. Here's what's happening and how to help.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="emotional">
+               <div class="article-card-image emotional">&#x1F4A1;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Emotions &amp; Regulation</span>
+                  <h3><a href="/resources/90-second-rule/">The 90-Second Rule That Changed Our Evenings</a></h3>
+                  <p>One neuroscience-backed technique that helps you co-regulate with your child when their brain goes offline.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 4 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <!-- School & Advocacy -->
+            <div class="article-card" data-category="school">
+               <div class="article-card-image school">&#x1F4DD;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">School &amp; Advocacy</span>
+                  <h3><a href="/resources/iep-meeting-survival/">Your First IEP Meeting: A Survival Guide for 2e Parents</a></h3>
+                  <p>What to bring, what to say, and how to leave feeling heard instead of steamrolled.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 8 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="school">
+               <div class="article-card-image school">&#x2709;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">School &amp; Advocacy</span>
+                  <h3><a href="/resources/email-templates-teachers/">5 Email Templates That Get Teachers on Your Side</a></h3>
+                  <p>How to translate "parent worry" into language that educators actually respond to.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="school">
+               <div class="article-card-image school">&#x1F50D;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">School &amp; Advocacy</span>
+                  <h3><a href="/resources/masking-at-school/">"We Don't See That Here": When School Doesn't See What You See</a></h3>
+                  <p>Why your child masks at school and melts down at home&mdash;and how to help educators understand.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 7 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Understanding Their Brain -->
+            <div class="article-card" data-category="brain">
+               <div class="article-card-image brain">&#x1F9E9;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Understanding Their Brain</span>
+                  <h3><a href="/resources/asynchronous-development/">Asynchronous Development: When Your 8-Year-Old Is 12 and 5 at the Same Time</a></h3>
+                  <p>Their reading level says gifted. Their emotional regulation says toddler. Welcome to asynchronous development.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="brain">
+               <div class="article-card-image brain">&#x26A1;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Understanding Their Brain</span>
+                  <h3><a href="/resources/interest-based-nervous-system/">The Interest-Based Nervous System: Why "Just Try Harder" Never Works</a></h3>
+                  <p>Their brain doesn't run on importance or deadlines. It runs on interest, urgency, novelty, and challenge. Here's how to work with it.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 7 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="brain">
+               <div class="article-card-image brain">&#x1F3AF;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Understanding Their Brain</span>
+                  <h3><a href="/resources/what-is-twice-exceptional/">What Does "Twice-Exceptional" Actually Mean?</a></h3>
+                  <p>The beginner's guide to 2e: what it is, what it isn't, and why it's so often missed by schools and doctors.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 5 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Parenting & Self-Care -->
+            <div class="article-card" data-category="parenting">
+               <div class="article-card-image parenting">&#x1F49A;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Parenting &amp; Self-Care</span>
+                  <h3><a href="/resources/grief-of-different/">The Quiet Grief of Parenting a Different Kind of Kid</a></h3>
+                  <p>You love them fiercely. And sometimes you mourn the easier childhood you imagined. Both things can be true.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 5 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="parenting">
+               <div class="article-card-image parenting">&#x1F6A8;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Parenting &amp; Self-Care</span>
+                  <h3><a href="/resources/parent-burnout/">2e Parent Burnout Is Real: Signs You're Running on Empty</a></h3>
+                  <p>You can't pour from an empty cup. How to recognize burnout before it takes you down&mdash;and what actually helps.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="article-card" data-category="parenting">
+               <div class="article-card-image parenting">&#x1F3E0;</div>
+               <div class="article-card-body">
+                  <span class="article-card-category">Parenting &amp; Self-Care</span>
+                  <h3><a href="/resources/explaining-to-family/">"Why Can't They Just Behave?" How to Explain 2e to Family</a></h3>
+                  <p>Grandparents, in-laws, and well-meaning relatives don't always get it. Scripts for the hardest family conversations.</p>
+                  <div class="article-card-footer">
+                     <span>By Avery Sage</span>
+                     <span class="read-time">&#x1F552; 6 min</span>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+         <!-- CTA Banner -->
+         <div class="resource-cta-banner">
+            <h2>Not sure where to start?</h2>
+            <p>Take the free 3-minute quiz. We'll match your child to one of 6 brain profiles and point you to the guides that fit.</p>
+            <a href="/quiz/" class="btn btn-lg">Take the Free Quiz &rarr;</a>
+         </div>
 
       </div>
    </main>
@@ -343,183 +627,27 @@
 
    <script src="/js/components.js"></script>
    <script>
-      // Product database
-      const products = {
-         'ai-prompts-intense-feeler': {
-            name: 'Intense Feeler Prompt Pack',
-            icon: '🔥',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'ai-prompts-reluctant-starter': {
-            name: 'Reluctant Starter Prompt Pack',
-            icon: '🐢',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'ai-prompts-deep-diver': {
-            name: 'Deep Diver Prompt Pack',
-            icon: '🔭',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'ai-prompts-sensitive-observer': {
-            name: 'Sensitive Observer Prompt Pack',
-            icon: '🐰',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'ai-prompts-bold-explorer': {
-            name: 'Bold Explorer Prompt Pack',
-            icon: '🦁',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'ai-prompts-big-picture-thinker': {
-            name: 'Big Picture Thinker Prompt Pack',
-            icon: '🚀',
-            type: 'AI Prompts',
-            price: 18
-         },
-         'complete-prompt-library': {
-            name: 'Complete Prompt Library',
-            icon: '📦',
-            type: 'AI Prompts Bundle',
-            price: 67
-         },
-         'activity-packet-ember': {
-            name: 'Ember the Dragon Packet',
-            icon: '🐉',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-shelly': {
-            name: 'Shelly the Turtle Packet',
-            icon: '🐢',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-sketch': {
-            name: 'Sketch the Owl Packet',
-            icon: '🦉',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-whisper': {
-            name: 'Whisper Bunny Packet',
-            icon: '🐰',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-bravely': {
-            name: 'Bravely the Lion Packet',
-            icon: '🦁',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-cosmo': {
-            name: 'Cosmo Space Pup Packet',
-            icon: '🐕',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-packet-captain-choosy': {
-            name: 'Captain Choosy Packet',
-            icon: '🦜',
-            type: 'Activity Packet',
-            price: 9
-         },
-         'activity-bundle-complete': {
-            name: 'Complete Activity Bundle',
-            icon: '🎨',
-            type: 'Activity Bundle',
-            price: 47
-         },
-         'complete-bundle': {
-            name: 'Everything Bundle',
-            icon: '🎁',
-            type: 'Complete Bundle',
-            price: 97
-         }
-      };
+      // Category filter functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const articleCards = document.querySelectorAll('.article-card');
 
-      function getCart() {
-         return JSON.parse(localStorage.getItem('cart') || '[]');
-      }
+      filterButtons.forEach(btn => {
+         btn.addEventListener('click', () => {
+            // Update active button
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-      function saveCart(cart) {
-         localStorage.setItem('cart', JSON.stringify(cart));
-      }
+            const category = btn.dataset.category;
 
-      function addToCart(productId) {
-         const cart = getCart();
-         if (!cart.includes(productId)) {
-            cart.push(productId);
-            saveCart(cart);
-         }
-         renderCart();
-      }
-
-      function removeFromCart(productId) {
-         let cart = getCart();
-         cart = cart.filter(id => id !== productId);
-         saveCart(cart);
-         renderCart();
-      }
-
-      function renderCart() {
-         const cart = getCart();
-         const container = document.getElementById('cartItems');
-         const emptyCart = document.getElementById('emptyCart');
-         const summary = document.getElementById('cartSummary');
-         const suggested = document.getElementById('suggestedSection');
-
-         if (cart.length === 0) {
-            container.style.display = 'none';
-            emptyCart.style.display = 'block';
-            summary.style.display = 'none';
-            suggested.style.display = 'none';
-            document.getElementById('itemCount').textContent = '0';
-            return;
-         }
-
-         container.style.display = 'flex';
-         emptyCart.style.display = 'none';
-         summary.style.display = 'block';
-         suggested.style.display = 'block';
-
-         let html = '';
-         let subtotal = 0;
-
-         cart.forEach(productId => {
-            const product = products[productId];
-            if (product) {
-               subtotal += product.price;
-               html += `
-                  <div class="cart-item">
-                     <div class="cart-item-image">${product.icon}</div>
-                     <div class="cart-item-details">
-                        <h3>${product.name}</h3>
-                        <p class="cart-item-type">${product.type}</p>
-                     </div>
-                     <div class="cart-item-actions">
-                        <span class="cart-item-price">$${product.price}</span>
-                        <button class="remove-btn" onclick="removeFromCart('${productId}')">Remove</button>
-                     </div>
-                  </div>
-               `;
-            }
+            articleCards.forEach(card => {
+               if (category === 'all' || card.dataset.category === category) {
+                  card.style.display = 'flex';
+               } else {
+                  card.style.display = 'none';
+               }
+            });
          });
-
-         container.innerHTML = html;
-         document.getElementById('itemCount').textContent = cart.length;
-         document.getElementById('subtotal').textContent = '$' + subtotal;
-         document.getElementById('discount').textContent = '$0';
-         document.getElementById('total').textContent = '$' + subtotal;
-      }
-
-      // Initialize cart on page load
-      renderCart();
+      });
    </script>
 </body>
 
