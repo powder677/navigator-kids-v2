@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The IEP Battle Plan | Navigator Kids AI™</title>
+   
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <script src="/js/components.js" defer></script>
+   <script src="/js/cart.js" defer></script>
+   <script src="https://js.stripe.com/v3/"></script>
+
+   <style>
+      /* Keeping your original specific Sales Page styles */
+      :root {
+         --bp-navy: #1a2744;
+         --bp-gold: #d4a853;
+         --bp-cream: #faf6f0;
+         --bp-white: #ffffff;
+      }
+      body { font-family: 'Inter', sans-serif; background: var(--bp-cream); }
+      h1, h2, h3 { font-family: 'Merriweather', serif; }
+      
+      .bp-hero { background: var(--bp-navy); color: white; padding: 5rem 1.5rem; text-align: center; }
+      .bp-cta { background: var(--bp-gold); color: var(--bp-navy); font-weight: bold; padding: 1rem 2.5rem; border-radius: 8px; display: inline-block; transition: transform 0.2s; }
+      .bp-cta:hover { transform: translateY(-2px); }
+   </style>
+</head>
+<body class="bp-page">
+   
+   <div id="header"></div>
+
+   <main>
+      <section class="bp-hero">
+         <div class="max-w-4xl mx-auto">
+            <span class="inline-block bg-white/10 text-[#d4a853] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-6">IEP Meeting Prep Service</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Walk Into Your Next IEP Meeting <em class="text-[#d4a853] not-italic">Dangerous.</em></h1>
+            <p class="text-xl opacity-80 mb-8 max-w-2xl mx-auto">Their team has 5–8 trained professionals. You're about to have one too—and yours knows the law, knows the data, and knows exactly what to say when they tell you "no."</p>
+            <a href="#pricing" class="bp-cta">Get Your Battle Plan — $497</a>
+         </div>
+      </section>
+
+      <section class="py-16 bg-white px-4">
+         <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-[#1a2744] text-center mb-8">You Know This Feeling.</h2>
+            <div class="space-y-4">
+               <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                  <h3 class="font-bold text-red-700">The "I Should Have Said" Loop</h3>
+                  <p>You replayed the meeting in your head for days. The school psychologist said "he doesn't qualify" and you froze. Two hours later, you found the perfect rebuttal—but the meeting was already over.</p>
+               </div>
+               <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                  <h3 class="font-bold text-red-700">The "Wait and See" Stall</h3>
+                  <p>They promised to "monitor it." That was six months ago. Nothing changed. Your child lost six months of support while the school "waited."</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section id="pricing" class="py-16 bg-white text-center px-4">
+         <div class="max-w-xl mx-auto bg-[#1a2744] text-white rounded-2xl p-10 relative overflow-hidden">
+            <h2 class="text-2xl font-bold mb-2">The IEP Battle Plan</h2>
+            <div class="text-5xl font-bold text-[#d4a853] mb-4">$497</div>
+            <p class="opacity-70 mb-8">One-time investment. Unlimited support.</p>
+            
+            <button class="bp-cta w-full" onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan →</button>
+            
+            <ul class="text-left mt-8 space-y-3 opacity-80 text-sm">
+               <li>✓ Deep-dive Diagnostic Assessment</li>
+               <li>✓ Personalized Heat Map Report</li>
+               <li>✓ Custom Meeting Script</li>
+               <li>✓ 4 Pre-Written Emails</li>
+               <li>✓ 60 Minute Live Strategy Call</li>
+            </ul>
+         </div>
+      </section>
+   </main>
+
+   <div id="footer"></div>
+</body>
+</html>
