@@ -254,18 +254,25 @@ function initFormspree() {
                     headers: { 'Accept': 'application/json' }
                 });
                 
-                if (res.ok) {
-                    const successEl = form.querySelector('.form-success');
-                    if (successEl) {
-                        form.style.display = 'none';
-                        successEl.classList.remove('hidden');
-                        successEl.style.display = 'block';
-                    } else if (form.dataset.redirect) {
-                        window.location.href = form.dataset.redirect;
-                    } else {
-                        form.innerHTML = '<div style="text-align:center;padding:2rem;"><div style="font-size:2.5rem;margin-bottom:0.5rem;">✅</div><h3 style="margin:0 0 0.5rem;color:#3D405B;">Got it!</h3><p style="margin:0;color:#666;">Check your inbox.</p></div>';
-                    }
-                } else {
+              if (res.ok) {
+    // Trigger PDF download if specified
+    if (form.dataset.download) {
+        var dlLink = document.createElement('a');
+        dlLink.href = form.dataset.download;
+        dlLink.download = '';
+        document.body.appendChild(dlLink);
+        dlLink.click();
+        document.body.removeChild(dlLink);
+    }
+
+    const successEl = form.querySelector('.form-success');
+    if (successEl) {
+        form.style.display = 'none';
+        successEl.classList.remove('hidden');
+        successEl.style.display = 'block';
+    } else if (form.dataset.redirect) {
+        window.location.href = form.dataset.redirect;
+    } else {
                     throw new Error('Submission failed');
                 }
             } catch (err) {
