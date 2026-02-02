@@ -12,18 +12,11 @@
    <script src="https://js.stripe.com/v3/"></script>
 
    <style>
-      /* Keeping your original specific Sales Page styles */
-      :root {
-         --bp-navy: #1a2744;
-         --bp-gold: #d4a853;
-         --bp-cream: #faf6f0;
-         --bp-white: #ffffff;
-      }
+      :root { --bp-navy: #1a2744; --bp-gold: #d4a853; --bp-cream: #faf6f0; }
       body { font-family: 'Inter', sans-serif; background: var(--bp-cream); }
       h1, h2, h3 { font-family: 'Merriweather', serif; }
-      
       .bp-hero { background: var(--bp-navy); color: white; padding: 5rem 1.5rem; text-align: center; }
-      .bp-cta { background: var(--bp-gold); color: var(--bp-navy); font-weight: bold; padding: 1rem 2.5rem; border-radius: 8px; display: inline-block; transition: transform 0.2s; }
+      .bp-cta { background: var(--bp-gold); color: var(--bp-navy); font-weight: bold; padding: 1rem 2.5rem; border-radius: 8px; display: inline-block; transition: transform 0.2s; cursor: pointer; }
       .bp-cta:hover { transform: translateY(-2px); }
    </style>
 </head>
@@ -42,18 +35,16 @@
       </section>
 
       <section class="py-16 bg-white px-4">
-         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-[#1a2744] text-center mb-8">You Know This Feeling.</h2>
-            <div class="space-y-4">
-               <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                  <h3 class="font-bold text-red-700">The "I Should Have Said" Loop</h3>
-                  <p>You replayed the meeting in your head for days. The school psychologist said "he doesn't qualify" and you froze. Two hours later, you found the perfect rebuttal—but the meeting was already over.</p>
-               </div>
-               <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                  <h3 class="font-bold text-red-700">The "Wait and See" Stall</h3>
-                  <p>They promised to "monitor it." That was six months ago. Nothing changed. Your child lost six months of support while the school "waited."</p>
-               </div>
-            </div>
+         <div class="max-w-3xl mx-auto space-y-4">
+             <h2 class="text-3xl font-bold text-[#1a2744] text-center mb-8">You Know This Feeling.</h2>
+             <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <h3 class="font-bold text-red-700">The "I Should Have Said" Loop</h3>
+                <p>You replayed the meeting in your head for days. The school psychologist said "he doesn't qualify" and you froze. Two hours later, you found the perfect rebuttal—but the meeting was already over.</p>
+             </div>
+             <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                <h3 class="font-bold text-red-700">The "Wait and See" Stall</h3>
+                <p>They promised to "monitor it." That was six months ago. Nothing changed. Your child lost six months of support while the school "waited."</p>
+             </div>
          </div>
       </section>
 
