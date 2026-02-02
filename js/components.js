@@ -1,16 +1,18 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: STABLE (No stacking, no duplication)
+   Status: PRODUCTION (Stable, Absolute Paths)
    ============================================ */
 
 (function () {
   'use strict';
 
-  // GLOBAL LOAD LOCK (critical)
+  // 1. GLOBAL LOAD LOCK: Prevents double injection
   if (window.__NAVIGATOR_LAYOUT_LOADED__) return;
   window.__NAVIGATOR_LAYOUT_LOADED__ = true;
 
   document.addEventListener('DOMContentLoaded', () => {
+    // Note: ensureDependencies() only checks JS libs now. 
+    // CSS should be loaded in <head> to prevent FOUC.
     ensureDependencies();
     injectHeader();
     injectFooter();
@@ -21,36 +23,28 @@
   });
 
   /* ---------------- DEPENDENCIES ---------------- */
-
   function ensureDependencies() {
+    // Tailwind (Only if not already in head)
     if (!document.querySelector('script[src*="tailwindcss"]')) {
       const s = document.createElement('script');
       s.src = 'https://cdn.tailwindcss.com';
       document.head.appendChild(s);
     }
-
+    // Font Awesome (Only if not already in head)
     if (!document.querySelector('link[href*="font-awesome"]')) {
       const l = document.createElement('link');
       l.rel = 'stylesheet';
       l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
       document.head.appendChild(l);
     }
-
-    // UPDATED: Removed the slash so it finds the file in the css folder correctly
-    if (!document.querySelector('link[href*="css/styles.css"]')) {
-      const c = document.createElement('link');
-      c.rel = 'stylesheet';
-      c.href = 'css/styles.css'; 
-      document.head.appendChild(c);
-    }
   }
 
   /* ---------------- HEADER ---------------- */
-
   function injectHeader() {
     const headerSlot = document.getElementById('header');
     if (!headerSlot || headerSlot.dataset.loaded === 'true') return;
 
+    // CRITICAL: All hrefs use "/" to force absolute paths
     headerSlot.innerHTML = `
       <nav class="navbar" id="navbar">
         <div class="container nav-content">
@@ -89,7 +83,6 @@
   }
 
   /* ---------------- FOOTER ---------------- */
-
   function injectFooter() {
     const footerSlot = document.getElementById('footer');
     if (!footerSlot || footerSlot.dataset.loaded === 'true') return;
@@ -128,20 +121,17 @@
   }
 
   /* ---------------- MOBILE MENU ---------------- */
-
   function initMobileMenu() {
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('mobileMenu');
+    // Guard clause in case header failed to inject
     if (!toggle || !menu) return;
 
     toggle.addEventListener('click', e => {
       e.stopPropagation();
       toggle.classList.toggle('active');
       menu.classList.toggle('active');
-      toggle.setAttribute(
-        'aria-expanded',
-        toggle.classList.contains('active')
-      );
+      toggle.setAttribute('aria-expanded', toggle.classList.contains('active'));
     });
 
     document.addEventListener('click', e => {
@@ -154,13 +144,14 @@
   }
 
   /* ---------------- CART ---------------- */
-
   function syncCartCount() {
     let count = 0;
     try {
       const cart = JSON.parse(localStorage.getItem('navigatorCart')) || [];
       count = cart.reduce((s, i) => s + (i.quantity || 1), 0);
-    } catch {}
+    } catch (e) {
+      // Fail silently if cookies are blocked
+    }
 
     document.querySelectorAll('.cart-count').forEach(el => {
       el.textContent = count;
@@ -171,7 +162,6 @@
   window.addEventListener('cartUpdated', syncCartCount);
 
   /* ---------------- FORMSPREE ---------------- */
-
   function initFormspree() {
     document.querySelectorAll('form[data-formspree]').forEach(form => {
       form.addEventListener('submit', async e => {
@@ -189,14 +179,15 @@
   }
 
   /* ---------------- PERSONALIZATION ---------------- */
-
   function personalizeSite() {
     try {
       const profile = JSON.parse(localStorage.getItem('quizProfile'));
       if (!profile) return;
-      document
-        .querySelectorAll('.dynamic-child-name')
-        .forEach(el => (el.textContent = profile.childName || 'Your child'));
-    } catch {}
+      document.querySelectorAll('.dynamic-child-name').forEach(el => 
+        (el.textContent = profile.childName || 'Your child')
+      );
+    } catch (e) {
+       // Fail silently
+    }
   }
 })();
