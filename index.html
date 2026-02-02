@@ -8,6 +8,7 @@
    <title>Navigator Kids AI™ | Understand Your 2e Child's Unique Brain</title>
 
    <script src="https://cdn.tailwindcss.com"></script>
+   <script src="/js/form-handler.js" defer></script>
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1222,7 +1223,20 @@
    </section>
 
    <div id="footer"></div>
-
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // Check if NavigatorForms is loaded
+      if (window.NavigatorForms) {
+         window.NavigatorForms.setupEmailForm({
+            formId: 'lead-capture-form', // You need to add id="lead-capture-form" to your <form> tag
+            emailInputId: 'email-input', // You need to add id="email-input" to your email <input>
+            nameInputId: 'name-input',   // You need to add id="name-input" to your name <input>
+            source: 'emergency-kit-home',
+            successMessage: 'Kit sent! Check your inbox.'
+         });
+      }
+   });
+</script>
 </body>
 
 </html>
