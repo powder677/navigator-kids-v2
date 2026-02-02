@@ -1,23 +1,24 @@
 /* ============================================
    NAVIGATOR KIDS AI - MASTER CART SYSTEM
-   Status: LAUNCH READY (V2.4 - Fixed)
+   Status: LAUNCH READY (V2.5 - Fixed)
    
    FIXES IN THIS VERSION:
-   1. Added ensureStripeLoaded() — prevents "can't connect to payment processor"
-      by guaranteeing Stripe.js is loaded before directCheckout runs
-   2. Added formatCurrency to exports (needed by checkout page)
-   3. Added renderCartPage to exports (needed by cart page kickstart)
+   1. directCheckout now routes through server-side API (/api/create-checkout)
+      instead of deprecated client-only redirectToCheckout with lineItems.
+      Stripe removed client-only integration support — this is the correct fix.
+   2. Added ensureStripeLoaded() for safety on all checkout paths
+   3. Added formatCurrency + renderCartPage to public API exports
    ============================================ */
 
 (function() {
     'use strict';
-    const CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
+    var CART_CONFIG = { storageKey: 'navigatorCart', currency: 'USD' };
 
     // Stripe publishable key
-    const STRIPE_PK = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
+    var STRIPE_PK = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
 
     // 🔒 PRODUCT CATALOG (Verified IDs & Prices)
-    const PRODUCTS = {
+    var PRODUCTS = {
         // === BUNDLES ===
         'prod-bundle-total': {
             id: 'prod-bundle-total',
@@ -81,7 +82,7 @@
             downloadUrl: '/downloads/systems/junior-agent-workbook.pdf'
         },
 
-        // === IEP BATTLE PLAN (Service — uses directCheckout) ===
+        // === IEP BATTLE PLAN (Service — now routes through API like everything else) ===
         'prod-service-battleplan': {
            id: 'prod-service-battleplan',
            name: 'The IEP Battle Plan',
@@ -107,81 +108,92 @@
     // =========================================
     // CART CLASS
     // =========================================
-    class Cart {
-        constructor() {
-            this.items = this.load();
-            this.validateCart();
-        }
-
-        load() {
-            try {
-                const data = localStorage.getItem(CART_CONFIG.storageKey);
-                return data ? JSON.parse(data) : [];
-            } catch (e) { return []; }
-        }
-
-        save() {
-            localStorage.setItem(CART_CONFIG.storageKey, JSON.stringify(this.items));
-            this.dispatchUpdate();
-            this.updateCounterUI();
-        }
-
-        validateCart() {
-            const before = this.items.length;
-            this.items = this.items.filter(item => PRODUCTS[item.id]);
-            if (this.items.length !== before) this.save();
-        }
-
-        dispatchUpdate() {
-            window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: this.getItemCount(), total: this.getTotal() }}));
-        }
-
-        add(productId, qty = 1) {
-            const product = PRODUCTS[productId];
-            if (!product) return;
-            const idx = this.items.findIndex(i => i.id === productId);
-            if (idx > -1) { this.items[idx].quantity += qty; }
-            else { this.items.push({ id: productId, quantity: qty, addedAt: new Date().toISOString() }); }
-            this.save();
-            this.showAddedNotification(product);
-        }
-
-        remove(productId) {
-            this.items = this.items.filter(i => i.id !== productId);
-            this.save();
-        }
-
-        clear() {
-            this.items = [];
-            this.save();
-        }
-
-        getItems() { return this.items.map(i => ({ ...i, product: PRODUCTS[i.id] })).filter(i => i.product); }
-        getItemCount() { return this.items.reduce((t, i) => t + i.quantity, 0); }
-        getTotal() { return this.items.reduce((t, i) => t + (PRODUCTS[i.id] ? PRODUCTS[i.id].price * i.quantity : 0), 0); }
-        isEmpty() { return this.items.length === 0; }
-
-        updateCounterUI() {
-            const count = this.getItemCount();
-            document.querySelectorAll('.cart-count').forEach(el => {
-                el.textContent = count;
-                el.style.display = count > 0 ? 'flex' : 'none';
-            });
-        }
-
-        showAddedNotification(product) {
-            const existing = document.querySelector('.cart-notification');
-            if (existing) existing.remove();
-            const n = document.createElement('div');
-            n.className = 'cart-notification';
-            n.innerHTML = `<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:24px;">${product.icon}</span><div><div style="font-weight:bold;font-size:14px;">Added to Cart</div><div style="font-size:12px;opacity:0.8;">${product.name}</div></div></div><a href="/cart/" style="color:#D4AF37;font-weight:bold;margin-left:15px;text-decoration:none;">View Cart →</a>`;
-            Object.assign(n.style, { position:'fixed', bottom:'20px', right:'20px', background:'#002347', color:'white', padding:'15px 20px', borderRadius:'12px', boxShadow:'0 10px 30px rgba(0,0,0,0.3)', display:'flex', alignItems:'center', zIndex:'10000' });
-            document.body.appendChild(n);
-            setTimeout(() => n.remove(), 3500);
-        }
+    function Cart() {
+        this.items = this._load();
+        this._validateCart();
     }
 
-    const cart = new Cart();
+    Cart.prototype._load = function() {
+        try {
+            var data = localStorage.getItem(CART_CONFIG.storageKey);
+            return data ? JSON.parse(data) : [];
+        } catch (e) { return []; }
+    };
+
+    Cart.prototype._save = function() {
+        localStorage.setItem(CART_CONFIG.storageKey, JSON.stringify(this.items));
+        this._dispatchUpdate();
+        this.updateCounterUI();
+    };
+
+    Cart.prototype._validateCart = function() {
+        var before = this.items.length;
+        this.items = this.items.filter(function(item) { return PRODUCTS[item.id]; });
+        if (this.items.length !== before) this._save();
+    };
+
+    Cart.prototype._dispatchUpdate = function() {
+        window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: this.getItemCount(), total: this.getTotal() }}));
+    };
+
+    Cart.prototype.add = function(productId, qty) {
+        qty = qty || 1;
+        var product = PRODUCTS[productId];
+        if (!product) return;
+        var idx = -1;
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id === productId) { idx = i; break; }
+        }
+        if (idx > -1) { this.items[idx].quantity += qty; }
+        else { this.items.push({ id: productId, quantity: qty, addedAt: new Date().toISOString() }); }
+        this._save();
+        this._showAddedNotification(product);
+    };
+
+    Cart.prototype.remove = function(productId) {
+        this.items = this.items.filter(function(i) { return i.id !== productId; });
+        this._save();
+    };
+
+    Cart.prototype.clear = function() {
+        this.items = [];
+        this._save();
+    };
+
+    Cart.prototype.getItems = function() {
+        return this.items.map(function(i) { return { id: i.id, quantity: i.quantity, product: PRODUCTS[i.id] }; }).filter(function(i) { return i.product; });
+    };
+
+    Cart.prototype.getItemCount = function() {
+        return this.items.reduce(function(t, i) { return t + i.quantity; }, 0);
+    };
+
+    Cart.prototype.getTotal = function() {
+        return this.items.reduce(function(t, i) { return t + (PRODUCTS[i.id] ? PRODUCTS[i.id].price * i.quantity : 0); }, 0);
+    };
+
+    Cart.prototype.isEmpty = function() { return this.items.length === 0; };
+
+    Cart.prototype.updateCounterUI = function() {
+        var count = this.getItemCount();
+        document.querySelectorAll('.cart-count').forEach(function(el) {
+            el.textContent = count;
+            el.style.display = count > 0 ? 'flex' : 'none';
+        });
+    };
+
+    Cart.prototype._showAddedNotification = function(product) {
+        var existing = document.querySelector('.cart-notification');
+        if (existing) existing.remove();
+        var n = document.createElement('div');
+        n.className = 'cart-notification';
+        n.innerHTML = '<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:24px;">' + product.icon + '</span><div><div style="font-weight:bold;font-size:14px;">Added to Cart</div><div style="font-size:12px;opacity:0.8;">' + product.name + '</div></div></div><a href="/cart/" style="color:#D4AF37;font-weight:bold;margin-left:15px;text-decoration:none;">View Cart →</a>';
+        Object.assign(n.style, { position:'fixed', bottom:'20px', right:'20px', background:'#002347', color:'white', padding:'15px 20px', borderRadius:'12px', boxShadow:'0 10px 30px rgba(0,0,0,0.3)', display:'flex', alignItems:'center', zIndex:'10000' });
+        document.body.appendChild(n);
+        setTimeout(function() { n.remove(); }, 3500);
+    };
+
+    var cart = new Cart();
 
     // =========================================
     // HELPERS
@@ -190,41 +202,26 @@
         return '$' + amount.toFixed(2);
     }
 
-    // =========================================
-    // FIX #1: ensureStripeLoaded()
-    // Guarantees Stripe.js is available before any checkout call.
-    // Solves: "Could not connect to payment processor" on IEP Battle Plan
-    // and any page where stripe.js hasn't finished loading yet.
-    // =========================================
+    /**
+     * Ensures Stripe.js is loaded before any checkout call.
+     * Injects the script if missing, or waits for it to finish loading.
+     */
     function ensureStripeLoaded() {
         return new Promise(function(resolve, reject) {
-            // Already available — resolve immediately
-            if (typeof Stripe !== 'undefined') {
-                resolve();
-                return;
-            }
-
-            // Script tag exists but hasn't executed yet — poll for it
+            if (typeof Stripe !== 'undefined') { resolve(); return; }
             var existingScript = document.querySelector('script[src*="js.stripe.com"]');
             if (existingScript) {
                 var attempts = 0;
                 var check = setInterval(function() {
-                    if (typeof Stripe !== 'undefined') {
-                        clearInterval(check);
-                        resolve();
-                    } else if (++attempts > 50) { // 5 seconds max
-                        clearInterval(check);
-                        reject(new Error('Stripe.js did not load in time. Please refresh and try again.'));
-                    }
+                    if (typeof Stripe !== 'undefined') { clearInterval(check); resolve(); }
+                    else if (++attempts > 50) { clearInterval(check); reject(new Error('Stripe.js did not load in time.')); }
                 }, 100);
                 return;
             }
-
-            // No script tag at all — inject it dynamically
             var script = document.createElement('script');
             script.src = 'https://js.stripe.com/v3/';
             script.onload = function() { resolve(); };
-            script.onerror = function() { reject(new Error('Failed to load payment system. Please check your connection and try again.')); };
+            script.onerror = function() { reject(new Error('Failed to load payment system.')); };
             document.head.appendChild(script);
         });
     }
@@ -249,24 +246,31 @@
                 })
             });
             var session = await response.json();
+            if (session.error) throw new Error(session.error);
             if (session.id) {
-                // FIX: ensure Stripe is loaded before redirecting
                 await ensureStripeLoaded();
                 var stripeInstance = Stripe(STRIPE_PK);
-                stripeInstance.redirectToCheckout({ sessionId: session.id });
+                await stripeInstance.redirectToCheckout({ sessionId: session.id });
             } else {
-                throw new Error(session.error || "Session ID missing");
+                throw new Error("Session ID missing");
             }
         } catch (err) {
             console.error('Checkout error:', err);
-            alert("Checkout error: " + err.message + "\nPlease refresh and try again.");
+            alert("Checkout error: " + err.message);
             if (btn) { btn.disabled = false; btn.innerText = originalText; }
         }
     }
 
     // =========================================
-    // FIX #2: directCheckout (IEP Battle Plan)
-    // Now awaits ensureStripeLoaded() before calling Stripe()
+    // DIRECT CHECKOUT — FIXED (V2.5)
+    //
+    // OLD (broken): Used stripe.redirectToCheckout({ lineItems: [...] })
+    //   which is the "client-only" pattern. Stripe has DEPRECATED and
+    //   REMOVED client-only checkout integration entirely.
+    //
+    // NEW (fixed): Routes through the server-side API at /api/create-checkout
+    //   just like regular cart checkout. The API creates a Checkout Session
+    //   and we redirect using the session ID.
     // =========================================
     async function directCheckout(productId) {
         var product = PRODUCTS[productId];
@@ -275,34 +279,59 @@
             return;
         }
 
-        // Service products with a Stripe Price ID → direct to Stripe Checkout
-        if (product.stripePrice) {
+        if (product.isService || product.stripePrice) {
+            // --- SERVICE PRODUCT (e.g. IEP Battle Plan) ---
+            // Route through server-side API instead of deprecated client-only checkout
             var btns = document.querySelectorAll('[onclick*="' + productId + '"]');
             btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.6'; b.innerText = 'Redirecting to checkout…'; });
 
             try {
-                // ★ THE FIX: wait for Stripe.js to be fully loaded
-                await ensureStripeLoaded();
+                // Determine success/cancel URLs for this product
+                var successUrl = window.location.origin + '/iep/battle-plan/thank-you/?session_id={CHECKOUT_SESSION_ID}';
+                var cancelUrl = window.location.origin + '/iep/';
 
-                var stripeInstance = Stripe(STRIPE_PK);
-                var result = await stripeInstance.redirectToCheckout({
-                    lineItems: [{ price: product.stripePrice, quantity: 1 }],
-                    mode: 'payment',
-                    successUrl: window.location.origin + '/iep/battle-plan/thank-you/?session_id={CHECKOUT_SESSION_ID}',
-                    cancelUrl: window.location.origin + '/iep/'
+                // Call server-side API to create a Checkout Session
+                var response = await fetch('/api/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [{ id: productId, quantity: 1 }],
+                        successUrl: successUrl,
+                        cancelUrl: cancelUrl
+                    })
                 });
-                // redirectToCheckout only returns if there's an error
-                if (result.error) {
-                    alert(result.error.message || 'Payment could not be started. Please try again.');
-                    btns.forEach(function(b) { b.disabled = false; b.style.opacity = '1'; b.innerText = b.className.includes('price') ? 'Get Your Battle Plan →' : 'Get Your Battle Plan — $497'; });
+
+                var session = await response.json();
+
+                if (session.error) {
+                    throw new Error(session.error);
                 }
+
+                if (session.id) {
+                    // Redirect to Stripe's hosted Checkout page using session ID
+                    await ensureStripeLoaded();
+                    var stripeInstance = Stripe(STRIPE_PK);
+                    var result = await stripeInstance.redirectToCheckout({ sessionId: session.id });
+                    // redirectToCheckout only returns if there was an error
+                    if (result.error) {
+                        throw new Error(result.error.message);
+                    }
+                } else {
+                    throw new Error('Could not create checkout session.');
+                }
+
             } catch (err) {
                 console.error('Stripe directCheckout error:', err);
-                alert('Could not connect to payment processor: ' + err.message + '\nPlease try again or contact hello@navigatorkidsai.com');
-                btns.forEach(function(b) { b.disabled = false; b.style.opacity = '1'; b.innerText = b.className.includes('price') ? 'Get Your Battle Plan →' : 'Get Your Battle Plan — $497'; });
+                alert('Payment error: ' + err.message + '\nPlease try again or contact hello@navigatorkidsai.com');
+                btns.forEach(function(b) {
+                    b.disabled = false;
+                    b.style.opacity = '1';
+                    b.innerText = b.className.includes('price') ? 'Get Your Battle Plan →' : 'Get Your Battle Plan — $497';
+                });
             }
         } else {
-            // Regular products: add to cart and go to cart page
+            // --- REGULAR PRODUCT ---
+            // Add to cart and go to cart page
             cart.add(productId, 1);
             window.location.href = '/cart/';
         }
