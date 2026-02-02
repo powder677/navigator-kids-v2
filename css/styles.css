@@ -1588,3 +1588,350 @@ img { max-width: 100%; height: auto; }
 #header.loaded {
    opacity: 1;
 }
+/* =========================================
+   23. IEP HUB MISSING STYLES
+   (Add these callout sections and wrappers)
+   ========================================= */
+
+/* Content Wrapper (used throughout IEP pages) */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* IEP Callout Sections (CTAs on IEP hub) */
+.iep-callout {
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    margin: 60px auto;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.iep-callout h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.iep-callout p {
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+}
+
+.iep-callout ul {
+    text-align: left;
+    display: inline-block;
+    margin: 25px 0;
+}
+
+.iep-callout li {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    list-style: none;
+}
+
+.iep-callout .btn {
+    margin-top: 25px;
+}
+
+/* Primary Callout (Sage Green) */
+.iep-callout-primary {
+    background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-sage) 100%);
+    color: var(--color-white);
+    border: 3px solid var(--color-sage);
+}
+
+.iep-callout-primary h2 {
+    color: var(--color-white);
+}
+
+.iep-callout-primary p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Warning Callout (Terracotta) */
+.iep-callout-warning {
+    background: var(--color-cream);
+    border: 3px solid var(--color-terracotta);
+}
+
+.iep-callout-warning h2 {
+    color: var(--color-navy);
+}
+
+.iep-callout-warning p {
+    color: var(--color-text);
+}
+
+/* Dynamic Child Name (for personalization) */
+.dynamic-child-name {
+    font-weight: 600;
+    color: var(--color-terracotta);
+}
+
+/* Responsive fixes for IEP hub */
+@media (max-width: 768px) {
+    .iep-callout {
+        padding: 35px 25px;
+        margin: 40px 20px;
+    }
+    
+    .iep-callout h2 {
+        font-size: 1.5rem;
+    }
+    
+    .iep-callout ul {
+        margin: 20px 0;
+    }
+}
+/* =========================================
+   24. STATE-SPECIFIC ARTICLE PAGES
+   (For /iep/states/texas/, /new-york/, etc.)
+   ========================================= */
+
+/* Article Header (matches main IEP content style) */
+.state-article {
+    background: var(--color-white);
+    padding: 60px 0 100px;
+}
+
+.state-article-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: 50px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* State Badge (e.g., "TEXAS LAW") */
+.state-badge {
+    display: inline-block;
+    background: var(--color-terracotta);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    margin-bottom: 20px;
+}
+
+/* Email Capture Box (for state pages) */
+.email-capture-box {
+    background: var(--color-cream);
+    border: 3px solid var(--color-sage);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.email-capture-box h3 {
+    font-size: 1.75rem;
+    color: var(--color-navy);
+    margin-bottom: 15px;
+}
+
+.email-capture-box p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.email-capture-box ul {
+    text-align: left;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.email-capture-box li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.email-capture-box li::before {
+    content: '✅';
+    position: absolute;
+    left: 0;
+}
+
+.email-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 25px auto 15px;
+}
+
+.email-form input[type="email"] {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid var(--color-border-dark);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: var(--font-body);
+}
+
+.email-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-sage);
+}
+
+.email-form button {
+    background: var(--color-terracotta);
+    color: var(--color-white);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.email-form button:hover {
+    background: var(--color-terracotta-dark);
+    transform: translateY(-2px);
+}
+
+.email-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Battle Plan CTA (after email capture) */
+.battle-plan-cta {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    margin: 50px 0;
+    text-align: center;
+}
+
+.battle-plan-cta h3 {
+    color: var(--color-white);
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+}
+
+.battle-plan-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.battle-plan-cta ul {
+    text-align: left;
+    display: inline-block;
+    margin: 20px 0 25px;
+}
+
+.battle-plan-cta li {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 10px;
+}
+
+.battle-plan-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin: 20px 0;
+}
+
+/* FAQ Section (state pages) */
+.faq-section {
+    margin: 60px 0;
+}
+
+.faq-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faq-item {
+    background: var(--color-cream);
+    padding: 25px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--color-sage);
+}
+
+.faq-question {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 10px;
+}
+
+.faq-answer {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+/* Related Resources Section */
+.related-resources {
+    background: var(--color-cream-dark);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    margin: 50px 0;
+}
+
+.related-resources h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.related-resources ul {
+    list-style: none;
+}
+
+.related-resources li {
+    margin-bottom: 15px;
+}
+
+.related-resources a {
+    font-weight: 600;
+    color: var(--color-terracotta);
+    font-size: 1.05rem;
+}
+
+.related-resources a:hover {
+    text-decoration: underline;
+}
+
+.related-resources .link-desc {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-top: 5px;
+}
+
+/* Responsive for state pages */
+@media (max-width: 768px) {
+    .state-article-content {
+        padding: 30px 20px;
+    }
+    
+    .email-form {
+        flex-direction: column;
+    }
+    
+    .email-form button {
+        width: 100%;
+    }
+    
+    .email-capture-box {
+        padding: 30px 20px;
+    }
+    
+    .battle-plan-cta {
+        padding: 30px 20px;
+    }
+}
