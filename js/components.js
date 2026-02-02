@@ -36,10 +36,10 @@
       document.head.appendChild(l);
     }
 
-    if (!document.querySelector('link[href="/css/styles.css"]')) {
+   if (!document.querySelector('link[href="css/styles.css"]')) {
       const c = document.createElement('link');
       c.rel = 'stylesheet';
-      c.href = '/css/styles.css';
+      c.href = 'css/styles.css'; 
       document.head.appendChild(c);
     }
   }
