@@ -1,19 +1,25 @@
-// =========================================
-// STRIPE CONFIGURATION - UPDATED FOR LAUNCH
-// =========================================
+/* ============================================
+   NAVIGATOR KIDS AI - CHECKOUT PAGE SCRIPT
+   Status: FIXED (V2.1)
+   
+   FIXES IN THIS VERSION:
+   1. REMOVED dead createPaymentMethod() call that was throwing errors
+      before the API redirect could ever happen
+   2. REMOVED unnecessary Stripe card element mounting (we use
+      Stripe Checkout hosted page, not inline card fields)
+   3. Simplified flow: validate form → call API → redirect to Stripe
+   4. Card element section is now hidden since it's not used
+   ============================================ */
 
-// LIVE Stripe publishable key
+// =========================================
+// STRIPE CONFIGURATION
+// =========================================
 const STRIPE_PUBLISHABLE_KEY = 'pk_live_51RbD23Ax6JDn4AuAUvhBafE2pCJpDSJRQcfAPq5YDXYNQRPsOj22xraXoLqruUDqDKqGVK937dlfXdqDqL8TS0Ly00PbDQQgDd';
-
-// LIVE MODE - Real payments enabled
 const DEMO_MODE = false;
-
-let stripe, cardElement;
 
 // =========================================
 // INITIALIZE
 // =========================================
-
 document.addEventListener('DOMContentLoaded', function() {
    // Check if cart is empty
    if (NavigatorCart.isEmpty()) {
@@ -25,12 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
    // Render order summary
    renderOrderSummary();
 
-   // Initialize Stripe
-   initStripe();
+   // FIX: Hide the card element section — we redirect to Stripe Checkout
+   // so inline card fields are not needed and were causing errors
+   var cardSection = document.getElementById('card-element');
+   if (cardSection) cardSection.closest('.form-group, .card-section, div')?.style && (cardSection.parentElement.style.display = 'none');
+   var cardErrors = document.getElementById('card-errors');
+   if (cardErrors) cardErrors.style.display = 'none';
 
    // Pre-fill email if we have it from quiz
    try {
-      const quizData = JSON.parse(localStorage.getItem('quizResults'));
+      var quizData = JSON.parse(localStorage.getItem('quizResults'));
       if (quizData && quizData.parentEmail) {
          document.getElementById('email').value = quizData.parentEmail;
       }
@@ -40,75 +50,49 @@ document.addEventListener('DOMContentLoaded', function() {
 // =========================================
 // RENDER ORDER SUMMARY
 // =========================================
-
 function renderOrderSummary() {
-   const items = NavigatorCart.getItems();
-   const container = document.getElementById('orderItems');
+   var items = NavigatorCart.getItems();
+   var container = document.getElementById('orderItems');
 
-   container.innerHTML = items.map(item => `
-      <div class="order-item">
-         <div class="order-item-icon">${item.product.icon}</div>
-         <div class="order-item-details">
-            <div class="order-item-name">${item.product.name}</div>
-            <div class="order-item-desc">Digital Download</div>
-         </div>
-         <div class="order-item-price">${NavigatorCart.formatCurrency(item.product.price)}</div>
-      </div>
-   `).join('');
+   container.innerHTML = items.map(function(item) {
+      return '<div class="order-item">'
+         + '<div class="order-item-icon">' + item.product.icon + '</div>'
+         + '<div class="order-item-details">'
+         + '<div class="order-item-name">' + item.product.name + '</div>'
+         + '<div class="order-item-desc">Digital Download</div>'
+         + '</div>'
+         + '<div class="order-item-price">' + NavigatorCart.formatCurrency(item.product.price) + '</div>'
+         + '</div>';
+   }).join('');
 
-   const subtotal = NavigatorCart.getTotal();
+   var subtotal = NavigatorCart.getTotal();
    document.getElementById('subtotal').textContent = NavigatorCart.formatCurrency(subtotal);
    document.getElementById('total').textContent = NavigatorCart.formatCurrency(subtotal);
 }
 
 // =========================================
-// STRIPE INITIALIZATION
+// FORM SUBMISSION — FIXED
+// 
+// OLD (broken) flow:
+//   1. Validate form
+//   2. createPaymentMethod with card element ← DEAD CODE, threw errors
+//   3. Call /api/create-checkout
+//   4. Redirect to Stripe Checkout
+//
+// NEW (fixed) flow:
+//   1. Validate form
+//   2. Store order data for thank-you page
+//   3. Call /api/create-checkout
+//   4. Redirect to Stripe Checkout
 // =========================================
-
-function initStripe() {
-   stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-   const elements = stripe.elements();
-
-   cardElement = elements.create('card', {
-      style: {
-         base: {
-            fontSize: '16px',
-            color: '#4A4E69',
-            fontFamily: 'Inter, sans-serif',
-            '::placeholder': {
-               color: '#8E91A8'
-            }
-         },
-         invalid: {
-            color: '#EF4444'
-         }
-      }
-   });
-
-   cardElement.mount('#card-element');
-
-   cardElement.on('change', function(event) {
-      const displayError = document.getElementById('card-errors');
-      if (event.error) {
-         displayError.textContent = event.error.message;
-      } else {
-         displayError.textContent = '';
-      }
-   });
-}
-
-// =========================================
-// FORM SUBMISSION
-// =========================================
-
 async function handleSubmit() {
-   const submitBtn = document.getElementById('submitBtn');
-   const loadingOverlay = document.getElementById('loadingOverlay');
+   var submitBtn = document.getElementById('submitBtn');
+   var loadingOverlay = document.getElementById('loadingOverlay');
 
    // Validate form
-   const firstName = document.getElementById('firstName').value.trim();
-   const lastName = document.getElementById('lastName').value.trim();
-   const email = document.getElementById('email').value.trim();
+   var firstName = document.getElementById('firstName').value.trim();
+   var lastName = document.getElementById('lastName').value.trim();
+   var email = document.getElementById('email').value.trim();
 
    if (!firstName || !lastName || !email) {
       alert('Please fill in all required fields.');
@@ -123,30 +107,16 @@ async function handleSubmit() {
    // Show loading
    submitBtn.disabled = true;
    submitBtn.textContent = 'Processing...';
-   loadingOverlay.classList.add('active');
+   if (loadingOverlay) loadingOverlay.classList.add('active');
 
    try {
-      // Create payment method with Stripe
-      const { paymentMethod, error } = await stripe.createPaymentMethod({
-         type: 'card',
-         card: cardElement,
-         billing_details: {
-            name: `${firstName} ${lastName}`,
-            email: email
-         }
-      });
-
-      if (error) {
-         throw new Error(error.message);
-      }
-
       // Store order data for thank-you page
-      const orderData = {
+      var orderData = {
          orderId: 'ORD-' + Date.now(),
          customer: {
-            firstName,
-            lastName,
-            email
+            firstName: firstName,
+            lastName: lastName,
+            email: email
          },
          items: NavigatorCart.getItems(),
          total: NavigatorCart.getTotal(),
@@ -154,28 +124,31 @@ async function handleSubmit() {
       };
       localStorage.setItem('lastOrder', JSON.stringify(orderData));
 
-      // Use Stripe Checkout via the API endpoint
-      const data = { 
-         items: NavigatorCart.getItems().map(i => ({ id: i.id, quantity: i.quantity })), 
+      // Call API to create Stripe Checkout Session
+      var requestData = {
+         items: NavigatorCart.getItems().map(function(i) { return { id: i.id, quantity: i.quantity }; }),
          successUrl: window.location.origin + '/thank-you/?session_id={CHECKOUT_SESSION_ID}',
          cancelUrl: window.location.origin + '/checkout/'
       };
 
-      const response = await fetch('/api/create-checkout', {
+      var response = await fetch('/api/create-checkout', {
          method: 'POST',
-         headers: {'Content-Type': 'application/json'},
-         body: JSON.stringify(data)
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(requestData)
       });
 
-      const session = await response.json();
+      var session = await response.json();
 
       if (session.error) {
          throw new Error(session.error);
       }
 
       if (session.id) {
-         // Redirect to Stripe Checkout
+         // Redirect to Stripe's hosted Checkout page
+         var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
          await stripe.redirectToCheckout({ sessionId: session.id });
+      } else {
+         throw new Error('Could not create checkout session. Please try again.');
       }
 
    } catch (error) {
@@ -183,7 +156,7 @@ async function handleSubmit() {
       alert('Payment failed: ' + error.message);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Complete Purchase →';
-      loadingOverlay.classList.remove('active');
+      if (loadingOverlay) loadingOverlay.classList.remove('active');
    }
 }
 
