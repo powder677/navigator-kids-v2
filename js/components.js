@@ -1,244 +1,201 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: FIXED (Anti-Stacking & Layout Safe)
+   Status: STABLE (No stacking, no duplication)
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
+  'use strict';
+
+  // GLOBAL LOAD LOCK (critical)
+  if (window.__NAVIGATOR_LAYOUT_LOADED__) return;
+  window.__NAVIGATOR_LAYOUT_LOADED__ = true;
+
+  document.addEventListener('DOMContentLoaded', () => {
     ensureDependencies();
     injectHeader();
     injectFooter();
     initMobileMenu();
     initFormspree();
-    personalizeSite(); 
-    setTimeout(syncCartCount, 500);
-});
+    personalizeSite();
+    setTimeout(syncCartCount, 300);
+  });
 
-// 1. DEPENDENCY CHECKER
-function ensureDependencies() {
-    // Tailwind
+  /* ---------------- DEPENDENCIES ---------------- */
+
+  function ensureDependencies() {
     if (!document.querySelector('script[src*="tailwindcss"]')) {
-        const script = document.createElement('script');
-        script.src = "https://cdn.tailwindcss.com";
-        document.head.appendChild(script);
+      const s = document.createElement('script');
+      s.src = 'https://cdn.tailwindcss.com';
+      document.head.appendChild(s);
     }
-    // FontAwesome
+
     if (!document.querySelector('link[href*="font-awesome"]')) {
-        const link = document.createElement('link');
-        link.rel = "stylesheet";
-        link.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
-        document.head.appendChild(link);
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      document.head.appendChild(l);
     }
-    // Main CSS (Prevents unstyled pages)
-    if (!document.querySelector('link[href*="/css/styles.css"]')) {
-        const link = document.createElement('link');
-        link.rel = "stylesheet";
-        link.href = "/css/styles.css";
-        document.head.appendChild(link);
+
+    if (!document.querySelector('link[href="/css/styles.css"]')) {
+      const c = document.createElement('link');
+      c.rel = 'stylesheet';
+      c.href = '/css/styles.css';
+      document.head.appendChild(c);
     }
-}
+  }
 
-// 2. INJECT HEADER (Anti-Stacking)
-function injectHeader() {
-    // STOP if header already exists
-    if (document.getElementById('navbar')) return;
+  /* ---------------- HEADER ---------------- */
 
-    const headerHTML = `
-    <nav class="navbar" id="navbar">
-       <div class="container nav-content">
-          <a href="/" class="logo">
-             <span class="logo-icon">🧒</span>
-             Navigator Kids AI
-          </a>
-          <div class="nav-links" id="navLinks">
-             <a href="/quiz/">Free Quiz</a>
-             <a href="/resources/">Resources</a>
-             <a href="/products/">Products</a>
-             <a href="/tools/">Free Tools</a>
-             <a href="/iep/" style="color:#E07A5F; font-weight:700;">IEP Hub</a>
-             <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart">
-                🛒 <span class="nav-cart-count cart-count" id="navCartCount">0</span>
-             </a>
-             <a href="/quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
+  function injectHeader() {
+    const headerSlot = document.getElementById('header');
+    if (!headerSlot || headerSlot.dataset.loaded === 'true') return;
+
+    headerSlot.innerHTML = `
+      <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+          <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+
+          <div class="nav-links">
+            <a href="/quiz/">Free Quiz</a>
+            <a href="/resources/">Resources</a>
+            <a href="/products/">Products</a>
+            <a href="/tools/">Free Tools</a>
+            <a href="/iep/" class="text-accent font-bold">IEP Hub</a>
+            <a href="/cart/" class="nav-cart">
+              🛒 <span class="cart-count">0</span>
+            </a>
+            <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
           </div>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-             <span></span><span></span><span></span>
+
+          <button id="navToggle" class="nav-toggle" aria-expanded="false">
+            <span></span><span></span><span></span>
           </button>
-       </div>
-       <div class="mobile-menu" id="mobileMenu">
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu">
           <a href="/quiz/">Free Quiz</a>
           <a href="/resources/">Resources</a>
           <a href="/products/">Products</a>
           <a href="/tools/">Free Tools</a>
-          <a href="/iep/" style="color:#E07A5F;">IEP Hub</a>
-          <a href="/about/">About</a>
-          <a href="/cart/">Cart (<span class="mobile-cart-count cart-count">0</span>)</a>
-          <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
-       </div>
-    </nav>
-    <div style="height: 80px;"></div>
+          <a href="/iep/">IEP Advocacy Hub</a>
+          <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+        </div>
+      </nav>
     `;
 
-    const placeholder = document.getElementById('header');
-    if (placeholder) {
-        placeholder.innerHTML = headerHTML;
-        placeholder.classList.add('loaded');
-    } else {
-        document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    }
-}
+    headerSlot.dataset.loaded = 'true';
+    document.body.classList.add('has-fixed-nav');
+  }
 
-// 3. INJECT FOOTER (Anti-Stacking)
-function injectFooter() {
-    // STOP if footer already exists
-    if (document.querySelector('.footer')) return;
+  /* ---------------- FOOTER ---------------- */
 
-    const footerHTML = `
-    <footer class="footer">
-       <div class="container">
+  function injectFooter() {
+    const footerSlot = document.getElementById('footer');
+    if (!footerSlot || footerSlot.dataset.loaded === 'true') return;
+
+    footerSlot.innerHTML = `
+      <footer class="footer">
+        <div class="container">
           <div class="footer-content">
-             <div class="footer-brand">
-                <a href="/" class="logo"><span class="logo-icon">🧒</span> Navigator Kids AI</a>
-                <p>Your child's brain didn't come with a manual. Until now.</p>
-                <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
-             </div>
-             <div class="footer-links">
-                <h4>Quick Links</h4>
-                <a href="/quiz/">Free Quiz</a>
-                <a href="/iep/">IEP Advocacy Hub</a>
-                <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-                <a href="/resources/">Articles</a>
-             </div>
-             <div class="footer-links">
-                <h4>Products</h4>
-                <a href="/products/">All Products</a>
-                <a href="/products/#ai-prompts">AI Prompt Packs</a>
-                <a href="/products/#activity-packets">Activity Packets</a>
-             </div>
-             <div class="footer-links">
-                <h4>Company</h4>
-                <a href="/about/">About Us</a>
-                <a href="/contact/">Contact</a>
-                <a href="/terms/">Terms of Service</a>
-                <a href="/privacy/">Privacy Policy</a>
-             </div>
+            <div>
+              <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+              <p>Your child's brain didn’t come with a manual.</p>
+            </div>
+
+            <div>
+              <h4>Quick Links</h4>
+              <a href="/quiz/">Free Quiz</a>
+              <a href="/iep/">IEP Hub</a>
+              <a href="/tools/">Free Tools</a>
+            </div>
+
+            <div>
+              <h4>Company</h4>
+              <a href="/about/">About</a>
+              <a href="/contact/">Contact</a>
+            </div>
           </div>
+
           <div class="footer-bottom">
-             <p>© ${new Date().getFullYear()} Navigator Kids AI™. All rights reserved.</p>
-             <p class="footer-disclaimer"><strong>Disclaimer:</strong> This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+            <p>© ${new Date().getFullYear()} Navigator Kids AI™</p>
           </div>
-       </div>
-    </footer>
+        </div>
+      </footer>
     `;
 
-    const placeholder = document.getElementById('footer');
-    if (placeholder) placeholder.innerHTML = footerHTML;
-    else document.body.insertAdjacentHTML('beforeend', footerHTML);
-}
+    footerSlot.dataset.loaded = 'true';
+  }
 
-// 4. MOBILE MENU
-function initMobileMenu() {
-    setTimeout(() => {
-        const toggle = document.getElementById('navToggle');
-        const menu = document.getElementById('mobileMenu');
-        if (toggle && menu) {
-            const newToggle = toggle.cloneNode(true);
-            toggle.parentNode.replaceChild(newToggle, toggle);
-            newToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                newToggle.classList.toggle('active');
-                menu.classList.toggle('active');
-            });
-            document.addEventListener('click', (e) => {
-                if (!menu.contains(e.target) && !newToggle.contains(e.target)) {
-                    newToggle.classList.remove('active');
-                    menu.classList.remove('active');
-                }
-            });
-        }
-    }, 200);
-}
+  /* ---------------- MOBILE MENU ---------------- */
 
-// 5. CART SYNC
-function syncCartCount() {
+  function initMobileMenu() {
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+      toggle.setAttribute(
+        'aria-expanded',
+        toggle.classList.contains('active')
+      );
+    });
+
+    document.addEventListener('click', e => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------------- CART ---------------- */
+
+  function syncCartCount() {
     let count = 0;
     try {
-        if (window.NavigatorCart && typeof window.NavigatorCart.getItemCount === 'function') {
-            count = window.NavigatorCart.getItemCount();
-        } else {
-            const cartData = localStorage.getItem('navigatorCart');
-            const cart = cartData ? JSON.parse(cartData) : [];
-            count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-        }
-    } catch(e) { count = 0; }
+      const cart = JSON.parse(localStorage.getItem('navigatorCart')) || [];
+      count = cart.reduce((s, i) => s + (i.quantity || 1), 0);
+    } catch {}
+
     document.querySelectorAll('.cart-count').forEach(el => {
-        el.innerText = count;
-        el.style.display = count > 0 ? 'inline-flex' : 'none';
+      el.textContent = count;
+      el.style.display = count ? 'inline-flex' : 'none';
     });
-}
-window.addEventListener('cartUpdated', syncCartCount);
+  }
 
-// 6. FORMSPREE
-function initFormspree() {
+  window.addEventListener('cartUpdated', syncCartCount);
+
+  /* ---------------- FORMSPREE ---------------- */
+
+  function initFormspree() {
     document.querySelectorAll('form[data-formspree]').forEach(form => {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            if(btn) btn.innerText = 'Sending...';
-            const formData = new FormData(form);
-            try {
-                const res = await fetch('https://formspree.io/f/mnjvvpyj', { method: 'POST', body: formData, headers: {'Accept': 'application/json'} });
-                if (res.ok) {
-                    if (form.dataset.download) {
-                        var dl = document.createElement('a'); dl.href = form.dataset.download; dl.download = ''; document.body.appendChild(dl); dl.click(); document.body.removeChild(dl);
-                    }
-                    if (form.dataset.redirect) window.location.href = form.dataset.redirect;
-                    else alert('Success!');
-                }
-            } catch (err) { alert('Error. Please try again.'); }
-            if(btn) btn.innerText = 'Submit';
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const res = await fetch('https://formspree.io/f/mnjvvpyj', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
         });
+        if (res.ok && form.dataset.redirect) {
+          window.location.href = form.dataset.redirect;
+        }
+      });
     });
-}
+  }
 
-// 7. PERSONALIZATION
-function personalizeSite() {
+  /* ---------------- PERSONALIZATION ---------------- */
+
+  function personalizeSite() {
     try {
-        const data = localStorage.getItem('quizProfile');
-        if (!data) return;
-        const profile = JSON.parse(data);
-        document.querySelectorAll('.dynamic-child-name').forEach(el => {
-            el.textContent = profile.childName || "Your child";
-        });
-    } catch (e) {}
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   IEP BATTLE PLAN CTA (Preserved & Safe)
-   ═══════════════════════════════════════════════════════════════ */
-(function() {
-   'use strict';
-   const BP_URL = '/iep/';
-   const currentPath = window.location.pathname;
-   if (!currentPath.startsWith('/iep/')) return;
-   if (currentPath.includes('/battle-plan')) return;
-   if (document.body.classList.contains('no-bp-cta')) return;
-   if (currentPath === '/iep/' || currentPath === '/iep/index.html') return;
-
-   const style = document.createElement('style');
-   style.textContent = `.bp-inline-cta { background: linear-gradient(135deg, #1a2744 0%, #2a3d5e 100%); padding: 3rem 1.5rem; margin-top: 3rem; position: relative; overflow: hidden; } .bp-inline-cta-inner { max-width: 700px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; position: relative; z-index: 1; } .bp-inline-cta-text h3 { font-family: 'Merriweather', serif; font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 0.5rem; } .bp-inline-cta-text p { font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); margin: 0; } .bp-inline-cta-btn { display: inline-block; background: #d4a853; color: #1a2744; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.92rem; padding: 0.85rem 1.75rem; border-radius: 8px; text-decoration: none; box-shadow: 0 3px 15px rgba(212,168,83,0.25); } @media (max-width: 640px) { .bp-inline-cta-inner { grid-template-columns: 1fr; text-align: center; } }`;
-   document.head.appendChild(style);
-
-   function injectInlineCTA() {
-      // STOP if CTA already exists
-      if (document.querySelector('.bp-inline-cta')) return;
-      const footer = document.getElementById('footer');
-      if (!footer) return;
-      const cta = document.createElement('section');
-      cta.className = 'bp-inline-cta';
-      cta.innerHTML = `<div class="bp-inline-cta-inner"><div class="bp-inline-cta-text"><h3>Stop Googling. Start Strategizing.</h3><p>The IEP Battle Plan gives you a personalized heat map, meeting script, and strategy call.</p></div><a href="${BP_URL}" class="bp-inline-cta-btn">Get Your Battle Plan</a></div>`;
-      footer.parentNode.insertBefore(cta, footer);
-   }
-
-   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(injectInlineCTA, 100));
-   else setTimeout(injectInlineCTA, 100);
+      const profile = JSON.parse(localStorage.getItem('quizProfile'));
+      if (!profile) return;
+      document
+        .querySelectorAll('.dynamic-child-name')
+        .forEach(el => (el.textContent = profile.childName || 'Your child'));
+    } catch {}
+  }
 })();
