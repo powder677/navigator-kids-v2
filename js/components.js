@@ -36,7 +36,8 @@
       document.head.appendChild(l);
     }
 
-   if (!document.querySelector('link[href="css/styles.css"]')) {
+    // UPDATED: Removed the slash so it finds the file in the css folder correctly
+    if (!document.querySelector('link[href*="css/styles.css"]')) {
       const c = document.createElement('link');
       c.rel = 'stylesheet';
       c.href = 'css/styles.css'; 
