@@ -1935,3 +1935,239 @@ img { max-width: 100%; height: auto; }
         padding: 30px 20px;
     }
 }
+/* =========================================
+   25. IEP INDEX PAGE FIXES
+   (Missing formatting for /iep/index.html)
+   ========================================= */
+
+/* Main IEP Content Container */
+.iep-content {
+    background: var(--color-cream);
+    padding-bottom: 80px;
+}
+
+/* Fix for hero subtitle */
+.iep-hero .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 40px;
+    font-weight: 500;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hero body content box */
+.iep-hero .hero-body {
+    text-align: left;
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.iep-hero .hero-body p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.iep-hero .hero-body p:last-child {
+    margin-bottom: 0;
+}
+
+.iep-hero .hero-body em {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+.iep-hero .hero-body strong {
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* Importance Section Background */
+.iep-importance {
+    background: var(--color-white);
+}
+
+.iep-importance .content-wrapper {
+    max-width: 900px;
+}
+
+.iep-importance h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.iep-importance > .content-wrapper > p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+/* Benefit List Enhancements */
+.benefit-list {
+    margin-top: 30px;
+    background: var(--color-cream);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    border-left: 5px solid var(--color-terracotta);
+    list-style: none;
+}
+
+.benefit-list li {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.benefit-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.benefit-list strong {
+    color: var(--color-navy);
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.benefit-list em {
+    font-style: italic;
+    color: var(--color-terracotta);
+}
+
+/* Toolkit Section */
+.iep-toolkit {
+    background: var(--color-cream-dark);
+    border-top: 1px solid var(--color-border);
+}
+
+.iep-toolkit .content-wrapper {
+    max-width: 1100px;
+}
+
+.iep-toolkit h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.toolkit-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: var(--color-text-light);
+}
+
+/* Toolkit Grid */
+.toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.toolkit-category {
+    background: var(--color-white);
+    padding: 35px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.toolkit-category:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.toolkit-category h3 {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-terracotta);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-cream);
+    padding-bottom: 15px;
+}
+
+.resource-links {
+    list-style: none;
+}
+
+.resource-links li {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-cream);
+}
+
+.resource-links li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.resource-links a {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-navy);
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.resource-links a:hover {
+    color: var(--color-terracotta);
+}
+
+.link-desc {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* Callout Sections (Green and Warning boxes) */
+.iep-callout {
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    margin: 60px auto;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.iep-callout h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.iep-callout p {
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.iep-callout ul {
+    text-align: left;
+    display: inline-block;
+    margin: 25px 0;
+    list-style: none;
+}
+
+.iep-callout li {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.iep-callout .btn {
