@@ -1,6 +1,6 @@
 /* ============================================
    NAVIGATOR KIDS AI - GLOBAL COMPONENTS
-   Status: LAUNCH READY (With IEP Hub Integration)
+   Status: FIXED (Uses Custom Header/Footer + IEP Links)
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,85 +15,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 1. DEPENDENCY CHECKER
 function ensureDependencies() {
+    // 1. Load Tailwind (Utility classes)
     if (!document.querySelector('script[src*="tailwindcss"]')) {
         const script = document.createElement('script');
         script.src = "https://cdn.tailwindcss.com";
         document.head.appendChild(script);
     }
     
+    // 2. Load FontAwesome (Icons)
     if (!document.querySelector('link[href*="font-awesome"]')) {
         const link = document.createElement('link');
         link.rel = "stylesheet";
         link.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
         document.head.appendChild(link);
     }
+
+    // 3. Load Main Styles (CRITICAL: Ensures header/footer look right on all pages)
+    if (!document.querySelector('link[href*="/css/styles.css"]')) {
+        const link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = "/css/styles.css";
+        document.head.appendChild(link);
+    }
 }
 
-// 2. INJECT HEADER
+// 2. INJECT HEADER (Your Custom Design)
 function injectHeader() {
     const headerHTML = `
-    <nav class="bg-white shadow-sm fixed top-0 left-0 w-full z-[99999] border-b border-gray-100 h-[76px]" id="navbar">
-       <div class="container mx-auto px-4 h-full flex justify-between items-center">
-          
-          <a href="/" class="flex items-center gap-2 no-underline group hover:opacity-100">
-             <span class="text-2xl bg-slate-100 p-2 rounded-lg group-hover:scale-105 transition-transform">🧭</span>
-             <span style="font-family: 'Merriweather', serif; font-weight: 700; color: #3D405B; font-size: 1.25rem;">Navigator Kids AI</span>
+    <nav class="navbar" id="navbar">
+       <div class="container nav-content">
+          <a href="/" class="logo">
+             <span class="logo-icon">🧒</span>
+             Navigator Kids AI
           </a>
-
-          <div class="hidden md:flex items-center gap-5 lg:gap-6" id="desktopMenu">
-             <a href="/quiz/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Free Quiz</a>
-             <a href="/products/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Products</a>
-             <a href="/tools/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Free Tools</a>
-             <a href="/resources/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">Resources</a>
-             <a href="/iep/" class="text-sm font-semibold text-[#3D405B] hover:text-[#E07A5F] no-underline transition bg-[#F9F7F2] px-2 py-1 rounded border border-[#E07A5F]/20">IEP Hub</a>
-             <a href="/about/" class="text-sm font-semibold text-gray-600 hover:text-[#81B29A] no-underline transition">About</a>
+    
+          <div class="nav-links" id="navLinks">
+             <a href="/quiz/">Free Quiz</a>
+             <a href="/resources/">Resources</a>
+             <a href="/products/">Products</a>
+             <a href="/tools/">Free Tools</a>
+             <a href="/iep/" style="color:#E07A5F; font-weight:700;">IEP Hub</a>
              
-             <a href="/cart/" class="relative text-gray-600 hover:text-[#E07A5F] no-underline mx-1">
-                <i class="fa-solid fa-cart-shopping text-lg"></i>
-                <span id="navCartCount" data-count="0" class="absolute -top-2 -right-2 bg-[#E07A5F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center" style="display:none">0</span>
+             <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart">
+                🛒
+                <span class="nav-cart-count cart-count" id="navCartCount">0</span>
              </a>
              
-             <a href="/quiz/" 
-                style="background-color: #E07A5F !important; color: #FFFFFF !important;" 
-                class="px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-md no-underline whitespace-nowrap ml-2">
-                Take the Quiz →
-             </a>
+             <a href="/quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
           </div>
-
-          <button class="md:hidden flex items-center gap-2 text-gray-600 focus:outline-none" id="navToggle" aria-label="Toggle navigation">
-             <span class="text-sm font-bold uppercase tracking-wide">Menu</span>
-             <i class="fa-solid fa-bars text-2xl"></i>
+    
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+             <span></span>
+             <span></span>
+             <span></span>
           </button>
        </div>
-
-       <div class="hidden bg-white border-t border-gray-100 p-4 absolute w-full shadow-xl left-0 top-[76px]" id="mobileMenu">
-          <a href="/quiz/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Free Quiz</a>
-          <a href="/products/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Products</a>
-          <a href="/tools/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Free Tools</a>
-          <a href="/resources/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Resources</a>
-          <a href="/iep/" class="block py-3 border-b border-gray-50 text-[#E07A5F] font-bold hover:bg-gray-50 px-2 rounded">IEP Advocacy Hub</a>
-          <a href="/about/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">About</a>
-          <a href="/contact/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">Contact</a>
-          <a href="/cart/" class="block py-3 border-b border-gray-50 text-gray-600 font-medium hover:bg-gray-50 px-2 rounded">
-             Cart (<span id="mobileCartCount">0</span>)
-          </a>
-          
-          <a href="/quiz/" 
-             style="background-color: #E07A5F !important; color: #FFFFFF !important;"
-             class="block mt-4 text-center py-3 rounded-lg font-bold no-underline">
-             Take the Quiz →
-          </a>
+    
+       <div class="mobile-menu" id="mobileMenu">
+          <a href="/quiz/">Free Quiz</a>
+          <a href="/resources/">Resources</a>
+          <a href="/products/">Products</a>
+          <a href="/tools/">Free Tools</a>
+          <a href="/iep/" style="color:#E07A5F;">IEP Advocacy Hub</a>
+          <a href="/about/">About</a>
+          <a href="/cart/">Cart (<span class="mobile-cart-count cart-count">0</span>)</a>
+          <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
        </div>
     </nav>
-    <div style="height: 76px; width: 100%;"></div>
+    <div style="height: 80px;"></div>
     `;
 
     const placeholder = document.getElementById('header');
     if (placeholder) {
         placeholder.innerHTML = headerHTML;
-        /* ── FIX #1: Add .loaded class so header becomes visible ──
-           The CSS rule `#header { opacity: 0 }` / `#header.loaded { opacity: 1 }`
-           requires this class to be added after content is injected. */
         placeholder.classList.add('loaded');
     } else {
         if(!document.querySelector('nav#navbar')) {
@@ -102,66 +96,58 @@ function injectHeader() {
     }
 }
 
-// 3. INJECT FOOTER
+// 3. INJECT FOOTER (Your Custom Design)
 function injectFooter() {
     if(document.querySelector('footer')) return; 
 
     const footerHTML = `
-    <footer class="bg-[#3D405B] text-[#F9F7F2] py-16 mt-auto relative z-10">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
-                
-                <div class="md:col-span-1">
-                    <a href="/" class="flex items-center gap-2 mb-4 text-[#F9F7F2] no-underline">
-                        <span class="text-2xl">🧭</span>
-                        <span class="font-bold text-xl">Navigator Kids AI</span>
-                    </a>
-                    <p class="text-sm opacity-80 leading-relaxed">Your child's brain didn't come with a manual. Until now.</p>
-                    <p class="text-xs opacity-60 mt-3">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Quick Links</h4>
-                    <a href="/quiz/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Quiz</a>
-                    <a href="/free/de-escalation-kit/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Regulation Kit</a>
-                    <a href="/resources/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Articles</a>
-                    <a href="/tools/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Free Tools</a>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Advocacy</h4>
-                    <a href="/iep/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition text-[#E07A5F] font-semibold">IEP Hub</a>
-                    <a href="/iep/states/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">State Laws Map</a>
-                    <a href="/iep/iep-meeting-checklist/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Meeting Checklist</a>
-                    <a href="/iep/common-school-tactics/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">School Tactics</a>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Products</h4>
-                    <a href="/products/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">All Products</a>
-                    <a href="/products/#systems" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Parent Systems</a>
-                    <a href="/products/#bundles" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Bundles</a>
-                    <a href="/products/#activity-packs" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Activity Packs</a>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4 text-[#F9F7F2] text-sm uppercase tracking-wider">Company</h4>
-                    <a href="/about/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">About Us</a>
-                    <a href="/contact/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Contact</a>
-                    <a href="/terms/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Terms of Service</a>
-                    <a href="/privacy/" class="block text-sm opacity-70 hover:opacity-100 mb-2 no-underline transition">Privacy Policy</a>
-                </div>
-            </div>
-            
-            <div class="border-t border-[#F9F7F2]/10 pt-8 text-center">
-                <p class="text-sm opacity-60 mb-2">&copy; ${new Date().getFullYear()} Navigator Kids AI™. All rights reserved.</p>
-                <p class="text-xs opacity-40 max-w-2xl mx-auto leading-relaxed">
-                    <strong>Disclaimer:</strong> This website provides educational information for parents. 
-                    It is not a substitute for professional medical, psychological, or educational advice, 
-                    diagnosis, or treatment. Always seek the advice of qualified professionals.
+    <footer class="footer">
+       <div class="container">
+          <div class="footer-content">
+             <div class="footer-brand">
+                <a href="/" class="logo">
+                   <span class="logo-icon">🧒</span>
+                   Navigator Kids AI
+                </a>
+                <p>Your child's brain didn't come with a manual. Until now.</p>
+                <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">
+                   Tools for parents of twice-exceptional (2e) children ages 6-9.
                 </p>
-            </div>
-        </div>
+             </div>
+    
+             <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="/quiz/">Free Quiz</a>
+                <a href="/iep/">IEP Advocacy Hub</a>
+                <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
+                <a href="/resources/">Articles</a>
+                <a href="/tools/">Free Tools</a>
+             </div>
+    
+             <div class="footer-links">
+                <h4>Products</h4>
+                <a href="/products/">All Products</a>
+                <a href="/products/#ai-prompts">AI Prompt Packs</a>
+                <a href="/products/#activity-packets">Activity Packets</a>
+             </div>
+    
+             <div class="footer-links">
+                <h4>Company</h4>
+                <a href="/about/">About Us</a>
+                <a href="/contact/">Contact</a>
+                <a href="/terms/">Terms of Service</a>
+                <a href="/privacy/">Privacy Policy</a>
+             </div>
+          </div>
+    
+          <div class="footer-bottom">
+             <p>© ${new Date().getFullYear()} Navigator Kids AI™. All rights reserved.</p>
+             <p class="footer-disclaimer">
+                <strong>Disclaimer:</strong> This website provides educational information for parents.
+                It is not a substitute for professional medical, psychological, or educational advice.
+             </p>
+          </div>
+       </div>
     </footer>
     `;
 
@@ -170,36 +156,33 @@ function injectFooter() {
     else document.body.insertAdjacentHTML('beforeend', footerHTML);
 }
 
-// 4. MOBILE MENU
+// 4. MOBILE MENU (Fixed for Custom Header)
 function initMobileMenu() {
     setTimeout(() => {
         const toggle = document.getElementById('navToggle');
         const menu = document.getElementById('mobileMenu');
         
         if (toggle && menu) {
+            // Clone to remove old event listeners if any
             const newToggle = toggle.cloneNode(true);
             toggle.parentNode.replaceChild(newToggle, toggle);
             
             newToggle.addEventListener('click', (e) => {
-                e.stopPropagation(); 
-                menu.classList.toggle('hidden');
+                e.stopPropagation();
+                // Toggle 'active' class for CSS styling (transform burger to X, slide in menu)
+                newToggle.classList.toggle('active');
+                menu.classList.toggle('active');
                 
-                const icon = newToggle.querySelector('i');
-                if (menu.classList.contains('hidden')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                } else {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                }
+                const isExpanded = newToggle.classList.contains('active');
+                newToggle.setAttribute('aria-expanded', isExpanded);
             });
             
+            // Close when clicking outside
             document.addEventListener('click', (e) => {
                 if (!menu.contains(e.target) && !newToggle.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    const icon = newToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                    newToggle.classList.remove('active');
+                    menu.classList.remove('active');
+                    newToggle.setAttribute('aria-expanded', 'false');
                 }
             });
         }
@@ -219,15 +202,11 @@ function syncCartCount() {
         }
     } catch(e) { count = 0; }
 
-    const desktopBadge = document.getElementById('navCartCount');
-    if (desktopBadge) {
-        desktopBadge.innerText = count;
-        desktopBadge.dataset.count = count;
-        desktopBadge.style.display = count > 0 ? 'flex' : 'none';
-    }
-
-    const mobileText = document.getElementById('mobileCartCount');
-    if (mobileText) mobileText.innerText = count;
+    // Update ALL cart counters (desktop and mobile)
+    document.querySelectorAll('.cart-count').forEach(el => {
+        el.innerText = count;
+        el.style.display = count > 0 ? 'flex' : 'none'; // Flex for badge layout
+    });
 }
 
 window.addEventListener('cartUpdated', syncCartCount);
@@ -254,29 +233,29 @@ function initFormspree() {
                     headers: { 'Accept': 'application/json' }
                 });
                 
-              if (res.ok) {
-    // Trigger PDF download if specified
-    if (form.dataset.download) {
-        var dlLink = document.createElement('a');
-        dlLink.href = form.dataset.download;
-        dlLink.download = '';
-        document.body.appendChild(dlLink);
-        dlLink.click();
-        document.body.removeChild(dlLink);
-    }
+                if (res.ok) {
+                    if (form.dataset.download) {
+                        var dlLink = document.createElement('a');
+                        dlLink.href = form.dataset.download;
+                        dlLink.download = '';
+                        document.body.appendChild(dlLink);
+                        dlLink.click();
+                        document.body.removeChild(dlLink);
+                    }
 
-    const successEl = form.querySelector('.form-success');
-    if (successEl) {
-        form.style.display = 'none';
-        successEl.classList.remove('hidden');
-        successEl.style.display = 'block';
-    } else if (form.dataset.redirect) {
-        window.location.href = form.dataset.redirect;
-    } else {
+                    const successEl = form.querySelector('.form-success');
+                    if (successEl) {
+                        form.style.display = 'none';
+                        successEl.classList.remove('hidden');
+                        successEl.style.display = 'block';
+                    } else if (form.dataset.redirect) {
+                        window.location.href = form.dataset.redirect;
+                    }
+                } else {
                     throw new Error('Submission failed');
                 }
             } catch (err) {
-                alert('Something went wrong. Please try again or email us directly.');
+                alert('Something went wrong. Please try again.');
                 if (btn) { btn.disabled = false; btn.innerText = originalText; }
             }
         });
@@ -288,274 +267,59 @@ function personalizeSite() {
     try {
         const data = localStorage.getItem('quizProfile');
         if (!data) return;
-
         const profile = JSON.parse(data);
         const name = profile.childName || "Your child";
-
-        // 1. Find elements marked for personalization
         document.querySelectorAll('.dynamic-child-name').forEach(el => {
             el.textContent = name;
         });
-
-        // 2. Personalize headers if found
-        const heroTitle = document.querySelector('h1 .highlight');
-        if (heroTitle && heroTitle.textContent.includes('Child')) {
-            heroTitle.textContent = name;
-        }
-
-    } catch (e) {
-        console.log('Personalization skipped');
-    }
+    } catch (e) {}
 }
-/* ═══════════════════════════════════════════════════════════════
-   IEP BATTLE PLAN — CTA Component
-   ═══════════════════════════════════════════════════════════════
-   
-   INSTRUCTIONS:
-   Paste this entire block into the BOTTOM of your existing components.js file.
-   It will automatically inject a CTA section before the footer on all /iep/ pages,
-   and add a subtle sticky bar at the bottom of the viewport.
-   
-   To disable on a specific page, add class="no-bp-cta" to the <body> tag.
-   To change the offer URL, update the BP_URL constant below.
-   ═══════════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════════
+   IEP BATTLE PLAN CTA (Preserved)
+   ═══════════════════════════════════════════════════════════════ */
 (function() {
    'use strict';
-
-   // ── CONFIG ──
-   /* FIX #3: Changed from '/iep/battle-plan/' (which 404'd) to '/iep/'
-      since the Battle Plan sales page IS /iep/index.html */
    const BP_URL = '/iep/';
    const BP_PRICE = '$497';
-   
-   // Only show on /iep/ sub-pages (not on the battle plan sales page itself)
    const currentPath = window.location.pathname;
+   
    if (!currentPath.startsWith('/iep/')) return;
    if (currentPath.includes('/battle-plan')) return;
    if (document.body.classList.contains('no-bp-cta')) return;
-
-   /* FIX #3 (cont.): Don't show the "Get Your Battle Plan" CTA on the
-      Battle Plan sales page itself (/iep/ or /iep/index.html) */
    if (currentPath === '/iep/' || currentPath === '/iep/index.html') return;
 
-   // ── STYLES ──
    const style = document.createElement('style');
    style.textContent = `
-      /* ─── Inline CTA Section ─── */
-      .bp-inline-cta {
-         background: linear-gradient(135deg, #1a2744 0%, #2a3d5e 100%);
-         padding: 3rem 1.5rem;
-         margin-top: 3rem;
-         position: relative;
-         overflow: hidden;
-      }
-      .bp-inline-cta::before {
-         content: '';
-         position: absolute;
-         top: -50%; right: -10%;
-         width: 300px; height: 300px;
-         background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
-         pointer-events: none;
-      }
-      .bp-inline-cta-inner {
-         max-width: 700px;
-         margin: 0 auto;
-         display: grid;
-         grid-template-columns: 1fr auto;
-         gap: 2rem;
-         align-items: center;
-         position: relative;
-         z-index: 1;
-      }
-      @media (max-width: 640px) {
-         .bp-inline-cta-inner {
-            grid-template-columns: 1fr;
-            text-align: center;
-         }
-      }
-      .bp-inline-cta-text h3 {
-         font-family: 'Merriweather', serif;
-         font-size: 1.25rem;
-         font-weight: 700;
-         color: #ffffff;
-         margin: 0 0 0.5rem;
-         line-height: 1.35;
-      }
-      .bp-inline-cta-text p {
-         font-family: 'Inter', sans-serif;
-         font-size: 0.88rem;
-         color: rgba(255,255,255,0.65);
-         margin: 0;
-         line-height: 1.6;
-      }
-      .bp-inline-cta-btn {
-         display: inline-block;
-         background: #d4a853;
-         color: #1a2744;
-         font-family: 'Inter', sans-serif;
-         font-weight: 700;
-         font-size: 0.92rem;
-         padding: 0.85rem 1.75rem;
-         border-radius: 8px;
-         text-decoration: none;
-         white-space: nowrap;
-         transition: all 0.2s ease;
-         box-shadow: 0 3px 15px rgba(212,168,83,0.25);
-      }
-      .bp-inline-cta-btn:hover {
-         transform: translateY(-1px);
-         box-shadow: 0 5px 22px rgba(212,168,83,0.4);
-      }
-      .bp-inline-cta-btn span {
-         display: block;
-         font-size: 0.72rem;
-         font-weight: 500;
-         opacity: 0.7;
-         margin-top: 0.15rem;
-      }
-
-      /* ─── Sticky Bottom Bar ─── */
-      .bp-sticky-bar {
-         position: fixed;
-         bottom: 0;
-         left: 0;
-         right: 0;
-         background: #1a2744;
-         padding: 0.65rem 1.5rem;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         gap: 1rem;
-         z-index: 9999;
-         transform: translateY(100%);
-         transition: transform 0.4s ease;
-         box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-      }
-      .bp-sticky-bar.visible {
-         transform: translateY(0);
-      }
-      .bp-sticky-bar p {
-         font-family: 'Inter', sans-serif;
-         font-size: 0.82rem;
-         color: rgba(255,255,255,0.8);
-         margin: 0;
-      }
-      .bp-sticky-bar p strong {
-         color: #d4a853;
-      }
-      .bp-sticky-bar a {
-         display: inline-block;
-         background: #d4a853;
-         color: #1a2744;
-         font-family: 'Inter', sans-serif;
-         font-weight: 700;
-         font-size: 0.78rem;
-         padding: 0.45rem 1.1rem;
-         border-radius: 6px;
-         text-decoration: none;
-         white-space: nowrap;
-         transition: opacity 0.2s;
-      }
-      .bp-sticky-bar a:hover { opacity: 0.9; }
-      .bp-sticky-close {
-         background: none;
-         border: none;
-         color: rgba(255,255,255,0.4);
-         font-size: 1.1rem;
-         cursor: pointer;
-         padding: 0 0.25rem;
-         line-height: 1;
-      }
-      .bp-sticky-close:hover { color: rgba(255,255,255,0.7); }
-      @media (max-width: 500px) {
-         .bp-sticky-bar p { display: none; }
-         .bp-sticky-bar { justify-content: center; }
-         .bp-sticky-bar a { font-size: 0.82rem; padding: 0.5rem 1.5rem; }
-      }
-
-      /* Push footer content up so sticky bar doesn't cover it */
-      body.bp-bar-active { padding-bottom: 50px; }
+      .bp-inline-cta { background: linear-gradient(135deg, #1a2744 0%, #2a3d5e 100%); padding: 3rem 1.5rem; margin-top: 3rem; position: relative; overflow: hidden; }
+      .bp-inline-cta-inner { max-width: 700px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; position: relative; z-index: 1; }
+      .bp-inline-cta-text h3 { font-family: 'Merriweather', serif; font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0 0 0.5rem; }
+      .bp-inline-cta-text p { font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); margin: 0; }
+      .bp-inline-cta-btn { display: inline-block; background: #d4a853; color: #1a2744; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.92rem; padding: 0.85rem 1.75rem; border-radius: 8px; text-decoration: none; box-shadow: 0 3px 15px rgba(212,168,83,0.25); }
+      @media (max-width: 640px) { .bp-inline-cta-inner { grid-template-columns: 1fr; text-align: center; } }
    `;
    document.head.appendChild(style);
 
-   // ── INLINE CTA (before footer) ──
    function injectInlineCTA() {
       const footer = document.getElementById('footer');
       if (!footer) return;
-
       const cta = document.createElement('section');
       cta.className = 'bp-inline-cta';
-      cta.setAttribute('aria-label', 'IEP Battle Plan offer');
       cta.innerHTML = `
          <div class="bp-inline-cta-inner">
             <div class="bp-inline-cta-text">
                <h3>Stop Googling. Start Strategizing.</h3>
-               <p>The IEP Battle Plan gives you a personalized heat map, meeting script, pre-written emails, and a live strategy call—so you walk in prepared, not panicked.</p>
+               <p>The IEP Battle Plan gives you a personalized heat map, meeting script, and strategy call.</p>
             </div>
-            <a href="${BP_URL}" class="bp-inline-cta-btn">
-               Get Your Battle Plan
-               <span>Starts at ${BP_PRICE}</span>
-            </a>
+            <a href="${BP_URL}" class="bp-inline-cta-btn">Get Your Battle Plan</a>
          </div>
       `;
-
       footer.parentNode.insertBefore(cta, footer);
    }
 
-   // ── STICKY BAR ──
-   function injectStickyBar() {
-      // Don't show if user dismissed it this session
-      if (sessionStorage.getItem('bp-bar-dismissed')) return;
-
-      const bar = document.createElement('div');
-      bar.className = 'bp-sticky-bar';
-      bar.setAttribute('role', 'complementary');
-      bar.setAttribute('aria-label', 'IEP Battle Plan');
-      bar.innerHTML = `
-         <p>IEP meeting coming up? <strong>Get your personalized Battle Plan.</strong></p>
-         <a href="${BP_URL}">Learn More →</a>
-         <button class="bp-sticky-close" aria-label="Dismiss">&times;</button>
-      `;
-      document.body.appendChild(bar);
-
-      // Show after user scrolls 40% of the page
-      let shown = false;
-      function checkScroll() {
-         const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-         if (scrollPercent > 0.35 && !shown) {
-            bar.classList.add('visible');
-            document.body.classList.add('bp-bar-active');
-            shown = true;
-         }
-      }
-      window.addEventListener('scroll', checkScroll, { passive: true });
-      // Also check immediately in case page is already scrolled
-      checkScroll();
-
-      // Close button
-      bar.querySelector('.bp-sticky-close').addEventListener('click', () => {
-         bar.classList.remove('visible');
-         document.body.classList.remove('bp-bar-active');
-         sessionStorage.setItem('bp-bar-dismissed', '1');
-      });
-   }
-
-   // ── INIT ──
-   // Wait for DOM to be ready (components.js may load deferred)
    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-         // Small delay to let header/footer components render first
-         setTimeout(() => {
-            injectInlineCTA();
-            injectStickyBar();
-         }, 100);
-      });
+      document.addEventListener('DOMContentLoaded', () => setTimeout(injectInlineCTA, 100));
    } else {
-      setTimeout(() => {
-         injectInlineCTA();
-         injectStickyBar();
-      }, 100);
+      setTimeout(injectInlineCTA, 100);
    }
-
 })();
