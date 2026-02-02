@@ -1,20 +1,26 @@
 // api/create-checkout.js
+// FIXED V2.1: Added prod-service-battleplan to PRODUCT_MAP
+// so the Battle Plan can route through server-side checkout
+// instead of the deprecated client-only integration.
+
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const PRODUCT_MAP = {
-  // === RESTORED MISSING PRODUCTS (From HTML) ===
+  // === LEGACY PRODUCTS (Quiz result pages) ===
   'prod_combo_complete': { 
-     // Using the Total Bundle Price ID as fallback since it's similar value/content
-     // Ideally you should create a specific Stripe Price for this $69 offer
-     priceId: 'price_1Suhv9Ax6JDn4AuAVwA91AvY', // Currently maps to Total Bundle ($97). 
-     // TODO: REPLACE WITH $69 STRIPE PRICE ID
+     priceId: 'price_1Suhv9Ax6JDn4AuAVwA91AvY', // TODO: REPLACE WITH $69 STRIPE PRICE ID
      name: 'Complete Support Plan' 
   },
   'prod_prompt_executive': { 
-     // Using Morning Launch System as fallback
      priceId: 'price_1SuhqZAx6JDn4AuAfkkZGZVK', // $27.00
      name: 'Executive Function AI System' 
+  },
+
+  // === IEP BATTLE PLAN (NEW — was previously client-only, now server-side) ===
+  'prod-service-battleplan': {
+     priceId: 'price_1SvvZ6Ax6JDn4AuASL4rewfj', // $497.00
+     name: 'The IEP Battle Plan'
   },
 
   // === STANDARD CATALOG ===
