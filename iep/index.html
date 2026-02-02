@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>IEP Advocacy Hub | Navigator Kids AI</title>
    <meta name="description" content="Free resources, checklists, and state-specific laws to help you navigate your child's IEP meeting.">
-
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
    <script src="/js/components.js" defer></script>
-
    <style>
-      /* Simple Hub Styles */
       :root { --navy: #3D405B; --cream: #F9F7F2; --terra: #E07A5F; }
       body { background-color: var(--cream); font-family: sans-serif; }
-      .hub-card { transition: transform 0.2s; }
-      .hub-card:hover { transform: translateY(-4px); }
    </style>
 </head>
-
 <body>
    <div id="header"></div>
 
    <main class="min-h-screen pb-20">
-      
       <section class="bg-[#3D405B] text-white py-16 text-center px-4">
          <div class="max-w-3xl mx-auto">
             <span class="text-[#E07A5F] font-bold tracking-widest uppercase text-sm mb-4 block">Parent Resource Center</span>
@@ -44,11 +35,11 @@
                   <h3 class="text-xl font-bold text-[#3D405B] mb-4"><i class="fa-solid fa-book-open mr-2"></i> The Basics</h3>
                   <ul class="space-y-3">
                      <li><a href="/iep/what-is-an-iep/" class="text-gray-600 hover:text-[#E07A5F] font-medium block">What is an IEP?</a></li>
-                     <li><a href="/iep/iep-vs-504/" class="text-gray-600 hover:text-[#E07A5F] font-medium block">IEP vs. 504 Plan: Key Differences</a></li>
+                     <li><a href="/iep/iep-vs-504/" class="text-gray-600 hover:text-[#E07A5F] font-medium block">IEP vs. 504 Plan</a></li>
                      <li><a href="/iep/request-evaluation-letter/request-evaluation-letter.html" class="text-gray-600 hover:text-[#E07A5F] font-medium block">How to Request an Evaluation</a></li>
                   </ul>
                </div>
-
+               
                <div class="bg-[#3D405B] text-white p-6 rounded-xl shadow-lg text-center">
                   <h3 class="font-serif text-xl font-bold mb-2">Need a Strategy?</h3>
                   <p class="text-sm opacity-80 mb-4">Get the custom Battle Plan: heat map, scripts, and live prep.</p>
@@ -70,20 +61,22 @@
 
             <div class="space-y-6">
                <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#F2CC8F]">
-                  <h3 class="text-xl font-bold text-[#3D405B] mb-4"><i class="fa-solid fa-scale-balanced mr-2"></i> Laws & Rights</h3>
-                  <ul class="space-y-3">
-                     <li><a href="/iep/states/" class="text-gray-600 hover:text-[#E07A5F] font-medium block"><strong>State-Specific Laws Map</strong></a></li>
-                     <li><a href="/iep/after-the-iep-meeting/" class="text-gray-600 hover:text-[#E07A5F] font-medium block">After the Meeting: Next Steps</a></li>
-                  </ul>
+                  <h3 class="text-xl font-bold text-[#3D405B] mb-4"><i class="fa-solid fa-scale-balanced mr-2"></i> State Laws</h3>
+                  <p class="text-sm text-gray-500 mb-4">Timelines and rights vary by state. Select yours:</p>
+                  <div class="grid grid-cols-2 gap-2">
+                     <a href="/iep/states/california/" class="text-sm bg-gray-50 hover:bg-[#E07A5F] hover:text-white p-2 rounded text-center transition">California</a>
+                     <a href="/iep/states/texas/" class="text-sm bg-gray-50 hover:bg-[#E07A5F] hover:text-white p-2 rounded text-center transition">Texas</a>
+                     <a href="/iep/states/new-york/" class="text-sm bg-gray-50 hover:bg-[#E07A5F] hover:text-white p-2 rounded text-center transition">New York</a>
+                     <a href="/iep/states/florida/" class="text-sm bg-gray-50 hover:bg-[#E07A5F] hover:text-white p-2 rounded text-center transition">Florida</a>
+                  </div>
+                  <a href="/iep/states/" class="block text-center text-sm text-[#E07A5F] font-bold mt-4 underline">View All 7 Supported States</a>
                </div>
             </div>
 
          </div>
       </div>
-
    </main>
 
    <div id="footer"></div>
-
 </body>
 </html>
