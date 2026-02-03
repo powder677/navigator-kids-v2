@@ -2,214 +2,181 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Common School Tactics | Navigator Kids AI™</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>Common School Tactics & How to Counter Them | Navigator Kids AI</title>
+   <meta name="description" content="Learn how to spot and counter common school gatekeeping tactics. From 'we don't do that here' to grade-based denials, arm yourself with the right scripts for your child's IEP." />
+   <link rel="canonical" href="https://navigatorkids.ai/iep/school-tactics/" />
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link rel="icon" type="image/png" href="/assets/favicon.png">
 
+   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
-  <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
+<body class="bg-[#F9F7F2]">
 
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
          </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
       </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
 
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
 
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
-   <main class="container iep-content iep-tactics-container">
-      <nav class="breadcrumb">
-         <a href="/iep/">← Back to IEP Hub</a>
-      </nav>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/" class="hover:text-blue-600 no-underline">IEP Hub</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/" class="hover:text-blue-600 no-underline">State Laws</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Common School Tactics</span>
+         </nav>
 
-      <section class="tactics-hero">
-         <div class="content-wrapper">
-            <h1>They Say "Policy." You Say "Individualized."</h1>
-            <p class="subtitle">Schools operate on budgets and averages. <span class="dynamic-child-name">Your child</span> is an individual. Learn how to spot when a "No" is based on bureaucracy rather than the law.</p>
-         </div>
-      </section>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">They Say "Policy." You Say "Individualized."</h1>
 
-      <section class="gatekeeping-section">
-         <div class="content-wrapper">
-            <h2>The Gatekeeping Dictionary</h2>
-            <p>If you hear these phrases, your "Spidey Sense" should tingle. These are often used to delay or deny services for <span class="dynamic-child-name">your child</span>.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">Schools operate on budgets and averages. Your child is an individual. Learn how to spot when a "No" is based on bureaucracy rather than the law.</p>
 
-            <div class="tactic-grid">
-               <div class="tactic-card">
-                  <div class="tactic-header">
-                     <span class="icon">🚩</span>
-                     <h3>"We don't do that here."</h3>
-                  </div>
-                  <p class="school-says">"We don't offer 1:1 aides in this building," or "We don't use that specific reading program."</p>
-                  <div class="counter-move">
-                     <h4>The Counter:</h4>
-                     <p><strong>"The 'I' in IEP stands for Individualized.</strong> If the team determines <span class="dynamic-child-name">my child</span> <em>needs</em> this service to receive FAPE, the district is required to provide it, regardless of current building policy."</p>
-                  </div>
-               </div>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Gatekeeping Dictionary</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">If you hear these phrases, your "Spidey Sense" should tingle. These are often used to delay or deny services for your child.</p>
 
-               <div class="tactic-card">
-                  <div class="tactic-header">
-                     <span class="icon">🚩</span>
-                     <h3>"Let's wait and see."</h3>
-                  </div>
-                  <p class="school-says">"He's transitioning. Let's give it another grading period to see if <span class="dynamic-child-name">he</span> settles in."</p>
-                  <div class="counter-move">
-                     <h4>The Counter:</h4>
-                     <p><strong>"Wait and Fail is not an intervention.</strong> We already have data showing <span class="dynamic-child-name">my child</span> is struggling. Delaying support harms their self-esteem. I am requesting an evaluation <em>now</em>."</p>
-                  </div>
-               </div>
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <div class="text-2xl mb-2">🚩</div>
+               <h3 class="text-lg font-bold text-gray-800 mb-2">"We don't do that here."</h3>
+               <p class="text-sm text-gray-600 italic mb-4">"We don't offer 1:1 aides in this building."</p>
+               <p class="text-sm font-semibold text-blue-700">The Counter: "The 'I' in IEP stands for Individualized. If the team determines my child needs this for FAPE, the district must provide it."</p>
+            </div>
 
-               <div class="tactic-card">
-                  <div class="tactic-header">
-                     <span class="icon">🚩</span>
-                     <h3>"He has good grades."</h3>
-                  </div>
-                  <p class="school-says">"He can't have a disability; he's getting A's and B's." (The classic anti-2e argument).</p>
-                  <div class="counter-move">
-                     <h4>The Counter:</h4>
-                     <p><strong>"Grades are not the only metric of educational performance.</strong> IDEA requires we look at functional, social, and emotional performance. <span class="dynamic-child-name">His</span> grades are high, but <span class="dynamic-child-name">his</span> anxiety/executive function is preventing <span class="dynamic-child-name">him</span> from accessing school safely."</p>
-                  </div>
-               </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <div class="text-2xl mb-2">🚩</div>
+               <h3 class="text-lg font-bold text-gray-800 mb-2">"Let's wait and see."</h3>
+               <p class="text-sm text-gray-600 italic mb-4">"Let's give it another grading period to see if he settles in."</p>
+               <p class="text-sm font-semibold text-blue-700">The Counter: "Wait and Fail is not an intervention. I am requesting an evaluation now to prevent further harm to their self-esteem."</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <div class="text-2xl mb-2">🚩</div>
+               <h3 class="text-lg font-bold text-gray-800 mb-2">"He has good grades."</h3>
+               <p class="text-sm text-gray-600 italic mb-4">"He's getting A's and B's, so he can't have a disability."</p>
+               <p class="text-sm font-semibold text-blue-700">The Counter: "IDEA requires we look at functional and emotional performance. Grades aren't the only metric of success."</p>
             </div>
          </div>
-      </section>
 
-      <section class="behavior-trap">
-         <div class="content-wrapper">
-            <h2>⚠️ The "Behavior is a Choice" Trap</h2>
-            <p>For 2e kids, schools often label meltdowns or work refusal as "defiance."</p>
-            <div class="trap-box">
-               <p><strong>The Trap:</strong> "He chooses not to do the work. He's smart enough to do it, he's just being lazy."</p>
-               <p><strong>The Reality:</strong> Behavior is communication. "Laziness" is often overwhelmed executive function or fear of failure.</p>
-               <p><strong>Your Script:</strong> <em>"If <span class="dynamic-child-name">he</span> could, <span class="dynamic-child-name">he</span> would. Since <span class="dynamic-child-name">he</span> isn't, something is blocking <span class="dynamic-child-name">him</span>. We need a Functional Behavior Assessment (FBA) to find out what the trigger is, rather than punishing the result."</em></p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">⚠️ The "Behavior is a Choice" Trap</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">For twice-exceptional (2e) kids, schools often label meltdowns or work refusal as "defiance."</p>
+
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <p class="text-gray-700 mb-2"><strong>The Trap:</strong> "He chooses not to do the work. He's smart enough, he's just being lazy."</p>
+            <p class="text-gray-700 mb-4"><strong>The Reality:</strong> Behavior is communication. "Laziness" is often overwhelmed executive function or fear of failure.</p>
+            <p class="text-gray-700 font-bold italic">"If he could, he would. Since he isn't, something is blocking him. We need a Functional Behavior Assessment (FBA) to find the trigger."</p>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Ultimate Counter-Move: "Put it in the PWN"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">When the school says "No" to a request—like an <a href="/iep/" class="text-blue-600 hover:underline">Evaluation</a>, an aide, or a specific service—do not just accept it. Make them own it legally.</p>
+
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <p class="text-xl font-serif text-[#1e3a8a] mb-4">"I understand the team is refusing my request for [Service]. Please ensure that this refusal, and the specific data used to justify it, is documented in the <strong>Prior Written Notice (PWN)</strong>."</p>
+            <p class="text-sm text-gray-600"><em><strong>Why this works:</strong> Administrators hate writing refusals in the PWN because that document is Exhibit A in a due process hearing. Simply asking for the PWN often triggers a reconsideration.</em></p>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">When They Won't Budge: The Escalation Ladder</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">If implementation is failing, follow this chain of command:</p>
+
+
+         <ol class="list-decimal ml-6 space-y-4 text-gray-700 mt-6">
+            <li><strong>The Case Manager:</strong> Start here. Ask: "Can we check the data on these goals?"</li>
+            <li><strong>The Principal:</strong> "I'm concerned the <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> isn't being implemented as written."</li>
+            <li><strong>Director of Special Education:</strong> "The school team states they cannot provide FAPE due to staffing. I need your help to resolve this resource issue."</li>
+            <li><strong>State Complaint:</strong> Filing a formal complaint with your <a href="/iep/states/" class="text-blue-600 hover:underline">State Department of Education</a>.</li>
+         </ol>
+
+         <div class="mt-12 pt-8 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Arm Yourself with Knowledge</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+               <a href="/iep/iep-meeting-questions/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline">See "Must-Ask" Questions →</a>
+               <a href="/iep/states/" class="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors no-underline">Find State Complaint Processes →</a>
             </div>
          </div>
-      </section>
 
-      <section class="pwn-power">
-         <div class="content-wrapper">
-            <div class="highlight-box">
-               <h2>The Ultimate Counter-Move: "Put it in the PWN"</h2>
-               <p>When the school says "No" to a request (like an evaluation, an aide, or a service), do not just accept it. Make them own it legally.</p>
-               <p class="script-large">"I understand the team is refusing my request for [Service] for <span class="dynamic-child-name">my child</span>. Please ensure that this refusal, and the specific data used to justify it, is documented in the <strong>Prior Written Notice (PWN)</strong>."</p>
-               <p class="annotation"><em>Why this works: Administrators hate writing refusals in the PWN because that document is Exhibit A in a due process hearing. Often, simply asking for the PWN makes them reconsider the refusal.</em></p>
-            </div>
-         </div>
-      </section>
-
-      <section class="escalation-ladder">
-         <div class="content-wrapper">
-            <h2>When They Won't Budge: The Escalation Ladder</h2>
-            <ol>
-               <li><strong>The Case Manager:</strong> Start here. "Can we check the data?"</li>
-               <li><strong>The Principal:</strong> "I'm concerned the IEP isn't being implemented for <span class="dynamic-child-name">my child</span>."</li>
-               <li><strong>Director of Special Education:</strong> "The school team is stating they cannot provide FAPE due to staffing. I need your help to resolve this resource issue."</li>
-               <li><strong>State Complaint:</strong> Filing a formal complaint with your State Department of Education.</li>
-            </ol>
-         </div>
-      </section>
-
-      <section class="iep-next-steps">
-         <div class="content-wrapper">
-            <h2>Arm Yourself with Knowledge</h2>
-            <div class="link-block">
-               <a href="/iep/iep-meeting-questions/" class="btn-primary">See "Must-Ask" Questions →</a>
-               <a href="/iep/states/" class="btn-secondary">Find Your State's Complaint Process →</a>
-            </div>
-         </div>
-      </section>
+      </article>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
          </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
          </div>
       </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+   </footer>
 </body>
 
 </html>

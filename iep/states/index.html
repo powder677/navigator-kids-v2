@@ -1,137 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>State Specific IEP Laws | Navigator Kids AI</title>
+   <title>State Specific IEP Laws & Resources | Navigator Kids AI™</title>
+   <meta name="description" content="Find your state's specific Special Education timelines, consent laws, and procedural safeguards. Federal law is the floor; your state is the ceiling.">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="icon" type="image/png" href="/assets/favicon.png">
+
    <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
 </head>
-<body>
-  <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
 
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
-         </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
-      </div>
-
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
-
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
 <body class="bg-[#F9F7F2]">
-   <div id="header"></div>
-   <main class="container mx-auto px-4 py-12 min-h-screen">
-      <a href="/iep/" class="text-gray-500 hover:text-[#E07A5F] mb-8 inline-block">← Back to IEP Hub</a>
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-         <h1 class="text-3xl md:text-4xl font-bold text-[#3D405B] font-serif mb-4">Know Your State's Timeline</h1>
-         <p class="text-lg text-gray-600">Federal law is the floor. Your state laws are the ceiling. Select your state to see specific timelines, consent laws, and recording rights.</p>
+
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
+               NavigatorKidsAI
+            </span>
+         </a>
+
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #1e3a8a; text-decoration: none; font-weight: 700; font-size: 0.95rem;">IEP State Guide</a>
+
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
+               🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+            </a>
+
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
+               Take Quiz
+            </a>
+         </div>
+
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
+            <i class="fa-solid fa-bars"></i>
+         </button>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-         <a href="/iep/states/california/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">California</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/texas/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">Texas</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/new-york/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">New York</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/florida/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">Florida</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/illinois/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">Illinois</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/new-jersey/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">New Jersey</span> <span class="text-[#E07A5F]">→</span>
-         </a>
-         <a href="/iep/states/pennsylvania/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-[#E07A5F] hover:bg-gray-50 transition flex items-center justify-between">
-            <span class="font-bold text-[#3D405B]">Pennsylvania</span> <span class="text-[#E07A5F]">→</span>
-         </a>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #1e3a8a; font-weight: bold; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
       </div>
+   </nav>
+
+   <main class="container mx-auto px-4 py-12 max-w-6xl">
+
+      <nav class="mb-8 text-sm text-gray-500">
+         <a href="/iep/" class="hover:text-blue-600 no-underline">← Back to IEP Hub</a>
+      </nav>
+
+      <section class="text-center mb-16">
+         <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-bold text-[#1e3a8a] mb-6 font-serif leading-tight">Federal Law is the Floor.<br>Your State Might Have a Ceiling.</h1>
+            <p class="text-xl text-gray-600 leading-relaxed">IDEA sets the minimum rights you have. Your state may offer <em>more</em> protection, faster timelines, and stricter rules for schools. Don't leave that leverage on the table.</p>
+         </div>
+      </section>
+
+      <section class="mb-20">
+         <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10">
+               <h2 class="text-2xl font-bold text-gray-900 mb-4 font-serif">Why "Local" Matters in a Federal Law</h2>
+               <p class="text-gray-600">Many parents assume Special Education is the same everywhere. It isn't. While the definition of a disability comes from federal law, the <strong>procedures</strong> are often state-specific.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+               <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 class="font-bold text-blue-900 mb-2 text-lg"><i class="fa-regular fa-clock mr-2"></i> Timelines</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">Federal law says evaluations must be done in 60 days. Some states (like PA) say 60 calendar days; others say 45 school days. Knowing the difference prevents the school from stalling.</p>
+               </div>
+               <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 class="font-bold text-blue-900 mb-2 text-lg"><i class="fa-solid fa-pen-nib mr-2"></i> Consent</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">In some states, you must sign for <em>placement</em> only. In others (like MA), you can reject specific <em>parts</em> of an IEP while keeping others active.</p>
+               </div>
+               <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <h3 class="font-bold text-blue-900 mb-2 text-lg"><i class="fa-solid fa-microphone mr-2"></i> Recording</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">Can you record the meeting? Federal law is silent. Your state's "Wiretap Laws" decide if you need the school's permission or if you can just hit record.</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="mb-20">
+         <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2 font-serif">Select Your State</h2>
+            <p class="text-gray-600 mb-8">Find your local regulations, parent guides, and complaint forms.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+               <a href="/iep/states/california/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">California</h3>
+                     <span class="text-2xl">🌴</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">Missed timelines recovered. Services unlocked.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Used by hundreds of CA parents
+                  </div>
+               </a>
+
+               <a href="/iep/states/texas/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">Texas</h3>
+                     <span class="text-2xl">🤠</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">Evaluation delays challenged successfully.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Trusted by Texas families
+                  </div>
+               </a>
+
+               <a href="/iep/states/new-york/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">New York</h3>
+                     <span class="text-2xl">🗽</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">Denied services → compensatory support strategies.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Built for NYC & suburban districts
+                  </div>
+               </a>
+
+               <a href="/iep/states/florida/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">Florida</h3>
+                     <span class="text-2xl">☀️</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">Eligibility barriers broken down.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Parent-tested advocacy playbooks
+                  </div>
+               </a>
+
+               <a href="/iep/states/illinois/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">Illinois</h3>
+                     <span class="text-2xl">🏙️</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">Procedural violations identified & leveraged.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Special-ed timelines made clear
+                  </div>
+               </a>
+
+               <a href="/iep/states/pennsylvania/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">Pennsylvania</h3>
+                     <span class="text-2xl">🔔</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">IEP & Chapter 14 protections explained.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Used by PA parents statewide
+                  </div>
+               </a>
+
+               <a href="/iep/states/new-jersey/" class="group block bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all text-decoration-none">
+                  <div class="flex justify-between items-start mb-4">
+                     <h3 class="text-xl font-bold text-gray-900 font-serif group-hover:text-blue-700">New Jersey</h3>
+                     <span class="text-2xl">🛣️</span>
+                  </div>
+                  <p class="text-gray-600 mb-6 h-12">District pushback documented & countered.</p>
+                  <div class="text-xs font-semibold text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full inline-block">
+                     ⭐ Built around NJ code & practice
+                  </div>
+               </a>
+
+            </div>
+         </div>
+      </section>
+
+      <section class="bg-gray-100 rounded-2xl p-8 md:p-12 mb-12">
+         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-1">
+               <h3 class="text-2xl font-bold text-gray-900 mb-4 font-serif">Don't See Your State Yet?</h3>
+               <p class="text-gray-700 mb-4">We are actively building out our 50-state database. In the meantime, you can find your state's "Procedural Safeguards Notice" by searching Google for:</p>
+               <div class="bg-white p-4 rounded-lg border border-gray-200 font-mono text-sm text-gray-600">
+                  "[Your State] Department of Education Special Education Procedural Safeguards"
+               </div>
+            </div>
+
+            <div class="flex-1 text-center md:text-left">
+               <p class="text-gray-700 mb-6 font-medium">Once you know your local timelines, get your strategy ready:</p>
+               <a href="/iep/how-to-prepare-for-an-iep-meeting/" class="inline-block bg-[#2563eb] text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors text-decoration-none shadow-lg">
+                  Go to Meeting Prep Guide →
+               </a>
+            </div>
+         </div>
+      </section>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">
+                  Tools for parents of twice-exceptional (2e) children ages 6-9.
+               </p>
+            </div>
+
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
+         </div>
+
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">
+               <strong>Disclaimer:</strong> This website provides educational information for parents.
+               It is not a substitute for professional medical, psychological, or educational advice.
             </p>
          </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
-         </div>
       </div>
+   </footer>
 
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
 </body>
+
 </html>

@@ -1,225 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>LAUSD vs. San Diego vs. San Francisco: Which CA District Approves More IEPs?</title>
-    <meta name="description" content="Moving to California? We analyze the 'Denial Hotspots' in LAUSD, San Diego Unified, and SFUSD. See which district approves more IEPs and where they gatekeep services.">
-    <link rel="canonical" href="https://navigatorkidsai.com/iep/states/california-district-comparison/">
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <script src="/js/components.js" defer></script>
-    <script src="/js/form-handler.js" defer></script>
+   <title>LAUSD vs. San Diego vs. San Francisco: Which CA District Approves More IEPs?</title>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "LAUSD vs. San Diego vs. San Francisco: Which CA District Approves More IEPs?",
-      "author": {
-        "@type": "Organization",
-        "name": "Navigator Kids AI",
-        "url": "https://navigatorkidsai.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Navigator Kids AI",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://navigatorkidsai.com/images/logo.png"
-        }
-      },
-      "description": "Moving to California? We analyze the 'Denial Hotspots' in LAUSD, San Diego Unified, and SFUSD. See where they gatekeep services."
-    }
-    </script>
+   <meta name="description" content="Moving to California? We analyze the 'Denial Hotspots' in LAUSD, San Diego Unified, and SFUSD. See which district approves more IEPs and where they gatekeep services." />
+
+   <link rel="canonical" href="https://navigatorkidsai.com/iep/states/california-district-comparison/" />
+
+   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
-<body class="bg-[#F9F7F2]"> 
-    <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-        <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-           <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-              <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-              <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
-           </a>
-           <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-              <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
-              <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
-              <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
-              <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
-              <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
-              <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
-              <a href="/cart/" class="nav-cart" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
-              <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
-           </div>
-           <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
-        </div>
-        <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-           <a href="/about/" style="display: block; padding: 0.5rem 0;">About</a>
-           <a href="/products/" style="display: block; padding: 0.5rem 0;">Products</a>
-           <a href="/resources/" style="display: block; padding: 0.5rem 0;">Resources</a>
-           <a href="/iep/" style="display: block; padding: 0.5rem 0;">IEP Guide</a>
-           <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
-           <a href="/iep/states/" style="display: block; padding: 0.5rem 0;">IEP State Guide</a>
-           <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600;">Take Quiz</a>
-        </div>
-    </nav>
+<body>
 
-    <main class="container mx-auto px-4 py-12 max-w-4xl">
-        <article class="prose lg:prose-xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100 font-sans">
-            
-            <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-                <a href="/iep/" class="hover:text-blue-600">IEP Hub</a>
-                <span class="mx-2">/</span>
-                <a href="/iep/states/" class="hover:text-blue-600">State Laws</a>
-                <span class="mx-2">/</span>
-                <span class="text-gray-800">California District Comparison</span>
-            </nav>
+   <header id="site-header"></header>
 
-            <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">LAUSD vs. San Diego vs. SFUSD: The "Zip Code Lottery"</h1>
+   <main class="container iep-content">
+      <article class="iep-article">
 
-            <p class="text-gray-700 leading-relaxed mb-4">Federal law (IDEA) is supposed to be the same everywhere. But in California, special education is a "zip code lottery." If you ask a parent in Los Angeles and a parent in San Francisco about their <strong><a href="/iep/" class="text-blue-700 underline">IEP</a></strong> experience, they might as well be living in different countries.</p>
+         <nav class="iep-breadcrumbs">
+            <a href="/iep/states/">← Back to State Map</a>
+         </nav>
 
-            <p class="text-gray-700 leading-relaxed mb-4">While the state of California does not publish a simple "Approval Rate" leaderboard, recent compliance reports, lawsuits, and SELPA data reveal distinct patterns. We analyzed the "Denial Hotspots" for the Big Three: <strong>Los Angeles Unified (LAUSD)</strong>, <strong>San Diego Unified (SDUSD)</strong>, and <strong>San Francisco Unified (SFUSD)</strong>.</p>
+         <h1>LAUSD vs. San Diego vs. SFUSD: The "Zip Code Lottery"</h1>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">1. Los Angeles Unified (LAUSD): "The Corporate Fortress"</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">LAUSD is the second-largest district in the nation. Its sheer size means it operates like a massive insurance company. It has the most resources, but getting <em>into</em> the system is the hardest part.</p>
+         <p>Federal law (IDEA) is supposed to be the same everywhere. But in California, special education is a "zip code lottery." If you ask a parent in Los Angeles and a parent in San Francisco about their IEP experience, they might as well be living in different countries.</p>
 
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-2 font-serif">🛑 Denial Hotspot: Eligibility (The "SLD" Gate)</h3>
-                <p class="text-gray-700 leading-relaxed">LAUSD is notorious for using the "Discrepancy Model" rigidly to deny eligibility for Specific Learning Disabilities. If your child’s test scores aren't exactly 1.5 standard deviations below their IQ, they often push for a 504 Plan instead of an IEP. You need a <strong><a href="/iep/battle-plan/" class="text-blue-700 underline">Battle Plan</a></strong> to break through this gate.</p>
-            </div>
+         <p>While the state of California does not publish a simple "Approval Rate" leaderboard, recent compliance reports, lawsuits, and SELPA (Special Education Local Plan Area) data reveal distinct patterns.</p>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">2. San Francisco Unified (SFUSD): "The Ghost Town"</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">SFUSD is currently in an operational crisis. Massive payroll issues and teacher shortages have turned implementation into a struggle of endurance for parents.</p>
+         <p>We analyzed the "Denial Hotspots" for the Big Three: <strong>Los Angeles Unified (LAUSD)</strong>, <strong>San Diego Unified (SDUSD)</strong>, and <strong>San Francisco Unified (SFUSD)</strong>. Here is where they are most likely to say "No"—and why.</p>
 
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-2 font-serif">🛑 Denial Hotspot: Implementation (The "Service Gap")</h3>
-                <p class="text-gray-700 leading-relaxed">In SFUSD, the denial isn't usually a hard "No"—it's a "We'll get to it eventually." They struggle heavily with timely evaluations. Parents report getting the document approved, then dealing with months of missed speech or OT sessions. This is a direct violation of <strong><a href="/iep/states/" class="text-blue-700 underline">State Laws</a></strong>.</p>
-            </div>
+         <h2>1. Los Angeles Unified (LAUSD): "The Corporate Fortress"</h2>
+         <p>LAUSD is the second-largest district in the nation. Its sheer size means it operates like a massive insurance company. It has the most resources (specialized schools, magnet programs), but getting <em>into</em> the system is the hardest part.</p>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">3. San Diego Unified (SDUSD): "The Legal Eagle"</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">San Diego Unified is the most "process-heavy" of the three. They are less chaotic than SFUSD, but far more rigid regarding <em>how</em> they teach.</p>
+         <section class="iep-callout iep-callout-warning">
+            <h3>🛑 Denial Hotspot: Eligibility (The "SLD" Gate)</h3>
+            <p>LAUSD is notorious for using the "Discrepancy Model" rigidly to deny eligibility for Specific Learning Disabilities (Dyslexia). If your child’s test scores aren't exactly 1.5 standard deviations below their IQ, they often push for a "Section 504 Plan" instead of an IEP.</p>
+         </section>
 
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-2 font-serif">🛑 Denial Hotspot: Methodology (The "We Don't Do That Here")</h3>
-                <p class="text-gray-700 leading-relaxed">SDUSD often denies requests for specific methodologies (like Orton-Gillingham for reading), claiming their "eclectic" in-house programs are sufficient. Getting a specific 1:1 aide or placement here often requires <strong><a href="/iep/" class="text-blue-700 underline">Advocacy</a></strong> that uses their own data against them.</p>
-            </div>
+         <ul>
+            <li><strong>The "Charter Shell Game":</strong> A recent lawsuit (<em>A.C. v. LAUSD</em>) highlighted a major issue: the district often tries to deflect responsibility for students in independent charter schools, leaving parents stuck in a loop between the Charter and the District.</li>
+            <li><strong>The Verdict:</strong> You need airtight private data to break down the eligibility gate.</li>
+         </ul>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Comparison Chart: The "Pick Your Poison" Matrix</h2>
-            <div class="overflow-x-auto my-8">
-                <table class="min-w-full bg-white border border-gray-200 text-sm">
-                    <thead>
-                        <tr class="bg-gray-50 text-gray-800">
-                            <th class="py-3 px-4 border-b text-left font-serif">Feature</th>
-                            <th class="py-3 px-4 border-b text-left font-serif">LAUSD</th>
-                            <th class="py-3 px-4 border-b text-left font-serif">SFUSD</th>
-                            <th class="py-3 px-4 border-b text-left font-serif">SDUSD</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-700">
-                        <tr>
-                            <td class="py-3 px-4 border-b font-bold">Biggest Hurdle</td>
-                            <td class="py-3 px-4 border-b">Initial Eligibility</td>
-                            <td class="py-3 px-4 border-b">Staffing/Attendance</td>
-                            <td class="py-3 px-4 border-b">Methodology</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 border-b font-bold">Timeline Delays</td>
-                            <td class="py-3 px-4 border-b">Moderate</td>
-                            <td class="py-3 px-4 border-b text-red-600 font-bold">Severe</td>
-                            <td class="py-3 px-4 border-b">Low</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 border-b font-bold">Advocacy Level</td>
-                            <td class="py-3 px-4 border-b">High (for entry)</td>
-                            <td class="py-3 px-4 border-b">High (for service)</td>
-                            <td class="py-3 px-4 border-b">High (for placement)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+         <h2>2. San Francisco Unified (SFUSD): "The Ghost Town"</h2>
+         <p>SFUSD is currently in an operational crisis. A recent state review (FCMAT) highlighted systemic dysfunction, including massive payroll issues that drove teachers away.</p>
 
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-                <h2 class="text-xl font-bold text-[#1e3a8a] mb-3 font-serif">Strategy: Don't Guess, Download the Intel</h2>
-                <p class="text-gray-700 leading-relaxed mb-4">You cannot use the same strategy in San Francisco that you use in Los Angeles. In LA, you need Data. In SF, you need Logs. In SD, you need Experts.</p>
-                <a href="/iep/battle-plan/" class="inline-block bg-[#2563eb] hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-200">Get the California Battle Plan</a>
-            </div>
+         <section class="iep-callout iep-callout-warning">
+            <h3>🛑 Denial Hotspot: Implementation (The "Service Gap")</h3>
+            <p>In SFUSD, the denial isn't usually a hard "No"—it's a "We'll get to it eventually." SFUSD struggles heavily with <strong>Indicator 11</strong> (timely evaluations). Parents report getting the IEP document approved, but then dealing with months of missed speech or OT sessions due to provider shortages.</p>
+         </section>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
-            <h3 class="text-xl font-bold text-gray-800 mt-8 mb-3 font-serif">Does an IEP transfer between these districts?</h3>
-            <p class="text-gray-700 leading-relaxed mb-4">Yes. If you move from LAUSD to SFUSD, the new district must provide services "comparable" to your existing IEP for the first 30 days. After that, they can adopt the old IEP or propose a new one based on their <strong><a href="/iep/states/" class="text-blue-700 underline">Timeline</a></strong>.</p>
+         <ul>
+            <li><strong>The Verdict:</strong> Easier to get the <em>document</em>, harder to get the <em>service</em>. Parents here spend less time fighting for eligibility and more time filing compliance complaints for missed minutes.</li>
+         </ul>
 
-            <h3 class="text-xl font-bold text-gray-800 mt-8 mb-3 font-serif">Which district is best for Autism?</h3>
-            <p class="text-gray-700 leading-relaxed mb-4">LAUSD typically has more specialized "autism-specific" classrooms due to its size. SFUSD focuses heavily on "full inclusion," which can be great for some but isolating for others who need more support. If you aren't sure which path fits, start with a <strong><a href="/quiz/" class="text-blue-700 underline">Brain Profile Quiz</a></strong>.</p>
+         <h2>3. San Diego Unified (SDUSD): "The Legal Eagle"</h2>
+         <p>San Diego Unified is often viewed as the most "process-heavy" of the three. They are less chaotic than SFUSD, but more rigid than LAUSD regarding <em>how</em> they teach.</p>
 
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-                <h2 class="text-xl font-bold text-gray-800 mb-3 font-serif">What If You Want the Complete Strategy?</h2>
-                <p class="text-gray-700 leading-relaxed mb-4">No matter which district you are in, the rules of engagement are the same: He who has the best documentation wins. The <strong>IEP Battle Plan</strong> gives you the universal tools to win in any zip code.</p>
-                <ul class="list-disc list-outside ml-6 mb-6 text-gray-700 space-y-2">
-                    <li>How to track service minutes so you can prove SFUSD owes you hours.</li>
-                    <li>How to present outside data to break through LAUSD's eligibility gate.</li>
-                    <li>Negotiation scripts for <strong>School Meetings</strong> in San Diego.</li>
-                </ul>
-                <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
-                <a href="/iep/battle-plan/" class="inline-block border-2 border-[#1e3a8a] text-[#1e3a8a] font-bold py-3 px-6 rounded-full hover:bg-[#1e3a8a] hover:text-white transition-colors duration-200">Secure the Battle Plan →</a>
-            </div>
+         <section class="iep-callout iep-callout-warning">
+            <h3>🛑 Denial Hotspot: Methodology (The "We Don't Do That Here")</h3>
+            <p>SDUSD often denies requests for specific methodologies (like Orton-Gillingham for reading or strict ABA for autism), claiming their "eclectic" in-house programs are sufficient. They are known for strict adherence to their own internal policies, sometimes at the expense of individualization.</p>
+         </section>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
-            <ul class="list-disc list-outside ml-6 mb-8 text-gray-700 space-y-2">
-                <li><a href="/iep/states/" class="text-blue-600 hover:underline">California State Laws</a> - The rules that trump district policy.</li>
-                <li><a href="/iep/states/" class="text-blue-600 hover:underline">California Timelines</a> - Know your 15/60 day deadlines.</li>
-                <li><a href="/free/de-escalation-kit/" class="text-blue-600 hover:underline">De-escalation Kit</a> - Manage school-related stress at home.</li>
+         <ul>
+            <li><strong>The Verdict:</strong> You will likely get an IEP, but it might be a "cookie-cutter" offer. Getting a Non-Public School (NPS) placement or specific 1:1 aide support here often requires a lawyer.</li>
+         </ul>
+
+         <h2>Comparison Chart: The "Pick Your Poison" Matrix</h2>
+         <p>Where you live determines which battle you will fight:</p>
+
+         <table>
+            <thead>
+               <tr>
+                  <th>Feature</th>
+                  <th>LAUSD</th>
+                  <th>San Francisco (SFUSD)</th>
+                  <th>San Diego (SDUSD)</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><strong>Biggest Hurdle</strong></td>
+                  <td>Initial Eligibility</td>
+                  <td>Staffing/Attendance</td>
+                  <td>Methodology/Placement</td>
+               </tr>
+               <tr>
+                  <td><strong>Timeline Delays</strong></td>
+                  <td>Moderate</td>
+                  <td><strong>Severe (Hotspot)</strong></td>
+                  <td>Low</td>
+               </tr>
+               <tr>
+                  <td><strong>Lawyer Need</strong></td>
+                  <td>High (for entry)</td>
+                  <td>Moderate (for compliance)</td>
+                  <td>High (for placement)</td>
+               </tr>
+               <tr>
+                  <td><strong>"Hidden" Risk</strong></td>
+                  <td>Charter School confusion</td>
+                  <td>Payroll/Admin chaos</td>
+                  <td>Rigid program structure</td>
+               </tr>
+            </tbody>
+         </table>
+
+         <section class="iep-callout iep-callout-primary">
+            <h2>Strategy: Don't Guess, Download the Intel</h2>
+            <p>You cannot use the same strategy in San Francisco that you use in Los Angeles. In LA, you need Data. In SF, you need Logs. In SD, you need Experts.</p>
+            <p><strong>This free kit includes:</strong></p>
+            <ul>
+               <li>✅ <strong>LAUSD Eligibility Checklist</strong> (How to beat the SLD gate)</li>
+               <li>✅ <strong>SFUSD Service Log Tracker</strong> (For missed minute claims)</li>
+               <li>✅ <strong>SDUSD Methodology Demand Letter</strong></li>
             </ul>
+            <a href="/ca-district-strategy" class="btn btn-primary btn-large">Download the CA District Strategy Guide</a>
+            <p><em>Select your district to get the specific "Denial Hotspot" checklist for your area.</em></p>
+         </section>
 
-            <hr class="my-8 border-gray-200">
-            <p class="text-sm text-gray-500 italic"><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice.</p>
+         <h2>Frequently Asked Questions</h2>
 
-        </article>
-    </main>
+         <h3>Does an IEP transfer between these districts?</h3>
+         <p>Yes. If you move from LAUSD to SFUSD, the new district must provide services "comparable" to your existing IEP for the first 30 days. After that, they can adopt the old IEP or propose a new one.</p>
 
-    <footer class="footer" style="background-color: #1e3a8a; color: white;">
-        <div class="container mx-auto max-w-6xl">
-           <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
-              <div class="footer-brand">
-                 <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
-                    <span>🧒</span> Navigator Kids AI
-                 </a>
-                 <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
-                 <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
-              </div>
-              <div class="footer-links flex flex-col gap-3">
-                 <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
-                 <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
-                 <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
-                 <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
-                 <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
-              </div>
-              <div class="footer-links flex flex-col gap-3">
-                 <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
-                 <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
-                 <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
-                 <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
-              </div>
-              <div class="footer-links flex flex-col gap-3">
-                 <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
-                 <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
-                 <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
-                 <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
-                 <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
-              </div>
-           </div>
-           <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
-              <p>© 2026 Navigator Kids AI™</p>
-              <p class="mt-4 opacity-60 max-w-2xl mx-auto">
-                 <strong>Disclaimer:</strong> This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.
-              </p>
-           </div>
-        </div>
-    </footer>
+         <h3>Which district is best for Autism?</h3>
+         <p>LAUSD typically has more specialized "autism-specific" classrooms and non-public school (NPS) partnerships due to its size. SFUSD focuses heavily on "full inclusion," which can be great for some but isolating for others who need more support.</p>
+
+         <h3>Can I sue if SFUSD misses my child's therapy sessions?</h3>
+         <p>Yes. This is a failure to implement the IEP. You can file a compliance complaint with the California Department of Education (CDE) to demand "compensatory services" (make-up sessions).</p>
+
+         <h3>Does San Diego Unified allow private assessments?</h3>
+         <p>They are required to consider them, but SDUSD is known for fighting Independent Educational Evaluations (IEEs). You often need to file for Due Process to force them to pay for an outside expert.</p>
+
+         <h3>How do I handle Charter Schools in LAUSD?</h3>
+         <p>Always clarify if the Charter is its own "LEA" (Local Education Agency) or part of the LAUSD SELPA. If they are part of LAUSD, the district is ultimately responsible for your child's FAPE, even if the Charter says they "don't have the budget."</p>
+
+         <section class="iep-callout iep-callout-warning">
+            <h2>What If You Want the Complete Strategy?</h2>
+            <p>No matter which district you are in, the rules of engagement are the same: He who has the best documentation wins. The <strong>IEP Battle Plan</strong> gives you the universal tools to win in any zip code.</p>
+            <ul>
+               <li>How to track service minutes so you can prove SFUSD owes you hours.</li>
+               <li>How to present outside data to break through LAUSD's eligibility gate.</li>
+               <li>Negotiation scripts for SDUSD's rigid program offers.</li>
+            </ul>
+            <p><strong>$497 one-time payment. Lifetime access.</strong></p>
+            <a href="/battle-plan" class="btn btn-secondary">Learn more about the Battle Plan →</a>
+         </section>
+
+         <h2>Related Resources</h2>
+         <p><strong>For more on California special education:</strong></p>
+         <ul>
+            <li><a href="/iep/states/california-iep-laws/">California IEP Laws</a> - The statewide rules that trump district policy.</li>
+            <li><a href="/iep/states/california-timeline/">California 15/60 Day Timelines</a> - Know your deadlines.</li>
+            <li><a href="/iep/states/california-recordings/">Recording Your IEP Meeting</a> - Why you should always record in CA.</li>
+         </ul>
+
+         <hr />
+
+         <p><em><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.</em></p>
+
+      </article>
+   </main>
+
+   <footer id="site-footer"></footer>
+
+   <script src="/js/layout.js"></script>
 </body>
+
 </html>

@@ -2,225 +2,212 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
    <title>How to Prepare for an IEP Meeting | Navigator Kids AI™</title>
+   <meta name="description" content="Master your next IEP meeting with our 4-step preparation guide. Learn how to gather evidence, identify 2e gaps, and use AI to advocate for your child." />
+   <link rel="canonical" href="https://navigatorkids.ai/iep/preparation/" />
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link rel="icon" type="image/png" href="/assets/favicon.png">
 
+   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
-  <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
+<body class="bg-[#F9F7F2]">
 
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
          </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
       </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
 
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
 
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/" class="hover:text-blue-600 no-underline">IEP Hub</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/" class="hover:text-blue-600 no-underline">State Laws</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">IEP Preparation</span>
+         </nav>
 
-   <main class="container iep-content iep-prep-container">
-      <nav class="breadcrumb">
-         <a href="/iep/">← Back to IEP Hub</a>
-      </nav>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">The War is Won Before the Battle Begins</h1>
 
-      <section class="iep-hero">
-         <div class="content-wrapper">
-            <h1>The War is Won Before the Battle Begins</h1>
-            <p class="subtitle">Most parents walk into an IEP meeting hoping to be heard. You are going to walk in prepared to be heeded.</p>
-         </div>
-      </section>
+         <p class="text-gray-700 leading-relaxed mb-4">Most parents walk into an <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> meeting hoping to be heard. You are going to walk in prepared to be heeded.</p>
 
-      <section class="prep-step-1">
-         <div class="content-wrapper">
-            <h2>Step 1: Gather Your "Evidence Locker"</h2>
-            <p>The school has data (grades, test scores). You need <em>better</em> data. For a 2e child, grades often hide the struggle. You must reveal it.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 1: Gather Your "Evidence Locker"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">The school has data (grades, test scores). You need <em>better</em> data. For a 2e child, grades often hide the struggle. You must reveal it.</p>
 
-            <div class="checklist-box">
-               <h3>The "Invisible Struggle" Checklist</h3>
-               <ul>
-                  <li><strong>Work Samples:</strong> The math worksheet that took 3 hours to complete (mark the time on top!). The essay that is brilliant but illegible.</li>
-                  <li><strong>Communication Logs:</strong> Emails from teachers mentioning "missed assignments" or "behavior" issues.</li>
-                  <li><strong>Private Evaluations:</strong> Neuropsych reports, OT evaluations, or therapist letters. (School evaluations are often less comprehensive).</li>
-                  <li><strong>The "Home" Data:</strong> A log of meltdowns after school. This proves that <span class="dynamic-child-name">your child</span> is "holding it together" at school at the cost of their mental health—a valid argument for support.</li>
-               </ul>
-               <a href="/iep/iep-meeting-checklist/" class="btn-text">View the Full Printable Checklist →</a>
-            </div>
-         </div>
-      </section>
-
-      <section class="prep-step-2">
-         <div class="content-wrapper">
-            <h2>Step 2: Review & Identify the Gaps</h2>
-            <p>Look at the last IEP (or report card). Compare it to reality.</p>
-            <div class="gap-analysis">
-               <div class="gap-item">
-                  <h4>The School Says:</h4>
-                  <p>"Student is reading at grade level."</p>
-               </div>
-               <div class="gap-arrow">→</div>
-               <div class="gap-item">
-                  <h4>The Reality (2e Gap):</h4>
-                  <p>"Yes, but they have zero comprehension when the room is noisy due to auditory processing issues."</p>
-               </div>
-            </div>
-            <p><em>Your Goal: Find every instance where <span class="dynamic-child-name">your child's</span> "potential" does not match their "output."</em></p>
-         </div>
-      </section>
-
-      <section class="prep-step-3">
-         <div class="content-wrapper">
-            <div class="ai-tip-box">
-               <span class="tag-new">New Strategy</span>
-               <h2>Step 3: Prep for Your AI Co-Pilot</h2>
-               <p>You don't have to analyze 50 pages of psychological reports alone. Use AI to find the leverage points for you.</p>
-
-               <h3>How to do it:</h3>
-               <ol>
-                  <li><strong>Digitize:</strong> Scan <span class="dynamic-child-name">your child's</span> Neuropsych evaluation and current IEP into PDF format.</li>
-                  <li><strong>Anonymize:</strong> <strong>CRITICAL.</strong> Black out <span class="dynamic-child-name">your child's</span> name, address, and DOB before uploading anything.</li>
-                  <li><strong>The Prompt:</strong> Upload the PDF and ask the AI: <br>
-                     <em>"Act as a Special Education Advocate. Analyze this evaluation. List 3 specific accommodations that would support the deficits listed in the 'Executive Function' section. Also, flag any goals in the current IEP that are not measurable."</em>
-                  </li>
-               </ol>
-            </div>
-         </div>
-      </section>
-
-      <section class="prep-step-4">
-         <div class="content-wrapper">
-            <h2>Step 4: Set Your Agenda</h2>
-            <p>Never walk into a meeting asking "What do you think we should do?" Walk in saying "This is what <span class="dynamic-child-name">my child</span> needs."</p>
-            <ul>
-               <li><strong>Draft 3 Priority Goals:</strong> What is the #1 thing stopping <span class="dynamic-child-name">your child</span> from learning? (e.g., "Task Initiation," "Sensory Regulation," "Self-Advocacy").</li>
-               <li><strong>Prepare "The Hard Questions":</strong> Do not let them gloss over the details.</li>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h3 class="text-xl font-bold text-gray-800 mt-0 mb-4">The "Invisible Struggle" Checklist</h3>
+            <ul class="list-none space-y-3">
+               <li class="flex items-start gap-2 text-gray-700">
+                  <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                  <span><strong>Work Samples:</strong> The math worksheet that took 3 hours to complete (mark the time on top!). The essay that is brilliant but illegible.</span>
+               </li>
+               <li class="flex items-start gap-2 text-gray-700">
+                  <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                  <span><strong>Communication Logs:</strong> Emails from teachers mentioning "missed assignments" or "behavior" issues.</span>
+               </li>
+               <li class="flex items-start gap-2 text-gray-700">
+                  <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                  <span><strong>Private Evaluations:</strong> Neuropsych reports, OT evaluations, or therapist letters. (School evaluations are often less comprehensive).</span>
+               </li>
+               <li class="flex items-start gap-2 text-gray-700">
+                  <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                  <span><strong>The "Home" Data:</strong> A log of meltdowns after school. This proves that your child is "holding it together" at school at the cost of their mental health.</span>
+               </li>
             </ul>
-            <a href="/iep/iep-meeting-questions/" class="btn-secondary">See the Library of "Must-Ask" Questions →</a>
+            <a href="/iep/iep-meeting-checklist/" class="inline-block mt-4 text-blue-600 font-semibold hover:underline">View the Full Printable Checklist →</a>
          </div>
-      </section>
 
-      <section class="prep-strategy">
-         <div class="content-wrapper">
-            <h2>Meeting Strategy: The "Collaborative Bulldog"</h2>
-            <p>You want to be friendly but immovable on rights.</p>
-            <div class="strategy-grid">
-               <div class="strategy-card">
-                  <h3>The "Smart but Lazy" Defense</h3>
-                  <p><strong>They say:</strong> "He just needs to try harder."</p>
-                  <p><strong>You say:</strong> "The evaluation shows a processing speed in the 12th percentile. 'Trying harder' won't fix a neurological deficit. <span class="dynamic-child-name">He</span> needs a modification."</p>
-               </div>
-               <div class="strategy-card">
-                  <h3>The "Data" Defense</h3>
-                  <p><strong>They say:</strong> "We don't see that behavior here."</p>
-                  <p><strong>You say:</strong> "I have logged 4 meltdowns this week immediately upon getting in the car. This indicates <span class="dynamic-child-name">he</span> is masking all day. We need a break pass added to the IEP."</p>
-               </div>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 2: Review & Identify the Gaps</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Look at the last <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> (or report card). Compare it to reality.</p>
+
+         [Image: Diagram showing Gap Analysis between School Perception and 2e Reality]
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+               <h4 class="font-bold text-gray-800 mb-2">The School Says:</h4>
+               <p class="text-gray-700 italic">"Student is reading at grade level."</p>
             </div>
-            <p class="link-row">
-               <a href="/iep/common-school-tactics/">Read more about countering School Tactics →</a>
-            </p>
-         </div>
-      </section>
-
-      <section class="iep-next-steps">
-         <div class="content-wrapper">
-            <h2>Ready to Build Your Binder?</h2>
-            <div class="link-block">
-               <a href="/iep/iep-meeting-checklist/" class="btn-primary">Download the Master Checklist →</a>
-               <p class="small-text">Check your local laws: <a href="/iep/states/">State Specific Rules</a></p>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+               <h4 class="font-bold text-gray-800 mb-2">The Reality (2e Gap):</h4>
+               <p class="text-gray-700 italic">"Yes, but they have zero comprehension when the room is noisy due to auditory processing issues."</p>
             </div>
          </div>
-      </section>
+         <p class="text-gray-700 leading-relaxed mb-4"><em>Your Goal: Find every instance where your child's "potential" does not match their "output."</em></p>
+
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Step 3: Prep for Your AI Co-Pilot</h2>
+            <p class="text-gray-700 mb-4">You don't have to analyze 50 pages of psychological reports alone. Use AI to find the leverage points for you.</p>
+
+            <h3 class="text-xl font-bold text-gray-800 mb-2">How to do it:</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+               <li><strong>Digitize:</strong> Scan your child's Neuropsych <a href="/iep/" class="text-blue-600 hover:underline">Evaluation</a> and current IEP into PDF format.</li>
+               <li><strong>Anonymize:</strong> <strong>CRITICAL.</strong> Black out your child's name, address, and DOB before uploading anything.</li>
+               <li><strong>The Prompt:</strong> Upload the PDF and ask the AI: <br>
+                  <span class="block mt-2 p-3 bg-white rounded border border-orange-200 font-mono text-sm">"Act as a Special Education Advocate. Analyze this evaluation. List 3 specific accommodations that would support the deficits listed in the 'Executive Function' section. Also, flag any goals in the current IEP that are not measurable."</span>
+               </li>
+            </ol>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 4: Set Your Agenda</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Never walk into a meeting asking "What do you think we should do?" Walk in saying "This is what my child needs."</p>
+         <ul class="list-disc ml-6 space-y-2 text-gray-700 mb-6">
+            <li><strong>Draft 3 Priority Goals:</strong> What is the #1 thing stopping your child from learning? (e.g., "Task Initiation," "Sensory Regulation," "Self-Advocacy").</li>
+            <li><strong>Prepare "The Hard Questions":</strong> Do not let them gloss over the details.</li>
+         </ul>
+         <a href="/iep/iep-meeting-questions/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline">See the Library of "Must-Ask" Questions →</a>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Meeting Strategy: The "Collaborative Bulldog"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">You want to be friendly but immovable on rights.</p>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <h3 class="text-lg font-bold text-gray-800 mb-2">The "Smart but Lazy" Defense</h3>
+               <p class="text-sm text-gray-600 mb-2 italic"><strong>They say:</strong> "He just needs to try harder."</p>
+               <p class="text-sm text-gray-800"><strong>You say:</strong> "The evaluation shows a processing speed in the 12th percentile. 'Trying harder' won't fix a neurological deficit. He needs a modification."</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <h3 class="text-lg font-bold text-gray-800 mb-2">The "Data" Defense</h3>
+               <p class="text-sm text-gray-600 mb-2 italic"><strong>They say:</strong> "We don't see that behavior here."</p>
+               <p class="text-sm text-gray-800"><strong>You say:</strong> "I have logged 4 meltdowns this week immediately upon getting in the car. This indicates he is masking all day. We need a break pass added to the IEP."</p>
+            </div>
+         </div>
+
+         <p class="mt-8">
+            <a href="/iep/common-school-tactics/" class="text-blue-600 font-semibold hover:underline">Read more about countering School Tactics →</a>
+         </p>
+
+         <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 font-serif">Ready to Build Your Binder?</h2>
+            <div class="flex flex-col items-center gap-4">
+               <a href="/iep/iep-meeting-checklist/" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors no-underline shadow-lg">Download the Master Checklist →</a>
+               <p class="text-sm text-gray-500">Check your local laws: <a href="/iep/states/" class="text-blue-600 hover:underline">State Specific Rules</a></p>
+            </div>
+         </div>
+
+      </article>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
          </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
          </div>
       </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+   </footer>
 </body>
 
 </html>

@@ -2,225 +2,207 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>After the IEP Meeting | Navigator Kids AI™</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>After the IEP Meeting: Post-Meeting Action Plan | Navigator Kids AI</title>
+   <meta name="description" content="The IEP meeting is over, but the implementation is just beginning. Follow these 3 critical steps to ensure your child's IEP is followed and documented correctly." />
+   <link rel="canonical" href="https://navigatorkids.ai/iep/after-the-meeting/" />
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link rel="icon" type="image/png" href="/assets/favicon.png">
 
+   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
+<body class="bg-[#F9F7F2]">
+
    <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
-
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
          </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
       </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
 
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
 
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/" class="hover:text-blue-600 no-underline">IEP Hub</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/" class="hover:text-blue-600 no-underline">State Laws</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Post-Meeting Action Plan</span>
+         </nav>
 
-   <main class="container iep-content iep-followup-container">
-      <nav class="breadcrumb">
-         <a href="/iep/">← Back to IEP Hub</a>
-      </nav>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">The IEP Meeting is Over. The Real Work Begins.</h1>
 
-      <section class="iep-hero">
-         <div class="content-wrapper">
-            <h1>The Meeting is Over. The Real Work Begins.</h1>
-            <p class="subtitle">A signed piece of paper changes nothing. Implementation changes everything. Here is how you ensure the promises made in that room actually reach <span class="dynamic-child-name">your child's</span> classroom.</p>
+         <p class="text-gray-700 leading-relaxed mb-4 italic">A signed piece of paper changes nothing. Implementation changes everything. Here is how you ensure the promises made in that room actually reach your child's classroom.</p>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 1: The "Paper Trail" Email (Send Within 24 Hours)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Do not wait for the official notes. They will be written from the school's perspective. You need to establish <em>your</em> record of the conversation immediately.</p>
+
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h3 class="text-xl font-bold text-gray-800 mt-0 mb-2">📧 Copy/Paste This Email Template</h3>
+            <p class="text-gray-700 mb-2"><strong>Subject:</strong> Follow-up: IEP Meeting for [Child's Name] on [Date]</p>
+            <div class="bg-white p-4 rounded border border-blue-100 italic text-gray-600 mb-4">
+               <p class="mb-2">Dear [Case Manager Name],</p>
+               <p class="mb-2">Thank you for facilitating the meeting yesterday. I appreciate the team's time. I am writing to summarize my understanding of the key decisions made, to ensure we are all on the same page while I wait for the Prior Written Notice:</p>
+               <ul class="list-disc ml-6 mb-2">
+                  <li><strong>We agreed to add:</strong> [Service/Accommodation, e.g., 30 mins/week of Social Skills support].</li>
+                  <li><strong>We agreed to remove:</strong> [Any service dropped].</li>
+                  <li><strong>Data Request:</strong> You agreed to send me the raw data sheets for [Goal X] every Friday.</li>
+                  <li><strong>Outstanding Item:</strong> We did not resolve the discussion regarding [Unresolved Topic]. We agreed to revisit this in 30 days.</li>
+               </ul>
+               <p class="mb-2">If I have misunderstood any of these points, please reply with corrections within 48 hours. Otherwise, I will assume this summary is accurate.</p>
+               <p>Sincerely,<br>[Your Name]</p>
+            </div>
+            <p class="text-sm text-blue-800"><strong>Why this works:</strong> It forces them to correct you immediately if they disagree. If they don't reply, your email becomes part of the legal record.</p>
          </div>
-      </section>
 
-      <section class="step-one">
-         <div class="content-wrapper">
-            <h2>Step 1: The "Paper Trail" Email (Send Within 24 Hours)</h2>
-            <p>Do not wait for the official notes. They will be written from the school's perspective. You need to establish <em>your</em> record of the conversation immediately.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 2: Watch for the PWN (Prior Written Notice)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">The <strong>Prior Written Notice (PWN)</strong> is the most important document you’ve probably never heard of. By law, the school <em>must</em> send this to you after they propose or refuse any action during an <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> meeting.</p>
 
-            <div class="template-box">
-               <h3>📧 Copy/Paste This Email Template</h3>
-               <p><strong>Subject:</strong> Follow-up: IEP Meeting for <span class="dynamic-child-name">[Child's Name]</span> on [Date]</p>
-               <div class="email-body">
-                  <p>Dear [Case Manager Name],</p>
-                  <p>Thank you for facilitating the meeting yesterday. I appreciate the team's time. I am writing to summarize my understanding of the key decisions made, to ensure we are all on the same page while I wait for the Prior Written Notice:</p>
-                  <ul>
-                     <li><strong>We agreed to add:</strong> [Service/Accommodation, e.g., 30 mins/week of Social Skills support].</li>
-                     <li><strong>We agreed to remove:</strong> [Any service dropped].</li>
-                     <li><strong>Data Request:</strong> You agreed to send me the raw data sheets for [Goal X] every Friday.</li>
-                     <li><strong>Outstanding Item:</strong> We did not resolve the discussion regarding [Unresolved Topic]. We agreed to revisit this in 30 days.</li>
-                  </ul>
-                  <p>If I have misunderstood any of these points, please reply with corrections within 48 hours. Otherwise, I will assume this summary is accurate.</p>
-                  <p>Sincerely,<br>[Your Name]</p>
-               </div>
-               <p class="annotation"><em>Why this works: It forces them to correct you immediately if they disagree. If they don't reply, your email becomes part of the legal record.</em></p>
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h3 class="text-xl font-bold text-gray-800 mt-0 mb-2">⚠️ Red Flag Warning</h3>
+            <p class="text-gray-700 mb-4">If you asked for a 1:1 aide and they said "No," but the PWN does not list that refusal, <strong>the refusal never officially happened.</strong></p>
+            <p class="text-gray-700 font-bold mb-2">Action Item: Check the PWN immediately. Does it list:</p>
+            <ol class="list-decimal ml-6 text-gray-700">
+               <li>What they refused?</li>
+               <li>Why they refused it?</li>
+               <li>What data they used to make that decision?</li>
+            </ol>
+            <p class="mt-4 text-gray-700 italic">"The PWN is incomplete. It does not list the district's refusal of the 1:1 aide and the specific data used to justify that refusal. Please reissue the PWN."</p>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Step 3: The 30-Day "Stranger Test" Audit</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Wait 3 to 4 weeks for implementation to settle. Then, conduct a spot check. Every <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> should pass the "Stranger Test"—meaning a stranger (like a substitute teacher) should be able to read it and know exactly how to support your child.</p>
+
+         <ul class="list-none space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+               <span class="text-blue-600 mt-1">●</span>
+               <span class="text-gray-700"><strong>Ask your child:</strong> "Did you go to the resource room for reading today?" (Verify the schedule vs. the <a href="/iep/states/" class="text-blue-600 hover:underline">State Timeline</a> mandates).</span>
+            </li>
+            <li class="flex items-start gap-3">
+               <span class="text-blue-600 mt-1">●</span>
+               <span class="text-gray-700"><strong>Check the homework:</strong> "Is this modified as promised?" (e.g., Are the odd numbers crossed out per the accommodations?).</span>
+            </li>
+            <li class="flex items-start gap-3">
+               <span class="text-blue-600 mt-1">●</span>
+               <span class="text-gray-700"><strong>Email the teacher:</strong> "We are 30 days in. Can you send me a quick photo of the data chart for the 'Task Initiation' goal? I'd love to celebrate progress at home."</span>
+            </li>
+         </ul>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Long-Term: Data vs. "Vibes"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">At the next reporting period (usually quarterly), you will get a progress report. It will likely say "Progressing Satisfactorily." <strong>This means nothing without evidence.</strong></p>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="bg-red-50 p-6 rounded-lg border border-red-100">
+               <h4 class="font-bold text-red-800 mb-2">❌ Bad Data (Vibes)</h4>
+               <p class="text-gray-700 text-sm">"Johnny is doing much better with controlling his outbursts."</p>
+               <p class="text-xs text-red-600 mt-2"><em>Subjective. Unprovable.</em></p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+               <h4 class="font-bold text-green-800 mb-2">✅ Real Data (Evidence)</h4>
+               <p class="text-gray-700 text-sm">"Johnny had 2 outbursts this week, down from 5 last week. Duration decreased from 20 mins to 8 mins."</p>
+               <p class="text-xs text-green-600 mt-2"><em>Objective. Measurable.</em></p>
             </div>
          </div>
-      </section>
 
-      <section class="step-two">
-         <div class="content-wrapper">
-            <h2>Step 2: Watch for the PWN (Prior Written Notice)</h2>
-            <p>The <strong>Prior Written Notice</strong> is the most important document you’ve probably never heard of. By law, the school <em>must</em> send this to you after they propose or refuse any action.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>Your Right:</strong> You have the right to see the raw data logs. If the progress report is vague, ask to see the teacher's tally sheets or evaluation logs.</p>
 
-            <div class="pwn-alert">
-               <h3>⚠️ Red Flag Warning</h3>
-               <p>If you asked for a 1:1 aide and they said "No," but the PWN does not list that refusal, <strong>the refusal never officially happened.</strong></p>
-               <p><strong>Action Item:</strong> Check the PWN immediately. Does it list:</p>
-               <ol>
-                  <li>What they refused?</li>
-                  <li>Why they refused it?</li>
-                  <li>What data they used to make that decision?</li>
-               </ol>
-               <p>If not, email them back: <em>"The PWN is incomplete. It does not list the district's refusal of the 1:1 aide and the specific data used to justify that refusal. Please reissue the PWN."</em></p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">When to Request an Emergency Revision</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">You do not have to wait a year for the next annual review. Request an amendment or <a href="/iep/" class="text-blue-600 hover:underline">Evaluation</a> immediately if:</p>
+         <ul class="list-disc ml-6 text-gray-700 space-y-2">
+            <li><strong>New Behaviors Emerge:</strong> Your child starts refusing to go to school or regressing in basic skills (signs of unsupported stress).</li>
+            <li><strong>Grades Drop Suddenly:</strong> A B-student dropping to D's indicates the current supports are no longer providing FAPE (Free Appropriate Public Education).</li>
+            <li><strong>Safety Issues:</strong> Any instance of bullying, elopement (running away), or physical restraint.</li>
+         </ul>
+
+         <div class="mt-12 pt-8 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Next Steps for Your IEP Binder</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+               <a href="/iep/iep-meeting-checklist/" class="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors no-underline">← Back to Meeting Prep</a>
+               <a href="/iep/states/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline">Find State Complaint Forms →</a>
             </div>
          </div>
-      </section>
 
-      <section class="step-three">
-         <div class="content-wrapper">
-            <h2>Step 3: The 30-Day "Stranger Test" Audit</h2>
-            <p>Wait 3 to 4 weeks. Then, do a spot check. The IEP should pass the "Stranger Test"—meaning a stranger (like a substitute teacher) should be able to read it and know exactly what to do.</p>
-
-            <ul class="audit-list">
-               <li><strong>Ask <span class="dynamic-child-name">your child</span>:</strong> "Did you go to the resource room for reading today?" (Verify the schedule).</li>
-               <li><strong>Check the homework:</strong> "Is this modified as promised?" (e.g., Are the odd numbers crossed out?).</li>
-               <li><strong>Email the teacher:</strong> "We are 30 days in. Can you send me a quick photo of the data chart for <span class="dynamic-child-name">his/her</span> 'Task Initiation' goal? I'd love to celebrate progress at home."</li>
-            </ul>
-         </div>
-      </section>
-
-      <section class="progress-monitoring">
-         <div class="content-wrapper">
-            <h2>Long-Term: Data vs. "Vibes"</h2>
-            <p>At the next reporting period (usually quarterly), you will get a progress report. It will likely say "Progressing Satisfactorily." <strong>This means nothing.</strong></p>
-
-            <div class="comparison-grid">
-               <div class="bad-data">
-                  <h4>❌ Bad Data (Vibes)</h4>
-                  <p><span class="dynamic-child-name">Johnny</span> is doing much better with controlling his outbursts.</p>
-                  <p><em>Subjective. Unprovable.</em></p>
-               </div>
-               <div class="good-data">
-                  <h4>✅ Real Data (Evidence)</h4>
-                  <p><span class="dynamic-child-name">Johnny</span> had 2 outbursts this week, down from 5 last week. Duration decreased from 20 mins to 8 mins.</p>
-                  <p><em>Objective. Measurable.</em></p>
-               </div>
-            </div>
-            <p><strong>Your Right:</strong> You have the right to see the raw data logs. If the progress report is vague, ask to see the teacher's tally sheets.</p>
-         </div>
-      </section>
-
-      <section class="revision-triggers">
-         <div class="content-wrapper">
-            <h2>When to Request an Emergency Revision</h2>
-            <p>You do not have to wait a year for the next meeting. Request an amendment immediately if:</p>
-            <ul>
-               <li><strong>New Behaviors Emerge:</strong> <span class="dynamic-child-name">Your child</span> starts refusing to go to school or wetting the bed (signs of unsupported stress).</li>
-               <li><strong>Grades Drop Suddenly:</strong> A B-student dropping to D's indicates the supports are no longer working.</li>
-               <li><strong>Safety Issues:</strong> Any instance of bullying or elopement (running away).</li>
-            </ul>
-         </div>
-      </section>
-
-      <section class="iep-next-steps">
-         <div class="content-wrapper">
-            <h2>Keep Your Binder Current</h2>
-            <div class="link-block">
-               <a href="/iep/iep-meeting-checklist/" class="btn-secondary">← Missed a step? Check the Prep List</a>
-               <a href="/iep/states/" class="btn-primary">Find State-Specific Complaint Forms →</a>
-            </div>
-         </div>
-      </section>
+      </article>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
          </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
          </div>
       </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+   </footer>
 </body>
 
 </html>

@@ -1,82 +1,193 @@
-<main class="iep-questions-container">
+<!DOCTYPE html>
+<html lang="en">
 
-   <section class="questions-hero">
-      <div class="content-wrapper">
-         <h1>The Power is in the Questions</h1>
-         <p class="subtitle">If you stop talking, they stop explaining. Use these questions to steer the meeting away from "generic updates" and toward specific accountability.</p>
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>Strategic IEP Meeting Questions | Navigator Kids AI™</title>
+   <meta name="description" content="Master your next IEP meeting with these targeted questions. Learn how to challenge vague data, refine goals, and advocate for 2e students with precision." />
+   <link rel="canonical" href="https://navigatorkids.ai/iep/iep-meeting-questions/" />
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="/css/styles.css">
+   <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
+</head>
+
+<body class="bg-[#F9F7F2]">
+
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
       </div>
-   </section>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
 
-   <section class="question-category">
-      <div class="content-wrapper">
-         <h2>1. Questions About Evaluations & Data</h2>
-         <p class="category-intro">When they throw numbers at you, dig deeper.</p>
-         <ul class="question-list">
-            <li>"You mentioned a 'standard score' of 85. What is the percentile rank for that?" <span class="annotation">(Context: 85 sounds like a B grade, but it's often the 16th percentile. Make them say the low number.)</span></li>
-            <li>"Does this test measure his knowledge, or his speed? If we removed the time limit, how would the score change?"</li>
-            <li>"Is this observation data from a structured setting (like a test) or an unstructured setting (like recess)? We see different behaviors in each."</li>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
+
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/" class="hover:text-blue-600 no-underline">IEP Hub</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/" class="hover:text-blue-600 no-underline">State Laws</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Meeting Questions</span>
+         </nav>
+
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">The Power is in the Questions</h1>
+         <p class="text-gray-700 leading-relaxed mb-4 text-lg italic">If you stop talking, they stop explaining. Use these questions to steer the meeting away from "generic updates" and toward specific accountability.</p>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">1. Questions About Evaluations & Data</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">When the school team throws numbers at you, it is time to dig deeper into the actual meaning behind the scores.</p>
+
+         <ul class="list-none space-y-4 mb-8">
+            <li class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
+               <p class="text-gray-800 font-semibold italic">"You mentioned a 'standard score' of 85. What is the percentile rank for that?"</p>
+               <p class="text-sm text-blue-600 mt-1 font-medium">Context: 85 sounds like a "B" grade, but it is often the 16th percentile. Make them say the low number to justify support.</p>
+            </li>
+            <li class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
+               <p class="text-gray-800 font-semibold italic">"Does this test measure his knowledge, or his speed? If we removed the time limit, how would the score change?"</p>
+            </li>
+            <li class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
+               <p class="text-gray-800 font-semibold italic">"Is this observation data from a structured setting (like a test) or an unstructured setting (like recess)?"</p>
+            </li>
          </ul>
-      </div>
-   </section>
 
-   <section class="question-category">
-      <div class="content-wrapper">
-         <h2>2. Questions About Goals</h2>
-         <p class="category-intro">Vague goals lead to vague progress.</p>
-         <ul class="question-list">
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">2. Questions About Goals</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Vague goals lead to vague progress. Ensure every <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> goal is measurable and specific.</p>
+
+         <ul class="list-disc ml-6 space-y-3 text-gray-700 mb-8">
             <li>"You used the word 'frequently.' Can we define that? Is that 3 times a day? 80% of opportunities?"</li>
             <li>"How exactly will this data be collected? Who is holding the clipboard?"</li>
             <li>"This goal looks the same as last year's goal. Why didn't he master it? Do we need to change the teaching method?"</li>
             <li>"What does this goal look like in the general education classroom?"</li>
          </ul>
-      </div>
-   </section>
 
-   <section class="question-category highlight-category">
-      <div class="content-wrapper">
-         <div class="highlight-box">
-            <h2>⚡ The 2e "Power Pack"</h2>
-            <p><strong>Specifically for "Smart but Struggling" Kids</strong></p>
-            <ul class="question-list">
-               <li>"I see his reading comprehension is high, but his writing speed is low. How are we ensuring his intellect isn't bottled up by his inability to write fast?"</li>
-               <li>"You mentioned he is 'doing fine' because he gets B's. But he has an IQ of [Number]. Is he making progress commensurate with his ability, or is he just coasting?"</li>
-               <li>"How can we support his executive function deficits without removing him from the advanced science class he loves?"</li>
-               <li>"Is this 'behavior' (e.g., refusing to work) actually a result of boredom because the work is too easy, or frustration because the writing is too hard?"</li>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-[#1e3a8a] mb-2 font-serif">⚡ The 2e "Power Pack"</h2>
+            <p class="text-gray-700 font-bold mb-4">Specifically for "Smart but Struggling" Kids:</p>
+            <ul class="space-y-4">
+               <li class="text-gray-700"><strong>Intellectual Bottlenecks:</strong> "I see his reading comprehension is high, but his writing speed is low. How are we ensuring his intellect isn't bottled up by his inability to write fast?"</li>
+               <li class="text-gray-700"><strong>The "B Grade" Trap:</strong> "You mentioned he is 'doing fine' because he gets B's. Is he making progress commensurate with his ability, or is he just coasting?"</li>
+               <li class="text-gray-700"><strong>Advanced Content Access:</strong> "How can we support his executive function deficits without removing him from the advanced science class he loves?"</li>
+               <li class="text-gray-700"><strong>Behavioral Origins:</strong> "Is this 'behavior' (e.g., refusing to work) actually a result of boredom because the work is too easy, or frustration because the writing is too hard?"</li>
             </ul>
          </div>
-      </div>
-   </section>
 
-   <section class="question-category">
-      <div class="content-wrapper">
-         <h2>3. Questions About Accommodations</h2>
-         <ul class="question-list">
-            <li>"Who is responsible for ensuring the substitute teacher knows about these accommodations?"</li>
-            <li>"Does my child have to <em>ask</em> for this accommodation, or will it be provided proactively? He rarely advocates for himself when he is stressed."</li>
-            <li>"Can we add a 'cool down' pass that he can use without verbal explanation?"</li>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">3. Questions About Accommodations</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Accommodations only work if they are actually implemented. Ask these to ensure accountability.</p>
+
+         <ul class="list-none space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+               <i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>
+               <span class="text-gray-700">"Who is responsible for ensuring the substitute teacher knows about these accommodations?"</span>
+            </li>
+            <li class="flex items-start gap-3">
+               <i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>
+               <span class="text-gray-700">"Does my child have to <em>ask</em> for this accommodation, or will it be provided proactively? He rarely advocates for himself when he is stressed."</span>
+            </li>
+            <li class="flex items-start gap-3">
+               <i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>
+               <span class="text-gray-700">"Can we add a 'cool down' pass that he can use without verbal explanation?"</span>
+            </li>
          </ul>
-      </div>
-   </section>
 
-   <section class="ai-practice">
-      <div class="content-wrapper">
-         <div class="ai-tip-box">
-            <span class="tag-ai">Practice with AI</span>
-            <h4>Roleplay the "Difficult" Principal</h4>
-            <p><strong>Prompt:</strong> <em>"Act as a skeptical school administrator. I am going to ask you for a 1:1 aide for my son. Give me the typical pushback excuses so I can practice responding to them."</em></p>
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <div class="flex items-center gap-2 mb-2">
+               <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Practice with AI</span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-800 mb-2">Roleplay the "Difficult" Principal</h4>
+            <p class="text-gray-700 mb-4">Use this prompt to sharpen your skills before the real meeting:</p>
+            <div class="bg-white p-4 rounded border border-orange-200 italic font-mono text-sm text-gray-600">
+               "Act as a skeptical school administrator. I am going to ask you for a 1:1 aide for my son. Give me the typical pushback excuses so I can practice responding to them."
+            </div>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Print This List</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Don't try to memorize these. Print them out and highlight the top 5 you need to ensure you don't lose your place during the meeting stress.</p>
+
+         <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="/iep/iep-meeting-checklist/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline">Add to your Meeting Checklist →</a>
+            <a href="/iep/preparation/" class="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors no-underline">Back to Prep Guide →</a>
+         </div>
+
+      </article>
+   </main>
+
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
+         </div>
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
          </div>
       </div>
-   </section>
+   </footer>
+</body>
 
-   <section class="iep-next-steps">
-      <div class="content-wrapper">
-         <h2>Print This List</h2>
-         <p>Don't try to memorize these. Print them out and highlight the top 5 you need.</p>
-         <div class="link-block">
-            <a href="/iep/iep-meeting-checklist/" class="btn-primary">Add to your Meeting Checklist →</a>
-            <a href="/iep/how-to-prepare-for-an-iep-meeting/" class="btn-secondary">Back to Prep Guide →</a>
-         </div>
-      </div>
-   </section>
-
-</main>
+</html>

@@ -2,209 +2,185 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>What is an IEP? | Navigator Kids AI™</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>What is an IEP? Understanding the Legal Contract | Navigator Kids AI</title>
+   <meta name="description" content="Discover what an Individualized Education Program (IEP) really is. Learn about IDEA, FAPE, and how 2e children qualify for specialized instruction and support." />
+   <link rel="canonical" href="https://navigatorkids.ai/iep/" />
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    <link rel="icon" type="image/png" href="/assets/favicon.png">
 
+   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
- <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
+<body class="bg-[#F9F7F2]">
 
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
          </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
       </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+         <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
 
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
 
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/" class="hover:text-blue-600 no-underline">IEP Hub</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/" class="hover:text-blue-600 no-underline">State Laws</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">What is an IEP?</span>
+         </nav>
 
-   <main class="container iep-content iep-guide-container">
-      <nav class="breadcrumb">
-         <a href="/iep/">← Back to IEP Hub</a>
-      </nav>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">What is an IEP?</h1>
+         <p class="text-xl text-gray-700 leading-relaxed mb-8 italic">It is not a favor. It is not "extra help." It is a binding federal contract designed to level the playing field for your child.</p>
 
-      <section class="iep-hero">
-         <div class="content-wrapper">
-            <h1>What is an IEP?</h1>
-            <p class="subtitle">It is not a favor. It is not "extra help." It is a binding federal contract designed to level the playing field for <span class="dynamic-child-name">your child</span>.</p>
-         </div>
-      </section>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Definition: More Than Just Paperwork</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">An <strong>Individualized Education Program (IEP)</strong> is a written legal document that maps out the program of special education instruction, supports, and services kids need to make progress in school. It is the heartbeat of special education.</p>
 
-      <section class="iep-definition">
-         <div class="content-wrapper">
-            <h2>The Definition: More Than Just Paperwork</h2>
-            <p>An <strong>Individualized Education Program (IEP)</strong> is a written legal document that maps out the program of special education instruction, supports, and services kids need to make progress in school. It is the heartbeat of special education.</p>
-
-            <div class="legal-box">
-               <h3>The Legal Foundation: IDEA & FAPE</h3>
-               <p>IEPs are governed by a federal law called <strong>IDEA (Individuals with Disabilities Education Act)</strong>. Under IDEA, every eligible child is entitled to:</p>
-               <ul>
-                  <li><strong>FAPE (Free Appropriate Public Education):</strong> "Appropriate" means the education must be ambitious and challenging <em>for <span class="dynamic-child-name">your specific child</span></em>, not just a "one-size-fits-all" curriculum.</li>
-                  <li><strong>LRE (Least Restrictive Environment):</strong> <span class="dynamic-child-name">Your child</span> has the right to learn alongside their peers to the maximum extent possible.</li>
-               </ul>
-            </div>
-         </div>
-      </section>
-
-
-      <section class="iep-qualification">
-         <div class="content-wrapper">
-            <h2>Who Qualifies? (And Why 2e Kids Get Overlooked)</h2>
-            <p>To qualify for an IEP, a child must meet two criteria:</p>
-            <ol>
-               <li>They must have one of the <strong>13 disabilities</strong> listed in IDEA (such as Autism, Specific Learning Disability, OHI for ADHD, etc.).</li>
-               <li><strong>CRITICAL:</strong> The disability must have an <em>"adverse effect"</em> on their educational performance, requiring specialized instruction.</li>
-            </ol>
-
-            <div class="alert-box">
-               <h3>⚠️ The "Good Grades" Trap</h3>
-               <p>This is where parents of <strong>Twice-Exceptional (2e)</strong> children hit a wall. Schools often say, <em>"He has straight A's, so there is no adverse effect."</em></p>
-               <p><strong>This is incorrect.</strong> "Educational performance" is not just grades. It includes:</p>
-               <ul>
-                  <li>Social skills and peer interactions.</li>
-                  <li>Emotional regulation (e.g., holding it together at school but melting down at home).</li>
-                  <li>Executive function (organization, task initiation).</li>
-               </ul>
-               <p>If <span class="dynamic-child-name">your child</span> is brilliant but cannot organize their thoughts to write an essay, or understands the math but cannot sit still to take the test—<strong>they may still qualify.</strong></p>
-            </div>
-         </div>
-      </section>
-
-      <section class="iep-benefits">
-         <div class="content-wrapper">
-            <h2>What Does an IEP Actually Do?</h2>
-            <p>An IEP does not lower the bar; it removes the barriers so <span class="dynamic-child-name">your child</span> can reach the bar. It provides:</p>
-            <ul class="benefit-list">
-               <li><strong>Specialized Instruction:</strong> Unlike a 504 Plan (which changes the environment), an IEP can change <em>how</em> <span class="dynamic-child-name">your child</span> is taught. This might mean social skills coaching, explicit executive function training, or reading intervention.</li>
-               <li><strong>Measurable Goals:</strong> "Getting better at paying attention" is not a goal. An IEP goal is: <em>"Given a verbal prompt, Student will initiate a task within 2 minutes on 4 out of 5 occasions."</em></li>
-               <li><strong>Accountability:</strong> The school is legally required to track this data and report it to you.</li>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h3 class="text-xl font-bold text-gray-800 mt-0 mb-2">The Legal Foundation: IDEA & FAPE</h3>
+            <p class="text-gray-700 mb-4">IEPs are governed by a federal law called <strong>IDEA (Individuals with Disabilities Education Act)</strong>. Under IDEA, every eligible child is entitled to:</p>
+            <ul class="list-disc ml-6 space-y-2 text-gray-700">
+               <li><strong>FAPE (Free Appropriate Public Education):</strong> "Appropriate" means the education must be ambitious and challenging <em>for your specific child</em>, not just a "one-size-fits-all" curriculum.</li>
+               <li><strong>LRE (Least Restrictive Environment):</strong> Your child has the right to learn alongside their peers to the maximum extent possible.</li>
             </ul>
          </div>
-      </section>
 
-      <section class="iep-myths">
-         <div class="content-wrapper">
-            <h2>Common Misconceptions</h2>
-            <div class="myth-grid">
-               <div class="myth-item">
-                  <h4>"It will go on their permanent record."</h4>
-                  <p><strong>False.</strong> IEPs are confidential. Colleges and future employers do not have access to them unless you choose to share that information.</p>
-               </div>
-               <div class="myth-item">
-                  <h4>"It gives them an unfair advantage."</h4>
-                  <p><strong>False.</strong> Think of it like a ramp for a wheelchair user. It doesn't make the building easier to navigate than walking; it just makes it <em>accessible</em>. An IEP is a cognitive ramp.</p>
-               </div>
-               <div class="myth-item">
-                  <h4>"A medical diagnosis guarantees an IEP."</h4>
-                  <p><strong>False.</strong> A doctor diagnoses ADHD; a school team determines <em>eligibility</em>. You must prove the diagnosis impacts learning. (We show you how to do this in our preparation guide).</p>
-               </div>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Who Qualifies? (And Why 2e Kids Get Overlooked)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">To qualify for an <a href="/iep/" class="text-blue-600 hover:underline">IEP</a>, a child must meet two criteria:</p>
+         <ol class="list-decimal ml-6 space-y-2 text-gray-700 mb-6">
+            <li>They must have one of the <strong>13 disabilities</strong> listed in IDEA (such as Autism, Specific Learning Disability, OHI for ADHD, etc.).</li>
+            <li><strong>CRITICAL:</strong> The disability must have an <em>"adverse effect"</em> on their educational performance, requiring specialized instruction.</li>
+         </ol>
+
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h3 class="text-xl font-bold text-gray-800 mt-0 mb-2">⚠️ The "Good Grades" Trap</h3>
+            <p class="text-gray-700 mb-4">This is where parents of <strong>Twice-Exceptional (2e)</strong> children hit a wall. Schools often say, <em>"He has straight A's, so there is no adverse effect."</em></p>
+            <p class="text-gray-700 font-bold mb-2">This is incorrect. "Educational performance" is not just grades. It includes:</p>
+            <ul class="list-disc ml-6 space-y-1 text-gray-700 mb-4">
+               <li>Social skills and peer interactions.</li>
+               <li>Emotional regulation (e.g., holding it together at school but melting down at home).</li>
+               <li>Executive function (organization, task initiation).</li>
+            </ul>
+            <p class="text-gray-700">If your child is brilliant but cannot organize their thoughts to write an essay, or understands the math but cannot sit still to take the test—<strong>they may still qualify.</strong></p>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">What Does an IEP Actually Do?</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">An <a href="/iep/" class="text-blue-600 hover:underline">IEP</a> does not lower the bar; it removes the barriers so your child can reach the bar. It provides:</p>
+
+
+         <ul class="list-disc ml-6 space-y-4 text-gray-700 my-6">
+            <li><strong>Specialized Instruction:</strong> Unlike a <a href="/iep/iep-vs-504/" class="text-blue-600 hover:underline">504 Plan</a> (which changes the environment), an IEP can change <em>how</em> your child is taught. This might mean social skills coaching, explicit executive function training, or reading intervention.</li>
+            <li><strong>Measurable Goals:</strong> "Getting better at paying attention" is not a goal. An IEP goal is: <em>"Given a verbal prompt, Student will initiate a task within 2 minutes on 4 out of 5 occasions."</em></li>
+            <li><strong>Accountability:</strong> The school is legally required to track this data and report it to you.</li>
+         </ul>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Common Misconceptions</h2>
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <h4 class="font-bold text-[#1e3a8a] mb-2">"It will go on their permanent record."</h4>
+               <p class="text-sm text-gray-600"><strong>False.</strong> IEPs are confidential. Colleges and future employers do not have access to them unless you choose to share that information.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <h4 class="font-bold text-[#1e3a8a] mb-2">"It gives them an unfair advantage."</h4>
+               <p class="text-sm text-gray-600"><strong>False.</strong> Think of it like a ramp for a wheelchair user. It doesn't make the building easier; it just makes it <em>accessible</em>. It's a cognitive ramp.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+               <h4 class="font-bold text-[#1e3a8a] mb-2">"A medical diagnosis guarantees an IEP."</h4>
+               <p class="text-sm text-gray-600"><strong>False.</strong> A doctor diagnoses ADHD; a school team determines <em>eligibility</em>. You must prove the diagnosis impacts learning.</p>
             </div>
          </div>
-      </section>
 
-      <section class="iep-next-steps">
-         <div class="content-wrapper">
-            <h2>What's Next?</h2>
-            <p>Understanding the definition is step one. Now, let's determine the right path for <span class="dynamic-child-name">your child</span>.</p>
-            <div class="link-block">
-               <a href="/iep/iep-vs-504/" class="btn-secondary">IEP vs. 504: Which do you need? →</a>
-               <a href="/iep/how-to-prepare-for-an-iep-meeting/" class="btn-primary">How to Prepare for Your Meeting →</a>
-               <p class="small-text">Looking for local laws? <a href="/iep/states/">Check our State-Specific Resources.</a></p>
+         <div class="mt-12 pt-8 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 font-serif">What's Next?</h2>
+            <p class="text-gray-700 mb-8">Understanding the definition is step one. Now, let's determine the right path for your child.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+               <a href="/iep/iep-vs-504/" class="inline-block bg-white border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors no-underline">IEP vs. 504: Which do you need? →</a>
+               <a href="/iep/preparation/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline">How to Prepare for Your Meeting →</a>
             </div>
+            <p class="mt-6 text-sm text-gray-500">Looking for local laws? <a href="/iep/states/" class="text-blue-600 hover:underline">Check our State-Specific Resources.</a></p>
          </div>
-      </section>
+
+      </article>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
+   <footer class="footer bg-[#111827] text-white py-12">
+      <div class="container mx-auto px-4">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-brand col-span-1 md:col-span-1">
+               <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                  <span class="logo-icon text-2xl">🧒</span>
+                  <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+               </a>
+               <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                  <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                  <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                  <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                  <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                  <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+               </div>
+            </div>
+            <div class="footer-links">
+               <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+               <div class="flex flex-col gap-2">
+                  <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                  <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                  <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                  <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+               </div>
+            </div>
          </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
+         <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+            <p class="mb-2">© 2026 Navigator Kids AI™</p>
+            <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
          </div>
       </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+   </footer>
 </body>
 
 </html>
