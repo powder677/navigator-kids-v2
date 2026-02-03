@@ -34,14 +34,42 @@
 </head>
 
 <body>
+<nav class="navbar" id="navbar">
+   <div class="container nav-content">
+      <a href="/" class="logo">
+         <span class="logo-icon">🧒</span>
+         Navigator Kids AI
+      </a>
 
-    <div id="header"></div>
+      <div class="nav-links" id="navLinks">
+         <a href="/quiz/">Free Quiz</a>
+         <a href="/resources/">Resources</a>
+         <a href="/products/">Products</a>
+         <a href="/tools/">Free Tools</a>
+         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart">
+            🛒
+            <span class="nav-cart-count" id="navCartCount">0</span>
+         </a>
+         <a href="/quiz/" class="btn btn-primary nav-btn">Take the Quiz</a>
+      </div>
 
-    <header class="hero">
-        <div class="hero-bg">
-            <div class="hero-shape hero-shape-1"></div>
-            <div class="hero-shape hero-shape-2"></div>
-            <div class="hero-shape hero-shape-3"></div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+         <span></span>
+         <span></span>
+         <span></span>
+      </button>
+   </div>
+
+   <div class="mobile-menu" id="mobileMenu">
+      <a href="/quiz/">Free Quiz</a>
+      <a href="/resources/">Resources</a>
+      <a href="/products/">Products</a>
+      <a href="/tools/">Free Tools</a>
+      <a href="/about/">About</a>
+      <a href="/cart/">Cart (<span class="mobile-cart-count">0</span>)</a>
+      <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
+   </div>
+</nav>="hero-shape hero-shape-3"></div>
         </div>
 
         <div class="container">
