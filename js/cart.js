@@ -295,7 +295,7 @@
 
             try {
                 // Determine success/cancel URLs for this product
-                var successUrl = window.location.origin + '/iep/battle-plan/thank-you/?session_id={CHECKOUT_SESSION_ID}';
+                var successUrl = window.location.origin + '/iep/iep/battle-plan/thank-you/?session_id={CHECKOUT_SESSION_ID}';
                 var cancelUrl = window.location.origin + '/iep/';
 
                 // Call server-side API to create a Checkout Session
