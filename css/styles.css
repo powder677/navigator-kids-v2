@@ -2478,6 +2478,33 @@ margin-top: 25px;
         display: flex;
     }
 }
+/* Core Layout for Header */
+.navbar {
+    background-color: var(--color-white);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    position: fixed; /* Keeps nav at top while scrolling */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Container for Logo + Links */
+.nav-content {
+    display: flex; /* Forces horizontal alignment */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Desktop Menu Links */
+.nav-links {
+    display: flex; /* Aligns individual links horizontally */
+    gap: 2rem;
+    align-items: center;
+}
 /* =========================================
    END OF STYLESHEET
    ========================================= */
