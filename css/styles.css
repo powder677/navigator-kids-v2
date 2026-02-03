@@ -2171,3 +2171,35 @@ img { max-width: 100%; height: auto; }
 }
 
 .iep-callout .btn {
+margin-top: 25px;
+}
+
+/* Primary Callout (Sage Green) - Index Specific Override */
+.iep-callout-primary {
+    background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-sage) 100%);
+    color: var(--color-white);
+    border: 3px solid var(--color-sage);
+}
+
+.iep-callout-primary h2,
+.iep-callout-primary p {
+     color: var(--color-white);
+}
+
+/* Warning Callout (Terracotta) - Index Specific Override */
+.iep-callout-warning {
+    background: var(--color-cream);
+    border: 3px solid var(--color-terracotta);
+}
+
+.iep-callout-warning h2 {
+    color: var(--color-navy);
+}
+
+.iep-callout-warning p {
+    color: var(--color-text);
+}
+
+/* =========================================
+   END OF STYLESHEET
+   ========================================= */

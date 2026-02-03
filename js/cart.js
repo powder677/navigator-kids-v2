@@ -101,7 +101,15 @@
         'prod-packet-whisper': { id: 'prod-packet-whisper', name: 'Pack: Whisper the Bunny', price: 9.00, icon: '🐰', downloadUrl: '/downloads/activity-packets/whisper-kit.zip' },
 
         // === LEGACY IDs (Quiz result pages use underscore IDs) ===
-        'prod_combo_complete': { id: 'prod_combo_complete', name: 'Complete Support Plan', price: 69.00, icon: '🔥', downloadUrl: '/downloads/bundles/peace-at-home.zip', isBundle: true },
+       // FIND THIS SECTION IN js/cart.js:
+'prod_combo_complete': { 
+    id: 'prod_combo_complete', 
+    name: 'Complete Support Plan', 
+    price: 97.00, // <--- CHANGED FROM 69.00 TO 97.00
+    icon: '🔥', 
+    downloadUrl: '/downloads/bundles/peace-at-home.zip', 
+    isBundle: true 
+},
         'prod_prompt_executive': { id: 'prod_prompt_executive', name: 'AI Support System', price: 29.00, icon: '🤖', downloadUrl: '/downloads/systems/morning-launch-system-prompt.zip' }
     };
 
