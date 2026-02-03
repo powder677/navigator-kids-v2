@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
    <title>The IEP Battle Plan | Navigator Kids AI™</title>
-   
-   <script src="https://cdn.tailwindcss.com"></script>
-   
-   <link rel="stylesheet" href="/css/styles.css">
-   
+   <meta name="description" content="Stop being steamrolled in IEP meetings. Get a personalized diagnostic, custom scripts, and a live strategy call to secure the support your child deserves." />
+   <link rel="canonical" href="https://navigatorkidsai.com/iep/battle-plan/" />
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
    <script src="/js/cart.js" defer></script>
    <script src="https://js.stripe.com/v3/"></script>
 
    <style>
       :root { --bp-navy: #1a2744; --bp-gold: #d4a853; --bp-cream: #faf6f0; }
-      /* Overrides master body bg for this page only */
       body.bp-page { font-family: 'Inter', sans-serif; background: var(--bp-cream); }
       
-      h1, h2, h3 { font-family: 'Merriweather', serif; }
-      
-      .bp-hero { background: var(--bp-navy); color: white; padding: 5rem 1.5rem; text-align: center; }
+      .bp-hero { background: var(--bp-navy); padding: 5rem 1.5rem; text-align: center; }
       
       .bp-cta { 
          background: var(--bp-gold); 
@@ -30,147 +33,134 @@
          padding: 1rem 2.5rem; 
          border-radius: 8px; 
          display: inline-block; 
-         transition: transform 0.2s; 
+         transition: all 0.2s; 
          cursor: pointer; 
          border: none;
+         text-decoration: none;
       }
-      .bp-cta:hover { transform: translateY(-2px); }
+      .bp-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(212, 168, 83, 0.3); }
    </style>
 </head>
 
 <body class="bp-page">
-<nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+       <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+          <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+             <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+             <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+          </a>
+          <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+             <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+             <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+             <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+             <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+             <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+             <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+             <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+             <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+          </div>
+          <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
+       </div>
+       <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+          <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+          <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+          <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+          <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+          <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+          <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+          <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+          <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+       </div>
+   </nav>
 
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
-         </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
-      </div>
-
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
-
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
    <main>
       <section class="bp-hero">
-         <div class="max-w-4xl mx-auto">
+         <div class="max-w-4xl mx-auto px-4">
             <span class="inline-block bg-white/10 text-[#d4a853] px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-6">IEP Meeting Prep Service</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Walk Into Your Next IEP Meeting <em class="text-[#d4a853] not-italic">Dangerous.</em></h1>
-            <p class="text-xl opacity-80 mb-8 max-w-2xl mx-auto">Their team has 5–8 trained professionals. You're about to have one too—and yours knows the law, knows the data, and knows exactly what to say when they tell you "no."</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white font-serif">Walk Into Your Next IEP Meeting <em class="text-[#d4a853] not-italic">Dangerous.</em></h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Their team has 5–8 trained professionals. You're about to have one too—and yours knows the law, knows the data, and knows exactly what to say when they tell you "no."</p>
             <a href="#pricing" class="bp-cta">Get Your Battle Plan — $497</a>
          </div>
       </section>
 
       <section class="py-16 bg-white px-4">
-         <div class="max-w-3xl mx-auto space-y-4">
-             <h2 class="text-3xl font-bold text-[#1a2744] text-center mb-8">You Know This Feeling.</h2>
+         <div class="max-w-3xl mx-auto space-y-6">
+             <h2 class="text-3xl md:text-4xl font-bold text-[#1a2744] text-center mb-12 font-serif">You Know This Feeling.</h2>
+             
              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                <h3 class="font-bold text-red-700">The "I Should Have Said" Loop</h3>
-                <p>You replayed the meeting in your head for days. The school psychologist said "he doesn't qualify" and you froze. Two hours later, you found the perfect rebuttal—but the meeting was already over.</p>
+                <h3 class="text-xl font-bold text-red-700 mb-2">The "I Should Have Said" Loop</h3>
+                <p class="text-gray-700">You replayed the meeting in your head for days. The school psychologist said "he doesn't qualify" and you froze. Two hours later, you found the perfect rebuttal—but the meeting was already over.</p>
              </div>
+
              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                <h3 class="font-bold text-red-700">The "Wait and See" Stall</h3>
-                <p>They promised to "monitor it." That was six months ago. Nothing changed. Your child lost six months of support while the school "waited."</p>
+                <h3 class="text-xl font-bold text-red-700 mb-2">The "Wait and See" Stall</h3>
+                <p class="text-gray-700">They promised to "monitor it." That was six months ago. Nothing changed. Your child lost six months of support while the school "waited."</p>
              </div>
          </div>
       </section>
 
-      <section id="pricing" class="py-16 bg-white text-center px-4">
-         <div class="max-w-xl mx-auto bg-[#1a2744] text-white rounded-2xl p-10 relative overflow-hidden">
-            <h2 class="text-2xl font-bold mb-2">The IEP Battle Plan</h2>
-            <div class="text-5xl font-bold text-[#d4a853] mb-4">$497</div>
-            <p class="opacity-70 mb-8">One-time investment. Unlimited support.</p>
+      <section id="pricing" class="py-20 bg-[#faf6f0] text-center px-4">
+         <div class="max-w-xl mx-auto bg-[#1a2744] text-white rounded-2xl p-10 shadow-2xl relative overflow-hidden">
+            <h2 class="text-3xl font-bold mb-2 font-serif">The IEP Battle Plan</h2>
+            <div class="text-6xl font-bold text-[#d4a853] my-6">$497</div>
+            <p class="opacity-80 mb-8 text-lg">One-time investment. Full advocacy arsenal.</p>
             
-            <button class="bp-cta w-full" onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan →</button>
+            <button class="bp-cta w-full text-lg py-4 mb-8" onclick="window.NavigatorCart.directCheckout('prod-service-battleplan')">Get Your Battle Plan →</button>
             
-            <ul class="text-left mt-8 space-y-3 opacity-80 text-sm">
-               <li>✓ Deep-dive Diagnostic Assessment</li>
-               <li>✓ Personalized Heat Map Report</li>
-               <li>✓ Custom Meeting Script</li>
-               <li>✓ 4 Pre-Written Emails</li>
-               <li>✓ 60 Minute Live Strategy Call</li>
+            <ul class="text-left space-y-4 text-gray-200">
+                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#d4a853]"></i> Deep-dive Diagnostic Assessment</li>
+                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#d4a853]"></i> Personalized Heat Map Report</li>
+                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#d4a853]"></i> Custom Meeting Script</li>
+                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#d4a853]"></i> 4 Pre-Written Advocacy Emails</li>
+                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#d4a853]"></i> 60 Minute Live Strategy Call</li>
             </ul>
          </div>
       </section>
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
-         </div>
-
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
-         </div>
-      </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+   <footer class="footer bg-[#111827] text-white py-12">
+       <div class="container mx-auto px-4">
+          <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+             <div class="footer-brand col-span-1 md:col-span-1">
+                <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                   <span class="logo-icon text-2xl">🧒</span>
+                   <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+                </a>
+                <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+                <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                    <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                    <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                    <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+                </div>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                    <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                    <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+                </div>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                    <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                    <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                    <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+                </div>
+             </div>
+          </div>
+          <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+             <p class="mb-2">© 2026 Navigator Kids AI™</p>
+             <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+          </div>
+       </div>
+   </footer>
 </body>
 </html>
