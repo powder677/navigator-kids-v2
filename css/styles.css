@@ -2269,6 +2269,47 @@ margin-top: 25px;
     }
 }
 /* =========================================
+   FOOTER VISUAL THEME
+   ========================================= */
+.footer {
+    background-color: var(--color-navy); /* Changes background to your brand blue */
+    color: var(--color-white);           /* Changes base text color to white */
+    padding: 4rem 0 2rem;
+    border-top: none;                    /* Optional: removes the border since the color is now high-contrast */
+}
+
+.footer-links h4 {
+    color: var(--color-gold);            /* Using gold for headers to maintain hierarchy/readability */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);     /* Slightly faded white for links */
+}
+
+.footer-links a:hover {
+    color: var(--color-white);           /* Full white on hover */
+    text-decoration: underline;
+}
+
+.footer-brand .logo {
+    color: var(--color-white);
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-disclaimer strong {
+    color: var(--color-white);
+}
+/* =========================================
    HEADER LAYOUT FIX
    ========================================= */
 .navbar {
