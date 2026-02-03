@@ -17,6 +17,64 @@
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    
    <script src="/js/components.js" defer></script>
+
+   <style>
+      /* Restore Paragraph Spacing */
+      .iep-article p {
+         margin-bottom: 1.5rem !important;
+         line-height: 1.7 !important;
+         font-size: 1.125rem;
+         color: #374151; /* Dark Gray */
+      }
+
+      /* Restore Bullet Points */
+      .iep-article ul {
+         list-style-type: disc !important;
+         margin-left: 2rem !important;
+         margin-bottom: 1.5rem !important;
+         padding-left: 1rem !important;
+      }
+
+      .iep-article li {
+         margin-bottom: 0.5rem !important;
+         padding-left: 0.5rem;
+      }
+
+      /* Fix Headers */
+      .iep-article h2 {
+         margin-top: 2.5rem !important;
+         margin-bottom: 1rem !important;
+         font-size: 1.8rem;
+         font-weight: 700;
+         color: #1e3a8a; /* Navy Blue */
+         border-bottom: 2px solid #f3f4f6;
+         padding-bottom: 0.5rem;
+      }
+
+      .iep-article h3 {
+         margin-top: 2rem !important;
+         margin-bottom: 0.75rem !important;
+         font-size: 1.4rem;
+         font-weight: 600;
+         color: #be185d; /* Pink/Red accent */
+      }
+
+      /* Callout Boxes */
+      .iep-callout {
+         padding: 1.5rem;
+         border-radius: 0.5rem;
+         margin: 2rem 0;
+         border-left: 5px solid;
+      }
+      .iep-callout-warning {
+         background-color: #fff7ed;
+         border-color: #ea580c;
+      }
+      .iep-callout-primary {
+         background-color: #eff6ff;
+         border-color: #2563eb;
+      }
+   </style>
 </head>
 
 <body>
@@ -77,11 +135,11 @@
          <p>The most common denial letter parents receive says: <strong>"Service denied due to duplication of services."</strong></p>
          <p>But here is the secret: You <em>can</em> have both. You <em>can</em> stack school-based services with Regional Center (HCBS Waiver) supports. You just have to know how to write the goals so they never touch.</p>
 
-         <section class="iep-callout iep-callout-warning">
+         <div class="iep-callout iep-callout-warning">
             <h2>The Rule of Engagement: "Payor of Last Resort"</h2>
             <p>Under California law, <strong>Regional Centers are the "payor of last resort."</strong></p>
             <p>This means if a service is available through the school (like Speech Therapy or Occupational Therapy), the Regional Center is legally forbidden from paying for it <em>until</em> the school denies it. This is why you cannot simply ask both agencies for "Speech Therapy." The Regional Center will say, "That’s an educational responsibility. Go ask the school."</p>
-         </section>
+         </div>
 
          <h2>The Strategy: "Education vs. Living"</h2>
          <p>To stack services, you must rigorously separate your child's needs into two buckets: <strong>Educational Access</strong> (School) and <strong>Daily Living/Community Integration</strong> (Regional Center).</p>
@@ -128,7 +186,7 @@
          <p>In California, the "Autism Waiver" usually refers to the <strong>HCBS-DD Waiver</strong>. If your child is a Regional Center client, they are likely already enrolled.</p>
          <p><strong>Self-Determination Program (SDP):</strong> If the traditional Regional Center model is failing you, look into the SDP. It allows you to take the budget the RC <em>would</em> have spent on you and use it to hire your own vendors (including non-approved vendors). This is the ultimate way to "stack" creative services that schools won't touch.</p>
 
-         <section class="iep-callout iep-callout-primary">
+         <div class="iep-callout iep-callout-primary">
             <h2>Get the Coordination Blueprint</h2>
             <p>Tracking two sets of goals, two agencies, and two legal frameworks is exhausting. I’ve created a <strong>Dual Services Coordination Guide</strong> to help you map it out.</p>
             <ul style="list-style-type: none; padding: 0;">
@@ -136,9 +194,9 @@
                <li>✅ Script for Inviting Regional Center to your IEP</li>
                <li>✅ List of "Reinstated" Regional Center Services</li>
             </ul>
-            <a href="/coordination-guide" class="btn btn-primary btn-large">Download the Coordination Guide</a>
-            <p><em>Stop the "hot potato" game. Get the full coverage your child needs.</em></p>
-         </section>
+            <a href="/coordination-guide" class="btn btn-primary btn-large" style="display:inline-block; margin-top:1rem; padding: 0.75rem 1.5rem; background:#E07A5F; color:white; border-radius:50px; text-decoration:none;">Download the Coordination Guide</a>
+            <p style="margin-top:1rem;"><em>Stop the "hot potato" game. Get the full coverage your child needs.</em></p>
+         </div>
 
          <h2>Frequently Asked Questions</h2>
 
@@ -151,7 +209,7 @@
          <h3>How do I know if my child is on the Waiver?</h3>
          <p>Ask your Service Coordinator. Most Regional Center clients with a developmental disability diagnosis (like Autism) are enrolled in the Home and Community-Based Services (HCBS) Waiver to capture federal matching funds.</p>
 
-         <section class="iep-callout iep-callout-warning">
+         <div class="iep-callout iep-callout-warning">
             <h2>What If You Want the Complete Strategy?</h2>
             <p>Coordinating two agencies is advanced advocacy. The <strong>IEP Battle Plan</strong> dedicates an entire module to the "School vs. Regional Center" chess game.</p>
             <ul>
@@ -160,17 +218,17 @@
                <li>How to transition from school services to adult services at age 22.</li>
             </ul>
             <p><strong>$497 one-time payment. Lifetime access.</strong></p>
-            <a href="/battle-plan" class="btn btn-secondary">Learn more about the Battle Plan →</a>
-         </section>
+            <a href="/battle-plan" class="btn btn-secondary" style="display:inline-block; margin-top:1rem; padding: 0.75rem 1.5rem; background:white; color:#3D405B; border:2px solid #3D405B; border-radius:50px; text-decoration:none;">Learn more about the Battle Plan →</a>
+         </div>
 
          <h2>Related Resources</h2>
          <p><strong>For more on California special education:</strong></p>
          <ul>
-            <li><a href="/iep/states/california/california-iep-laws/california-iep-laws.html">California IEP Laws</a> - Understanding your educational rights.</li>
-            <li><a href="/iep/states/california/california-timeline/">California Timelines</a> - Ensure the school meets their deadlines so you can pivot to RC if needed.</li>
+            <li><a href="/iep/states/california/california-iep-laws/california-iep-laws.html" style="color:#E07A5F; font-weight:bold;">California IEP Laws</a> - Understanding your educational rights.</li>
+            <li><a href="/iep/states/california/california-timeline/" style="color:#E07A5F; font-weight:bold;">California Timelines</a> - Ensure the school meets their deadlines so you can pivot to RC if needed.</li>
          </ul>
 
-         <hr />
+         <hr style="margin: 2rem 0; border: 0; border-top: 1px solid #e5e7eb;" />
 
          <p><em><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.</em></p>
 
