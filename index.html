@@ -9,7 +9,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,35 +35,42 @@
 
 <body>
 
-    <<nav class="navbar" id="navbar">
-    <div class="container nav-content">
-        <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
 
-        <div class="nav-links">
+            <div class="nav-links">
+                <a href="/quiz/">Free Quiz</a>
+                <a href="/iep/">IEP Guide</a>
+                <a href="/iep/states/">IEP States</a>
+                <a href="/iep/battle-plan.html" class="text-accent font-bold">IEP Battle Plan</a>
+                <a href="/cart/" class="nav-cart">
+                    🛒 <span class="cart-count">0</span>
+                </a>
+                <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
+            </div>
+
+            <button id="navToggle" class="nav-toggle" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu">
             <a href="/quiz/">Free Quiz</a>
             <a href="/iep/">IEP Guide</a>
             <a href="/iep/states/">IEP States</a>
-            <a href="/iep/battle-plan.html" class="text-accent font-bold">IEP Battle Plan</a>
-            <a href="/cart/" class="nav-cart">
-                🛒 <span class="cart-count">0</span>
-            </a>
-            <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
+            <a href="/iep/battle-plan.html">IEP Battle Plan</a>
+            <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+            <a href="/quiz/" class="btn btn-primary" style="margin-top: 1rem;">Take the Quiz</a>
         </div>
+    </nav>
 
-        <button id="navToggle" class="nav-toggle" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="/quiz/">Free Quiz</a>
-        <a href="/iep/">IEP Guide</a>
-        <a href="/iep/states/">IEP States</a>
-        <a href="/iep/battle-plan.html">IEP Battle Plan</a>
-        <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
-        <a href="/quiz/" class="btn btn-primary" style="margin-top: 1rem;">Take the Quiz</a>
-    </div>
-</nav>
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
 
         <div class="container">
             <div class="hero-content">
@@ -161,19 +167,19 @@
                     <p>Can talk about dinosaurs for 3 hours but won't do 5 minutes of math. Hyperfocus is their superpower — when the topic's right.</p>
                     <div class="profile-traits"><span class="profile-trait">Hyperfocus</span><span class="profile-trait">Interest-driven</span><span class="profile-trait">Perfectionism</span></div>
                 </article>
-                <article class="profile-card">
+                 <article class="profile-card">
                     <div class="profile-icon">🐰</div>
                     <h3>The Sensitive Observer</h3>
                     <p>Notices everything. Feels everything. Social situations are exhausting. They need time to recharge that others don't understand.</p>
                     <div class="profile-traits"><span class="profile-trait">Sensory processing</span><span class="profile-trait">Social wiring</span><span class="profile-trait">Emotional depth</span></div>
                 </article>
-                <article class="profile-card">
+                 <article class="profile-card">
                     <div class="profile-icon">🦁</div>
                     <h3>The Bold Explorer</h3>
                     <p>Jumps in first, thinks later. Loves new things but gives up when it gets hard. Their confidence needs protecting.</p>
                     <div class="profile-traits"><span class="profile-trait">Risk-taking</span><span class="profile-trait">Social engagement</span><span class="profile-trait">Frustration tolerance</span></div>
                 </article>
-                <article class="profile-card">
+                 <article class="profile-card">
                     <div class="profile-icon">🚀</div>
                     <h3>The Big Picture Thinker</h3>
                     <p>Sees the whole universe but loses their shoes. Great ideas, terrible follow-through. Transitions are the enemy.</p>
@@ -262,7 +268,34 @@
         </div>
     </section>
 
-    <div id="footer"></div>
+    <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div>
+              <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+              <p>Your child's brain didn’t come with a manual.</p>
+            </div>
+
+            <div>
+              <h4>Quick Links</h4>
+              <a href="/quiz/">Free Quiz</a>
+              <a href="/iep/">IEP Guide</a>
+              <a href="/iep/states/">IEP States</a>
+              <a href="/tools/">Free Tools</a>
+            </div>
+
+            <div>
+              <h4>Company</h4>
+              <a href="/about/">About</a>
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>© 2026 Navigator Kids AI™</p>
+          </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
