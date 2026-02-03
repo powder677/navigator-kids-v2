@@ -1,244 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Navigator Kids AI helps parents of twice-exceptional (2e) children understand their child's unique brain.">
-   <title>About Us | Navigator Kids AI</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <title>About Us | Navigator Kids AI™</title>
+   <meta name="description" content="Meet the team behind Navigator Kids AI. Founded by Rachel Whitcomb, we provide the strategic infrastructure parents need to advocate for their 2e children." />
+   <link rel="canonical" href="https://navigatorkidsai.com/about/" />
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="icon" type="image/png" href="/assets/favicon.png">
 
    <script src="https://cdn.tailwindcss.com"></script>
-   
-   <link rel="stylesheet" href="/css/styles.css"> 
-   
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
+   <link rel="stylesheet" href="/css/styles.css">
    <script src="/js/components.js" defer></script>
-   <script src="/js/cart.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
-<body>
-  <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+<body class="bg-[#F9F7F2]">
+
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+       <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+          <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+             <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+             <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+          </a>
+          <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+             <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+             <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+             <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
+             <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+             <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+             <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+             <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
+             <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
+          </div>
+          <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
+       </div>
+       <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+          <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+          <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+          <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
+          <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+          <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+          <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+          <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+          <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+       </div>
+   </nav>
+
+   <main class="iep-content">
       
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
-
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+      <section class="container mx-auto px-4 py-16 max-w-4xl text-center">
+         <h1 class="text-3xl md:text-5xl font-bold text-[#1e3a8a] mb-6 font-serif">Leveling the Playing Field for 2e Families</h1>
+         <p class="text-xl text-gray-700 leading-relaxed mb-8">We believe that a child's potential should never be limited by a system's inability to see their brilliance.</p>
          
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
-         </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
-      </div>
-
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
-
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
-   <main class="about-page">
-
-      <!-- Hero -->
-      <section class="about-hero">
-         <div class="container">
-            <h1>Your Child's Brain Didn't Come With a Manual</h1>
-            <p class="about-hero-subtitle">
-               Navigator Kids AI helps parents of twice-exceptional children understand their child's
-               unique brain wiring — and find tools that actually work for how they think.
-            </p>
+         <div class="rounded-2xl overflow-hidden shadow-xl mb-12 bg-gray-200 h-64 flex items-center justify-center relative">
+            <span class="text-gray-500 font-medium">[Image: Top-down shot of organized Battle Plan on desk]</span>
          </div>
       </section>
 
-      <!-- Mission -->
-      <section class="about-mission">
-         <div class="container">
-            <div class="mission-content">
-               <h2>Why We Built This</h2>
-               <p>
-                  If you have a child who's clearly bright but struggles in ways that don't make sense,
-                  you know how isolating it can be. The teachers say they're "just not trying."
-                  The parenting books don't work. The advice that helps other kids backfires with yours.
+      <section class="about-story" style="background-color: #f9fafb; padding: 4rem 0;">
+          <div class="container mx-auto px-4">
+              <div class="story-content" style="max-width: 800px; margin: 0 auto;">
+                  
+                  <span class="section-label" style="display:block; text-align:center; color:#be185d; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1rem;">Founder's Note</span>
+                  
+                  <h2 style="text-align:center; font-size: 2.25rem; margin-bottom: 2rem; color: #1e3a8a; font-family: 'Merriweather', serif;">I Built What I Wish I Had.</h2>
+                  
+                  <div class="story-text" style="font-size: 1.1rem; line-height: 1.8; color: #374151;">
+                      <p style="font-weight: 600; font-size: 1.25rem; margin-bottom: 1.5rem;">
+                          I didn’t set out to build a platform. I set out to protect my child.
+                      </p>
+
+                      <p>
+                          Like many parents, I trusted the system at first. I believed that if I showed up prepared and communicated clearly, the school would do what was right. I assumed we were on the same team.
+                      </p>
+                      
+                      <p><strong>We weren’t.</strong></p>
+
+                      <p>
+                          I sat in IEP meetings where my child’s struggles were minimized and their needs delayed under phrases like "wait and see." I watched a bright child begin to doubt themselves—not because they couldn’t learn, but because the system wouldn’t adapt.
+                      </p>
+
+                      <p>What became painfully clear was this:</p>
+                      
+                      <blockquote style="border-left: 4px solid #be185d; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #1f2937;">
+                          "Schools operate with timelines, procedures, and legal frameworks. Parents operate with concern, hope, and urgency. That imbalance isn’t accidental. It’s structural."
+                      </blockquote>
+
+                      <p>
+                          I stopped looking for reassurance and started looking for patterns. I studied how decisions were made, how documentation was weighed, and how language shaped outcomes. I realized that <strong>willpower wasn’t the problem. Infrastructure was.</strong>
+                      </p>
+
+                      <p>
+                          Navigator Kids AI is the result. It is a system—built on years of lived experience and collaboration with advocates and clinicians—designed to give you the infrastructure you need to be an equal partner at the table.
+                      </p>
+
+                      <p>
+                          We built this so you don't have to spend years learning the system the hard way just to secure the support your child needs to thrive.
+                      </p>
+
+                      <div class="story-signoff" style="margin-top: 3rem; border-top: 1px solid #e5e7eb; padding-top: 2rem; display:flex; align-items:center; gap:1rem;">
+                         <div>
+                            <p style="font-weight: 700; font-family: 'Merriweather', serif; color: #1e3a8a; margin-bottom:0.2rem;">Rachel Whitcomb</p>
+                            <p style="font-size: 0.9rem; color: #6b7280;">Founder & 2e Parent Advocate</p>
+                         </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section class="state-command-center" style="background: #1e3a8a; color: white; padding: 4rem 0; position: relative; overflow: hidden;">
+         <div style="position: absolute; inset: 0; opacity: 0.1; background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+         <div class="container mx-auto px-4" style="position: relative; z-index: 2;">
+            <div class="command-header" style="text-align: center; margin-bottom: 3rem;">
+               <span style="display: inline-block; background: rgba(255,255,255,0.1); padding: 0.25rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.2);">
+                  <span style="color: #4ade80;">●</span> Live Operations
+               </span>
+               <h2 style="color: white; font-size: 2.5rem; margin-bottom: 0.5rem; font-family: 'Merriweather', serif;">State-Specific Command Centers</h2>
+               <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">
+                  We don't just rely on federal law. We deploy deep-dive tactical guides for state-specific timelines, procedural safeguards, and dispute resolution.
                </p>
-               <p>
-                  Twice-exceptional (2e) children — kids who are gifted AND have learning differences,
-                  ADHD, autism, sensory processing differences, or other challenges — need a different approach.
-                  Their brains are wired differently, and they need tools that work WITH that wiring, not against it.
-               </p>
-               <div class="mission-highlight">
-                  <p>
-                     We believe every parent deserves practical, research-backed tools that match their
-                     child's actual brain — not generic advice that assumes all kids work the same way.
-                  </p>
+            </div>
+            <div class="state-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto;">
+               <a href="/iep/states/california/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🌴</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">California</div>
+               </a>
+               <a href="/iep/states/texas/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🤠</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Texas</div>
+               </a>
+               <a href="/iep/states/new-york/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🗽</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">New York</div>
+               </a>
+               <a href="/iep/states/florida/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">☀️</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Florida</div>
+               </a>
+               <a href="/iep/states/illinois/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🏙️</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Illinois</div>
+               </a>
+               <a href="/iep/states/pennsylvania/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🔔</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">Pennsylvania</div>
+               </a>
+               <a href="/iep/states/new-jersey/" class="state-card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1rem; text-decoration: none; transition: all 0.2s; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">🛣️</div><div style="color: white; font-weight: 600; font-size: 0.9rem;">New Jersey</div>
+               </a>
+               <div class="state-card" style="background: transparent; border: 1px dashed rgba(255,255,255,0.3); border-radius: 0.5rem; padding: 1rem; text-align: center; display:flex; flex-direction:column; justify-content:center;">
+                  <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500;">+ Rolling Out Monthly</div>
                </div>
-               <p>
-                  Navigator Kids AI exists to give you those tools. Through our brain profile quiz,
-                  you can identify how your child processes the world. Then we match you with
-                  strategies, scripts, and activities designed specifically for their type of mind.
+            </div>
+            <div style="text-align: center; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+               <p style="color: rgba(255,255,255,0.9); font-weight: 500; margin-bottom: 1rem;">
+                  <span style="color: #60a5fa;">Don't see your state?</span> Federal IDEA frameworks apply to all 50 states.
                </p>
+               <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                   <a href="mailto:support@navigatorkids.ai?subject=Requesting State Intel" class="btn btn-sm" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 0.3rem; font-size: 0.85rem; text-decoration: none;">Request Intel for My State</a>
+                   <a href="/iep/" class="btn btn-sm" style="background: white; color: #1e3a8a; padding: 0.5rem 1rem; border-radius: 0.3rem; font-size: 0.85rem; font-weight: 700; text-decoration: none;">Access Federal Guide →</a>
+               </div>
             </div>
          </div>
       </section>
 
-      <!-- Beliefs -->
-      <section class="about-beliefs">
-         <div class="container">
-            <h2>What We Believe</h2>
-            <div class="beliefs-grid">
-               <div class="belief-card">
-                  <div class="belief-icon">🧠</div>
-                  <h3>Different, Not Deficient</h3>
-                  <p>2e brains aren't broken — they're wired differently. Our tools work with that wiring, not against it.</p>
+      <section class="container mx-auto px-4 py-16 max-w-4xl">
+         <h2 class="text-3xl font-bold text-gray-800 mb-8 font-serif text-center">Data-Driven Advocacy</h2>
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+               <p class="text-gray-700 leading-relaxed mb-4">
+                  We bridge the gap between "concerned parent" and "equal partner" by equipping you with the same assets district administrators use:
+               </p>
+               <ul class="text-left text-gray-700 mb-4 space-y-2" style="display:inline-block;">
+                   <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Legal Intelligence</li>
+                   <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Data Tracking Logs</li>
+                   <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Procedural Timelines</li>
+               </ul>
+               <p class="text-gray-700 leading-relaxed font-semibold">
+                  We don't just provide information; we provide <span style="color:#be185d;">tactical leverage</span>.
+               </p>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg bg-white h-64 flex items-center justify-center border border-gray-100">
+               <span class="text-gray-500 text-sm font-medium">[Image: Graph showing High IQ vs Executive Function gap]</span>
+            </div>
+         </div>
+
+         <div class="team-section border-t border-gray-200 pt-12">
+            <h3 class="text-2xl font-bold text-[#1e3a8a] mb-8 font-serif text-center">The Strategic Team</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+               
+               <div class="team-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">📘</div>
+                  <h4 class="font-bold text-gray-800 text-lg">Avery Sage</h4>
+                  <p class="text-[#be185d] text-sm font-semibold uppercase tracking-wider mb-2">Education Specialist</p>
+                  <p class="text-gray-600 text-sm">Focuses on translation of clinical data into classroom accommodations.</p>
                </div>
-               <div class="belief-card">
-                  <div class="belief-icon">🎯</div>
-                  <h3>One Size Doesn't Fit</h3>
-                  <p>Generic parenting advice fails 2e kids. Tools must be matched to how each child actually thinks.</p>
+
+               <div class="team-card bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">⚖️</div>
+                  <h4 class="font-bold text-gray-800 text-lg">Evan Calder</h4>
+                  <p class="text-[#be185d] text-sm font-semibold uppercase tracking-wider mb-2">Systems & Policy</p>
+                  <p class="text-gray-600 text-sm">Analyzes state-specific codes to uncover procedural safeguards for families.</p>
                </div>
-               <div class="belief-card">
-                  <div class="belief-icon">👨‍👩‍👧</div>
-                  <h3>Parents Know Their Kids</h3>
-                  <p>You're the expert on your child. We give you frameworks and language to advocate for what they need.</p>
-               </div>
-               <div class="belief-card">
-                  <div class="belief-icon">🔬</div>
-                  <h3>Research Matters</h3>
-                  <p>Our profiles and strategies are grounded in neurodiversity research, not pop psychology or guesswork.</p>
-               </div>
-               <div class="belief-card">
-                  <div class="belief-icon">🚫</div>
-                  <h3>No Diagnosis Required</h3>
-                  <p>You don't need a formal diagnosis to understand your child's brain and find tools that help.</p>
-               </div>
-               <div class="belief-card">
-                  <div class="belief-icon">💪</div>
-                  <h3>Practical Over Perfect</h3>
-                  <p>We focus on what actually works in real life, not theoretical ideals that sound good but don't help.</p>
-               </div>
+
             </div>
          </div>
       </section>
 
-      <!-- Approach -->
-      <section class="about-approach">
-         <div class="container">
-            <div class="approach-content">
-               <h2>Our Approach</h2>
-
-               <h3>Brain-First, Not Behavior-First</h3>
-               <p>
-                  Most parenting resources focus on changing behavior. We focus on understanding the brain
-                  that's driving the behavior. When you understand WHY your child reacts the way they do,
-                  you can respond in ways that actually help — instead of accidentally making things worse.
-               </p>
-
-               <h3>Profiles, Not Labels</h3>
-               <p>
-                  Our 6 brain profiles (Intense Feeler, Reluctant Starter, Deep Diver, Sensitive Observer,
-                  Bold Explorer, and Big Picture Thinker) describe patterns, not permanent identities.
-                  Most kids show a primary profile with secondary traits. The goal is understanding, not boxing in.
-               </p>
-
-               <h3>AI-Powered, Parent-Guided</h3>
-               <p>
-                  We use AI tools to help you generate personalized strategies, but you're always in control.
-                  Our AI prompt packs give you ready-to-use prompts for ChatGPT or Claude — so you can get
-                  customized help for homework, meltdowns, IEP meetings, and more.
-               </p>
-
-               <h3>Education, Not Therapy</h3>
-               <p>
-                  We're an educational resource, not a replacement for professional support. If your child
-                  needs evaluation, therapy, or medical care, we encourage you to seek qualified professionals.
-                  Our tools complement professional support — they don't replace it.
-               </p>
-            </div>
+      <section class="container mx-auto px-4 py-16 max-w-4xl text-center bg-gray-50 rounded-2xl mb-16">
+         <h2 class="text-3xl font-bold text-gray-800 mb-8 font-serif">A Support System for the Supporting Parent</h2>
+         
+         <div class="rounded-xl overflow-hidden shadow-lg mb-8 max-w-2xl mx-auto bg-white h-48 flex items-center justify-center border border-gray-100">
+             <span class="text-gray-500 text-sm font-medium">[Image: Collage of Battle Plan, Kits, and Scripts]</span>
          </div>
-      </section>
 
-      <!-- CTA -->
-      <section class="about-cta">
-         <div class="container">
-            <h2>Ready to Understand Your Child's Brain?</h2>
-            <p>Take our free 3-minute quiz to discover their primary brain profile and get matched tools.</p>
-            <a href="/quiz/" class="btn btn-primary btn-lg">Take the Free Quiz →</a>
-         </div>
+         <p class="text-gray-700 leading-relaxed mb-8 max-w-2xl mx-auto">
+            You are the expert on your child. We provide the expertise on the system. Together, we ensure your child receives the Free Appropriate Public Education (FAPE) they are legally entitled to.
+         </p>
+         <a href="/quiz/" class="bg-[#2563eb] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl inline-block no-underline">Start Your Journey with Our Free Quiz</a>
       </section>
 
    </main>
 
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
-            </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
-         </div>
+   <footer class="footer bg-[#111827] text-white py-12">
+       <div class="container mx-auto px-4">
+          <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+             <div class="footer-brand col-span-1 md:col-span-1">
+                <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+                   <span class="logo-icon text-2xl">🧒</span>
+                   <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+                </a>
+                <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+                <p class="mt-4 text-xs text-gray-400 opacity-80">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+                    <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+                    <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+                    <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
+                </div>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                    <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                    <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+                </div>
+             </div>
+             <div class="footer-links">
+                <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+                <div class="flex flex-col gap-2">
+                    <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+                    <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+                    <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+                    <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+                </div>
+             </div>
+          </div>
+          <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+             <p class="mb-2">© 2026 Navigator Kids AI™</p>
+             <p class="footer-disclaimer max-w-2xl mx-auto">Disclaimer: This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+          </div>
+       </div>
+   </footer>
 
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
-
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
-         </div>
-      </div>
-
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
-
-  </body>
-
+   <script>
+      // State Card Hover Effect
+      document.querySelectorAll('.state-card').forEach(card => {
+         card.addEventListener('mouseenter', () => {
+            card.style.background = 'rgba(255,255,255,0.2)';
+            card.style.transform = 'translateY(-2px)';
+         });
+         card.addEventListener('mouseleave', () => {
+            card.style.background = 'rgba(255,255,255,0.1)';
+            card.style.transform = 'translateY(0)';
+         });
+      });
+   </script>
+</body>
 </html>
