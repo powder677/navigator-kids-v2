@@ -14,9 +14,13 @@
     // Note: ensureDependencies() only checks JS libs now. 
     // CSS should be loaded in <head> to prevent FOUC.
     ensureDependencies();
-    injectHeader();
-    injectFooter();
-    initMobileMenu();
+    
+    // DISABLE INJECTION (Stops double nav/footer)
+    // injectHeader(); 
+    // injectFooter(); 
+
+    // Keep these active for functionality!
+    initMobileMenu(); 
     initFormspree();
     personalizeSite();
     setTimeout(syncCartCount, 300);
