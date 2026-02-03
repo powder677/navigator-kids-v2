@@ -1,10 +1,23 @@
 (function () {
   'use strict';
 
- document.addEventListener('DOMContentLoaded', () => {
-    // ensureDependencies(); // Optional: remove if you've added links to your <head>
+  document.addEventListener('DOMContentLoaded', () => {
     
-    // DELETE OR COMMENT OUT THESE TWO LINES:
+    // ---------------------------------------------------------
+    // 🛑 NUCLEAR FIX: REMOVE DOUBLE NAVBARS
+    // ---------------------------------------------------------
+    const allNavs = document.querySelectorAll('nav.navbar, nav#navbar'); 
+    if (allNavs.length > 1) {
+        console.warn('Found ' + allNavs.length + ' navbars. Removing duplicates.');
+        // Keep the LAST one (usually the one hardcoded in HTML), remove the others
+        // Or keep the FIRST one. Let's keep the one with content.
+        for (let i = 1; i < allNavs.length; i++) {
+            allNavs[i].remove();
+        }
+    }
+    // ---------------------------------------------------------
+
+    // DELETE OR COMMENT OUT THESE TWO LINES (Just to be safe):
     // injectHeader(); 
     // injectFooter(); 
 
@@ -17,22 +30,41 @@
 
   /* ---------------- MOBILE MENU ---------------- */
   function initMobileMenu() {
+    // Select the Toggle Button
     const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
+    
+    // Select the Menu - Handle both ID types just in case
+    const menu = document.getElementById('mobileMenu'); 
     
     if (toggle && menu) {
-        toggle.addEventListener('click', e => {
+        // Remove old event listeners to prevent double-toggling
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+
+        newToggle.addEventListener('click', e => {
           e.stopPropagation();
-          toggle.classList.toggle('active');
+          newToggle.classList.toggle('active');
           menu.classList.toggle('active');
-          toggle.setAttribute('aria-expanded', toggle.classList.contains('active'));
+          
+          // Toggle "hidden" class if you are using Tailwind utilities
+          if (menu.classList.contains('hidden')) {
+              menu.classList.remove('hidden');
+              menu.style.display = 'flex';
+          } else if (menu.style.display === 'none' || menu.style.display === '') {
+              menu.style.display = 'flex';
+          } else {
+              menu.style.display = 'none';
+          }
+          
+          newToggle.setAttribute('aria-expanded', newToggle.classList.contains('active'));
         });
 
         document.addEventListener('click', e => {
-          if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-            toggle.classList.remove('active');
+          if (!menu.contains(e.target) && !newToggle.contains(e.target)) {
+            newToggle.classList.remove('active');
             menu.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
+            menu.style.display = 'none'; // Ensure it hides
+            newToggle.setAttribute('aria-expanded', 'false');
           }
         });
     }
