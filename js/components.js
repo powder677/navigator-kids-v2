@@ -2,71 +2,69 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ---------------------------------------------------------
-    // 🛑 NUCLEAR FIX: REMOVE DOUBLE NAVBARS
+    // 1. AUTO-FIX LAYOUT (The "Indent" Fixer)
     // ---------------------------------------------------------
-    const allNavs = document.querySelectorAll('nav.navbar, nav#navbar'); 
+    // This moves the navbar to the root body tag if it's trapped inside a container
+    const nav = document.getElementById('navbar') || document.querySelector('.navbar');
+    if (nav && nav.parentElement.tagName !== 'BODY') {
+        console.log('🔧 Auto-fixing nested navbar layout...');
+        document.body.prepend(nav); // Moves nav to the very top of the page
+    }
+
+    // ---------------------------------------------------------
+    // 2. CLEANUP DUPLICATES
+    // ---------------------------------------------------------
+    const allNavs = document.querySelectorAll('nav.navbar');
     if (allNavs.length > 1) {
-        console.warn('Found ' + allNavs.length + ' navbars. Removing duplicates.');
-        // Keep the LAST one (usually the one hardcoded in HTML), remove the others
-        // Or keep the FIRST one. Let's keep the one with content.
+        // Keep the one we just moved to body, remove others
         for (let i = 1; i < allNavs.length; i++) {
             allNavs[i].remove();
         }
     }
+
     // ---------------------------------------------------------
-
-    // DELETE OR COMMENT OUT THESE TWO LINES (Just to be safe):
-    // injectHeader(); 
-    // injectFooter(); 
-
-    // KEEP THESE ACTIVE:
-    initMobileMenu(); 
+    // 3. INITIALIZE FEATURES
+    // ---------------------------------------------------------
+    initMobileMenu();
+    syncCartCount();
     initFormspree();
     personalizeSite();
-    syncCartCount();
   });
 
-  /* ---------------- MOBILE MENU ---------------- */
+  /* ---------------- MOBILE MENU (ROBUST VERSION) ---------------- */
   function initMobileMenu() {
-    // Select the Toggle Button
     const toggle = document.getElementById('navToggle');
-    
-    // Select the Menu - Handle both ID types just in case
-    const menu = document.getElementById('mobileMenu'); 
-    
+    const menu = document.getElementById('mobileMenu');
+
     if (toggle && menu) {
-        // Remove old event listeners to prevent double-toggling
-        const newToggle = toggle.cloneNode(true);
-        toggle.parentNode.replaceChild(newToggle, toggle);
+      // Prevent attaching multiple listeners
+      if (toggle.hasAttribute('data-init')) return;
+      toggle.setAttribute('data-init', 'true');
 
-        newToggle.addEventListener('click', e => {
-          e.stopPropagation();
-          newToggle.classList.toggle('active');
-          menu.classList.toggle('active');
-          
-          // Toggle "hidden" class if you are using Tailwind utilities
-          if (menu.classList.contains('hidden')) {
-              menu.classList.remove('hidden');
-              menu.style.display = 'flex';
-          } else if (menu.style.display === 'none' || menu.style.display === '') {
-              menu.style.display = 'flex';
-          } else {
-              menu.style.display = 'none';
-          }
-          
-          newToggle.setAttribute('aria-expanded', newToggle.classList.contains('active'));
-        });
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Toggle visibility state
+        const isHidden = menu.style.display === 'none' || menu.style.display === '';
+        
+        if (isHidden) {
+            menu.style.display = 'flex';
+            toggle.setAttribute('aria-expanded', 'true');
+        } else {
+            menu.style.display = 'none';
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
 
-        document.addEventListener('click', e => {
-          if (!menu.contains(e.target) && !newToggle.contains(e.target)) {
-            newToggle.classList.remove('active');
-            menu.classList.remove('active');
-            menu.style.display = 'none'; // Ensure it hides
-            newToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (menu.style.display === 'flex' && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.style.display = 'none';
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
   }
 
@@ -76,15 +74,15 @@
     try {
       const cart = JSON.parse(localStorage.getItem('navigatorCart')) || [];
       count = cart.reduce((s, i) => s + (i.quantity || 1), 0);
-    } catch (e) {}
+    } catch (e) { console.error('Cart sync error', e); }
 
-    // Update all possible cart count containers
-    document.querySelectorAll('.nav-cart-count, .mobile-cart-count, .cart-count').forEach(el => {
+    document.querySelectorAll('.nav-cart-count, .mobile-cart-count').forEach(el => {
       el.textContent = count;
       el.style.display = count > 0 ? 'inline-flex' : 'none';
     });
   }
 
+  // Listen for custom event from cart.js
   window.addEventListener('cartUpdated', syncCartCount);
 
   /* ---------------- FORMSPREE ---------------- */
@@ -92,13 +90,32 @@
     document.querySelectorAll('form[data-formspree]').forEach(form => {
       form.addEventListener('submit', async e => {
         e.preventDefault();
-        const res = await fetch('https://formspree.io/f/mnjvvpyj', {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-        if (res.ok && form.dataset.redirect) {
-          window.location.href = form.dataset.redirect;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn ? btn.textContent : 'Submit';
+        
+        if(btn) btn.textContent = 'Sending...';
+
+        try {
+            const res = await fetch('https://formspree.io/f/mnjvvpyj', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+            });
+            
+            if (res.ok) {
+                if (form.dataset.redirect) {
+                    window.location.href = form.dataset.redirect;
+                } else {
+                    alert('Message sent successfully!');
+                    form.reset();
+                }
+            } else {
+                alert('There was an error sending your message.');
+            }
+        } catch (error) {
+            alert('Connection error. Please try again.');
+        } finally {
+            if(btn) btn.textContent = originalText;
         }
       });
     });
@@ -108,10 +125,12 @@
   function personalizeSite() {
     try {
       const profile = JSON.parse(localStorage.getItem('quizProfile'));
-      if (!profile) return;
-      document.querySelectorAll('.dynamic-child-name').forEach(el => 
-        (el.textContent = profile.childName || 'Your child')
-      );
+      if (profile && profile.childName) {
+        document.querySelectorAll('.dynamic-child-name').forEach(el => 
+          (el.textContent = profile.childName)
+        );
+      }
     } catch (e) {}
   }
+
 })();
