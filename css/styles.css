@@ -2269,5 +2269,59 @@ margin-top: 25px;
     }
 }
 /* =========================================
+   HEADER LAYOUT FIX
+   ========================================= */
+.navbar {
+    height: var(--nav-height);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-content {
+    display: flex; /* This prevents the logo and links from stacking */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex; /* This aligns individual menu items in a row */
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Ensure buttons inside the nav don't stretch weirdly */
+.nav-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Mobile Toggle - Hide on desktop */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide desktop links on mobile */
+    }
+    
+    .nav-toggle {
+        display: flex; /* Show the hamburger menu toggle */
+    }
+}
+/* =========================================
    END OF STYLESHEET
    ========================================= */
