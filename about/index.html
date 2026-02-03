@@ -4,171 +4,19 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Navigator Kids AI helps parents of twice-exceptional (2e) children understand their child's unique brain and find tools that actually work.">
+   <meta name="description" content="Navigator Kids AI helps parents of twice-exceptional (2e) children understand their child's unique brain.">
    <title>About Us | Navigator Kids AI</title>
 
+   <script src="https://cdn.tailwindcss.com"></script>
+   
    <link rel="stylesheet" href="/css/styles.css"> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="/js/components.js" defer></script>
-<script src="/js/cart.js" defer></script>
-   <style>
-      .about-page {
-         padding: 0;
-      }
-
-      /* Hero */
-      .about-hero {
-         background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
-         padding: var(--space-16) 0;
-         text-align: center;
-      }
-
-      .about-hero h1 {
-         margin-bottom: var(--space-4);
-      }
-
-      .about-hero-subtitle {
-         font-size: var(--text-xl);
-         color: var(--color-text);
-         max-width: 700px;
-         margin: 0 auto;
-         line-height: var(--leading-relaxed);
-      }
-
-      /* Mission */
-      .about-mission {
-         padding: var(--section-padding) 0;
-         background: var(--color-white);
-      }
-
-      .mission-content {
-         max-width: 720px;
-         margin: 0 auto;
-      }
-
-      .mission-content h2 {
-         text-align: center;
-         margin-bottom: var(--space-8);
-      }
-
-      .mission-content p {
-         font-size: var(--text-lg);
-         line-height: var(--leading-relaxed);
-         margin-bottom: var(--space-6);
-      }
-
-      .mission-highlight {
-         background: var(--color-cream);
-         border-left: 4px solid var(--color-sage);
-         padding: var(--space-6);
-         border-radius: 0 var(--radius-md) var(--radius-md) 0;
-         margin: var(--space-8) 0;
-      }
-
-      .mission-highlight p {
-         margin: 0;
-         font-style: italic;
-      }
-
-      /* What We Believe */
-      .about-beliefs {
-         padding: var(--section-padding) 0;
-         background: var(--color-cream);
-      }
-
-      .about-beliefs h2 {
-         text-align: center;
-         margin-bottom: var(--space-10);
-      }
-
-      .beliefs-grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: var(--space-6);
-         max-width: 1000px;
-         margin: 0 auto;
-      }
-
-      @media (max-width: 768px) {
-         .beliefs-grid {
-            grid-template-columns: 1fr;
-         }
-      }
-
-      .belief-card {
-         background: var(--color-white);
-         border-radius: var(--radius-lg);
-         padding: var(--space-6);
-         text-align: center;
-      }
-
-      .belief-icon {
-         font-size: 2.5rem;
-         margin-bottom: var(--space-3);
-      }
-
-      .belief-card h3 {
-         font-size: var(--text-lg);
-         margin-bottom: var(--space-2);
-      }
-
-      .belief-card p {
-         font-size: var(--text-sm);
-         color: var(--color-text-light);
-         margin: 0;
-      }
-
-      /* Approach */
-      .about-approach {
-         padding: var(--section-padding) 0;
-         background: var(--color-white);
-      }
-
-      .approach-content {
-         max-width: 720px;
-         margin: 0 auto;
-      }
-
-      .approach-content h2 {
-         text-align: center;
-         margin-bottom: var(--space-8);
-      }
-
-      .approach-content h3 {
-         font-size: var(--text-lg);
-         margin-top: var(--space-8);
-         margin-bottom: var(--space-3);
-      }
-
-      .approach-content p {
-         color: var(--color-text);
-         line-height: var(--leading-relaxed);
-      }
-
-      /* CTA */
-      .about-cta {
-         padding: var(--section-padding) 0;
-         background: var(--color-navy);
-         text-align: center;
-      }
-
-      .about-cta h2 {
-         color: var(--color-cream);
-         margin-bottom: var(--space-4);
-      }
-
-      .about-cta p {
-         color: rgba(249, 247, 242, 0.8);
-         margin-bottom: var(--space-6);
-         max-width: 500px;
-         margin-left: auto;
-         margin-right: auto;
-      }
-   </style>
+   <script src="/js/components.js" defer></script>
+   <script src="/js/cart.js" defer></script>
 </head>
-
 <body>
   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
    <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
