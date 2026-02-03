@@ -1,150 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Understand your twice-exceptional (2e) child's unique brain in 3 minutes. Free quiz + practical tools for parents of bright kids who struggle." />
-  <title>Navigator Kids AI™ | Understand Your 2e Child's Unique Brain</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understand your twice-exceptional (2e) child's unique brain in 3 minutes. Free quiz + practical tools for parents of bright kids who struggle.">
+    <title>Navigator Kids AI™ | Understand Your 2e Child's Unique Brain</title>
 
-  <link rel="canonical" href="https://www.navigatorkidsai.com/" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/js/components.js" defer></script>
+    <script src="/js/form-handler.js" defer></script>
+    <script src="/js/cart.js" defer></script>
 
-  <!-- Minimal CSS (safe, fast) -->
-  <style>
-    body { font-family: Inter, sans-serif; margin:0; color:#1f2937; }
-    a { text-decoration:none; color:inherit; }
-    .container { max-width:1100px; margin:auto; padding:2rem; }
-    nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#fff; border-bottom:1px solid #eee; }
-    nav a { margin-left:1rem; font-weight:600; }
-    .btn { padding:.75rem 1.25rem; border-radius:8px; font-weight:700; display:inline-block; }
-    .primary { background:#2563eb; color:white; }
-    .secondary { border:2px solid #2563eb; color:#2563eb; }
-    header { background:#f9fafb; padding:4rem 0; text-align:center; }
-    h1 span { color:#2563eb; }
-    section { padding:4rem 0; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-    .card { background:white; border-radius:16px; padding:2rem; box-shadow:0 10px 25px rgba(0,0,0,.05); }
-    footer { background:#111827; color:#d1d5db; }
-    footer a { color:#d1d5db; display:block; margin:.25rem 0; }
-    .small { font-size:.8rem; opacity:.8; }
-  </style>
-
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"EducationalOrganization",
-    "name":"Navigator Kids AI",
-    "description":"AI-powered educational tools for parents of twice-exceptional children"
-  }
-  </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Navigator Kids AI",
+            "description": "Educational resources and AI-powered tools for parents of twice-exceptional (2e) children.",
+            "audience": {
+                "@type": "ParentAudience",
+                "audienceType": "Parents of 2e children ages 6-9"
+            }
+        }
+    </script>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="/"><strong>🧒 Navigator Kids AI</strong></a>
-  <div>
-    <a href="/quiz/">Free Quiz</a>
-    <a href="/iep/">IEP Guide</a>
-    <a href="/iep/states/">IEP States</a>
-    <a href="/iep/battle-plan.html">IEP Battle Plan</a>
-    <a href="/quiz/" class="btn primary">Take the Quiz</a>
-  </div>
-</nav>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
 
-<!-- HERO -->
-<header>
-  <div class="container">
-    <h1>Is Your Child’s Brain <span>Wired Differently?</span></h1>
-    <p>Discover why your bright child struggles — and what actually helps. No diagnosis required.</p>
-    <a href="/quiz/" class="btn primary">Take the Free 3-Minute Quiz</a>
-    <p class="small">✓ Instant results • ✓ Built for grades 1–3</p>
-  </div>
-</header>
+            <div class="nav-links">
+                <a href="/quiz/">Free Quiz</a>
+                <a href="/iep/">IEP Guide</a>
+                <a href="/iep/states/">IEP States</a>
+                <a href="/iep/battle-plan.html" class="text-accent font-bold">IEP Battle Plan</a>
+                <a href="/cart/" class="nav-cart">
+                    🛒 <span class="cart-count">0</span>
+                </a>
+                <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
+            </div>
 
-<!-- TRUST -->
-<section>
-  <div class="container grid">
-    <div class="card">✓ Designed for twice-exceptional (2e) kids</div>
-    <div class="card">✓ No diagnosis required</div>
-    <div class="card">✓ Neurodiversity-affirming</div>
-  </div>
-</section>
+            <button id="navToggle" class="nav-toggle" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
 
-<!-- IEP HUB -->
-<section style="background:#f3f4f6">
-  <div class="container">
-    <h2>Struggling With School?</h2>
-    <p>Learn how to advocate confidently — without legal jargon or intimidation.</p>
-    <a href="/iep/" class="btn secondary">Enter the IEP Advocacy Hub</a>
-  </div>
-</section>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="/quiz/">Free Quiz</a>
+            <a href="/iep/">IEP Guide</a>
+            <a href="/iep/states/">IEP States</a>
+            <a href="/iep/battle-plan.html">IEP Battle Plan</a>
+            <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+            <a href="/quiz/" class="btn btn-primary" style="margin-top: 1rem;">Take the Quiz</a>
+        </div>
+    </nav>
 
-<!-- PROFILES -->
-<section>
-  <div class="container">
-    <h2>6 Common 2e Brain Profiles</h2>
-    <div class="grid">
-      <div class="card">🔥 <strong>Intense Feeler</strong><p>Big emotions, sensory overload.</p></div>
-      <div class="card">🐢 <strong>Reluctant Starter</strong><p>Knows what to do — can’t begin.</p></div>
-      <div class="card">🦉 <strong>Deep Diver</strong><p>Hyperfocus on interests.</p></div>
-      <div class="card">🐰 <strong>Sensitive Observer</strong><p>Quiet, deeply perceptive.</p></div>
-      <div class="card">🦁 <strong>Bold Explorer</strong><p>Jumps in fast, frustrates easily.</p></div>
-      <div class="card">🚀 <strong>Big Picture Thinker</strong><p>Creative, disorganized.</p></div>
-    </div>
-  </div>
-</section>
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
 
-<!-- HOW IT WORKS -->
-<section style="background:#f9fafb">
-  <div class="container grid">
-    <div class="card"><strong>1. Take the Quiz</strong><p>3 minutes.</p></div>
-    <div class="card"><strong>2. Get Their Profile</strong><p>Primary + secondary patterns.</p></div>
-    <div class="card"><strong>3. Get Tools</strong><p>Matched to their brain.</p></div>
-  </div>
-</section>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    For parents of 1st–3rd graders
+                </div>
 
-<!-- FREE KIT -->
-<section>
-  <div class="container">
-    <h2>Emergency Regulation Kit (Free)</h2>
-    <p>Exactly what to say when the meltdown hits.</p>
-    <a href="/downloads/Emergency-Regulation-Kit.pdf" class="btn secondary">Download the Free Kit</a>
-  </div>
-</section>
+                <h1>Is Your Child's Brain <span>Wired Differently?</span></h1>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container grid">
-    <div>
-      <strong>Navigator Kids AI</strong>
-      <p class="small">Your child’s brain didn’t come with a manual.</p>
-    </div>
-    <div>
-      <strong>Quick Links</strong>
-      <a href="/quiz/">Free Quiz</a>
-      <a href="/iep/">IEP Guide</a>
-      <a href="/tools/">Free Tools</a>
-    </div>
-    <div>
-      <strong>Company</strong>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-    </div>
-  </div>
-  <div class="container small">
-    © 2026 Navigator Kids AI™ · Educational content only · Not legal or medical advice
-  </div>
-</footer>
+                <p class="hero-description">
+                    Discover why your bright kid struggles — and get tools that actually work for their unique mind.
+                    Takes 3 minutes, no diagnosis needed.
+                </p>
 
+                <div class="hero-cta">
+                    <a href="/quiz/" class="btn btn-primary btn-large btn-arrow">Take the Free Quiz </a>
+                    <span class="hero-cta-note">✓ Instant results  •  ✓ No email required to start</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item"><span class="trust-icon">✓</span> Designed for twice-exceptional (2e) minds</div>
+                <div class="trust-item"><span class="trust-icon">✓</span> No diagnosis required</div>
+                <div class="trust-item"><span class="trust-icon">✓</span> Backed by neurodiversity research</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="iep-hub-teaser">
+        <div class="container iep-hub-content">
+            <h2>Struggling with School?</h2>
+            <p>Don't face the IEP process alone. Access our free, comprehensive guide specifically designed for 2e families fighting for support.</p>
+            <a href="/iep/" class="btn btn-secondary btn-arrow" style="border-color:var(--terracotta); color:var(--terracotta);">Enter the IEP Advocacy Hub</a>
+        </div>
+    </section>
+
+    <section class="advocacy-section" id="advocacy">
+        <div class="container">
+            <div class="advocacy-wrapper">
+                <div class="advocacy-content">
+                    <span class="advocacy-label">Flagship Parent System</span>
+                    <h2>School Advocacy Made Simple</h2>
+                    <p>Stop feeling intimidated in school meetings. Get the professional scripts, email templates, and legal frameworks to ensure your child gets the accommodations they deserve.</p>
+                    <ul class="advocacy-features">
+                        <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Translate "Parent Worry" to "Educator Speak"</li>
+                        <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> 50+ Ready-to-Send Email Templates</li>
+                        <li class="advocacy-feature"><i class="fa-solid fa-check-circle"></i> Accommodations Matched to Brain Profile</li>
+                    </ul>
+                </div>
+
+                <div class="advocacy-card">
+                    <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">The IEP Advocacy System</h3>
+                    <div class="advocacy-price">$67</div>
+                    <p style="font-size:0.9rem; margin-bottom:1.5rem; color:rgba(255,255,255,0.6);">One-time purchase • Lifetime updates</p>
+                    <button onclick="window.NavigatorCart.add('prod-system-iep')" class="btn btn-glow btn-large">Get The System</button>
+                    <p style="margin-top:1rem; font-size:0.8rem; color:rgba(255,255,255,0.5);"><i class="fa-solid fa-lock"></i> Secure Checkout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="profiles-section" id="profiles">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">6 Brain Profiles</span>
+                <h2 class="section-title">Does This Sound Like Your Child?</h2>
+                <p class="section-subtitle">
+                    Most 2e kids show a primary pattern and a secondary one.
+                    The quiz identifies both so you get tools that match their actual brain.
+                </p>
+            </div>
+
+            <div class="profiles-grid">
+                <article class="profile-card">
+                    <div class="profile-icon">🔥</div>
+                    <h3>The Intense Feeler</h3>
+                    <p>Big emotions hit fast and hard. They hold it together at school, then fall apart at home. Sensory overload is real.</p>
+                    <div class="profile-traits"><span class="profile-trait">Emotional intensity</span><span class="profile-trait">Sensory sensitivity</span><span class="profile-trait">Perfectionism</span></div>
+                </article>
+                <article class="profile-card">
+                    <div class="profile-icon">🐢</div>
+                    <h3>The Reluctant Starter</h3>
+                    <p>They know what to do but can't seem to begin. Homework takes hours. Getting dressed is a battle. It's not laziness — it's a wiring thing.</p>
+                    <div class="profile-traits"><span class="profile-trait">Task initiation</span><span class="profile-trait">Avoidance</span><span class="profile-trait">Interest-based focus</span></div>
+                </article>
+                <article class="profile-card">
+                    <div class="profile-icon">🦉</div>
+                    <h3>The Deep Diver</h3>
+                    <p>Can talk about dinosaurs for 3 hours but won't do 5 minutes of math. Hyperfocus is their superpower — when the topic's right.</p>
+                    <div class="profile-traits"><span class="profile-trait">Hyperfocus</span><span class="profile-trait">Interest-driven</span><span class="profile-trait">Perfectionism</span></div>
+                </article>
+                 <article class="profile-card">
+                    <div class="profile-icon">🐰</div>
+                    <h3>The Sensitive Observer</h3>
+                    <p>Notices everything. Feels everything. Social situations are exhausting. They need time to recharge that others don't understand.</p>
+                    <div class="profile-traits"><span class="profile-trait">Sensory processing</span><span class="profile-trait">Social wiring</span><span class="profile-trait">Emotional depth</span></div>
+                </article>
+                 <article class="profile-card">
+                    <div class="profile-icon">🦁</div>
+                    <h3>The Bold Explorer</h3>
+                    <p>Jumps in first, thinks later. Loves new things but gives up when it gets hard. Their confidence needs protecting.</p>
+                    <div class="profile-traits"><span class="profile-trait">Risk-taking</span><span class="profile-trait">Social engagement</span><span class="profile-trait">Frustration tolerance</span></div>
+                </article>
+                 <article class="profile-card">
+                    <div class="profile-icon">🚀</div>
+                    <h3>The Big Picture Thinker</h3>
+                    <p>Sees the whole universe but loses their shoes. Great ideas, terrible follow-through. Transitions are the enemy.</p>
+                    <div class="profile-traits"><span class="profile-trait">Executive function</span><span class="profile-trait">Organization</span><span class="profile-trait">Transitions</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">Simple Process</span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Understand your child's brain in under 5 minutes. No appointments, no waiting rooms.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step"><div class="step-number">1</div><h3>Take the 3-minute quiz</h3><p>Answer questions about your child's daily patterns.</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Get their brain profile</h3><p>See their primary and secondary patterns.</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Get tools that fit</h3><p>Access strategies designed specifically for their brain.</p></div>
+            </div>
+            <div class="steps-cta">
+                <a href="/quiz/" class="btn btn-primary btn-large btn-arrow">Start the Free Quiz </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="free-kit" id="free-kit">
+        <div class="container">
+            <div class="free-kit-content">
+                <div class="free-kit-text">
+                    <span class="section-label">Most Popular Free Tool</span>
+                    <h2>The De-Escalation Kit</h2>
+                    <p>When the meltdown hits, you don't have time to Google. This kit gives you exactly what to say.</p>
+                    <div class="free-kit-features">
+                        <div class="free-kit-feature"><span class="free-kit-feature-icon">✓</span><span>3 proven scripts for different meltdown types</span></div>
+                        <div class="free-kit-feature"><span class="free-kit-feature-icon">✓</span><span>The "90-second reset" technique</span></div>
+                        <div class="free-kit-feature"><span class="free-kit-feature-icon">✓</span><span>Printable calm-down card for your fridge</span></div>
+                    </div>
+                    <a href="#get-the-kit" class="btn btn-secondary btn-arrow">Get the Free Kit </a>
+                </div>
+                <div class="free-kit-visual">
+                    <div class="free-kit-card">
+                        <div class="free-kit-icon">🧘</div>
+                        <h3>De-Escalation Kit</h3>
+                        <p>What to say when they can't hear you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lead-capture-section" id="get-the-kit">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">System Protocol</span>
+                <h2 class="section-title">Emergency Regulation Kit</h2>
+                <p class="section-subtitle">The exact protocol for when the thinking brain is offline. Stop guessing and start co-regulating.</p>
+            </div>
+
+            <div class="lead-magnet-wrapper">
+                <div class="lead-visual">
+                    <div class="free-kit-icon" style="font-size:5rem;">🛡️</div>
+                    <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--navy); margin-bottom:1rem;">Nervous System Protocol</h3>
+                    <ul style="text-align:left; display:inline-block; font-size:0.9rem; color:var(--text-light);">
+                        <li style="margin-bottom:0.5rem"><strong>Phase 1:</strong> Rapid Response Protocol</li>
+                        <li style="margin-bottom:0.5rem"><strong>Phase 2:</strong> Co-Regulation Scripting</li>
+                        <li><strong>Phase 3:</strong> Physiological Reset</li>
+                    </ul>
+                </div>
+
+                <div class="lead-form-container">
+                    <form id="lead-capture-form" data-formspree data-redirect="/thank-you/" data-download="/downloads/Emergency-Regulation-Kit.pdf">
+                        <div class="form-group">
+                            <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Your First Name</label>
+                            <input type="text" id="name-input" name="name" class="form-input" placeholder="Jane" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="display:block; font-size:0.9rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem;">Best Email Address</label>
+                            <input type="email" id="email-input" name="email" class="form-input" placeholder="jane@example.com" required>
+                        </div>
+                        <button type="submit" class="form-btn">Send Me The PDF Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div>
+              <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+              <p>Your child's brain didn’t come with a manual.</p>
+            </div>
+
+            <div>
+              <h4>Quick Links</h4>
+              <a href="/quiz/">Free Quiz</a>
+              <a href="/iep/">IEP Guide</a>
+              <a href="/iep/states/">IEP States</a>
+              <a href="/tools/">Free Tools</a>
+            </div>
+
+            <div>
+              <h4>Company</h4>
+              <a href="/about/">About</a>
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>© 2026 Navigator Kids AI™</p>
+          </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.NavigatorForms && typeof window.NavigatorForms.setupEmailForm === 'function') {
+                const form = document.getElementById('lead-capture-form');
+                if (form) {
+                    window.NavigatorForms.setupEmailForm({
+                        formId: 'lead-capture-form',
+                        emailInputId: 'email-input',
+                        nameInputId: 'name-input',
+                        source: 'emergency-kit-home',
+                        successMessage: 'Kit sent! Check your inbox.'
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
