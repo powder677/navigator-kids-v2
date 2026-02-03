@@ -1,11 +1,18 @@
 (function () {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
+    // ensureDependencies(); // Optional: remove if you've added links to your <head>
+    
+    // DELETE OR COMMENT OUT THESE TWO LINES:
+    // injectHeader(); 
+    // injectFooter(); 
+
+    // KEEP THESE ACTIVE:
     initMobileMenu(); 
     initFormspree();
     personalizeSite();
-    syncCartCount(); // Run immediately since HTML exists
+    syncCartCount();
   });
 
   /* ---------------- MOBILE MENU ---------------- */
