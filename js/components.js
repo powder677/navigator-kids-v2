@@ -11,13 +11,11 @@
   window.__NAVIGATOR_LAYOUT_LOADED__ = true;
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Note: ensureDependencies() only checks JS libs now. 
-    // CSS should be loaded in <head> to prevent FOUC.
     ensureDependencies();
     
-    // DISABLE INJECTION (Stops double nav/footer)
-    // injectHeader(); 
-    // injectFooter(); 
+    // ENABLE INJECTION (Now that index.html is fixed)
+    injectHeader(); 
+    injectFooter(); 
 
     // Keep these active for functionality!
     initMobileMenu(); 
@@ -56,10 +54,9 @@
 
           <div class="nav-links">
             <a href="/quiz/">Free Quiz</a>
-            <a href="/resources/">Resources</a>
-            <a href="/products/">Products</a>
-            <a href="/tools/">Free Tools</a>
-            <a href="/iep/" class="text-accent font-bold">IEP Hub</a>
+            <a href="/iep/">IEP Guide</a>
+            <a href="/iep/states/">IEP States</a>
+            <a href="/iep/battle-plan.html" class="text-accent font-bold">IEP Battle Plan</a>
             <a href="/cart/" class="nav-cart">
               🛒 <span class="cart-count">0</span>
             </a>
@@ -72,12 +69,12 @@
         </div>
 
         <div id="mobileMenu" class="mobile-menu">
-          <a href="/quiz/">Free Quiz</a>
-          <a href="/resources/">Resources</a>
-          <a href="/products/">Products</a>
-          <a href="/tools/">Free Tools</a>
-          <a href="/iep/">IEP Advocacy Hub</a>
-          <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+            <a href="/quiz/">Free Quiz</a>
+            <a href="/iep/">IEP Guide</a>
+            <a href="/iep/states/">IEP States</a>
+            <a href="/iep/battle-plan.html">IEP Battle Plan</a>
+            <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+            <a href="/quiz/" class="btn btn-primary" style="margin-top: 1rem;">Take the Quiz</a>
         </div>
       </nav>
     `;
@@ -103,7 +100,8 @@
             <div>
               <h4>Quick Links</h4>
               <a href="/quiz/">Free Quiz</a>
-              <a href="/iep/">IEP Hub</a>
+              <a href="/iep/">IEP Guide</a>
+              <a href="/iep/states/">IEP States</a>
               <a href="/tools/">Free Tools</a>
             </div>
 
@@ -128,23 +126,34 @@
   function initMobileMenu() {
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('mobileMenu');
-    // Guard clause in case header failed to inject
-    if (!toggle || !menu) return;
+    
+    // We must query again because we just injected the HTML
+    if (!toggle && !menu) {
+        // If query failed (rare), try finding them inside the headerSlot
+        // But usually standard query works after innerHTML set.
+        return; 
+    }
 
-    toggle.addEventListener('click', e => {
-      e.stopPropagation();
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', toggle.classList.contains('active'));
-    });
+    // Re-select them to be safe after injection
+    const safeToggle = document.getElementById('navToggle');
+    const safeMenu = document.getElementById('mobileMenu');
 
-    document.addEventListener('click', e => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+    if (safeToggle && safeMenu) {
+        safeToggle.addEventListener('click', e => {
+          e.stopPropagation();
+          safeToggle.classList.toggle('active');
+          safeMenu.classList.toggle('active');
+          safeToggle.setAttribute('aria-expanded', safeToggle.classList.contains('active'));
+        });
+
+        document.addEventListener('click', e => {
+          if (!safeMenu.contains(e.target) && !safeToggle.contains(e.target)) {
+            safeToggle.classList.remove('active');
+            safeMenu.classList.remove('active');
+            safeToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+    }
   }
 
   /* ---------------- CART ---------------- */
