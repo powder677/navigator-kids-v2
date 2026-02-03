@@ -247,7 +247,35 @@
 
 <body>
 
-   <div id="header"></div>
+   <nav class="navbar" id="navbar">
+    <div class="container nav-content">
+        <a href="/" class="logo"><span class="logo-icon">🧒</span>Navigator Kids AI</a>
+
+        <div class="nav-links">
+            <a href="/quiz/">Free Quiz</a>
+            <a href="/iep/">IEP Guide</a>
+            <a href="/iep/states/">IEP States</a>
+            <a href="/iep/battle-plan.html" class="text-accent font-bold">IEP Battle Plan</a>
+            <a href="/cart/" class="nav-cart">
+                🛒 <span class="cart-count">0</span>
+            </a>
+            <a href="/quiz/" class="btn btn-primary">Take the Quiz</a>
+        </div>
+
+        <button id="navToggle" class="nav-toggle" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="/quiz/">Free Quiz</a>
+        <a href="/iep/">IEP Guide</a>
+        <a href="/iep/states/">IEP States</a>
+        <a href="/iep/battle-plan.html">IEP Battle Plan</a>
+        <a href="/cart/">Cart (<span class="cart-count">0</span>)</a>
+        <a href="/quiz/" class="btn btn-primary" style="margin-top: 1rem;">Take the Quiz</a>
+    </div>
+</nav>
 
    <section class="result-hero">
       <div class="container">
