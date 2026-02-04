@@ -11,116 +11,200 @@
 
    <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/california/california-iee/" />
 
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css" />
+   
+   <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
+<body class="bg-[#F9F7F2]">
 
-   <header id="site-header"></header>
-
-   <main class="container iep-content">
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" rel="nofollow" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP State Guide</a>
+         <a href="/cart/" rel="nofollow" style="display: block; padding: 0.5rem 0; color: #4b5563;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
       <article class="iep-article">
 
-         <nav class="iep-breadcrumbs">
-            <a href="/iep/states/">← Back to State Map</a>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/states/" class="hover:text-blue-600">State Map</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/california/" class="hover:text-blue-600">California</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">IEE Guide</span>
          </nav>
 
-         <h1>Independent Educational Evaluation (IEE) in California: How to Get One for Free</h1>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">Independent Educational Evaluation (IEE) in California: How to Get One for Free</h1>
 
-         <p>You waited 60 days for the school district to evaluate your child. You went to the IEP meeting, read the 30-page report, and felt your stomach drop.</p>
-         <p>The report says your child is "average" when you know they are struggling. It says their behavior is "seeking attention" when you know it's anxiety. It misses the dyslexia, or the autism, or the sensory processing disorder entirely.</p>
-         <p>Most parents think their only option is to pay $5,000+ for a private neuropsychological evaluation. <strong>This is false.</strong></p>
-         <p>Under <strong>California Education Code 56329(b)</strong>, you have the right to a "Second Opinion" paid for by the school district. It is called an <strong>Independent Educational Evaluation (IEE)</strong> at public expense. Here is how to get it.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">You waited 60 days for the school district to evaluate your child. You went to the IEP meeting, read the 30-page report, and felt your stomach drop.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">The report says your child is "average" when you know they are struggling. It says their behavior is "seeking attention" when you know it's anxiety. It misses the dyslexia, or the autism, or the sensory processing disorder entirely.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">Most parents think their only option is to pay $5,000+ for a private neuropsychological evaluation. <strong>This is false.</strong></p>
+         <p class="text-gray-700 leading-relaxed mb-4">Under <strong>California Education Code 56329(b)</strong>, you have the right to a "Second Opinion" paid for by the school district. It is called an <strong>Independent Educational Evaluation (IEE)</strong> at public expense. Here is how to get it.</p>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>The Golden Rule: You Must Disagree First</h2>
-            <p>You cannot request an IEE just because you want one. You must first allow the school district to complete their own evaluation.</p>
-            <p><strong>The Trigger:</strong> Once the district completes their assessment and holds the IEP meeting, if you disagree with their findings, you have the right to request an IEE. You do <em>not</em> need to explain exactly why their report is wrong yet. You just have to state that you disagree.</p>
-         </section>
+         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">The Golden Rule: You Must Disagree First</h2>
+            <p class="text-gray-700 mb-2">You cannot request an IEE just because you want one. You must first allow the school district to complete their own evaluation.</p>
+            <p class="text-gray-700"><strong>The Trigger:</strong> Once the district completes their assessment and holds the IEP meeting, if you disagree with their findings, you have the right to request an IEE. You do <em>not</em> need to explain exactly why their report is wrong yet. You just have to state that you disagree.</p>
+         </div>
 
-         <h2>The "Fund or File" Ultimatum</h2>
-         <p>In California, when you request an IEE, the School District has only two legal options. They cannot simply say "No." They cannot ignore you.</p>
-         <p><strong>They must either:</strong></p>
-         <ol>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The "Fund or File" Ultimatum</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">In California, when you request an IEE, the School District has only two legal options. They cannot simply say "No." They cannot ignore you.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>They must either:</strong></p>
+         <ol class="list-decimal pl-6 text-gray-700 space-y-2 mb-6">
             <li><strong>Fund the IEE:</strong> Agree to pay for a qualified private evaluator to assess your child.</li>
             <li><strong>File for Due Process:</strong> Initiate a legal hearing against <em>you</em> to prove to a judge that their evaluation was appropriate.</li>
          </ol>
-         <p><strong>Why this favors parents:</strong> Filing for Due Process is expensive. Unless their evaluation is bulletproof, districts will often choose to fund the IEE rather than spend $20,000 on legal fees defending their own report.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>Why this favors parents:</strong> Filing for Due Process is expensive. Unless their evaluation is bulletproof, districts will often choose to fund the IEE rather than spend $20,000 on legal fees defending their own report.</p>
 
-         <h2>The Timeline: "Without Unnecessary Delay"</h2>
-         <p>Unlike the 60-day timeline for initial assessments, California law does not give a specific number of days for the district to respond to an IEE request. Instead, the legal standard is <strong>"without unnecessary delay."</strong></p>
-         <p>In practice (and in court rulings), this usually means the district must respond within <strong>10 to 15 days</strong>. If they sit on your request for a month without filing for due process, they have likely waived their right to defend their assessment.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Timeline: "Without Unnecessary Delay"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Unlike the 60-day timeline for initial assessments, California law does not give a specific number of days for the district to respond to an IEE request. Instead, the legal standard is <strong>"without unnecessary delay."</strong></p>
+         <p class="text-gray-700 leading-relaxed mb-4">In practice (and in court rulings), this usually means the district must respond within <strong>10 to 15 days</strong>. If they sit on your request for a month without filing for due process, they have likely waived their right to defend their assessment.</p>
 
-         <h2>The Trap: "Agency Criteria" (Cost Caps)</h2>
-         <p>When the district says "Yes," they will send you a packet of information including "Agency Criteria." They will often try to limit you by saying:</p>
-         <ul>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Trap: "Agency Criteria" (Cost Caps)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">When the district says "Yes," they will send you a packet of information including "Agency Criteria." They will often try to limit you by saying:</p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
             <li>"We will only pay up to $4,500."</li>
             <li>"The evaluator must be located within 40 miles."</li>
          </ul>
-         <p><strong>Parent Tip:</strong> You do <em>not</em> have to use the evaluators on their "preferred list." You can choose your own independent evaluator as long as they meet the district's criteria (license, cost, location). If your child has complex needs that require an expert who costs more than the cap, you can argue for a <strong>waiver</strong> of the cost criteria.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>Parent Tip:</strong> You do <em>not</em> have to use the evaluators on their "preferred list." You can choose your own independent evaluator as long as they meet the district's criteria (license, cost, location). If your child has complex needs that require an expert who costs more than the cap, you can argue for a <strong>waiver</strong> of the cost criteria.</p>
 
-         <h2>How to Request It (The Script)</h2>
-         <p>Do not over-explain. If you write a three-page letter listing every mistake they made, you are giving them ammunition to fix their report or defend it in court. Keep it simple.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">How to Request It (The Script)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Do not over-explain. If you write a three-page letter listing every mistake they made, you are giving them ammunition to fix their report or defend it in court. Keep it simple.</p>
 
-         <blockquote>
+         <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg my-6 font-mono text-sm text-gray-700">
             <strong>Subject:</strong> Notice of Disagreement and Request for IEE - [Student Name]<br><br>
             "I am writing to inform you that I disagree with the District’s psycho-educational evaluation dated [Date] for my child, [Name].<br><br>
             Pursuant to <strong>California Education Code § 56329(b)</strong>, I am requesting an Independent Educational Evaluation (IEE) in the area of [Psycho-Educational / Speech / FBA] at public expense.<br><br>
             Please provide me with a copy of your Agency Criteria and a list of independent evaluators without unnecessary delay."
-         </blockquote>
+         </div>
 
-         <section class="iep-callout iep-callout-primary">
-            <h2>Don't Let Them Stall</h2>
-            <p>If the District tries to delay by asking, <em>"What specifically do you disagree with?"</em> you can respond: <em>"I am not required to explain the nature of my disagreement at this time."</em></p>
-            <p>I have created a complete <strong>IEE Request Template</strong> that includes the follow-up responses for when they try to trick you.</p>
-            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;" class="btn btn-primary btn-large">Download the IEE Request Letter Template</a>
-            <p><em>Get the exact script that forces the district to choose: Pay up or lawyer up.</em></p>
-         </section>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">Don't Let Them Stall</h2>
+            <p class="text-gray-700 mb-4">If the District tries to delay by asking, <em>"What specifically do you disagree with?"</em> you can respond: <em>"I am not required to explain the nature of my disagreement at this time."</em></p>
+            <p class="text-gray-700 mb-4">I have created a complete <strong>IEE Request Template</strong> that includes the follow-up responses for when they try to trick you.</p>
+            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;">Download the IEE Request Letter Template (Coming Soon)</a>
+            <p class="text-sm italic mt-2 text-gray-600">Get the exact script that forces the district to choose: Pay up or lawyer up.</p>
+         </div>
 
-         <h2>Frequently Asked Questions</h2>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
 
-         <h3>Can I choose any evaluator I want?</h3>
-         <p>Technically, yes, as long as they meet the district's "Agency Criteria" (qualifications, location, and cost). If your preferred evaluator charges more than the district cap, you must request a waiver proving that your child's unique needs require that specific expert.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I choose any evaluator I want?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Technically, yes, as long as they meet the district's "Agency Criteria" (qualifications, location, and cost). If your preferred evaluator charges more than the district cap, you must request a waiver proving that your child's unique needs require that specific expert.</p>
 
-         <h3>Does the school have to accept the IEE findings?</h3>
-         <p>They must <em>consider</em> them. They do not have to automatically adopt all recommendations. However, an IEE usually carries significant weight because it is a neutral, third-party expert opinion.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does the school have to accept the IEE findings?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">They must <em>consider</em> them. They do not have to automatically adopt all recommendations. However, an IEE usually carries significant weight because it is a neutral, third-party expert opinion.</p>
 
-         <h3>Can I request an IEE for just one part of the evaluation?</h3>
-         <p>Yes. You can request an IEE for Speech only, or Occupational Therapy only, if that is the specific area where you disagree with the district's findings.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I request an IEE for just one part of the evaluation?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Yes. You can request an IEE for Speech only, or Occupational Therapy only, if that is the specific area where you disagree with the district's findings.</p>
 
-         <h3>What happens if the district files for Due Process?</h3>
-         <p>If they file, you will go before an Administrative Law Judge. The district has the burden of proving their evaluation was appropriate. If the judge agrees with them, you can still get a private evaluation, but you will have to pay for it yourself.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What happens if the district files for Due Process?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">If they file, you will go before an Administrative Law Judge. The district has the burden of proving their evaluation was appropriate. If the judge agrees with them, you can still get a private evaluation, but you will have to pay for it yourself.</p>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>What If You Want the Complete Strategy?</h2>
-            <p>Getting the IEE is a huge win, but it's only half the battle. You still have to bring that report back to the IEP table and fight for the services it recommends.</p>
-            <p>The <strong>IEP Battle Plan</strong> teaches you how to leverage the IEE findings to force the district's hand on placement and services.</p>
-            <ul>
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">What If You Want the Complete Strategy?</h2>
+            <p class="text-gray-700 mb-4">Getting the IEE is a huge win, but it's only half the battle. You still have to bring that report back to the IEP table and fight for the services it recommends.</p>
+            <p class="text-gray-700 mb-4">The <strong>IEP Battle Plan</strong> teaches you how to leverage the IEE findings to force the district's hand on placement and services.</p>
+            <ul class="list-disc pl-6 text-gray-700 mb-4">
                <li>How to prep your Independent Evaluator for the IEP meeting.</li>
                <li>Scripts to use when the district tries to ignore the IEE recommendations.</li>
                <li>When to use the IEE to push for non-public school placement.</li>
             </ul>
-            <p><strong>$497 one-time payment. Lifetime access.</strong></p>
-            <a href="/iep/battle-plan/" class="btn btn-secondary">Learn more about the Battle Plan →</a>
-         </section>
+            <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
+            <a href="/iep/battle-plan/" class="inline-block bg-[#be185d] text-white font-bold py-3 px-6 rounded-full hover:bg-[#a0144d] transition-colors text-decoration-none">Learn more about the Battle Plan →</a>
+         </div>
 
-         <h2>Related Resources</h2>
-         <p><strong>For more on California special education:</strong></p>
-         <ul>
-            <li><a href="/iep/states/california/california-iep-laws/">California IEP Laws</a> - Understanding your rights under Ed Code.</li>
-            <li><a href="/iep/states/california/california-timeline/">California Timelines</a> - Ensure the initial evaluation was done on time.</li>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>For more on California special education:</strong></p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li><a href="/iep/states/california/california-iep-laws/" class="text-blue-700 hover:underline">California IEP Laws</a> - Understanding your rights under Ed Code.</li>
+            <li><a href="/iep/states/california/california-timeline/" class="text-blue-700 hover:underline">California Timelines</a> - Ensure the initial evaluation was done on time.</li>
          </ul>
 
-         <hr />
+         <hr class="my-8 border-gray-200">
 
-         <p><em><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.</em></p>
+         <p class="text-sm text-gray-500 italic">
+            <strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.
+         </p>
 
       </article>
    </main>
 
-   <footer id="site-footer"></footer>
-
-   <script src="/js/components.js"></script>
-</body>
-
+   <footer class="footer" style="background-color: #1e3a8a; color: white;">
+      <div class="container mx-auto max-w-6xl">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
+            <div class="footer-brand">
+               <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
+                  <span>🧒</span> Navigator Kids AI
+               </a>
+               <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+               
+               <div class="flex gap-4 mt-6">
+                  <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="#" target="_blank" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-facebook"></i>
+                  </a>
+               </div>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
+               <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
+               <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
+               <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
+               <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
+               <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
+               <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
+               <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
+               <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
+               <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
+               <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
+               <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
+            </div>
+         </div>
+         <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
+            <p>© 2026 Navigator Kids AI™</p>
+         </div>
+      </div>
+   </footer>
+   </body>
 </html>
