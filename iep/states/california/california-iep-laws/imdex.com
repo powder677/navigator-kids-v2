@@ -150,7 +150,7 @@
          <h2>Related Resources</h2>
          <p><strong>For more on California special education:</strong></p>
          <ul>
-            <li><a href="/iep/states/california-timeline/">California IEP Timelines</a> - A deep dive into the 15/60 day rules.</li>
+            <li><a href="/iep/states/california/california-timeline/">California IEP Timelines</a> - A deep dive into the 15/60 day rules.</li>
             <li><a href="/iep/states/california-recordings/">Recording Your IEP Meeting</a> - Detailed guide on the technology and the law.</li>
             <li><a href="/iep/how-to-prepare-for-an-iep-meeting/">Meeting Prep Guide</a> - What to bring to the table.</li>
          </ul>
