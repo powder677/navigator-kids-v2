@@ -6,138 +6,220 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
    <title>New York IEP Timeline: The 60-Day Rule and What Happens When Schools Miss It</title>
-
    <meta name="description" content="Is the NYC DOE delaying your child's IEP? Understand the 60-day timeline (Part 200.4), the 'Jose P.' rights, and how to file for an Impartial Hearing to get services." />
-
    <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/new-york-timeline/" />
 
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css" />
+   
+   <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
+<body class="bg-[#F9F7F2]">
 
-   <header id="site-header"></header>
-
-   <main class="container iep-content">
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" rel="nofollow" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP State Guide</a>
+         <a href="/cart/" rel="nofollow" style="display: block; padding: 0.5rem 0; color: #4b5563;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
       <article class="iep-article">
 
-         <nav class="iep-breadcrumbs">
-            <a href="/iep/states/">← Back to State Map</a>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/states/" class="hover:text-blue-600">State Map</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/new-york/" class="hover:text-blue-600">New York</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Timeline Guide</span>
          </nav>
 
-         <h1>New York IEP Timeline: The 60-Day Rule and What Happens When Schools Miss It</h1>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">New York IEP Timeline: The 60-Day Rule and What Happens When Schools Miss It</h1>
 
-         <p>If you are a parent in New York City (or anywhere in NY State), you know the drill. You sign the paperwork, and then… you wait.</p>
-         <p>You call the Committee on Special Education (CSE). You email the school psychologist. You get a voicemail full message or a polite "we’re working on it." Meanwhile, the school year is ticking away, and your child is falling further behind.</p>
-         <p>In New York, delays are not just annoying—they are illegal. But the rules here are different than in other states.</p>
-         <p>While federal law gives a "reasonable timeframe," <strong>New York State Regulations (Part 200.4)</strong> and the <strong>NYC <em>Jose P.</em> Consent Decree</strong> set hard deadlines. If the DOE misses them, you have the right to force their hand.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">If you are a parent in New York City (or anywhere in NY State), you know the drill. You sign the paperwork, and then… you wait.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">You call the Committee on Special Education (CSE). You email the school psychologist. You get a voicemail full message or a polite "we’re working on it." Meanwhile, the school year is ticking away, and your child is falling further behind.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">In New York, delays are not just annoying—they are illegal. But the rules here are different than in other states.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">While federal law gives a "reasonable timeframe," <strong>New York State Regulations (Part 200.4)</strong> and the <strong>NYC <em>Jose P.</em> Consent Decree</strong> set hard deadlines. If the DOE misses them, you have the right to force their hand.</p>
 
-         <h2>The Timeline: 60 Calendar Days (With a Catch)</h2>
-         <p>In New York, the clock starts the moment the district receives your <strong>signed Consent for Evaluation</strong>.</p>
-         <p>From that date, the district has <strong>60 Calendar Days</strong> to:</p>
-         <ol>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Timeline: 60 Calendar Days (With a Catch)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">In New York, the clock starts the moment the district receives your <strong>signed Consent for Evaluation</strong>.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">From that date, the district has <strong>60 Calendar Days</strong> to:</p>
+         <ol class="list-decimal pl-6 text-gray-700 space-y-2 mb-6">
             <li>Complete all evaluations (Psychological, Educational, Speech, etc.).</li>
             <li>Hold the CSE meeting (Eligibility Meeting).</li>
             <li>Determine eligibility and recommend placement.</li>
          </ol>
-         <p><strong>Note:</strong> "Calendar Days" means weekends count. The only time the clock pauses is during the summer (July/August) in some specific instances, but generally, the district cannot simply "take the summer off" if consent was signed in May.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>Note:</strong> "Calendar Days" means weekends count. The only time the clock pauses is during the summer (July/August) in some specific instances, but generally, the district cannot simply "take the summer off" if consent was signed in May.</p>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>For NYC Parents: The "Jose P." Factor</h2>
-            <p>If you live in one of the 32 NYC Community School Districts, you have an extra layer of protection. A decades-old court case called <em>Jose P. v. Ambach</em> monitors the NYC DOE’s timeliness.</p>
-            <ul>
+         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">For NYC Parents: The "Jose P." Factor</h2>
+            <p class="text-gray-700 mb-2">If you live in one of the 32 NYC Community School Districts, you have an extra layer of protection. A decades-old court case called <em>Jose P. v. Ambach</em> monitors the NYC DOE’s timeliness.</p>
+            <ul class="list-disc pl-6 text-gray-700">
                <li><strong>The Standard:</strong> Under <em>Jose P.</em>, the DOE is monitored on a strict timeline. If they are late, they are automatically flagged in the "SESIS" computer system.</li>
                <li><strong>The Reality:</strong> Being flagged doesn't always make them move faster. You still have to push.</li>
             </ul>
-         </section>
+         </div>
 
-         <h2>The Common Delay Tactics (And Why They Don't Work)</h2>
-         <p>Districts often try to "stop the clock" with excuses that sound official but have no legal standing. Here is how to translate them.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Common Delay Tactics (And Why They Don't Work)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Districts often try to "stop the clock" with excuses that sound official but have no legal standing. Here is how to translate them.</p>
 
-         <h3>Excuse 1: "We don't have a bilingual evaluator available."</h3>
-         <p><strong>The Law:</strong> Shortages do not excuse the deadline. If the DOE cannot provide a bilingual provider, they must issue you an <strong>RSA (Related Service Authorization)</strong> or fund an independent evaluation at market rates.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 1: "We don't have a bilingual evaluator available."</h3>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> Shortages do not excuse the deadline. If the DOE cannot provide a bilingual provider, they must issue you an <strong>RSA (Related Service Authorization)</strong> or fund an independent evaluation at market rates.</p>
 
-         <h3>Excuse 2: "The teacher hasn't finished the Response to Intervention (RtI) data."</h3>
-         <p><strong>The Law:</strong> RtI cannot be used to delay or deny an evaluation. Once you sign consent, the 60-day clock runs regardless of RtI status.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 2: "The teacher hasn't finished the Response to Intervention (RtI) data."</h3>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> RtI cannot be used to delay or deny an evaluation. Once you sign consent, the 60-day clock runs regardless of RtI status.</p>
 
-         <h3>Excuse 3: "We are waiting for the doctor's script."</h3>
-         <p><strong>The Law:</strong> While medical scripts are needed for certain services (like PT/OT), they should not hold up the <em>evaluation</em> process or the eligibility meeting.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 3: "We are waiting for the doctor's script."</h3>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> While medical scripts are needed for certain services (like PT/OT), they should not hold up the <em>evaluation</em> process or the eligibility meeting.</p>
 
-         <h2>What Happens When Day 61 Hits?</h2>
-         <p>If the deadline passes and you have no meeting scheduled, the district has denied your child a <strong>Free Appropriate Public Education (FAPE)</strong>. In New York, you have two primary options.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">What Happens When Day 61 Hits?</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">If the deadline passes and you have no meeting scheduled, the district has denied your child a <strong>Free Appropriate Public Education (FAPE)</strong>. In New York, you have two primary options.</p>
 
-         <h3>Option 1: The State Complaint (The Slow Lane)</h3>
-         <p>You can file a complaint with the New York State Education Department (NYSED). They will investigate, find the district in violation, and order them to finish the evaluation. <em>Cons:</em> Takes months. Does not usually result in "Compensatory Services" for your child.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Option 1: The State Complaint (The Slow Lane)</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">You can file a complaint with the New York State Education Department (NYSED). They will investigate, find the district in violation, and order them to finish the evaluation. <em>Cons:</em> Takes months. Does not usually result in "Compensatory Services" for your child.</p>
 
-         <h3>Option 2: The Impartial Hearing (The Fast Lane)</h3>
-         <p>This is the nuclear option, but in NYC, it is often the standard operating procedure. You file a request for an <strong>Impartial Hearing (Due Process)</strong>.</p>
-         <p><strong>Why this works:</strong> In NYC, filing for a hearing often triggers a <strong>"Resolution Meeting"</strong> within 15 days. The district sends a representative who <em>actually has the power to fix things</em> because they want you to drop the case. You can often negotiate an immediate IEP meeting, Independent Evaluations (IEEs), and Compensatory Services.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Option 2: The Impartial Hearing (The Fast Lane)</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">This is the nuclear option, but in NYC, it is often the standard operating procedure. You file a request for an <strong>Impartial Hearing (Due Process)</strong>.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>Why this works:</strong> In NYC, filing for a hearing often triggers a <strong>"Resolution Meeting"</strong> within 15 days. The district sends a representative who <em>actually has the power to fix things</em> because they want you to drop the case. You can often negotiate an immediate IEP meeting, Independent Evaluations (IEEs), and Compensatory Services.</p>
 
-         <h2>Your Action Plan: The "Notice of Delay"</h2>
-         <p>Do not jump straight to a hearing without creating a paper trail. If your child’s evaluation is overdue, send this email to the CSE Chairperson and the Principal immediately.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Your Action Plan: The "Notice of Delay"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Do not jump straight to a hearing without creating a paper trail. If your child’s evaluation is overdue, send this email to the CSE Chairperson and the Principal immediately.</p>
 
-         <blockquote>
+         <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg my-6 font-mono text-sm text-gray-700">
             <strong>Subject:</strong> NOTICE OF NON-COMPLIANCE - [Student Name] - 60 Day Violation<br><br>
             Dear Chairperson,<br><br>
             On [Date], the District received my signed consent to evaluate [Student Name]. Under 8 NYCRR § 200.4, the District had 60 calendar days to complete the evaluation and determine eligibility. That deadline expired on [Date].<br><br>
             As of today, we have received no evaluation reports and no meeting notice. This delay constitutes a procedural denial of FAPE.<br><br>
             Please confirm by [Date + 2 days] when the meeting will be held. If I do not receive a confirmed date, I will proceed with filing a Request for Impartial Hearing.
-         </blockquote>
+         </div>
 
-         <section class="iep-callout iep-callout-primary">
-            <h2>Don't Fight the NYC Bureaucracy Alone</h2>
-            <p>Navigating the NYC special education maze requires a map. I’ve created a <strong>NY IEP Delay Response Kit</strong> specifically for New York parents.</p>
-            <p><strong>This free kit includes:</strong></p>
-            <ul>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">Don't Fight the NYC Bureaucracy Alone</h2>
+            <p class="text-gray-700 mb-4">Navigating the NYC special education maze requires a map. I’ve created a <strong>NY IEP Delay Response Kit</strong> specifically for New York parents.</p>
+            <p class="text-gray-700 font-bold mb-2">This free kit includes:</p>
+            <ul class="list-none pl-0 space-y-2 mb-4 text-gray-700">
                <li>✅ <strong>The "60-Day Calculator"</strong> (Adjusted for NYS rules)</li>
                <li>✅ <strong>The "Impartial Hearing Request" Template</strong> (Simplified)</li>
                <li>✅ <strong>A directory of NYS advocacy organizations</strong></li>
             </ul>
-            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;" class="btn btn-primary btn-large">Download the NY Delay Response Kit</a>
-            <p><em>Stop waiting. Start demanding.</em></p>
-         </section>
+            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;">Download the NY Delay Response Kit (Coming Soon)</a>
+            <p class="text-sm italic mt-2 text-gray-600">Stop waiting. Start demanding.</p>
+         </div>
 
-         <h2>Frequently Asked Questions</h2>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
 
-         <h3>Does the 60-day timeline include summer break?</h3>
-         <p>Generally, no. The timeline applies during the school year. However, if you sign consent in July or August, the 60-day clock typically does not begin until the first day of school in September, unless your child is 12-month (ESY) eligible.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does the 60-day timeline include summer break?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Generally, no. The timeline applies during the school year. However, if you sign consent in July or August, the 60-day clock typically does not begin until the first day of school in September, unless your child is 12-month (ESY) eligible.</p>
 
-         <h3>What if I consented to the evaluation verbally?</h3>
-         <p>Verbal consent does NOT start the clock. The 60-day timeline only begins on the date the district <em>receives</em> your signed consent form. Always keep proof of delivery (email receipt or certified mail).</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What if I consented to the evaluation verbally?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Verbal consent does NOT start the clock. The 60-day timeline only begins on the date the district <em>receives</em> your signed consent form. Always keep proof of delivery (email receipt or certified mail).</p>
 
-         <h3>Can I get private evaluations paid for if they are late?</h3>
-         <p>Yes. If the district misses the 60-day deadline, you can request an Independent Educational Evaluation (IEE) at public expense. You usually need to file a Due Process complaint to force this, but the delay makes it a strong case.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I get private evaluations paid for if they are late?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Yes. If the district misses the 60-day deadline, you can request an Independent Educational Evaluation (IEE) at public expense. You usually need to file a Due Process complaint to force this, but the delay makes it a strong case.</p>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>What If You Want the Complete Strategy?</h2>
-            <p>A missed deadline is just one battle. The <strong>IEP Battle Plan</strong> gives you the full strategy for what happens <em>after</em> you get the meeting.</p>
-            <ul>
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">What If You Want the Complete Strategy?</h2>
+            <p class="text-gray-700 mb-4">A missed deadline is just one battle. The <strong>IEP Battle Plan</strong> gives you the full strategy for what happens <em>after</em> you get the meeting.</p>
+            <ul class="list-disc pl-6 text-gray-700 mb-4">
                <li>How to read the evaluation report to spot what they missed.</li>
                <li>Scripts for the 12 most common objections NYC schools use.</li>
                <li>How to maximize "SETSS" and Related Services in the IEP.</li>
             </ul>
-            <p><strong>$497 one-time payment. Lifetime access.</strong></p>
-            <a href="/iep/battle-plan/" class="btn btn-secondary">Learn more about the Battle Plan →</a>
-         </section>
+            <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
+            <a href="/iep/battle-plan/" class="inline-block bg-[#be185d] text-white font-bold py-3 px-6 rounded-full hover:bg-[#a0144d] transition-colors text-decoration-none">Learn more about the Battle Plan →</a>
+         </div>
 
-         <h2>Related Resources</h2>
-         <p><strong>For more on NYC special education:</strong></p>
-         <ul>
-            <li><a href="/iep/states/new-york/new-york-impartial-hearing/">How to File for an Impartial Hearing</a> - The next step if the delay continues.</li>
-            <li><a href="/iep/states/new-york/new-york-request-iep/">How to Request an IEP in NYC</a> - Ensure you started the process correctly.</li>
-            <li><a href="/iep/states/new-york/new-york-private-placement/">Private School Placement</a> - Using delays to secure tuition reimbursement.</li>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>For more on NYC special education:</strong></p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li><a href="/iep/states/new-york/new-york-impartial-hearing/" class="text-blue-700 hover:underline">How to File for an Impartial Hearing</a> - The next step if the delay continues.</li>
+            <li><a href="/iep/states/new-york/new-york-request-iep/" class="text-blue-700 hover:underline">How to Request an IEP in NYC</a> - Ensure you started the process correctly.</li>
+            <li><a href="/iep/states/new-york/new-york-private-placement/" class="text-blue-700 hover:underline">Private School Placement</a> - Using delays to secure tuition reimbursement.</li>
          </ul>
 
-         <hr />
+         <hr class="my-8 border-gray-200">
 
-         <p><em><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.</em></p>
+         <p class="text-sm text-gray-500 italic">
+            <strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.
+         </p>
 
       </article>
    </main>
 
-   <footer id="site-footer"></footer>
-
-   <script src="/js/components.js"></script>
-</body>
-
+   <footer class="footer" style="background-color: #1e3a8a; color: white;">
+      <div class="container mx-auto max-w-6xl">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
+            <div class="footer-brand">
+               <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
+                  <span>🧒</span> Navigator Kids AI
+               </a>
+               <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+               
+               <div class="flex gap-4 mt-6">
+                  <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="#" target="_blank" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-facebook"></i>
+                  </a>
+               </div>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
+               <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
+               <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
+               <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
+               <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
+               <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
+               <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
+               <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
+               <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
+               <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
+               <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
+               <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
+            </div>
+         </div>
+         <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
+            <p>© 2026 Navigator Kids AI™</p>
+         </div>
+      </div>
+   </footer>
+   </body>
 </html>
