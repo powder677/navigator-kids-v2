@@ -2,110 +2,228 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>California IEP Timeline: 60 Days, 50 Days, or 15 Days?</title>
-  <meta name="description" content="Confused by California's special education timelines? We break down the 15-day rule, the 60-day clock, and school break exceptions." />
+   <title>California IEP Timeline: 60 Days, 50 Days, or 15 Days? Understanding the Deadlines</title>
 
-  <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/california/california-timeline/" />
+   <meta name="description" content="Confused by California's special education timelines? We break down the 15-day assessment plan rule, the 60-day evaluation clock (EC 56043), and the 'school break' exceptions that delay your IEP." />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/california/california-timeline/" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
-
-  <script src="/js/components.js" defer></script>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css" />
+   
+   <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
 <body class="bg-[#F9F7F2]">
 
-<!-- ✅ FULL-WIDTH NAVBAR -->
-<nav id="navbar"
-     style="background:white;
-            border-bottom:1px solid #e5e7eb;
-            position:fixed;
-            top:0;
-            left:0;
-            right:0;
-            width:100%;
-            z-index:1000;">
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" rel="nofollow" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP State Guide</a>
+         <a href="/cart/" rel="nofollow" style="display: block; padding: 0.5rem 0; color: #4b5563;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
+      <article class="iep-article">
 
-  <div style="display:flex;
-              justify-content:space-between;
-              align-items:center;
-              width:100%;
-              padding:0.75rem 2rem;">
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/states/" class="hover:text-blue-600">State Map</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/california/" class="hover:text-blue-600">California</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Timeline Guide</span>
+         </nav>
 
-    <!-- Logo -->
-    <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
-      <span style="font-size:1.5rem;">🧒</span>
-      <span style="font-family:'Merriweather',serif;
-                   font-weight:800;
-                   font-size:1.25rem;
-                   color:#1e3a8a;">
-        NavigatorKidsAI
-      </span>
-    </a>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">California IEP Timeline: 60 Days, 50 Days, or 15 Days?</h1>
 
-    <!-- Desktop Links -->
-    <div class="hidden md:flex" style="align-items:center;gap:1.5rem;">
-      <a href="/about/" class="nav-link">About</a>
-      <a href="/products/" class="nav-link">Products</a>
-      <a href="/resources/" class="nav-link">Resources</a>
-      <a href="/iep/" class="nav-link">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="color:#be185d;font-weight:600;">IEP Battle Plan</a>
-      <a href="/iep/states/" class="nav-link">IEP State Guide</a>
+         <p class="text-gray-700 leading-relaxed mb-4">In California, Special Education math is often harder than Common Core math.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">You hear "60 days" from one advocate. You hear "15 days" from a teacher. You might even hear rumors of a "50-day" rule (which is a myth, by the way). Meanwhile, you are just waiting for the phone to ring so your child can get help.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">California Education Code (specifically <strong>EC 56043</strong>) sets very strict timelines for the IEP process. But unlike federal law, California has unique "Stop-the-Clock" rules that can turn a "60-day" timeline into a 4-month wait if you aren't careful.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">Here is the definitive guide to the three clocks that matter—and how to make sure the district doesn't run them out.</p>
 
-      <a href="/cart/" style="font-size:1.2rem;text-decoration:none;">
-        🛒 <span id="navCartCount" style="display:none;
-                                         background:#ef4444;
-                                         color:white;
-                                         border-radius:999px;
-                                         padding:0.1rem 0.45rem;
-                                         font-size:0.7rem;">0</span>
-      </a>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Clock 1: The Referral (15 Calendar Days)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Trigger:</strong> You send a written email or letter to the Principal or Director of Special Education saying, <em>"I am requesting a special education assessment for my child."</em></p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Deadline:</strong> The District has <strong>15 calendar days</strong> to respond. They cannot just say "We got your email." They must provide you with one of two things:</p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li>A <strong>proposed Assessment Plan (AP)</strong> for you to sign, OR</li>
+            <li>A <strong>Prior Written Notice (PWN)</strong> legally explaining why they are refusing to evaluate.</li>
+         </ul>
 
-      <a href="/quiz/" class="btn btn-primary">Take Quiz</a>
-    </div>
+         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">The "End of Year" Exception</h2>
+            <p class="text-gray-700 mb-2">If you send your referral letter <strong>10 days or fewer</strong> before the end of the school year, the clock stops. The district does not have to give you the Assessment Plan until the <strong>first 10 days of the next school year</strong>.</p>
+            <p class="text-gray-700"><strong>Strategy Tip:</strong> Do not send a referral letter on June 1st. You are just creating paperwork that will sit in a dark office until August. Send it in August.</p>
+         </div>
 
-    <!-- Mobile Toggle -->
-    <button id="navToggle" class="md:hidden" style="background:none;border:none;font-size:1.5rem;">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Clock 2: The Evaluation (60 Calendar Days)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Trigger:</strong> The district receives the <strong>Assessment Plan signed by YOU.</strong> (Note: The clock does NOT start when they send it to you. It starts when they receive it back. Sign it and return it immediately).</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Deadline:</strong> The District has <strong>60 calendar days</strong> to:</p>
+         <ol class="list-decimal pl-6 text-gray-700 space-y-2 mb-6">
+            <li>Assess your child.</li>
+            <li>Write the reports.</li>
+            <li>Hold the Initial IEP meeting to determine eligibility.</li>
+         </ol>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu"
-       style="display:none;
-              background:white;
-              padding:1rem;
-              border-top:1px solid #e5e7eb;">
-    <a href="/about/">About</a>
-    <a href="/products/">Products</a>
-    <a href="/resources/">Resources</a>
-    <a href="/iep/">IEP Guide</a>
-    <a href="/iep/battle-plan/">IEP Battle Plan</a>
-    <a href="/iep/states/">IEP State Guide</a>
-    <a href="/cart/">Cart</a>
-    <a href="/quiz/" class="btn btn-primary" style="margin-top:1rem;">Take Quiz</a>
-  </div>
-</nav>
+         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">The "Stop-the-Clock" Curveball</h2>
+            <p class="text-gray-700 mb-2">This is where parents get tricked. In California, "60 Days" does not mean two months. The timeline pauses for any school break <strong>longer than 5 school days</strong>.</p>
+            <ul class="list-disc pl-6 text-gray-700">
+               <li><strong>Winter Break:</strong> The clock stops.</li>
+               <li><strong>Spring Break:</strong> The clock stops (usually).</li>
+               <li><strong>Summer Break:</strong> The clock definitely stops.</li>
+            </ul>
+            <p class="text-sm italic mt-2 text-gray-600">Example: If you sign the assessment plan on November 15th, you might think your meeting is due January 15th. But because of the 2-week Winter Break, your meeting isn't actually due until early February.</p>
+         </div>
 
-<main class="iep-content" style="max-width:none;padding:100px 2rem;">
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Clock 3: The "Parent Request" Meeting (30 Days)</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Trigger:</strong> Your child already has an IEP, but it isn't working. You send a letter saying, <em>"I am requesting an IEP meeting to discuss [Issue]."</em></p>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Deadline:</strong> The District has <strong>30 calendar days</strong> to hold that meeting.</p>
+         <p class="text-gray-700 leading-relaxed mb-4"><em>Note: This timeline applies to meetings only, not new assessments.</em></p>
 
-  <!-- content unchanged -->
-</main>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The "50-Day" Myth</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Many parents ask about the "50-Day Rule." This is often a confusion with Section 504 timelines or old regulations. In California Special Education, <strong>there is no 50-day rule.</strong> Stick to the 60-day count.</p>
 
-<footer class="footer">
-  <div class="container">
-    <!-- footer unchanged -->
-  </div>
-</footer>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Initial vs. Triennial: A Critical Difference</h2>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li><strong>Initial IEPs:</strong> Follow the strict 60-day timeline from consent.</li>
+            <li><strong>Triennials (Re-evaluations):</strong> These are due <strong>every 3 years</strong> from the date of the last evaluation. While the "60-day" clock still applies to the assessment process, the hard deadline is the 3-year anniversary date. The district cannot "delay" a triennial past the anniversary just because of a break—they are legally required to plan ahead.</li>
+         </ul>
 
-</body>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">Don't Do the Math in Your Head</h2>
+            <p class="text-gray-700 mb-4">Calculating "60 days minus weekends minus holidays minus breaks greater than 5 days" is a headache. That is why I built a tool to do it for you.</p>
+            <p class="text-gray-700 font-bold mb-2">The California IEP Timeline Calculator:</p>
+            <ul class="list-none pl-0 space-y-2 mb-4 text-gray-700">
+               <li>✅ Enter your "Consent Signed" Date</li>
+               <li>✅ Select your "School Break" weeks</li>
+               <li>✅ <strong>Output:</strong> The exact date the District is legally required to hold your meeting</li>
+            </ul>
+            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;">Download the CA Timeline Calculator (Coming Soon)</a>
+            <p class="text-sm italic mt-2 text-gray-600">If the date passes, you are owed a remedy. Know your dates.</p>
+         </div>
+
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">What If You Want the Complete Strategy?</h2>
+            <p class="text-gray-700 mb-4">Knowing the timeline is just the start. If they miss the deadline, you have leverage. The <strong>IEP Battle Plan</strong> teaches you how to use that leverage to get more services.</p>
+            <ul class="list-disc pl-6 text-gray-700 mb-4">
+               <li>How to file a Compliance Complaint with the CDE when they are late.</li>
+               <li>How to negotiate for "Compensatory Education" (make-up hours).</li>
+               <li>Scripts to use when they try to rush the meeting at the last minute.</li>
+            </ul>
+            <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
+            <a href="/iep/battle-plan/" class="inline-block bg-[#be185d] text-white font-bold py-3 px-6 rounded-full hover:bg-[#a0144d] transition-colors text-decoration-none">Learn more about the Battle Plan →</a>
+         </div>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
+
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does the 60-day timeline include weekends?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Yes. The law specifies "60 days," which generally implies calendar days. However, the timeline pauses for school breaks longer than 5 days, which complicates the count.</p>
+
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What if the school says they are "short-staffed"?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Staffing shortages are not a legal exception to the 60-day timeline under California Education Code. If they are late, they are out of compliance.</p>
+
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does the 15-day timeline apply to verbal requests?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">No. You must put your request in writing. A verbal conversation in the parking lot does not start the 15-day clock for an Assessment Plan.</p>
+
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I request an IEP meeting anytime?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Yes. Under EC 56343(c), a parent can request an IEP meeting to review the individualized education program. The district must hold it within 30 days.</p>
+
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What happens if I don't sign the assessment plan?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">The 60-day clock never starts. The district cannot evaluate your child without your informed written consent.</p>
+
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>For more on California special education:</strong></p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li><a href="/iep/states/california/california-iep-laws/" class="text-blue-700 hover:underline">California IEP Laws</a> - The broader rights you have in CA.</li>
+            <li><a href="/iep/states/california/california-iee/" class="text-blue-700 hover:underline">Requesting an Independent Evaluation</a> - If the evaluation was rushed or poor.</li>
+            <li><a href="/iep/states/california/california-district-comparison/" class="text-blue-700 hover:underline">District Comparison</a> - See how your district stacks up.</li>
+         </ul>
+
+         <hr class="my-8 border-gray-200">
+
+         <p class="text-sm text-gray-500 italic">
+            <strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.
+         </p>
+
+      </article>
+   </main>
+
+   <footer class="footer" style="background-color: #1e3a8a; color: white;">
+      <div class="container mx-auto max-w-6xl">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
+            <div class="footer-brand">
+               <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
+                  <span>🧒</span> Navigator Kids AI
+               </a>
+               <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+               
+               <div class="flex gap-4 mt-6">
+                  <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="#" target="_blank" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-facebook"></i>
+                  </a>
+               </div>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
+               <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
+               <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
+               <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
+               <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
+               <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
+               <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
+               <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
+               <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
+               <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
+               <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
+               <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
+            </div>
+         </div>
+         <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
+            <p>© 2026 Navigator Kids AI™</p>
+         </div>
+      </div>
+   </footer>
+   </body>
 </html>
