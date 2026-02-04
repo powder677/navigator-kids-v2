@@ -11,112 +11,196 @@
 
    <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/new-york-autism-services/" />
 
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="/css/styles.css" />
+   
+   <script src="/js/components.js" defer></script>
+   <script src="/js/form-handler.js" defer></script>
 </head>
 
-<body>
+<body class="bg-[#F9F7F2]">
 
-   <header id="site-header"></header>
-
-   <main class="container iep-content">
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" rel="nofollow" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
+         </div>
+         <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563;">About</a>
+         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Products</a>
+         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Resources</a>
+         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP Guide</a>
+         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
+         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP State Guide</a>
+         <a href="/cart/" rel="nofollow" style="display: block; padding: 0.5rem 0; color: #4b5563;">Cart</a>
+         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+      </div>
+   </nav>
+   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
       <article class="iep-article">
 
-         <nav class="iep-breadcrumbs">
-            <a href="/iep/states/">← Back to State Map</a>
+         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+            <a href="/iep/states/" class="hover:text-blue-600">State Map</a>
+            <span class="mx-2">/</span>
+            <a href="/iep/states/new-york/" class="hover:text-blue-600">New York</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800">Autism Services</span>
          </nav>
 
-         <h1>Autism Services in NYC: The 12-Month IEP and Extended School Year</h1>
+         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">Autism Services in NYC: The 12-Month IEP and Extended School Year</h1>
 
-         <p>June is coming. For most NYC parents, that means camp forms and beach trips. For parents of children with autism, it means the <strong>"Summer Slide"</strong> anxiety.</p>
-         <p>You worked hard all year to get your child to sit for 10 minutes, or to decode three-letter words. You know that if they take two months off, those skills might vanish. You need summer services.</p>
-         <p>But in the NYC Department of Education (DOE), getting a <strong>12-Month IEP</strong> (often called Extended School Year or ESY) is not automatic—even for students with an Autism classification. The system is designed to reject you unless you can prove one specific thing: <strong>Substantial Regression</strong>.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">June is coming. For most NYC parents, that means camp forms and beach trips. For parents of children with autism, it means the <strong>"Summer Slide"</strong> anxiety.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">You worked hard all year to get your child to sit for 10 minutes, or to decode three-letter words. You know that if they take two months off, those skills might vanish. You need summer services.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">But in the NYC Department of Education (DOE), getting a <strong>12-Month IEP</strong> (often called Extended School Year or ESY) is not automatic—even for students with an Autism classification. The system is designed to reject you unless you can prove one specific thing: <strong>Substantial Regression</strong>.</p>
 
-         <h2>The Standard: It's Not About "Benefit"</h2>
-         <p>Here is the hard truth: The law does not care if your child would "benefit" from summer school. Every child would benefit from summer school.</p>
-         <p>To qualify for a 12-Month IEP in New York, you must meet the legal standard defined in <strong>Part 200.6(k)</strong> of the Commissioner's Regulations:</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Standard: It's Not About "Benefit"</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Here is the hard truth: The law does not care if your child would "benefit" from summer school. Every child would benefit from summer school.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">To qualify for a 12-Month IEP in New York, you must meet the legal standard defined in <strong>Part 200.6(k)</strong> of the Commissioner's Regulations:</p>
 
-         <blockquote>
+         <div class="bg-gray-100 p-6 rounded-lg border-l-4 border-gray-500 my-6">
             <strong>"Substantial Regression":</strong> A student is eligible only if they would lose so much skill during the summer that it would take <strong>at least 8 weeks</strong> (the "inordinate period of review") just to get back to where they were in June.
-         </blockquote>
+         </div>
 
-         <p>The math is brutal but simple:</p>
-         <ul>
+         <p class="text-gray-700 leading-relaxed mb-4">The math is brutal but simple:</p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
             <li>If your child forgets a math fact but relearns it in two weeks? <strong>Denied.</strong></li>
             <li>If your child forgets how to self-regulate and it takes until November to re-stabilize? <strong>Eligible.</strong></li>
          </ul>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>The "ASD Nest" and "Horizon" Reality Check</h2>
-            <p>Many parents assume that if their child is in a specialized program like <strong>ASD Nest</strong> or <strong>ASD Horizon</strong>, they automatically get summer services.</p>
-            <p><strong>This is false.</strong></p>
-            <p>ASD Nest and Horizon are legally <strong>10-month programs</strong>. They follow the standard school calendar. While some students in these programs <em>do</em> get ESY, it is an "add-on" service that must be fought for separately based on individual regression data. It is not baked into the program model.</p>
-         </section>
+         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">The "ASD Nest" and "Horizon" Reality Check</h2>
+            <p class="text-gray-700 mb-4">Many parents assume that if their child is in a specialized program like <strong>ASD Nest</strong> or <strong>ASD Horizon</strong>, they automatically get summer services.</p>
+            <p class="text-gray-700 font-bold mb-2">This is false.</p>
+            <p class="text-gray-700">ASD Nest and Horizon are legally <strong>10-month programs</strong>. They follow the standard school calendar. While some students in these programs <em>do</em> get ESY, it is an "add-on" service that must be fought for separately based on individual regression data. It is not baked into the program model.</p>
+         </div>
 
-         <h2>How to Prove It: The "September Data" Trap</h2>
-         <p>Most parents walk into the IEP meeting in April and say, <em>"I just know he will regress."</em> The DOE representative will smile and say, <em>"Let's wait and see."</em></p>
-         <p>You cannot win on feelings. You win on data. And the most important data exists in <strong>September</strong>.</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">How to Prove It: The "September Data" Trap</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">Most parents walk into the IEP meeting in April and say, <em>"I just know he will regress."</em> The DOE representative will smile and say, <em>"Let's wait and see."</em></p>
+         <p class="text-gray-700 leading-relaxed mb-4">You cannot win on feelings. You win on data. And the most important data exists in <strong>September</strong>.</p>
 
-         <h3>The Winning Evidence Chain</h3>
-         <p>To win a 12-month IEP for this coming summer, you need to show what happened <em>last</em> summer (or after a long break like Winter Recess).</p>
-         <ol>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">The Winning Evidence Chain</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">To win a 12-month IEP for this coming summer, you need to show what happened <em>last</em> summer (or after a long break like Winter Recess).</p>
+         <ol class="list-decimal pl-6 text-gray-700 space-y-2 mb-6">
             <li><strong>The June Baseline:</strong> Find the progress report from last June. (e.g., "Can read 20 sight words").</li>
             <li><strong>The September Baseline:</strong> Find the first data point from last September. (e.g., "Can read 5 sight words").</li>
             <li><strong>The Recoupment Timeline:</strong> Look at the logs. When did they get back to 20 words? Was it October 1st? (Not enough time). Was it November 15th? (<strong>Bingo. That's 8 weeks.</strong>)</li>
          </ol>
 
-         <h2>Don't Have Data? Start Collecting Now.</h2>
-         <p>If you don't have last year's data, use the upcoming <strong>Mid-Winter Recess</strong> or <strong>Spring Break</strong> as a mini-experiment.</p>
-         <p>Ask the teacher to record data on the Friday before break and the Monday/Tuesday after break. If your child shows a significant drop after just one week off, you can extrapolate that to a 2-month summer break to argue for "Substantial Regression".</p>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Don't Have Data? Start Collecting Now.</h2>
+         <p class="text-gray-700 leading-relaxed mb-4">If you don't have last year's data, use the upcoming <strong>Mid-Winter Recess</strong> or <strong>Spring Break</strong> as a mini-experiment.</p>
+         <p class="text-gray-700 leading-relaxed mb-4">Ask the teacher to record data on the Friday before break and the Monday/Tuesday after break. If your child shows a significant drop after just one week off, you can extrapolate that to a 2-month summer break to argue for "Substantial Regression".</p>
 
-         <section class="iep-callout iep-callout-primary">
-            <h2>Make the Case for Summer Services</h2>
-            <p>Don't let the DOE tell you "we don't do that here." I’ve drafted an <strong>ESY Justification Letter Template</strong> specifically for NYC parents.</p>
-            <p>It helps you organize your regression data and cites the exact Part 200 regulations needed to trigger approval.</p>
-            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;" class="btn btn-primary btn-large">Download the ESY Justification Template</a>
-            <p><em>Secure your child's spot before the budget runs out.</em></p>
-         </section>
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">Make the Case for Summer Services</h2>
+            <p class="text-gray-700 mb-4">Don't let the DOE tell you "we don't do that here." I’ve drafted an <strong>ESY Justification Letter Template</strong> specifically for NYC parents.</p>
+            <p class="text-gray-700 mb-4">It helps you organize your regression data and cites the exact Part 200 regulations needed to trigger approval.</p>
+            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;">Download the ESY Justification Template (Coming Soon)</a>
+            <p class="text-sm italic mt-2 text-gray-600">Secure your child's spot before the budget runs out.</p>
+         </div>
 
-         <h2>Frequently Asked Questions</h2>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
 
-         <h3>Does an Autism diagnosis automatically qualify a child for 12-month services?</h3>
-         <p>No. In New York, eligibility is based on "regression," not disability category. A child with Autism who does not show substantial regression will be denied 12-month services.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does an Autism diagnosis automatically qualify a child for 12-month services?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">No. In New York, eligibility is based on "regression," not disability category. A child with Autism who does not show substantial regression will be denied 12-month services.</p>
 
-         <h3>Can I get ESY just for social skills?</h3>
-         <p>Yes. Regression isn't just academic. If a student loses the ability to self-regulate, socialize, or manage behavior over the summer, that counts as substantial regression.</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I get ESY just for social skills?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">Yes. Regression isn't just academic. If a student loses the ability to self-regulate, socialize, or manage behavior over the summer, that counts as substantial regression.</p>
 
-         <h3>What if the school says they don't have a summer program?</h3>
-         <p>That is not a legal excuse. If the IEP team determines your child needs 12-month services, the district <em>must</em> create a program, find a placement, or fund a private program (via an RSA or P-1 letter).</p>
+         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What if the school says they don't have a summer program?</h3>
+         <p class="text-gray-700 leading-relaxed mb-4">That is not a legal excuse. If the IEP team determines your child needs 12-month services, the district <em>must</em> create a program, find a placement, or fund a private program (via an RSA or P-1 letter).</p>
 
-         <section class="iep-callout iep-callout-warning">
-            <h2>What If You Want the Complete Strategy?</h2>
-            <p>Winning ESY is often just the warm-up act for the next school year. The <strong>IEP Battle Plan</strong> helps you secure the services your child needs year-round.</p>
-            <ul>
+         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">What If You Want the Complete Strategy?</h2>
+            <p class="text-gray-700 mb-4">Winning ESY is often just the warm-up act for the next school year. The <strong>IEP Battle Plan</strong> helps you secure the services your child needs year-round.</p>
+            <ul class="list-disc pl-6 text-gray-700 mb-4">
                <li>How to force the school to take data <em>correctly</em>.</li>
                <li>Scripts for when they offer a "generic" summer camp instead of special education.</li>
                <li>How to leverage ESY denial into private school tuition reimbursement.</li>
             </ul>
-            <p><strong>$497 one-time payment. Lifetime access.</strong></p>
-            <a href="/iep/battle-plan/" class="btn btn-secondary">Learn more about the Battle Plan →</a>
-         </section>
+            <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
+            <a href="/iep/battle-plan/" class="inline-block bg-[#be185d] text-white font-bold py-3 px-6 rounded-full hover:bg-[#a0144d] transition-colors text-decoration-none">Learn more about the Battle Plan →</a>
+         </div>
 
-         <h2>Related Resources</h2>
-         <p><strong>For more on NYC special education:</strong></p>
-         <ul>
-            <li><a href="/iep/states/new-york/new-york-timeline/">NYC 60-Day Evaluation Timeline</a> - Don't let delays eat up the school year.</li>
-            <li><a href="/iep/states/new-york/new-york-request-iep/">How to Request an IEP in NYC</a> - The first step in the process.</li>
-            <li><a href="/iep/states/new-york/request-iep-new-york/">New York IEP Laws</a> - Understanding your rights in the "Field Memo" state.</li>
+         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
+         <p class="text-gray-700 leading-relaxed mb-4"><strong>For more on NYC special education:</strong></p>
+         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
+            <li><a href="/iep/states/new-york/new-york-timeline/" class="text-blue-700 hover:underline">NYC 60-Day Evaluation Timeline</a> - Don't let delays eat up the school year.</li>
+            <li><a href="/iep/states/new-york/new-york-request-iep/" class="text-blue-700 hover:underline">How to Request an IEP in NYC</a> - The first step in the process.</li>
+            <li><a href="/iep/states/new-york/request-iep-new-york/" class="text-blue-700 hover:underline">New York IEP Laws</a> - Understanding your rights in the "Field Memo" state.</li>
          </ul>
 
-         <hr />
+         <hr class="my-8 border-gray-200">
 
-         <p><em><strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.</em></p>
+         <p class="text-sm text-gray-500 italic">
+            <strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.
+         </p>
 
       </article>
    </main>
 
-   <footer id="site-footer"></footer>
-
-   <script src="/js/components.js"></script>
-</body>
-
+   <footer class="footer" style="background-color: #1e3a8a; color: white;">
+      <div class="container mx-auto max-w-6xl">
+         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
+            <div class="footer-brand">
+               <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
+                  <span>🧒</span> Navigator Kids AI
+               </a>
+               <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
+               <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+               
+               <div class="flex gap-4 mt-6">
+                  <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="#" target="_blank" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors text-xl">
+                     <i class="fa-brands fa-facebook"></i>
+                  </a>
+               </div>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
+               <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
+               <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
+               <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
+               <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
+               <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
+               <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
+               <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
+            </div>
+            
+            <div class="footer-links flex flex-col gap-3">
+               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
+               <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
+               <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
+               <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
+               <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
+            </div>
+         </div>
+         <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
+            <p>© 2026 Navigator Kids AI™</p>
+         </div>
+      </div>
+   </footer>
+   </body>
 </html>
