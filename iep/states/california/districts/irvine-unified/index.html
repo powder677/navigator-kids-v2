@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Irvine Unified IEP Strategies | Navigator Kids AI</title>
+   <meta name="description" content="Special Education guidance for Irvine Unified families. Navigating IEPs in a high-performing, master-planned community. Strategies for 2e students and IUSD compliance.">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+         color: #1f2937;
+         line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+         font-family: 'Merriweather', serif;
+         color: #1e3a8a;
+      }
+
+      .hero-section {
+         background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1464047736614-af63643285bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+         background-size: cover;
+         background-position: center;
+         color: white;
+         padding: 5rem 0;
+      }
+
+      .content-container {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 2rem 1rem;
+      }
+
+      .feature-box {
+         background: #f0f9ff;
+         padding: 1.5rem;
+         border-radius: 0.5rem;
+         border-left: 4px solid #0284c7;
+         margin: 1.5rem 0;
+      }
+
+      .stat-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 1rem;
+         margin: 2rem 0;
+      }
+
+      .stat-card {
+         background: white;
+         padding: 1.5rem;
+         border-radius: 0.5rem;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         text-align: center;
+      }
+
+      .ad-block {
+         background: #f8fafc;
+         border: 1px solid #e2e8f0;
+         padding: 2rem;
+         margin-top: 3rem;
+         border-radius: 0.75rem;
+      }
+
+      .ad-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 1.5rem;
+      }
+
+      .ad-item {
+         background: white;
+         padding: 1rem;
+         border-radius: 0.5rem;
+         border: 1px solid #cbd5e1;
+      }
+
+      .btn-primary {
+         background-color: #2563eb;
+         color: white;
+         padding: 0.75rem 1.5rem;
+         border-radius: 0.5rem;
+         text-decoration: none;
+         font-weight: 600;
+         display: inline-block;
+         transition: background 0.2s;
+      }
+
+      .btn-primary:hover {
+         background-color: #1d4ed8;
+      }
+
+      .breadcrumb {
+         font-size: 0.875rem;
+         color: #6b7280;
+         margin-bottom: 1rem;
+      }
+
+      .breadcrumb a {
+         color: #2563eb;
+         text-decoration: none;
+      }
+   </style>
+</head>
+
+<body>
+
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;"> <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;"> <span class="logo-icon" style="font-size: 1.5rem;">🧒</span> <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span> </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;"> <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a> <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a> <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a> <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a> <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a> <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a> <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a> <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a> </div> <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;"> <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a> <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a> <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a> <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a> <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a> <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a> <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a> <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a> </div>
+   </nav>
+
+   <header class="hero-section">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem; text-align: center;"> <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;">California Special Education Resources</span>
+         <h1 style="font-size: 2.5rem; margin-top: 1rem; margin-bottom: 1.5rem; color: white;">Irvine Unified: Master-Planned Excellence & Individual Needs</h1>
+         <p style="font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">Advocating for 2e and neurodiverse students in a high-performing district. Strategies for eligibility and services in IUSD.</p>
+         <div style="margin-top: 2rem;"> <a href="/iep/states/california/" class="btn-primary" style="background-color: white; color: #1e3a8a;">View California State Guide</a> </div>
+      </div>
+   </header>
+
+   <main class="content-container">
+      <div class="breadcrumb"> <a href="/">Home</a> > <a href="/iep/states/california/">California</a> > Irvine Unified </div>
+
+      <section id="introduction">
+         <h2>Navigating the "Irvine Standard"</h2>
+         <p>Irvine Unified School District (IUSD) operates within one of the most meticulously planned communities in the United States. From Woodbridge to the Great Park, the city is designed for structure and excellence. The schools consistently rank among the best in California, attracting families globally. However, for a neurodiverse child, this "culture of excellence" can be a double-edged sword.</p>
+         <p>In a district where advanced placement classes and high test scores are the norm, students who are "Twice Exceptional" (2e)—gifted but struggling with disabilities like Autism or ADHD—often face a unique battle: proving they need help when their grades look "average."</p>
+      </section>
+
+      <section id="expansion-stress" style="margin-top: 3rem;">
+         <h2>Growing Pains in the Great Park</h2>
+         <p>IUSD is expanding rapidly, with new state-of-the-art campuses opening regularly in the Great Park neighborhoods. While the facilities are beautiful, rapid growth can strain Special Education resources.</p>
+
+         <div class="feature-box">
+            <h3 style="margin-top:0; font-size: 1.25rem;">New Schools, Young Teams</h3>
+            <p>New schools often mean new IEP teams who may be still establishing their workflows. It is critical to ensure that the "master plan" for your child's education is just as solid as the blueprints for the building. Do not assume that a new campus has all the specialized programs fully staffed on day one.</p>
+         </div>
+
+         <p>If you are zoned for a new school, ask specifically about the "Continuum of Services." If the school cannot provide the specialized instruction your child needs, the district must offer placement at a site that can. Review your rights regarding placement in our <a href="/iep/states/california/california-iep-laws/">California IEP Laws Guide</a>.</p>
+      </section>
+
+      <section id="strategy" style="margin-top: 3rem;">
+         <h2>Strategies for IUSD IEP Teams</h2>
+         <p>To advocate effectively in Irvine, where data and academic rigor rule:</p>
+
+         <h3>1. Combat the "Smart Kid" Denial</h3>
+         <p>IUSD administrators often see a child with average grades and assume they don't qualify for an IEP. This is the "eligibility wall." You must demonstrate that your child's disability is preventing them from accessing the curriculum <em>commensurate with their ability</em>. Use work samples that show the struggle behind the grade.</p>
+
+         <h3>2. Use Independent Educational Evaluations (IEE)</h3>
+         <p>If the district's assessment concludes your child is "fine" but you see significant struggles at home with regulation or executive function, do not hesitate. You have the right to request an <a href="/iep/states/california/california-iee/">Independent Educational Evaluation (IEE)</a>. In a district with high standards, getting a neutral, deep-dive assessment can be the key to unlocking services.</p>
+
+         <h3>3. Focus on Mental Health & Anxiety</h3>
+         <p>The pressure to perform in IUSD is real. Anxiety is a valid area of need for an IEP. If your child is school-refusing or having panic attacks due to academic pressure, this is an educational impact. Ensure the IEP includes goals for social-emotional well-being, not just academics.</p>
+      </section>
+
+      <section id="local-context" style="margin-top: 3rem;">
+         <h2>The Village Concept</h2>
+         <p>Irvine is built on the concept of "Villages," each with its own identity. Your child's IEP team should function like a village—a cohesive unit supporting their growth. But unlike the master-planned streets, your child's development won't always follow a straight line.</p>
+         <p>Whether you are in Turtle Rock or Portola Springs, the law remains the same. The district has a duty to find and serve children with disabilities (Child Find). Your advocacy ensures that the "Irvine Bubble" includes a place for your child to thrive just as they are.</p>
+      </section>
+
+      <section id="support" style="margin-top: 3rem;">
+         <h2>How Navigator Kids AI Supports Irvine Families</h2>
+         <p>We offer the high-level strategy required for a high-performing district.</p>
+         <ul style="list-style-type: none; padding: 0;">
+            <li style="margin-bottom: 1rem; display: flex; gap: 1rem;">
+               <span style="color: #0284c7; font-weight: bold;">✓</span>
+               <div><strong>Eligibility Analysis:</strong> We help you frame the argument for 2e students who are being denied services based on grades.</div>
+            </li>
+            <li style="margin-bottom: 1rem; display: flex; gap: 1rem;">
+               <span style="color: #0284c7; font-weight: bold;">✓</span>
+               <div><strong>Timeline Tracking:</strong> Ensure the district meets every deadline. See our <a href="/iep/states/california/california-timeline/">California Timeline Guide</a>.</div>
+            </li>
+            <li style="display: flex; gap: 1rem;">
+               <span style="color: #0284c7; font-weight: bold;">✓</span>
+               <div><strong>Draft Review:</strong> We scan proposed IEPs to ensure the accommodations (like extended time or reduced homework) are specific and enforceable.</div>
+            </li>
+         </ul>
+         <div style="margin-top: 2rem; text-align: center;">
+            <a href="/iep/battle-plan/" class="btn-primary" style="background-color: #0284c7;">Get Your IEP Battle Plan</a>
+         </div>
+      </section>
+
+      <section class="ad-block">
+         <h3 style="margin-top: 0; margin-bottom: 1.5rem;">South Orange County Resources</h3>
+         <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 2rem;">Professional resources frequently used by IUSD families.</p>
+
+         <div class="ad-grid">
+            <div class="ad-item">
+               <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Educational Psychologists</h4>
+               <p style="font-size: 0.875rem; color: #4b5563;">Private evaluators in Irvine and Newport Beach specializing in 2e profiles.</p>
+            </div>
+            <div class="ad-item">
+               <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Executive Function Coaches</h4>
+               <p style="font-size: 0.875rem; color: #4b5563;">Tutors focused on organization and study skills for rigorous IUSD curricula.</p>
+            </div>
+            <div class="ad-item">
+               <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Special Education Attorneys</h4>
+               <p style="font-size: 0.875rem; color: #4b5563;">Legal counsel for due process and compliance complaints in Orange County.</p>
+            </div>
+            <div class="ad-item">
+               <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Social Skills Groups</h4>
+               <p style="font-size: 0.875rem; color: #4b5563;">Programs near the Spectrum and UCI supporting social cognition.</p>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="footer" style="background-color: #1e3a8a; color: white; padding: 4rem 0;">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+
+            <div class="footer-brand">
+               <a href="/" class="logo" style="display:flex; align-items:center; gap:0.5rem; color: white; text-decoration: none; font-weight: 800; font-size: 1.5rem;">
+                  <span class="logo-icon">🧒</span> Navigator Kids AI
+               </a>
+               <p style="margin-top: 1rem; opacity: 0.8; line-height:1.5;">Your child's brain didn't come with a manual. Until now.</p>
+               <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+
+               <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                  <a href="[https://www.instagram.com/navigatorkidsai/](https://www.instagram.com/navigatorkidsai/)" target="_blank" aria-label="Instagram" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#" target="_blank" aria-label="Facebook" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"><i class="fa-brands fa-facebook"></i></a>
+               </div>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Quick Links</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/quiz/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Quiz</a></li>
+                  <li><a href="/free/de-escalation-kit/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Regulation Kit</a></li>
+                  <li><a href="/resources/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Articles</a></li>
+                  <li><a href="/tools/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Tools</a></li>
+               </ul>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Products</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/products/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">All Products</a></li>
+                  <li><a href="/products/#ai-prompts" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">AI Prompt Packs</a></li>
+                  <li><a href="/products/#activity-packets" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Activity Packets</a></li>
+               </ul>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Company</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/about/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">About Us</a></li>
+                  <li><a href="/contact/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Contact</a></li>
+                  <li><a href="/terms/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Terms of Service</a></li>
+                  <li><a href="/privacy/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Privacy Policy</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="footer-bottom" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; font-size: 0.875rem; opacity: 0.6;">
+            <p>© 2026 Navigator Kids AI™. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+         </div>
+      </div>
+   </footer>
+
+   <script>
+      // Mobile Navigation Toggle const navToggle = document.getElementById('navToggle'); const mobileMenu = document.getElementById('mobileMenu');
+
+      navToggle.addEventListener( & #39;click&# 39;, () = & gt; {
+         const isExpanded = navToggle.getAttribute( & #39;aria-expanded&# 39;) === & #39;true&# 39;;
+         navToggle.setAttribute( & #39;aria-expanded&# 39;, !isExpanded);
+         mobileMenu.style.display = isExpanded ? & #39;none&# 39;: & #39;flex&# 39;;
+      });
+   </script>
+
+</body>
+
+</html>
