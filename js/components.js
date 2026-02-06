@@ -132,5 +132,37 @@
       }
     } catch (e) {}
   }
+  <!-- IEP Battle Plan CTA - Site-wide conversion point -->
+<section class="bp-cta-global py-12 px-4 bg-[#faf6f0]">
+   <div class="container mx-auto max-w-4xl">
+      <div class="bg-[#1a2744] text-white p-8 md:p-12 rounded-2xl relative overflow-hidden shadow-2xl">
+         <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <i class="fa-solid fa-chess-knight absolute -bottom-10 -right-10 text-9xl"></i>
+         </div>
+         
+         <div class="relative z-10 max-w-2xl mx-auto text-center">
+            <span class="inline-block bg-white/10 text-[#d4a853] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-4">Stop Getting Steamrolled</span>
+            
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 font-serif">Knowing the <span class="text-[#d4a853]">Texas IEP Timeline</span> Is Just Step One.</h2>
+            
+            <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+               Parents in <strong>Texas</strong>, <strong>California</strong>, and <strong>New York</strong> face the same problem: schools know the IEP timeline laws—<em class="text-[#d4a853] not-italic">and exactly how to stall without breaking them.</em>
+            </p>
+            
+            <p class="text-white mb-8 text-xl font-semibold">
+               The <strong class="text-[#d4a853]">IEP Battle Plan</strong> gives you the scripts, data arguments, and live coaching to enforce those deadlines—and win.
+            </p>
+            
+            <a href="/iep/battle-plan/" class="inline-block bg-[#d4a853] text-[#1a2744] font-bold py-4 px-10 rounded-lg hover:bg-[#c29843] transition-all transform hover:scale-105 shadow-lg text-decoration-none text-lg mb-4">
+               Get Your Battle Plan — $497
+            </a>
+            
+            <div class="mt-6 text-sm text-gray-400">
+               <a href="/iep/" class="text-gray-400 hover:text-[#d4a853] underline transition-colors">Or browse the free IEP Library first</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
 
 })();
