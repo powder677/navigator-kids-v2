@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Texas ARD Guide: Walk In Dangerous | Navigator Kids AI</title>
+   <meta name="description" content="Don't just attend your next ARD meeting—dominate it. We provide the strategy, scripts, and local intelligence you need for Texas schools.">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+         color: #1f2937;
+         line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+         font-family: 'Merriweather', serif;
+         color: #1e3a8a;
+      }
+
+      .hero-section {
+         /* Darker overlay for more "dangerous/serious" tone */
+         background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1577985051167-0d49eec21977?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+         background-size: cover;
+         background-position: center;
+         color: white;
+         padding: 6rem 0;
+      }
+
+      .content-card {
+         background: white;
+         border: 1px solid #e5e7eb;
+         border-radius: 0.75rem;
+         padding: 2rem;
+         margin-bottom: 2rem;
+         transition: transform 0.2s;
+      }
+
+      .content-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      .district-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+         gap: 1rem;
+      }
+
+      .district-link {
+         display: block;
+         padding: 1rem;
+         background: white;
+         border: 1px solid #e2e8f0;
+         border-radius: 0.5rem;
+         text-decoration: none;
+         color: #1f2937;
+         font-weight: 500;
+         transition: all 0.2s;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .district-link:hover {
+         border-color: #2563eb;
+         color: #2563eb;
+         background: #f8fafc;
+      }
+
+      .sidebar-box {
+         background: #f8fafc;
+         border: 1px solid #e2e8f0;
+         border-radius: 0.75rem;
+         padding: 1.5rem;
+         position: sticky;
+         top: 2rem;
+      }
+
+      .tool-link {
+         display: flex;
+         align-items: center;
+         gap: 0.75rem;
+         padding: 0.75rem;
+         border-radius: 0.5rem;
+         transition: background 0.2s;
+         text-decoration: none;
+         color: #1e3a8a;
+         font-weight: 500;
+      }
+
+      .tool-link:hover {
+         background: #e0e7ff;
+      }
+   </style>
+</head>
+
+<body class="bg-slate-50">
+
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;"> <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;"> <span class="logo-icon" style="font-size: 1.5rem;">🧒</span> <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span> </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;"> <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a> <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a> <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a> <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a> <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a> <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a> <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a> <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a> </div> <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;"> <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a> <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a> <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a> <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a> <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a> <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a> <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a> <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a> </div>
+   </nav>
+
+   <header class="hero-section">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem; text-align: center;"> <span style="background: #be185d; color: white; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Texas Edition</span>
+         <h1 style="font-size: 3rem; margin-top: 1.5rem; margin-bottom: 1.5rem; color: white; line-height: 1.1;">Walk Into Your Next ARD Meeting <span style="color: #60a5fa;">Dangerous.</span></h1>
+         <p style="font-size: 1.25rem; opacity: 0.95; max-width: 750px; margin: 0 auto; font-weight: 300;">We are the experts in your corner. No more nodding along. No more "wait and see." Just data-driven strategy for your child's education.</p>
+      </div>
+   </header>
+
+   <main class="container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+      <div style="display: grid; grid-template-columns: 1fr 320px; gap: 3rem;">
+
+         <div class="main-content">
+
+            <section class="content-card">
+               <h2>The Texas Landscape (ARD & TEA)</h2>
+               <p style="margin-top: 1rem;">Texas operates under a unique special education framework. While federal law (IDEA) protects your rights, Texas uses specific terminology like <strong>ARD (Admission, Review, and Dismissal)</strong> rather than "IEP Team meeting."</p>
+               <p style="margin-top: 1rem;">Being "dangerous" in an ARD meeting doesn't mean being aggressive—it means being <strong>prepared</strong>. It means understanding the 11 strategies of the Texas Autism Supplement, knowing the exact timelines for an FIE (Full Individual Evaluation), and knowing how to respectfully but firmly disagree using a 10-day recess.</p>
+               <p style="margin-top: 1rem; font-style: italic; color: #4b5563;">Select your school district below to see hyperlocal strategies.</p>
+            </section>
+
+            <section>
+               <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Select Your School District</h3>
+               <div class="district-grid">
+                  <a href="/iep/states/texas/districts/houston-isd/" class="district-link">Houston ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/dallas-isd/" class="district-link">Dallas ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/cypress-fairbanks-isd/" class="district-link">Cypress-Fairbanks ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/northside-isd/" class="district-link">Northside ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/katy-isd/" class="district-link">Katy ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/fort-worth-isd/" class="district-link">Fort Worth ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/austin-isd/" class="district-link">Austin ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/fort-bend-isd/" class="district-link">Fort Bend ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/north-east-isd/" class="district-link">North East ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/arlington-isd/" class="district-link">Arlington ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/aldine-isd/" class="district-link">Aldine ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/conroe-isd/" class="district-link">Conroe ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/klein-isd/" class="district-link">Klein ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/pasadena-isd/" class="district-link">Pasadena ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/lewisville-isd/" class="district-link">Lewisville ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/round-rock-isd/" class="district-link">Round Rock ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/frisco-isd/" class="district-link">Frisco ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/humble-isd/" class="district-link">Humble ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/killeen-isd/" class="district-link">Killeen ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/plano-isd/" class="district-link">Plano ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/socorro-isd/" class="district-link">Socorro ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>                  
+                  <a href="/iep/states/texas/districts/garland-isd/" class="district-link">Garland ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/san-antonio-isd/" class="district-link">San Antonio ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+                  <a href="/iep/states/texas/districts/united-isd/" class="district-link">United ISD <i class="fa-solid fa-chevron-right text-gray-400"></i></a>
+               </div>
+            </section>
+         </div>
+
+         <aside class="sidebar">
+            <div class="sidebar-box">
+               <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Texas Toolkit</h3>
+               <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">Essential tools for your next ARD meeting.</p>
+
+               <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <a href="/iep/states/texas/ard-meeting-script/" class="tool-link">
+                     <i class="fa-solid fa-file-lines text-blue-600"></i> ARD Meeting Script
+                  </a>
+                  <a href="/iep/states/texas/texas-evaluation-timeline/" class="tool-link">
+                     <i class="fa-solid fa-calendar text-blue-600"></i> FIE Timelines
+                  </a>
+                  <a href="/iep/states/texas/dyslexia-in-texas/" class="tool-link">
+                     <i class="fa-solid fa-book text-blue-600"></i> Dyslexia Handbook
+                  </a>
+                  <a href="/iep/states/texas/tea-complaint/" class="tool-link">
+                     <i class="fa-solid fa-gavel text-blue-600"></i> File TEA Complaint
+                  </a>
+                  <a href="/iep/states/texas/how-to-request-compensatory-services/" class="tool-link">
+                     <i class="fa-solid fa-scale-balanced text-blue-600"></i> Compensatory Services
+                  </a>
+               </div>
+
+               <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #e2e8f0;">
+
+               <div style="background: #eff6ff; padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                  <h4 style="font-size: 1rem; color: #1e3a8a; margin-bottom: 0.5rem;">Need a Strategy?</h4>
+                  <p style="font-size: 0.85rem; color: #4b5563; margin-bottom: 1rem;">Don't walk into the ARD meeting alone. Get the AI-powered Battle Plan.</p>
+                  <a href="/iep/battle-plan/" style="display: block; background: #be185d; color: white; padding: 0.75rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Get Battle Plan</a>
+               </div>
+            </div>
+         </aside>
+
+      </div>
+   </main>
+
+   <footer class="footer" style="background-color: #1e3a8a; color: white; padding: 4rem 0;">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+
+            <div class="footer-brand">
+               <a href="/" class="logo" style="display:flex; align-items:center; gap:0.5rem; color: white; text-decoration: none; font-weight: 800; font-size: 1.5rem;">
+                  <span class="logo-icon">🧒</span> Navigator Kids AI
+               </a>
+               <p style="margin-top: 1rem; opacity: 0.8; line-height:1.5;">Your child's brain didn't come with a manual. Until now.</p>
+               <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
+
+               <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                  <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" aria-label="Instagram" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#" target="_blank" aria-label="Facebook" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"><i class="fa-brands fa-facebook"></i></a>
+               </div>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Quick Links</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/quiz/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Quiz</a></li>
+                  <li><a href="/free/de-escalation-kit/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Regulation Kit</a></li>
+                  <li><a href="/resources/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Articles</a></li>
+                  <li><a href="/tools/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Tools</a></li>
+               </ul>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Products</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/products/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">All Products</a></li>
+                  <li><a href="/products/#ai-prompts" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">AI Prompt Packs</a></li>
+                  <li><a href="/products/#activity-packets" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Activity Packets</a></li>
+               </ul>
+            </div>
+
+            <div class="footer-links">
+               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Company</h4>
+               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <li><a href="/about/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">About Us</a></li>
+                  <li><a href="/contact/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Contact</a></li>
+                  <li><a href="/terms/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Terms of Service</a></li>
+                  <li><a href="/privacy/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Privacy Policy</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="footer-bottom" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; font-size: 0.875rem; opacity: 0.6;">
+            <p>© 2026 Navigator Kids AI™. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+         </div>
+      </div>
+   </footer>
+
+   <script>
+      const navToggle = document.getElementById('navToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      navToggle.addEventListener('click', () => {
+         const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+         navToggle.setAttribute('aria-expanded', !isExpanded);
+         mobileMenu.style.display = isExpanded ? 'none' : 'flex';
+      });
+   </script>
+
+</body>
+</html>
