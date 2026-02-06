@@ -233,7 +233,7 @@
             If the delay was significant, request "compensatory services" to remediate the denial of FAPE. Texas law favors a qualitative approach to these services, meaning the district should provide enough extra support (such as tutoring or summer therapy) to place your child where they would have been had the evaluation been timely.
          </p>
 
-         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
+         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8" id="kit-capture-container">
             <h2 class="text-xl font-bold text-gray-900 mb-2">Get the Texas Evaluation Delay Action Kit</h2>
             <p class="text-gray-700 mb-4">Do not guess at the language. We have prepared the specific email templates and calculation tools you need to address these delays professionally and effectively.</p>
             <p class="text-gray-700 font-bold mb-2">This free kit includes:</p>
@@ -243,8 +243,19 @@
                <li>✅ <strong>Compensatory Services Worksheet</strong></li>
                <li>✅ <strong>The "Verbal Request" Recovery Script</strong></li>
             </ul>
-            <a href="#" class="inline-block bg-[#2563eb] text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition-colors text-decoration-none">Send Me the Texas Evaluation Delay Action Kit</a>
-            <p class="mt-4 italic text-sm text-gray-600">Delivered instantly to your inbox.</p>
+            
+            <form id="texas-delay-kit-form" class="mt-6">
+               <div class="flex flex-col sm:flex-row gap-3">
+                  <input type="email" id="texas-delay-kit-email" placeholder="Enter your email address" required 
+                         class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" />
+                  <button type="submit" class="bg-[#2563eb] text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors shadow-sm whitespace-nowrap border-none cursor-pointer">
+                     Send Me The Kit
+                  </button>
+               </div>
+               <p class="mt-3 text-xs text-gray-500 italic">
+                  <i class="fa-solid fa-lock mr-1"></i> We respect your privacy. Unsubscribe at any time.
+               </p>
+            </form>
          </div>
 
          <section class="mt-16">
@@ -369,6 +380,35 @@
          </div>
       </div>
    </footer>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         if (window.NavigatorForms) {
+            NavigatorForms.setupEmailForm({
+               formId: 'texas-delay-kit-form',
+               emailInputId: 'texas-delay-kit-email',
+               source: 'texas_evaluation_timeline_kit',
+               onSuccess: function(data) {
+                  // Replace the form container with the success message + download button
+                  const container = document.getElementById('kit-capture-container');
+                  container.innerHTML = `
+                     <div class="text-center animate-fade-in py-4">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fa-solid fa-circle-check"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">You're All Set!</h3>
+                        <p class="text-gray-600 mb-6">The Texas Evaluation Delay Action Kit is ready for you.</p>
+                        
+                        <a href="/downloads/texas-iep-evaluation-delay-action-kit.pdf" download class="inline-block bg-green-600 text-white font-bold py-4 px-10 rounded-full hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg no-underline text-lg">
+                           <i class="fa-solid fa-download mr-2"></i> Download PDF Now
+                        </a>
+                        
+                        <p class="mt-6 text-sm text-gray-500">We've also sent a copy to ${data.email}</p>
+                     </div>
+                  `;
+               }
+            });
+         }
+      });
+   </script>
 
 </body>
 
