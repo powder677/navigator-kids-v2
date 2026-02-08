@@ -193,59 +193,66 @@
       </section>
    </main>
 
-   <footer class="footer" style="background-color: #1e3a8a; color: white; padding: 4rem 0;">
-      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-         <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
-
-            <div class="footer-brand">
-               <a href="/" class="logo" style="display:flex; align-items:center; gap:0.5rem; color: white; text-decoration: none; font-weight: 800; font-size: 1.5rem;">
-                  <span class="logo-icon">🧒</span> Navigator Kids AI
+<footer class="footer bg-[#111827] text-white py-12">
+   <div class="container mx-auto px-4">
+      <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
+         
+         <div class="footer-brand col-span-1 md:col-span-1">
+            <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
+               <span class="logo-icon text-2xl">🧒</span>
+               <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
+            </a>
+            <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
+            <p class="mt-4 text-xs text-gray-400 opacity-80">
+               Tools for parents of twice-exceptional (2e) children ages 6-9.
+            </p>
+            
+            <div class="flex gap-4 mt-6">
+               <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
+                  <i class="fa-brands fa-instagram"></i>
                </a>
-               <p style="margin-top: 1rem; opacity: 0.8; line-height:1.5;">Your child's brain didn't come with a manual. Until now.</p>
-               <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
-
-               <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                  <ahref="https://www.instagram.com/navigatorkidsai/"></i></a>
-                  <a href="#" target="_blank" aria-label="Facebook" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"><i class="fa-brands fa-facebook"></i></a>
                </div>
-            </div>
+         </div>
 
-            <div class="footer-links">
-               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Quick Links</h4>
-               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-                  <li><a href="/quiz/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Quiz</a></li>
-                  <li><a href="/free/de-escalation-kit/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Regulation Kit</a></li>
-                  <li><a href="/resources/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Articles</a></li>
-                  <li><a href="/tools/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Free Tools</a></li>
-               </ul>
-            </div>
-
-            <div class="footer-links">
-               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Products</h4>
-               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-                  <li><a href="/products/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">All Products</a></li>
-                  <li><a href="/products/#ai-prompts" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">AI Prompt Packs</a></li>
-                  <li><a href="/products/#activity-packets" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Activity Packets</a></li>
-               </ul>
-            </div>
-
-            <div class="footer-links">
-               <h4 style="font-weight: 700; margin-bottom: 1rem; font-family:'Merriweather', serif;">Company</h4>
-               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-                  <li><a href="/about/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">About Us</a></li>
-                  <li><a href="/contact/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Contact</a></li>
-                  <li><a href="/terms/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Terms of Service</a></li>
-                  <li><a href="/privacy/" style="color: white; opacity: 0.8; text-decoration: none; transition: opacity 0.2s;">Privacy Policy</a></li>
-               </ul>
+         <div class="footer-links">
+            <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
+            <div class="flex flex-col gap-2">
+               <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
+               <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
+               <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
+               <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
             </div>
          </div>
 
-         <div class="footer-bottom" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; font-size: 0.875rem; opacity: 0.6;">
-            <p>© 2026 Navigator Kids AI™. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;"><strong>Disclaimer:</strong> This website provides educational information for parents. It is not a substitute for professional medical, psychological, or educational advice.</p>
+         <div class="footer-links">
+            <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
+            <div class="flex flex-col gap-2">
+               <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+               <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+               <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+            </div>
+         </div>
+
+         <div class="footer-links">
+            <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
+            <div class="flex flex-col gap-2">
+               <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
+               <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
+               <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
+               <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
+            </div>
          </div>
       </div>
-   </footer>
+
+      <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+         <p class="mb-2">© 2026 Navigator Kids AI™</p>
+         <p class="footer-disclaimer max-w-2xl mx-auto">
+            <strong>Disclaimer:</strong> This website provides educational information for parents.
+            It is not a substitute for professional medical, psychological, or educational advice.
+         </p>
+      </div>
+   </div>
+</footer>
 
    <script>
       // Simple script to toggle mobile menu document.getElementById('navToggle').addEventListener('click', function() { const menu = document.getElementById('mobileMenu'); if (menu.style.display === 'none' || menu.style.display === '') { menu.style.display = 'flex'; } else { menu.style.display = 'none'; } }); 
