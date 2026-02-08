@@ -1,365 +1,723 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
-  <loc>https://www.navigatorkidsai.com/</loc>
-  <lastmod>2026-02-04T16:46:33+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://www.navigatorkidsai.com/</loc>
+<lastmod>2026-02-08T12:23:23+00:00</lastmod>
+<priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/about/</loc>
-  <lastmod>2026-02-04T16:46:34+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://www.navigatorkidsai.com/about/</loc>
+<lastmod>2026-02-08T12:23:24+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/</loc>
-  <lastmod>2026-02-04T16:46:35+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://www.navigatorkidsai.com/products/</loc>
+<lastmod>2026-02-08T12:23:24+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/battle-plan/</loc>
-  <lastmod>2026-02-04T16:46:35+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://www.navigatorkidsai.com/resources/</loc>
+<lastmod>2026-02-08T12:23:24+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/</loc>
-  <lastmod>2026-02-04T16:46:35+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://www.navigatorkidsai.com/iep/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/products/</loc>
-  <lastmod>2026-02-04T16:46:34+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/battle-plan/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/</loc>
-  <lastmod>2026-02-04T16:46:34+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/quiz/</loc>
-  <lastmod>2026-02-04T16:46:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/quiz/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/free/de-escalation-kit/</loc>
-  <lastmod>2026-02-04T16:46:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/free/de-escalation-kit/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/tools/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/tools/</loc>
+<lastmod>2026-02-08T12:23:25+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/contact/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/contact/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/terms/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/terms/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/privacy/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/privacy/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/</loc>
-  <lastmod>2026-02-04T16:46:36+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/</loc>
+<lastmod>2026-02-08T12:23:26+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/florida/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/florida/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/illinois/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/illinois/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/pennsylvania/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/pennsylvania/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-jersey/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-jersey/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/de-escalation-script/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/de-escalation-script/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/meltdown-or-manipulation/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/meltdown-or-manipulation/</loc>
+<lastmod>2026-02-08T12:23:27+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/restraint-collapse/</loc>
-  <lastmod>2026-02-04T16:46:37+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/restraint-collapse/</loc>
+<lastmod>2026-02-08T12:23:28+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/emotional-intensity/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/emotional-intensity/</loc>
+<lastmod>2026-02-08T12:23:28+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/anxiety-intelligence/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/anxiety-intelligence/</loc>
+<lastmod>2026-02-08T12:23:28+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/cant-vs-wont/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/cant-vs-wont/</loc>
+<lastmod>2026-02-08T12:23:28+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/laziness-vs-dysfunction/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/laziness-vs-dysfunction/</loc>
+<lastmod>2026-02-08T12:23:28+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/routine-rescue/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/routine-rescue/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/dopamine-menu/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/dopamine-menu/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/smart-kid-lost-shoes/</loc>
-  <lastmod>2026-02-04T16:46:38+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/smart-kid-lost-shoes/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/seeker-vs-avoiders/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/seeker-vs-avoiders/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/sock-war/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/sock-war/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/touch-factor/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/touch-factor/</loc>
+<lastmod>2026-02-08T12:23:29+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/beige-diet/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/beige-diet/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/classroom-sensory-solutions/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/classroom-sensory-solutions/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/finding-peer-groups/</loc>
-  <lastmod>2026-02-04T16:46:39+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/finding-peer-groups/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/friendship-formula/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/friendship-formula/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/meaningful-friendship/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/meaningful-friendship/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/little-professor/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/little-professor/</loc>
+<lastmod>2026-02-08T12:23:30+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/introvert-vs-isolated/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/introvert-vs-isolated/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/homework-without-tears/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/homework-without-tears/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/freeze-on-easy-work/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/freeze-on-easy-work/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/asynchronous-development/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/resources/asynchronous-development/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/resources/sensory-solutions/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/what-is-an-iep/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/what-is-an-iep/</loc>
-  <lastmod>2026-02-04T16:46:40+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/iep-vs-504/</loc>
+<lastmod>2026-02-08T12:23:31+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/iep-vs-504/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/how-to-prepare-for-an-iep-meeting/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/how-to-prepare-for-an-iep-meeting/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/iep-meeting-checklist/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/iep-meeting-checklist/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/iep-meeting-questions/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/iep-meeting-questions/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/after-the-iep-meeting/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/after-the-iep-meeting/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/common-school-tactics/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/common-school-tactics/</loc>
-  <lastmod>2026-02-04T16:46:41+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/tools/accommodations/</loc>
+<lastmod>2026-02-08T12:23:32+00:00</lastmod>
+<priority>0.64</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/tools/accommodations/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/tools/sensory-scripts/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/tools/sensory-scripts/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/tools/ai-guide/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/tools/ai-guide/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.51</priority>
 </url>
-
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-timeline/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-timeline/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-dyslexia-screening/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-dyslexia-screening/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-autism-waiver/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-autism-waiver/</loc>
+<lastmod>2026-02-08T12:23:33+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-iee/</loc>
-  <lastmod>2026-02-04T16:46:42+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-iee/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-district-comparison/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-district-comparison/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/california/california-iep-laws/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/texas-evaluation-timeline/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/texas-evaluation-timeline/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/tea-complaint/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/tea-complaint/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/texas-compensatory-services/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/texas-compensatory-services/</loc>
+<lastmod>2026-02-08T12:23:34+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/ard-meeting-script/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/ard-meeting-script/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/texas/dyslexia-in-texas/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/dyslexia-in-texas/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-request-iep/</loc>
-  <lastmod>2026-02-04T16:46:43+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-timeline/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-request-iep/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-impartial-hearing/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-timeline/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-private-placement/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-impartial-hearing/</loc>
+<lastmod>2026-02-08T12:23:35+00:00</lastmod>
+<priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-autism-services/</loc>
-  <lastmod>2026-02-04T16:46:44+00:00</lastmod>
-  <priority>0.51</priority>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-private-placement/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.51</priority>
 </url>
-
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/new-york-autism-services/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.51</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/resources/sensory-solutions/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.51</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/los-angeles-unified/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/san-diego-unified/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/fresno-unified/</loc>
+<lastmod>2026-02-08T12:23:36+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/elk-grove-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/long-beach-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/san-francisco-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/san-juan-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/corona-norco-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/san-bernardino-city-unified/</loc>
+<lastmod>2026-02-08T12:23:37+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/clovis-unified/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/twin-rivers-unified/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/kern-high/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/sacramento-city-unified/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/capistrano-unified/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/riverside-unified/</loc>
+<lastmod>2026-02-08T12:23:38+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/santa-ana-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/garden-grove-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/poway-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/fremont-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/fontana-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/moreno-valley-unified/</loc>
+<lastmod>2026-02-08T12:23:39+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/stockton-unified/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/oakland-unified/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/irvine-unified/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/districts/visalia-unified/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/california/california-iep-laws/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/northside-isd/</loc>
+<lastmod>2026-02-08T12:23:40+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/katy-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/fort-worth-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/austin-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/fort-bend-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/north-east-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/arlington-isd/</loc>
+<lastmod>2026-02-08T12:23:41+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/aldine-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/klein-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/lewisville-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/round-rock-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/humble-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/killeen-isd/</loc>
+<lastmod>2026-02-08T12:23:42+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/plano-isd/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/socorro-isd/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/garland-isd/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/san-antonio-isd/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/districts/united-isd/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/how-to-request-compensatory-services/</loc>
+<lastmod>2026-02-08T12:23:43+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-02/</loc>
+<lastmod>2026-02-08T12:23:44+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-03/</loc>
+<lastmod>2026-02-08T12:23:44+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-06/</loc>
+<lastmod>2026-02-08T12:23:44+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-07/</loc>
+<lastmod>2026-02-08T12:23:44+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-08/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-09/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-10/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-11/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-12/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-13/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-14/</loc>
+<lastmod>2026-02-08T12:23:45+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-15/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-17/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-19/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-20/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-21/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-22/</loc>
+<lastmod>2026-02-08T12:23:46+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-24/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-25/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-26/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-27/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-28/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-29/</loc>
+<lastmod>2026-02-08T12:23:47+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-30/</loc>
+<lastmod>2026-02-08T12:23:48+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/districts/district-31/</loc>
+<lastmod>2026-02-08T12:23:48+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/new-york/request-iep-new-york/</loc>
+<lastmod>2026-02-08T12:23:48+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://www.navigatorkidsai.com/iep/states/texas/what-happens-when-texas-schools-miss-iep-evaluation-deadlines/</loc>
+<lastmod>2026-02-08T12:23:48+00:00</lastmod>
+<priority>0.33</priority>
+</url>
 </urlset>
