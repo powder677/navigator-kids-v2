@@ -2,465 +2,654 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="A library of parent-tested strategies for raising twice-exceptional, sensory-sensitive, and deep-thinking kids.">
-   <title>Parenting Resources | Navigator Kids AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert answers for parents of twice-exceptional (2e) children. Guides on IEPs, meltdowns, sensory processing, and executive function.">
+    <title>Parenting Resources & Answer Hub | Navigator Kids AI</title>
 
-   <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-   <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-   <script src="/js/components.js" defer></script>
-   <script src="/js/cart.js" defer></script>
+    <script src="/js/components.js" defer></script>
+    <script src="/js/cart.js" defer></script>
 
-   <style>
-      :root {
-         /* Premium Palette */
-         --color-navy: #3D405B;
-         --color-sage: #81B29A;
-         --color-sage-light: #A8D0BA;
-         --color-terracotta: #E07A5F;
-         --color-cream: #F9F7F2;
-         --color-white: #FFFFFF;
-         --color-text: #4A4E69;
-         --color-text-light: #6B6E8A;
-         --bg-color: #F9FAFB;
-         
-         --radius-lg: 0.5rem;
-         --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
+    <style>
+        :root {
+            /* Premium Palette */
+            --color-navy: #3D405B;
+            --color-sage: #81B29A;
+            --color-sage-light: #A8D0BA;
+            --color-terracotta: #E07A5F;
+            --color-cream: #F9F7F2;
+            --color-white: #FFFFFF;
+            --color-text: #4A4E69;
+            --color-text-light: #6B6E8A;
+            --bg-color: #F9FAFB;
 
-      body {
-         font-family: 'Inter', sans-serif;
-         background-color: var(--bg-color);
-         color: var(--color-text);
-         -webkit-font-smoothing: antialiased;
-      }
+            --radius-lg: 0.5rem;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
 
-      h1, h2, h3 {
-         font-family: 'Merriweather', serif;
-         color: var(--color-navy);
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+        }
 
-      /* Resources Index Specific Styles */
-      .resource-hero {
-         text-align: center;
-         padding: 4rem 1.5rem;
-         background: linear-gradient(180deg, var(--color-cream) 0%, #fff 100%);
-         border-bottom: 1px solid rgba(61, 64, 91, 0.05);
-      }
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--color-navy);
+        }
 
-      .resource-hero h1 {
-         font-size: 2.5rem;
-         margin-bottom: 1rem;
-         font-weight: 700;
-      }
+        /* Resources Index Specific Styles */
+        .resource-hero {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: linear-gradient(180deg, var(--color-cream) 0%, #fff 100%);
+            border-bottom: 1px solid rgba(61, 64, 91, 0.05);
+        }
 
-      .resource-hero p {
-         font-size: 1.2rem;
-         color: var(--color-text-light);
-         max-width: 600px;
-         margin: 0 auto;
-      }
+        .resource-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
 
-      .category-section {
-         margin-bottom: 4rem;
-      }
+        .resource-hero p {
+            font-size: 1.15rem;
+            color: var(--color-text);
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.6;
+        }
 
-      .category-title {
-         font-size: 1.5rem;
-         color: var(--color-navy);
-         border-bottom: 2px solid var(--color-sage-light);
-         padding-bottom: 0.75rem;
-         margin-bottom: 2rem;
-         display: flex;
-         align-items: center;
-         gap: 0.75rem;
-         font-weight: 700;
-      }
+        .plain-english {
+            background-color: #f0fdf4; /* Green-50 */
+            border-left: 4px solid var(--color-sage);
+            padding: 1.25rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            text-align: left;
+            border-radius: 0 0.5rem 0.5rem 0;
+            color: var(--color-text);
+        }
 
-      .category-icon {
-         background: var(--color-sage-light);
-         width: 40px;
-         height: 40px;
-         border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-size: 1.2rem;
-      }
+        .category-section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 6rem; /* For anchor linking */
+        }
 
-      .resource-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-         gap: 1.5rem;
-      }
+        .category-title {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            border-bottom: 2px solid var(--color-sage-light);
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+        }
 
-      .resource-card {
-         background: white;
-         border-radius: var(--radius-lg);
-         padding: 1.5rem;
-         box-shadow: var(--shadow-sm);
-         transition: all 0.3s ease;
-         border: 1px solid rgba(61, 64, 91, 0.05);
-         border-top: 4px solid var(--color-sage); /* Signature Sage Top Border */
-         display: flex;
-         flex-direction: column;
-         height: 100%;
-      }
+        .category-icon {
+            background: var(--color-sage-light);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
 
-      .resource-card:hover {
-         transform: translateY(-4px);
-         box-shadow: var(--shadow-md);
-         border-color: var(--color-sage);
-      }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
 
-      .resource-card h3 {
-         font-size: 1.15rem;
-         margin-bottom: 0.75rem;
-         font-weight: 700;
-      }
+        .resource-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(61, 64, 91, 0.05);
+            border-top: 4px solid var(--color-sage);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
-      .resource-card p {
-         font-size: 0.95rem;
-         color: var(--color-text-light);
-         line-height: 1.6;
-         flex-grow: 1;
-         margin-bottom: 1rem;
-      }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-terracotta);
+        }
 
-      .read-more {
-         margin-top: auto;
-         font-weight: 600;
-         color: var(--color-terracotta);
-         font-size: 0.9rem;
-         display: flex;
-         align-items: center;
-         gap: 6px;
-         transition: gap 0.2s;
-      }
-      
-      .read-more:hover {
-         gap: 10px;
-         text-decoration: underline;
-      }
-      
-      .breadcrumbs a {
-         color: var(--color-text-light);
-         font-size: 0.9rem;
-      }
-      .breadcrumbs a:hover {
-         color: var(--color-terracotta);
-      }
-      .breadcrumbs span {
-         color: var(--color-text-light);
-         font-size: 0.9rem;
-         margin: 0 0.5rem;
-      }
-   </style>
+        .resource-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .resource-card h3 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .resource-card h3 a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .resource-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .read-more {
+            margin-top: auto;
+            font-weight: 600;
+            color: var(--color-terracotta);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+            text-decoration: underline;
+        }
+
+        /* Quick Nav Buttons */
+        .quick-nav {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .quick-nav a {
+            background: white;
+            border: 1px solid var(--color-sage);
+            color: var(--color-navy);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .quick-nav a:hover {
+            background: var(--color-sage);
+            color: white;
+        }
+
+        /* Next Steps Section */
+        .next-steps-box {
+            background-color: var(--color-navy);
+            color: white;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-steps-box h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-steps-box ol {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            counter-reset: steps;
+        }
+
+        .next-steps-box li {
+            list-style: none;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-steps-box li::before {
+            counter-increment: steps;
+            content: counter(steps);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-terracotta);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bold;
+        }
+
+        .breadcrumbs a {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+        .breadcrumbs a:hover {
+            color: var(--color-terracotta);
+        }
+        .breadcrumbs span {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin: 0 0.5rem;
+        }
+    </style>
 </head>
 
 <body class="flex flex-col min-h-screen">
 
- <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-   <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-      
-      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-         <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-         <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
-            NavigatorKidsAI
-         </span>
-      </a>
-
-      <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-         <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-         <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-         <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-         <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-         
-         <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
-            🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
-         </a>
-
-         <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
-            Take Quiz
-         </a>
-      </div>
-
-      <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
-         <i class="fa-solid fa-bars"></i>
-      </button>
-   </div>
-
-   <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-      <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-      <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-      <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-      <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-      <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-      <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-      <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-      <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-   </div>
-</nav>
-
-   <main class="flex-grow pt-20">
-
-      <div class="container mx-auto px-4">
-         <nav class="breadcrumbs mt-4 mb-4">
-            <a href="/">Home</a>
-            <span>/</span>
-            <span class="font-semibold text-gray-800">Resources</span>
-         </nav>
-      </div>
-
-      <div class="resource-hero">
-         <div class="container mx-auto px-4">
-            <h1>Parenting Resources</h1>
-            <p>Practical scripts, strategies, and frameworks for raising high-potential, deep-feeling kids.</p>
-         </div>
-      </div>
-
-      <div class="container mx-auto px-4 py-12">
-
-         <section class="category-section">
-            <h2 class="category-title">
-               <span class="category-icon">❤️</span>
-               Emotional Regulation
-            </h2>
-            <div class="resource-grid">
-               <article class="resource-card">
-                  <h3><a href="/resources/de-escalation-script/">The Meltdown Script</a></h3>
-                  <p>Exactly what to say (and what NOT to say) when your child is in full meltdown mode.</p>
-                  <a href="/resources/de-escalation-script/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/meltdown-or-manipulation/">Meltdown or Manipulation?</a></h3>
-                  <p>How to tell the difference between a neurological crash and strategic behavior.</p>
-                  <a href="/resources/meltdown-or-manipulation/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/restraint-collapse/">Restraint Collapse</a></h3>
-                  <p>Why they are "angels" at school but explode the second they get home.</p>
-                  <a href="/resources/restraint-collapse/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/emotional-intensity/">Emotional Intensity</a></h3>
-                  <p>Living life at volume 10: Understanding the "High-Definition" emotional brain.</p>
-                  <a href="/resources/emotional-intensity/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/anxiety-intelligence/">Anxiety or Intelligence?</a></h3>
-                  <p>Why smart kids often over-calculate risk and look anxious.</p>
-                  <a href="/resources/anxiety-intelligence/" class="read-more">Read Article →</a>
-               </article>
-            </div>
-         </section>
-
-         <section class="category-section">
-            <h2 class="category-title">
-               <span class="category-icon">🧠</span>
-               Executive Function
-            </h2>
-            <div class="resource-grid">
-               <article class="resource-card">
-                  <h3><a href="/resources/cant-vs-wont/">Can't vs. Won't</a></h3>
-                  <p>Is it laziness or a brain block? How to spot the "Broken Ignition" switch.</p>
-                  <a href="/resources/cant-vs-wont/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/laziness-vs-dysfunction/">Laziness vs. Dysfunction</a></h3>
-                  <p>Distinguishing between lack of motivation and executive function gaps.</p>
-                  <a href="/resources/laziness-vs-dysfunction/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/routine-rescue/">Routine Rescue</a></h3>
-                  <p>Using predictable anchors to calm a sensitive nervous system.</p>
-                  <a href="/resources/routine-rescue/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/dopamine-menu/">The Dopamine Menu</a></h3>
-                  <p>How to jumpstart a bored brain without resorting to screens.</p>
-                  <a href="/resources/dopamine-menu/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/smart-kid-lost-shoes/">Why Smart Kids Lose Shoes</a></h3>
-                  <p>The "Ferrari Brain" paradox: Brilliant intellect, bicycle brakes.</p>
-                  <a href="/resources/smart-kid-lost-shoes/" class="read-more">Read Article →</a>
-               </article>
-            </div>
-         </section>
-
-         <section class="category-section">
-            <h2 class="category-title">
-               <span class="category-icon">👕</span>
-               Sensory Processing
-            </h2>
-            <div class="resource-grid">
-               <article class="resource-card">
-                  <h3><a href="/resources/seeker-vs-avoiders/">Seekers vs. Avoiders</a></h3>
-                  <p>Does your child crash into walls or hide under tables? The "Volume Knob" explained.</p>
-                  <a href="/resources/seeker-vs-avoiders/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/sock-war/">The Sock War</a></h3>
-                  <p>Why seams feel like razor blades and how to handle clothing battles.</p>
-                  <a href="/resources/sock-war/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/touch-factor/">The Touch Factor</a></h3>
-                  <p>Why hugs, haircuts, and messy hands can trigger overload.</p>
-                  <a href="/resources/touch-factor/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/beige-diet/">The Beige Diet</a></h3>
-                  <p>Why predictability tastes like safety for sensory-sensitive eaters.</p>
-                  <a href="/resources/beige-diet/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/classroom-sensory-solutions/">Classroom Sensory Solutions</a></h3>
-                  <p>Accommodations to help your child focus in a busy classroom.</p>
-                  <a href="/resources/classroom-sensory-solutions/" class="read-more">Read Article →</a>
-               </article>
-            </div>
-         </section>
-
-         <section class="category-section">
-            <h2 class="category-title">
-               <span class="category-icon">🤝</span>
-               Social & Friendship
-            </h2>
-            <div class="resource-grid">
-               <article class="resource-card">
-                  <h3><a href="/resources/finding-peer-groups/">Finding "Your People"</a></h3>
-                  <p>Why deep thinkers need different friends and where to find them.</p>
-                  <a href="/resources/finding-peer-groups/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/friendship-formula/">The Friendship Formula</a></h3>
-                  <p>Helping your child navigate the mechanics of connection.</p>
-                  <a href="/resources/friendship-formula/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/meaningful-friendship/">Meaningful Friendships</a></h3>
-                  <p>Quality over quantity: Why one good friend is enough.</p>
-                  <a href="/resources/meaningful-friendship/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/little-professor/">The Little Professor</a></h3>
-                  <p>When your child corrects adults and how to teach tact.</p>
-                  <a href="/resources/little-professor/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/introvert-vs-isolated/">Introverted or Isolated?</a></h3>
-                  <p>Knowing when solitude is healthy and when it's lonely.</p>
-                  <a href="/resources/introvert-vs-isolated/" class="read-more">Read Article →</a>
-               </article>
-            </div>
-         </section>
-
-         <section class="category-section">
-            <h2 class="category-title">
-               <span class="category-icon">📚</span>
-               School & Learning
-            </h2>
-            <div class="resource-grid">
-               <article class="resource-card">
-                  <h3><a href="/resources/homework-without-tears/">Homework Without Tears</a></h3>
-                  <p>Stop the battles. Strategies for getting work done without the screaming.</p>
-                  <a href="/resources/homework-without-tears/" class="read-more">Read Article →</a>
-               </article>
-
-               <article class="resource-card">
-                  <h3><a href="/resources/freeze-on-easy-work/">Freezing on Easy Work</a></h3>
-                  <p>The perfectionism trap: Why they can do algebra but cry over worksheets.</p>
-                  <a href="/resources/freeze-on-easy-work/" class="read-more">Read Article →</a>
-               </article>
-
-               
-               <article class="resource-card">
-                  <h3><a href="/resources/asynchronous-development/">Asynchronous Development</a></h3>
-                  <p>12-year-old mind, 6-year-old emotions. Understanding the gap.</p>
-                  <a href="/resources/asynchronous-development/" class="read-more">Read Article →</a>
-               </article>
-            </div>
-         </section>
-
-      </div>
-   </main>
-
-   <footer class="footer">
-   <div class="container">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <a href="/" class="logo">
-               <span class="logo-icon">🧒</span>
-               Navigator Kids AI
+    <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+        <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+            
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+                <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">
+                    NavigatorKidsAI
+                </span>
             </a>
-            <p>Your child's brain didn't come with a manual. Until now.</p>
-            <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
-               Tools for parents of twice-exceptional (2e) children ages 6-9.
-            </p>
-         </div>
 
-         <div class="footer-links">
-            <h4>Quick Links</h4>
-            <a href="/quiz/">Free Quiz</a>
-            <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
-            <a href="/resources/">Articles</a>
-            <a href="/tools/">Free Tools</a>
-         </div>
+            <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+                <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
+                <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
+                <a href="/resources/" style="color: #1e3a8a; text-decoration: none; font-weight: 600; font-size: 0.95rem;">Resources</a>
+                <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
+                <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
+                <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
+                
+                <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">
+                    🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span>
+                </a>
 
-         <div class="footer-links">
-            <h4>Products</h4>
-            <a href="/products/">All Products</a>
-            <a href="/products/#ai-prompts">AI Prompt Packs</a>
-            <a href="/products/#activity-packets">Activity Packets</a>
-         </div>
+                <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">
+                    Take Quiz
+                </a>
+            </div>
 
-         <div class="footer-links">
-            <h4>Company</h4>
-            <a href="/about/">About Us</a>
-            <a href="/contact/">Contact</a>
-            <a href="/terms/">Terms of Service</a>
-            <a href="/privacy/">Privacy Policy</a>
-         </div>
-      </div>
+            <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
 
-      <div class="footer-bottom">
-         <p>© 2026 Navigator Kids AI™</p>
-         <p class="footer-disclaimer">
-            <strong>Disclaimer:</strong> This website provides educational information for parents.
-            It is not a substitute for professional medical, psychological, or educational advice.
-         </p>
-      </div>
-   </div>
-</footer>
+        <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
+            <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
+            <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
+            <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #1e3a8a; font-weight: bold; text-decoration: none;">Resources</a>
+            <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
+            <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
+            <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-20">
+
+        <div class="container mx-auto px-4">
+            <nav class="breadcrumbs mt-4 mb-4">
+                <a href="/">Home</a>
+                <span>/</span>
+                <span class="font-semibold text-gray-800">Resources</span>
+            </nav>
+        </div>
+
+        <div class="resource-hero">
+            <div class="container mx-auto px-4">
+                <h1>How do I help my twice-exceptional (2e) child?</h1>
+                <p><strong>Short answer:</strong> Support 2e children by balancing high-level intellectual stimulation with targeted accommodations for learning or emotional challenges. Focus on "strength-based" parenting that nurtures their gifts while providing scripts and tools to navigate their specific neurodivergent struggles.</p>
+                
+                <div class="plain-english">
+                    <strong>In plain English:</strong> Your child is "double-exceptional"—brilliant in some areas and struggling in others. You don't need to "fix" them; you need to build a bridge between their Ferrari brain and their bicycle brakes.
+                </div>
+
+                <div class="quick-nav">
+                    <a href="#understanding-2e">Understanding 2e</a>
+                    <a href="#iep-school">IEP & School</a>
+                    <a href="#regulation">Meltdowns</a>
+                    <a href="#sensory">Sensory</a>
+                    <a href="#executive-function">Executive Function</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-12">
+
+            <section id="understanding-2e" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">🧠</span>
+                    Understanding 2e
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/what-is-2e/">What is Twice-Exceptional (2e)?</a></h3>
+                        <p><strong>Short answer:</strong> 2e refers to gifted children who also have a disability like ADHD or autism. Learn the signs and how to support them.</p>
+                        <a href="/resources/what-is-2e/" class="read-more">Read Definition →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/asynchronous-development/">Asynchronous Development</a></h3>
+                        <p>12-year-old mind, 6-year-old emotions. Why your child's growth is "out of sync."</p>
+                        <a href="/resources/asynchronous-development/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/smart-kid-lost-shoes/">Why Smart Kids Lose Shoes</a></h3>
+                        <p>The "Ferrari Brain" paradox: Brilliant intellect paired with "bicycle brake" executive function.</p>
+                        <a href="/resources/smart-kid-lost-shoes/" class="read-more">Read Article →</a>
+                    </article>
+                    
+                    <article class="resource-card">
+                        <h3><a href="/resources/anxiety-intelligence/">Anxiety or Intelligence?</a></h3>
+                        <p>Why smart kids often over-calculate risk and appear anxious when they are actually just analyzing.</p>
+                        <a href="/resources/anxiety-intelligence/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="iep-school" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">📚</span>
+                    IEP & School Advocacy
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/iep-basics/">IEP Basics: A Parent's Guide</a></h3>
+                        <p><strong>Short answer:</strong> An IEP is a federal contract ensuring special education services. Learn who qualifies and what it covers.</p>
+                        <a href="/resources/iep-basics/" class="read-more">IEP 101 →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/evaluation-request/">How to Request an Evaluation</a></h3>
+                        <p><strong>Short answer:</strong> You must submit a written request to the school principal. Use our templates to start the legal timeline.</p>
+                        <a href="/resources/evaluation-request/" class="read-more">Get Sample Letter →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/iep-meeting-tips/">What to Say in an IEP Meeting</a></h3>
+                        <p>Don't go in unprepared. Key questions to ask and "magic words" that get results.</p>
+                        <a href="/resources/iep-meeting-tips/" class="read-more">Meeting Checklist →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/homework-without-tears/">Homework Without Tears</a></h3>
+                        <p>Strategies to stop the nightly battles and get work done without the screaming.</p>
+                        <a href="/resources/homework-without-tears/" class="read-more">Read Strategies →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/freeze-on-easy-work/">Freezing on Easy Work</a></h3>
+                        <p>The perfectionism trap: Why they can do algebra but cry over simple worksheets.</p>
+                        <a href="/resources/freeze-on-easy-work/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="regulation" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">❤️</span>
+                    Meltdowns & Regulation
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/meltdown-or-manipulation/">Meltdown or Manipulation?</a></h3>
+                        <p><strong>Short answer:</strong> A meltdown is involuntary neurological overload. Manipulation is goal-directed. Learn the difference.</p>
+                        <a href="/resources/meltdown-or-manipulation/" class="read-more">How to Tell →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/de-escalation-script/">The Meltdown Script</a></h3>
+                        <p>Exactly what to say (and what NOT to say) when your child is in full fight-or-flight mode.</p>
+                        <a href="/resources/de-escalation-script/" class="read-more">Get the Script →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/restraint-collapse/">Restraint Collapse</a></h3>
+                        <p>Why they are "angels" at school but explode the second they get home.</p>
+                        <a href="/resources/restraint-collapse/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/emotional-intensity/">Emotional Intensity</a></h3>
+                        <p>Living life at volume 10: Understanding the "High-Definition" emotional brain.</p>
+                        <a href="/resources/emotional-intensity/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="executive-function" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">⚡</span>
+                    Executive Function
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/cant-vs-wont/">Can't vs. Won't</a></h3>
+                        <p>Is it laziness or a brain block? How to spot the "Broken Ignition" switch.</p>
+                        <a href="/resources/cant-vs-wont/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/laziness-vs-dysfunction/">Laziness vs. Dysfunction</a></h3>
+                        <p>Distinguishing between lack of motivation and executive function gaps.</p>
+                        <a href="/resources/laziness-vs-dysfunction/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/routine-rescue/">Routine Rescue</a></h3>
+                        <p>Using predictable anchors to calm a sensitive nervous system.</p>
+                        <a href="/resources/routine-rescue/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/dopamine-menu/">The Dopamine Menu</a></h3>
+                        <p>How to jumpstart a bored brain without resorting to screens.</p>
+                        <a href="/resources/dopamine-menu/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="sensory" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">👕</span>
+                    Sensory Processing
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/seeker-vs-avoiders/">Seekers vs. Avoiders</a></h3>
+                        <p>Does your child crash into walls or hide under tables? The "Volume Knob" explained.</p>
+                        <a href="/resources/seeker-vs-avoiders/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/sock-war/">The Sock War</a></h3>
+                        <p>Why seams feel like razor blades and how to handle clothing battles.</p>
+                        <a href="/resources/sock-war/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/touch-factor/">The Touch Factor</a></h3>
+                        <p>Why hugs, haircuts, and messy hands can trigger overload.</p>
+                        <a href="/resources/touch-factor/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/beige-diet/">The Beige Diet</a></h3>
+                        <p>Why predictability tastes like safety for sensory-sensitive eaters.</p>
+                        <a href="/resources/beige-diet/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/classroom-sensory-solutions/">Classroom Sensory Solutions</a></h3>
+                        <p>Accommodations to help your child focus in a busy classroom.</p>
+                        <a href="/resources/classroom-sensory-solutions/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="social" class="category-section">
+                <h2 class="category-title">
+                    <span class="category-icon">🤝</span>
+                    Social & Friendship
+                </h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3><a href="/resources/finding-peer-groups/">Finding "Your People"</a></h3>
+                        <p>Why deep thinkers need different friends and where to find them.</p>
+                        <a href="/resources/finding-peer-groups/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/friendship-formula/">The Friendship Formula</a></h3>
+                        <p>Helping your child navigate the mechanics of connection.</p>
+                        <a href="/resources/friendship-formula/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/meaningful-friendship/">Meaningful Friendships</a></h3>
+                        <p>Quality over quantity: Why one good friend is enough.</p>
+                        <a href="/resources/meaningful-friendship/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/little-professor/">The Little Professor</a></h3>
+                        <p>When your child corrects adults and how to teach tact.</p>
+                        <a href="/resources/little-professor/" class="read-more">Read Article →</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3><a href="/resources/introvert-vs-isolated/">Introverted or Isolated?</a></h3>
+                        <p>Knowing when solitude is healthy and when it's lonely.</p>
+                        <a href="/resources/introvert-vs-isolated/" class="read-more">Read Article →</a>
+                    </article>
+                </div>
+            </section>
+
+            <div class="next-steps-box">
+                <h2>What should parents do next?</h2>
+                <ol>
+                    <li><strong>Download the Emergency Regulation Kit:</strong> Get the scripts you need for the next meltdown.</li>
+                    <li><strong>Find Your State Guide:</strong> Check our <a href="/iep/states/" style="color: var(--color-sage-light); text-decoration: underline;">IEP State Map</a> for specific timelines and laws in your area.</li>
+                    <li><strong>Take the 2e Quiz:</strong> Identify your child's specific profile to get personalized resource recommendations.</li>
+                </ol>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">🧒</span>
+                        Navigator Kids AI
+                    </a>
+                    <p>Your child's brain didn't come with a manual. Until now.</p>
+                    <p style="margin-top: var(--space-4); font-size: 0.75rem; opacity: 0.6;">
+                        Tools for parents of twice-exceptional (2e) children ages 6-9.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="/quiz/">Free Quiz</a>
+                    <a href="/free/de-escalation-kit/">Free Regulation Kit</a>
+                    <a href="/resources/">Articles</a>
+                    <a href="/tools/">Free Tools</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <a href="/products/">All Products</a>
+                    <a href="/products/#ai-prompts">AI Prompt Packs</a>
+                    <a href="/products/#activity-packets">Activity Packets</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="/about/">About Us</a>
+                    <a href="/contact/">Contact</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/privacy/">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Navigator Kids AI™</p>
+                <p class="footer-disclaimer">
+                    <strong>Disclaimer:</strong> This website provides educational information for parents.
+                    It is not a substitute for professional medical, psychological, or educational advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I help my twice-exceptional (2e) child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Support 2e children by balancing high-level intellectual stimulation with targeted accommodations for learning or emotional challenges. Focus on strength-based parenting that nurtures their gifts while providing scripts and tools to navigate their specific neurodivergent struggles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is twice-exceptional (2e)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twice-exceptional (2e) refers to gifted children who also have a disability like ADHD, autism, or dyslexia. They require support for both their high potential and their learning or emotional challenges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I request an IEP evaluation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Submit a formal written request to your school's special education director or principal. State that you are requesting a full and individual initial evaluation under IDEA to determine eligibility for special education services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I say during a meltdown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use minimal words. Say, 'I am here. You are safe.' Avoid asking 'Why?' or offering logic while the child is in fight or flight mode. Calm your own nervous system first to co-regulate."
+          }
+        }
+      ]
+    }
+    </script>
 
 </body>
 </html>
