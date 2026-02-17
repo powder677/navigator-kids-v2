@@ -4,5 +4,46 @@
       "source": "/api/:path*",
       "destination": "/api/:path*"
     }
+   {
+  "rewrites": [
+    { "source": "/districts/:district/ard-process", "destination": "/districts/:district/ard-process-guide.html" },
+    { "source": "/districts/:district/evaluation", "destination": "/districts/:district/evaluation-child-find.html" },
+    { "source": "/districts/:district/dispute", "destination": "/districts/:district/grievance-dispute-resolution.html" },
+    { "source": "/districts/:district/leadership", "destination": "/districts/:district/leadership-directory.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/iep/states/texas/districts/lewisville-isd/",
+      "destination": "https://texasspecialed.com/districts/lewisville-isd/",
+      "permanent": true
+    },
+    {
+      "source": "/iep/states/texas/districts/fort-bend-isd/",
+      "destination": "https://texasspecialed.com/districts/fort-bend-isd/",
+      "permanent": true
+    },
+    {
+      "source": "/iep/states/texas/districts/round-rock-isd/",
+      "destination": "https://texasspecialed.com/districts/round-rock-isd/",
+      "permanent": true
+    },
+    {
+      "source": "/iep/states/texas/ard-meeting-script/",
+      "destination": "https://texasspecialed.com/ard-process-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/iep/states/texas/texas-evaluation-timeline/",
+      "destination": "https://texasspecialed.com/blog/understanding-fiie-texas.html",
+      "permanent": true
+    },
+    {
+      "source": "/iep/states/texas/",
+      "destination": "https://texasspecialed.com/",
+      "permanent": true
+    },
+  ]
+}
+ 
   ]
 }
