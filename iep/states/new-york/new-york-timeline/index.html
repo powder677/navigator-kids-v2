@@ -2,224 +2,894 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>NY CSE Timeline Calculator | Navigator</title>
+   <meta name="description" content="Calculate every New York CSE deadline automatically. Enter your referral date and see every legally mandated milestone under NY Education Law.">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         --navy: #0d1b2e;
+         --gold: #c9943a;
+         --gold-light: #e8b96a;
+         --gold-pale: #fdf3e3;
+         --white: #ffffff;
+         --off-white: #f8f7f4;
+         --mist: #eef1f5;
+         --text: #0d1b2e;
+         --text-mid: #445870;
+         --text-light: #7a90a6;
+         --border: rgba(13, 27, 46, 0.1);
+         --green: #16a34a;
+         --green-bg: #f0fdf4;
+         --amber: #d97706;
+         --amber-bg: #fffbeb;
+         --red: #dc2626;
+         --red-bg: #fef2f2;
+         --blue-bg: #eff6ff;
+         --blue: #2563eb;
+         --radius: 12px;
+      }
 
-   <title>New York IEP Timeline: The 60-Day Rule and What Happens When Schools Miss It</title>
-   <meta name="description" content="Is the NYC DOE delaying your child's IEP? Understand the 60-day timeline (Part 200.4), the 'Jose P.' rights, and how to file for an Impartial Hearing to get services." />
-   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/new-york-timeline/" />
+      *,
+      *::before,
+      *::after {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
 
-   <script src="https://cdn.tailwindcss.com"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css" />
-   
-   <script src="/js/components.js" defer></script>
-   <script src="/js/form-handler.js" defer></script>
+      body {
+         font-family: 'Outfit', sans-serif;
+         color: var(--text);
+         background: var(--off-white);
+         line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Fraunces', serif;
+      }
+
+      .page-header {
+         background: var(--navy);
+         padding: 48px 24px 40px;
+         text-align: center;
+      }
+
+      .page-header h1 {
+         font-size: clamp(1.8rem, 4vw, 2.8rem);
+         color: white;
+         font-weight: 400;
+         letter-spacing: -0.02em;
+         margin-bottom: 10px;
+      }
+
+      .page-header h1 em {
+         font-style: italic;
+         color: var(--gold-light);
+      }
+
+      .page-header p {
+         color: rgba(255, 255, 255, 0.55);
+         font-size: 1rem;
+         max-width: 520px;
+         margin: 0 auto;
+      }
+
+      .calculator {
+         max-width: 760px;
+         margin: 0 auto;
+         padding: 32px 24px 80px;
+      }
+
+      .input-card {
+         background: white;
+         border: 1px solid var(--border);
+         border-radius: var(--radius);
+         padding: 28px;
+         margin-bottom: 24px;
+      }
+
+      .input-card h2 {
+         font-size: 1.2rem;
+         font-weight: 400;
+         margin-bottom: 20px;
+      }
+
+      .fields {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 16px;
+      }
+
+      .field label {
+         display: block;
+         font-size: 0.8rem;
+         font-weight: 500;
+         color: var(--text-mid);
+         margin-bottom: 6px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .field input,
+      .field select {
+         width: 100%;
+         padding: 10px 14px;
+         border-radius: 8px;
+         border: 1px solid rgba(13, 27, 46, 0.15);
+         background: var(--off-white);
+         font-family: 'Outfit', sans-serif;
+         font-size: 0.95rem;
+         color: var(--text);
+         outline: none;
+         transition: border-color 0.2s;
+      }
+
+      .field input:focus,
+      .field select:focus {
+         border-color: var(--gold);
+         background: white;
+      }
+
+      .field.full {
+         grid-column: 1 / -1;
+      }
+
+      .calc-btn {
+         margin-top: 20px;
+         width: 100%;
+         padding: 13px;
+         background: var(--navy);
+         color: white;
+         border: none;
+         border-radius: var(--radius);
+         font-family: 'Outfit', sans-serif;
+         font-size: 1rem;
+         font-weight: 500;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+
+      .calc-btn:hover {
+         background: #1a2f4a;
+      }
+
+      .calc-btn:disabled {
+         background: #94a3b8;
+         cursor: not-allowed;
+      }
+
+      .timeline-card {
+         background: white;
+         border: 1px solid var(--border);
+         border-radius: var(--radius);
+         overflow: hidden;
+         display: none;
+      }
+
+      .timeline-card.visible {
+         display: block;
+      }
+
+      .timeline-header {
+         background: var(--navy);
+         padding: 18px 24px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
+
+      .timeline-header h2 {
+         color: white;
+         font-size: 1rem;
+         font-weight: 400;
+         font-family: 'Outfit', sans-serif;
+      }
+
+      .timeline-child {
+         background: rgba(201, 148, 58, 0.2);
+         color: var(--gold-light);
+         font-size: 0.8rem;
+         padding: 3px 12px;
+         border-radius: 20px;
+      }
+
+      .milestone {
+         display: grid;
+         grid-template-columns: 40px 1fr auto;
+         gap: 0 16px;
+         padding: 16px 24px;
+         border-bottom: 1px solid var(--border);
+         align-items: start;
+         position: relative;
+      }
+
+      .milestone:last-child {
+         border-bottom: none;
+      }
+
+      .milestone-line {
+         position: absolute;
+         left: 43px;
+         top: 32px;
+         bottom: -1px;
+         width: 2px;
+         background: var(--border);
+      }
+
+      .milestone:last-child .milestone-line {
+         display: none;
+      }
+
+      .dot-col {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         padding-top: 4px;
+      }
+
+      .dot {
+         width: 14px;
+         height: 14px;
+         border-radius: 50%;
+         flex-shrink: 0;
+         border: 2px solid transparent;
+         z-index: 1;
+      }
+
+      .dot.done {
+         background: var(--green);
+         border-color: var(--green);
+      }
+
+      .dot.warning {
+         background: var(--amber);
+         border-color: var(--amber);
+      }
+
+      .dot.urgent {
+         background: var(--red);
+         border-color: var(--red);
+      }
+
+      .dot.upcoming {
+         background: white;
+         border-color: #cbd5e1;
+      }
+
+      .dot.future {
+         background: var(--mist);
+         border-color: #e2e8f0;
+      }
+
+      .milestone-body h3 {
+         font-size: 0.9rem;
+         font-weight: 500;
+         font-family: 'Outfit', sans-serif;
+         margin-bottom: 3px;
+      }
+
+      .milestone-body .law {
+         font-size: 0.75rem;
+         color: var(--text-light);
+         margin-bottom: 5px;
+      }
+
+      .milestone-body .note {
+         font-size: 0.8rem;
+         color: var(--text-mid);
+         line-height: 1.4;
+      }
+
+      .milestone-right {
+         text-align: right;
+         flex-shrink: 0;
+      }
+
+      .milestone-date {
+         font-size: 0.85rem;
+         font-weight: 500;
+         color: var(--text);
+         white-space: nowrap;
+      }
+
+      .milestone-days {
+         font-size: 0.72rem;
+         margin-top: 3px;
+         white-space: nowrap;
+      }
+
+      .days-done {
+         color: var(--green);
+      }
+
+      .days-warning {
+         color: var(--amber);
+      }
+
+      .days-urgent {
+         color: var(--red);
+      }
+
+      .days-upcoming {
+         color: var(--text-light);
+      }
+
+      .status-badge {
+         display: inline-block;
+         font-size: 0.68rem;
+         font-weight: 500;
+         padding: 2px 8px;
+         border-radius: 20px;
+         margin-top: 4px;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+      }
+
+      .badge-done {
+         background: var(--green-bg);
+         color: var(--green);
+      }
+
+      .badge-warning {
+         background: var(--amber-bg);
+         color: var(--amber);
+      }
+
+      .badge-urgent {
+         background: var(--red-bg);
+         color: var(--red);
+      }
+
+      .badge-upcoming {
+         background: var(--mist);
+         color: var(--text-light);
+      }
+
+      .alert-strip {
+         margin: 0 24px 16px;
+         padding: 12px 16px;
+         border-radius: 8px;
+         font-size: 0.875rem;
+         line-height: 1.5;
+         display: flex;
+         gap: 10px;
+         align-items: flex-start;
+      }
+
+      .alert-red {
+         background: var(--red-bg);
+         color: #991b1b;
+         border: 1px solid #fecaca;
+      }
+
+      .alert-amber {
+         background: var(--amber-bg);
+         color: #92400e;
+         border: 1px solid #fde68a;
+      }
+
+      .alert-green {
+         background: var(--green-bg);
+         color: #14532d;
+         border: 1px solid #bbf7d0;
+      }
+
+      .alert-icon {
+         font-size: 14px;
+         flex-shrink: 0;
+         margin-top: 1px;
+      }
+
+      .actions-row {
+         padding: 20px 24px;
+         background: var(--off-white);
+         border-top: 1px solid var(--border);
+         display: flex;
+         gap: 10px;
+         flex-wrap: wrap;
+      }
+
+      .action-btn {
+         padding: 9px 18px;
+         border-radius: 8px;
+         font-size: 0.85rem;
+         font-weight: 500;
+         cursor: pointer;
+         font-family: 'Outfit', sans-serif;
+         text-decoration: none;
+         display: inline-block;
+         transition: all 0.15s;
+      }
+
+      .action-primary {
+         background: var(--navy);
+         color: white;
+         border: none;
+      }
+
+      .action-primary:hover {
+         background: #1a2f4a;
+      }
+
+      .action-outline {
+         background: transparent;
+         color: var(--text-mid);
+         border: 1px solid var(--border);
+      }
+
+      .action-outline:hover {
+         border-color: var(--text-mid);
+         color: var(--text);
+      }
+
+      .gate-overlay {
+         padding: 32px 24px;
+         text-align: center;
+         background: linear-gradient(to bottom, transparent, white 40%);
+      }
+
+      .gate-box {
+         background: var(--gold-pale);
+         border: 1px solid rgba(201, 148, 58, 0.3);
+         border-radius: var(--radius);
+         padding: 24px;
+         max-width: 420px;
+         margin: 0 auto;
+      }
+
+      .gate-box h3 {
+         font-family: 'Fraunces', serif;
+         font-size: 1.2rem;
+         font-weight: 400;
+         margin-bottom: 8px;
+      }
+
+      .gate-box p {
+         font-size: 0.875rem;
+         color: var(--text-mid);
+         margin-bottom: 16px;
+      }
+
+      .gate-input {
+         display: flex;
+         gap: 8px;
+      }
+
+      .gate-input input {
+         flex: 1;
+         padding: 10px 14px;
+         border-radius: 8px;
+         border: 1px solid rgba(201, 148, 58, 0.3);
+         background: white;
+         font-family: 'Outfit', sans-serif;
+         font-size: 0.9rem;
+      }
+
+      .gate-input button {
+         padding: 10px 18px;
+         background: var(--navy);
+         color: white;
+         border: none;
+         border-radius: 8px;
+         font-family: 'Outfit', sans-serif;
+         font-size: 0.9rem;
+         font-weight: 500;
+         cursor: pointer;
+         white-space: nowrap;
+      }
+
+      .laws-box {
+         margin-top: 24px;
+         background: white;
+         border: 1px solid var(--border);
+         border-radius: var(--radius);
+         padding: 24px;
+      }
+
+      .laws-box h3 {
+         font-family: 'Fraunces', serif;
+         font-size: 1.1rem;
+         font-weight: 400;
+         margin-bottom: 14px;
+      }
+
+      .law-item {
+         display: flex;
+         gap: 12px;
+         padding: 8px 0;
+         border-bottom: 1px solid var(--border);
+         font-size: 0.85rem;
+      }
+
+      .law-item:last-child {
+         border-bottom: none;
+      }
+
+      .law-cite {
+         font-weight: 500;
+         color: var(--navy);
+         min-width: 160px;
+         flex-shrink: 0;
+      }
+
+      .law-desc {
+         color: var(--text-mid);
+      }
+
+      @media (max-width: 600px) {
+         .fields {
+            grid-template-columns: 1fr;
+         }
+
+         .milestone {
+            grid-template-columns: 32px 1fr auto;
+         }
+      }
+   </style>
 </head>
 
-<body class="bg-[#F9F7F2]">
+<body>
 
-   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
-      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
-         </a>
-         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-            <a href="/about/" style="color: #4b5563; font-weight: 500;">About</a>
-            <a href="/products/" style="color: #4b5563; font-weight: 500;">Products</a>
-            <a href="/resources/" style="color: #4b5563; font-weight: 500;">Resources</a>
-            <a href="/iep/" style="color: #4b5563; font-weight: 500;">IEP Guide</a>
-            <a href="/iep/battle-plan/" style="color: #be185d; font-weight: 600;">IEP Battle Plan</a>
-            <a href="/iep/states/" style="color: #4b5563; font-weight: 500;">IEP State Guide</a>
-            <a href="/cart/" class="nav-cart" rel="nofollow" title="Shopping Cart">🛒 <span class="nav-cart-count" style="display: none;">0</span></a>
-            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 600;">Take Quiz</a>
+   <div class="page-header">
+      <h1>NY CSE Timeline <em>Calculator</em></h1>
+      <p>Enter your child's referral date and see every legally mandated deadline under New York Education Law — automatically.</p>
+   </div>
+
+   <div class="calculator">
+
+      <div class="input-card">
+         <h2>Your child's information</h2>
+         <div class="fields">
+            <div class="field">
+               <label>Child's first name</label>
+               <input type="text" id="childName" placeholder="e.g. Maya" />
+            </div>
+            <div class="field">
+               <label>NYC School District</label>
+               <select id="district">
+                  <option value="">Select district...</option>
+                  <optgroup label="NYC Numbered Districts">
+                     <option value="2">District 2 — Upper East Side / Gramercy</option>
+                     <option value="3">District 3 — Upper West Side</option>
+                     <option value="6">District 6 — Washington Heights</option>
+                     <option value="7">District 7 — South Bronx</option>
+                     <option value="8">District 8 — Bronx</option>
+                     <option value="9">District 9 — Bronx</option>
+                     <option value="10">District 10 — Riverdale</option>
+                     <option value="11">District 11 — Northeast Bronx</option>
+                     <option value="12">District 12 — Bronx</option>
+                     <option value="13">District 13 — Bed-Stuy / Clinton Hill</option>
+                     <option value="14">District 14 — Williamsburg / Greenpoint</option>
+                     <option value="15">District 15 — Park Slope / Sunset Park</option>
+                     <option value="17">District 17 — Crown Heights</option>
+                     <option value="19">District 19 — East New York</option>
+                     <option value="20">District 20 — Bay Ridge</option>
+                     <option value="21">District 21 — Coney Island / Brighton Beach</option>
+                     <option value="22">District 22 — Flatbush / Midwood</option>
+                     <option value="24">District 24 — Jackson Heights / Elmhurst</option>
+                     <option value="25">District 25 — Flushing / Whitestone</option>
+                     <option value="26">District 26 — Bayside / Fresh Meadows</option>
+                     <option value="27">District 27 — Rockaways / Howard Beach</option>
+                     <option value="28">District 28 — Forest Hills / Kew Gardens</option>
+                     <option value="29">District 29 — Southeast Queens</option>
+                     <option value="30">District 30 — Astoria / LIC</option>
+                     <option value="31">District 31 — Staten Island</option>
+                     <option value="75">District 75 — Citywide Specialized Programs</option>
+                  </optgroup>
+                  <optgroup label="Suburban NY">
+                     <option value="greatneck">Great Neck UFSD</option>
+                     <option value="yonkers">Yonkers City SD</option>
+                     <option value="whiteplains">White Plains City SD</option>
+                     <option value="newrochelle">New Rochelle City SD</option>
+                     <option value="buffalo">Buffalo City SD</option>
+                     <option value="rochester">Rochester City SD</option>
+                  </optgroup>
+               </select>
+            </div>
+            <div class="field">
+               <label>Date referral was received by district</label>
+               <input type="date" id="referralDate" />
+            </div>
+            <div class="field">
+               <label>Date consent to evaluate was signed</label>
+               <input type="date" id="consentDate" />
+            </div>
+            <div class="field full">
+               <label>Has an evaluation been completed?</label>
+               <select id="evalDone">
+                  <option value="no">No — not yet</option>
+                  <option value="yes">Yes — evaluation is complete</option>
+               </select>
+            </div>
+            <div class="field full" id="evalDateField" style="display:none">
+               <label>Date evaluation was completed</label>
+               <input type="date" id="evalDate" />
+            </div>
          </div>
-         <button class="nav-toggle md:hidden" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+         <button class="calc-btn" id="calcBtn" onclick="calculate()">Calculate my timeline</button>
       </div>
-      
-      <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-         <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563;">About</a>
-         <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Products</a>
-         <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563;">Resources</a>
-         <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP Guide</a>
-         <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold;">IEP Battle Plan</a>
-         <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563;">IEP State Guide</a>
-         <a href="/cart/" rel="nofollow" style="display: block; padding: 0.5rem 0; color: #4b5563;">Cart</a>
-         <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-      </div>
-   </nav>
-   <main class="container mx-auto px-4 py-12 max-w-4xl iep-content">
-      <article class="iep-article">
 
-         <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-            <a href="/iep/states/" class="hover:text-blue-600">State Map</a>
-            <span class="mx-2">/</span>
-            <a href="/iep/states/new-york/" class="hover:text-blue-600">New York</a>
-            <span class="mx-2">/</span>
-            <span class="text-gray-800">Timeline Guide</span>
-         </nav>
-
-         <h1 class="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-6 font-serif">New York IEP Timeline: The 60-Day Rule and What Happens When Schools Miss It</h1>
-
-         <p class="text-gray-700 leading-relaxed mb-4">If you are a parent in New York City (or anywhere in NY State), you know the drill. You sign the paperwork, and then… you wait.</p>
-         <p class="text-gray-700 leading-relaxed mb-4">You call the Committee on Special Education (CSE). You email the school psychologist. You get a voicemail full message or a polite "we’re working on it." Meanwhile, the school year is ticking away, and your child is falling further behind.</p>
-         <p class="text-gray-700 leading-relaxed mb-4">In New York, delays are not just annoying—they are illegal. But the rules here are different than in other states.</p>
-         <p class="text-gray-700 leading-relaxed mb-4">While federal law gives a "reasonable timeframe," <strong>New York State Regulations (Part 200.4)</strong> and the <strong>NYC <em>Jose P.</em> Consent Decree</strong> set hard deadlines. If the DOE misses them, you have the right to force their hand.</p>
-
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Timeline: 60 Calendar Days (With a Catch)</h2>
-         <p class="text-gray-700 leading-relaxed mb-4">In New York, the clock starts the moment the district receives your <strong>signed Consent for Evaluation</strong>.</p>
-         <p class="text-gray-700 leading-relaxed mb-4">From that date, the district has <strong>60 Calendar Days</strong> to:</p>
-         <ol class="list-decimal pl-6 text-gray-700 space-y-2 mb-6">
-            <li>Complete all evaluations (Psychological, Educational, Speech, etc.).</li>
-            <li>Hold the CSE meeting (Eligibility Meeting).</li>
-            <li>Determine eligibility and recommend placement.</li>
-         </ol>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>Note:</strong> "Calendar Days" means weekends count. The only time the clock pauses is during the summer (July/August) in some specific instances, but generally, the district cannot simply "take the summer off" if consent was signed in May.</p>
-
-         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg my-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-2">For NYC Parents: The "Jose P." Factor</h2>
-            <p class="text-gray-700 mb-2">If you live in one of the 32 NYC Community School Districts, you have an extra layer of protection. A decades-old court case called <em>Jose P. v. Ambach</em> monitors the NYC DOE’s timeliness.</p>
-            <ul class="list-disc pl-6 text-gray-700">
-               <li><strong>The Standard:</strong> Under <em>Jose P.</em>, the DOE is monitored on a strict timeline. If they are late, they are automatically flagged in the "SESIS" computer system.</li>
-               <li><strong>The Reality:</strong> Being flagged doesn't always make them move faster. You still have to push.</li>
-            </ul>
+      <div class="timeline-card" id="timelineCard">
+         <div class="timeline-header">
+            <h2 id="timelineTitle">CSE Timeline</h2>
+            <div class="timeline-child" id="timelineChild"></div>
          </div>
 
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">The Common Delay Tactics (And Why They Don't Work)</h2>
-         <p class="text-gray-700 leading-relaxed mb-4">Districts often try to "stop the clock" with excuses that sound official but have no legal standing. Here is how to translate them.</p>
+         <div id="alertStrip"></div>
+         <div id="milestoneList"></div>
 
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 1: "We don't have a bilingual evaluator available."</h3>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> Shortages do not excuse the deadline. If the DOE cannot provide a bilingual provider, they must issue you an <strong>RSA (Related Service Authorization)</strong> or fund an independent evaluation at market rates.</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 2: "The teacher hasn't finished the Response to Intervention (RtI) data."</h3>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> RtI cannot be used to delay or deny an evaluation. Once you sign consent, the 60-day clock runs regardless of RtI status.</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Excuse 3: "We are waiting for the doctor's script."</h3>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>The Law:</strong> While medical scripts are needed for certain services (like PT/OT), they should not hold up the <em>evaluation</em> process or the eligibility meeting.</p>
-
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">What Happens When Day 61 Hits?</h2>
-         <p class="text-gray-700 leading-relaxed mb-4">If the deadline passes and you have no meeting scheduled, the district has denied your child a <strong>Free Appropriate Public Education (FAPE)</strong>. In New York, you have two primary options.</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Option 1: The State Complaint (The Slow Lane)</h3>
-         <p class="text-gray-700 leading-relaxed mb-4">You can file a complaint with the New York State Education Department (NYSED). They will investigate, find the district in violation, and order them to finish the evaluation. <em>Cons:</em> Takes months. Does not usually result in "Compensatory Services" for your child.</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Option 2: The Impartial Hearing (The Fast Lane)</h3>
-         <p class="text-gray-700 leading-relaxed mb-4">This is the nuclear option, but in NYC, it is often the standard operating procedure. You file a request for an <strong>Impartial Hearing (Due Process)</strong>.</p>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>Why this works:</strong> In NYC, filing for a hearing often triggers a <strong>"Resolution Meeting"</strong> within 15 days. The district sends a representative who <em>actually has the power to fix things</em> because they want you to drop the case. You can often negotiate an immediate IEP meeting, Independent Evaluations (IEEs), and Compensatory Services.</p>
-
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Your Action Plan: The "Notice of Delay"</h2>
-         <p class="text-gray-700 leading-relaxed mb-4">Do not jump straight to a hearing without creating a paper trail. If your child’s evaluation is overdue, send this email to the CSE Chairperson and the Principal immediately.</p>
-
-         <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg my-6 font-mono text-sm text-gray-700">
-            <strong>Subject:</strong> NOTICE OF NON-COMPLIANCE - [Student Name] - 60 Day Violation<br><br>
-            Dear Chairperson,<br><br>
-            On [Date], the District received my signed consent to evaluate [Student Name]. Under 8 NYCRR § 200.4, the District had 60 calendar days to complete the evaluation and determine eligibility. That deadline expired on [Date].<br><br>
-            As of today, we have received no evaluation reports and no meeting notice. This delay constitutes a procedural denial of FAPE.<br><br>
-            Please confirm by [Date + 2 days] when the meeting will be held. If I do not receive a confirmed date, I will proceed with filing a Request for Impartial Hearing.
-         </div>
-
-         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg my-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-2">Don't Fight the NYC Bureaucracy Alone</h2>
-            <p class="text-gray-700 mb-4">Navigating the NYC special education maze requires a map. I’ve created a <strong>NY IEP Delay Response Kit</strong> specifically for New York parents.</p>
-            <p class="text-gray-700 font-bold mb-2">This free kit includes:</p>
-            <ul class="list-none pl-0 space-y-2 mb-4 text-gray-700">
-               <li>✅ <strong>The "60-Day Calculator"</strong> (Adjusted for NYS rules)</li>
-               <li>✅ <strong>The "Impartial Hearing Request" Template</strong> (Simplified)</li>
-               <li>✅ <strong>A directory of NYS advocacy organizations</strong></li>
-            </ul>
-            <a href="#" class="inline-block bg-gray-400 text-white font-bold py-3 px-6 rounded-full cursor-not-allowed text-decoration-none" onclick="return false;">Download the NY Delay Response Kit (Coming Soon)</a>
-            <p class="text-sm italic mt-2 text-gray-600">Stop waiting. Start demanding.</p>
-         </div>
-
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Frequently Asked Questions</h2>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Does the 60-day timeline include summer break?</h3>
-         <p class="text-gray-700 leading-relaxed mb-4">Generally, no. The timeline applies during the school year. However, if you sign consent in July or August, the 60-day clock typically does not begin until the first day of school in September, unless your child is 12-month (ESY) eligible.</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">What if I consented to the evaluation verbally?</h3>
-         <p class="text-gray-700 leading-relaxed mb-4">Verbal consent does NOT start the clock. The 60-day timeline only begins on the date the district <em>receives</em> your signed consent form. Always keep proof of delivery (email receipt or certified mail).</p>
-
-         <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2">Can I get private evaluations paid for if they are late?</h3>
-         <p class="text-gray-700 leading-relaxed mb-4">Yes. If the district misses the 60-day deadline, you can request an Independent Educational Evaluation (IEE) at public expense. You usually need to file a Due Process complaint to force this, but the delay makes it a strong case.</p>
-
-         <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg my-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-2">What If You Want the Complete Strategy?</h2>
-            <p class="text-gray-700 mb-4">A missed deadline is just one battle. The <strong>IEP Battle Plan</strong> gives you the full strategy for what happens <em>after</em> you get the meeting.</p>
-            <ul class="list-disc pl-6 text-gray-700 mb-4">
-               <li>How to read the evaluation report to spot what they missed.</li>
-               <li>Scripts for the 12 most common objections NYC schools use.</li>
-               <li>How to maximize "SETSS" and Related Services in the IEP.</li>
-            </ul>
-            <p class="font-bold text-gray-800 mb-4">$497 one-time payment. Lifetime access.</p>
-            <a href="/iep/battle-plan/" class="inline-block bg-[#be185d] text-white font-bold py-3 px-6 rounded-full hover:bg-[#a0144d] transition-colors text-decoration-none">Learn more about the Battle Plan →</a>
-         </div>
-
-         <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4 font-serif">Related Resources</h2>
-         <p class="text-gray-700 leading-relaxed mb-4"><strong>For more on NYC special education:</strong></p>
-         <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-6">
-            <li><a href="/iep/states/new-york/new-york-impartial-hearing/" class="text-blue-700 hover:underline">How to File for an Impartial Hearing</a> - The next step if the delay continues.</li>
-            <li><a href="/iep/states/new-york/new-york-request-iep/" class="text-blue-700 hover:underline">How to Request an IEP in NYC</a> - Ensure you started the process correctly.</li>
-            <li><a href="/iep/states/new-york/new-york-private-placement/" class="text-blue-700 hover:underline">Private School Placement</a> - Using delays to secure tuition reimbursement.</li>
-         </ul>
-
-         <hr class="my-8 border-gray-200">
-
-         <p class="text-sm text-gray-500 italic">
-            <strong>Legal Disclaimer:</strong> I am a parent with experience in IEP advocacy, not an attorney. This site shares information and personal experience, not legal advice. For legal representation, please consult a special education attorney in your state.
-         </p>
-
-      </article>
-   </main>
-
-   <footer class="footer" style="background-color: #1e3a8a; color: white;">
-      <div class="container mx-auto max-w-6xl">
-         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8 py-12 px-4">
-            <div class="footer-brand">
-               <a href="/" class="logo flex items-center gap-2 text-white no-underline font-serif font-extrabold text-xl">
-                  <span>🧒</span> Navigator Kids AI
-               </a>
-               <p class="mt-4 text-white text-sm">Your child's brain didn't come with a manual. Until now.</p>
-               <p class="mt-4 text-xs opacity-60 text-white">Tools for parents of twice-exceptional (2e) children ages 6-9.</p>
-               
-               <div class="flex gap-4 mt-6">
-                  <a href="https://www.instagram.com/navigatorkidsai/">
-                     <i class="fa-brands fa-instagram"></i>
-                  </a>
-                  <a href="#" target="_blank" aria-label="Facebook" class="text-white/70 hover:text-white transition-colors text-xl">
-                     <i class="fa-brands fa-facebook"></i>
-                  </a>
+         <div id="gateSection" class="gate-overlay" style="display:none">
+            <div class="gate-box">
+               <h3>Save this timeline + get deadline alerts</h3>
+               <p>Free account — we'll email you before each deadline so nothing gets missed.</p>
+               <div class="gate-input">
+                  <input type="email" id="gateEmail" placeholder="Your email address" />
+                  <button onclick="saveTimeline()">Save free</button>
                </div>
             </div>
-            
-            <div class="footer-links flex flex-col gap-3">
-               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Quick Links</h4>
-               <a href="/quiz/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Quiz</a>
-               <a href="/free/de-escalation-kit/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Regulation Kit</a>
-               <a href="/resources/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Articles</a>
-               <a href="/tools/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Free Tools</a>
-            </div>
-            
-            <div class="footer-links flex flex-col gap-3">
-               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Products</h4>
-               <a href="/products/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">All Products</a>
-               <a href="/products/#ai-prompts" class="text-white no-underline text-sm opacity-80 hover:opacity-100">AI Prompt Packs</a>
-               <a href="/products/#activity-packets" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Activity Packets</a>
-            </div>
-            
-            <div class="footer-links flex flex-col gap-3">
-               <h4 class="font-bold text-white uppercase text-xs tracking-wider">Company</h4>
-               <a href="/about/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">About Us</a>
-               <a href="/contact/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Contact</a>
-               <a href="/terms/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Terms of Service</a>
-               <a href="/privacy/" class="text-white no-underline text-sm opacity-80 hover:opacity-100">Privacy Policy</a>
-            </div>
          </div>
-         <div class="footer-bottom text-center border-t border-white/20 py-8 px-4 text-white text-xs">
-            <p>© 2026 Navigator Kids AI™</p>
+
+         <div class="actions-row">
+            <button class="action-btn action-primary" onclick="window.print()">Print timeline</button>
+            <a class="action-btn action-outline" href="/iep/states/new-york/new-york-request-iep/">Request evaluation letter</a>
+            <a class="action-btn action-outline" href="/app/">Open full app</a>
          </div>
       </div>
-   </footer>
-   </body>
+
+      <div class="laws-box">
+         <h3>The NY laws behind these deadlines</h3>
+         <div class="law-item">
+            <div class="law-cite">NY Ed Law §4402(1)(a)</div>
+            <div class="law-desc">District must begin evaluation within 60 days of receiving written consent</div>
+         </div>
+         <div class="law-item">
+            <div class="law-cite">8 NYCRR §200.4(b)(1)</div>
+            <div class="law-desc">Evaluation must be completed within 60 calendar days of consent</div>
+         </div>
+         <div class="law-item">
+            <div class="law-cite">8 NYCRR §200.4(d)(2)(i)</div>
+            <div class="law-desc">CSE meeting must occur within 30 days of completed evaluation</div>
+         </div>
+         <div class="law-item">
+            <div class="law-cite">8 NYCRR §200.4(e)(1)(ii)</div>
+            <div class="law-desc">IEP services must begin as soon as possible, no later than start of next quarter or 30 days</div>
+         </div>
+         <div class="law-item">
+            <div class="law-cite">NY Ed Law §4402(1)(b)(1)</div>
+            <div class="law-desc">Annual review of IEP required — within 12 months of last meeting</div>
+         </div>
+         <div class="law-item">
+            <div class="law-cite">8 NYCRR §200.4(b)(4)</div>
+            <div class="law-desc">Re-evaluation required at least every 3 years unless parent and district agree otherwise</div>
+         </div>
+      </div>
+
+   </div>
+
+   <script>
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      document.getElementById('evalDone').addEventListener('change', function() {
+         document.getElementById('evalDateField').style.display = this.value === 'yes' ? '' : 'none';
+      });
+
+      function addDays(date, days) {
+         const d = new Date(date);
+         d.setDate(d.getDate() + days);
+         return d;
+      }
+
+      function formatDate(d) {
+         return d.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+         });
+      }
+
+      function daysFromToday(d) {
+         return Math.round((d - today) / 86400000);
+      }
+
+      function getStatus(d) {
+         const diff = daysFromToday(d);
+         if (diff < 0) return 'done';
+         if (diff <= 7) return 'urgent';
+         if (diff <= 21) return 'warning';
+         return 'upcoming';
+      }
+
+      function getDotClass(status) {
+         return {
+            done: 'done',
+            urgent: 'urgent',
+            warning: 'warning',
+            upcoming: 'upcoming'
+         } [status] || 'future';
+      }
+
+      function getBadge(status) {
+         if (status === 'done') return '<span class="status-badge badge-done">Passed</span>';
+         if (status === 'urgent') return '<span class="status-badge badge-urgent">Urgent</span>';
+         if (status === 'warning') return '<span class="status-badge badge-warning">Coming up</span>';
+         return '<span class="status-badge badge-upcoming">Upcoming</span>';
+      }
+
+      function getDaysText(d, status) {
+         const diff = daysFromToday(d);
+         if (status === 'done') return `<div class="milestone-days days-done">${Math.abs(diff)} days ago</div>`;
+         if (status === 'urgent') return `<div class="milestone-days days-urgent">${diff} day${diff === 1 ? '' : 's'} away</div>`;
+         if (status === 'warning') return `<div class="milestone-days days-warning">${diff} days away</div>`;
+         return `<div class="milestone-days days-upcoming">${diff} days away</div>`;
+      }
+
+      function renderMilestone(m) {
+         const status = m.forceDone ? 'done' : (m.date ? getStatus(m.date) : 'future');
+         const dot = getDotClass(status);
+         const dateStr = m.date ? formatDate(m.date) : 'TBD';
+         return `
+    <div class="milestone">
+      <div class="dot-col">
+        <div class="dot ${dot}"></div>
+        <div class="milestone-line"></div>
+      </div>
+      <div class="milestone-body">
+        <h3>${m.title}</h3>
+        <div class="law">${m.law}</div>
+        ${m.note ? `<div class="note">${m.note}</div>` : ''}
+      </div>
+      <div class="milestone-right">
+        <div class="milestone-date">${dateStr}</div>
+        ${m.date ? getDaysText(m.date, status) : ''}
+        ${getBadge(status)}
+      </div>
+    </div>`;
+      }
+
+      function calculate() {
+         const name = document.getElementById('childName').value.trim() || 'Your child';
+         const district = document.getElementById('district').value;
+         const districtLabel = document.getElementById('district').selectedOptions[0]?.text || 'your district';
+         const referralStr = document.getElementById('referralDate').value;
+         const consentStr = document.getElementById('consentDate').value;
+         const evalDone = document.getElementById('evalDone').value;
+         const evalStr = document.getElementById('evalDate').value;
+
+         if (!consentStr) {
+            alert('Please enter the date consent to evaluate was signed — this starts the 60-day clock.');
+            return;
+         }
+
+         const consent = new Date(consentStr + 'T12:00:00');
+         const referral = referralStr ? new Date(referralStr + 'T12:00:00') : null;
+         const evalCompleted = evalDone === 'yes' && evalStr ? new Date(evalStr + 'T12:00:00') : null;
+
+         // Calculate all key dates
+         const evalDeadline = addDays(consent, 60);
+         const cseDeadline = evalCompleted ? addDays(evalCompleted, 30) : addDays(evalDeadline, 30);
+         const iepStart = addDays(cseDeadline, 30);
+         const annualReview = addDays(cseDeadline, 365);
+         const triennial = addDays(consent, 365 * 3);
+
+         const milestones = [];
+
+         if (referral) {
+            milestones.push({
+               title: 'Written referral received by district',
+               law: 'NY Ed Law §4402 — starts the process',
+               date: referral,
+               forceDone: true,
+               note: 'The district must send you a response within 10 days acknowledging the referral.'
+            });
+         }
+
+         milestones.push({
+            title: 'Consent to evaluate signed',
+            law: '8 NYCRR §200.4(a) — starts the 60-day clock',
+            date: consent,
+            forceDone: true,
+            note: 'From this date, the district has exactly 60 calendar days to complete the evaluation.'
+         });
+
+         milestones.push({
+            title: '60-day evaluation deadline',
+            law: '8 NYCRR §200.4(b)(1) — hard legal deadline',
+            date: evalDeadline,
+            forceDone: evalCompleted !== null,
+            note: evalCompleted ?
+               `Evaluation was completed ${formatDate(evalCompleted)} — ${Math.round((evalDeadline - evalCompleted)/86400000)} days before the deadline.` :
+               'The district must complete ALL evaluations by this date. Missing this deadline is a violation you can report to NYSED.'
+         });
+
+         if (evalCompleted) {
+            milestones.push({
+               title: 'Evaluation completed',
+               law: '8 NYCRR §200.4(b) — triggers CSE meeting window',
+               date: evalCompleted,
+               forceDone: true,
+               note: 'The district now has 30 days to hold the CSE meeting.'
+            });
+         }
+
+         milestones.push({
+            title: 'CSE meeting must be held',
+            law: '8 NYCRR §200.4(d)(2)(i) — 30 days after evaluation',
+            date: cseDeadline,
+            note: 'The Committee on Special Education must meet to review results and develop or reject an IEP. You have the right to bring an advocate.'
+         });
+
+         milestones.push({
+            title: 'IEP services must begin',
+            law: '8 NYCRR §200.4(e)(1)(ii) — as soon as possible',
+            date: iepStart,
+            note: 'Services must begin as soon as practicable after the IEP is agreed upon — no later than the start of the next school term or 30 days after the CSE meeting.'
+         });
+
+         milestones.push({
+            title: 'Annual IEP review',
+            law: 'NY Ed Law §4402(1)(b)(1) — every 12 months',
+            date: annualReview,
+            note: 'The district must review and revise the IEP at least once per year. You can request a review sooner if needed.'
+         });
+
+         milestones.push({
+            title: 'Three-year re-evaluation',
+            law: '8 NYCRR §200.4(b)(4) — every 3 years',
+            date: triennial,
+            note: 'A full re-evaluation is required at least every 3 years unless both parent and district agree in writing that it is unnecessary.'
+         });
+
+         // Determine alert
+         const urgentMilestones = milestones.filter(m => m.date && !m.forceDone && getStatus(m.date) === 'urgent');
+         const warningMilestones = milestones.filter(m => m.date && !m.forceDone && getStatus(m.date) === 'warning');
+         const violatedMilestones = milestones.filter(m => m.date && !m.forceDone && getStatus(m.date) === 'done');
+
+         let alertHtml = '';
+         if (violatedMilestones.length > 0) {
+            alertHtml = `<div class="alert-strip alert-red"><span class="alert-icon">!</span><div><strong>Potential violation detected.</strong> ${violatedMilestones.length} deadline${violatedMilestones.length > 1 ? 's have' : ' has'} passed without being marked complete. If the district missed these, you may be entitled to compensatory services. <a href="/app/" style="color:inherit;font-weight:600;">Open the service log to document this.</a></div></div>`;
+         } else if (urgentMilestones.length > 0) {
+            const next = urgentMilestones[0];
+            alertHtml = `<div class="alert-strip alert-amber"><span class="alert-icon">!</span><div><strong>${next.title}</strong> is in ${daysFromToday(next.date)} day${daysFromToday(next.date) === 1 ? '' : 's'}. If you haven't heard from the district, contact them today. <a href="/iep/states/new-york/new-york-request-iep/" style="color:inherit;font-weight:600;">Generate a follow-up letter.</a></div></div>`;
+         } else if (warningMilestones.length > 0) {
+            const next = warningMilestones[0];
+            alertHtml = `<div class="alert-strip alert-amber"><span class="alert-icon">i</span><div><strong>${next.title}</strong> is coming up in ${daysFromToday(next.date)} days. Now is a good time to prepare.</div></div>`;
+         } else {
+            alertHtml = `<div class="alert-strip alert-green"><span class="alert-icon">✓</span><div>No immediate deadlines. Your next milestone is ${milestones.find(m => m.date && !m.forceDone && daysFromToday(m.date) > 0)?.title || 'the annual review'}.</div></div>`;
+         }
+
+         document.getElementById('alertStrip').innerHTML = alertHtml;
+         document.getElementById('timelineTitle').textContent = `${name}'s CSE Timeline`;
+         document.getElementById('timelineChild').textContent = `${districtLabel}`;
+         document.getElementById('milestoneList').innerHTML = milestones.map(renderMilestone).join('');
+         document.getElementById('gateSection').style.display = '';
+         document.getElementById('timelineCard').classList.add('visible');
+         document.getElementById('timelineCard').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+         });
+      }
+
+      function saveTimeline() {
+         const email = document.getElementById('gateEmail').value;
+         if (!email || !email.includes('@')) {
+            alert('Please enter a valid email.');
+            return;
+         }
+         // TODO: POST to /api/save-timeline with email + timeline data
+         // For now, show confirmation
+         document.getElementById('gateSection').innerHTML = `
+    <div style="padding:24px;text-align:center;background:var(--green-bg);border-top:1px solid #bbf7d0;">
+      <div style="font-size:1.1rem;font-weight:500;color:var(--green);margin-bottom:6px;">Timeline saved.</div>
+      <div style="font-size:0.875rem;color:#166534;">We'll email you at <strong>${email}</strong> before each deadline. Check your inbox to confirm.</div>
+    </div>`;
+      }
+   </script>
+</body>
+
 </html>
