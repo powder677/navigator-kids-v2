@@ -9,24 +9,40 @@
    <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/districts/district-15/" />
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   
-   
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Merriweather', serif;
+      }
+   </style>
 </head>
 
 <body class="bg-gray-50">
 
-   <nav style="background:#0d1b2e;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;">
-  <a href="/" style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:white;text-decoration:none;display:flex;align-items:center;gap:10px;">
-    <span style="width:26px;height:26px;border-radius:7px;background:#c9943a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#0d1b2e;">N</span>
-    Navigator
-  </a>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Timeline</a>
-    <a href="/resources/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Resources</a>
-    <a href="/iep/states/new-york/districts/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">All districts</a>
-    <a href="/app/" style="font-size:0.875rem;font-weight:500;background:#c9943a;color:#0d1b2e;padding:7px 18px;border-radius:8px;text-decoration:none;">Start free</a>
-  </div>
-</nav>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" style="text-decoration: none; font-size: 1.2rem;">🛒</a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600;">Take Quiz</a>
+         </div>
+      </div>
+   </nav>
 
    <header class="bg-white py-12 border-b">
       <div class="max-width-1200px mx-auto px-4 text-center" style="max-width: 1200px;">
@@ -38,7 +54,11 @@
    <section class="py-12 bg-white">
       <div class="max-w-4xl mx-auto px-4">
          <h2 class="text-3xl font-bold text-gray-800 mb-6">Understanding Special Education in Park Slope, Sunset Park & Red Hook</h2>
+         <div class="rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 mb-8">
+            <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.1014781625286!2d-73.98107832471209!3d40.67173297139976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b610c6d905b%3A0x928142fecc8b10bf!2sP.S.%20321%20William%20Penn!5e0!3m2!1sen!2sus!4v1770309960339!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </iframe>
          </div>
+      </div>
    </section>
 
    <section class="py-12 bg-gray-50">
@@ -136,7 +156,7 @@
 
                 <div class="flex flex-col gap-2">
 
-                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
 
                     <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
 
@@ -179,19 +199,6 @@
 
    </footer>
 
-
-<section style="background:#0d1b2e;padding:60px 24px;text-align:center;margin-top:0;">
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c9943a;margin-bottom:12px;">District 15 families</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:white;margin-bottom:14px;line-height:1.2;">Track your District 15 CSE deadlines — so nothing slips through</h2>
-    <p style="color:rgba(255,255,255,0.55);font-size:1rem;margin-bottom:28px;line-height:1.7;">Navigator is free for District 15 families. Enter your referral date and see every NY-mandated deadline on a live timeline. Log missed services. Generate letters when the district doesn't follow through.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="/app/?district=15" style="background:#c9943a;color:#0d1b2e;padding:13px 26px;border-radius:10px;font-size:0.95rem;font-weight:600;text-decoration:none;">Start tracking — it's free</a>
-      <a href="/iep/states/new-york/new-york-timeline/" style="background:transparent;color:rgba(255,255,255,0.75);padding:13px 22px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">See the CSE timeline</a>
-    </div>
-    <p style="color:rgba(255,255,255,0.3);font-size:0.78rem;margin-top:16px;">No credit card &nbsp;·&nbsp; Built for NY law &nbsp;·&nbsp; All 32 NYC districts covered</p>
-  </div>
-</section>
 </body>
 
 </html>

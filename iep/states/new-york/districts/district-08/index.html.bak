@@ -4,66 +4,83 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>IEP & Special Education Support in NYC District 11 – Pelham Parkway, Co-op City</title>
-   <meta name="description" content="Navigating IEPs in NYC District 11. Expertise on ASD Nest availability, out-of-district placements, and CSE 11 support for families in Pelham Parkway and Co-op City.">
-   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/districts/district-11/" />
+   <title>IEP & Special Education Support in NYC District 08 – Hunts Point, Soundview, Throgs Neck</title>
+   <meta name="description" content="Navigating IEPs in NYC District 08. Expertise on service delivery compliance, teacher turnover impacts, and CSE 8 support for families in Hunts Point and Throgs Neck.">
+   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/districts/district-08/" />
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   
-   
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Merriweather', serif;
+      }
+   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-   <nav style="background:#0d1b2e;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;">
-  <a href="/" style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:white;text-decoration:none;display:flex;align-items:center;gap:10px;">
-    <span style="width:26px;height:26px;border-radius:7px;background:#c9943a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#0d1b2e;">N</span>
-    Navigator
-  </a>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Timeline</a>
-    <a href="/resources/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Resources</a>
-    <a href="/iep/states/new-york/districts/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">All districts</a>
-    <a href="/app/" style="font-size:0.875rem;font-weight:500;background:#c9943a;color:#0d1b2e;padding:7px 18px;border-radius:8px;text-decoration:none;">Start free</a>
-  </div>
-</nav>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" style="text-decoration: none; font-size: 1.2rem;">🛒</a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600;">Take Quiz</a>
+         </div>
+      </div>
+   </nav>
 
    <header class="bg-blue-900 text-white py-16 px-4">
       <div class="max-width-1200px mx-auto text-center" style="max-width: 1200px;">
-         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">IEP & Special Education Support in NYC District 11 – Pelham Parkway, Co-op City</h1>
-         <p class="text-xl opacity-90">Solving Service Gaps and ASD Nest Shortages in the Middle-Class Bronx.</p>
+         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">IEP & Special Education Support in NYC District 08 – Hunts Point, Soundview, Throgs Neck</h1>
+         <p class="text-xl opacity-90">Protecting Service Delivery and IEP Consistency in the East Bronx.</p>
       </div>
    </header>
 
    <main class="max-w-6xl mx-auto px-4 py-12">
 
       <section class="mb-16">
-         <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Understanding Special Education in Pelham Parkway and Co-op City</h2>
+         <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Understanding Special Education in Hunts Point, Soundview, and Throgs Neck</h2>
          <div class="bg-white p-2 rounded-xl shadow-lg border border-gray-200">
-            
+            <iframe width="100%" height="450" style="border:0; border-radius: 0.75rem;" loading="lazy" allowfullscreen <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.2201256343815!2d-73.82100662470286!3d40.823128371377095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c28bcda38b6ff7%3A0x1facb03d790ad283!2sP.S.%20072%20Dr.%20William%20Dorney!5e0!3m2!1sen!2sus!4v1770308946222!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </iframe>
          </div>
-         <p class="mt-4 text-sm text-gray-500 text-center">District 11 is anchored by local landmarks such as PS 83 Donald Hertz.</p>
+         <p class="mt-4 text-sm text-gray-500 text-center">District 08 is anchored by specialized sites like PS 304 Early Childhood School.</p>
       </section>
 
       <section class="grid md:grid-cols-2 gap-12 mb-16 items-center">
          <div>
-            <h2 class="text-3xl font-bold text-blue-900 mb-6">The District 11 IEP Reality</h2>
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">The District 08 IEP Environment</h2>
             <p class="text-lg text-gray-700 mb-4">
-               District 11 serves a stable, middle-class Bronx demographic, including the massive residential community of Co-op City. While housing is stable, families often struggle with a severe lack of specialized ASD Nest and Horizon program seats.
+               District 08 presents a unique mix of industrial and residential zones with high poverty levels. A primary concern for families here is high teacher turnover, which frequently impacts the consistency of IEP implementation and overall service delivery compliance.
             </p>
             <p class="text-lg text-gray-700 mb-6">
-               This shortage frequently forces families into "out-of-district" placements, increasing commute times for students requiring specialized autism support. Navigating the <a href="/iep/states/new-york/new-york-timeline/" class="text-blue-600 underline font-medium">New York IEP timeline</a> is essential here to secure these limited seats before they are filled by students from across the borough.
+               Maintaining a clear record of progress is essential in this district. Parents must be vigilant about <a href="/iep/states/new-york/new-york-timeline/" class="text-blue-600 underline font-medium">the New York IEP timeline</a> to ensure that service gaps caused by staffing changes are addressed immediately by the CSE.
             </p>
             <blockquote class="border-l-4 border-pink-500 bg-pink-50 p-6 rounded-r-lg italic text-gray-700 mb-6">
-               "In District 11, if your child needs a Nest program, you're often told there's no room at the local school. You have to be prepared to fight for a seat or a bus to another district."
+               "In District 8, consistency is the biggest challenge. When your child's provider changes mid-year, the progress often stalls unless the parent steps in."
             </blockquote>
          </div>
          <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
-            <h3 class="text-xl font-bold text-blue-900 mb-4">District 11 Snapshot</h3>
+            <h3 class="text-xl font-bold text-blue-900 mb-4">District 08 Snapshot</h3>
             <ul class="space-y-4 text-gray-700">
-               <li><i class="fas fa-users text-blue-600 mr-2"></i> <strong>Enrollment:</strong> 30,222 Students</li>
+               <li><i class="fas fa-users text-blue-600 mr-2"></i> <strong>Enrollment:</strong> 21,871 Students</li>
                <li><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> <strong>Borough:</strong> Bronx</li>
-               <li><i class="fas fa-bus text-blue-600 mr-2"></i> <strong>Primary Pain Point:</strong> Lack of ASD Nest/Horizon seats forcing out-of-district travel.</li>
+               <li><i class="fas fa-clock text-blue-600 mr-2"></i> <strong>Primary Pain Point:</strong> High teacher turnover impacting service compliance.</li>
             </ul>
          </div>
       </section>
@@ -72,19 +89,19 @@
          <h2 class="text-3xl font-bold text-blue-900 mb-6">General Education Schools Parents Ask About</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 83 Donald Hertz</h3>
-               <p class="text-sm text-gray-600 italic">Morris Park</p>
-               <p class="text-gray-700 mt-2">Families often explore this anchor school on Rhinelander Ave for its established neighborhood reputation.</p>
+               <h3 class="font-bold text-lg mb-2">PS 304 Early Childhood School</h3>
+               <p class="text-sm text-gray-600 italic">Throgs Neck</p>
+               <p class="text-gray-700 mt-2">Families often explore this early childhood hub for foundational special education support.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 160 Walt Disney</h3>
-               <p class="text-sm text-gray-600 italic">Co-op City</p>
-               <p class="text-gray-700 mt-2">Parents in Co-op City frequently ask about ICT classroom ratios and service delivery at this location.</p>
+               <h3 class="font-bold text-lg mb-2">PS 72 Dr. William Dorney</h3>
+               <p class="text-sm text-gray-600 italic">Throgs Neck</p>
+               <p class="text-gray-700 mt-2">Parents sometimes consider this school for its established community presence in the district.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 175 City Island</h3>
-               <p class="text-sm text-gray-600 italic">City Island</p>
-               <p class="text-gray-700 mt-2">Families sometimes consider this unique geographic location for its small-town feel within the NYC system.</p>
+               <h3 class="font-bold text-lg mb-2">PS 107 Student Excellence</h3>
+               <p class="text-sm text-gray-600 italic">Soundview</p>
+               <p class="text-gray-700 mt-2">Families frequently ask about ICT program consistency at this Soundview location.</p>
             </div>
          </div>
          <p class="mt-6 text-sm text-gray-500 bg-gray-100 p-4 rounded text-center">
@@ -95,16 +112,16 @@
       <hr class="border-t border-gray-200 mb-16">
 
       <section class="mb-16">
-         <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Local District 11 Resources</h2>
+         <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Local District 08 Resources</h2>
          <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-blue-50 hover:border-blue-200 transition-all">
                <div class="flex items-center gap-4 mb-4">
                   <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
                      <i class="fas fa-book-open text-blue-600 text-xl"></i>
                   </div>
-                  <h3 class="text-xl font-bold">District 11 Literacy & Dyslexia Support</h3>
+                  <h3 class="text-xl font-bold">District 08 Literacy & Dyslexia Support</h3>
                </div>
-               <p class="text-gray-600 mb-6">Academic intervention and literacy coaching for students in Pelham Parkway and Co-op City.</p>
+               <p class="text-gray-600 mb-6">Providing stable academic intervention for students facing service gaps in the East Bronx.</p>
                <a href="/iep/battle-plan/" class="inline-block w-full text-center bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">List Your Practice Here</a>
             </div>
             <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-pink-50 hover:border-pink-200 transition-all">
@@ -112,20 +129,21 @@
                   <div class="h-12 w-12 bg-pink-100 rounded-full flex items-center justify-center">
                      <i class="fas fa-brain text-pink-600 text-xl"></i>
                   </div>
-                  <h3 class="text-xl font-bold">District 11 Neuropsychological Evaluations</h3>
+                  <h3 class="text-xl font-bold">District 08 Neuropsychological Evaluations</h3>
                </div>
-               <p class="text-gray-600 mb-6">Evaluations to document the need for ASD Nest/Horizon programs and advocate for out-of-district placements.</p>
+               <p class="text-gray-600 mb-6">Comprehensive evaluations to document service needs and advocate for IEP compliance.</p>
                <a href="/quiz/" class="inline-block w-full text-center bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 transition">List Your Practice Here</a>
             </div>
          </div>
          <div class="mt-12 text-center">
-            <p class="text-gray-700 mb-4">Frustrated by the lack of local specialized programs?</p>
+            <p class="text-gray-700 mb-4">Concerned about teacher turnover affecting your child's IEP?</p>
             <a href="/iep/battle-plan/" class="text-blue-600 font-bold underline">Download the IEP Battle Plan</a>
          </div>
       </section>
 
    </main>
-<footer class="footer bg-[#111827] text-white py-12">
+
+ <footer class="footer bg-[#111827] text-white py-12">
 
        <div class="container mx-auto px-4">
 
@@ -171,7 +189,7 @@
 
                 <div class="flex flex-col gap-2">
 
-                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
 
                     <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
 
@@ -214,19 +232,6 @@
 
    </footer>
 
-
-<section style="background:#0d1b2e;padding:60px 24px;text-align:center;margin-top:0;">
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c9943a;margin-bottom:12px;">District 11 families</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:white;margin-bottom:14px;line-height:1.2;">Track your District 11 CSE deadlines — so nothing slips through</h2>
-    <p style="color:rgba(255,255,255,0.55);font-size:1rem;margin-bottom:28px;line-height:1.7;">Navigator is free for District 11 families. Enter your referral date and see every NY-mandated deadline on a live timeline. Log missed services. Generate letters when the district doesn't follow through.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="/app/?district=11" style="background:#c9943a;color:#0d1b2e;padding:13px 26px;border-radius:10px;font-size:0.95rem;font-weight:600;text-decoration:none;">Start tracking — it's free</a>
-      <a href="/iep/states/new-york/new-york-timeline/" style="background:transparent;color:rgba(255,255,255,0.75);padding:13px 22px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">See the CSE timeline</a>
-    </div>
-    <p style="color:rgba(255,255,255,0.3);font-size:0.78rem;margin-top:16px;">No credit card &nbsp;·&nbsp; Built for NY law &nbsp;·&nbsp; All 32 NYC districts covered</p>
-  </div>
-</section>
 </body>
 
 </html>

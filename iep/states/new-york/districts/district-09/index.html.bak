@@ -4,66 +4,83 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>IEP & Special Education Support in NYC District 07 – South Bronx, Mott Haven</title>
-   <meta name="description" content="Navigating IEPs in NYC District 07. Expertise on 2e identification failures, Charter vs. DOE services, and CSE 7 support for families in the South Bronx and Mott Haven.">
-   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/districts/district-07/" />
+   <title>IEP & Special Education Support in NYC District 09 – Grand Concourse, Morrisania</title>
+   <meta name="description" content="Navigating IEPs in NYC District 09. Expertise on charter school pushout, mid-year placement transitions, and CSE 9 support for families in Grand Concourse and Morrisania.">
+   <link rel="canonical" href="https://www.navigatorkidsai.com/iep/states/new-york/districts/district-09/" />
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   
-   
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+         font-family: 'Merriweather', serif;
+      }
+   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-   <nav style="background:#0d1b2e;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;">
-  <a href="/" style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:white;text-decoration:none;display:flex;align-items:center;gap:10px;">
-    <span style="width:26px;height:26px;border-radius:7px;background:#c9943a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#0d1b2e;">N</span>
-    Navigator
-  </a>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Timeline</a>
-    <a href="/resources/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">Resources</a>
-    <a href="/iep/states/new-york/districts/" style="font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;">All districts</a>
-    <a href="/app/" style="font-size:0.875rem;font-weight:500;background:#c9943a;color:#0d1b2e;padding:7px 18px;border-radius:8px;text-decoration:none;">Start free</a>
-  </div>
-</nav>
+   <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0;">
+      <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+         <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
+            <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
+         </a>
+         <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
+            <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500;">About</a>
+            <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Products</a>
+            <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500;">Resources</a>
+            <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP Guide</a>
+            <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600;">IEP Battle Plan</a>
+            <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500;">IEP State Guide</a>
+            <a href="/cart/" class="nav-cart" style="text-decoration: none; font-size: 1.2rem;">🛒</a>
+            <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600;">Take Quiz</a>
+         </div>
+      </div>
+   </nav>
 
    <header class="bg-blue-900 text-white py-16 px-4">
       <div class="max-width-1200px mx-auto text-center" style="max-width: 1200px;">
-         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">IEP & Special Education Support in NYC District 07 – South Bronx, Mott Haven</h1>
-         <p class="text-xl opacity-90">Advocating for High-Need Support and 2e Identification in the South Bronx.</p>
+         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">IEP & Special Education Support in NYC District 09 – Grand Concourse, Morrisania</h1>
+         <p class="text-xl opacity-90">Navigating Mid-Year Transitions and Charter Dynamics in the High-Need Bronx.</p>
       </div>
    </header>
 
    <main class="max-w-6xl mx-auto px-4 py-12">
 
       <section class="mb-16">
-         <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Understanding Special Education in South Bronx and Mott Haven</h2>
+         <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Understanding Special Education in Grand Concourse and Morrisania</h2>
          <div class="bg-white p-2 rounded-xl shadow-lg border border-gray-200">
-            
+            <iframe width="100%" height="450" style="border:0; border-radius: 0.75rem;" loading="lazy" allowfullscreen <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d772694.2200869991!2d-74.6962965539686!3d40.84252877565693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f4300e929ba1%3A0xe3dcd1b037643a06!2sP.S.%20X114%20-%20Luis%20Llorens%20Torres%20Schools!5e0!3m2!1sen!2sus!4v1770309186396!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
+            </iframe>
          </div>
-         <p class="mt-4 text-sm text-gray-500 text-center">District 07 is geographically anchored by sites such as PS 49 Willis Avenue.</p>
+         <p class="mt-4 text-sm text-gray-500 text-center">District 09 is geographically anchored by PS 114 Luis Llorens Torres.</p>
       </section>
 
       <section class="grid md:grid-cols-2 gap-12 mb-16 items-center">
          <div>
-            <h2 class="text-3xl font-bold text-blue-900 mb-6">The District 07 IEP Reality</h2>
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">The District 09 IEP Reality</h2>
             <p class="text-lg text-gray-700 mb-4">
-               District 07 is characterized by a high density of charter schools and significant economic challenges. Families here often face a systemic failure to identify twice-exceptional (2e) students, as the local educational focus remains largely on remedial support rather than identifying giftedness alongside disability.
+               District 09 is a high-need area with significant charter school penetration. A critical pain point for families is the phenomenon of charter schools "counseling out" students with special needs, often resulting in sudden mid-year transitions back to traditional public schools.
             </p>
             <p class="text-lg text-gray-700 mb-6">
-               Because of the high charter penetration, parents frequently find themselves navigating the complex choice between Charter services and traditional DOE offerings. It is essential to understand <a href="/iep/states/new-york/new-york-request-iep/" class="text-blue-600 underline font-medium">how to request an IEP in New York</a> to ensure your child isn't overlooked in a high-need environment.
+               When these transitions occur, maintaining your child's service level is vital. Parents often face "crisis-management" scenarios and must leverage the <a href="/iep/states/new-york/new-york-timeline/" class="text-blue-600 underline font-medium">New York IEP timeline</a> to ensure the DOE provides immediate placement and continuity of services.
             </p>
             <blockquote class="border-l-4 border-pink-500 bg-pink-50 p-6 rounded-r-lg italic text-gray-700 mb-6">
-               "In District 7, if your child is smart but struggling, they often only see the struggle. We have to fight to show the whole picture."
+               "In District 9, many parents feel their child is pushed out of charters right before state testing, leaving the local zoned school to pick up the pieces mid-year."
             </blockquote>
          </div>
          <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
-            <h3 class="text-xl font-bold text-blue-900 mb-4">District 07 Profile</h3>
+            <h3 class="text-xl font-bold text-blue-900 mb-4">District 09 Profile</h3>
             <ul class="space-y-4 text-gray-700">
-               <li><i class="fas fa-users text-blue-600 mr-2"></i> <strong>Enrollment:</strong> 14,231 Students</li>
+               <li><i class="fas fa-users text-blue-600 mr-2"></i> <strong>Enrollment:</strong> 22,589 Students</li>
                <li><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> <strong>Borough:</strong> Bronx</li>
-               <li><i class="fas fa-exclamation-circle text-blue-600 mr-2"></i> <strong>Primary Pain Point:</strong> Focus on remedial support masks 2e (twice-exceptional) needs.</li>
+               <li><i class="fas fa-exclamation-triangle text-blue-600 mr-2"></i> <strong>Primary Pain Point:</strong> Charter school pushout and mid-year placement crisis.</li>
             </ul>
          </div>
       </section>
@@ -72,19 +89,19 @@
          <h2 class="text-3xl font-bold text-blue-900 mb-6">General Education Schools Parents Ask About</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 49 Willis Avenue</h3>
-               <p class="text-sm text-gray-600 italic">Mott Haven</p>
-               <p class="text-gray-700 mt-2">Families often explore this central Mott Haven location as a primary district anchor.</p>
+               <h3 class="font-bold text-lg mb-2">PS 114 Luis Llorens Torres</h3>
+               <p class="text-sm text-gray-600 italic">Morrisania</p>
+               <p class="text-gray-700 mt-2">Families often explore this anchor school on Cromwell Ave when returning from charter placements.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 65 Mother Hale Academy</h3>
-               <p class="text-sm text-gray-600 italic">South Bronx</p>
-               <p class="text-gray-700 mt-2">Parents sometimes consider this academy when evaluating local ICT classroom stability.</p>
+               <h3 class="font-bold text-lg mb-2">PS 064 Pura Belpre</h3>
+               <p class="text-sm text-gray-600 italic">Walton Ave</p>
+               <p class="text-gray-700 mt-2">Parents sometimes consider this location for its bilingual and ICT support options.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-               <h3 class="font-bold text-lg mb-2">PS 154 Jonathan D. Hyatt</h3>
-               <p class="text-sm text-gray-600 italic">Mott Haven</p>
-               <p class="text-gray-700 mt-2">Families frequently ask about the transition from local charter programs back to this zoned option.</p>
+               <h3 class="font-bold text-lg mb-2">PS 170 Crotona Park East</h3>
+               <p class="text-sm text-gray-600 italic">Crotona Park</p>
+               <p class="text-gray-700 mt-2">Families frequently ask about the availability of specialized seats in the Crotona Park corridor.</p>
             </div>
          </div>
          <p class="mt-6 text-sm text-gray-500 bg-gray-100 p-4 rounded text-center">
@@ -95,16 +112,16 @@
       <hr class="border-t border-gray-200 mb-16">
 
       <section class="mb-16">
-         <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Local District 07 Resources</h2>
+         <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Local District 09 Resources</h2>
          <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-blue-50 hover:border-blue-200 transition-all">
                <div class="flex items-center gap-4 mb-4">
                   <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
                      <i class="fas fa-book-open text-blue-600 text-xl"></i>
                   </div>
-                  <h3 class="text-xl font-bold">District 07 Literacy & Dyslexia Support</h3>
+                  <h3 class="text-xl font-bold">District 09 Literacy & Dyslexia Support</h3>
                </div>
-               <p class="text-gray-600 mb-6">Specialized academic intervention for students in the South Bronx who require more than basic remedial support.</p>
+               <p class="text-gray-600 mb-6">Immediate academic intervention for students transitioning back to DOE schools from local charters.</p>
                <a href="/iep/battle-plan/" class="inline-block w-full text-center bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">List Your Practice Here</a>
             </div>
             <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-pink-50 hover:border-pink-200 transition-all">
@@ -112,15 +129,15 @@
                   <div class="h-12 w-12 bg-pink-100 rounded-full flex items-center justify-center">
                      <i class="fas fa-brain text-pink-600 text-xl"></i>
                   </div>
-                  <h3 class="text-xl font-bold">District 07 Neuropsychological Evaluations</h3>
+                  <h3 class="text-xl font-bold">District 09 Neuropsychological Evaluations</h3>
                </div>
-               <p class="text-gray-600 mb-6">Expert evaluations focused on identifying 2e profiles and securing necessary DOE or Charter accommodations.</p>
+               <p class="text-gray-600 mb-6">Comprehensive testing to document student needs during mid-year placement appeals and CSE meetings.</p>
                <a href="/quiz/" class="inline-block w-full text-center bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 transition">List Your Practice Here</a>
             </div>
          </div>
          <div class="mt-12 text-center">
-            <p class="text-gray-700 mb-4">Worried about 2e identification failure in the Bronx?</p>
-            <a href="/quiz/" class="text-blue-600 font-bold underline">Take the 2e Profile Quiz</a>
+            <p class="text-gray-700 mb-4">Facing a charter school pushout or mid-year placement crisis?</p>
+            <a href="/iep/states/new-york/new-york-private-placement/" class="text-blue-600 font-bold underline">Explore New York Private Placement Options</a>
          </div>
       </section>
 
@@ -172,7 +189,7 @@
 
                 <div class="flex flex-col gap-2">
 
-                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
+                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
 
                     <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
 
@@ -215,19 +232,6 @@
 
    </footer>
 
-
-<section style="background:#0d1b2e;padding:60px 24px;text-align:center;margin-top:0;">
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c9943a;margin-bottom:12px;">District 7 families</div>
-    <h2 style="font-family:'Fraunces',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:white;margin-bottom:14px;line-height:1.2;">Track your District 7 CSE deadlines — so nothing slips through</h2>
-    <p style="color:rgba(255,255,255,0.55);font-size:1rem;margin-bottom:28px;line-height:1.7;">Navigator is free for District 7 families. Enter your referral date and see every NY-mandated deadline on a live timeline. Log missed services. Generate letters when the district doesn't follow through.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="/app/?district=7" style="background:#c9943a;color:#0d1b2e;padding:13px 26px;border-radius:10px;font-size:0.95rem;font-weight:600;text-decoration:none;">Start tracking — it's free</a>
-      <a href="/iep/states/new-york/new-york-timeline/" style="background:transparent;color:rgba(255,255,255,0.75);padding:13px 22px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">See the CSE timeline</a>
-    </div>
-    <p style="color:rgba(255,255,255,0.3);font-size:0.78rem;margin-top:16px;">No credit card &nbsp;·&nbsp; Built for NY law &nbsp;·&nbsp; All 32 NYC districts covered</p>
-  </div>
-</section>
 </body>
 
 </html>
