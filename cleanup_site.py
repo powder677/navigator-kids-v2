@@ -22,6 +22,7 @@ Usage:
 
 import os
 import re
+import json
 import shutil
 import argparse
 from pathlib import Path
@@ -487,60 +488,140 @@ def run_audit(root: Path, sitemap_path: Path, debug: bool = False):
     return keep, cut, unknown
 
 
-def write_redirects(output_path: Path, cut: list, format: str = "netlify"):
-    """Write _redirects file for cut pages."""
-    lines = []
+def _build_redirect_pairs(cut: list):
+    """Return (source, destination, is_wildcard, covered_by_parent) tuples for all cut pages."""
+    def find_wildcard_parent(url):
+        parts = url.rstrip("/").split("/")
+        for depth in range(len(parts), 0, -1):
+            parent = "/".join(parts[:depth]) + "/"
+            if parent in REDIRECTS and parent != url:
+                return REDIRECTS[parent]
+        return None
 
-    if format == "netlify":
-        lines.append("# Navigator -- 301 Redirects")
-        lines.append(f"# Generated {datetime.now().strftime('%Y-%m-%d')}")
-        lines.append("# Format: /old-path  /new-path  301\n")
+    seen_wildcards = set()
+    pairs = []
+    for url, _ in sorted(cut):
+        dest = REDIRECTS.get(url)
+        if dest:
+            is_wildcard = url.endswith("/")
+            wildcard_key = (url, dest)
+            if is_wildcard and wildcard_key in seen_wildcards:
+                continue
+            if is_wildcard:
+                seen_wildcards.add(wildcard_key)
+            pairs.append((url, dest, is_wildcard, False))
+        else:
+            parent_dest = find_wildcard_parent(url)
+            pairs.append((url, parent_dest, False, True))
+    return pairs
 
-        def find_wildcard_parent(url: str) -> str | None:
-            """Return the redirect destination if a parent wildcard rule covers this URL."""
-            parts = url.rstrip("/").split("/")
-            for depth in range(len(parts), 0, -1):
-                parent = "/".join(parts[:depth]) + "/"
-                if parent in REDIRECTS and parent != url:
-                    return REDIRECTS[parent]
-            return None
 
-        written_wildcards = set()
-        for url, _ in sorted(cut):
-            dest = REDIRECTS.get(url)
-            if dest:
-                if url.endswith("/"):
-                    wildcard_rule = f"{url}*  {dest}  301"
-                    if wildcard_rule not in written_wildcards:
-                        lines.append(wildcard_rule)
-                        written_wildcards.add(wildcard_rule)
-                else:
-                    lines.append(f"{url}  {dest}  301")
-            else:
-                parent_dest = find_wildcard_parent(url)
-                if parent_dest:
-                    lines.append(f"# covered by wildcard above #pricing{parent_dest}: {url}")
-                else:
-                    lines.append(f"# REVIEW: {url}  (no redirect defined -- will 404)")
+def write_redirects(output_path: Path, cut: list, format: str = "netlify",
+                    existing_vercel_json: Path = None):
+    """Write redirect rules in the requested format.
 
-    elif format == "nginx":
-        lines.append("# Navigator -- nginx redirects")
-        lines.append(f"# Generated {datetime.now().strftime('%Y-%m-%d')}\n")
-        for url, _ in sorted(cut):
-            dest = REDIRECTS.get(url)
-            if dest:
-                if url.endswith("/"):
-                    lines.append(f"location ^~ {url} {{ return 301 {dest}; }}")
-                else:
-                    lines.append(f"location = {url} {{ return 301 {dest}; }}")
+    Formats:
+      netlify  -- _redirects file (Netlify / Vercel legacy)
+      vercel   -- vercel.json with redirects array (merges with existing file)
+      nginx    -- nginx location blocks
+    """
+    pairs = _build_redirect_pairs(cut)
+    active   = [(s, d, w) for s, d, w, cov in pairs if not cov]
+    covered  = [(s, d) for s, d, w, cov in pairs if cov and d]
+    no_dest  = [(s,)    for s, d, w, cov in pairs if cov and not d]
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    real_rules = [l for l in lines if l and not l.startswith("#")]
-    covered    = [l for l in lines if l.startswith("# covered by wildcard")]
-    review     = [l for l in lines if l.startswith("# REVIEW:")]
-    print(f"[OK]  Redirects written: {output_path}")
-    print(f"   {len(real_rules)} active rules  |  {len(covered)} covered by wildcard  |  {len(review)} need manual review")
+
+    # -----------------------------------------------------------------
+    if format == "netlify":
+        lines = [
+            "# Navigator -- 301 Redirects",
+            f"# Generated {datetime.now().strftime('%Y-%m-%d')}",
+            "# Format: /old-path  /new-path  301",
+            "",
+        ]
+        for src_url, dest, is_wildcard in active:
+            pattern = f"{src_url}*" if is_wildcard else src_url
+            lines.append(f"{pattern}  {dest}  301")
+        for src_url, parent_dest in covered:
+            lines.append(f"# covered by wildcard -> {parent_dest}: {src_url}")
+        for (src_url,) in no_dest:
+            lines.append(f"# REVIEW: {src_url}  (no redirect defined -- will 404)")
+        output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    # -----------------------------------------------------------------
+    elif format == "vercel":
+        # Load existing vercel.json if present, otherwise start fresh
+        base = {}
+        target = existing_vercel_json or output_path
+        if target.exists():
+            try:
+                base = json.loads(target.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                print(f"  [!] Could not parse existing {target.name} -- starting fresh")
+
+        # Build redirect entries
+        # Vercel uses { "source": "/old/:path*", "destination": "/new", "permanent": true }
+        redirect_entries = []
+        for src_url, dest, is_wildcard in active:
+            if is_wildcard:
+                # Vercel uses :path* for wildcards
+                source = src_url.rstrip("/") + "/:path*"
+            else:
+                source = src_url
+            redirect_entries.append({
+                "source": source,
+                "destination": dest,
+                "permanent": True,
+            })
+
+        # Merge: replace any existing Navigator-managed redirects, keep others
+        existing = base.get("redirects", [])
+        our_sources = {e["source"] for e in redirect_entries}
+        kept_existing = [e for e in existing if e.get("source") not in our_sources]
+        base["redirects"] = kept_existing + redirect_entries
+
+        output_path.write_text(
+            json.dumps(base, indent=2, ensure_ascii=True) + "\n",
+            encoding="utf-8"
+        )
+
+        # Also write a summary comment file alongside
+        notes_path = output_path.parent / "redirects_notes.txt"
+        note_lines = [
+            f"# Redirects applied to vercel.json on {datetime.now().strftime('%Y-%m-%d')}",
+            f"# {len(redirect_entries)} rules added",
+            "",
+            "# Covered by wildcard rules (not added individually):",
+        ]
+        for src_url, parent_dest in covered:
+            note_lines.append(f"#   {src_url}  -> {parent_dest}")
+        if no_dest:
+            note_lines.append("")
+            note_lines.append("# REVIEW -- no redirect defined (will 404 after cleanup):")
+            for (src_url,) in no_dest:
+                note_lines.append(f"#   {src_url}")
+        notes_path.write_text("\n".join(note_lines) + "\n", encoding="utf-8")
+
+    # -----------------------------------------------------------------
+    elif format == "nginx":
+        lines = [
+            "# Navigator -- nginx redirects",
+            f"# Generated {datetime.now().strftime('%Y-%m-%d')}",
+            "",
+        ]
+        for src_url, dest, is_wildcard in active:
+            if is_wildcard:
+                lines.append(f"location ^~ {src_url} {{ return 301 {dest}; }}")
+            else:
+                lines.append(f"location = {src_url} {{ return 301 {dest}; }}")
+        output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    # -----------------------------------------------------------------
+    print(f"[OK]  Redirects written : {output_path}")
+    print(f"      {len(active)} active rules  |  "
+          f"{len(covered)} covered by wildcard  |  "
+          f"{len(no_dest)} need manual review")
 
 
 def write_clean_sitemap(output_path: Path, keep: list, base_url: str = "https://www.navigatorkidsai.com"):
@@ -641,8 +722,8 @@ def main():
         help="Only write redirect file, don't touch filesystem"
     )
     parser.add_argument(
-        "--format", choices=["netlify", "nginx"], default="netlify",
-        help="Redirect file format (default: netlify)"
+        "--format", choices=["netlify", "vercel", "nginx"], default="vercel",
+        help="Redirect file format: vercel (default), netlify, nginx"
     )
     parser.add_argument(
         "--output-dir", default="./cleanup-output",
@@ -670,8 +751,21 @@ def main():
     # Always run audit first
     keep, cut, unknown = run_audit(root, sitemap_path, debug=args.debug)
 
-    redirect_filename = "_redirects" if args.format == "netlify" else "nginx_redirects.conf"
-    write_redirects(output_dir / redirect_filename, cut, format=args.format)
+    if args.format == "vercel":
+        redirect_filename = "vercel.json"
+        # If a vercel.json already exists in the site root, merge into it directly
+        existing_vercel = root / "vercel.json"
+        write_redirects(
+            output_dir / redirect_filename, cut,
+            format="vercel",
+            existing_vercel_json=existing_vercel if existing_vercel.exists() else None,
+        )
+    elif args.format == "netlify":
+        redirect_filename = "_redirects"
+        write_redirects(output_dir / redirect_filename, cut, format="netlify")
+    else:
+        redirect_filename = "nginx_redirects.conf"
+        write_redirects(output_dir / redirect_filename, cut, format="nginx")
     write_clean_sitemap(output_dir / "sitemap_clean.xml", keep)
 
     if args.execute and not args.redirects_only:
