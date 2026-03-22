@@ -40,6 +40,61 @@ NEW_NAV = '''<nav style="background:#0d1b2e;padding:0 1.5rem;display:flex;align-
   </div>
 </nav>'''
 
+
+# ---------------------------------------------------------------------------
+# NEW FOOTER  (replaces the old Navigator Kids AI footer entirely)
+# ---------------------------------------------------------------------------
+NEW_FOOTER = '''<footer style="background:#080f1a;padding:52px 24px 28px;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;">
+
+      <div>
+        <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:14px;">
+          <span style="width:28px;height:28px;border-radius:8px;background:#c9943a;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#0d1b2e;flex-shrink:0;">N</span>
+          <span style="font-family:\'Fraunces\',serif;font-size:1.15rem;color:rgba(255,255,255,0.85);">Navigator</span>
+        </a>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.35);line-height:1.65;max-width:260px;">The IEP companion built for New York families. Know your rights. Track your deadlines. Document everything.</p>
+      </div>
+
+      <div>
+        <div style="font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">App</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">CSE timeline</a>
+          <a href="/app/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Letter generator</a>
+          <a href="/app/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Service log</a>
+          <a href="/pricing/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Pricing</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">Districts</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <a href="/iep/states/new-york/districts/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">All NYC districts</a>
+          <a href="/iep/states/new-york/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">NY IEP overview</a>
+          <a href="https://newyorkspecialed.net/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">newyorkspecialed.net</a>
+          <a href="/resources/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Resources</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">Company</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <a href="/about/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">About</a>
+          <a href="/contact/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Contact</a>
+          <a href="/privacy/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Privacy policy</a>
+          <a href="/terms/" style="font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;">Terms of service</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <span style="font-size:0.78rem;color:rgba(255,255,255,0.2);">© 2026 Navigator. Not legal advice.</span>
+      <span style="font-size:0.78rem;color:rgba(255,255,255,0.2);">Built for New York families</span>
+    </div>
+  </div>
+</footer>'''
+
 # ---------------------------------------------------------------------------
 # CTA BLOCK  (appended before </body>)
 # ---------------------------------------------------------------------------
@@ -294,42 +349,54 @@ def _make_resources_section() -> str:
 </section>'''
 
 
-def add_cta_block(html: str, district_slug: str) -> str:
-    """Place district CTA correctly inside </body>.
+def fix_footer(html: str) -> str:
+    """Replace the old Navigator Kids AI footer with the new one.
 
-    Handles three cases:
-    A) CTA already inside <body> — leave it
-    B) CTA exists but is OUTSIDE </body> — move it inside
-    C) No CTA at all — add before </footer> if present, else before </body>
+    Also fixes ordering: ensures the sequence is
+      [page sections] -> [CTA] -> [footer] -> </body>
+    The old footer uses Tailwind bg-[] syntax that doesn't work without CDN
+    and contains stale branding / dead links.
+    """
+    # Remove the old footer entirely (match <footer ... </footer>)
+    html = re.sub(
+        r'<footer\b.*?</footer>',
+        '',
+        html,
+        flags=re.DOTALL | re.IGNORECASE
+    )
+    return html
+
+
+def fix_ordering(html: str, district_slug: str) -> str:
+    """Ensure final page order is: content -> CTA -> footer -> </body>.
+
+    After all other fixes run, this function collects any stray CTA and
+    footer fragments and reassembles them in the correct order before </body>.
     """
     info = DISTRICTS.get(district_slug, ("this district", "", ""))
     label, num, _ = info
     cta = make_cta_block(label, num)
 
-    body_close = html.rfind('</body>')
-    cta_pos    = html.find('Start tracking')
+    # Strip any existing CTA section(s)
+    html = re.sub(
+        r'<section[^>]*style="[^"]*background:#0d1b2e[^"]*"[^>]*>.*?</section>',
+        '',
+        html,
+        flags=re.DOTALL | re.IGNORECASE
+    )
+    # Strip any remaining old footer (in case fix_footer missed a variant)
+    html = re.sub(r'<footer\b.*?</footer>', '', html, flags=re.DOTALL | re.IGNORECASE)
 
-    # Case A: CTA already inside body — nothing to do
-    if cta_pos != -1 and (body_close == -1 or cta_pos < body_close):
-        return html
+    # Clean up whitespace before </body>
+    html = re.sub(r'\s*</body>', '\n</body>', html)
 
-    # Case B: CTA exists but is AFTER </body> — remove it from there, re-insert inside
-    if cta_pos != -1 and body_close != -1 and cta_pos > body_close:
-        # Strip the misplaced CTA section (from its opening <section to the next </section>)
-        html = re.sub(
-            r'<section[^>]*style="background:#0d1b2e[^"]*"[^>]*>.*?</section>',
-            '',
-            html,
-            flags=re.DOTALL | re.IGNORECASE
-        )
+    # Reassemble: cta -> new footer -> </body>
+    html = html.replace('</body>', cta + '\n' + NEW_FOOTER + '\n</body>', 1)
+    return html
 
-    # Case C (and re-insert after Case B): add before </footer> or </body>
-    if '</footer>' in html:
-        html = html.replace('</footer>', '</footer>\n' + cta, 1)
-    elif '</body>' in html:
-        html = html.replace('</body>', cta + '\n</body>', 1)
-    else:
-        html += cta
+
+def add_cta_block(html: str, district_slug: str) -> str:
+    """No-op — CTA placement is now handled by fix_ordering()."""
     return html
 
 
@@ -344,7 +411,8 @@ def process_file(path: Path, district_slug: str, dry_run: bool) -> dict:
     html = fix_dead_links(html)
     html = fix_body_quiz_links(html)
     html = fix_placeholder_sections(html)
-    html = add_cta_block(html, district_slug)
+    html = fix_footer(html)
+    html = fix_ordering(html, district_slug)  # always last — sets final CTA + footer + </body>
 
     changed = html != original
     report = {

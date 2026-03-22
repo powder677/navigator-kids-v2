@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,300&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-900">
 
@@ -89,44 +90,31 @@
     </div>
 </section>
 
-<section class="py-16 bg-blue-900 text-white">
-    <div class="container mx-auto px-4 max-w-5xl">
-        <h2 class="text-3xl font-bold mb-12 text-center">District 3 Local Advocacy & Support</h2>
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-            <div class="bg-white text-gray-900 p-8 rounded-2xl shadow-xl flex flex-col items-start">
-                <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">District 3 Literacy & Dyslexia Support</h3>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Expert reading intervention tailored for D3 students. We bridge the gap when ICT classrooms are overcrowded.
-                </p>
-                <a href="/iep/battle-plan/" class="bg-pink-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-700 transition w-full text-center">
-                    List Your Practice Here
-                </a>
-            </div>
-
-            <div class="bg-white text-gray-900 p-8 rounded-2xl shadow-xl flex flex-col items-start">
-                <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">District 3 Neuropsychological Evaluations</h3>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Specialized evaluations for 2e children on the Upper West Side. We provide the data you need for the CSE.
-                </p>
-                <a href="/quiz/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition w-full text-center">
-                    List Your Practice Here
-                </a>
-            </div>
-        </div>
-
-        <div class="text-center">
-            <p class="text-xl mb-6 opacity-90 italic">Don't enter your next CSE meeting without a strategy.</p>
-            <a href="/iep/battle-plan/" class="inline-block bg-white text-blue-900 px-10 py-4 rounded-full font-extrabold text-lg shadow-lg hover:bg-gray-100 transition">
-                Access the IEP Battle Plan <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
+<section style="background:#f8f7f4;padding:60px 24px;border-top:1px solid rgba(13,27,46,0.08);">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c9943a;margin-bottom:10px;text-align:center;">Tools for this district</div>
+    <h2 style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:400;text-align:center;color:#0d1b2e;margin-bottom:40px;">Three things NY parents in this district need</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x1F4C5;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">CSE Timeline Tracker</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">Track your 60-day evaluation window and every NY-mandated deadline automatically.</p>
+        <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Calculate my timeline</a>
+      </div>
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x2709;&#xFE0F;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">Letter Generator</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">AI-drafted letters citing NY law. Request evaluations, dispute PWNs, demand compensatory services.</p>
+        <a href="/app/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Draft a letter</a>
+      </div>
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x1F4CB;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">Service Log</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">Document every missed session with a timestamped note. Build the evidence record before you need it.</p>
+        <a href="/app/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Start logging</a>
+      </div>
     </div>
+  </div>
 </section>
 
 <footer class="footer bg-[#111827] text-white py-12">
@@ -177,9 +165,9 @@
 
                     <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
 
-                    <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
 
-                    <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
 
                 </div>
 

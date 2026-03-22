@@ -11,6 +11,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    
    
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,300&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-gray-50">
@@ -66,29 +67,32 @@
       </div>
    </section>
 
-   <section class="py-12 bg-blue-900 text-white">
-      <div class="max-w-4xl mx-auto px-4">
-         <h2 class="text-3xl font-bold mb-8 text-center">District 20 Hyperlocal Resources</h2>
-         <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-xl">
-               <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-book-open"></i></div>
-               <h3 class="text-xl font-bold mb-2">District 20 Literacy & Dyslexia Support</h3>
-               <p class="text-sm mb-4">Bridging the gap between high academic expectations and specific learning disabilities in Bay Ridge.</p>
-               <a href="/iep/battle-plan/" class="inline-block bg-pink-600 text-white px-4 py-2 rounded font-bold hover:bg-pink-700 transition">List Your Practice Here</a>
-            </div>
-            <div class="bg-white text-gray-800 p-6 rounded-xl shadow-xl">
-               <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-brain"></i></div>
-               <h3 class="text-xl font-bold mb-2">District 20 Neuropsychological Evaluations</h3>
-               <p class="text-sm mb-4">Evaluators who understand the cultural nuances and high-stakes environment of D20 families.</p>
-               <a href="/quiz/" class="inline-block bg-blue-600 text-white px-4 py-2 rounded font-bold hover:bg-blue-700 transition">List Your Practice Here</a>
-            </div>
-         </div>
-         <div class="mt-12 text-center">
-            <p class="mb-4">Worried that cultural stigma is delaying your child's support?</p>
-            <a href="/quiz/" class="inline-block bg-pink-500 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-pink-600 transition">Take the Advocacy Quiz</a>
-         </div>
+   <section style="background:#f8f7f4;padding:60px 24px;border-top:1px solid rgba(13,27,46,0.08);">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c9943a;margin-bottom:10px;text-align:center;">Tools for this district</div>
+    <h2 style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:400;text-align:center;color:#0d1b2e;margin-bottom:40px;">Three things NY parents in this district need</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x1F4C5;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">CSE Timeline Tracker</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">Track your 60-day evaluation window and every NY-mandated deadline automatically.</p>
+        <a href="/iep/states/new-york/new-york-timeline/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Calculate my timeline</a>
       </div>
-   </section>
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x2709;&#xFE0F;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">Letter Generator</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">AI-drafted letters citing NY law. Request evaluations, dispute PWNs, demand compensatory services.</p>
+        <a href="/app/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Draft a letter</a>
+      </div>
+      <div style="background:white;border:1px solid rgba(13,27,46,0.1);border-radius:12px;padding:24px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">&#x1F4CB;</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;margin-bottom:8px;">Service Log</h3>
+        <p style="font-size:0.85rem;color:#445870;margin-bottom:14px;line-height:1.5;">Document every missed session with a timestamped note. Build the evidence record before you need it.</p>
+        <a href="/app/" style="font-size:0.8rem;font-weight:500;color:#c9943a;text-decoration:none;">Start logging</a>
+      </div>
+    </div>
+  </div>
+</section>
 <footer class="footer bg-[#111827] text-white py-12">
 
        <div class="container mx-auto px-4">
@@ -137,9 +141,9 @@
 
                     <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
 
-                    <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
+                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
 
-                    <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
+                    <a href="/pricing/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
 
                 </div>
 
