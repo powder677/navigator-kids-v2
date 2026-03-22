@@ -2,376 +2,1933 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Navigator Kids AI is a parent resource platform that helps families of twice-exceptional (2e) children navigate IEP advocacy, emotional regulation, and school communication.">
-    <title>Navigator Kids AI™ | Resources for Twice-Exceptional (2e) Families</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Navigator — New York IEP Companion for Families</title>
+   <meta name="description" content="Track CSE deadlines, generate letters, and log missed services. The AI-powered IEP companion built for New York families.">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+   <style>
+      :root {
+         --navy: #0d1b2e;
+         --navy-mid: #1a2f4a;
+         --navy-light: #253d5c;
+         --slate: #3d5470;
+         --gold: #c9943a;
+         --gold-light: #e8b96a;
+         --gold-pale: #fdf3e3;
+         --white: #ffffff;
+         --off-white: #f8f7f4;
+         --mist: #eef1f5;
+         --text-dark: #0d1b2e;
+         --text-mid: #445870;
+         --text-light: #7a90a6;
+         --border: rgba(13, 27, 46, 0.1);
+         --red-soft: #fef2f2;
+         --red-mid: #ef4444;
+         --green-soft: #f0fdf4;
+         --green-mid: #22c55e;
+         --blue-soft: #eff6ff;
+         --radius: 12px;
+         --radius-lg: 20px;
+      }
 
-    <style>
-        :root {
-            --navy: #1e3a8a;
-            --blue: #2563eb;
-            --terracotta: #be185d;
-            --text-light: #4b5563;
-        }
-        body { font-family: 'Inter', sans-serif; color: #374151; }
-        h1, h2, h3 { font-family: 'Merriweather', serif; }
-        
-        /* Hero Styling */
-        .hero { background: #eff6ff; padding: 4rem 0; text-align: center; position: relative; overflow: hidden; }
-        .hero h1 { font-size: 2.5rem; font-weight: 900; color: #111827; margin-bottom: 1.5rem; line-height: 1.2; }
-        .hero-description { max-width: 700px; margin: 0 auto 2rem; font-size: 1.25rem; line-height: 1.6; color: #4b5563; }
-        
-        /* Trust Bar */
-        .trust-bar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 1rem 0; }
-        .trust-items { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.9rem; font-weight: 500; color: #4b5563; }
-        .trust-icon { color: #2563eb; margin-right: 0.5rem; font-weight: bold; }
+      *,
+      *::before,
+      *::after {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
 
-        /* AEO Answer Block Styling */
-        .aeo-answer-block {
-            background: #f9fafb;
-            border-left: 5px solid #2563eb;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            text-align: left;
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-        .short-answer-label { text-transform: uppercase; font-size: 0.75rem; font-weight: 700; color: #2563eb; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem; }
+      html {
+         scroll-behavior: smooth;
+      }
 
-        /* Profile Cards */
-        .profiles-section { padding: 4rem 0; background: #fff; }
-        .profiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .profile-card { border: 1px solid #e5e7eb; padding: 1.5rem; border-radius: 0.75rem; transition: transform 0.2s; }
-        .profile-card:hover { transform: translateY(-2px); border-color: #2563eb; }
-        .profile-icon { font-size: 2rem; margin-bottom: 1rem; }
-        .profile-traits { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .profile-trait { background: #eff6ff; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+      body {
+         font-family: 'Outfit', sans-serif;
+         color: var(--text-dark);
+         background: var(--white);
+         line-height: 1.6;
+         overflow-x: hidden;
+      }
 
-        /* Lead Magnet / Form Section */
-        .lead-section { background: #1e3a8a; color: white; padding: 4rem 0; }
-        .lead-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1000px; margin: 0 auto; }
-        .lead-form { background: white; padding: 2rem; border-radius: 1rem; color: #374151; }
-        
-        /* Form Styling */
-        .form-group { margin-bottom: 1rem; }
-        .form-input { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem; }
-        .form-btn { width: 100%; background: #be185d; color: white; padding: 0.75rem; border: none; border-radius: 0.5rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: background 0.2s; }
-        .form-btn:hover { background: #9d174d; }
+      /* ── TYPOGRAPHY ── */
+      .display {
+         font-family: 'Fraunces', serif;
+      }
 
-        /* Navbar Overrides */
-        .hidden { display: none !important; }
-        @media (min-width: 768px) {
-            .md\:flex { display: flex !important; }
-            .md\:hidden { display: none !important; }
-            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-            .md\:col-span-1 { grid-column: span 1 / span 1; }
-            .md\:w-1\/2 { width: 50%; }
-        }
-        @media (max-width: 768px) {
-            .lead-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 1.75rem; }
-        }
-    </style>
+      h1,
+      h2,
+      h3 {
+         font-family: 'Fraunces', serif;
+         line-height: 1.15;
+      }
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I help my twice-exceptional child?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Start with understanding their specific brain profile using our assessment, then secure legal accommodations via an IEP, and finally master co-regulation strategies to manage meltdowns at home."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What do I say during a meltdown?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Say less. Lower your voice. Get on their level. Use specific de-escalation scripts designed to signal safety to the nervous system, as reasoning is impossible when the thinking brain is offline."
-          }
-        }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Navigator Kids AI",
-        "url": "https://navigatorkids.ai",
-        "description": "Navigator Kids AI is a parent resource platform that helps families of twice-exceptional (2e) children ages 5-12 navigate IEP advocacy, emotional regulation, and school communication."
-    }
-    </script>
+      h1 {
+         font-size: clamp(2.4rem, 5vw, 3.8rem);
+         font-weight: 400;
+         letter-spacing: -0.02em;
+      }
+
+      h2 {
+         font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+         font-weight: 400;
+         letter-spacing: -0.01em;
+      }
+
+      h3 {
+         font-size: 1.25rem;
+         font-weight: 400;
+      }
+
+      p {
+         font-size: 1rem;
+         color: var(--text-mid);
+      }
+
+      /* ── LAYOUT ── */
+      .container {
+         max-width: 1100px;
+         margin: 0 auto;
+         padding: 0 1.5rem;
+      }
+
+      .container-sm {
+         max-width: 760px;
+         margin: 0 auto;
+         padding: 0 1.5rem;
+      }
+
+      /* ── NAV ── */
+      nav {
+         position: sticky;
+         top: 0;
+         z-index: 100;
+         background: rgba(13, 27, 46, 0.97);
+         backdrop-filter: blur(12px);
+         border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+         padding: 0 1.5rem;
+      }
+
+      .nav-inner {
+         max-width: 1100px;
+         margin: 0 auto;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         height: 60px;
+      }
+
+      .nav-logo {
+         font-family: 'Fraunces', serif;
+         font-size: 1.3rem;
+         font-weight: 400;
+         color: var(--white);
+         text-decoration: none;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .nav-logo-mark {
+         width: 28px;
+         height: 28px;
+         border-radius: 8px;
+         background: var(--gold);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 14px;
+         font-weight: 600;
+         color: var(--navy);
+         font-family: 'Fraunces', serif;
+      }
+
+      .nav-links {
+         display: flex;
+         align-items: center;
+         gap: 2rem;
+      }
+
+      .nav-links a {
+         font-size: 0.875rem;
+         font-weight: 400;
+         color: rgba(255, 255, 255, 0.65);
+         text-decoration: none;
+         transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+         color: var(--white);
+      }
+
+      .nav-cta {
+         background: var(--gold);
+         color: var(--navy) !important;
+         padding: 7px 18px;
+         border-radius: 8px;
+         font-weight: 500 !important;
+         font-size: 0.875rem !important;
+         transition: background 0.2s !important;
+      }
+
+      .nav-cta:hover {
+         background: var(--gold-light) !important;
+      }
+
+      /* ── HERO ── */
+      .hero {
+         background: var(--navy);
+         padding: 100px 1.5rem 90px;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .hero::before {
+         content: '';
+         position: absolute;
+         inset: 0;
+         background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201, 148, 58, 0.08) 0%, transparent 70%);
+         pointer-events: none;
+      }
+
+      .hero-grid {
+         max-width: 1100px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 1fr 420px;
+         gap: 5rem;
+         align-items: center;
+      }
+
+      .hero-label {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         background: rgba(201, 148, 58, 0.15);
+         border: 1px solid rgba(201, 148, 58, 0.3);
+         color: var(--gold-light);
+         font-size: 0.8rem;
+         font-weight: 500;
+         padding: 5px 14px;
+         border-radius: 100px;
+         margin-bottom: 1.5rem;
+         letter-spacing: 0.04em;
+         text-transform: uppercase;
+      }
+
+      .hero-label-dot {
+         width: 6px;
+         height: 6px;
+         border-radius: 50%;
+         background: var(--gold);
+         animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+
+         0%,
+         100% {
+            opacity: 1;
+         }
+
+         50% {
+            opacity: 0.4;
+         }
+      }
+
+      .hero h1 {
+         color: var(--white);
+         margin-bottom: 1.25rem;
+      }
+
+      .hero h1 em {
+         font-style: italic;
+         color: var(--gold-light);
+      }
+
+      .hero-sub {
+         font-size: 1.1rem;
+         color: rgba(255, 255, 255, 0.6);
+         line-height: 1.7;
+         margin-bottom: 2rem;
+         max-width: 500px;
+      }
+
+      .hero-actions {
+         display: flex;
+         gap: 12px;
+         flex-wrap: wrap;
+         align-items: center;
+      }
+
+      .btn-primary {
+         background: var(--gold);
+         color: var(--navy);
+         padding: 13px 26px;
+         border-radius: var(--radius);
+         font-size: 0.95rem;
+         font-weight: 600;
+         text-decoration: none;
+         border: none;
+         cursor: pointer;
+         font-family: 'Outfit', sans-serif;
+         transition: background 0.2s, transform 0.15s;
+         display: inline-block;
+      }
+
+      .btn-primary:hover {
+         background: var(--gold-light);
+         transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+         background: transparent;
+         color: rgba(255, 255, 255, 0.75);
+         padding: 13px 22px;
+         border-radius: var(--radius);
+         font-size: 0.95rem;
+         font-weight: 400;
+         text-decoration: none;
+         border: 1px solid rgba(255, 255, 255, 0.2);
+         cursor: pointer;
+         font-family: 'Outfit', sans-serif;
+         transition: all 0.2s;
+         display: inline-block;
+      }
+
+      .btn-ghost:hover {
+         border-color: rgba(255, 255, 255, 0.5);
+         color: var(--white);
+      }
+
+      .hero-footnote {
+         margin-top: 1.25rem;
+         font-size: 0.8rem;
+         color: rgba(255, 255, 255, 0.35);
+         display: flex;
+         align-items: center;
+         gap: 1.5rem;
+      }
+
+      .hero-footnote span {
+         display: flex;
+         align-items: center;
+         gap: 5px;
+      }
+
+      /* ── HERO CARD ── */
+      .hero-card {
+         background: rgba(255, 255, 255, 0.05);
+         border: 1px solid rgba(255, 255, 255, 0.1);
+         border-radius: var(--radius-lg);
+         padding: 1.5rem;
+         animation: fadeUp 0.8s ease 0.2s both;
+      }
+
+      @keyframes fadeUp {
+         from {
+            opacity: 0;
+            transform: translateY(20px);
+         }
+
+         to {
+            opacity: 1;
+            transform: translateY(0);
+         }
+      }
+
+      .hero-card-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 1.25rem;
+      }
+
+      .hero-card-title {
+         font-size: 0.8rem;
+         font-weight: 500;
+         color: rgba(255, 255, 255, 0.5);
+         text-transform: uppercase;
+         letter-spacing: 0.06em;
+      }
+
+      .child-tag {
+         background: rgba(201, 148, 58, 0.2);
+         color: var(--gold-light);
+         font-size: 0.75rem;
+         padding: 3px 10px;
+         border-radius: 20px;
+         font-weight: 500;
+      }
+
+      .timeline-item {
+         display: flex;
+         gap: 12px;
+         padding: 10px 0;
+         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .timeline-item:last-child {
+         border-bottom: none;
+      }
+
+      .tl-dot-wrap {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         padding-top: 4px;
+      }
+
+      .tl-dot {
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         flex-shrink: 0;
+      }
+
+      .tl-line {
+         width: 1px;
+         flex: 1;
+         background: rgba(255, 255, 255, 0.08);
+         margin-top: 4px;
+      }
+
+      .timeline-item:last-child .tl-line {
+         display: none;
+      }
+
+      .tl-content {
+         flex: 1;
+      }
+
+      .tl-label {
+         font-size: 0.8rem;
+         font-weight: 500;
+         color: rgba(255, 255, 255, 0.85);
+      }
+
+      .tl-date {
+         font-size: 0.72rem;
+         color: rgba(255, 255, 255, 0.4);
+         margin-top: 1px;
+      }
+
+      .tl-note {
+         font-size: 0.72rem;
+         margin-top: 3px;
+         padding: 3px 8px;
+         border-radius: 4px;
+         display: inline-block;
+      }
+
+      .tl-done {
+         background: rgba(34, 197, 94, 0.12);
+         color: #86efac;
+      }
+
+      .tl-warn {
+         background: rgba(234, 179, 8, 0.12);
+         color: #fde047;
+      }
+
+      .tl-alert {
+         background: rgba(239, 68, 68, 0.15);
+         color: #fca5a5;
+      }
+
+      .tl-future {
+         background: rgba(255, 255, 255, 0.06);
+         color: rgba(255, 255, 255, 0.4);
+      }
+
+      .dot-done {
+         background: #22c55e;
+      }
+
+      .dot-warn {
+         background: #eab308;
+      }
+
+      .dot-alert {
+         background: #ef4444;
+      }
+
+      .dot-future {
+         background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* ── REFERRAL BANNER ── */
+      .referral-banner {
+         background: var(--gold-pale);
+         border-bottom: 1px solid rgba(201, 148, 58, 0.2);
+         padding: 10px 1.5rem;
+         text-align: center;
+         font-size: 0.85rem;
+         color: var(--text-mid);
+      }
+
+      .referral-banner a {
+         color: var(--gold);
+         font-weight: 500;
+         text-decoration: none;
+      }
+
+      .referral-banner a:hover {
+         text-decoration: underline;
+      }
+
+      /* ── PROBLEM SECTION ── */
+      .problem {
+         padding: 90px 1.5rem;
+         background: var(--off-white);
+      }
+
+      .section-eyebrow {
+         font-size: 0.78rem;
+         font-weight: 600;
+         letter-spacing: 0.1em;
+         text-transform: uppercase;
+         color: var(--gold);
+         margin-bottom: 1rem;
+      }
+
+      .problem h2 {
+         max-width: 600px;
+         margin-bottom: 1.5rem;
+      }
+
+      .problem-lead {
+         font-size: 1.05rem;
+         max-width: 640px;
+         margin-bottom: 3rem;
+      }
+
+      .problem-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 1.5rem;
+      }
+
+      .problem-card {
+         background: var(--white);
+         border: 1px solid var(--border);
+         border-radius: var(--radius);
+         padding: 1.5rem;
+      }
+
+      .problem-card-top {
+         display: flex;
+         align-items: flex-start;
+         gap: 10px;
+         margin-bottom: 10px;
+      }
+
+      .problem-num {
+         font-family: 'Fraunces', serif;
+         font-size: 2rem;
+         font-weight: 400;
+         color: rgba(13, 27, 46, 0.12);
+         line-height: 1;
+         min-width: 48px;
+      }
+
+      .problem-card h3 {
+         font-size: 1rem;
+         font-weight: 500;
+         margin-bottom: 5px;
+         font-family: 'Outfit', sans-serif;
+      }
+
+      .problem-card p {
+         font-size: 0.875rem;
+      }
+
+      /* ── FEATURES ── */
+      .features {
+         padding: 100px 1.5rem;
+         background: var(--white);
+      }
+
+      .features-header {
+         text-align: center;
+         margin-bottom: 4rem;
+      }
+
+      .features-header h2 {
+         margin-bottom: 0.75rem;
+      }
+
+      .features-header p {
+         font-size: 1.05rem;
+         max-width: 520px;
+         margin: 0 auto;
+      }
+
+      .features-list {
+         display: flex;
+         flex-direction: column;
+         gap: 5rem;
+      }
+
+      .feature-row {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 5rem;
+         align-items: center;
+      }
+
+      .feature-row.reverse {
+         direction: rtl;
+      }
+
+      .feature-row.reverse>* {
+         direction: ltr;
+      }
+
+      .feature-text {}
+
+      .feature-tag {
+         display: inline-block;
+         font-size: 0.75rem;
+         font-weight: 600;
+         letter-spacing: 0.08em;
+         text-transform: uppercase;
+         color: var(--gold);
+         margin-bottom: 1rem;
+      }
+
+      .feature-text h3 {
+         font-family: 'Fraunces', serif;
+         font-size: 1.9rem;
+         font-weight: 400;
+         line-height: 1.2;
+         margin-bottom: 1rem;
+      }
+
+      .feature-text p {
+         font-size: 1rem;
+         line-height: 1.75;
+         margin-bottom: 1.25rem;
+      }
+
+      .feature-checklist {
+         list-style: none;
+      }
+
+      .feature-checklist li {
+         display: flex;
+         align-items: flex-start;
+         gap: 8px;
+         font-size: 0.9rem;
+         color: var(--text-mid);
+         padding: 5px 0;
+      }
+
+      .feature-checklist .ck {
+         color: var(--gold);
+         font-size: 0.85rem;
+         margin-top: 2px;
+         flex-shrink: 0;
+      }
+
+      .feature-visual {
+         background: var(--mist);
+         border: 1px solid var(--border);
+         border-radius: var(--radius-lg);
+         padding: 1.75rem;
+         overflow: hidden;
+      }
+
+      /* ── FEATURE VISUAL: TIMELINE ── */
+      .fv-timeline-item {
+         display: flex;
+         gap: 12px;
+         padding: 9px 0;
+         border-bottom: 1px solid var(--border);
+      }
+
+      .fv-timeline-item:last-child {
+         border-bottom: none;
+      }
+
+      .fv-dot {
+         width: 9px;
+         height: 9px;
+         border-radius: 50%;
+         flex-shrink: 0;
+         margin-top: 5px;
+      }
+
+      .fv-label {
+         font-size: 0.825rem;
+         font-weight: 500;
+         color: var(--text-dark);
+      }
+
+      .fv-date {
+         font-size: 0.75rem;
+         color: var(--text-light);
+      }
+
+      .fv-badge {
+         font-size: 0.7rem;
+         padding: 2px 7px;
+         border-radius: 4px;
+         display: inline-block;
+         margin-top: 3px;
+         font-weight: 500;
+      }
+
+      .fv-green {
+         background: var(--green-soft);
+         color: #166534;
+      }
+
+      .fv-amber {
+         background: #fefce8;
+         color: #854d0e;
+      }
+
+      .fv-red {
+         background: var(--red-soft);
+         color: #991b1b;
+      }
+
+      .fv-gray {
+         background: var(--mist);
+         color: var(--text-light);
+      }
+
+      .dot-g {
+         background: var(--green-mid);
+      }
+
+      .dot-a {
+         background: #eab308;
+      }
+
+      .dot-r {
+         background: var(--red-mid);
+      }
+
+      .dot-gray {
+         background: #cbd5e1;
+      }
+
+      /* ── FEATURE VISUAL: LETTER ── */
+      .fv-letter {
+         background: var(--white);
+         border: 1px solid var(--border);
+         border-radius: 8px;
+         padding: 1.25rem;
+         font-size: 0.8rem;
+         color: var(--text-mid);
+         line-height: 1.7;
+      }
+
+      .fv-letter-header {
+         margin-bottom: 12px;
+      }
+
+      .fv-letter-header p {
+         font-size: 0.75rem;
+         color: var(--text-light);
+      }
+
+      .fv-letter strong {
+         color: var(--text-dark);
+      }
+
+      .fv-letter .highlight {
+         background: rgba(201, 148, 58, 0.1);
+         color: var(--navy);
+         padding: 0 3px;
+         border-radius: 2px;
+      }
+
+      .fv-letter-actions {
+         display: flex;
+         gap: 8px;
+         margin-top: 14px;
+      }
+
+      .fv-btn {
+         padding: 6px 14px;
+         border-radius: 6px;
+         font-size: 0.75rem;
+         font-weight: 500;
+         cursor: pointer;
+         border: none;
+         font-family: 'Outfit', sans-serif;
+      }
+
+      .fv-btn-primary {
+         background: var(--navy);
+         color: var(--white);
+      }
+
+      .fv-btn-ghost {
+         background: transparent;
+         color: var(--text-mid);
+         border: 1px solid var(--border);
+      }
+
+      /* ── FEATURE VISUAL: LOG ── */
+      .fv-log-item {
+         display: flex;
+         align-items: flex-start;
+         gap: 10px;
+         padding: 8px 0;
+         border-bottom: 1px solid var(--border);
+      }
+
+      .fv-log-item:last-child {
+         border-bottom: none;
+      }
+
+      .fv-log-dot {
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         flex-shrink: 0;
+         margin-top: 5px;
+      }
+
+      .fv-log-service {
+         font-size: 0.825rem;
+         font-weight: 500;
+         color: var(--text-dark);
+      }
+
+      .fv-log-note {
+         font-size: 0.75rem;
+         color: var(--text-mid);
+         margin-top: 2px;
+         line-height: 1.4;
+      }
+
+      .fv-log-meta {
+         display: flex;
+         gap: 6px;
+         align-items: center;
+         margin-top: 3px;
+      }
+
+      .fv-tag {
+         font-size: 0.7rem;
+         padding: 2px 7px;
+         border-radius: 4px;
+         font-weight: 500;
+      }
+
+      .fv-missed {
+         background: var(--red-soft);
+         color: #991b1b;
+      }
+
+      .fv-partial {
+         background: #fefce8;
+         color: #854d0e;
+      }
+
+      .fv-ok {
+         background: var(--green-soft);
+         color: #166534;
+      }
+
+      .fv-alert-strip {
+         background: var(--red-soft);
+         border: 1px solid #fecaca;
+         border-radius: 8px;
+         padding: 10px 12px;
+         margin-bottom: 12px;
+         font-size: 0.8rem;
+         color: #991b1b;
+         display: flex;
+         gap: 8px;
+      }
+
+      /* ── HOW IT WORKS ── */
+      .how {
+         padding: 90px 1.5rem;
+         background: var(--navy);
+      }
+
+      .how h2 {
+         color: var(--white);
+         text-align: center;
+         margin-bottom: 0.75rem;
+      }
+
+      .how-sub {
+         text-align: center;
+         color: rgba(255, 255, 255, 0.5);
+         font-size: 1rem;
+         margin-bottom: 4rem;
+         max-width: 480px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      .steps {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 2px;
+      }
+
+      .step {
+         background: rgba(255, 255, 255, 0.04);
+         padding: 2.5rem 2rem;
+         position: relative;
+      }
+
+      .step:first-child {
+         border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+      }
+
+      .step:last-child {
+         border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      }
+
+      .step-num {
+         font-family: 'Fraunces', serif;
+         font-size: 3.5rem;
+         font-weight: 400;
+         color: rgba(201, 148, 58, 0.2);
+         line-height: 1;
+         margin-bottom: 1.25rem;
+         letter-spacing: -0.03em;
+      }
+
+      .step h3 {
+         font-family: 'Outfit', sans-serif;
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: var(--white);
+         margin-bottom: 0.75rem;
+      }
+
+      .step p {
+         font-size: 0.9rem;
+         color: rgba(255, 255, 255, 0.5);
+         line-height: 1.65;
+      }
+
+      .step-connector {
+         position: absolute;
+         right: -1px;
+         top: 50%;
+         transform: translateY(-50%);
+         width: 2px;
+         height: 30%;
+         background: rgba(201, 148, 58, 0.15);
+      }
+
+      /* ── NEWSLETTER ── */
+      .newsletter {
+         padding: 80px 1.5rem;
+         background: var(--gold-pale);
+         border-top: 1px solid rgba(201, 148, 58, 0.15);
+         border-bottom: 1px solid rgba(201, 148, 58, 0.15);
+      }
+
+      .newsletter-inner {
+         max-width: 680px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 4rem;
+         align-items: center;
+      }
+
+      .newsletter h2 {
+         font-size: 2rem;
+         margin-bottom: 0.75rem;
+      }
+
+      .newsletter p {
+         font-size: 0.95rem;
+         line-height: 1.7;
+         margin-bottom: 0;
+      }
+
+      .newsletter-form {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      .newsletter-form input {
+         padding: 12px 16px;
+         border-radius: var(--radius);
+         border: 1px solid rgba(201, 148, 58, 0.25);
+         background: var(--white);
+         font-size: 0.9rem;
+         font-family: 'Outfit', sans-serif;
+         color: var(--text-dark);
+         outline: none;
+      }
+
+      .newsletter-form input:focus {
+         border-color: var(--gold);
+      }
+
+      .newsletter-form input::placeholder {
+         color: var(--text-light);
+      }
+
+      .newsletter-form button {
+         padding: 12px 20px;
+         background: var(--navy);
+         color: var(--white);
+         border: none;
+         border-radius: var(--radius);
+         font-size: 0.9rem;
+         font-weight: 500;
+         cursor: pointer;
+         font-family: 'Outfit', sans-serif;
+         transition: background 0.2s;
+      }
+
+      .newsletter-form button:hover {
+         background: var(--navy-mid);
+      }
+
+      .newsletter-tiers {
+         display: flex;
+         flex-direction: column;
+         gap: 8px;
+         margin-top: 12px;
+      }
+
+      .nl-tier {
+         display: flex;
+         gap: 8px;
+         font-size: 0.8rem;
+         color: var(--text-mid);
+      }
+
+      .nl-tier strong {
+         color: var(--text-dark);
+      }
+
+      /* ── PRICING ── */
+      .pricing {
+         padding: 100px 1.5rem;
+         background: var(--white);
+      }
+
+      .pricing-header {
+         text-align: center;
+         margin-bottom: 3.5rem;
+      }
+
+      .pricing-header h2 {
+         margin-bottom: 0.75rem;
+      }
+
+      .pricing-header p {
+         font-size: 1rem;
+      }
+
+      .pricing-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 1.5rem;
+         max-width: 900px;
+         margin: 0 auto;
+      }
+
+      .price-card {
+         border: 1px solid var(--border);
+         border-radius: var(--radius-lg);
+         padding: 2rem;
+         position: relative;
+      }
+
+      .price-card.featured {
+         border-color: var(--gold);
+         border-width: 2px;
+      }
+
+      .price-badge {
+         position: absolute;
+         top: -12px;
+         left: 50%;
+         transform: translateX(-50%);
+         background: var(--gold);
+         color: var(--navy);
+         font-size: 0.72rem;
+         font-weight: 600;
+         padding: 3px 14px;
+         border-radius: 20px;
+         letter-spacing: 0.05em;
+         text-transform: uppercase;
+         white-space: nowrap;
+      }
+
+      .price-tier {
+         font-size: 0.8rem;
+         font-weight: 600;
+         color: var(--text-light);
+         text-transform: uppercase;
+         letter-spacing: 0.08em;
+         margin-bottom: 0.5rem;
+      }
+
+      .price-amount {
+         font-family: 'Fraunces', serif;
+         font-size: 2.8rem;
+         font-weight: 400;
+         color: var(--text-dark);
+         line-height: 1;
+      }
+
+      .price-amount span {
+         font-size: 1rem;
+         font-weight: 400;
+         font-family: 'Outfit', sans-serif;
+         color: var(--text-light);
+      }
+
+      .price-period {
+         font-size: 0.8rem;
+         color: var(--text-light);
+         margin-top: 4px;
+         margin-bottom: 1.5rem;
+      }
+
+      .price-features {
+         list-style: none;
+         margin-bottom: 1.75rem;
+      }
+
+      .price-features li {
+         display: flex;
+         align-items: flex-start;
+         gap: 8px;
+         font-size: 0.875rem;
+         color: var(--text-mid);
+         padding: 5px 0;
+         border-bottom: 1px solid var(--border);
+      }
+
+      .price-features li:last-child {
+         border-bottom: none;
+      }
+
+      .pck {
+         color: var(--green-mid);
+         flex-shrink: 0;
+         margin-top: 1px;
+      }
+
+      .px {
+         color: #cbd5e1;
+         flex-shrink: 0;
+         margin-top: 1px;
+      }
+
+      .price-cta {
+         display: block;
+         text-align: center;
+         text-decoration: none;
+         padding: 11px;
+         border-radius: var(--radius);
+         font-size: 0.9rem;
+         font-weight: 500;
+         font-family: 'Outfit', sans-serif;
+         transition: all 0.2s;
+         cursor: pointer;
+         border: none;
+         width: 100%;
+      }
+
+      .price-cta-primary {
+         background: var(--navy);
+         color: var(--white);
+      }
+
+      .price-cta-primary:hover {
+         background: var(--navy-mid);
+      }
+
+      .price-cta-outline {
+         background: transparent;
+         color: var(--text-mid);
+         border: 1px solid var(--border);
+      }
+
+      .price-cta-outline:hover {
+         border-color: var(--slate);
+         color: var(--text-dark);
+      }
+
+      /* ── DISTRICT PROOF ── */
+      .districts {
+         padding: 70px 1.5rem;
+         background: var(--off-white);
+         border-top: 1px solid var(--border);
+      }
+
+      .districts h2 {
+         text-align: center;
+         margin-bottom: 0.5rem;
+      }
+
+      .districts-sub {
+         text-align: center;
+         color: var(--text-light);
+         font-size: 0.9rem;
+         margin-bottom: 2.5rem;
+      }
+
+      .district-pills {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 8px;
+         justify-content: center;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      .district-pill {
+         background: var(--white);
+         border: 1px solid var(--border);
+         border-radius: 100px;
+         padding: 6px 16px;
+         font-size: 0.8rem;
+         color: var(--text-mid);
+         cursor: pointer;
+         transition: all 0.2s;
+         text-decoration: none;
+      }
+
+      .district-pill:hover {
+         border-color: var(--gold);
+         color: var(--text-dark);
+         background: var(--gold-pale);
+      }
+
+      /* ── CTA FINAL ── */
+      .cta-final {
+         padding: 90px 1.5rem;
+         background: var(--navy);
+         text-align: center;
+      }
+
+      .cta-final h2 {
+         color: var(--white);
+         max-width: 580px;
+         margin: 0 auto 1rem;
+      }
+
+      .cta-final p {
+         color: rgba(255, 255, 255, 0.5);
+         max-width: 480px;
+         margin: 0 auto 2.5rem;
+      }
+
+      .cta-final-actions {
+         display: flex;
+         gap: 12px;
+         justify-content: center;
+         flex-wrap: wrap;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+         background: #080f1a;
+         padding: 50px 1.5rem 30px;
+         border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .footer-inner {
+         max-width: 1100px;
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 2fr 1fr 1fr 1fr;
+         gap: 3rem;
+         margin-bottom: 3rem;
+      }
+
+      .footer-brand p {
+         font-size: 0.85rem;
+         color: rgba(255, 255, 255, 0.35);
+         margin-top: 0.75rem;
+         line-height: 1.65;
+      }
+
+      .footer-col h4 {
+         font-size: 0.75rem;
+         font-weight: 600;
+         color: rgba(255, 255, 255, 0.5);
+         text-transform: uppercase;
+         letter-spacing: 0.08em;
+         margin-bottom: 1rem;
+      }
+
+      .footer-col a {
+         display: block;
+         font-size: 0.85rem;
+         color: rgba(255, 255, 255, 0.35);
+         text-decoration: none;
+         margin-bottom: 8px;
+         transition: color 0.2s;
+      }
+
+      .footer-col a:hover {
+         color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-bottom {
+         border-top: 1px solid rgba(255, 255, 255, 0.05);
+         padding-top: 24px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         font-size: 0.78rem;
+         color: rgba(255, 255, 255, 0.2);
+      }
+
+      .footer-bottom a {
+         color: rgba(255, 255, 255, 0.25);
+         text-decoration: none;
+      }
+
+      /* ── ANIMATIONS ── */
+      .fade-up {
+         opacity: 0;
+         transform: translateY(24px);
+         transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-up.visible {
+         opacity: 1;
+         transform: translateY(0);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+         .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+         }
+
+         .hero-card {
+            max-width: 440px;
+         }
+
+         .problem-grid {
+            grid-template-columns: 1fr;
+         }
+
+         .feature-row {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+         }
+
+         .feature-row.reverse {
+            direction: ltr;
+         }
+
+         .steps {
+            grid-template-columns: 1fr;
+            gap: 2px;
+         }
+
+         .step:first-child {
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+         }
+
+         .step:last-child {
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+         }
+
+         .step-connector {
+            display: none;
+         }
+
+         .newsletter-inner {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+         }
+
+         .pricing-grid {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+         }
+
+         .footer-inner {
+            grid-template-columns: 1fr 1fr;
+         }
+      }
+
+      @media (max-width: 600px) {
+         .nav-links {
+            display: none;
+         }
+
+         h1 {
+            font-size: 2.2rem;
+         }
+
+         .footer-inner {
+            grid-template-columns: 1fr;
+         }
+      }
+   </style>
 </head>
 
 <body>
 
-    <nav class="navbar" id="navbar" style="background: white; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0; position: relative; z-index: 50;">
-       <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-          <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-             <span class="logo-icon" style="font-size: 1.5rem;">🧒</span>
-             <span style="font-family: 'Merriweather', serif; font-weight: 800; font-size: 1.25rem; color: #1e3a8a; letter-spacing: -0.02em;">NavigatorKidsAI</span>
-          </a>
-          <div class="nav-links hidden md:flex" id="navLinks" style="align-items: center; gap: 1.5rem;">
-             <a href="/about/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">About</a>
-             <a href="/products/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Products</a>
-             <a href="/resources/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">Resources</a>
-             <a href="/iep/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP Guide</a>
-             <a href="/iep/battle-plan/" style="color: #be185d; text-decoration: none; font-weight: 600; font-size: 0.95rem;">IEP Battle Plan</a>
-             <a href="/iep/states/" style="color: #4b5563; text-decoration: none; font-weight: 500; font-size: 0.95rem;">IEP State Guide</a>
-             <a href="/cart/" class="nav-cart" id="navCart" title="Shopping Cart" style="text-decoration: none; font-size: 1.2rem;">🛒 <span class="nav-cart-count" id="navCartCount" style="font-size: 0.75rem; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; display: none;">0</span></a>
-             <a href="/quiz/" class="btn btn-primary nav-btn" style="background-color: #2563eb; color: white; padding: 0.5rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;">Take Quiz</a>
-          </div>
-          <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #374151;"><i class="fa-solid fa-bars"></i></button>
-       </div>
-       <div class="mobile-menu" id="mobileMenu" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); z-index: 50; flex-direction: column; gap: 1rem;">
-          <a href="/about/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">About</a>
-          <a href="/products/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Products</a>
-          <a href="/resources/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Resources</a>
-          <a href="/iep/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP Guide</a>
-          <a href="/iep/battle-plan/" style="display: block; padding: 0.5rem 0; color: #be185d; font-weight: bold; text-decoration: none;">IEP Battle Plan</a>
-          <a href="/iep/states/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">IEP State Guide</a>
-          <a href="/cart/" style="display: block; padding: 0.5rem 0; color: #4b5563; text-decoration: none;">Cart</a>
-          <a href="/quiz/" style="display: block; text-align: center; background-color: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem;">Take Quiz</a>
-       </div>
-    </nav> 
+   <!-- REFERRAL BANNER -->
+   <div class="referral-banner">
+      Coming from <a href="https://newyorkspecialed.net" target="_blank">newyorkspecialed.net</a>? You've found the tool — start tracking your child's CSE timeline for free.
+   </div>
 
-    <header class="hero">
-        <div class="container mx-auto px-4">
-            <div class="hero-content">
-                <div class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
-                   For parents of children ages 5-12
-                </div>
+   <!-- NAV -->
+   <nav>
+      <div class="nav-inner">
+         <a href="/" class="nav-logo">
+            <div class="nav-logo-mark">N</div>
+            Navigator
+         </a>
+         <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#districts">Districts</a>
+            <a href="#" class="nav-cta">Start free</a>
+         </div>
+      </div>
+   </nav>
 
-                <h1>How do I help my <span class="text-blue-700">twice-exceptional child?</span></h1>
-
-                <p class="hero-description">
-                    <strong>Navigator Kids AI</strong> is a parent resource platform that helps families of twice-exceptional (2e) children navigate IEP advocacy, emotional regulation, and school communication.
-                </p>
-
-                <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="/quiz/" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg no-underline">
-                        Take the Free Quiz
-                    </a>
-                    <span class="text-sm text-gray-500">✓ 3-minute assessment • No email to start</span>
-                </div>
+   <!-- HERO -->
+   <section class="hero">
+      <div class="hero-grid">
+         <div>
+            <div class="hero-label">
+               <div class="hero-label-dot"></div>
+               New York IEP companion
             </div>
-        </div>
-    </header>
-
-    <section class="trust-bar">
-        <div class="container mx-auto px-4">
-            <div class="trust-items">
-                <div class="trust-item"><span class="trust-icon">✓</span> Based on IDEA Law</div>
-                <div class="trust-item"><span class="trust-icon">✓</span> Nervous System Focused</div>
-                <div class="trust-item"><span class="trust-icon">✓</span> Parent-Verified Strategies</div>
+            <h1>Your child's IEP rights — <em>defended</em></h1>
+            <p class="hero-sub">Track every CSE deadline, generate legally grounded letters, and build a timestamped record of every service your child receives — or doesn't.</p>
+            <div class="hero-actions">
+               <a href="#" class="btn-primary">Start tracking — it's free</a>
+               <a href="#features" class="btn-ghost">See how it works</a>
             </div>
-        </div>
-    </section>
-
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="aeo-answer-block">
-                <span class="short-answer-label">AEO Answer</span>
-                <h2 class="text-2xl font-bold mb-2">What does a 2e child need to thrive?</h2>
-                <p><strong>Short answer:</strong> Success requires a three-part approach: understanding their unique brain profile (Quiz), securing legal accommodations at school (IEP), and mastering co-regulation strategies to manage meltdowns at home (Regulation).</p>
+            <div class="hero-footnote">
+               <span>✓ No credit card</span>
+               <span>✓ Built for NY law</span>
+               <span>✓ 50 districts covered</span>
             </div>
-        </div>
-    </section>
+         </div>
 
-    <section class="lead-section" id="get-the-kit">
-        <div class="container mx-auto px-4 lead-container">
-            <div class="text-left">
-                <h2 class="text-3xl font-bold mb-4 font-serif">What Do I Say During a Meltdown?</h2>
-                
-                <p class="text-xl mb-6 font-light">
-                    <strong>Short answer:</strong> Say less. Lower your voice. Get on their level. Use the exact scripts in our free Emergency Regulation Kit—phrases designed for the moment when your child's thinking brain goes offline.
-                </p>
-
-                <div class="bg-blue-800 p-6 rounded-lg border border-blue-600">
-                    <h3 class="font-bold text-lg mb-3 text-blue-200 uppercase tracking-wide">Inside the Free Kit:</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check-circle mt-1 text-green-400"></i>
-                            <span><strong>3 De-Escalation Scripts</strong> — Word-for-word phrases that signal safety.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check-circle mt-1 text-green-400"></i>
-                            <span><strong>The 90-Second Reset</strong> — What to do in the first critical moments.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-check-circle mt-1 text-green-400"></i>
-                            <span><strong>Fridge Card</strong> — A printable visual reminder for the heat of the moment.</span>
-                        </li>
-                    </ul>
-                </div>
+         <div class="hero-card">
+            <div class="hero-card-header">
+               <div class="hero-card-title">CSE Timeline</div>
+               <div class="child-tag">Maya R. · District 15</div>
             </div>
 
-            <div class="lead-form">
-                <h3 class="text-center font-bold text-xl mb-1 text-navy-900">Get the Scripts</h3>
-                <p class="text-center text-sm text-gray-500 mb-6">Join 2,400+ parents using this protocol.</p>
-                
-                <form id="lead-capture-form" data-formspree data-redirect="/thank-you/" data-download="/downloads/Emergency-Regulation-Kit.pdf">
-                    <div class="form-group">
-                        <label class="block text-sm font-bold text-gray-700 mb-1">First Name</label>
-                        <input type="text" name="name" id="name-input" class="form-input" placeholder="Jane" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
-                        <input type="email" name="email" id="email-input" class="form-input" placeholder="jane@example.com" required>
-                    </div>
-                    <button type="submit" class="form-btn">
-                        Send Me the Scripts
-                    </button>
-                    <p class="text-xs text-center text-gray-400 mt-3">
-                        <i class="fa-solid fa-lock"></i> We respect your privacy. Unsubscribe anytime.
-                    </p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="profiles-section" id="profiles">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-blue-600 font-bold uppercase text-sm tracking-wider">Brain Profiles</span>
-                <h2 class="text-3xl font-bold mt-2 mb-4">Does This Sound Like Your Child?</h2>
-                <p class="text-gray-600">
-                    Most 2e kids show a primary pattern and a secondary one. The quiz identifies both so you get tools that match their actual brain.
-                </p>
+            <div class="timeline-item">
+               <div class="tl-dot-wrap">
+                  <div class="tl-dot dot-done"></div>
+                  <div class="tl-line"></div>
+               </div>
+               <div class="tl-content">
+                  <div class="tl-label">Referral received</div>
+                  <div class="tl-date">Jan 8, 2026</div>
+                  <div class="tl-note tl-done">Completed</div>
+               </div>
             </div>
 
-            <div class="profiles-grid">
-                <article class="profile-card">
-                    <div class="profile-icon">🔥</div>
-                    <h3 class="font-bold text-xl mb-2">The Intense Feeler</h3>
-                    <p class="text-sm text-gray-600">Big emotions hit fast and hard. They hold it together at school, then fall apart at home.</p>
-                </article>
-                <article class="profile-card">
-                    <div class="profile-icon">🐢</div>
-                    <h3 class="font-bold text-xl mb-2">The Reluctant Starter</h3>
-                    <p class="text-sm text-gray-600">Knows what to do but can't seem to begin. Homework takes hours. It's not laziness.</p>
-                </article>
-                <article class="profile-card">
-                    <div class="profile-icon">🦉</div>
-                    <h3 class="font-bold text-xl mb-2">The Deep Diver</h3>
-                    <p class="text-sm text-gray-600">Can talk about dinosaurs for 3 hours but won't do 5 minutes of math. Hyperfocus is their superpower.</p>
-                </article>
-                 <article class="profile-card">
-                    <div class="profile-icon">🦁</div>
-                    <h3 class="font-bold text-xl mb-2">The Bold Explorer</h3>
-                    <p class="text-sm text-gray-600">Jumps in first, thinks later. Loves new things but gives up when it gets hard.</p>
-                </article>
+            <div class="timeline-item">
+               <div class="tl-dot-wrap">
+                  <div class="tl-dot dot-done"></div>
+                  <div class="tl-line"></div>
+               </div>
+               <div class="tl-content">
+                  <div class="tl-label">Consent to evaluate signed</div>
+                  <div class="tl-date">Jan 15, 2026</div>
+                  <div class="tl-note tl-done">Completed</div>
+               </div>
             </div>
-            
-            <div class="text-center mt-12">
-                 <a href="/quiz/" class="inline-block border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition no-underline">
-                    Find Your Child's Profile
-                </a>
+
+            <div class="timeline-item">
+               <div class="tl-dot-wrap">
+                  <div class="tl-dot dot-warn"></div>
+                  <div class="tl-line"></div>
+               </div>
+               <div class="tl-content">
+                  <div class="tl-label">60-day evaluation deadline</div>
+                  <div class="tl-date">March 15, 2026</div>
+                  <div class="tl-note tl-warn">⚑ Due in 6 days</div>
+               </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="footer bg-[#111827] text-white py-12">
-        <div class="container mx-auto px-4">
-           <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
-              
-              <div class="footer-brand col-span-1 md:col-span-1">
-                 <a href="/" class="logo flex items-center gap-2 mb-4 text-white decoration-0 text-decoration-none">
-                    <span class="logo-icon text-2xl">🧒</span>
-                    <span class="font-serif font-bold text-xl">Navigator Kids AI</span>
-                 </a>
-                 <p class="text-gray-300">Your child's brain didn't come with a manual. Until now.</p>
-                 <p class="mt-4 text-xs text-gray-400 opacity-80">
-                    Tools for parents of twice-exceptional (2e) children ages 6-9.
-                 </p>
-                 
-                 <div class="flex gap-4 mt-6">
-                    <a href="https://www.instagram.com/navigatorkidsai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-xl">
-                       <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    </div>
-              </div>
-     
-              <div class="footer-links">
-                 <h4 class="font-bold mb-4 text-lg text-white">Quick Links</h4>
-                 <div class="flex flex-col gap-2">
-                    <a href="/quiz/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Quiz</a>
-                    <a href="/free/de-escalation-kit/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Regulation Kit</a>
-                    <a href="/resources/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Articles</a>
-                    <a href="/tools/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Free Tools</a>
-                 </div>
-              </div>
-     
-              <div class="footer-links">
-                 <h4 class="font-bold mb-4 text-lg text-white">Products</h4>
-                 <div class="flex flex-col gap-2">
-                    <a href="/products/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">All Products</a>
-                    <a href="/products/#ai-prompts" class="text-gray-300 hover:text-white transition-colors text-decoration-none">AI Prompt Packs</a>
-                    <a href="/products/#activity-packets" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Activity Packets</a>
-                 </div>
-              </div>
-     
-              <div class="footer-links">
-                 <h4 class="font-bold mb-4 text-lg text-white">Company</h4>
-                 <div class="flex flex-col gap-2">
-                    <a href="/about/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">About Us</a>
-                    <a href="/contact/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Contact</a>
-                    <a href="/terms/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Terms of Service</a>
-                     <a href="/privacy/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Privacy Policy</a>
-                    <a href="/sitemap/" class="text-gray-300 hover:text-white transition-colors text-decoration-none">Sitemap</a>
-                 </div>
-              </div>
-           </div>
-     
-           <div class="footer-bottom border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-              <p class="mb-2">© 2026 Navigator Kids AI™</p>
-              <p class="footer-disclaimer max-w-2xl mx-auto">
-                 <strong>Disclaimer:</strong> This website provides educational information for parents.
-                 It is not a substitute for professional medical, psychological, or educational advice.
-              </p>
-           </div>
-        </div>
-     </footer>
+            <div class="timeline-item">
+               <div class="tl-dot-wrap">
+                  <div class="tl-dot dot-future"></div>
+                  <div class="tl-line"></div>
+               </div>
+               <div class="tl-content">
+                  <div class="tl-label">CSE meeting</div>
+                  <div class="tl-date">By April 14, 2026</div>
+                  <div class="tl-note tl-future">Upcoming</div>
+               </div>
+            </div>
 
-    <script>
-        // Mobile Menu Logic
-        document.getElementById('navToggle').addEventListener('click', function() {
-            var menu = document.getElementById('mobileMenu');
-            if (menu.style.display === 'none' || menu.style.display === '') {
-                menu.style.display = 'flex';
-            } else {
-                menu.style.display = 'none';
+            <div class="timeline-item">
+               <div class="tl-dot-wrap">
+                  <div class="tl-dot dot-future"></div>
+               </div>
+               <div class="tl-content">
+                  <div class="tl-label">IEP implementation</div>
+                  <div class="tl-date">By April 28, 2026</div>
+                  <div class="tl-note tl-future">Upcoming</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- PROBLEM -->
+   <section class="problem" id="problem">
+      <div class="container">
+         <div class="section-eyebrow">The stakes</div>
+         <h2>NY school districts are required by law to follow strict timelines.<br>Most parents don't know what those are.</h2>
+         <p class="problem-lead">When deadlines are missed and services aren't delivered, the consequences for your child can't be undone. But only parents who are tracking — and can prove it — have the leverage to fix it.</p>
+         <div class="problem-grid fade-up">
+            <div class="problem-card">
+               <div class="problem-card-top">
+                  <div class="problem-num">01</div>
+                  <div>
+                     <h3>The 60-day clock starts without you</h3>
+                     <p>Under NY law, the district has 60 days from the date they receive your written consent to complete the evaluation. Most parents don't know when that clock started — so they can't know when it's been violated.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="problem-card">
+               <div class="problem-card-top">
+                  <div class="problem-num">02</div>
+                  <div>
+                     <h3>Missed services disappear unless you document them</h3>
+                     <p>If your child's reading specialist was absent and no substitute provided the session, that's a violation of the IEP. But you can only claim compensatory services if you can prove it happened — and when.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="problem-card">
+               <div class="problem-card-top">
+                  <div class="problem-num">03</div>
+                  <div>
+                     <h3>Districts respond to paper trails, not phone calls</h3>
+                     <p>A formal letter citing specific dates and legal obligations gets a different response than an email from a frustrated parent. The families who get results are the ones who show up with documentation.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- FEATURES -->
+   <section class="features" id="features">
+      <div class="container">
+         <div class="features-header">
+            <div class="section-eyebrow">What Navigator does</div>
+            <h2>Three tools. One job.</h2>
+            <p>Everything built specifically around New York's CSE process and Education Law Article 89.</p>
+         </div>
+
+         <div class="features-list">
+
+            <!-- Feature 1: Timeline -->
+            <div class="feature-row fade-up">
+               <div class="feature-text">
+                  <div class="feature-tag">Timeline tracker</div>
+                  <h3>See every deadline before it becomes a problem</h3>
+                  <p>Enter your child's referral date and Navigator calculates every legally mandated milestone under New York State law — automatically. Get email alerts before each deadline so you're never caught off guard.</p>
+                  <ul class="feature-checklist">
+                     <li><span class="ck">✓</span> NY 60-day evaluation window tracked from day one</li>
+                     <li><span class="ck">✓</span> CSE meeting, IEP implementation, annual review deadlines</li>
+                     <li><span class="ck">✓</span> Email alerts 14, 7, and 3 days before each milestone</li>
+                     <li><span class="ck">✓</span> District-specific CSE contact information pre-filled</li>
+                  </ul>
+               </div>
+               <div class="feature-visual">
+                  <div style="font-size:0.75rem;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:1rem;">Maya's CSE timeline · District 15</div>
+                  <div class="fv-timeline-item">
+                     <div class="fv-dot dot-g"></div>
+                     <div>
+                        <div class="fv-label">Written referral received</div>
+                        <div class="fv-date">January 8, 2026</div>
+                        <div class="fv-badge fv-green">Completed</div>
+                     </div>
+                  </div>
+                  <div class="fv-timeline-item">
+                     <div class="fv-dot dot-g"></div>
+                     <div>
+                        <div class="fv-label">Consent to evaluate signed</div>
+                        <div class="fv-date">January 15, 2026 · Clock starts</div>
+                        <div class="fv-badge fv-green">Completed</div>
+                     </div>
+                  </div>
+                  <div class="fv-timeline-item">
+                     <div class="fv-dot dot-a"></div>
+                     <div>
+                        <div class="fv-label">Evaluation must be completed</div>
+                        <div class="fv-date">March 15, 2026 · 60-day deadline</div>
+                        <div class="fv-badge fv-amber">Due in 6 days — alert sent</div>
+                     </div>
+                  </div>
+                  <div class="fv-timeline-item">
+                     <div class="fv-dot dot-gray"></div>
+                     <div>
+                        <div class="fv-label">CSE meeting to develop IEP</div>
+                        <div class="fv-date">By April 14, 2026</div>
+                        <div class="fv-badge fv-gray">Upcoming</div>
+                     </div>
+                  </div>
+                  <div class="fv-timeline-item">
+                     <div class="fv-dot dot-gray"></div>
+                     <div>
+                        <div class="fv-label">IEP services begin</div>
+                        <div class="fv-date">By April 28, 2026</div>
+                        <div class="fv-badge fv-gray">Upcoming</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Feature 2: Letters -->
+            <div class="feature-row reverse fade-up">
+               <div class="feature-text">
+                  <div class="feature-tag">Letter generator</div>
+                  <h3>Letters that sound like they came from an attorney</h3>
+                  <p>When you need to push back — requesting an evaluation, disputing a Prior Written Notice, or filing for compensatory services — Navigator drafts the letter. You review, sign, and send.</p>
+                  <ul class="feature-checklist">
+                     <li><span class="ck">✓</span> Request for initial evaluation</li>
+                     <li><span class="ck">✓</span> Dispute of Prior Written Notice (PWN)</li>
+                     <li><span class="ck">✓</span> Request for independent educational evaluation (IEE)</li>
+                     <li><span class="ck">✓</span> Demand for compensatory services</li>
+                     <li><span class="ck">✓</span> State complaint filing guidance</li>
+                  </ul>
+               </div>
+               <div class="feature-visual">
+                  <div class="fv-letter">
+                     <div class="fv-letter-header">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-dark);">To: District 15 CSE Office</div>
+                        <p>March 21, 2026</p>
+                     </div>
+                     <p>Dear Committee on Special Education,</p>
+                     <br>
+                     <p>I am writing to formally request <strong>compensatory services</strong> for my daughter, <span class="highlight">Maya Rodriguez</span>, due to documented service delivery failures during the current IEP period.</p>
+                     <br>
+                     <p>Per the IEP dated <span class="highlight">September 2025</span>, Maya is entitled to <strong>3 sessions per week</strong> of reading support services. Our records show that <span class="highlight">5 sessions</span> were not provided between January and March 2026, in violation of Education Law §4402...</p>
+                     <div class="fv-letter-actions">
+                        <button class="fv-btn fv-btn-primary">Download PDF</button>
+                        <button class="fv-btn fv-btn-ghost">Edit draft</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Feature 3: Service Log -->
+            <div class="feature-row fade-up">
+               <div class="feature-text">
+                  <div class="feature-tag">Service log</div>
+                  <h3>Build the evidence record before you need it</h3>
+                  <p>Log every service session your child receives — or misses. Add notes about what happened and who you spoke to. When it's time to push back, your timestamped record becomes your strongest tool.</p>
+                  <ul class="feature-checklist">
+                     <li><span class="ck">✓</span> Log attendance for every IEP service</li>
+                     <li><span class="ck">✓</span> Attach notes — staff absences, school explanations, your calls</li>
+                     <li><span class="ck">✓</span> Auto-detect patterns: 2+ missed sessions triggers an alert</li>
+                     <li><span class="ck">✓</span> Export as evidence report for CSE meetings or complaints</li>
+                  </ul>
+               </div>
+               <div class="feature-visual">
+                  <div class="fv-alert-strip">
+                     <span>⚑</span>
+                     <span><strong>2 missed reading sessions this month</strong> — a compensatory services letter has been drafted based on your log.</span>
+                  </div>
+                  <div class="fv-log-item">
+                     <div class="fv-log-dot dot-r"></div>
+                     <div>
+                        <div class="fv-log-service">Reading support (3×/week)</div>
+                        <div class="fv-log-note">No sub arranged — Ms. Torres was absent. No make-up scheduled.</div>
+                        <div class="fv-log-meta"><span class="fv-tag fv-missed">Missed</span><span style="font-size:0.7rem;color:var(--text-light);">Mar 19</span></div>
+                     </div>
+                  </div>
+                  <div class="fv-log-item">
+                     <div class="fv-log-dot dot-a"></div>
+                     <div>
+                        <div class="fv-log-service">OT (1×/week)</div>
+                        <div class="fv-log-note">Only 20 min provided — fire drill cut session to less than half.</div>
+                        <div class="fv-log-meta"><span class="fv-tag fv-partial">Partial</span><span style="font-size:0.7rem;color:var(--text-light);">Mar 12</span></div>
+                     </div>
+                  </div>
+                  <div class="fv-log-item">
+                     <div class="fv-log-dot dot-g"></div>
+                     <div>
+                        <div class="fv-log-service">Speech therapy (2×/week)</div>
+                        <div class="fv-log-note">Full session provided with Ms. Kim.</div>
+                        <div class="fv-log-meta"><span class="fv-tag fv-ok">Provided</span><span style="font-size:0.7rem;color:var(--text-light);">Mar 17</span></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+   <!-- HOW IT WORKS -->
+   <section class="how" id="how">
+      <div class="container">
+         <div class="section-eyebrow" style="text-align:center;color:var(--gold);">Getting started</div>
+         <h2>Up and running in five minutes</h2>
+         <p class="how-sub">No paperwork. No intake calls. Just answer a few questions about your child and your district.</p>
+         <div class="steps fade-up">
+            <div class="step">
+               <div class="step-num">01</div>
+               <h3>Enter your child's key dates</h3>
+               <p>Tell Navigator your child's district, when the referral was received, and whether evaluation consent has been signed. The timeline is built immediately.</p>
+               <div class="step-connector"></div>
+            </div>
+            <div class="step">
+               <div class="step-num">02</div>
+               <h3>Start logging services</h3>
+               <p>Each week, mark which services were provided, partial, or missed. Add a quick note if something went wrong. It takes under two minutes.</p>
+               <div class="step-connector"></div>
+            </div>
+            <div class="step">
+               <div class="step-num">03</div>
+               <h3>Navigator steps in when it matters</h3>
+               <p>When a deadline approaches or a pattern of missed services emerges, Navigator alerts you and offers a ready-to-send letter. You're never starting from zero.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- NEWSLETTER -->
+   <section class="newsletter" id="newsletter">
+      <div class="newsletter-inner">
+         <div>
+            <div class="section-eyebrow">Stay informed</div>
+            <h2>The NY special ed digest</h2>
+            <p>Even between meetings and deadlines, there's always something to know. New NYSED guidance, State Review Office rulings, and practical IEP tips — delivered when they're relevant, not on a rigid schedule.</p>
+            <div class="newsletter-tiers" style="margin-top:1.25rem;">
+               <div class="nl-tier"><strong>Free subscribers</strong> — Monthly: general NY IEP rights and tips</div>
+               <div class="nl-tier"><strong>Family plan</strong> — Bi-weekly: personalized to your child's stage and district</div>
+               <div class="nl-tier"><strong>Pro / advocates</strong> — Weekly: SRO decisions, compliance data, policy changes</div>
+            </div>
+         </div>
+         <div>
+            <div class="newsletter-form">
+               <input type="text" placeholder="Your name">
+               <input type="email" placeholder="Email address">
+               <select style="padding:12px 16px;border-radius:var(--radius);border:1px solid rgba(201,148,58,0.25);background:white;font-size:0.9rem;font-family:'Outfit',sans-serif;color:var(--text-mid);outline:none;">
+                  <option>I'm a parent</option>
+                  <option>I'm a special ed advocate</option>
+                  <option>I'm an attorney</option>
+                  <option>I'm a school staff member</option>
+               </select>
+               <button type="submit">Subscribe — it's free</button>
+               <p style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">No spam. Unsubscribe any time.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- PRICING -->
+   <section class="pricing" id="pricing">
+      <div class="container">
+         <div class="pricing-header">
+            <div class="section-eyebrow">Pricing</div>
+            <h2>Less than one hour of attorney time</h2>
+            <p>Every tier includes the tools to know your rights. Paid plans add the tools to enforce them.</p>
+         </div>
+         <div class="pricing-grid fade-up">
+
+            <div class="price-card">
+               <div class="price-tier">Free</div>
+               <div class="price-amount">$0</div>
+               <div class="price-period">forever</div>
+               <ul class="price-features">
+                  <li><span class="pck">✓</span> NY CSE timeline (read-only)</li>
+                  <li><span class="pck">✓</span> 1 letter per month</li>
+                  <li><span class="pck">✓</span> All 50 district guides</li>
+                  <li><span class="pck">✓</span> Monthly newsletter</li>
+                  <li><span class="px">–</span> Service log & notes</li>
+                  <li><span class="px">–</span> Deadline alerts</li>
+                  <li><span class="px">–</span> Evidence export</li>
+               </ul>
+               <a href="#" class="price-cta price-cta-outline">Start free</a>
+            </div>
+
+            <div class="price-card featured">
+               <div class="price-badge">Most popular</div>
+               <div class="price-tier">Family</div>
+               <div class="price-amount">$19<span>/mo</span></div>
+               <div class="price-period">or $149/year — save $79</div>
+               <ul class="price-features">
+                  <li><span class="pck">✓</span> Full timeline tracker + alerts</li>
+                  <li><span class="pck">✓</span> Unlimited letters</li>
+                  <li><span class="pck">✓</span> Service log with notes (1 child)</li>
+                  <li><span class="pck">✓</span> Bi-weekly personalized newsletter</li>
+                  <li><span class="pck">✓</span> CSE meeting prep briefing</li>
+                  <li><span class="pck">✓</span> District intel & patterns</li>
+                  <li><span class="pck">✓</span> Evidence PDF export</li>
+               </ul>
+               <a href="#" class="price-cta price-cta-primary">Start Family plan</a>
+            </div>
+
+            <div class="price-card">
+               <div class="price-tier">Pro / Advocate</div>
+               <div class="price-amount">$49<span>/mo</span></div>
+               <div class="price-period">or $399/year</div>
+               <ul class="price-features">
+                  <li><span class="pck">✓</span> Up to 10 children</li>
+                  <li><span class="pck">✓</span> Service logs for all children</li>
+                  <li><span class="pck">✓</span> White-label letter export</li>
+                  <li><span class="pck">✓</span> Weekly SRO & policy newsletter</li>
+                  <li><span class="pck">✓</span> Bulk district compliance data</li>
+                  <li><span class="pck">✓</span> Priority support</li>
+                  <li><span class="pck">✓</span> Docx / PDF export</li>
+               </ul>
+               <a href="#" class="price-cta price-cta-outline">Start Pro plan</a>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+   <!-- DISTRICTS -->
+   <section class="districts" id="districts">
+      <div class="container">
+         <h2>Built for every New York district</h2>
+         <p class="districts-sub">50 districts covered — NYC numbered districts, Long Island, Westchester, and upstate.</p>
+         <div class="district-pills">
+            <a href="#" class="district-pill">District 2 · Upper East Side</a>
+            <a href="#" class="district-pill">District 3 · Upper West Side</a>
+            <a href="#" class="district-pill">District 6 · Washington Heights</a>
+            <a href="#" class="district-pill">District 7 · South Bronx</a>
+            <a href="#" class="district-pill">District 9 · Bronx</a>
+            <a href="#" class="district-pill">District 10 · Riverdale</a>
+            <a href="#" class="district-pill">District 11 · Northeast Bronx</a>
+            <a href="#" class="district-pill">District 13 · Bed-Stuy</a>
+            <a href="#" class="district-pill">District 14 · Williamsburg</a>
+            <a href="#" class="district-pill">District 15 · Park Slope</a>
+            <a href="#" class="district-pill">District 17 · Crown Heights</a>
+            <a href="#" class="district-pill">District 19 · East New York</a>
+            <a href="#" class="district-pill">District 20 · Bay Ridge</a>
+            <a href="#" class="district-pill">District 21 · Coney Island</a>
+            <a href="#" class="district-pill">District 22 · Flatbush</a>
+            <a href="#" class="district-pill">District 24 · Jackson Heights</a>
+            <a href="#" class="district-pill">District 25 · Flushing</a>
+            <a href="#" class="district-pill">District 26 · Bayside</a>
+            <a href="#" class="district-pill">District 27 · Rockaways</a>
+            <a href="#" class="district-pill">District 28 · Forest Hills</a>
+            <a href="#" class="district-pill">District 29 · Southeast Queens</a>
+            <a href="#" class="district-pill">District 31 · Staten Island</a>
+            <a href="#" class="district-pill">District 75 · Citywide</a>
+            <a href="#" class="district-pill">Great Neck UFSD</a>
+            <a href="#" class="district-pill">Yonkers City SD</a>
+            <a href="#" class="district-pill">White Plains City SD</a>
+            <a href="#" class="district-pill">Scarsdale UFSD</a>
+            <a href="#" class="district-pill">New Rochelle City SD</a>
+            <a href="#" class="district-pill">Buffalo City SD</a>
+            <a href="#" class="district-pill">Rochester City SD</a>
+         </div>
+      </div>
+   </section>
+
+   <!-- FINAL CTA -->
+   <section class="cta-final">
+      <div class="container">
+         <div class="section-eyebrow" style="color:var(--gold);">Get started today</div>
+         <h2>Your child's next CSE deadline is already counting down</h2>
+         <p>Start tracking in five minutes. Free forever for the basics — no credit card required.</p>
+         <div class="cta-final-actions">
+            <a href="#" class="btn-primary">Start tracking — it's free</a>
+            <a href="#" class="btn-ghost">Explore the district guides</a>
+         </div>
+      </div>
+   </section>
+
+   <!-- FOOTER -->
+   <footer>
+      <div class="footer-inner">
+         <div class="footer-brand">
+            <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:0.75rem;">
+               <div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--navy);">N</div>
+               <span style="font-family:'Fraunces',serif;font-size:1.2rem;color:rgba(255,255,255,0.8);">Navigator</span>
+            </a>
+            <p>The IEP companion built for New York families. Know your rights. Track your deadlines. Document everything.</p>
+         </div>
+         <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#">Timeline tracker</a>
+            <a href="#">Letter generator</a>
+            <a href="#">Service log</a>
+            <a href="#">Newsletter</a>
+            <a href="#">Pricing</a>
+         </div>
+         <div class="footer-col">
+            <h4>Districts</h4>
+            <a href="#">NYC districts</a>
+            <a href="#">Long Island</a>
+            <a href="#">Westchester</a>
+            <a href="#">Upstate NY</a>
+            <a href="https://newyorkspecialed.net" target="_blank">newyorkspecialed.net ↗</a>
+         </div>
+         <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms of service</a>
+         </div>
+      </div>
+      <div class="footer-bottom">
+         <span>© 2026 Navigator Kids AI. Not legal advice.</span>
+         <span>Built for New York families</span>
+      </div>
+   </footer>
+
+   <script>
+      const observer = new IntersectionObserver((entries) => {
+         entries.forEach(entry => {
+            if (entry.isIntersecting) {
+               entry.target.classList.add('visible');
+               observer.unobserve(entry.target);
             }
-        });
+         });
+      }, {
+         threshold: 0.1,
+         rootMargin: '0px 0px -40px 0px'
+      });
 
-        // Form Logic Placeholder (Preserving user structure)
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.NavigatorForms && typeof window.NavigatorForms.setupEmailForm === 'function') {
-                const form = document.getElementById('lead-capture-form');
-                if (form) {
-                    window.NavigatorForms.setupEmailForm({
-                        formId: 'lead-capture-form',
-                        emailInputId: 'email-input',
-                        nameInputId: 'name-input',
-                        source: 'emergency-kit-home',
-                        successMessage: 'Scripts sent! Check your inbox.'
-                    });
-                }
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+         a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+               e.preventDefault();
+               target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+               });
             }
-        });
-    </script>
+         });
+      });
+   </script>
 </body>
+
 </html>

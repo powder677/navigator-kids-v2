@@ -1,0 +1,59 @@
+# Navigator -- 301 Redirects
+# Generated 2026-03-21
+# Format: /old-path  /new-path  301
+
+/iep/states/*  /iep/states/new-york/  301
+/iep/states/california/*  https://newyorkspecialed.net/  301
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/california-autism-waiver/
+/iep/states/california/california-district-comparison/*  https://newyorkspecialed.net/  301
+/iep/states/california/california-dyslexia-screening/*  https://newyorkspecialed.net/  301
+/iep/states/california/california-iee/*  https://newyorkspecialed.net/  301
+/iep/states/california/california-iep-laws/*  https://newyorkspecialed.net/iep-law/  301
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/california-timeline/
+/iep/states/california/districts/*  https://newyorkspecialed.net/  301
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/capistrano-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/clovis-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/corona-norco-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/elk-grove-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/fontana-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/fremont-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/fresno-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/garden-grove-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/irvine-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/kern-high/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/long-beach-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/los-angeles-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/moreno-valley-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/oakland-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/poway-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/riverside-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/sacramento-city-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/san-bernardino-city-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/san-diego-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/san-francisco-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/san-juan-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/santa-ana-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/stockton-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/twin-rivers-unified/
+# covered by wildcard above #pricinghttps://newyorkspecialed.net/: /iep/states/california/districts/visalia-unified/
+/iep/states/florida/*  /iep/states/new-york/  301
+/iep/states/illinois/*  /iep/states/new-york/  301
+/iep/states/new-jersey/*  /iep/states/new-york/  301
+/iep/states/pennsylvania/*  /iep/states/new-york/  301
+/products/*  /#pricing  301
+/products/activity-packets/*  /#pricing  301
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/bravely-the-lion/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/captain-choosy/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/captain-choosy/captain-choosy.html
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/cosmo-space-pup/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/ember-the-dragon/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/shelly-the-turtle/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/sketch-the-owl/
+# covered by wildcard above #pricing/#pricing: /products/activity-packets/whisper-bunny/
+/products/ai-prompts/*  /#pricing  301
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/big-picture-thinker/
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/bold-explorer/
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/deep-diver/
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/intense-feeler/
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/reluctant-starter/
+# covered by wildcard above #pricing/#pricing: /products/ai-prompts/sensitive-observer/
