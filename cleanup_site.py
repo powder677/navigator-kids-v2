@@ -151,9 +151,9 @@ REDIRECTS = {
     "/iep/states/pennsylvania/":                       "/iep/states/new-york/",
 
     # Products #pricingpricing section on new homepage (all subpages too)
-    "/products/":                                      "/#pricing",
-    "/products/activity-packets/":                     "/#pricing",
-    "/products/ai-prompts/":                           "/#pricing",
+    "/products/":                                      "/pricing",
+    "/products/activity-packets/":                     "/pricing",
+    "/products/ai-prompts/":                           "/pricing",
 
     # New states -- redirect to NY (our focus)
     "/iep/states/illinois/":                           "/iep/states/new-york/",
@@ -565,8 +565,10 @@ def write_redirects(output_path: Path, cut: list, format: str = "netlify",
         redirect_entries = []
         for src_url, dest, is_wildcard in active:
             if is_wildcard:
-                # Vercel uses :path* for wildcards
-                source = src_url.rstrip("/") + "/:path*"
+                # Use (.*) not :path* -- Vercel requires named captures like :path*
+                # to also appear in the destination, which fails for catch-all drops
+                # (.*) is an anonymous group Vercel accepts without that constraint
+                source = src_url.rstrip("/") + "/(.*)"
             else:
                 source = src_url
             redirect_entries.append({
@@ -707,7 +709,8 @@ def main():
     )
     parser.add_argument(
         "--dry-run", action="store_true", default=False,
-        help="Show what would happen without making changes (default)"
+        dest="dry_run",
+        help="Show what would happen without making changes (default behavior)"
     )
     parser.add_argument(
         "--execute", action="store_true", default=False,
@@ -751,35 +754,49 @@ def main():
     # Always run audit first
     keep, cut, unknown = run_audit(root, sitemap_path, debug=args.debug)
 
+    # ---- Write redirect file ----
+    # vercel.json is written directly into the site root so it takes effect on deploy.
+    # netlify/_nginx go to output_dir for manual placement.
     if args.format == "vercel":
-        redirect_filename = "vercel.json"
-        # If a vercel.json already exists in the site root, merge into it directly
-        existing_vercel = root / "vercel.json"
+        vercel_dest = root / "vercel.json"
+        if args.dry_run or (not args.execute and not args.redirects_only):
+            # Dry run: write to output_dir only so nothing in the repo changes
+            vercel_dest = output_dir / "vercel.json"
+            print(f"\n[i]  DRY RUN -- vercel.json preview written to: {vercel_dest}")
+            print("     Run with --execute to update the real vercel.json in your repo.\n")
+        else:
+            # Make a backup before overwriting
+            backup = root / "vercel.json.bak"
+            if vercel_dest.exists():
+                import shutil as _sh
+                _sh.copy2(str(vercel_dest), str(backup))
+                print(f"[OK]  Backup written: {backup}")
+
         write_redirects(
-            output_dir / redirect_filename, cut,
+            vercel_dest, cut,
             format="vercel",
-            existing_vercel_json=existing_vercel if existing_vercel.exists() else None,
+            existing_vercel_json=(root / "vercel.json") if (root / "vercel.json").exists() else None,
         )
+
     elif args.format == "netlify":
-        redirect_filename = "_redirects"
-        write_redirects(output_dir / redirect_filename, cut, format="netlify")
+        write_redirects(output_dir / "_redirects", cut, format="netlify")
     else:
-        redirect_filename = "nginx_redirects.conf"
-        write_redirects(output_dir / redirect_filename, cut, format="nginx")
+        write_redirects(output_dir / "nginx_redirects.conf", cut, format="nginx")
+
     write_clean_sitemap(output_dir / "sitemap_clean.xml", keep)
 
+    # ---- Archive / delete cut files ----
     if args.execute and not args.redirects_only:
         if not root.exists():
-            print(f"\n[!]   Cannot execute: root directory '{root}' not found.")
-            print("   Run with your actual site root, e.g.:  --root /var/www/navigatorkidsai")
+            print(f"\n[!]  Cannot execute: root directory '{root}' not found.")
         else:
             print(f"\n{'='*60}")
             print(f"  Executing cleanup ({'DELETE' if args.delete else 'ARCHIVE'} mode)")
             print(f"{'='*60}\n")
             execute_cleanup(root, cut, archive=not args.delete)
     elif not args.execute:
-        print("\n[i]  This was a dry run. Add --execute to make changes.")
-        print(f"   Redirect file and clean sitemap written to: {output_dir}/\n")
+        print("\n[i]  Dry run complete. To apply changes run:")
+        print(f"      python cleanup_site.py --root . --execute\n")
 
 
 if __name__ == "__main__":

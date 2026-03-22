@@ -1,0 +1,4 @@
+# Redirects applied to vercel.json on 2026-03-21
+# 0 rules added
+
+# Covered by wildcard rules (not added individually):

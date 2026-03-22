@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/iep/states/california/:path*",
+      "destination": "https://newyorkspecialed.net/",
+      "permanent": true
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/#pricing",
+      "permanent": true
+    },
+    ...
+  ]
+}
